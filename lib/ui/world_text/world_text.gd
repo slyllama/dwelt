@@ -13,6 +13,7 @@ func set_text(text):
 func _ready() -> void:
 	label_offset.x = -$Canvas/Label.size.x / 2.0
 	$Canvas/Label.modulate = color
+	$Canvas.visible = false
 	set_text(initial_text)
 
 func _process(_delta: float) -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/ui/world_text/world_text.gd" id="1_7xq6t"]
 
 [node name="WorldText" type="VisibleOnScreenNotifier3D"]
-aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+aabb = AABB(-0.02, -0.02, -0.02, 0.04, 0.04, 0.04)
 script = ExtResource("1_7xq6t")
 
 [node name="Canvas" type="CanvasLayer" parent="."]
