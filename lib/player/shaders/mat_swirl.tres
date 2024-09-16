@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ckv72ova8uqob"]
+
+[ext_resource type="Shader" uid="uid://cxj1wbbyo5yvo" path="res://lib/player/shaders/shader_swirl.tres" id="1_n17v6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_n17v6")

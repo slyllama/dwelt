@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bky4oadewjuyx"]
+
+[ext_resource type="Script" path="res://lib/ui/world_text/world_text.gd" id="1_7xq6t"]
+
+[node name="WorldText" type="VisibleOnScreenNotifier3D"]
+aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("1_7xq6t")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Label" type="RichTextLabel" parent="Canvas"]
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.117647)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 9
+bbcode_enabled = true
+text = "[center](Text)[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

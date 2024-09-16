@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cyqcyql2dm0g6"]
+
+[ext_resource type="Texture2D" uid="uid://bs832t4t8b345" path="res://lib/player/materials/textures/brass_diff.jpg" id="1_sh64m"]
+[ext_resource type="Texture2D" uid="uid://cqo5uypi118as" path="res://lib/player/materials/textures/brass_norm.jpg" id="2_g2tsx"]
+
+[resource]
+albedo_texture = ExtResource("1_sh64m")
+metallic = 0.85
+roughness = 0.25
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_g2tsx")

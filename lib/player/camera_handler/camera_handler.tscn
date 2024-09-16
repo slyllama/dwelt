@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl1b5pyew2pj4"]
+
+[ext_resource type="Script" path="res://lib/player/camera_handler/camera_handler.gd" id="1_ngwli"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ug7on"]
+radius = 0.2
+
+[node name="CameraHandler" type="Node3D"]
+script = ExtResource("1_ngwli")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 0.348623, 3.98478)
+v_offset = 0.7
+current = true
+fov = 80.0
+
+[node name="Axis" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 0, 0)
+shape = SubResource("SphereShape3D_ug7on")
+spring_length = 4.0
+
+[node name="Target" type="Node3D" parent="Axis"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
