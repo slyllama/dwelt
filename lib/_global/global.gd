@@ -22,5 +22,6 @@ signal proximity_entered
 signal proximity_left
 
 var active_pylon = ACTIVE_PYLON.duplicate()
+var foliage_count = 0
 var player_position = Vector3.ZERO
 var proximal_object = PROXIMAL_OBJECT.duplicate()

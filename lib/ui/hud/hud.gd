@@ -1,6 +1,6 @@
 extends CanvasLayer
 # HUD
-# Handles and updates HUD elements
+# Handles and updates HUD elements; also collects some debug data
 
 func _fmt_fps() -> String:
 	var fps = Engine.get_frames_per_second()
@@ -34,8 +34,13 @@ func _ready() -> void:
 		$Sidebar.visible = false)
 
 func _process(_delta: float) -> void:
-	$Debug.text = _fmt_fps() + "\n[font_size=2] [/font_size]"
-	$Debug.text += "\n" + Utilities.fmt_vec3(Global.player_position)
+	var primitives = str(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME))
+	
+	$Debug.text = _fmt_fps()
+	$Debug.text += "\nPrimitives = " + primitives
+	$Debug.text += "\n[font_size=4] [/font_size]"
+	$Debug.text += "\nplayer_position = " + Utilities.fmt_vec3(Global.player_position)
+	$Debug.text += "\nfoliage_count = " + str(Global.foliage_count)
 	if Global.proximal_object.id != "none":
 		$Debug.text += "\nproximal_object.id = " + Global.proximal_object.id
 	if Global.active_pylon.id != "none":

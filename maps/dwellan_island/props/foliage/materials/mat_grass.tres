@@ -4,12 +4,14 @@
 
 [resource]
 transparency = 2
-alpha_scissor_threshold = 0.6
-alpha_antialiasing_mode = 0
+alpha_scissor_threshold = 0.0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
 cull_mode = 2
-albedo_color = Color(0.903192, 0.734274, 0.652517, 1)
+albedo_color = Color(0.940671, 0.830981, 0.778477, 1)
 albedo_texture = ExtResource("1_uv8ml")
 metallic_specular = 0.0
+emission = Color(0.118581, 0.118581, 0.118581, 1)
 backlight_enabled = true
 backlight = Color(0.423, 0.47, 0, 1)
 uv1_scale = Vector3(0.95, 0.95, 0.95)
