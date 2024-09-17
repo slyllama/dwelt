@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mav0ec5a618r"
-path.s3tc="res://.godot/imported/player_swirls.png-a9b1d5ac673103d4dddded5ce6fae568.s3tc.ctex"
+uid="uid://ddf4xr255syot"
+path.s3tc="res://.godot/imported/blur.png-335f1be69d97a00487712b9e45d8d256.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e06c9312e4a9d46f5a5ea41f665a71d6"
-}
 
 [deps]
 
-source_file="res://lib/player/meshes/player_swirls.png"
-dest_files=["res://.godot/imported/player_swirls.png-a9b1d5ac673103d4dddded5ce6fae568.s3tc.ctex"]
+source_file="res://generic/textures/blur.png"
+dest_files=["res://.godot/imported/blur.png-335f1be69d97a00487712b9e45d8d256.s3tc.ctex"]
 
 [params]
 

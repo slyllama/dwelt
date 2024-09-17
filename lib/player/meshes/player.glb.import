@@ -33,21 +33,21 @@ animation/import_rest_as_RESET=true
 import_script/path=""
 _subresources={
 "materials": {
-"Brass": {
+"mat_brass": {
 "use_external/enabled": true,
 "use_external/path": "res://lib/player/materials/mat_brass.tres"
 },
-"Crystal": {
+"mat_force_field": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
-},
-"Light": {
-"use_external/enabled": true,
-"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
+"use_external/path": "res://lib/player/shaders/mat_force_field.tres"
 },
 "mat_internal_orb": {
 "use_external/enabled": true,
 "use_external/path": "res://lib/player/materials/mat_internal_orb.tres"
+},
+"mat_swirl": {
+"use_external/enabled": true,
+"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
 }
 },
 "nodes": {

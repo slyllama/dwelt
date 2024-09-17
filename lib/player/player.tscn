@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctalngjslyvct"]
+[gd_scene load_steps=14 format=3 uid="uid://ctalngjslyvct"]
 
 [ext_resource type="PackedScene" uid="uid://cl1b5pyew2pj4" path="res://lib/player/camera_handler/camera_handler.tscn" id="1_ibaa5"]
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_io483"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="5_7kmf5"]
 [ext_resource type="Texture2D" uid="uid://ccaxft0tknjhm" path="res://lib/player/shaders/textures/floor_decal.png" id="5_32bnq"]
 [ext_resource type="PackedScene" uid="uid://bpawer1uids2h" path="res://lib/player/ground_detector/ground_detector.tscn" id="6_t2ywj"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="7_w5ym2"]
 
 [sub_resource type="Gradient" id="Gradient_goc2u"]
 offsets = PackedFloat32Array(0, 0.118182, 0.409091, 1)
@@ -25,6 +26,19 @@ color_ramp = SubResource("GradientTexture1D_q378c")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1t51"]
 radius = 0.25
 height = 0.9
+
+[sub_resource type="QuadMesh" id="QuadMesh_1n4so"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gcd3"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.5538, 0.78, 0.5538, 1)
+albedo_texture = ExtResource("7_w5ym2")
+billboard_mode = 2
+billboard_keep_scale = true
 
 [node name="Player" type="CharacterBody3D"]
 floor_max_angle = 1.22173
@@ -60,5 +74,10 @@ omni_range = 1.5
 omni_attenuation = 0.5
 
 [node name="GroundDetector" parent="." instance=ExtResource("6_t2ywj")]
+
+[node name="Glow" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136863, 0)
+mesh = SubResource("QuadMesh_1n4so")
+material = SubResource("StandardMaterial3D_3gcd3")
 
 [connection signal="ground_collided" from="GroundDetector" to="." method="_on_ground_collided"]
