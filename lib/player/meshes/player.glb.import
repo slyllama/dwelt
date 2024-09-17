@@ -41,9 +41,9 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://lib/player/shaders/mat_force_field.tres"
 },
-"mat_internal_orb": {
+"mat_fresnel": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/materials/mat_internal_orb.tres"
+"use_external/path": "res://generic/shaders/mat_fresnel.tres"
 },
 "mat_swirl": {
 "use_external/enabled": true,

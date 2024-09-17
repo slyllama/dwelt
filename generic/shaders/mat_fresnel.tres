@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpwwu5vohplo3"]
+
+[ext_resource type="Shader" path="res://generic/shaders/shader_fresnel.gdshader" id="1_b8ptj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_b8ptj")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/fresnel_color = Color(0.25, 1, 0.75, 1)
