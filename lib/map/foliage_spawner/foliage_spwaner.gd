@@ -16,6 +16,7 @@ var foliage_count = 0
 @export var min_scale = 3.0
 @export var max_scale = 5.0
 @export var smooth = true
+@export var moss_cover = true
 
 var active_foliage_mesh: ArrayMesh
 
@@ -26,10 +27,11 @@ var active_foliage_mesh: ArrayMesh
 	get: return(reload)
 
 func render() -> void:
-	if foliage_mesh == null:
-		active_foliage_mesh = GRASS
-	else:
-		active_foliage_mesh = foliage_mesh
+	if foliage_mesh == null: active_foliage_mesh = GRASS
+	else: active_foliage_mesh = foliage_mesh
+	
+	if moss_cover: $Moss.size = Vector3(size * 1.8, 0.5, size * 1.8)
+	else: $Moss.queue_free()
 	
 	# Reset - clear foliage count
 	if !Engine.is_editor_hint():
@@ -44,7 +46,7 @@ func render() -> void:
 	
 	var midpoint = Vector3(size / 2, 0, size / 2)
 	var separation = size / count # base distance between instances
-
+	
 	for y in count:
 		for x in count:
 			var i = y * count + x
