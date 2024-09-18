@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		_target_zoom += zoom_increment
 	
 	if event is InputEventMouseMotion:
-		_mouse_delta = event.screen_relative
+		_mouse_delta = event.relative
 
 func _process(delta: float) -> void:
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
