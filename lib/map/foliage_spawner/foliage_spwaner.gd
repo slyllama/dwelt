@@ -17,7 +17,7 @@ var foliage_count = 0
 @export var max_scale = 5.0
 @export var smooth = true
 
-var active_foliage_mesh = foliage_mesh
+var active_foliage_mesh: ArrayMesh
 
 @export var reload = false:
 	set(_value):
@@ -28,6 +28,8 @@ var active_foliage_mesh = foliage_mesh
 func render() -> void:
 	if foliage_mesh == null:
 		active_foliage_mesh = GRASS
+	else:
+		active_foliage_mesh = foliage_mesh
 	
 	# Reset - clear foliage count
 	if !Engine.is_editor_hint():
