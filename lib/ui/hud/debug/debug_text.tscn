@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf2seuyksa7tu"]
+
+[ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="1_053ba"]
+[ext_resource type="Script" path="res://lib/ui/hud/debug/debug_text.gd" id="2_ou1qo"]
+
+[node name="Debug" type="RichTextLabel"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 924.0
+offset_bottom = 224.0
+mouse_filter = 2
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("1_053ba")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "(Debug)"
+script = ExtResource("2_ou1qo")

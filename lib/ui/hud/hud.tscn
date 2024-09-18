@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/debug_corner.png" id="2_u8gkr"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="3_gfkw7"]
-[ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="3_whri3"]
+[ext_resource type="PackedScene" uid="uid://bf2seuyksa7tu" path="res://lib/ui/hud/debug/debug_text.tscn" id="3_ghokv"]
 [ext_resource type="Texture2D" uid="uid://dxcty3ssnk61q" path="res://lib/ui/hud/textures/panel_gradient.tres" id="5_1e3af"]
 
 [sub_resource type="Gradient" id="Gradient_3ubsl"]
@@ -42,17 +42,7 @@ offset_bottom = 562.0
 texture = ExtResource("2_u8gkr")
 stretch_mode = 5
 
-[node name="Debug" type="RichTextLabel" parent="."]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 924.0
-offset_bottom = 224.0
-mouse_filter = 2
-theme_override_constants/line_separation = -2
-theme_override_fonts/normal_font = ExtResource("3_whri3")
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "(Debug)"
+[node name="DebugText" parent="." instance=ExtResource("3_ghokv")]
 
 [node name="InteractSign" type="RichTextLabel" parent="."]
 anchors_preset = 7
