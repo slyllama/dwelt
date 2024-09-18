@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 	var primitives = str(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME))
 	
 	$Debug.text = _fmt_fps()
-	$Debug.text += "\nPrimitives = " + primitives
+	$Debug.text += "\nprimitives = " + primitives
 	$Debug.text += "\n[font_size=4] [/font_size]"
 	$Debug.text += "\nplayer_position = " + Utilities.fmt_vec3(Global.player_position)
 	$Debug.text += "\nfoliage_count = " + str(Global.foliage_count)
