@@ -18,6 +18,7 @@ var _target_velocity = Vector3.ZERO
 var _jump_energy = 0.0
 
 var _mesh_y_state = 0.0
+var _engine_rotate_magnitude = 0.0 # smoothed engine speed
 
 # Shorthand to enable and disable shadows on GeometryInstances
 func _set_shadow(node: GeometryInstance3D, state: bool) -> void:
@@ -40,7 +41,6 @@ func _bounce_mesh(delta: float):
 	model.position.y = _adj_mesh_y_state * -0.04
 
 func _ready() -> void:
-	$Collision/Player/AnimationPlayer.play("OrbSpin")
 	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb/Orb)
 	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb_001/Orb_001)
 	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb_002/Orb_002)
@@ -94,7 +94,15 @@ func _physics_process(delta: float) -> void:
 	if _direction.x > 0 or _direction.z > 0:
 		base.rotation_degrees.y = lerp(
 			base.rotation_degrees.y, _camera_direction + 180.0, 5.0 * delta)
+	model.rotation_degrees.x = lerp(model.rotation_degrees.x, _direction.x * -10.0, 4 * delta)
+	model.rotation_degrees.z = lerp(model.rotation_degrees.z, _direction.z * -10.0, 4 * delta)
 	_bounce_mesh(delta)
+	
+	# Set the speed of the engine's rotation proportional to the velocity of the player
+	_engine_rotate_magnitude = lerp(
+		_engine_rotate_magnitude, 0.2 + velocity.length() * 0.75, 7 * delta)
+	$Collision/Player/PlayerAnim.set(
+		"parameters/engine_time_scale/scale", _engine_rotate_magnitude)
 
 func _on_ground_collided() -> void:
 	_mesh_y_state = 1.0

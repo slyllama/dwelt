@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cqo5uypi118as" path="res://lib/player/materials/textures/brass_norm.jpg" id="2_g2tsx"]
 
 [resource]
+albedo_color = Color(0.752357, 0.667451, 0.402991, 1)
 albedo_texture = ExtResource("1_sh64m")
-metallic = 0.85
-roughness = 0.25
+metallic = 0.5
+roughness = 0.54
 normal_enabled = true
 normal_scale = 0.5
 normal_texture = ExtResource("2_g2tsx")
