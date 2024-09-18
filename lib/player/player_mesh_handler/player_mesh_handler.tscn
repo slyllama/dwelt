@@ -1,0 +1,147 @@
+[gd_scene load_steps=26 format=3 uid="uid://cll2qx861q03l"]
+
+[ext_resource type="PackedScene" uid="uid://d2wffclc136bw" path="res://lib/player/meshes/player.glb" id="1_muid5"]
+[ext_resource type="Script" path="res://lib/player/player_mesh_handler/player_mesh_handler.gd" id="1_ydpi7"]
+[ext_resource type="Texture2D" uid="uid://ccaxft0tknjhm" path="res://lib/player/shaders/textures/floor_decal.png" id="2_7quuy"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="3_m7u27"]
+[ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="4_fge6j"]
+[ext_resource type="Animation" uid="uid://bs0xc5qw1mgwu" path="res://lib/player/meshes/animations/engine_rotate.res" id="4_w7kah"]
+[ext_resource type="Animation" uid="uid://dqg7rby2nrb2t" path="res://lib/player/meshes/animations/spin.res" id="5_pq07w"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7fd1"]
+_data = {
+"engine_rotate": ExtResource("4_w7kah"),
+"spin": ExtResource("5_pq07w")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_g8tj7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8t23r"]
+animation = &"player/engine_rotate"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6oudw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kj44c"]
+animation = &"player/spin"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qvyn6"]
+graph_offset = Vector2(-591.072, 35.6253)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_g8tj7")
+nodes/Add2/position = Vector2(106.667, 146.667)
+nodes/engine_rotate/node = SubResource("AnimationNodeAnimation_8t23r")
+nodes/engine_rotate/position = Vector2(-306.667, 306.667)
+nodes/engine_time_scale/node = SubResource("AnimationNodeTimeScale_6oudw")
+nodes/engine_time_scale/position = Vector2(-66.6667, 306.667)
+nodes/orb_spin/node = SubResource("AnimationNodeAnimation_kj44c")
+nodes/orb_spin/position = Vector2(-306.667, 146.667)
+nodes/output/position = Vector2(320, 146.667)
+node_connections = [&"Add2", 0, &"orb_spin", &"Add2", 1, &"engine_time_scale", &"engine_time_scale", 0, &"engine_rotate", &"output", 0, &"Add2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_70vyj"]
+size = Vector2(0.65, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljnet"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.3654, 0.87, 0.3654, 1)
+albedo_texture = ExtResource("3_m7u27")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_rc0bw"]
+offsets = PackedFloat32Array(0, 0.118182, 0.409091, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.0596592, 0.465111, 0, 1, 0.745346, 0.867545, 1.92523e-06, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q378c"]
+gradient = SubResource("Gradient_rc0bw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_peo0n"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3(0, -0.1, 0)
+scale_min = 0.4
+scale_max = 0.7
+color_ramp = SubResource("GradientTexture1D_q378c")
+
+[sub_resource type="Gradient" id="Gradient_qbtgv"]
+offsets = PackedFloat32Array(0, 0.654545)
+colors = PackedColorArray(1, 1, 1, 0.278431, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5sgta"]
+gradient = SubResource("Gradient_qbtgv")
+
+[sub_resource type="Curve" id="Curve_ijc3n"]
+_data = [Vector2(0, 1), 0.0, -0.905819, 0, 0, Vector2(1, 0.701031), 0.0282769, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_niopi"]
+curve = SubResource("Curve_ijc3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hcbn1"]
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_niopi")
+color = Color(0.932, 1, 0.66, 1)
+color_ramp = SubResource("GradientTexture1D_5sgta")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7qvv"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_m7u27")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_t4gxa"]
+material = SubResource("StandardMaterial3D_f7qvv")
+size = Vector2(0.1, 0.1)
+
+[node name="PlayerMeshHandler" type="Node3D"]
+script = ExtResource("1_ydpi7")
+
+[node name="Player" parent="." instance=ExtResource("1_muid5")]
+
+[node name="Decal" type="Decal" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+size = Vector3(0.6, 1.5, 0.6)
+texture_albedo = ExtResource("2_7quuy")
+texture_emission = ExtResource("2_7quuy")
+emission_energy = 0.25
+
+[node name="PlayerAnim" type="AnimationTree" parent="Player"]
+libraries = {
+"player": SubResource("AnimationLibrary_c7fd1")
+}
+tree_root = SubResource("AnimationNodeBlendTree_qvyn6")
+parameters/Add2/add_amount = 1.0
+parameters/engine_time_scale/scale = 1.0
+
+[node name="Headlight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.4)
+light_color = Color(0.86988, 0.99, 0.7326, 1)
+omni_range = 1.5
+omni_attenuation = 0.5
+
+[node name="Glow" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136863, 0)
+mesh = SubResource("QuadMesh_70vyj")
+material = SubResource("StandardMaterial3D_ljnet")
+
+[node name="Stars" type="GPUParticles3D" parent="."]
+visible = false
+amount = 4
+lifetime = 0.7
+explosiveness = 0.4
+process_material = SubResource("ParticleProcessMaterial_peo0n")
+draw_pass_1 = ExtResource("4_fge6j")
+
+[node name="OrbTrail" type="GPUParticles3D" parent="Stars"]
+amount = 40
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_hcbn1")
+draw_pass_1 = SubResource("QuadMesh_t4gxa")

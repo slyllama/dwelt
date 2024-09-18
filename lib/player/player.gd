@@ -1,6 +1,6 @@
 extends CharacterBody3D
 # Player
-# Handles player movement and characteristics
+# Handles player movement and characteristics. Mesh updates are now handled in PlayerMeshHandler.
 
 @export var gravity := 160.0
 @export var base_speed := 2.6
@@ -9,49 +9,17 @@ extends CharacterBody3D
 @export var hover_height := 1.0
 
 @onready var base: CollisionShape3D = get_node("Collision")
-@onready var model: Node3D = get_node("Collision/Player")
-@onready var sphere_mesh: GeometryInstance3D = get_node("Collision/Player/SpiritArmature/Skeleton3D/InternalBase/InternalBase")
 
 var _speed = base_speed
 var _direction = Vector3.ZERO
 var _target_velocity = Vector3.ZERO
 var _jump_energy = 0.0
 
-var _mesh_y_state = 0.0
-var _engine_rotate_magnitude = 0.0 # smoothed engine speed
-
-# Shorthand to enable and disable shadows on GeometryInstances
-func _set_shadow(node: GeometryInstance3D, state: bool) -> void:
-	if state == false: node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	else: node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-
-# Duplicate generic star particles and add them to children
-func _add_star(child: Node) -> void:
-	var star = $Stars.duplicate()
-	star.visible = true
-	child.add_child(star)
-
-# Animate the mesh bouncing when it lands on the floor
-func _bounce_mesh(delta: float):
-	_mesh_y_state = lerp(_mesh_y_state, 0.0, 7 * delta)
-	var _adj_mesh_y_state = _mesh_y_state
-	if _adj_mesh_y_state > 0.5:
-		_adj_mesh_y_state = 1 - _adj_mesh_y_state
-	_adj_mesh_y_state *= 2.0
-	model.position.y = _adj_mesh_y_state * -0.04
+var mesh_y_state = 0.0
 
 func _ready() -> void:
-	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb/Orb)
-	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb_001/Orb_001)
-	_add_star($Collision/Player/SpiritArmature/Skeleton3D/Orb_002/Orb_002)
-	
-	# Disable all shadows except for the central sphere
-	for node in Utilities.get_all_children($Collision/Player):
-		if node is GeometryInstance3D:
-			_set_shadow(node, false)
-	_set_shadow(sphere_mesh, true)
-	
-	Global.move_player.connect(func(pos: Vector3): global_position = pos)
+	Global.move_player.connect(func(pos: Vector3):
+		global_position = pos)
 
 func _physics_process(delta: float) -> void:
 	# Process inputs
@@ -90,19 +58,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	Global.player_position = position
 	
-	# Rotate the model to match movement direction
-	if _direction.x > 0 or _direction.z > 0:
-		base.rotation_degrees.y = lerp(
-			base.rotation_degrees.y, _camera_direction + 180.0, 5.0 * delta)
-	model.rotation_degrees.x = lerp(model.rotation_degrees.x, _direction.x * -10.0, 4 * delta)
-	model.rotation_degrees.z = lerp(model.rotation_degrees.z, _direction.z * -10.0, 4 * delta)
-	_bounce_mesh(delta)
-	
-	# Set the speed of the engine's rotation proportional to the velocity of the player
-	_engine_rotate_magnitude = lerp(
-		_engine_rotate_magnitude, 0.2 + velocity.length() * 0.75, 7 * delta)
-	$Collision/Player/PlayerAnim.set(
-		"parameters/engine_time_scale/scale", _engine_rotate_magnitude)
+	# Update mesh
+	%Mesh.update(_direction, velocity, _camera_direction)
 
-func _on_ground_collided() -> void:
-	_mesh_y_state = 1.0
+func _on_ground_collided() -> void: %Mesh._mesh_y_state = 1.0

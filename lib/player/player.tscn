@@ -1,129 +1,17 @@
-[gd_scene load_steps=29 format=3 uid="uid://ctalngjslyvct"]
+[gd_scene load_steps=6 format=3 uid="uid://ctalngjslyvct"]
 
 [ext_resource type="PackedScene" uid="uid://cl1b5pyew2pj4" path="res://lib/player/camera_handler/camera_handler.tscn" id="1_ibaa5"]
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_io483"]
-[ext_resource type="PackedScene" uid="uid://d2wffclc136bw" path="res://lib/player/meshes/player.glb" id="3_8la54"]
-[ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="5_7kmf5"]
-[ext_resource type="Texture2D" uid="uid://ccaxft0tknjhm" path="res://lib/player/shaders/textures/floor_decal.png" id="5_32bnq"]
 [ext_resource type="PackedScene" uid="uid://bpawer1uids2h" path="res://lib/player/ground_detector/ground_detector.tscn" id="6_t2ywj"]
-[ext_resource type="Animation" uid="uid://bs0xc5qw1mgwu" path="res://lib/player/meshes/animations/engine_rotate.res" id="7_uc6ig"]
-[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="7_w5ym2"]
-[ext_resource type="Animation" uid="uid://dqg7rby2nrb2t" path="res://lib/player/meshes/animations/spin.res" id="8_px5sl"]
-
-[sub_resource type="Gradient" id="Gradient_goc2u"]
-offsets = PackedFloat32Array(0, 0.118182, 0.409091, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0.0596592, 0.465111, 0, 1, 0.745346, 0.867545, 1.92523e-06, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_q378c"]
-gradient = SubResource("Gradient_goc2u")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwpe1"]
-emission_shape = 1
-emission_sphere_radius = 0.05
-gravity = Vector3(0, -0.1, 0)
-scale_min = 0.4
-scale_max = 0.7
-color_ramp = SubResource("GradientTexture1D_q378c")
-
-[sub_resource type="Gradient" id="Gradient_k25go"]
-offsets = PackedFloat32Array(0, 0.654545)
-colors = PackedColorArray(1, 1, 1, 0.278431, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5sgta"]
-gradient = SubResource("Gradient_k25go")
-
-[sub_resource type="Curve" id="Curve_qd0jr"]
-_data = [Vector2(0, 1), 0.0, -0.905819, 0, 0, Vector2(1, 0.701031), 0.0282769, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_niopi"]
-curve = SubResource("Curve_qd0jr")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_718l4"]
-gravity = Vector3(0, 0, 0)
-attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_niopi")
-color = Color(0.932, 1, 0.66, 1)
-color_ramp = SubResource("GradientTexture1D_5sgta")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7qvv"]
-transparency = 1
-shading_mode = 0
-specular_mode = 2
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("7_w5ym2")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_hvwgm"]
-material = SubResource("StandardMaterial3D_f7qvv")
-size = Vector2(0.1, 0.1)
+[ext_resource type="PackedScene" uid="uid://cll2qx861q03l" path="res://lib/player/player_mesh_handler/player_mesh_handler.tscn" id="10_8nk1a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1t51"]
 radius = 0.25
 height = 0.9
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_leg5m"]
-_data = {
-"engine_rotate": ExtResource("7_uc6ig"),
-"spin": ExtResource("8_px5sl")
-}
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_g8tj7"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8t23r"]
-animation = &"player/engine_rotate"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6oudw"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kj44c"]
-animation = &"player/spin"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kuws0"]
-graph_offset = Vector2(-791.532, 87.697)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_g8tj7")
-nodes/Add2/position = Vector2(106.667, 146.667)
-nodes/engine_rotate/node = SubResource("AnimationNodeAnimation_8t23r")
-nodes/engine_rotate/position = Vector2(-306.667, 306.667)
-nodes/engine_time_scale/node = SubResource("AnimationNodeTimeScale_6oudw")
-nodes/engine_time_scale/position = Vector2(-66.6667, 306.667)
-nodes/orb_spin/node = SubResource("AnimationNodeAnimation_kj44c")
-nodes/orb_spin/position = Vector2(-306.667, 146.667)
-nodes/output/position = Vector2(320, 146.667)
-node_connections = [&"Add2", 0, &"orb_spin", &"Add2", 1, &"engine_time_scale", &"engine_time_scale", 0, &"engine_rotate", &"output", 0, &"Add2"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_1n4so"]
-size = Vector2(0.65, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gcd3"]
-transparency = 1
-shading_mode = 0
-specular_mode = 2
-albedo_color = Color(0.3654, 0.87, 0.3654, 1)
-albedo_texture = ExtResource("7_w5ym2")
-billboard_mode = 2
-billboard_keep_scale = true
-
 [node name="Player" type="CharacterBody3D"]
 floor_max_angle = 1.22173
 script = ExtResource("1_io483")
-
-[node name="Stars" type="GPUParticles3D" parent="."]
-visible = false
-amount = 4
-lifetime = 0.7
-explosiveness = 0.4
-process_material = SubResource("ParticleProcessMaterial_mwpe1")
-draw_pass_1 = ExtResource("5_7kmf5")
-
-[node name="OrbTrail" type="GPUParticles3D" parent="Stars"]
-amount = 40
-lifetime = 0.5
-process_material = SubResource("ParticleProcessMaterial_718l4")
-draw_pass_1 = SubResource("QuadMesh_hvwgm")
 
 [node name="CameraHandler" parent="." instance=ExtResource("1_ibaa5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -131,34 +19,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_s1t51")
 
-[node name="Player" parent="Collision" instance=ExtResource("3_8la54")]
-
-[node name="Decal" type="Decal" parent="Collision/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(0.45, 0.5, 0.45)
-texture_albedo = ExtResource("5_32bnq")
-texture_emission = ExtResource("5_32bnq")
-emission_energy = 0.25
-
-[node name="PlayerAnim" type="AnimationTree" parent="Collision/Player"]
-libraries = {
-"player": SubResource("AnimationLibrary_leg5m")
-}
-tree_root = SubResource("AnimationNodeBlendTree_kuws0")
-parameters/Add2/add_amount = 1.0
-parameters/engine_time_scale/scale = 1.0
-
-[node name="Headlight" type="OmniLight3D" parent="Collision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.4)
-light_color = Color(0.86988, 0.99, 0.7326, 1)
-omni_range = 1.5
-omni_attenuation = 0.5
+[node name="Mesh" parent="Collision" instance=ExtResource("10_8nk1a")]
+unique_name_in_owner = true
 
 [node name="GroundDetector" parent="." instance=ExtResource("6_t2ywj")]
-
-[node name="Glow" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136863, 0)
-mesh = SubResource("QuadMesh_1n4so")
-material = SubResource("StandardMaterial3D_3gcd3")
 
 [connection signal="ground_collided" from="GroundDetector" to="." method="_on_ground_collided"]
