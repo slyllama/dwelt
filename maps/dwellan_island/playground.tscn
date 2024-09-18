@@ -43,6 +43,7 @@ fog_density = 1.0
 fog_sky_affect = 0.2
 fog_depth_begin = 5.0
 fog_depth_end = 15.0
+adjustment_saturation = 1.1
 
 [sub_resource type="Gradient" id="Gradient_3x2fh"]
 offsets = PackedFloat32Array(0, 0.266667, 0.751515, 1)
@@ -183,21 +184,29 @@ sibling = NodePath("../StartBanana")
 
 [node name="GrassHandler" parent="." instance=ExtResource("15_qqet2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734514, -0.09, -3.29375)
-count_root = 10
-spread = 0.13
+count_root = 8
+spread = 0.2
 max_scale = 4.0
+scatter = 0.2
+
+[node name="GrassHandler3" parent="." instance=ExtResource("15_qqet2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88546, -0.0899998, -2.17336)
+count_root = 8
+spread = 0.285
+max_scale = 3.5
 scatter = 0.2
 
 [node name="GrassHandler2" parent="." instance=ExtResource("15_qqet2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42716, -0.0900004, -1.72246)
-count_root = 17
+count_root = 10
+spread = 0.325
 max_scale = 4.0
 scatter = 0.4
 
 [node name="GrassHandler4" parent="." instance=ExtResource("15_qqet2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142571, -0.0900002, 1.71542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.666138, -0.0900002, 1.71542)
 count_root = 19
-spread = 0.215
+spread = 0.305
 min_scale = 0.19
 max_scale = 4.735
 scatter = 0.2

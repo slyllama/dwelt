@@ -10,3 +10,4 @@ roughness = 0.25
 normal_enabled = true
 normal_scale = 0.5
 normal_texture = ExtResource("2_g2tsx")
+uv1_scale = Vector3(2, 2, 2)
