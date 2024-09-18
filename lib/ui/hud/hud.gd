@@ -2,6 +2,8 @@ extends CanvasLayer
 # HUD
 # Handles and updates HUD elements; also collects some debug data
 
+const SmokeTransition = preload("res://lib/ui/smoke_transition/smoke_transition.tscn")
+
 func _fmt_fps() -> String:
 	var fps = Engine.get_frames_per_second()
 	var color = "green"
@@ -19,6 +21,10 @@ func _ready() -> void:
 	# Establish visibilty
 	$InteractSign.visible = false
 	$Sidebar.visible = false
+	
+	var smoke_transition = SmokeTransition.instantiate()
+	add_child(smoke_transition)
+	smoke_transition.fade_out()
 	
 	Global.proximity_entered.connect(func():
 		$Sidebar.visible = true
