@@ -23,7 +23,18 @@ func _input(_event: InputEvent) -> void:
 			%Player.position = (
 				Global.active_pylon.position + Vector3(-0.45, 0, 0))
 
+func _fade_sound_in() -> void:
+	# Fade in the entire audio server after a delay, preventing any first-frame blips
+	AudioServer.set_bus_volume_db(0, -80)
+	await get_tree().create_timer(0.2).timeout
+	var audio_in = create_tween()
+	audio_in.tween_method(func(vol):
+		AudioServer.set_bus_volume_db(0, linear_to_db(vol))
+	, 0.0, 1.0, 1.0)
+
 func _ready() -> void:
+	_fade_sound_in()
+	
 	# The floor is always added because it contains the fallback ground mesh; but it can be hidden
 	if floor_mesh != null: floor_mesh.queue_free()
 	floor_mesh = DefaultFloor.instantiate()

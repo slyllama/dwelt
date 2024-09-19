@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://crm0cytel4oqs"]
+[gd_scene load_steps=7 format=3 uid="uid://crm0cytel4oqs"]
 
 [ext_resource type="Script" path="res://lib/map/pylon/pylon.gd" id="1_s6p86"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="2_iayqe"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/map/pylon/meshes/pylon.glb" id="3_g47pt"]
 [ext_resource type="Material" uid="uid://dsrpbc8cod10m" path="res://lib/map/pylon/materials/mat_icon.tres" id="4_0d1a2"]
+[ext_resource type="AudioStream" uid="uid://c5c2jyp0rh3r3" path="res://lib/map/pylon/sound/sparkle.ogg" id="5_drt7b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
 material = ExtResource("4_0d1a2")
@@ -24,5 +25,14 @@ interact_string = "Activate"
 [node name="Icon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 mesh = SubResource("QuadMesh_m40n4")
+
+[node name="Sparkle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_drt7b")
+volume_db = -5.0
+unit_size = 1.3
+max_db = 0.0
+autoplay = true
+max_distance = 2.0
+attenuation_filter_cutoff_hz = 20500.0
 
 [connection signal="interacted" from="Object" to="." method="_on_object_interacted"]

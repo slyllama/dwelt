@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	Global.player_position = position
 	
-	# Update mesh
-	%Mesh.update(_direction, velocity, _camera_direction)
+	%Mesh.update(_direction, velocity, _camera_direction) # update mesh
+	%Listener.rotation_degrees.y = _camera_direction # use camera for sound direction
 
 func _on_ground_collided() -> void: %Mesh._mesh_y_state = 1.0
