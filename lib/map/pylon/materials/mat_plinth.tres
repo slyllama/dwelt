@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://54e054m0uytv"]
 
-[ext_resource type="Shader" path="res://lib/map/pylon/shaders/shader_plinth.gdshader" id="1_prji4"]
-[ext_resource type="Texture2D" uid="uid://c3r6e22dg653t" path="res://lib/map/pylon/shaders/textures/plinth_norm.jpg" id="2_h86oy"]
+[ext_resource type="Shader" path="res://lib/map/pylon/materials/shaders/shader_plinth.gdshader" id="1_prji4"]
+[ext_resource type="Texture2D" uid="uid://c3r6e22dg653t" path="res://lib/map/pylon/materials/textures/plinth_norm.jpg" id="2_h86oy"]
 [ext_resource type="Texture2D" uid="uid://746iy7rxjv2k" path="res://generic/textures/rock_norm.jpg" id="3_hix2d"]
 [ext_resource type="Texture2D" uid="uid://caelbrutc4480" path="res://generic/textures/rock_diff.jpg" id="4_tue4s"]
 

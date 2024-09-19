@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3r6e22dg653t"
-path.s3tc="res://.godot/imported/plinth_norm.jpg-5ac9622e4a6e7aad9ce9df344f8c356a.s3tc.ctex"
+uid="uid://b3vad0d5yu6fh"
+path.s3tc="res://.godot/imported/swirl_mask.jpg-8d842dbc90f9045c7487eda2cdf9d29c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/map/pylon/shaders/textures/plinth_norm.jpg"
-dest_files=["res://.godot/imported/plinth_norm.jpg-5ac9622e4a6e7aad9ce9df344f8c356a.s3tc.ctex"]
+source_file="res://lib/player/materials/textures/swirl_mask.jpg"
+dest_files=["res://.godot/imported/swirl_mask.jpg-8d842dbc90f9045c7487eda2cdf9d29c.s3tc.ctex"]
 
 [params]
 

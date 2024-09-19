@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccaxft0tknjhm"
-path.s3tc="res://.godot/imported/floor_decal.png-8183cd5d226f61c448df27c2e11361c1.s3tc.ctex"
+uid="uid://c3r6e22dg653t"
+path.s3tc="res://.godot/imported/plinth_norm.jpg-84df5acdb4711374356c519f34d0a916.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/player/shaders/textures/floor_decal.png"
-dest_files=["res://.godot/imported/floor_decal.png-8183cd5d226f61c448df27c2e11361c1.s3tc.ctex"]
+source_file="res://lib/map/pylon/materials/textures/plinth_norm.jpg"
+dest_files=["res://.godot/imported/plinth_norm.jpg-84df5acdb4711374356c519f34d0a916.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

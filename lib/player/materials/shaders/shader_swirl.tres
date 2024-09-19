@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://cxj1wbbyo5yvo"]
 
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/shaders/textures/swirl_mask.jpg" id="1_evhdo"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="1_evhdo"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_rmn4d"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3vad0d5yu6fh"
-path.s3tc="res://.godot/imported/swirl_mask.jpg-6d85aaf310c07ee04299c61281fac718.s3tc.ctex"
+uid="uid://ccaxft0tknjhm"
+path.s3tc="res://.godot/imported/floor_decal.png-294b5f7a76d8b39da8f195fb4d80e3c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/player/shaders/textures/swirl_mask.jpg"
-dest_files=["res://.godot/imported/swirl_mask.jpg-6d85aaf310c07ee04299c61281fac718.s3tc.ctex"]
+source_file="res://lib/player/materials/textures/floor_decal.png"
+dest_files=["res://.godot/imported/floor_decal.png-294b5f7a76d8b39da8f195fb4d80e3c9.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
