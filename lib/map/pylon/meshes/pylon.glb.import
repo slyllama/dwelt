@@ -47,7 +47,7 @@ _subresources={
 },
 "mat_plinth": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/map/pylon/meshes/shaders/mat_plinth.tres"
+"use_external/path": "res://lib/map/pylon/shaders/mat_plinth.tres"
 }
 }
 }

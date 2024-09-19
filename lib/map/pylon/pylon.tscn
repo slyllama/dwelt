@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://crm0cytel4oqs"]
+[gd_scene load_steps=6 format=3 uid="uid://crm0cytel4oqs"]
 
 [ext_resource type="Script" path="res://lib/map/pylon/pylon.gd" id="1_s6p86"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="2_iayqe"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/map/pylon/meshes/pylon.glb" id="3_g47pt"]
+[ext_resource type="Material" uid="uid://dsrpbc8cod10m" path="res://lib/map/pylon/materials/mat_icon.tres" id="4_0d1a2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
+material = ExtResource("4_0d1a2")
+size = Vector2(0.55, 0.55)
 
 [node name="Pylon" type="Node3D"]
 script = ExtResource("1_s6p86")
@@ -15,5 +20,9 @@ description = "Use this pylon to mark your way. Once you have found and activate
 interact_string = "Activate"
 
 [node name="DetailedPylon" parent="." instance=ExtResource("3_g47pt")]
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+mesh = SubResource("QuadMesh_m40n4")
 
 [connection signal="interacted" from="Object" to="." method="_on_object_interacted"]
