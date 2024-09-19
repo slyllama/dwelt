@@ -14,7 +14,7 @@ size = Vector2(0.3, 0.3)
 script = ExtResource("1_s6p86")
 
 [node name="Object" parent="." instance=ExtResource("2_iayqe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 id = "test_pylon"
 title = "Pylon"
 description = "Use this pylon to mark your way. Once you have found and activated its twin, in binding them you can freely travel from one to the other."

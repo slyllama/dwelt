@@ -4,6 +4,8 @@ extends VisibleOnScreenNotifier3D
 
 @export var initial_text = "Text"
 @export var color = Color.WHITE
+@export var distance_fade_start = 3.0
+@export var distance_fade_end = 3.2
 
 var label_offset = Vector2.ZERO
 
@@ -20,6 +22,15 @@ func _process(_delta: float) -> void:
 	if !is_on_screen: return
 	var screen_pos = CameraData.world_to_screen(global_position)
 	$Canvas/Label.position = screen_pos + label_offset
+	
+	# Fade the text as the player moves further away from it
+	var dist = global_position.distance_to(Global.player_position)
+	var state
+	if dist > distance_fade_end: state = 1
+	elif dist > distance_fade_start and dist < distance_fade_end:
+		state = (dist - distance_fade_start) / (distance_fade_end - distance_fade_start)
+	else: state = 0
+	$Canvas/Label.modulate.a = 1 - state
 
 func _on_screen_entered() -> void: $Canvas.visible = true
 func _on_screen_exited() -> void: $Canvas.visible = false
