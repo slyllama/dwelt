@@ -4,6 +4,6 @@ func _ready() -> void:
 	super()
 
 func _on_object_interacted() -> void:
-	for node: Node in self.get_children():
+	for node: Node in Utilities.get_all_children(self):
 		if node is FoliageSpawner:
 			node.render()

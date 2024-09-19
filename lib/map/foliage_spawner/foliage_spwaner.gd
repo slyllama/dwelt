@@ -1,5 +1,7 @@
 @tool
 class_name FoliageSpawner extends MultiMeshInstance3D
+# FoliageSpawner
+# Uses a MultiMeshInstance to render grasses and flowers.
 
 # Useful default
 const GRASS = preload("res://maps/dwellan_island/props/foliage/grass.res")
@@ -7,11 +9,8 @@ var rng = RandomNumberGenerator.new()
 var foliage_count = 0
 
 @export var foliage_mesh = GRASS
-## The foliage count will be squared to get the total foliage count.
 @export var count = 5
-## Square length of the area in which the foliage will be spawned.
 @export var size = 2.0
-## Controls the amount of randomness in distributing the foliage.
 @export var scatter = 0.2
 @export var min_scale = 3.0
 @export var max_scale = 5.0

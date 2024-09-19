@@ -1,9 +1,11 @@
 extends CanvasLayer
+# SmokeTransition
+# Animated fancy fade-in
 
 func _set_value(val) -> void:
 	$BG.material.set_shader_parameter("size", 0.5 + val / 2)
 	$BG.material.set_shader_parameter("exponent", 1 + val * 4)
-	$BG.material.set_shader_parameter("darkness", 0.5 - 0.5 * (1 - val))
+	$BG.material.set_shader_parameter("darkness", 0.9 - 0.9 * (1 - val))
 	$BG.material.set_shader_parameter("overall_alpha", 1 - ease(val, 3.0)) 
 
 func fade_out(delay = 0.0) -> void:

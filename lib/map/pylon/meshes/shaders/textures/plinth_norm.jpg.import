@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2hfxkhs52h56"
-path.s3tc="res://.godot/imported/plinth_norm.png-10811dc5c7261c3f5460a6888bfbecdf.s3tc.ctex"
+uid="uid://c3r6e22dg653t"
+path.s3tc="res://.godot/imported/plinth_norm.jpg-b1ce2d1b8ed3e1521f3f8df62ea805de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/map/pylon/meshes/shaders/textures/plinth_norm.png"
-dest_files=["res://.godot/imported/plinth_norm.png-10811dc5c7261c3f5460a6888bfbecdf.s3tc.ctex"]
+source_file="res://lib/map/pylon/meshes/shaders/textures/plinth_norm.jpg"
+dest_files=["res://.godot/imported/plinth_norm.jpg-b1ce2d1b8ed3e1521f3f8df62ea805de.s3tc.ctex"]
 
 [params]
 
