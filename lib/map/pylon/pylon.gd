@@ -78,7 +78,7 @@ func _ready() -> void:
 		$Object.can_interact = false
 	
 	if Engine.is_editor_hint(): return
-	$Object.set_radius(1.0)
+	$Object.set_radius(1.7)
 	Global.pylon_start_activated.connect(func(id):
 		if !id == pylon_id:
 			deactivate(false))

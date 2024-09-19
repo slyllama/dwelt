@@ -2,11 +2,15 @@ extends CharacterBody3D
 # Player
 # Handles player movement and characteristics. Mesh updates are now handled in PlayerMeshHandler.
 
+signal reached_kill_height
+var is_kill_height = false
+
 @export var gravity := 160.0
 @export var base_speed := 2.6
 @export var smoothing := 25.0
 @export var jump_strength := 8.0
 @export var hover_height := 1.0
+@export var kill_height := -3.0
 
 @onready var base: CollisionShape3D = get_node("Collision")
 
@@ -14,8 +18,13 @@ var _speed = base_speed
 var _direction = Vector3.ZERO
 var _target_velocity = Vector3.ZERO
 var _jump_energy = 0.0
-
 var mesh_y_state = 0.0
+
+# Revive the player if it descends below the "kill height"
+func revive():
+	Global.move_player.emit(
+		Global.active_pylon.position + Vector3(-0.4, 1, 0))
+	is_kill_height = false
 
 func _ready() -> void:
 	Global.move_player.connect(func(pos: Vector3):
@@ -34,9 +43,9 @@ func _physics_process(delta: float) -> void:
 	var _camera_direction = $CameraHandler.rotation_degrees.y
 	var _camera_basis = $CameraHandler.global_transform.basis
 	
-	# Slightly slower forward movement when mid-air
-	#if !is_on_floor(): _speed = base_speed * 0.7
-	#else: _speed = base_speed
+	# Slightly faster forward movement when mid-air
+	if !is_on_floor(): _speed = base_speed * 1.1
+	else: _speed = base_speed
 	
 	# Multiply inputs by the movement vector and orbit rotation
 	# This could be improved, but it works
@@ -60,5 +69,10 @@ func _physics_process(delta: float) -> void:
 	
 	%Mesh.update(_direction, velocity, _camera_direction) # update mesh
 	%Listener.rotation_degrees.y = _camera_direction # use camera for sound direction
+	
+	if position.y < kill_height:
+		if !is_kill_height:
+			is_kill_height = true
+			revive()
 
 func _on_ground_collided() -> void: %Mesh._mesh_y_state = 1.0

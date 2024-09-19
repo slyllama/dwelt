@@ -1,14 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://crm0cytel4oqs"]
+[gd_scene load_steps=9 format=3 uid="uid://crm0cytel4oqs"]
 
 [ext_resource type="Script" path="res://lib/map/pylon/pylon.gd" id="1_s6p86"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="2_iayqe"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/map/pylon/meshes/pylon.glb" id="3_g47pt"]
 [ext_resource type="Material" uid="uid://dsrpbc8cod10m" path="res://lib/map/pylon/materials/mat_icon.tres" id="4_0d1a2"]
 [ext_resource type="AudioStream" uid="uid://c5c2jyp0rh3r3" path="res://lib/map/pylon/sound/sparkle.ogg" id="5_drt7b"]
+[ext_resource type="Texture2D" uid="uid://cxx66o6iilmgk" path="res://lib/map/pylon/materials/textures/icon_empty.png" id="5_lyran"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
 material = ExtResource("4_0d1a2")
 size = Vector2(0.11, 0.11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thhcv"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.5, 0.5, 0, 1)
+albedo_texture = ExtResource("5_lyran")
+billboard_mode = 1
+fixed_size = true
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 9.0
 
 [node name="Pylon" type="Node3D"]
 script = ExtResource("1_s6p86")
@@ -26,6 +40,7 @@ interact_string = "Activate"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_m40n4")
+surface_material_override/0 = SubResource("StandardMaterial3D_thhcv")
 
 [node name="Sparkle" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_drt7b")

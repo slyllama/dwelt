@@ -6,19 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://bpawer1uids2h" path="res://lib/player/ground_detector/ground_detector.tscn" id="6_t2ywj"]
 [ext_resource type="PackedScene" uid="uid://cll2qx861q03l" path="res://lib/player/player_mesh_handler/player_mesh_handler.tscn" id="10_8nk1a"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1t51"]
-radius = 0.25
-height = 0.9
+[sub_resource type="BoxShape3D" id="BoxShape3D_hs250"]
+size = Vector3(0.45, 0.6, 0.45)
 
 [node name="Player" type="CharacterBody3D"]
 floor_max_angle = 1.22173
 script = ExtResource("1_io483")
+kill_height = -1.5
 
 [node name="CameraHandler" parent="." instance=ExtResource("1_ibaa5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_s1t51")
+shape = SubResource("BoxShape3D_hs250")
 
 [node name="Mesh" parent="Collision" instance=ExtResource("10_8nk1a")]
 unique_name_in_owner = true

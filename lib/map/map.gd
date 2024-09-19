@@ -37,12 +37,11 @@ func _ready() -> void:
 	if !start_muted:
 		_fade_sound_in()
 	
-	# The floor is always added because it contains the fallback ground mesh; but it can be hidden
 	if floor_mesh != null: floor_mesh.queue_free()
 	floor_mesh = DefaultFloor.instantiate()
 	add_child(floor_mesh)
 	if !default_floor:
-		floor_mesh.get_node("Mesh").visible = false
+		if floor_mesh != null: floor_mesh.queue_free()
 	
 	if sky != null: sky.queue_free()
 	sky = WorldEnvironment.new()
