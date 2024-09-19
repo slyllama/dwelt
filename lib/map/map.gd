@@ -13,6 +13,7 @@ const ObjectHandler = preload("res://lib/object/object_handler.tscn")
 @export var default_floor = false
 
 var floor_mesh
+var sky
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -30,15 +31,19 @@ func _ready() -> void:
 	if !default_floor:
 		floor_mesh.get_node("Mesh").visible = false
 	
+	if sky != null: sky.queue_free()
+	sky = WorldEnvironment.new()
+	add_child(sky)
+	if environment != null:
+		sky.environment = environment
+	
 	if Engine.is_editor_hint(): return
+	
 	# Set up the HUD, ObjectHandler, and environment
 	var hud = HUD.instantiate()
 	add_child(hud)
 	var object_handler = ObjectHandler.instantiate()
 	add_child(object_handler)
-	var sky = WorldEnvironment.new()
-	add_child(sky)
-	if environment != null: sky.environment = environment
 	
 	# Retina screen scaling
 	if DisplayServer.screen_get_size().x > 2000:

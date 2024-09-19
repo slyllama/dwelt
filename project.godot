@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dwelt"
-run/main_scene="res://maps/dwellan_island/playground.tscn"
+run/main_scene="res://maps/dwellan_island/dwellan_island.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -39,6 +39,10 @@ window/stretch/scale_mode="integer"
 
 movie_writer/movie_file="D:/Repos/dwelt/dwelt.avi"
 movie_writer/disable_vsync=true
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 

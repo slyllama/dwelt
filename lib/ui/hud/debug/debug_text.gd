@@ -11,13 +11,13 @@ func update() -> void:
 	var primitives = str(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME))
 	text = _fmt_fps()
 	text += "\nprimitives = " + primitives
+	text += "\nfoliage_count = " + str(Global.foliage_count)
 	text += "\n[font_size=4] [/font_size]"
 	text += "\nplayer_position = " + Utilities.fmt_vec3(Global.player_position)
-	text += "\nfoliage_count = " + str(Global.foliage_count)
 	if Global.proximal_object.id != "none":
-		text += "\nproximal_object.id = " + Global.proximal_object.id
+		text += "\n[color=yellow]proximal_object.id = " + Global.proximal_object.id + "[/color]"
 	if Global.active_pylon.id != "none":
-		text += "\nactive_pylon.id = " + Global.active_pylon.id
+		text += "\n[color=yellow]active_pylon.id = " + Global.active_pylon.id + "[/color]"
 
 var time = 0.0
 

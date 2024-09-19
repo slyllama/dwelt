@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3xvbqiac3kus"
+uid="uid://bwlogapifvemw"
 path="res://.godot/imported/pylon.glb-2ed3a7421ee5b0d59619259fc7cdbe71.scn"
 
 [deps]
@@ -33,9 +33,21 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"mat_pylon": {
+"mat_fresnel": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/shaders/mat_color.tres"
+"use_external/path": "res://generic/shaders/mat_fresnel.tres"
+},
+"mat_gold": {
+"use_external/enabled": true,
+"use_external/path": "res://lib/player/materials/mat_brass.tres"
+},
+"mat_grey": {
+"use_external/enabled": true,
+"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
+},
+"mat_plinth": {
+"use_external/enabled": true,
+"use_external/path": "res://lib/map/pylon/meshes/shaders/mat_plinth.tres"
 }
 }
 }
