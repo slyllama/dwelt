@@ -35,8 +35,8 @@ func _physics_process(delta: float) -> void:
 	var _camera_basis = $CameraHandler.global_transform.basis
 	
 	# Slightly slower forward movement when mid-air
-	if !is_on_floor(): _speed = base_speed * 0.7
-	else: _speed = base_speed
+	#if !is_on_floor(): _speed = base_speed * 0.7
+	#else: _speed = base_speed
 	
 	# Multiply inputs by the movement vector and orbit rotation
 	# This could be improved, but it works

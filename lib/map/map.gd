@@ -11,6 +11,7 @@ const ObjectHandler = preload("res://lib/object/object_handler.tscn")
 ## Moss and ground decals will only be projected onto nodes listed here.
 @export var ground_decal_meshes: Array[Node]
 @export var default_floor = false
+@export var start_muted = false
 
 var floor_mesh
 var sky
@@ -25,7 +26,6 @@ func _input(_event: InputEvent) -> void:
 
 func _fade_sound_in() -> void:
 	# Fade in the entire audio server after a delay, preventing any first-frame blips
-	AudioServer.set_bus_volume_db(0, -80)
 	await get_tree().create_timer(0.2).timeout
 	var audio_in = create_tween()
 	audio_in.tween_method(func(vol):
@@ -33,7 +33,9 @@ func _fade_sound_in() -> void:
 	, 0.0, 1.0, 1.0)
 
 func _ready() -> void:
-	_fade_sound_in()
+	AudioServer.set_bus_volume_db(0, -80)
+	if !start_muted:
+		_fade_sound_in()
 	
 	# The floor is always added because it contains the fallback ground mesh; but it can be hidden
 	if floor_mesh != null: floor_mesh.queue_free()
