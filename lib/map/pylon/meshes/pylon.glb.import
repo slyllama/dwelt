@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "mat_fresnel": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/shaders/mat_fresnel.tres"
+"use_external/path": "res://generic/materials/mat_fresnel.tres"
 },
 "mat_gold": {
 "use_external/enabled": true,
@@ -43,11 +43,11 @@ _subresources={
 },
 "mat_grey": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
+"use_external/path": "res://lib/player/materials/mat_swirl.tres"
 },
 "mat_plinth": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/map/pylon/shaders/mat_plinth.tres"
+"use_external/path": "res://lib/map/pylon/materials/mat_plinth.tres"
 }
 }
 }

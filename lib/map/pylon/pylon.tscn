@@ -8,7 +8,7 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
 material = ExtResource("4_0d1a2")
-size = Vector2(0.55, 0.55)
+size = Vector2(0.3, 0.3)
 
 [node name="Pylon" type="Node3D"]
 script = ExtResource("1_s6p86")
