@@ -11,7 +11,7 @@ const DIM = Color(0.5, 0.5, 0.5)
 @export var sibling: Pylon
 
 var activated = false
-var pylon_mat: ShaderMaterial
+var pylon_mat: StandardMaterial3D
 
 # Deactivate the pylon. If clear is set to false, the ID of the current pylon stored in Global will not clear
 func deactivate(clear = true) -> void:
@@ -31,14 +31,15 @@ func _set_title_text(get_text):
 	$Object/Title.set_text(get_text)
 
 # Change the color of this pylon's unique material
-#func _shade_pylon(color: Color) -> void:
+func _shade_pylon(color: Color) -> void:
+	$Icon.get_active_material(0).albedo_color = color
 	#pylon_mat.set_shader_parameter("color", color)
 
 func _update_pylon(emit_enter_proximal = true) -> void:
-	#if pylon_type == PYLON_TYPE.START:
-		#_shade_pylon(debug_color * DIM)
-	#else: # destination pylons take their color from their starting sibling
-		#_shade_pylon(sibling.debug_color * DIM)
+	if pylon_type == PYLON_TYPE.START:
+		_shade_pylon(debug_color * DIM)
+	else: # destination pylons take their color from their starting sibling
+		_shade_pylon(sibling.debug_color * DIM)
 	if !bound:
 		if pylon_type == PYLON_TYPE.START:
 			if activated:
@@ -65,9 +66,9 @@ func _toggle_start_activation() -> void:
 
 func _ready() -> void:
 	# Duplicate the material so that changing its color doesn't influence all other pylons
-	#var material = $PylonMesh/Pylon.get_active_material(0).duplicate()
-	#$PylonMesh/Pylon.set_surface_override_material(0, material)
-	#pylon_mat = $PylonMesh/Pylon.get_surface_override_material(0)
+	var material = $Icon.get_active_material(0).duplicate()
+	$Icon.set_surface_override_material(0, material)
+	pylon_mat = $Icon.get_surface_override_material(0)
 	
 	$Object.id = pylon_id
 	$Object.can_interact = true

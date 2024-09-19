@@ -8,7 +8,7 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
 material = ExtResource("4_0d1a2")
-size = Vector2(0.3, 0.3)
+size = Vector2(0.11, 0.11)
 
 [node name="Pylon" type="Node3D"]
 script = ExtResource("1_s6p86")
@@ -24,6 +24,7 @@ interact_string = "Activate"
 
 [node name="Icon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+cast_shadow = 0
 mesh = SubResource("QuadMesh_m40n4")
 
 [node name="Sparkle" type="AudioStreamPlayer3D" parent="."]

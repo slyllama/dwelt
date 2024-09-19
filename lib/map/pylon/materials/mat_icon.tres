@@ -6,8 +6,10 @@
 transparency = 1
 shading_mode = 0
 specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
 albedo_texture = ExtResource("1_dtc8t")
 billboard_mode = 1
-distance_fade_mode = 1
+fixed_size = true
 distance_fade_min_distance = 10.0
 distance_fade_max_distance = 9.0
