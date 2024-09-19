@@ -31,7 +31,7 @@ func render() -> void:
 	else: active_foliage_mesh = foliage_mesh
 	
 	if moss_cover: $Moss.size = Vector3(size * 1.8, 0.5, size * 1.8)
-	else: $Moss.queue_free()
+	else: $Moss.visible = false
 	
 	# Reset - clear foliage count
 	if !Engine.is_editor_hint():

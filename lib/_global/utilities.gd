@@ -5,6 +5,7 @@ extends Node
 # Get all children recursively
 func get_all_children(node: Node) -> Array:
 	var nodes: Array = []
+	if !node: return([])
 	for n in node.get_children():
 		if n.get_child_count() > 0:
 			nodes.append(n)

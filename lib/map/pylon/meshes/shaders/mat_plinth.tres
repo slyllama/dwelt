@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://54e054m0uytv"]
+
+[ext_resource type="Shader" path="res://lib/map/pylon/meshes/shaders/shader_plinth.gdshader" id="1_x82n3"]
+[ext_resource type="Texture2D" uid="uid://caelbrutc4480" path="res://generic/textures/rock_diff.jpg" id="2_aiko5"]
+[ext_resource type="Texture2D" uid="uid://2hfxkhs52h56" path="res://lib/map/pylon/meshes/shaders/textures/plinth_norm.png" id="2_p2eh7"]
+[ext_resource type="Texture2D" uid="uid://746iy7rxjv2k" path="res://generic/textures/rock_norm.jpg" id="3_8kw3m"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x82n3")
+shader_parameter/rock_scale = 0.7
+shader_parameter/rock_texture = ExtResource("2_aiko5")
+shader_parameter/normal_texture = ExtResource("2_p2eh7")
+shader_parameter/rock_normal_texture = ExtResource("3_8kw3m")

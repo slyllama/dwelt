@@ -17,7 +17,6 @@ func _ready() -> void:
 	
 	var smoke_transition = SmokeTransition.instantiate()
 	add_child(smoke_transition)
-	smoke_transition.fade_out()
 	
 	Global.proximity_entered.connect(func():
 		$Sidebar.visible = true
