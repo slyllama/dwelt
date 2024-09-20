@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://lib/object/object.gd" id="1_pxk5v"]
 [ext_resource type="PackedScene" uid="uid://bky4oadewjuyx" path="res://lib/ui/world_text/world_text.tscn" id="2_rtywh"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_nw0w4"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1880"]
+height = 3.4
 radius = 1.7
 
 [node name="Object" type="Node3D"]
@@ -17,4 +18,4 @@ color = Color(1, 1, 0, 1)
 [node name="Range" type="Area3D" parent="."]
 
 [node name="Collision" type="CollisionShape3D" parent="Range"]
-shape = SubResource("SphereShape3D_nw0w4")
+shape = SubResource("CylinderShape3D_h1880")

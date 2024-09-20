@@ -19,6 +19,10 @@ boot_splash/image="res://generic/textures/splash.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://bus.tres"
+
 [autoload]
 
 CameraData="*res://lib/_global/camera_data.gd"
