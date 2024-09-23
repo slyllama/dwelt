@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctalngjslyvct"]
+[gd_scene load_steps=8 format=3 uid="uid://ctalngjslyvct"]
 
 [ext_resource type="PackedScene" uid="uid://cl1b5pyew2pj4" path="res://lib/player/camera_handler/camera_handler.tscn" id="1_ibaa5"]
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_io483"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs250"]
 size = Vector3(0.45, 0.6, 0.45)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_of5sl"]
+radius = 0.3
 
 [node name="Player" type="CharacterBody3D"]
 floor_max_angle = 1.22173
@@ -34,4 +37,10 @@ autoplay = true
 unique_name_in_owner = true
 current = true
 
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_of5sl")
+
 [connection signal="ground_collided" from="GroundDetector" to="." method="_on_ground_collided"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_entered"]

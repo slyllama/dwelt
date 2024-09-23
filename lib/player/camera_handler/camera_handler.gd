@@ -2,9 +2,11 @@ extends Node3D
 # CameraHandler
 # Handles player orbiting and camera functions
 
-@export var orbit_sensitivity := 0.3
-@export var orbit_smoothing := 12.0
-@export var zoom_increment := 0.3
+@export var orbit_sensitivity = 0.3
+@export var orbit_smoothing = 12.0
+@export var zoom_increment = 0.3
+
+@export var second_vertical_offset = 0.0
 
 @onready var camera: Camera3D = get_node("Camera")
 var orbiting = false
@@ -34,6 +36,9 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false)
 	
+	Global.shake_camera.connect(func():
+		$Camera/CameraFX.play("shake"))
+
 	# Make the camera node global so that other scenes can use unproject_position
 	CameraData.camera = camera
 
@@ -81,5 +86,6 @@ func _process(delta: float) -> void:
 	
 	# Position, rotation, and offset smoothing
 	camera.position = lerp(camera.position, $Axis/Target.position, 6.0 * delta)
-	camera.v_offset = lerp(camera.v_offset, _get_v_offset(), 6.0 * delta)
+	var _target_v_offset = lerp(camera.v_offset, _get_v_offset(), 6.0 * delta)
+	camera.v_offset = _target_v_offset + second_vertical_offset
 	CameraData.camera_y_rotation = global_rotation.y

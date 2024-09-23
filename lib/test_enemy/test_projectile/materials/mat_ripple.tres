@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bop01avifoq8v"]
+
+[ext_resource type="Shader" path="res://lib/test_enemy/test_projectile/materials/shaders/shader_ripple.gdshader" id="1_6tove"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_6tove")
+shader_parameter/circle_position = 0.5
+shader_parameter/alpha = 0.605

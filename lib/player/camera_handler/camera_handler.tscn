@@ -1,6 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl1b5pyew2pj4"]
+[gd_scene load_steps=6 format=3 uid="uid://cl1b5pyew2pj4"]
 
 [ext_resource type="Script" path="res://lib/player/camera_handler/camera_handler.gd" id="1_ngwli"]
+
+[sub_resource type="Animation" id="Animation_mf2co"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:second_vertical_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2bt4q"]
+resource_name = "shake"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:second_vertical_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 0.2, 1),
+"update": 0,
+"values": [0.0, -0.05, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vn42c"]
+_data = {
+"RESET": SubResource("Animation_mf2co"),
+"shake": SubResource("Animation_2bt4q")
+}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ug7on"]
 radius = 0.2
@@ -13,6 +51,11 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195
 v_offset = 0.7
 current = true
 fov = 80.0
+
+[node name="CameraFX" type="AnimationPlayer" parent="Camera"]
+libraries = {
+"": SubResource("AnimationLibrary_vn42c")
+}
 
 [node name="Axis" type="SpringArm3D" parent="."]
 shape = SubResource("SphereShape3D_ug7on")

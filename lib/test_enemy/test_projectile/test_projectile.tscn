@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://hkxu3ufx8qct"]
+
+[ext_resource type="Script" path="res://lib/test_enemy/test_projectile/test_projectile.gd" id="1_y4c5d"]
+[ext_resource type="Texture2D" uid="uid://uumivoejwj7q" path="res://lib/test_enemy/test_projectile/textures/projectile_arrow.png" id="2_6ll43"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_1vh1p"]
+[ext_resource type="Material" uid="uid://cpwwu5vohplo3" path="res://generic/materials/mat_fresnel.tres" id="4_2csaw"]
+[ext_resource type="Script" path="res://lib/test_enemy/test_projectile/bullet.gd" id="5_83ey1"]
+[ext_resource type="Material" uid="uid://bop01avifoq8v" path="res://lib/test_enemy/test_projectile/materials/mat_ripple.tres" id="5_s2ea8"]
+[ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="6_o3ftj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_frj6h"]
+material = ExtResource("5_s2ea8")
+size = Vector2(7, 7)
+
+[sub_resource type="Gradient" id="Gradient_bw7t5"]
+offsets = PackedFloat32Array(0, 0.118182, 0.409091, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.0596592, 0.465111, 0, 1, 0.745346, 0.867545, 1.92523e-06, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mtydk"]
+gradient = SubResource("Gradient_bw7t5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_32syd"]
+emission_shape = 2
+emission_sphere_radius = 1.3
+radial_velocity_min = 0.499978
+radial_velocity_max = 0.999978
+gravity = Vector3(0, -0.1, 0)
+scale_min = 0.6
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_mtydk")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrr5p"]
+radius = 0.2
+
+[sub_resource type="Gradient" id="Gradient_bsfth"]
+offsets = PackedFloat32Array(0, 0.554545)
+colors = PackedColorArray(1, 1, 1, 0.14902, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4vuw"]
+gradient = SubResource("Gradient_bsfth")
+
+[sub_resource type="Curve" id="Curve_vhs8v"]
+_data = [Vector2(0, 1), 0.0, -2.00412, 0, 0, Vector2(1, 0.247423), 0.0282769, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgc8o"]
+curve = SubResource("Curve_vhs8v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nha4o"]
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_tgc8o")
+color = Color(0.932, 1, 0.66, 1)
+color_ramp = SubResource("GradientTexture1D_k4vuw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b350b"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_1vh1p")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_n2fch"]
+material = SubResource("StandardMaterial3D_b350b")
+size = Vector2(0.1, 0.1)
+
+[node name="TestProjectile" type="Node3D"]
+script = ExtResource("1_y4c5d")
+
+[node name="Arrow" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9)
+texture_albedo = ExtResource("2_6ll43")
+cull_mask = 1047554
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 2.7
+one_shot = true
+autostart = true
+
+[node name="DistortionMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_frj6h")
+
+[node name="Glow" type="OmniLight3D" parent="DistortionMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125483, 0)
+light_color = Color(0.819665, 1, 0.767668, 1)
+light_energy = 0.0
+omni_range = 4.0
+omni_attenuation = 0.0
+
+[node name="Stars" type="GPUParticles3D" parent="DistortionMesh"]
+cast_shadow = 0
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.7
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_32syd")
+draw_pass_1 = ExtResource("6_o3ftj")
+
+[node name="BulletContainer" type="Node3D" parent="."]
+
+[node name="Bullet" type="Area3D" parent="BulletContainer"]
+script = ExtResource("5_83ey1")
+
+[node name="Collision" type="CollisionShape3D" parent="BulletContainer/Bullet"]
+shape = SubResource("SphereShape3D_mrr5p")
+
+[node name="OrbTrail" type="GPUParticles3D" parent="BulletContainer/Bullet"]
+amount = 40
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_nha4o")
+draw_pass_1 = SubResource("QuadMesh_n2fch")
+
+[node name="Mesh" type="CSGSphere3D" parent="BulletContainer/Bullet"]
+layers = 4
+cast_shadow = 0
+radius = 0.2
+material = ExtResource("4_2csaw")
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_life_ended"]
+[connection signal="hit_player" from="BulletContainer/Bullet" to="." method="_on_bullet_hit_player"]

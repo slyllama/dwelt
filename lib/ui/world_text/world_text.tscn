@@ -9,6 +9,7 @@ script = ExtResource("1_7xq6t")
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="Label" type="RichTextLabel" parent="Canvas"]
+clip_contents = false
 offset_right = 200.0
 offset_bottom = 50.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

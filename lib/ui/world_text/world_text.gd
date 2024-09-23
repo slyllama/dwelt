@@ -9,7 +9,12 @@ extends VisibleOnScreenNotifier3D
 
 var label_offset = Vector2.ZERO
 
-func set_text(text):
+func track_node(node: Node) -> void:
+	if node.get_parent() != null:
+		node.reparent($Canvas/Label)
+	else: $Canvas/Label.add_child(node)
+
+func set_text(text: String) -> void:
 	$Canvas/Label.text = "[center]" + text + "[/center]"
 
 func _ready() -> void:

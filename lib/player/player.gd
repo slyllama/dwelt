@@ -75,4 +75,11 @@ func _physics_process(delta: float) -> void:
 			is_kill_height = true
 			revive()
 
-func _on_ground_collided() -> void: %Mesh._mesh_y_state = 1.0
+func _on_ground_collided() -> void:
+	%Mesh._mesh_y_state = 1.0
+
+func _on_hitbox_entered(area: Area3D) -> void:
+	if area is Bullet:
+		Global.shake_camera.emit()
+		area.hit_player.emit()
+		Global.lose_health(30)

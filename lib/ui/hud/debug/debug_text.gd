@@ -13,7 +13,7 @@ func update() -> void:
 	text += "\nprimitives = " + primitives
 	text += "\nfoliage_count = " + str(Global.foliage_count)
 	text += "\n[font_size=4] [/font_size]"
-	#text += "\nplayer_position = " + Utilities.fmt_vec3(Global.player_position)
+	text += "\nHealth = " + str(snapped(Global.health, 1))
 	if Global.proximal_object.id != "none":
 		text += "\n[color=yellow]proximal_object.id = " + Global.proximal_object.id + "[/color]"
 	if Global.active_pylon.id != "none":
