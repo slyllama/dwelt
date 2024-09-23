@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 	var smoke_transition = SmokeTransition.instantiate()
 	add_child(smoke_transition)
+	smoke_transition.fade_out()
 	
 	Global.proximity_entered.connect(func():
 		$Sidebar.visible = true
@@ -30,3 +31,6 @@ func _ready() -> void:
 	Global.proximity_left.connect(func():
 		$InteractSign.visible = false
 		$Sidebar.visible = false)
+
+func _process(_delta: float) -> void:
+	$HealthBar.value = Global.health

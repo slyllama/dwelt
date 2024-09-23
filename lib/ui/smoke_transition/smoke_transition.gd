@@ -2,7 +2,7 @@ extends CanvasLayer
 # SmokeTransition
 # Animated fancy fade-in
 
-@export var time = 0.4
+@export var time = 0.7
 
 func _set_value(val) -> void:
 	$BG.material.set_shader_parameter("size", 0.5 + val / 2)
@@ -11,7 +11,7 @@ func _set_value(val) -> void:
 	$BG.material.set_shader_parameter("overall_alpha", 1 - ease(val, 3.0)) 
 
 func fade_out(delay = 0.0) -> void:
-	if delay < 0.1: return
+	if delay < 0.1: pass
 	else: await get_tree().create_timer(delay).timeout
 	
 	var fade_tween = create_tween()
@@ -20,4 +20,3 @@ func fade_out(delay = 0.0) -> void:
 
 func _ready() -> void:
 	_set_value(0.0) # initialize
-	fade_out(0.3)

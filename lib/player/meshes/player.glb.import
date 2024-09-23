@@ -3639,15 +3639,15 @@ _subresources={
 },
 "mat_force_field": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/shaders/mat_force_field.tres"
+"use_external/path": "res://lib/player/materials/mat_force_field.tres"
 },
 "mat_fresnel": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/shaders/mat_fresnel.tres"
+"use_external/path": "res://generic/materials/mat_fresnel.tres"
 },
 "mat_swirl": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/shaders/mat_swirl.tres"
+"use_external/path": "res://lib/player/materials/mat_swirl.tres"
 }
 },
 "nodes": {

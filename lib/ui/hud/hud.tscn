@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=14 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/debug_corner.png" id="2_u8gkr"]
-[ext_resource type="Texture2D" uid="uid://bes4m28gqdhti" path="res://lib/ui/hud/textures/damage_splash.png" id="2_ykdcp"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="3_gfkw7"]
 [ext_resource type="PackedScene" uid="uid://bf2seuyksa7tu" path="res://lib/ui/hud/debug/debug_text.tscn" id="3_ghokv"]
+[ext_resource type="PackedScene" uid="uid://ekrdcjgaxtkq" path="res://lib/ui/splash_fx/splash_fx.tscn" id="3_hsprd"]
 [ext_resource type="Texture2D" uid="uid://dxcty3ssnk61q" path="res://lib/ui/hud/textures/panel_gradient.tres" id="5_1e3af"]
 
 [sub_resource type="Gradient" id="Gradient_3ubsl"]
@@ -33,18 +33,27 @@ content_margin_right = 16.0
 content_margin_bottom = 20.0
 texture = ExtResource("5_1e3af")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lbkj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1nfy"]
+bg_color = Color(0.766751, 0, 0.0236705, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
 [node name="HUD" type="CanvasLayer"]
 layer = 128
 script = ExtResource("1_n4rw6")
 
-[node name="DamageSplash" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_ykdcp")
-expand_mode = 1
+[node name="SplashFX" parent="." instance=ExtResource("3_hsprd")]
 
 [node name="Corner" type="TextureRect" parent="."]
 offset_right = 466.0
@@ -115,3 +124,20 @@ fit_content = true
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(1, 1, 1, 0.196078)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.5
+offset_top = -89.0
+offset_right = 158.5
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_7lbkj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k1nfy")
+value = 50.0
+show_percentage = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bes4m28gqdhti"
-path="res://.godot/imported/damage_splash.png-3e5a9ecce318c63a4d492acca6117ff3.ctex"
+path="res://.godot/imported/damage_splash.png-17faef11555a52f3739e752aefd20f00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/hud/textures/damage_splash.png"
-dest_files=["res://.godot/imported/damage_splash.png-3e5a9ecce318c63a4d492acca6117ff3.ctex"]
+source_file="res://lib/ui/splash_fx/textures/damage_splash.png"
+dest_files=["res://.godot/imported/damage_splash.png-17faef11555a52f3739e752aefd20f00.ctex"]
 
 [params]
 

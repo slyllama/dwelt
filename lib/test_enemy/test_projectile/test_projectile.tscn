@@ -30,11 +30,11 @@ scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_mtydk")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mrr5p"]
-radius = 0.2
+radius = 0.19
 
 [sub_resource type="Gradient" id="Gradient_bsfth"]
 offsets = PackedFloat32Array(0, 0.554545)
-colors = PackedColorArray(1, 1, 1, 0.14902, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0.219608, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_k4vuw"]
 gradient = SubResource("Gradient_bsfth")
