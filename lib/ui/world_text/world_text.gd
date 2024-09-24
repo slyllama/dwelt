@@ -4,8 +4,8 @@ extends VisibleOnScreenNotifier3D
 
 @export var initial_text = "Text"
 @export var color = Color.WHITE
-@export var distance_fade_start = 3.0
-@export var distance_fade_end = 3.2
+@export var distance_fade_start = 4.0
+@export var distance_fade_end = 4.2
 
 var label_offset = Vector2.ZERO
 

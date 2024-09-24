@@ -31,6 +31,7 @@ signal pylon_end_activated(id) # activated a destination pylon
 signal proximity_entered
 signal proximity_left
 signal shake_camera()
+signal tick
 
 var active_pylon = ACTIVE_PYLON.duplicate()
 var foliage_count = 0

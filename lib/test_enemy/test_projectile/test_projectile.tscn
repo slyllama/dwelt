@@ -76,6 +76,7 @@ script = ExtResource("1_y4c5d")
 
 [node name="Arrow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9)
+size = Vector3(1, 2, 2.5)
 texture_albedo = ExtResource("2_6ll43")
 cull_mask = 1047554
 

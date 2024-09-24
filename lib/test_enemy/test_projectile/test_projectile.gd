@@ -3,15 +3,16 @@ extends Node3D
 
 @export var delay = 1.0 ## Time before firing.
 @export var emit_effects = false ## If true, will emit screen distortion and light.
-@export var start_speed = 8.0  ## Speed will lerp from this to [code]end_speed[/code].
-@export var end_speed = 3.5 ## Speed will lerp to here from [code]start_speed[/code].
+@export var start_speed = 5.0  ## Speed will lerp from this to [code]end_speed[/code].
+@export var end_speed = 3.0 ## Speed will lerp to here from [code]start_speed[/code].
 @export var speed_smoothing = 0.1 ## Delta speed will interpolate at this rate.
 
 var speed = 0.0
 var fired = false
+var distortion_material: ShaderMaterial
 
 func _distort_prop(parameter: String, value: float) -> void:
-	$DistortionMesh.get_active_material(0).set_shader_parameter(parameter, value)
+	distortion_material.set_shader_parameter(parameter, value)
 
 func fire() -> void:
 	var fade_in = create_tween()
@@ -49,6 +50,10 @@ func fire() -> void:
 	)
 
 func _ready() -> void:
+	# Duplicate the distortion material so that parameters are isolated to each enemy
+	distortion_material = $DistortionMesh.get_active_material(0).duplicate()
+	$DistortionMesh.set_surface_override_material(0, distortion_material)
+	
 	$StartTimer.wait_time = delay
 	$Arrow.modulate.a = 0.0
 	

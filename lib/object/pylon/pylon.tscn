@@ -1,22 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://crm0cytel4oqs"]
+[gd_scene load_steps=13 format=3 uid="uid://crm0cytel4oqs"]
 
-[ext_resource type="Script" path="res://lib/map/pylon/pylon.gd" id="1_s6p86"]
+[ext_resource type="Script" path="res://lib/object/pylon/pylon.gd" id="1_s6p86"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="2_iayqe"]
-[ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/map/pylon/meshes/pylon.glb" id="3_g47pt"]
-[ext_resource type="Material" uid="uid://dsrpbc8cod10m" path="res://lib/map/pylon/materials/mat_icon.tres" id="4_0d1a2"]
-[ext_resource type="Material" uid="uid://bfekfkmue0ghu" path="res://lib/map/pylon/materials/mat_glow.tres" id="4_12ri8"]
-[ext_resource type="AudioStream" uid="uid://c5c2jyp0rh3r3" path="res://lib/map/pylon/sound/sparkle.ogg" id="5_drt7b"]
-[ext_resource type="Texture2D" uid="uid://cxx66o6iilmgk" path="res://lib/map/pylon/materials/textures/icon_empty.png" id="5_lyran"]
-[ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/map/pylon/sound/heal.ogg" id="7_l1d1q"]
+[ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="3_g47pt"]
+[ext_resource type="Material" uid="uid://dsrpbc8cod10m" path="res://lib/object/pylon/materials/mat_icon.tres" id="4_0d1a2"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_mryls"]
+[ext_resource type="AudioStream" uid="uid://c5c2jyp0rh3r3" path="res://lib/object/pylon/sound/sparkle.ogg" id="5_drt7b"]
+[ext_resource type="Texture2D" uid="uid://cxx66o6iilmgk" path="res://lib/object/pylon/materials/textures/icon_empty.png" id="5_lyran"]
+[ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/object/pylon/sound/heal.ogg" id="7_l1d1q"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_betfq"]
 size = Vector2(1.6, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsjh1"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.345098, 0.639216, 0.345098, 0)
+albedo_texture = ExtResource("4_mryls")
+billboard_mode = 2
+billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_m40n4"]
 material = ExtResource("4_0d1a2")
 size = Vector2(0.11, 0.11)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26oax"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc163"]
 transparency = 1
 shading_mode = 0
 specular_mode = 2
@@ -44,13 +53,13 @@ interact_string = "Activate"
 [node name="Glow" type="CSGMesh3D" parent="DetailedPylon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.976102, 0)
 mesh = SubResource("QuadMesh_betfq")
-material = ExtResource("4_12ri8")
+material = SubResource("StandardMaterial3D_bsjh1")
 
 [node name="Icon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_m40n4")
-surface_material_override/0 = SubResource("StandardMaterial3D_26oax")
+surface_material_override/0 = SubResource("StandardMaterial3D_qc163")
 
 [node name="Sparkle" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_drt7b")

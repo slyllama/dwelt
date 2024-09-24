@@ -41,8 +41,6 @@ material = ExtResource("2_stw6h")
 [node name="WorldText" parent="." instance=ExtResource("2_mepr3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 initial_text = "Test Enemy"
-distance_fade_start = 4.0
-distance_fade_end = 4.2
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 41.0
@@ -56,6 +54,5 @@ show_percentage = false
 
 [node name="TestTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_tick"]

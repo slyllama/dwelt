@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bwlogapifvemw"
-path="res://.godot/imported/pylon.glb-2ed3a7421ee5b0d59619259fc7cdbe71.scn"
+path="res://.godot/imported/pylon.glb-34030535b02e665d6106176d0a139db2.scn"
 
 [deps]
 
-source_file="res://lib/map/pylon/meshes/pylon.glb"
-dest_files=["res://.godot/imported/pylon.glb-2ed3a7421ee5b0d59619259fc7cdbe71.scn"]
+source_file="res://lib/object/pylon/meshes/pylon.glb"
+dest_files=["res://.godot/imported/pylon.glb-34030535b02e665d6106176d0a139db2.scn"]
 
 [params]
 
@@ -47,7 +47,7 @@ _subresources={
 },
 "mat_plinth": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/map/pylon/materials/mat_plinth.tres"
+"use_external/path": "res://lib/object/pylon/materials/mat_plinth.tres"
 }
 }
 }

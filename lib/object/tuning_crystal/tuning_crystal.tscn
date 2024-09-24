@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0gto1a75bcl0"]
+
+[ext_resource type="Script" path="res://lib/object/tuning_crystal/tuning_crystal.gd" id="1_r07r1"]
+[ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="2_ti3vb"]
+[ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="2_xtmmg"]
+[ext_resource type="Material" uid="uid://bbltrw3jd2t1o" path="res://lib/object/tuning_crystal/materials/mat_area.tres" id="4_v7hd8"]
+[ext_resource type="AudioStream" uid="uid://cgfb85l1l0l1w" path="res://maps/combat_sandbox/sound/test.ogg" id="5_dbkow"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jwmai"]
+material = ExtResource("4_v7hd8")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.2
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[node name="TuningCrystal" type="Node3D"]
+script = ExtResource("1_r07r1")
+
+[node name="Pylon" parent="." instance=ExtResource("2_xtmmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="Object" parent="Pylon" instance=ExtResource("2_ti3vb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+title = "Tuning Crystal"
+description = "A tuning crystal allows its user to synchronise with a ley-line to which it is connected. In joining with it the user can travel this ley-line, bridging large areas with incredible speed."
+can_interact = true
+interact_string = "Synchronise"
+
+[node name="Area" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_jwmai")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dbkow")
+
+[node name="BG" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Debug" type="RichTextLabel" parent="BG"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[connection signal="interacted" from="Pylon/Object" to="." method="_on_crystal_interact"]

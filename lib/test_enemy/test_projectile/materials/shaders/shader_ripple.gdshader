@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, shadows_disabled;
+render_mode unshaded, shadows_disabled, fog_disabled;
 
 uniform sampler2D screen_texture: hint_screen_texture;
 uniform float circle_position = 0.5;

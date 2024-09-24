@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dsrpbc8cod10m"]
 
-[ext_resource type="Texture2D" uid="uid://cxx66o6iilmgk" path="res://lib/map/pylon/materials/textures/icon_empty.png" id="1_dtc8t"]
+[ext_resource type="Texture2D" uid="uid://cxx66o6iilmgk" path="res://lib/object/pylon/materials/textures/icon_empty.png" id="1_dtc8t"]
 
 [resource]
 transparency = 1

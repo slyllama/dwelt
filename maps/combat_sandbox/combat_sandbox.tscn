@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://xggxwdngkm5v"]
+
+[ext_resource type="Script" path="res://maps/combat_sandbox/combat_sandbox.gd" id="1_qtvh0"]
+[ext_resource type="Environment" uid="uid://cgt1v1vapcobj" path="res://maps/dwellan_island/environment.tres" id="2_tyupj"]
+[ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_6i2wx"]
+[ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="4_441du"]
+[ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object.tscn" id="5_6a3no"]
+[ext_resource type="PackedScene" uid="uid://c0gto1a75bcl0" path="res://lib/object/tuning_crystal/tuning_crystal.tscn" id="6_wwqmy"]
+
+[node name="CombatSandbox" type="Node3D"]
+script = ExtResource("1_qtvh0")
+environment = ExtResource("2_tyupj")
+default_floor = true
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.877749, 0.33879, -0.33879, 1.336e-08, 0.707107, 0.707107, 0.479121, 0.620662, -0.620662, 0, 5, 0)
+light_energy = 2.0
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.5
+shadow_blur = 0.6
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_blend_splits = true
+
+[node name="Player" parent="." instance=ExtResource("3_6i2wx")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Pylon" parent="." instance=ExtResource("4_441du")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.05, 0)
+
+[node name="Dwellan" parent="Pylon" instance=ExtResource("5_6a3no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+id = "to_dwellan"
+title = "Portal to Dwellan Island"
+description = "Teleport to Dwellan Island."
+can_interact = true
+interact_string = "Port"
+
+[node name="TuningCrystal" parent="." instance=ExtResource("6_wwqmy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+
+[connection signal="interacted" from="Pylon/Dwellan" to="." method="_dwellan_portal_used"]
