@@ -17,18 +17,28 @@ var foliage_count = 0
 @export var smooth = true
 @export var moss_cover = true
 
-var active_foliage_mesh: ArrayMesh
-
 @export var reload = false:
 	set(_value):
 		reload = false
 		render()
 	get: return(reload)
 
+@export_group("Shader Configuration")
+@export var render_distance = 10.0
+@export var render_fade_spread = 0.5
+
+var active_foliage_mesh: ArrayMesh
+
+func set_display_distance() -> void:
+	#Configure materials to fade away at a certain distance
+	var mat: StandardMaterial3D = active_foliage_mesh.surface_get_material(0)
+	mat.distance_fade_mode = BaseMaterial3D.DISTANCE_FADE_PIXEL_DITHER
+	mat.distance_fade_min_distance = render_distance + render_fade_spread
+	mat.distance_fade_max_distance = render_distance
+
 func render() -> void:
 	if foliage_mesh == null: active_foliage_mesh = GRASS
 	else: active_foliage_mesh = foliage_mesh
-	
 	if moss_cover: $Moss.size = Vector3(size * 1.8, 0.5, size * 1.8)
 	else: $Moss.visible = false
 	
@@ -67,11 +77,19 @@ func render() -> void:
 			grass_transform = grass_transform.translated_local(grass_scatter)
 			grass_transform = grass_transform.rotated_local(Vector3.UP, grass_rotation)
 			multimesh.set_instance_transform(i, grass_transform)
-			
 			foliage_count += 1
 	
 	if !Engine.is_editor_hint():
+		set_display_distance()
 		Global.foliage_count += foliage_count
 
-func _ready() -> void:
-	render()
+func _ready() -> void: render()
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	
+	# Turn off foliage visiblity after the shader has faded it out
+	var dist = global_position.distance_to(Global.player_position)
+	if visible: # includes a buffer
+		if dist > render_distance + 0.2: visible = false
+	else:if dist < render_distance + 0.2: visible = true

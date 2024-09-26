@@ -8,3 +8,5 @@ transparency = 4
 cull_mode = 2
 albedo_color = Color(0.7, 0.7, 0.7, 1)
 albedo_texture = ExtResource("1_x6w27")
+distance_fade_mode = 2
+distance_fade_min_distance = 10.5

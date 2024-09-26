@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 	if orbiting:
 		_target_rotation.y -= _mouse_delta.x * orbit_sensitivity * delta * 100.0
 		_target_rotation.x -= _mouse_delta.y * orbit_sensitivity * delta * 100.0
-		_target_rotation.x = clamp(_target_rotation.x, -40.0, 60.0)
+		_target_rotation.x = clamp(_target_rotation.x, -65.0, 30.0)
 	_mouse_delta = Vector2.ZERO
 	
 	# Zoom smoothing

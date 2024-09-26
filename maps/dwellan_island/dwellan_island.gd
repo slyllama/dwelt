@@ -12,3 +12,6 @@ func _on_object_interacted() -> void:
 	for node: Node in Utilities.get_all_children(self):
 		if node is FoliageSpawner:
 			node.render()
+
+func _projectile_fired() -> void:
+	Global.tick.emit()
