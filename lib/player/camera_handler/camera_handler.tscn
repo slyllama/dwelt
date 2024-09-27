@@ -51,6 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195
 v_offset = 0.7
 current = true
 fov = 80.0
+far = 30.0
 
 [node name="CameraFX" type="AnimationPlayer" parent="Camera"]
 libraries = {

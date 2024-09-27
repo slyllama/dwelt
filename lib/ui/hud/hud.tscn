@@ -126,6 +126,7 @@ layout_mode = 2
 color = Color(1, 1, 1, 0.196078)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

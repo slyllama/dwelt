@@ -24,8 +24,8 @@ var foliage_count = 0
 	get: return(reload)
 
 @export_group("Shader Configuration")
-@export var render_distance = 10.0
-@export var render_fade_spread = 0.5
+@export var render_distance = 16.0
+@export var render_fade_spread = 1.0
 
 var active_foliage_mesh: ArrayMesh
 
@@ -82,6 +82,15 @@ func render() -> void:
 	if !Engine.is_editor_hint():
 		set_display_distance()
 		Global.foliage_count += foliage_count
+		# Tests for collision/foliage shaping
+		#for y in count:
+			#for x in count:
+				#var i = y * count + x
+				#var instance_pos = multimesh.get_instance_transform(i).origin
+				#var ray = RayCast3D.new()
+				#ray.position = instance_pos
+				#ray.target_position.y = -3.0
+				#add_child(ray)
 
 func _ready() -> void: render()
 
@@ -91,5 +100,5 @@ func _process(_delta: float) -> void:
 	# Turn off foliage visiblity after the shader has faded it out
 	var dist = global_position.distance_to(Global.player_position)
 	if visible: # includes a buffer
-		if dist > render_distance + 0.2: visible = false
-	else:if dist < render_distance + 0.2: visible = true
+		if dist > render_distance + 1.0: visible = false
+	else:if dist < render_distance + 1.0: visible = true

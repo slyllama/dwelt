@@ -37,9 +37,13 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan_island/props/dias/materials/mat_dias.tres"
 },
+"mat_grass": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/dwellan_island/props/foliage/materials/mat_grass_plane.tres"
+},
 "mat_rocks": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/map/pylon/materials/mat_plinth.tres"
+"use_external/path": "res://lib/object/pylon/materials/mat_plinth.tres"
 }
 }
 }
