@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://uct1byepa1wm"]
+
+[ext_resource type="Script" path="res://lib/object/object/object.gd" id="1_pxk5v"]
+[ext_resource type="PackedScene" uid="uid://bky4oadewjuyx" path="res://lib/ui/world_text/world_text.tscn" id="2_rtywh"]
+[ext_resource type="PackedScene" uid="uid://oqx4rag0lcc8" path="res://lib/object/object/meshes/object_orb.glb" id="3_fhdxx"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_sf5gd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1880"]
+height = 3.4
+radius = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_ka73w"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieq1f"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(1, 1, 1, 0.54902)
+albedo_texture = ExtResource("4_sf5gd")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Animation" id="Animation_o36g6"]
+resource_name = "float_obr"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectOrb:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectOrb:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t1rkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectOrb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectOrb:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyx2s"]
+_data = {
+"RESET": SubResource("Animation_t1rkf"),
+"float_orb": SubResource("Animation_o36g6")
+}
+
+[node name="Object" type="Node3D"]
+script = ExtResource("1_pxk5v")
+
+[node name="Title" parent="." instance=ExtResource("2_rtywh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+initial_text = "Test Object"
+color = Color(1, 1, 0, 1)
+distance_fade_start = 6.0
+distance_fade_end = 6.8
+
+[node name="Range" type="Area3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Range"]
+shape = SubResource("CylinderShape3D_h1880")
+
+[node name="ObjectOrb" parent="." instance=ExtResource("3_fhdxx")]
+visible = false
+
+[node name="Glow" type="CSGMesh3D" parent="ObjectOrb"]
+mesh = SubResource("QuadMesh_ka73w")
+material = SubResource("StandardMaterial3D_ieq1f")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qyx2s")
+}
+autoplay = "float_orb"

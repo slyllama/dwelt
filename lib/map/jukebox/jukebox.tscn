@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cem1eomuiy5d3"]
+
+[ext_resource type="Script" path="res://lib/map/jukebox/jukebox.gd" id="1_dsxj5"]
+
+[node name="Jukebox" type="AudioStreamPlayer"]
+volume_db = -11.0
+script = ExtResource("1_dsxj5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

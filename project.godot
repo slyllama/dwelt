@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dwelt"
-run/main_scene="res://maps/dwellan_island/dwellan_island.tscn"
+run/main_scene="res://lib/map/loader/loader.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)

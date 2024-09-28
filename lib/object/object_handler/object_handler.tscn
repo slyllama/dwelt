@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbhj341sqluo2"]
+
+[ext_resource type="Script" path="res://lib/object/object_handler/object_handler.gd" id="1_14fot"]
+
+[node name="ObjectHandler" type="Node"]
+script = ExtResource("1_14fot")

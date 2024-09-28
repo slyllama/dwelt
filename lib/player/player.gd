@@ -10,7 +10,7 @@ var is_kill_height = false
 @export var smoothing := 25.0
 @export var jump_strength := 8.0
 @export var hover_height := 1.0
-@export var kill_height := -3.0
+@export var kill_height := -10.0
 
 @onready var base: CollisionShape3D = get_node("Collision")
 
@@ -77,9 +77,3 @@ func _physics_process(delta: float) -> void:
 
 func _on_ground_collided() -> void:
 	%Mesh._mesh_y_state = 1.0
-
-func _on_hitbox_entered(area: Area3D) -> void:
-	if area is Bullet:
-		Global.shake_camera.emit()
-		area.hit_player.emit()
-		Global.lose_health(30)

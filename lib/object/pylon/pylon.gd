@@ -16,11 +16,6 @@ var pylon_mat: StandardMaterial3D
 
 # Deactivate the pylon. If clear is set to false, the ID of the current pylon stored in Global will not clear
 func deactivate(clear = true) -> void:
-	if activated:
-		# Only fade out the glow if it was already activated
-		var glow_tween = create_tween()
-		glow_tween.tween_method(_set_glow_level, 1.0, 0.0, 0.2)
-	
 	activated = false
 	if clear:
 		Global.active_pylon = Global.ACTIVE_PYLON.duplicate()
@@ -66,25 +61,14 @@ func _toggle_start_activation() -> void:
 		Global.active_pylon.id = pylon_id
 		Global.active_pylon.position = global_position
 		Global.pylon_start_activated.emit(pylon_id)
-
-		var glow_tween = create_tween()
-		glow_tween.tween_method(_set_glow_level, 0.0, 1.0, 0.2)
 	else: deactivate()
-
-func _set_glow_level(amount):
-	$DetailedPylon/Glow.material.albedo_color = GLOW * Color(1.0, 1.0, 1.0, amount)
 
 func _ready() -> void:
 	# Duplicate the material so that changing its color doesn't influence all other pylons
 	var material = $Icon.get_active_material(0).duplicate()
 	$Icon.set_surface_override_material(0, material)
 	pylon_mat = $Icon.get_surface_override_material(0)
-	
-	# Set up the glow which illuminates when activated
-	var glow_material = $DetailedPylon/Glow.material.duplicate()
-	$DetailedPylon/Glow.material = glow_material
-	_set_glow_level(0.0)
-	
+
 	$Object.id = pylon_id
 	$Object.can_interact = true
 	_update_pylon(false)
@@ -100,9 +84,10 @@ func _ready() -> void:
 
 func _on_object_interacted() -> void:
 	$Heal.play()
+	Global.shake_camera.emit()
 	if bound:
 		Global.move_player.emit(
-			sibling.global_position + Vector3(-0.45, 0.1, 0))
+			sibling.global_position + Vector3(-0.45, 0.5, 0))
 	else:
 		if pylon_type == PYLON_TYPE.START:
 			_toggle_start_activation()

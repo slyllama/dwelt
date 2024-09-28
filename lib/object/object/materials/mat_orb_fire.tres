@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpp08dme2fymh"]
+
+[ext_resource type="Shader" uid="uid://c3f3ek4p2vd65" path="res://lib/object/object/materials/shaders/shader_orb_fire.tres" id="1_es737"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_es737")

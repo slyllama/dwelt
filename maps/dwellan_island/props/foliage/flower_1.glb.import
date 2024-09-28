@@ -32,6 +32,12 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"mat_flower": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/dwellan_island/props/foliage/materials/mat_flower_1.tres"
+}
+},
 "meshes": {
 "flower_1_Plane_001": {
 "generate/lightmap_uv": 0,

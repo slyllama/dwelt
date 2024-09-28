@@ -4,7 +4,7 @@ extends Node3D
 # Handles map setting-up functions; should be extended.
 
 const HUD = preload("res://lib/ui/hud/hud.tscn")
-const ObjectHandler = preload("res://lib/object/object_handler.tscn")
+const ObjectHandler = preload("res://lib/object/object_handler/object_handler.tscn")
 
 @export var environment: Environment
 ## Moss and ground decals will only be projected onto nodes listed here.
@@ -15,15 +15,16 @@ var sky
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	# 'Regenerate' the player by moving it to the last activated pylon
+	
+	# Toggle full-screen
 	if Input.is_action_just_pressed("debug_key"):
-		if Global.active_pylon.id != "none":
-			%Player.position = (
-				Global.active_pylon.position + Vector3(-0.45, 0, 0))
+		if get_window().mode != Window.MODE_FULLSCREEN:
+			get_window().mode = Window.MODE_FULLSCREEN
+		else: get_window().mode = Window.MODE_WINDOWED
 
 func _fade_sound_in() -> void:
 	# Fade in the entire audio server after a delay, preventing any first-frame blips
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.1).timeout
 	var audio_in = create_tween()
 	audio_in.tween_method(func(vol):
 		AudioServer.set_bus_volume_db(0, linear_to_db(vol)), 0.0, 1.0, 1.0)
@@ -46,11 +47,6 @@ func _ready() -> void:
 	add_child(hud)
 	var object_handler = ObjectHandler.instantiate()
 	add_child(object_handler)
-	
-	# Retina screen scaling
-	if DisplayServer.screen_get_size().x > 2000:
-		get_window().size *= 2.0
-		get_window().content_scale_factor = 2.0
 	
 	# Set culling mask for objects to be influenced by moss decals
 	for base_node in ground_decal_meshes:

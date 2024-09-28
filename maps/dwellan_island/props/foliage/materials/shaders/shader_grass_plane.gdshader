@@ -21,6 +21,6 @@ void fragment() {
 
 	SPECULAR = 0.0;
 	NORMAL_MAP_DEPTH = 0.5;
-	NORMAL_MAP = texture(normal_noise, UV * 6.0).rgb;
-	ALBEDO = grass_mix * 0.34 - 0.03;
+	NORMAL_MAP = texture(normal_noise, UV * 12.0).rgb;
+	ALBEDO = grass_mix * 0.30 - 0.03;
 }
