@@ -93,4 +93,4 @@ func _process(delta: float) -> void:
 	camera.position = lerp(camera.position, $Axis/Target.position, 6.0 * delta)
 	var _target_v_offset = lerp(camera.v_offset, _get_v_offset(), 6.0 * delta)
 	camera.v_offset = _target_v_offset + second_vertical_offset
-	CameraData.camera_y_rotation = global_rotation.y
+	CameraData.facing_angle = global_rotation.y - deg_to_rad(180)

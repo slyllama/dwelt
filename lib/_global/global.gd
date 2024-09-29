@@ -27,5 +27,4 @@ var foliage_count = 0
 var object_data = []
 var mouse_in_map = false
 var player_position = Vector3.ZERO
-var player_y_rotation = 0.0 # degrees
 var proximal_object = PROXIMAL_OBJECT.duplicate()

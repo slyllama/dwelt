@@ -4,7 +4,7 @@ extends Node
 # referencing the camera
 
 var camera: Camera3D
-var camera_y_rotation: float
+var facing_angle: float
 
 func world_to_screen(point) -> Vector2:
 	if camera != null:
