@@ -44,6 +44,7 @@ func update(get_direction: Vector3, velocity: Vector3, camera_direction: float) 
 		_engine_rotate_magnitude, 0.2 + velocity.length() * 0.75, 7 * delta)
 	$Player/PlayerAnim.set("parameters/engine_time_scale/scale", _engine_rotate_magnitude)
 	
+	Global.player_y_rotation = camera_direction + 180.0
 	_bounce_mesh(delta)
 
 func _ready() -> void:

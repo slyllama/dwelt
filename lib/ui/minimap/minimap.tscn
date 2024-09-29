@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://jtl64blli4jh"]
+
+[ext_resource type="Script" path="res://lib/ui/minimap/minimap.gd" id="1_7m3lm"]
+[ext_resource type="Texture2D" uid="uid://cimequngird2q" path="res://generic/materials/textures/1m_diff.png" id="2_32ji8"]
+[ext_resource type="Texture2D" uid="uid://b1d55lp5ufcfa" path="res://lib/ui/minimap/textures/map_test.png" id="2_b8hul"]
+[ext_resource type="Texture2D" uid="uid://dlr6eni13ddvy" path="res://lib/ui/minimap/textures/poi.png" id="3_vghec"]
+[ext_resource type="Texture2D" uid="uid://jn5ybnqq8ksg" path="res://lib/ui/minimap/textures/marker.png" id="4_lr6mw"]
+[ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="5_uhm8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puril"]
+content_margin_left = 2.0
+bg_color = Color(0.23565, 0.3, 0.003, 1)
+border_width_left = 2
+border_width_top = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Minimap" type="Panel"]
+custom_minimum_size = Vector2(220, 220)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -220.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_puril")
+script = ExtResource("1_7m3lm")
+
+[node name="MapRoot" type="Node2D" parent="."]
+
+[node name="MapImage" type="Sprite2D" parent="MapRoot"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+texture = ExtResource("2_32ji8")
+
+[node name="MapTest" type="Sprite2D" parent="MapRoot/MapImage"]
+rotation = 3.14159
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_b8hul")
+
+[node name="POI" type="Sprite2D" parent="MapRoot/MapImage"]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("3_vghec")
+
+[node name="Character" type="Node2D" parent="MapRoot"]
+
+[node name="Marker" type="Sprite2D" parent="MapRoot/Character"]
+texture = ExtResource("4_lr6mw")
+offset = Vector2(1.5, -72)
+
+[node name="DebugText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("5_uhm8k")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[Debug]"
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

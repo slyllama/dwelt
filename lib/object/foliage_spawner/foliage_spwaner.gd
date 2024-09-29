@@ -42,7 +42,7 @@ func set_display_distance() -> void:
 func render() -> void:
 	if foliage_mesh == null: active_foliage_mesh = GRASS
 	else: active_foliage_mesh = foliage_mesh
-	if moss_cover: $Moss.size = Vector3(size * 1.8, 0.5, size * 1.8)
+	if moss_cover: $Moss.size = Vector3(size * 1.2, 0.5, size * 1.2)
 	else: $Moss.visible = false
 	
 	# Reset - clear foliage count

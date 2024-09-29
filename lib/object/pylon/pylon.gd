@@ -2,6 +2,7 @@
 class_name Pylon extends Node3D
 
 enum PYLON_TYPE { START, END }
+const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
 const DIM = Color(0.5, 0.5, 0.5)
 const GLOW = Color(88/255.0, 163/255.0, 88/255.0, 1.0)
 
@@ -61,6 +62,9 @@ func _toggle_start_activation() -> void:
 		Global.active_pylon.id = pylon_id
 		Global.active_pylon.position = global_position
 		Global.pylon_start_activated.emit(pylon_id)
+		
+		add_child(RippleFX.instantiate())
+		$Heal.play()
 	else: deactivate()
 
 func _ready() -> void:
@@ -83,8 +87,6 @@ func _ready() -> void:
 			deactivate(false))
 
 func _on_object_interacted() -> void:
-	$Heal.play()
-	Global.shake_camera.emit()
 	if bound:
 		Global.move_player.emit(
 			sibling.global_position + Vector3(-0.45, 0.5, 0))
@@ -94,6 +96,5 @@ func _on_object_interacted() -> void:
 		else:
 			bound = true
 			sibling.disable()
-	
 	_update_pylon()
 	Global.proximity_entered.emit()

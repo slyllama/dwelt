@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	_target_velocity += (Vector3.RIGHT * _camera_basis
 		* Vector3(1, 0, -1) * _direction.z)
 	_target_velocity = _target_velocity.normalized() * _speed
-
+	
 	# Apply movement, including gravity and a jump check
 	velocity = lerp(velocity, _target_velocity, smoothing * delta)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	if _jump_energy < 1.0: _jump_energy = 0.0
 	velocity.y += _jump_energy
 	if !is_on_floor(): velocity.y -= gravity * delta
-
+	
 	move_and_slide()
 	Global.player_position = position
 	

@@ -12,6 +12,7 @@ const ObjectHandler = preload("res://lib/object/object_handler/object_handler.ts
 @export var start_muted = false
 
 var sky
+var hud
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -43,7 +44,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	# Set up the HUD, ObjectHandler, and environment
-	var hud = HUD.instantiate()
+	hud = HUD.instantiate()
 	add_child(hud)
 	var object_handler = ObjectHandler.instantiate()
 	add_child(object_handler)

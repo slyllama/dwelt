@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=13 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/debug_corner.png" id="2_u8gkr"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="3_gfkw7"]
 [ext_resource type="PackedScene" uid="uid://bf2seuyksa7tu" path="res://lib/ui/hud/debug/debug_text.tscn" id="3_ghokv"]
 [ext_resource type="Texture2D" uid="uid://dxcty3ssnk61q" path="res://lib/ui/hud/textures/panel_gradient.tres" id="5_1e3af"]
+[ext_resource type="PackedScene" uid="uid://jtl64blli4jh" path="res://lib/ui/minimap/minimap.tscn" id="6_btust"]
+[ext_resource type="Texture2D" uid="uid://cv25w7bi8p5mb" path="res://lib/ui/minimap/textures/map_corner.png" id="7_b4vqn"]
 
 [sub_resource type="Gradient" id="Gradient_3ubsl"]
 offsets = PackedFloat32Array(0, 0.26776, 0.699454, 1)
@@ -41,6 +43,21 @@ offset_right = 466.0
 offset_bottom = 562.0
 texture = ExtResource("2_u8gkr")
 stretch_mode = 5
+
+[node name="CornerSW" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -466.0
+offset_top = -562.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_u8gkr")
+stretch_mode = 5
+flip_h = true
+flip_v = true
 
 [node name="DebugText" parent="." instance=ExtResource("3_ghokv")]
 
@@ -105,3 +122,46 @@ fit_content = true
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(1, 1, 1, 0.196078)
+
+[node name="Minimap" parent="." instance=ExtResource("6_btust")]
+offset_left = -298.0
+offset_top = -218.0
+offset_right = 2.0
+offset_bottom = 2.0
+size_flags_vertical = 8
+
+[node name="MapCorner" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = -220.0
+offset_right = -298.0
+offset_bottom = 2.5
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_b4vqn")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MapCorner2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -263.0
+offset_right = 47.0
+offset_bottom = -40.5
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 1.5708
+texture = ExtResource("7_b4vqn")
+expand_mode = 5
+stretch_mode = 5
+flip_v = true

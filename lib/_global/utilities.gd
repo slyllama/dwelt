@@ -13,6 +13,11 @@ func get_all_children(node: Node) -> Array:
 		else: nodes.append(n)
 	return(nodes)
 
+# Pretty (and rounded) presentation of Vector2 values
+func fmt_vec2(vec: Vector2) -> String:
+	return(str(snapped(vec.x, 0.1))
+		+ ", " + str(snapped(vec.y, 0.1)))
+
 # Pretty (and rounded) presentation of Vector3 values
 func fmt_vec3(vec: Vector3) -> String:
 	return(str(snapped(vec.x, 0.1))

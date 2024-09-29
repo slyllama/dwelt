@@ -1,4 +1,4 @@
-extends VisibleOnScreenNotifier3D
+class_name WorldText extends VisibleOnScreenNotifier3D
 # world_text.gd
 # Displays text at a certain 3D point on-screen
 

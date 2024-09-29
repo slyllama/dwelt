@@ -11,6 +11,8 @@ func _ready() -> void:
 	for o in Utilities.get_all_children(get_parent()):
 		if o is DweltObject:
 			objects.append(o)
+			Global.object_data.append({ "position": o.global_position })
+	Global.objects_loaded.emit()
 
 var _f = false
 func _physics_process(_delta: float) -> void:
