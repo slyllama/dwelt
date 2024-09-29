@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		$MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
 	$MapImage.scale = lerp($MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
 	$ObjectBase.position = lerp($ObjectBase.position, global_position + size / 2.0 + offset * zoom, delta * 10)
-	$ObjectBase.scale = lerp($ObjectBase.scale, Vector2(zoom, zoom), delta * 10)
+	$ObjectBase.scale = lerp($ObjectBase.scale, Vector2(zoom / 1.25, zoom / 1.25), delta * 10)
 	
 	# Constrain the object to the edge of the map if it goes out of bounds
 	for o in objects:

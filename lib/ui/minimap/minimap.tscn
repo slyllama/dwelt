@@ -29,6 +29,34 @@ rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b8hul")
 
+[node name="Title" type="RichTextLabel" parent="MapImage"]
+modulate = Color(1, 1, 1, 0.823529)
+offset_left = 194.0
+offset_top = 20.0
+offset_right = 394.0
+offset_bottom = 53.0
+rotation = 3.14159
+scale = Vector2(2, 2)
+mouse_filter = 1
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Dwellan Courtyard[/center]"
+
+[node name="Title2" type="RichTextLabel" parent="MapImage"]
+modulate = Color(1, 1, 1, 0.823529)
+offset_left = 590.0
+offset_top = 126.0
+offset_right = 790.0
+offset_bottom = 159.0
+rotation = 3.14159
+scale = Vector2(2, 2)
+mouse_filter = 1
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Random Place[/center]"
+
 [node name="ObjectBase" type="Node2D" parent="."]
 top_level = true
 
