@@ -9,7 +9,7 @@ func _make_ortho_camera() -> void:
 	add_child(ortho)
 	ortho.set_orthogonal(40.0, 0.0, 100.0)
 	ortho.make_current()
-	environment.fog_enabled = false
+	sky.environment.fog_enabled = false
 	
 	for o: Node in Utilities.get_all_children(self):
 		if o is WorldText: o.visible = false
@@ -18,7 +18,7 @@ func _make_ortho_camera() -> void:
 
 func _ready() -> void:
 	super()
-	# _make_ortho_camera()
+	#_make_ortho_camera()
 
 func _on_object_interacted() -> void:
 	# Reload foliage

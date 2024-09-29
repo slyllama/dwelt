@@ -1,13 +1,26 @@
 extends TextureRect
 
-var magnitude := 11.0
+var magnitude := 14.0
 var zoom := 1.0
+var image_offset = Vector2(25.0, 0.0)
 # Assume all sprites are 1/2th scale by default
+# TODO: retina (dynamic scaling)
+
+var objects = []
 
 func _ready() -> void:
 	clip_children = CLIP_CHILDREN_AND_DRAW
 	$MarkerBase.scale *= Vector2(0.5, 0.5)
 	$MarkerBase.position = size / 2.0
+	
+	Global.objects_loaded.connect(func():
+		for o in Global.object_data:
+			var o_node = $ObjectBase/POI.duplicate()
+			var pos = -Vector2(o.position.x, o.position.z) * magnitude
+			o_node.position = pos
+			o_node.visible = true
+			$ObjectBase.add_child(o_node)
+			objects.append({ "node": o_node, "position": pos }))
 
 func _input(_event: InputEvent) -> void:
 	# Handle zoom events
@@ -21,10 +34,18 @@ func _process(delta: float) -> void:
 		Global.player_position.x * magnitude,
 		Global.player_position.z * magnitude)
 	$MarkerBase.rotation = -CameraData.facing_angle
+	
 	$MapImage.position = lerp(
-		$MapImage.position, size / 2.0 + offset * zoom, delta * 10)
+		$MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
 	$MapImage.scale = lerp(
 		$MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
+	$ObjectBase.position = lerp(
+		$ObjectBase.position, size / 2.0 + offset * zoom, delta * 10)
+	$ObjectBase.scale = lerp(
+		$ObjectBase.scale, Vector2(zoom, zoom), delta * 10)
+	for node in $ObjectBase.get_children():
+		if node is Sprite2D:
+			node.scale = lerp(node.scale, Vector2(1 / zoom, 1 / zoom), delta * 10)
 
 # Checks to prevent camera orbiting when clicking in the map!
 func _on_mouse_entered() -> void: Global.mouse_in_map = true

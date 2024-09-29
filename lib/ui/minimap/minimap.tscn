@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://jtl64blli4jh"]
+[gd_scene load_steps=7 format=3 uid="uid://jtl64blli4jh"]
 
 [ext_resource type="Script" path="res://lib/ui/minimap/minimap.gd" id="1_7m3lm"]
 [ext_resource type="Texture2D" uid="uid://cfjnnt0v8pwk6" path="res://lib/ui/minimap/textures/base.png" id="1_ik2hb"]
 [ext_resource type="Texture2D" uid="uid://b1d55lp5ufcfa" path="res://lib/ui/minimap/textures/map_test.png" id="2_b8hul"]
+[ext_resource type="Texture2D" uid="uid://dlr6eni13ddvy" path="res://lib/ui/minimap/textures/poi.png" id="3_vghec"]
 [ext_resource type="Texture2D" uid="uid://jn5ybnqq8ksg" path="res://lib/ui/minimap/textures/marker.png" id="4_lr6mw"]
 [ext_resource type="Texture2D" uid="uid://c45qpvj3a643u" path="res://lib/ui/minimap/textures/overlay.png" id="7_ai40l"]
 
@@ -27,6 +28,12 @@ script = ExtResource("1_7m3lm")
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b8hul")
+
+[node name="ObjectBase" type="Node2D" parent="."]
+
+[node name="POI" type="Sprite2D" parent="ObjectBase"]
+visible = false
+texture = ExtResource("3_vghec")
 
 [node name="MarkerBase" type="Node2D" parent="."]
 

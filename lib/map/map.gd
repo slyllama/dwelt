@@ -11,7 +11,7 @@ const ObjectHandler = preload("res://lib/object/object_handler/object_handler.ts
 @export var decal_candidates: Node
 @export var start_muted = false
 
-var sky
+var sky: WorldEnvironment
 var hud
 
 func _input(_event: InputEvent) -> void:
