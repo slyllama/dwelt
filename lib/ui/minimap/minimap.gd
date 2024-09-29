@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 
 @onready var center := size / 2.0
 var magnitude = 10.0
@@ -34,11 +34,6 @@ func _process(_delta: float) -> void:
 		Global.player_position.z * magnitude)
 	$MapRoot/MapImage.position = center * retina_scale + offset * retina_scale
 	$MapRoot/Character.rotation_degrees = -Global.player_y_rotation
-	
-	# Debug
-	$DebugText.text = (str(Utilities.fmt_vec2(offset * retina_scale))
-		+ " at " + str(snapped($MapRoot/Character.rotation_degrees, 1.0)) + "deg")
-	$DebugText.text += "\nmagnitude = " + str(snapped(magnitude, 0.1))
 
 # Checks to prevent camera orbiting when clicking in the map!
 func _on_mouse_entered() -> void: Global.mouse_in_map = true

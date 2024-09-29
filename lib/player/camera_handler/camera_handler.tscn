@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl1b5pyew2pj4"]
+[gd_scene load_steps=5 format=3 uid="uid://cl1b5pyew2pj4"]
 
 [ext_resource type="Script" path="res://lib/player/camera_handler/camera_handler.gd" id="1_ngwli"]
 
@@ -40,9 +40,6 @@ _data = {
 "shake": SubResource("Animation_2bt4q")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ug7on"]
-radius = 0.2
-
 [node name="CameraHandler" type="Node3D"]
 script = ExtResource("1_ngwli")
 
@@ -59,8 +56,8 @@ libraries = {
 }
 
 [node name="Axis" type="SpringArm3D" parent="."]
-shape = SubResource("SphereShape3D_ug7on")
 spring_length = 4.0
+margin = 0.5
 
 [node name="Target" type="Node3D" parent="Axis"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

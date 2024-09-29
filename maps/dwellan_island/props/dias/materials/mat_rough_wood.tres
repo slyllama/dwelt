@@ -10,4 +10,4 @@ metallic_specular = 0.0
 normal_enabled = true
 normal_texture = ExtResource("2_55ag4")
 rim_tint = 0.0
-uv1_scale = Vector3(4, 4, 4)
+uv1_scale = Vector3(8, 8, 8)

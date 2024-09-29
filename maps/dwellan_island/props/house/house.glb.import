@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhitp7khof5px"
-path="res://.godot/imported/bookcase.glb-19976571e039207ad5d660088069da2d.scn"
+uid="uid://cl6tjki0ip8pa"
+path="res://.godot/imported/house.glb-108fca33eae0e313fc084825f0feccaa.scn"
 
 [deps]
 
-source_file="res://maps/dwellan_island/props/bookcase/bookcase.glb"
-dest_files=["res://.godot/imported/bookcase.glb-19976571e039207ad5d660088069da2d.scn"]
+source_file="res://maps/dwellan_island/props/house/house.glb"
+dest_files=["res://.godot/imported/house.glb-108fca33eae0e313fc084825f0feccaa.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"mat_grey": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/dwellan_island/props/bookcase/materials/mat_oak.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
