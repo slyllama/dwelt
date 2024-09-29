@@ -15,10 +15,17 @@ func _ready() -> void:
 	# Establish visibilty
 	$InteractSign.visible = false
 	$Sidebar.visible = false
+	$FG.visible = true
 	
+	# Fade from black
 	var smoke_transition = SmokeTransition.instantiate()
 	add_child(smoke_transition)
-	smoke_transition.fade_out()
+	
+	var fade_tween = create_tween()
+	fade_tween.tween_property($FG, "self_modulate:a", 0.0, 0.6)
+	fade_tween.tween_callback(func():
+		$FG.queue_free()
+		smoke_transition.fade_out())
 	
 	Global.proximity_entered.connect(func():
 		$Sidebar.visible = true

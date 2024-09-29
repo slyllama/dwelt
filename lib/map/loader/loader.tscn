@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://21x2o3jutg3n"]
+[gd_scene load_steps=6 format=3 uid="uid://21x2o3jutg3n"]
 
 [ext_resource type="Script" path="res://lib/map/loader/loader.gd" id="1_g5lpx"]
+[ext_resource type="Texture2D" uid="uid://b71p0p22mumss" path="res://lib/map/loader/textures/loading_cog.png" id="2_puy7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6s5"]
 bg_color = Color(0, 0, 0, 1)
@@ -54,3 +55,7 @@ grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_3fvwt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cu1nb")
 show_percentage = false
+
+[node name="Spinner" type="Sprite2D" parent="."]
+texture_filter = 4
+texture = ExtResource("2_puy7m")

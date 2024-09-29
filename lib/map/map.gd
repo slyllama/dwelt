@@ -30,6 +30,11 @@ func _fade_sound_in() -> void:
 	audio_in.tween_method(func(vol):
 		AudioServer.set_bus_volume_db(0, linear_to_db(vol)), 0.0, 1.0, 1.0)
 
+func _init() -> void:
+	if !Engine.is_editor_hint():
+		hud = HUD.instantiate()
+		add_child(hud)
+
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
 	if !start_muted:
@@ -42,10 +47,7 @@ func _ready() -> void:
 		sky.environment = environment
 	
 	if Engine.is_editor_hint(): return
-	
-	# Set up the HUD, ObjectHandler, and environment
-	hud = HUD.instantiate()
-	add_child(hud)
+	# Set up the ObjectHandler and environment
 	var object_handler = ObjectHandler.instantiate()
 	add_child(object_handler)
 	
