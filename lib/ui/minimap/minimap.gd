@@ -19,8 +19,14 @@ func _ready() -> void:
 			var pos = -Vector2(o.position.x, o.position.z) * magnitude
 			o_node.position = pos
 			o_node.visible = true
+			
+			# Marker is always accurately tracked even when the point itself is constrained to the edge of the map
+			var o_marker = Marker2D.new()
+			o_marker.position = pos
+			
 			$ObjectBase.add_child(o_node)
-			objects.append({ "node": o_node, "position": pos }))
+			$ObjectBase.add_child(o_marker)
+			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
 
 func _input(_event: InputEvent) -> void:
 	# Handle zoom events
@@ -37,12 +43,20 @@ func _process(delta: float) -> void:
 	
 	$MapImage.position = lerp(
 		$MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
-	$MapImage.scale = lerp(
-		$MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
-	$ObjectBase.position = lerp(
-		$ObjectBase.position, size / 2.0 + offset * zoom, delta * 10)
-	$ObjectBase.scale = lerp(
-		$ObjectBase.scale, Vector2(zoom, zoom), delta * 10)
+	$MapImage.scale = lerp($MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
+	$ObjectBase.position = lerp($ObjectBase.position, global_position + size / 2.0 + offset * zoom, delta * 10)
+	$ObjectBase.scale = lerp($ObjectBase.scale, Vector2(zoom, zoom), delta * 10)
+	
+	# Constrain the object to the edge of the map if it goes out of bounds
+	for o in objects:
+		var dist = o.marker.global_position.distance_to($MarkerBase.global_position)
+		var angle = o.marker.global_position.angle_to_point($MarkerBase.global_position)
+		angle += deg_to_rad(180)
+		if dist > 120:
+			var restrain_pos = Vector2(cos(angle), sin(angle)) * 120
+			o.node.global_position = $MarkerBase.global_position + restrain_pos
+		else: o.node.global_position = o.marker.global_position
+	
 	for node in $ObjectBase.get_children():
 		if node is Sprite2D:
 			node.scale = lerp(node.scale, Vector2(1 / zoom, 1 / zoom), delta * 10)

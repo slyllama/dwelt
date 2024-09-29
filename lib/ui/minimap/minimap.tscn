@@ -30,6 +30,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b8hul")
 
 [node name="ObjectBase" type="Node2D" parent="."]
+top_level = true
 
 [node name="POI" type="Sprite2D" parent="ObjectBase"]
 visible = false
