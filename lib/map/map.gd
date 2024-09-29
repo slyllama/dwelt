@@ -7,8 +7,8 @@ const HUD = preload("res://lib/ui/hud/hud.tscn")
 const ObjectHandler = preload("res://lib/object/object_handler/object_handler.tscn")
 
 @export var environment: Environment
-## Moss and ground decals will only be projected onto nodes listed here.
-@export var ground_decal_meshes: Array[Node]
+## Moss and ground decals will only be projected onto the children of this node.
+@export var decal_candidates: Node
 @export var start_muted = false
 
 var sky
@@ -43,8 +43,10 @@ func _ready() -> void:
 	if sky != null: sky.queue_free()
 	sky = WorldEnvironment.new()
 	add_child(sky)
+	# Duplicate the environment to avoid editing the original resource
 	if environment != null:
-		sky.environment = environment
+		var e = environment.duplicate(true)
+		sky.environment = e
 	
 	if Engine.is_editor_hint(): return
 	# Set up the ObjectHandler and environment
@@ -52,7 +54,5 @@ func _ready() -> void:
 	add_child(object_handler)
 	
 	# Set culling mask for objects to be influenced by moss decals
-	for base_node in ground_decal_meshes:
-		for node in Utilities.get_all_children(base_node):
-			if "layers" in node:
-				node.set_layer_mask_value(2, true)
+	for node in Utilities.get_all_children(decal_candidates):
+		if "layers" in node: node.set_layer_mask_value(2, true)
