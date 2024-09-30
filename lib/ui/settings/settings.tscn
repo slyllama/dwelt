@@ -29,9 +29,10 @@ value = 50.0
 layout_mode = 2
 value = 50.0
 
-[node name="HSlider3" type="HSlider" parent="Container" index="6"]
+[node name="FOV" type="HSlider" parent="Container" index="6"]
 layout_mode = 2
-value = 50.0
+min_value = 40.0
+value = 90.0
 
 [node name="Sep2" type="ColorRect" parent="Container" index="7"]
 custom_minimum_size = Vector2(0, 10)
@@ -45,3 +46,5 @@ modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 text = "[Player position]"
 fit_content = true
+
+[connection signal="value_changed" from="Container/FOV" to="." method="_on_fov_value_changed"]

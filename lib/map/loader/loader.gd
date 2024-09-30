@@ -23,6 +23,10 @@ func _transition():
 		get_tree().change_scene_to_packed(
 			ResourceLoader.load_threaded_get(target_scene)))
 
+func _center_cog() -> void:
+	# Centralise the spinner (which is a sprite, and not a control node)
+	$Spinner.position = get_viewport().size / 2.0 + Vector2(0, -50.0)
+
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
 	# Retina screen scaling
@@ -31,8 +35,8 @@ func _ready() -> void:
 		get_window().content_scale_factor = 2.0
 	ResourceLoader.load_threaded_request(target_scene)
 	
-	# Centralise the spinner (which is a sprite, and not a control node)
-	$Spinner.position = get_viewport().size / 2.0 + Vector2(0, -50.0)
+	_center_cog()
+	get_window().size_changed.connect(_center_cog)
 
 func _process(delta: float) -> void:
 	$Spinner.rotation_degrees += delta * 120.0 # continuous spinning of cog

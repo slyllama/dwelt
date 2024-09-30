@@ -56,3 +56,11 @@ func _ready() -> void:
 	# Set culling mask for objects to be influenced by moss decals
 	for node in Utilities.get_all_children(decal_candidates):
 		if "layers" in node: node.set_layer_mask_value(2, true)
+	
+	# Connect settings and refresh
+	SettingsHandler.setting_changed.connect(func(parameter):
+		match parameter:
+			"fov":
+				CameraData.camera.fov = SettingsHandler.settings.fov
+	)
+	SettingsHandler.refresh()

@@ -25,7 +25,7 @@ var foliage_count = 0
 
 @export_group("Shader Configuration")
 @export var vary_colours := false
-@export var colour_1 := Color(0.065, 0.241, 0.028)
+@export var colour_1 := Color(0.149, 0.38, 0.065)
 @export var colour_2 := Color(0.909, 1, 0.58)
 
 var active_foliage_mesh: ArrayMesh
