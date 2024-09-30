@@ -27,9 +27,9 @@ var proximal_object = PROXIMAL_OBJECT.duplicate()
 
 # Checks to see if the mouse is in a UI elements
 func mouse_in_ui() -> bool:
-	if mouse_in_map or mouse_in_settings:
+	if mouse_in_map or mouse_in_ui_container:
 		return(true)
 	else: return(false)
 
 var mouse_in_map = false
-var mouse_in_settings = false
+var mouse_in_ui_container = false

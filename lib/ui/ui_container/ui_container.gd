@@ -1,7 +1,9 @@
 extends Panel
-# Settings
-
+# UIContainer
+# A general UI container
 const TRANS_TIME = 0.11
+
+@export var title = "Title"
 var is_open = false
 
 @onready var current_position = position
@@ -29,12 +31,13 @@ func close():
 func _ready():
 	visible = false
 	modulate.a = 0.0
+	$Container/TitleContainer/Title.text = title
 	
 	# Update panel position on window resize to avoid jumping
 	get_window().size_changed.connect(func():
 		current_position = position)
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if mouse_in_title:
 			last_mouse_title_click = get_window().get_mouse_position()
@@ -43,13 +46,16 @@ func _input(event: InputEvent) -> void:
 		moving_window = false
 		current_position = position
 
-func _on_mouse_entered() -> void: Global.mouse_in_settings = true
-func _on_mouse_exited() -> void: Global.mouse_in_settings = false
-
+# Keep track of what the mouse is over at the moment
+func _on_mouse_entered() -> void: Global.mouse_in_ui_container = true
+func _on_mouse_exited() -> void: Global.mouse_in_ui_container = false
 func _on_title_mouse_entered() -> void: mouse_in_title = true
 func _on_title_mouse_exited() -> void: mouse_in_title = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if moving_window:
 		var mouse_delta = get_window().get_mouse_position() - last_mouse_title_click
 		position = current_position + mouse_delta
+		# Prevent the settings window from being lost!
+		position.x = clamp(position.x, -50.0, get_window().size.x - 50.0)
+		position.y = clamp(position.y, -50.0, get_window().size.y - 50.0)

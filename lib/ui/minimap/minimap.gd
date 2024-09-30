@@ -1,14 +1,16 @@
 extends TextureRect
+const FADE_TIME = 0.3
 
-var magnitude := 14.0
+var magnitude := 20.0
 var zoom := 1.0
-var image_offset = Vector2(25.0, 0.0)
+var image_offset = Vector2(0, 0.0)
 # Assume all sprites are 1/2th scale by default
 # TODO: retina (dynamic scaling)
 
 var objects = []
 
 func _ready() -> void:
+	modulate.a = 0.0
 	clip_children = CLIP_CHILDREN_AND_DRAW
 	$MarkerBase.scale *= Vector2(0.5, 0.5)
 	$MarkerBase.position = size / 2.0
@@ -18,15 +20,25 @@ func _ready() -> void:
 			var o_node = $ObjectBase/POI.duplicate()
 			var pos = -Vector2(o.position.x, o.position.z) * magnitude
 			o_node.position = pos
+			o_node.modulate.a = 0.0
 			o_node.visible = true
 			
 			# Marker is always accurately tracked even when the point itself is constrained to the edge of the map
 			var o_marker = Marker2D.new()
 			o_marker.position = pos
-			
 			$ObjectBase.add_child(o_node)
 			$ObjectBase.add_child(o_marker)
 			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
+	
+	# Hide the map while things lerp into place; then fade in
+	# Because POIs are top-level, they need to be tweened independently
+	# TODO: could get expensive if there are many POI calls
+	await get_tree().create_timer(1.0).timeout
+	var fade_tween = create_tween()
+	fade_tween.tween_property(self, "modulate:a", 1.0, FADE_TIME)
+	for o in objects:
+		var f = create_tween()
+		f.tween_property(o.node, "modulate:a", 1.0, FADE_TIME)
 
 func _input(_event: InputEvent) -> void:
 	# Handle zoom events
