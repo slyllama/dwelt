@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="4_eanis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j30ib"]
-bg_color = Color(0, 0, 0, 0.705882)
+bg_color = Color(0, 0, 0, 0.862745)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

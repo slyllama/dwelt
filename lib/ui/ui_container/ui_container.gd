@@ -34,8 +34,10 @@ func _ready():
 	$Container/TitleContainer/Title.text = title
 	
 	# Update panel position on window resize to avoid jumping
-	get_window().size_changed.connect(func():
-		current_position = position)
+	get_window().size_changed.connect(func(): current_position = position)
+	# Pass mouse events through UI elements, because non-orbit checks are done on the panel itself
+	for n in Utilities.get_all_children(self):
+		if "mouse_filter" in n: n.mouse_filter = MOUSE_FILTER_PASS
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):

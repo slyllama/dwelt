@@ -7,8 +7,41 @@
 script = ExtResource("2_511et")
 title = "Settings"
 
-[node name="FunButton" type="Button" parent="Container" index="2"]
-layout_mode = 2
-text = "This is specific to the settings menu."
+[node name="Container" parent="." index="1"]
+theme_override_constants/separation = 6
 
-[connection signal="pressed" from="Container/FunButton" to="." method="_on_fun_button_pressed"]
+[node name="Sep" type="ColorRect" parent="Container" index="2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container" index="3"]
+layout_mode = 2
+text = "This is some text"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="Container" index="4"]
+layout_mode = 2
+value = 50.0
+
+[node name="HSlider2" type="HSlider" parent="Container" index="5"]
+layout_mode = 2
+value = 50.0
+
+[node name="HSlider3" type="HSlider" parent="Container" index="6"]
+layout_mode = 2
+value = 50.0
+
+[node name="Sep2" type="ColorRect" parent="Container" index="7"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="8"]
+modulate = Color(0.75, 0.75, 0.75, 1)
+layout_mode = 2
+text = "[Player position]"
+fit_content = true
