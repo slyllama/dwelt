@@ -4,7 +4,7 @@
 
 [resource]
 transparency = 2
-alpha_scissor_threshold = 0.36
+alpha_scissor_threshold = 0.42
 alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 0.3
 cull_mode = 2

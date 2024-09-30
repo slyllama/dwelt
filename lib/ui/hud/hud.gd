@@ -12,10 +12,11 @@ func _fmt_color_tags(input: String) -> String:
 	return(output)
 
 func _ready() -> void:
-	# Establish visibilty
+	# Establish visibilty and modulation
 	$InteractSign.visible = false
 	$Sidebar.visible = false
 	$FG.visible = true
+	$SettingsButton.modulate.a = 0.5
 	
 	# Fade from black
 	var smoke_transition = SmokeTransition.instantiate()
@@ -42,3 +43,11 @@ func _ready() -> void:
 	Global.shake_camera.connect(func(): # chromatic aberration for camera shake
 		var aberration = Aberration.instantiate()
 		add_child(aberration))
+
+func _on_settings_pressed() -> void:
+	if !$Settings.is_open: $Settings.open()
+	else: $Settings.close()
+
+
+func _settings_button_mouse_in() -> void: $SettingsButton.modulate.a = 1.0
+func _settings_button_mouse_out() -> void: $SettingsButton.modulate.a = 0.5

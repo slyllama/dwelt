@@ -15,7 +15,7 @@ var _target_zoom = 2.0 # set by the spring length of the axis
 var _last_click_position = Vector2.ZERO
 # If a click and drag is initiated in the map, the drag will not influence camera
 # orbiting until release
-var _clicked_in_map = false
+var _clicked_in_ui = false
 
 var _max_zoom_in = 1.0
 var _max_zoom_out = 3.0
@@ -46,17 +46,17 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if Global.mouse_in_map: _clicked_in_map = true
+		if Global.mouse_in_ui(): _clicked_in_ui = true
 		_last_click_position = get_window().get_mouse_position()
 	if Input.is_action_just_released("left_click"):
-		if Global.mouse_in_map: _clicked_in_map = false
+		_clicked_in_ui = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false
 	
 	if event is InputEventMouseMotion:
 		_mouse_delta = event.relative
 	
-	if Global.mouse_in_map: return
+	if Global.mouse_in_ui(): return
 	if Input.is_action_just_pressed("zoom_in"):
 		_target_zoom -= zoom_increment
 	if Input.is_action_just_pressed("zoom_out"):
@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
-	if !orbiting and !_clicked_in_map and Input.is_action_pressed("left_click"):
+	if !orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click"):
 		var _mouse_offset = get_window().get_mouse_position() - _last_click_position
 		if abs(_mouse_offset.x) > 5 or abs(_mouse_offset.y) > 5:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
