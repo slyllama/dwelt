@@ -10,6 +10,13 @@ var image_offset = Vector2(0, 0.0)
 var objects = []
 
 func configure_map(data: Dictionary) -> void:
+	if "image_path" in data:
+		$MapImage.texture = load(data["image_path"])
+	if "image_scale" in data:
+		var _s = data["image_scale"]
+		$MapImage.scale = Vector2(_s, _s)
+	if "image_rotation" in data:
+		$MapImage.rotation_degrees = data["image_rotation"]
 	if "bg_color" in data:
 		self_modulate = data["bg_color"]
 

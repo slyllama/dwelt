@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://jtl64blli4jh"]
+[gd_scene load_steps=6 format=3 uid="uid://jtl64blli4jh"]
 
 [ext_resource type="Script" path="res://lib/ui/minimap/minimap.gd" id="1_7m3lm"]
 [ext_resource type="Texture2D" uid="uid://cfjnnt0v8pwk6" path="res://lib/ui/minimap/textures/base.png" id="1_ik2hb"]
-[ext_resource type="Texture2D" uid="uid://b1d55lp5ufcfa" path="res://lib/ui/minimap/textures/map_test.png" id="2_b8hul"]
 [ext_resource type="Texture2D" uid="uid://dlr6eni13ddvy" path="res://lib/ui/minimap/textures/poi.png" id="3_vghec"]
 [ext_resource type="Texture2D" uid="uid://jn5ybnqq8ksg" path="res://lib/ui/minimap/textures/marker.png" id="4_lr6mw"]
 [ext_resource type="Texture2D" uid="uid://c45qpvj3a643u" path="res://lib/ui/minimap/textures/overlay.png" id="7_ai40l"]
 
 [node name="Minimap" type="TextureRect"]
-self_modulate = Color(0.156418, 0.32616, 0.0766461, 1)
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(260, 260)
 anchors_preset = 3
 anchor_left = 1.0
@@ -25,38 +24,6 @@ stretch_mode = 5
 script = ExtResource("1_7m3lm")
 
 [node name="MapImage" type="Sprite2D" parent="."]
-visible = false
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_b8hul")
-
-[node name="Title" type="RichTextLabel" parent="MapImage"]
-modulate = Color(1, 1, 1, 0.823529)
-offset_left = 194.0
-offset_top = 20.0
-offset_right = 394.0
-offset_bottom = 53.0
-rotation = 3.14159
-scale = Vector2(2, 2)
-mouse_filter = 1
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]Dwellan Courtyard[/center]"
-
-[node name="Title2" type="RichTextLabel" parent="MapImage"]
-modulate = Color(1, 1, 1, 0.823529)
-offset_left = 590.0
-offset_top = 126.0
-offset_right = 790.0
-offset_bottom = 159.0
-rotation = 3.14159
-scale = Vector2(2, 2)
-mouse_filter = 1
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]Random Place[/center]"
 
 [node name="ObjectBase" type="Node2D" parent="."]
 top_level = true

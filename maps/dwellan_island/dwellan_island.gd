@@ -19,6 +19,14 @@ func _make_ortho_camera() -> void:
 func _ready() -> void:
 	super()
 	#_make_ortho_camera()
+	
+	if Engine.is_editor_hint(): return
+	configure_map({
+		"image_path": "res://maps/dwellan_island/textures/map.png",
+		"image_rotation": 180.0,
+		"image_scale": 0.5,
+		"bg_color": Color("#285314")
+	})
 
 func _on_object_interacted() -> void:
 	# Reload foliage
@@ -26,5 +34,4 @@ func _on_object_interacted() -> void:
 		if node is FoliageSpawner:
 			node.render()
 
-func _to_lyllian() -> void:
-	Global.change_map("lyllian")
+func _to_lyllian() -> void: Global.change_map("lyllian")

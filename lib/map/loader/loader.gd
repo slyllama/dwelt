@@ -28,6 +28,7 @@ func _center_cog() -> void:
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	AudioServer.set_bus_volume_db(0, -80)
+	Global.object_data = []
 	
 	# Retina screen scaling - only gets checked once on initialisation
 	if !Global.loaded_once:
