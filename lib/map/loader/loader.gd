@@ -35,6 +35,7 @@ func _ready() -> void:
 	if DisplayServer.screen_get_size().x > 2000:
 		get_window().size *= 2.0
 		get_window().content_scale_factor = 2.0
+		DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
 	ResourceLoader.load_threaded_request(target_scene)
 	get_window().size_changed.connect(_center_cog)
 
