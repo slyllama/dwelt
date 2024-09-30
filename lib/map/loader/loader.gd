@@ -2,8 +2,6 @@ extends CanvasLayer
 # Loader
 # Facilitates in loading scenes
 
-const target_scene = "res://maps/dwellan_island/dwellan_island.tscn"
-
 var loading_status: int
 var progress: Array[float]
 var load_bar_bias = 2.0 # only seems to go to 50% by default
@@ -21,27 +19,32 @@ func _transition():
 	scale_spinner.tween_property($Spinner, "scale", Vector2(3.0, 3.0), 0.9)
 	fade.tween_callback(func():
 		get_tree().change_scene_to_packed(
-			ResourceLoader.load_threaded_get(target_scene)))
+			ResourceLoader.load_threaded_get(Global.target_scene)))
 
 func _center_cog() -> void:
 	# Centralise the spinner (which is a sprite, and not a control node)
-	$Spinner.position = get_window().size / 2.0 + Vector2(0, -50.0)
+	$Spinner.position = get_window().size / Global.retina_scale / 2.0 + Vector2(0, -50.0)
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	AudioServer.set_bus_volume_db(0, -80)
+	
+	# Retina screen scaling - only gets checked once on initialisation
+	if !Global.loaded_once:
+		Global.loaded_once = true
+		if DisplayServer.screen_get_size().x > 2000:
+			get_window().size *= 2.0
+			get_window().content_scale_factor = 2.0
+			Global.retina_scale = 2.0
+			DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
+	get_window().size_changed.connect(_center_cog)
 	_center_cog()
 	
-	# Retina screen scaling
-	if DisplayServer.screen_get_size().x > 2000:
-		get_window().size *= 2.0
-		get_window().content_scale_factor = 2.0
-		DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
-	ResourceLoader.load_threaded_request(target_scene)
-	get_window().size_changed.connect(_center_cog)
+	ResourceLoader.load_threaded_request(Global.target_scene)
 
 func _process(delta: float) -> void:
 	$Spinner.rotation_degrees += delta * 120.0 # continuous spinning of cog
-	loading_status = ResourceLoader.load_threaded_get_status(target_scene, progress)
+	loading_status = ResourceLoader.load_threaded_get_status(Global.target_scene, progress)
 	
 	match loading_status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:

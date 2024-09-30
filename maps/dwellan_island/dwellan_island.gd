@@ -25,3 +25,6 @@ func _on_object_interacted() -> void:
 	for node: Node in Utilities.get_all_children(self):
 		if node is FoliageSpawner:
 			node.render()
+
+func _to_lyllian() -> void:
+	Global.change_map("lyllian")

@@ -1,4 +1,4 @@
-extends TextureRect
+class_name Minimap extends TextureRect
 const FADE_TIME = 0.3
 
 var magnitude := 20.0
@@ -8,6 +8,10 @@ var image_offset = Vector2(0, 0.0)
 # TODO: retina (dynamic scaling)
 
 var objects = []
+
+func configure_map(data: Dictionary) -> void:
+	if "bg_color" in data:
+		self_modulate = data["bg_color"]
 
 func _ready() -> void:
 	modulate.a = 0.0

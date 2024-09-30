@@ -25,6 +25,7 @@ stretch_mode = 5
 script = ExtResource("1_7m3lm")
 
 [node name="MapImage" type="Sprite2D" parent="."]
+visible = false
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b8hul")

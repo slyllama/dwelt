@@ -12,7 +12,12 @@ const ObjectHandler = preload("res://lib/object/object_handler/object_handler.ts
 @export var start_muted = false
 
 var sky: WorldEnvironment
-var hud
+var hud: CanvasLayer
+var minimap: Minimap
+
+# Pass map configuration data to the Minimap
+func configure_map(data: Dictionary):
+	minimap.configure_map(data)
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -34,6 +39,7 @@ func _init() -> void:
 	if !Engine.is_editor_hint():
 		hud = HUD.instantiate()
 		add_child(hud)
+		minimap = hud.get_node("Minimap")
 
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
@@ -59,6 +65,7 @@ func _ready() -> void:
 	
 	# Connect settings and refresh
 	SettingsHandler.setting_changed.connect(func(parameter):
+		print("Applying settings...")
 		match parameter:
 			"fov":
 				CameraData.camera.fov = SettingsHandler.settings.fov

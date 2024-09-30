@@ -6,7 +6,7 @@ signal reached_kill_height
 var is_kill_height = false
 
 @export var gravity := 160.0
-@export var base_speed := 2.6
+@export var base_speed := 1.9
 @export var smoothing := 25.0
 @export var jump_strength := 8.0
 @export var hover_height := 1.0
