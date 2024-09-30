@@ -4,6 +4,13 @@ extends "res://lib/ui/ui_container/ui_container.gd"
 func _ready():
 	super()
 	$Container/FOV.value = SettingsHandler.settings.fov
+	
+	SettingsHandler.setting_changed.connect(func(parameter):
+		match parameter:
+			"fov":
+				$Container/FOVTitle.text = "Field of view: " + str(SettingsHandler.settings.fov) + "deg"
+				$Container/FOV.value = SettingsHandler.settings.fov
+	)
 
 # Open with a hotkey
 func _input(event: InputEvent) -> void:

@@ -208,14 +208,10 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="Settings" parent="." instance=ExtResource("9_nl48w")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -524.0
-offset_right = 424.0
-offset_bottom = -24.0
-grow_vertical = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 464.0
+offset_bottom = 532.0
 
 [connection signal="mouse_entered" from="SettingsButton" to="." method="_settings_button_mouse_in"]
 [connection signal="mouse_exited" from="SettingsButton" to="." method="_settings_button_mouse_out"]

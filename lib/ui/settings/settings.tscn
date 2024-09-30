@@ -16,32 +16,24 @@ layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container" index="3"]
+[node name="FOVTitle" type="RichTextLabel" parent="Container" index="3"]
 layout_mode = 2
-text = "This is some text"
+text = "Field of view: 0"
 fit_content = true
 
-[node name="HSlider" type="HSlider" parent="Container" index="4"]
-layout_mode = 2
-value = 50.0
-
-[node name="HSlider2" type="HSlider" parent="Container" index="5"]
-layout_mode = 2
-value = 50.0
-
-[node name="FOV" type="HSlider" parent="Container" index="6"]
+[node name="FOV" type="HSlider" parent="Container" index="4"]
 layout_mode = 2
 min_value = 40.0
 value = 90.0
 
-[node name="Sep2" type="ColorRect" parent="Container" index="7"]
+[node name="Sep2" type="ColorRect" parent="Container" index="5"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="PlayerPos" type="RichTextLabel" parent="Container" index="8"]
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="6"]
 modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 text = "[Player position]"

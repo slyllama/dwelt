@@ -25,17 +25,17 @@ func _transition():
 
 func _center_cog() -> void:
 	# Centralise the spinner (which is a sprite, and not a control node)
-	$Spinner.position = get_viewport().size / 2.0 + Vector2(0, -50.0)
+	$Spinner.position = get_window().size / 2.0 + Vector2(0, -50.0)
 
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
+	_center_cog()
+	
 	# Retina screen scaling
 	if DisplayServer.screen_get_size().x > 2000:
 		get_window().size *= 2.0
 		get_window().content_scale_factor = 2.0
 	ResourceLoader.load_threaded_request(target_scene)
-	
-	_center_cog()
 	get_window().size_changed.connect(_center_cog)
 
 func _process(delta: float) -> void:
