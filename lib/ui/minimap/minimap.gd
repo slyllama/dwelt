@@ -1,4 +1,4 @@
-class_name Minimap extends TextureRect
+class_name Minimap extends Panel
 const FADE_TIME = 0.3
 
 var magnitude := 20.0
@@ -11,24 +11,24 @@ var objects = []
 
 func configure_map(data: Dictionary) -> void:
 	if "image_path" in data:
-		$MapImage.texture = load(data["image_path"])
+		$Root/MapImage.texture = load(data["image_path"])
 	if "image_scale" in data:
 		var _s = data["image_scale"]
-		$MapImage.scale = Vector2(_s, _s)
+		$Root/MapImage.scale = Vector2(_s, _s)
 	if "image_rotation" in data:
-		$MapImage.rotation_degrees = data["image_rotation"]
+		$Root/MapImage.rotation_degrees = data["image_rotation"]
 	if "bg_color" in data:
-		self_modulate = data["bg_color"]
+		$Root.self_modulate = data["bg_color"]
 
 func _ready() -> void:
 	modulate.a = 0.0
-	clip_children = CLIP_CHILDREN_AND_DRAW
-	$MarkerBase.scale *= Vector2(0.5, 0.5)
-	$MarkerBase.position = size / 2.0
+	$Root.clip_children = CLIP_CHILDREN_AND_DRAW
+	$Root/MarkerBase.scale *= Vector2(0.5, 0.5)
+	$Root/MarkerBase.position = size / 2.0
 	
 	Global.objects_loaded.connect(func():
 		for o in Global.object_data:
-			var o_node = $ObjectBase/POI.duplicate()
+			var o_node = $Root/ObjectBase/POI.duplicate()
 			var pos = -Vector2(o.position.x, o.position.z) * magnitude
 			o_node.position = pos
 			o_node.modulate.a = 0.0
@@ -37,8 +37,8 @@ func _ready() -> void:
 			# Marker is always accurately tracked even when the point itself is constrained to the edge of the map
 			var o_marker = Marker2D.new()
 			o_marker.position = pos
-			$ObjectBase.add_child(o_node)
-			$ObjectBase.add_child(o_marker)
+			$Root/ObjectBase.add_child(o_node)
+			$Root/ObjectBase.add_child(o_marker)
 			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
 	
 	# Hide the map while things lerp into place; then fade in
@@ -62,25 +62,25 @@ func _process(delta: float) -> void:
 	var offset = Vector2(
 		Global.player_position.x * magnitude,
 		Global.player_position.z * magnitude)
-	$MarkerBase.rotation = -CameraData.facing_angle
+	$Root/MarkerBase.rotation = -CameraData.facing_angle
 	
-	$MapImage.position = lerp(
-		$MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
-	$MapImage.scale = lerp($MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
-	$ObjectBase.position = lerp($ObjectBase.position, global_position + size / 2.0 + offset * zoom, delta * 10)
-	$ObjectBase.scale = lerp($ObjectBase.scale, Vector2(zoom / 1.25, zoom / 1.25), delta * 10)
+	$Root/MapImage.position = lerp(
+		$Root/MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
+	$Root/MapImage.scale = lerp($Root/MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
+	$Root/ObjectBase.position = lerp($Root/ObjectBase.position, global_position + size / 2.0 + offset * zoom, delta * 10)
+	$Root/ObjectBase.scale = lerp($Root/ObjectBase.scale, Vector2(zoom / 1.25, zoom / 1.25), delta * 10)
 	
 	# Constrain the object to the edge of the map if it goes out of bounds
 	for o in objects:
-		var dist = o.marker.global_position.distance_to($MarkerBase.global_position)
-		var angle = o.marker.global_position.angle_to_point($MarkerBase.global_position)
+		var dist = o.marker.global_position.distance_to($Root/MarkerBase.global_position)
+		var angle = o.marker.global_position.angle_to_point($Root/MarkerBase.global_position)
 		angle += deg_to_rad(180)
 		if dist > 120:
 			var restrain_pos = Vector2(cos(angle), sin(angle)) * 120
-			o.node.global_position = $MarkerBase.global_position + restrain_pos
+			o.node.global_position = $Root/MarkerBase.global_position + restrain_pos
 		else: o.node.global_position = o.marker.global_position
 	
-	for node in $ObjectBase.get_children():
+	for node in $Root/ObjectBase.get_children():
 		if node is Sprite2D:
 			node.scale = lerp(node.scale, Vector2(1 / zoom, 1 / zoom), delta * 10)
 

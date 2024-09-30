@@ -13,11 +13,10 @@ func _fmt_color_tags(input: String) -> String:
 
 func _ready() -> void:
 	# Establish visibilty and modulation
-	$InteractSign.visible = false
+	$Minimap/InteractButton.visible = false
 	$Sidebar.visible = false
 	$FG.visible = true
-	$SettingsButton.modulate.a = 0.5
-	
+
 	# Fade from black
 	var smoke_transition = SmokeTransition.instantiate()
 	add_child(smoke_transition)
@@ -32,12 +31,13 @@ func _ready() -> void:
 		$Sidebar.visible = true
 		$Sidebar/Heading/Title.text = Global.proximal_object.title
 		$Sidebar/Info.text = _fmt_color_tags(Global.proximal_object.description)
-		$InteractSign.text = "[center]" + Global.proximal_object.interact_string + "[/center]"
-		if Global.proximal_object.can_interact: $InteractSign.visible = true
-		else: $InteractSign.visible = false)
+		if Global.proximal_object.can_interact:
+			# Interact button will glow on fade in
+			$Minimap/InteractButton.fade_in(true)
+		else: $Minimap/InteractButton.fade_out())
 	
 	Global.proximity_left.connect(func():
-		$InteractSign.visible = false
+		$Minimap/InteractButton.fade_out()
 		$Sidebar.visible = false)
 	
 	Global.shake_camera.connect(func(): # chromatic aberration for camera shake
@@ -48,6 +48,5 @@ func _on_settings_pressed() -> void:
 	if !$Settings.is_open: $Settings.open()
 	else: $Settings.close()
 
-
-func _settings_button_mouse_in() -> void: $SettingsButton.modulate.a = 1.0
-func _settings_button_mouse_out() -> void: $SettingsButton.modulate.a = 0.5
+func _on_interact_pressed() -> void:
+	Global.interact_pressed.emit()

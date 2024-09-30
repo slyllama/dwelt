@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bklbqbfm8726k"
-path="res://.godot/imported/debug_corner.png-31b5efe8b582ee595201d6a814aef141.ctex"
+uid="uid://bp8ggomc8okr3"
+path="res://.godot/imported/map_border.png-d959ed5aaa87d5160fdb7dc892731602.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/hud/textures/debug_corner.png"
-dest_files=["res://.godot/imported/debug_corner.png-31b5efe8b582ee595201d6a814aef141.ctex"]
+source_file="res://lib/ui/minimap/textures/map_border.png"
+dest_files=["res://.godot/imported/map_border.png-d959ed5aaa87d5160fdb7dc892731602.ctex"]
 
 [params]
 

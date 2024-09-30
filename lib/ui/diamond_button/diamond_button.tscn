@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b47jl8wwysodp"]
+
+[ext_resource type="Texture2D" uid="uid://cr5b4e8r5jqoo" path="res://lib/ui/hud/textures/settings_icon.png" id="1_fyrfl"]
+[ext_resource type="Script" path="res://lib/ui/diamond_button/diamond_button.gd" id="1_rh4fp"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="3_yt0vw"]
+
+[node name="DiamondButton" type="TextureButton"]
+z_index = 1
+custom_minimum_size = Vector2(84, 84)
+texture_normal = ExtResource("1_fyrfl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_rh4fp")
+
+[node name="Blur" type="TextureRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yt0vw")
+
+[node name="BlurHighlight" type="TextureRect" parent="Blur"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -69.0
+offset_right = 69.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yt0vw")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

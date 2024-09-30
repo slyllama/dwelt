@@ -22,6 +22,11 @@ func _ready() -> void:
 	$Title.set_text(title)
 	$Anim.speed_scale = 0.5 + rng.randf() * 0.5
 	$ObjectOrb.visible = show_mote
+	
+	# Check if the little button in the corner of the map has been pressed
+	Global.interact_pressed.connect(func():
+		if Global.proximal_object.id == id:
+			interacted.emit())
 
 func _input(_event: InputEvent) -> void:
 	if !can_interact: return

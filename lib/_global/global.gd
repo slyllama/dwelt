@@ -17,6 +17,7 @@ func change_map(map_name: String) -> void:
 	target_scene = "res://maps/" + map_name + "/" + map_name + ".tscn"
 	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 
+signal interact_pressed
 signal move_player(pos: Vector3) # when called, will move the player
 signal objects_loaded # ObjectHandler has gathered all of its objects into object_data
 signal pylon_start_activated(id)

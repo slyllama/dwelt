@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c45qpvj3a643u"
-path="res://.godot/imported/overlay.png-08a523900229a058591623df93799f03.ctex"
+uid="uid://cmiarp0m8f0o8"
+path="res://.godot/imported/interact_icon.png-45255614fc6cf30081047c7a6313003c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/minimap/textures/overlay.png"
-dest_files=["res://.godot/imported/overlay.png-08a523900229a058591623df93799f03.ctex"]
+source_file="res://lib/ui/hud/textures/interact_icon.png"
+dest_files=["res://.godot/imported/interact_icon.png-45255614fc6cf30081047c7a6313003c.ctex"]
 
 [params]
 

@@ -1,26 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=12 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
-[ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/debug_corner.png" id="2_u8gkr"]
+[ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_u8gkr"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="3_gfkw7"]
 [ext_resource type="PackedScene" uid="uid://bf2seuyksa7tu" path="res://lib/ui/hud/debug/debug_text.tscn" id="3_ghokv"]
 [ext_resource type="Texture2D" uid="uid://dxcty3ssnk61q" path="res://lib/ui/hud/textures/panel_gradient.tres" id="5_1e3af"]
 [ext_resource type="PackedScene" uid="uid://jtl64blli4jh" path="res://lib/ui/minimap/minimap.tscn" id="6_btust"]
-[ext_resource type="Texture2D" uid="uid://cv25w7bi8p5mb" path="res://lib/ui/minimap/textures/map_corner.png" id="7_b4vqn"]
-[ext_resource type="Texture2D" uid="uid://cr5b4e8r5jqoo" path="res://lib/ui/hud/textures/settings_icon.png" id="9_brt7h"]
+[ext_resource type="Texture2D" uid="uid://cmiarp0m8f0o8" path="res://lib/ui/hud/textures/interact_icon.png" id="8_45tje"]
+[ext_resource type="PackedScene" uid="uid://b47jl8wwysodp" path="res://lib/ui/diamond_button/diamond_button.tscn" id="8_oelrm"]
 [ext_resource type="PackedScene" uid="uid://cmkolvndsk61d" path="res://lib/ui/settings/settings.tscn" id="9_nl48w"]
-
-[sub_resource type="Gradient" id="Gradient_3ubsl"]
-offsets = PackedFloat32Array(0, 0.26776, 0.699454, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.784314, 0, 0, 0, 0.784314, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_d357p"]
-gradient = SubResource("Gradient_3ubsl")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wlfy"]
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-texture = SubResource("GradientTexture1D_d357p")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7p4t"]
 content_margin_left = 16.0
@@ -40,13 +28,13 @@ texture = ExtResource("5_1e3af")
 layer = 128
 script = ExtResource("1_n4rw6")
 
-[node name="Corner" type="TextureRect" parent="."]
+[node name="CornerNW" type="TextureRect" parent="."]
 offset_right = 466.0
 offset_bottom = 562.0
 texture = ExtResource("2_u8gkr")
 stretch_mode = 5
 
-[node name="CornerSW" type="TextureRect" parent="."]
+[node name="Corner" type="TextureRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -59,75 +47,6 @@ grow_vertical = 0
 texture = ExtResource("2_u8gkr")
 stretch_mode = 5
 flip_h = true
-flip_v = true
-
-[node name="DebugText" parent="." instance=ExtResource("3_ghokv")]
-offset_top = 48.0
-offset_bottom = 248.0
-mouse_filter = 1
-
-[node name="InteractSign" type="RichTextLabel" parent="."]
-clip_contents = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -131.0
-offset_top = -109.0
-offset_right = 131.0
-offset_bottom = -69.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 1
-theme_override_fonts/normal_font = ExtResource("3_gfkw7")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_4wlfy")
-bbcode_enabled = true
-text = "[center]Interact[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="CornerL" type="TextureRect" parent="InteractSign"]
-modulate = Color(1, 1, 1, 0.588235)
-z_index = -1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 88.0
-offset_top = -20.0
-offset_right = 133.0
-offset_bottom = 202.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-texture = ExtResource("7_b4vqn")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="CornerR" type="TextureRect" parent="InteractSign"]
-modulate = Color(1, 1, 1, 0.588235)
-z_index = -1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 136.0
-offset_top = -20.0
-offset_right = 181.0
-offset_bottom = 202.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-texture = ExtResource("7_b4vqn")
-expand_mode = 5
-stretch_mode = 5
 flip_v = true
 
 [node name="Sidebar" type="VBoxContainer" parent="."]
@@ -174,28 +93,47 @@ mouse_filter = 1
 color = Color(1, 1, 1, 0.196078)
 
 [node name="Minimap" parent="." instance=ExtResource("6_btust")]
-offset_left = -268.0
-offset_top = -268.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_left = -280.0
+offset_top = -280.0
+offset_right = -20.0
+offset_bottom = -20.0
 size_flags_vertical = 8
 
-[node name="SettingsButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0.588235)
+[node name="SettingsButton" parent="Minimap" instance=ExtResource("8_oelrm")]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -44.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -84.0
+offset_top = -84.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("9_brt7h")
-ignore_texture_size = true
-stretch_mode = 5
+
+[node name="InteractButton" parent="Minimap" instance=ExtResource("8_oelrm")]
+layout_mode = 0
+offset_top = 176.0
+offset_right = 84.0
+offset_bottom = 260.0
+texture_normal = ExtResource("8_45tje")
+
+[node name="DebugContainer" type="VBoxContainer" parent="Minimap"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -200.0
+offset_right = -20.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="DebugText" parent="Minimap/DebugContainer" instance=ExtResource("3_ghokv")]
+layout_mode = 2
+size_flags_vertical = 10
+fit_content = true
 
 [node name="FG" type="ColorRect" parent="."]
 visible = false
@@ -208,11 +146,17 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="Settings" parent="." instance=ExtResource("9_nl48w")]
-offset_left = 64.0
-offset_top = 32.0
-offset_right = 464.0
-offset_bottom = 532.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -272.0
+offset_right = 200.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="mouse_entered" from="SettingsButton" to="." method="_settings_button_mouse_in"]
-[connection signal="mouse_exited" from="SettingsButton" to="." method="_settings_button_mouse_out"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Minimap/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Minimap/InteractButton" to="." method="_on_interact_pressed"]
