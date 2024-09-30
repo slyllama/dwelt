@@ -1,10 +1,9 @@
 extends Node
+# SettingsHandler
+# Handles the management and updating of settings
 
 # These will be considered default settings (for now)
-var settings = {
-	"fov": 90
-}
-
+var settings = { "fov": 90 }
 signal setting_changed(parameter)
 
 # Ping 'setting_changed' for all settings

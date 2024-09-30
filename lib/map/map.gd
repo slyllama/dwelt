@@ -65,9 +65,7 @@ func _ready() -> void:
 	
 	# Connect settings and refresh
 	SettingsHandler.setting_changed.connect(func(parameter):
-		print("Applying settings...")
 		match parameter:
-			"fov":
-				CameraData.camera.fov = SettingsHandler.settings.fov
+			"fov": CameraData.camera.fov = SettingsHandler.settings.fov
 	)
 	SettingsHandler.refresh()

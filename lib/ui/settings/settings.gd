@@ -3,13 +3,12 @@ extends "res://lib/ui/ui_container/ui_container.gd"
 
 func _ready():
 	super()
-	$Container/FOV.value = SettingsHandler.settings.fov
-	
+	# Use set_value_no_signal(value) to configure without re-triggering settings updates
 	SettingsHandler.setting_changed.connect(func(parameter):
 		match parameter:
 			"fov":
 				$Container/FOVTitle.text = "Field of view: " + str(SettingsHandler.settings.fov) + "deg"
-				$Container/FOV.value = SettingsHandler.settings.fov
+				$Container/FOV.set_value_no_signal(SettingsHandler.settings.fov)
 	)
 
 # Open with a hotkey

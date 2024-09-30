@@ -37,12 +37,10 @@ func _ready() -> void:
 	get_window().focus_exited.connect(func():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false)
-	
 	Global.shake_camera.connect(func():
 		$Camera/CameraFX.play("shake"))
 
 	# Make the camera node global so that other scenes can use unproject_position
-	print("Assigning camera node to CameraData...")
 	CameraData.camera = camera
 
 func _input(event: InputEvent) -> void:
