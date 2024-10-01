@@ -42,18 +42,22 @@ text = "Minimap Tool"
 layout_mode = 2
 text = "Toggle Full Screen"
 
-[node name="Quit" type="Button" parent="Container" index="10"]
+[node name="FoliageDensity" type="Button" parent="Container" index="10"]
+layout_mode = 2
+text = "Foliage Density"
+
+[node name="Quit" type="Button" parent="Container" index="11"]
 layout_mode = 2
 text = "Quit"
 
-[node name="LowerSep" type="ColorRect" parent="Container" index="11"]
+[node name="LowerSep" type="ColorRect" parent="Container" index="12"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="PlayerPos" type="RichTextLabel" parent="Container" index="12"]
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="13"]
 modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 bbcode_enabled = true
@@ -65,4 +69,5 @@ fit_content = true
 [connection signal="pressed" from="Container/ResetSettings" to="." method="_on_reset_settings_pressed"]
 [connection signal="pressed" from="Container/MinimapTool" to="." method="_on_minimap_tool_pressed"]
 [connection signal="pressed" from="Container/FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="Container/FoliageDensity" to="." method="_on_foliage_density_pressed"]
 [connection signal="pressed" from="Container/Quit" to="." method="_on_quit_pressed"]

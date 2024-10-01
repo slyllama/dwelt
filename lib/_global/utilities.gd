@@ -5,6 +5,9 @@ extends Node
 const DEG = "[char=0x000000B0]"
 const TICK = "[char=0x00002713]"
 
+func get_foliage_buffer_path(scene_name: String, node_name: String) -> String:
+	return("res://_foliage_buffer/" + scene_name + "_" + node_name + ".res")
+
 # Get all children recursively
 func get_all_children(node: Node) -> Array:
 	var nodes: Array = []

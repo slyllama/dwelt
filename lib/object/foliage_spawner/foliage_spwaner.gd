@@ -31,7 +31,9 @@ var foliage_count = 0
 var active_foliage_mesh: ArrayMesh
 var render_distance := 20.0
 var render_fade_spread := 2.0
-var _ct = count # calculated _ct
+
+func _get_foliage_buffer_path(node_name: String) -> String:
+	return("res://_foliage_buffer/" + node_name + ".res")
 
 func set_display_distance() -> void:
 	#Configure materials to fade away at a certain distance
@@ -40,13 +42,13 @@ func set_display_distance() -> void:
 	mat.distance_fade_min_distance = render_distance + render_fade_spread
 	mat.distance_fade_max_distance = render_distance
 
-func render() -> void:
+func render(density: float = 1.0) -> void:
 	if foliage_mesh == null: active_foliage_mesh = GRASS
 	else: active_foliage_mesh = foliage_mesh
 	if moss_cover: $Moss.size = Vector3(size * 1.2, 0.5, size * 1.2)
 	else: $Moss.visible = false
 	
-	# Reset - clear foliage _ct
+	# Reset - clear foliage count
 	if !Engine.is_editor_hint():
 		Global.foliage_count -= foliage_count
 	foliage_count = 0
@@ -56,15 +58,15 @@ func render() -> void:
 		multimesh.use_colors = true
 	multimesh.mesh = active_foliage_mesh
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.instance_count = _ct * _ct
-	multimesh.visible_instance_count = _ct * _ct
+	multimesh.instance_count = count * count
+	multimesh.visible_instance_count = floor(count * count * density)
 	
 	var midpoint = Vector3(size / 2, 0, size / 2)
-	var separation = size / _ct # base distance between instances
+	var separation = size / count # base distance between instances
 	
-	for y in _ct:
-		for x in _ct:
-			var i = y * _ct + x
+	for y in count:
+		for x in count:
+			var i = y * count + x
 			if vary_colours:
 				multimesh.set_instance_color(i, lerp(colour_1, colour_2, rng.randf()))
 			
@@ -76,7 +78,7 @@ func render() -> void:
 			
 			var dist: float = 1
 			if smooth:
-				dist = abs(float(x) / _ct - 0.5) + abs(float(y) / _ct - 0.5)
+				dist = abs(float(x) / count - 0.5) + abs(float(y) / count - 0.5)
 				dist = 0.5 + (1 - dist) / 2.0
 			
 			# Apply transforms
@@ -87,16 +89,17 @@ func render() -> void:
 			multimesh.set_instance_transform(i, grass_transform)
 			foliage_count += 1
 	
+	var buffer_path = _get_foliage_buffer_path(name)
+	ResourceSaver.save(multimesh, buffer_path)
+	multimesh = null
+	multimesh = load(buffer_path)
 	if !Engine.is_editor_hint():
 		set_display_distance()
 		Global.foliage_count += foliage_count
 
 func _ready() -> void:
-	# Sparser foliage on macOS. TODO: this should be a setting instead
-	if OS.get_name() == "macOS":
-		_ct = floor(count * 0.6)
-	
 	if !Engine.is_editor_hint():
+		Global.foliage_density_changed.connect(render)
 		$DebugSphere.visible = false
 	render()
 

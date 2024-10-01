@@ -39,3 +39,6 @@ func _on_full_screen_pressed() -> void:
 func _on_quit_pressed() -> void:
 	SettingsHandler.save_to_file()
 	get_tree().quit()
+
+func _on_foliage_density_pressed() -> void:
+	Global.foliage_density_changed.emit(0.5)

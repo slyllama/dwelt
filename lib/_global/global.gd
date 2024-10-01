@@ -29,6 +29,7 @@ func change_map(map_name: String) -> void:
 signal click_sound
 signal hover_sound
 
+signal foliage_density_changed(density: float)
 signal interact_pressed
 signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
