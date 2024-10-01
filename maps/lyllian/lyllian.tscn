@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cg1m4k6i1fknp"]
+[gd_scene load_steps=26 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="Texture2D" uid="uid://cxdb7vmj8y1me" path="res://generic/textures/stars_hdr.png" id="2_2eq22"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/props/scruffy_house/scruffy_house.glb" id="7_x6ach"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
+[ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/object/pylon/sound/heal.ogg" id="11_xuqaq"]
 [ext_resource type="Material" uid="uid://dcpk66bxnfqg1" path="res://generic/materials/mat_grey.tres" id="12_mlwfi"]
 
 [sub_resource type="Gradient" id="Gradient_ac408"]
@@ -170,6 +171,10 @@ interact_string = "Port"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968783, 0)
 mesh = SubResource("QuadMesh_o3pun")
 material = SubResource("StandardMaterial3D_082wt")
+
+[node name="Heal" type="AudioStreamPlayer" parent="Pylon"]
+stream = ExtResource("11_xuqaq")
+max_polyphony = 2
 
 [node name="ScruffyHouse" parent="." instance=ExtResource("7_x6ach")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00651, 1, -2.13901)

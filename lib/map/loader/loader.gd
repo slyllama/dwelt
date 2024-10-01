@@ -42,7 +42,9 @@ func _ready() -> void:
 			get_window().size *= 2.0
 			get_window().content_scale_factor = 2.0
 			Global.retina_scale = 2.0
-			DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
+			# macOS already configures the cursor for
+			if OS.get_name() != "macOS":
+				DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
 	get_window().size_changed.connect(_center_cog)
 	_center_cog()
 	

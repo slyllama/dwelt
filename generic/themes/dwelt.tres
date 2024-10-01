@@ -82,4 +82,4 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ufxr7")
 HSlider/styles/slider = SubResource("StyleBoxFlat_onf8w")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_2aj8q")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_aig0d")
-RichTextLabel/font_sizes/normal_font_size = 14
+RichTextLabel/font_sizes/normal_font_size = 16

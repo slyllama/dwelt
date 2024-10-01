@@ -15,6 +15,7 @@ func _ready() -> void:
 	SettingsHandler.save_to_file()
 
 func _to_dwellan() -> void:
+	$Pylon/Heal.play()
 	var r = RippleFX.instantiate()
 	r.finished.connect(func():
 		Global.change_map("dwellan_island"))
