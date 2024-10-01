@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://kqtxsdr7abxc"]
+[gd_scene load_steps=6 format=3 uid="uid://kqtxsdr7abxc"]
 
-[ext_resource type="MultiMesh" uid="uid://sgu1y6no1ml1" path="res://_foliage_buffer/FoliageSpawner.res" id="1_3uk65"]
-[ext_resource type="Script" path="res://lib/object/foliage_spawner/foliage_spwaner.gd" id="1_wxxxt"]
-[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan_island/props/foliage/textures/moss_mask.png" id="3_33jmp"]
+[ext_resource type="Script" path="res://lib/object/foliage_spawner/foliage_spawner.gd" id="1_wxxxt"]
+[ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/dwellan/props/foliage/grass.res" id="1_x76r4"]
+[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/props/foliage/textures/moss_mask.png" id="3_33jmp"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_plnd3"]
+transform_format = 1
+instance_count = 25
+visible_instance_count = 25
+mesh = ExtResource("1_x76r4")
+buffer = PackedFloat32Array(-1.10352, 0, 4.8767, -0.22078, 0, 1.92699, 0, 0, -4.8767, 0, -1.10352, -0.0959667, 0.519123, 0, -4.97298, -0.181999, 0, 2.81372, 0, 0, 4.97298, 0, 0.519123, -0.293789, 0.337817, 0, 4.98857, 0.452851, 0, 3.26465, 0, 0, -4.98857, 0, 0.337817, -0.740139, -1.71269, 0, -4.69752, 0.776967, 0, 3.48123, 0, 0, 4.69752, 0, -1.71269, -0.115032, 0.922713, 0, -4.91412, 1.09846, 0, 2.3111, 0, 0, 4.91412, 0, 0.922713, -0.130982, 1.62969, 0, 4.72695, -0.165238, 0, 2.88725, 0, 0, -4.72695, 0, 1.62969, -0.475282, -4.99944, 0, -0.0750089, -0.316186, 0, 3.31995, 0, 0, 0.0750089, 0, -4.99944, 0.111061, 4.9739, 0, 0.510194, 0.749173, 0, 3.10882, 0, 0, -0.510194, 0, 4.9739, -0.428475, 4.94401, 0, -0.746174, 0.925157, 0, 3.98917, 0, 0, 0.746174, 0, 4.94401, -0.220327, -4.48431, 0, 2.21155, 0.906494, 0, 2.56518, 0, 0, -2.21155, 0, -4.48431, -0.399081, 3.62144, 0, -3.44749, -0.86467, 0, 3.04227, 0, 0, 3.44749, 0, 3.62144, 0.414794, 1.0205, 0, -4.89475, 0.380057, 0, 3.13851, 0, 0, 4.89475, 0, 1.0205, -0.058163, 3.72477, 0, -3.33558, 0.192496, 0, 3.27344, 0, 0, 3.33558, 0, 3.72477, 0.0591213, 1.36902, 0, -4.80893, 0.223234, 0, 2.8378, 0, 0, 4.80893, 0, 1.36902, 0.441382, -0.340505, 0, 4.98839, 0.690567, 0, 3.8882, 0, 0, -4.98839, 0, -0.340505, 0.430603, -3.62783, 0, 3.44076, -0.693087, 0, 2.80099, 0, 0, -3.44076, 0, -3.62783, 0.431425, 2.83642, 0, -4.11761, -0.444948, 0, 3.18231, 0, 0, 4.11761, 0, 2.83642, 0.516773, -2.61775, 0, 4.25997, 0.276812, 0, 2.85944, 0, 0, -4.25997, 0, -2.61775, 0.286245, -4.69176, 0, 1.72842, 1.09951, 0, 4.37519, 0, 0, -1.72842, 0, -4.69176, 0.899275, 4.54494, 0, 2.0841, 0.957483, 0, 3.37178, 0, 0, -2.0841, 0, 4.54494, 0.402877, -4.80678, 0, 1.37655, -0.350793, 0, 2.229, 0, 0, -1.37655, 0, -4.80678, 1.55846, 3.98015, 0, 3.02629, 0.226845, 0, 2.16316, 0, 0, -3.02629, 0, 3.98015, 1.0272, -3.20027, 0, 3.84165, 0.166489, 0, 3.4167, 0, 0, -3.84165, 0, -3.20027, 1.55038, -2.03601, 0, 4.56669, 0.265532, 0, 2.94135, 0, 0, -4.56669, 0, -2.03601, 0.735665, 0.978651, 0, -4.90329, 1.02843, 0, 2.89254, 0, 0, 4.90329, 0, 0.978651, 0.866925)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xcnj"]
 no_depth_test = true
@@ -14,7 +21,7 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="FoliageSpawner" type="MultiMeshInstance3D"]
 cast_shadow = 0
-multimesh = ExtResource("1_3uk65")
+multimesh = SubResource("MultiMesh_plnd3")
 script = ExtResource("1_wxxxt")
 
 [node name="Moss" type="Decal" parent="."]

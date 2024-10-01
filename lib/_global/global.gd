@@ -21,9 +21,15 @@ const MINIMAP_DATA = {
 }
 
 # Change this before invoking the loader - it will load whatever scene is here
+# Allows for serialised (.scn) scenes too
 var target_scene = "res://maps/lyllian/lyllian.tscn"
 func change_map(map_name: String) -> void:
-	target_scene = "res://maps/" + map_name + "/" + map_name + ".tscn"
+	var _ext = ".tscn"
+	var _path = "res://maps/" + map_name + "/" + map_name
+	if FileAccess.file_exists(_path + ".tscn"):
+		target_scene = _path + ".tscn"
+	elif FileAccess.file_exists(_path + ".scn"):
+		target_scene = _path + ".scn"
 	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 
 signal click_sound

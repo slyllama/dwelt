@@ -18,5 +18,5 @@ func _to_dwellan() -> void:
 	$Pylon/Heal.play()
 	var r = RippleFX.instantiate()
 	r.finished.connect(func():
-		Global.change_map("dwellan_island"))
+		Global.change_map("dwellan"))
 	$Pylon.add_child(r)
