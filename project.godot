@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Dwelt"
 run/main_scene="res://lib/map/loader/loader.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="dwelt"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)

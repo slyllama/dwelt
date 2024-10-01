@@ -45,5 +45,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_yt0vw")
 
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

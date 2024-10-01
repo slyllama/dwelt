@@ -33,6 +33,9 @@ func load_track() -> void:
 
 func _ready() -> void:
 	if !enabled: return
+	# Connect button click and hover effects, called through Global
+	Global.hover_sound.connect(func(): $Hover.play())
+	Global.click_sound.connect(func(): $Click.play())
 	
 	if track_list == []: return
 	tracks = track_list.duplicate()

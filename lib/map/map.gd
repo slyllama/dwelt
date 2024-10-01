@@ -67,5 +67,6 @@ func _ready() -> void:
 	SettingsHandler.setting_changed.connect(func(parameter):
 		match parameter:
 			"fov": CameraData.camera.fov = SettingsHandler.settings.fov
+			"brightness": sky.environment.adjustment_brightness = SettingsHandler.settings.brightness
 	)
 	SettingsHandler.refresh()

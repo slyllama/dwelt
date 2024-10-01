@@ -31,5 +31,8 @@ func fade_out() -> void:
 		if visible: _reset(true))
 
 func _ready() -> void: _reset()
-func _on_mouse_entered() -> void: modulate = Color.WHITE
+func _on_mouse_entered() -> void:
+	Global.hover_sound.emit()
+	modulate = Color.WHITE
 func _on_mouse_exited() -> void: modulate = TINT
+func _on_focus_entered() -> void: Global.click_sound.emit()

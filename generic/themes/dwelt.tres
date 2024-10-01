@@ -48,9 +48,10 @@ border_color = Color(0, 0, 0, 1)
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_8cxes"]
-color = Color(0.212305, 0.212305, 0.212305, 1)
-thickness = 7
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onf8w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 4
+border_color = Color(0.172833, 0.172833, 0.172833, 1)
 
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_fagal")
@@ -60,4 +61,4 @@ HSlider/icons/grabber = ExtResource("1_1p0q0")
 HSlider/icons/grabber_highlight = ExtResource("2_05svm")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qvmh4")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ufxr7")
-HSlider/styles/slider = SubResource("StyleBoxLine_8cxes")
+HSlider/styles/slider = SubResource("StyleBoxFlat_onf8w")

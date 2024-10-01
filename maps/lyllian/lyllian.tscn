@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg1m4k6i1fknp"]
+[gd_scene load_steps=10 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/environment.tres" id="2_rsjxv"]
 [ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_725dw"]
+[ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="4_q3k13"]
+[ext_resource type="AudioStream" uid="uid://byoafwuotvs46" path="res://maps/lyllian/sound/awake.ogg" id="5_2luym"]
+[ext_resource type="AudioStream" uid="uid://cu060y4x2scnl" path="res://maps/lyllian/sound/rain.ogg" id="6_epu3l"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
 [ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/props/scruffy_house/scruffy_house.glb" id="7_x6ach"]
@@ -26,6 +29,14 @@ directional_shadow_blend_splits = true
 [node name="Player" parent="." instance=ExtResource("3_725dw")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Jukebox" parent="." instance=ExtResource("4_q3k13")]
+track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
+
+[node name="Ambience" type="AudioStreamPlayer" parent="Jukebox"]
+stream = ExtResource("6_epu3l")
+volume_db = -9.0
+autoplay = true
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 1.5)

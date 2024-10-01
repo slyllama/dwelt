@@ -23,6 +23,7 @@ func close():
 	if !is_open: return
 	
 	is_open = false
+	SettingsHandler.save_to_file()
 	var close_tween = create_tween()
 	close_tween.tween_property(self, "modulate:a", 0.0, TRANS_TIME)
 	close_tween.tween_callback(func():
@@ -38,7 +39,12 @@ func _ready():
 	# Pass mouse events through UI elements, because non-orbit checks are done on the panel itself
 	for n in Utilities.get_all_children(self):
 		if "mouse_filter" in n: n.mouse_filter = MOUSE_FILTER_PASS
-
+		# Connect hover sound effects
+		if n is BaseButton or n is Range:
+			n.focus_entered.connect(func(): Global.click_sound.emit())
+			n.mouse_entered.connect(func(): Global.hover_sound.emit())
+	
+	
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if mouse_in_title:

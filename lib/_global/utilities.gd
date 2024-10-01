@@ -2,6 +2,8 @@ extends Node
 # Utilities
 # Various handy tools!
 
+const DEG = "[char=0x000000B0]"
+
 # Get all children recursively
 func get_all_children(node: Node) -> Array:
 	var nodes: Array = []
