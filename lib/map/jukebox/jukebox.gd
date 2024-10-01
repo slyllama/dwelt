@@ -32,11 +32,12 @@ func load_track() -> void:
 		return
 
 func _ready() -> void:
-	if !enabled: return
 	# Connect button click and hover effects, called through Global
 	Global.hover_sound.connect(func(): $Hover.play())
 	Global.click_sound.connect(func(): $Click.play())
 	
+	# `enabled` only disables music, not sound effects
+	if !enabled: return
 	if track_list == []: return
 	tracks = track_list.duplicate()
 	await get_tree().create_timer(2.0).timeout

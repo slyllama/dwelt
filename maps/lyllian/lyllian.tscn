@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cg1m4k6i1fknp"]
+[gd_scene load_steps=25 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="Texture2D" uid="uid://cxdb7vmj8y1me" path="res://generic/textures/stars_hdr.png" id="2_2eq22"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
 [ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/props/scruffy_house/scruffy_house.glb" id="7_x6ach"]
+[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
+[ext_resource type="Material" uid="uid://dcpk66bxnfqg1" path="res://generic/materials/mat_grey.tres" id="12_mlwfi"]
 
 [sub_resource type="Gradient" id="Gradient_ac408"]
 offsets = PackedFloat32Array(0, 0.184211, 1)
@@ -81,6 +83,18 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_8d4sh")
 size = Vector2(0.2, 0.2)
 
+[sub_resource type="QuadMesh" id="QuadMesh_o3pun"]
+size = Vector2(1.4, 1.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_082wt"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.43, 1, 0.43, 0.364706)
+albedo_texture = ExtResource("9_xfjyu")
+billboard_mode = 2
+billboard_keep_scale = true
+
 [node name="Lyllian" type="Node3D"]
 script = ExtResource("1_1mnll")
 environment = SubResource("Environment_mlws5")
@@ -102,8 +116,20 @@ directional_shadow_blend_splits = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 0
+amount = 160
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.5
+fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_m07u6")
+draw_pass_1 = SubResource("QuadMesh_ui8j8")
+
 [node name="Jukebox" parent="." instance=ExtResource("4_q3k13")]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
+enabled = false
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Jukebox"]
 stream = ExtResource("6_epu3l")
@@ -118,7 +144,7 @@ omni_range = 6.0
 omni_attenuation = 1.4
 
 [node name="Light2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.5, 0)
 light_color = Color(1, 0.785, 0.57, 1)
 light_energy = 5.0
 omni_range = 4.0
@@ -140,18 +166,44 @@ description = "Take me to Dwellan Courtyard!"
 can_interact = true
 interact_string = "Port"
 
+[node name="Glow" type="CSGMesh3D" parent="Pylon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968783, 0)
+mesh = SubResource("QuadMesh_o3pun")
+material = SubResource("StandardMaterial3D_082wt")
+
 [node name="ScruffyHouse" parent="." instance=ExtResource("7_x6ach")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00651, 1, -2.13901)
 
-[node name="Motes" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-cast_shadow = 0
-amount = 160
-lifetime = 5.0
-preprocess = 5.0
-randomness = 0.5
-fixed_fps = 15
-process_material = SubResource("ParticleProcessMaterial_m07u6")
-draw_pass_1 = SubResource("QuadMesh_ui8j8")
+[node name="Greybox" type="Node3D" parent="."]
+
+[node name="Shelf" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 2.1, 2)
+size = Vector3(1.5, 2.35, 0.6)
+material = ExtResource("12_mlwfi")
+
+[node name="Shelf2" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.1, 2)
+size = Vector3(1.5, 2.35, 0.6)
+material = ExtResource("12_mlwfi")
+
+[node name="KitchenBench" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8667, 1.6, 2)
+size = Vector3(2, 1.2, 0.6)
+material = ExtResource("12_mlwfi")
+
+[node name="KitchenBench2" type="CSGBox3D" parent="Greybox/KitchenBench"]
+transform = Transform3D(0.485084, 0, 0.874467, 0, 1, 0, -0.874467, 0, 0.485084, 1.21714, 0, -0.704212)
+size = Vector3(2, 1.2, 0.6)
+material = ExtResource("12_mlwfi")
+
+[node name="Table" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(0.999798, 0, 0.0200874, 0, 1, 0, -0.0200874, 0, 0.999798, 4.0093, 1.9, -2.21516)
+size = Vector3(1.7, 0.05, 1)
+material = ExtResource("12_mlwfi")
+
+[node name="AoiPainting" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0352, 2.91588, 0.847679)
+size = Vector3(0.02, 0.84, 0.59)
+material = ExtResource("12_mlwfi")
 
 [connection signal="interacted" from="Pylon/ToDwellan" to="." method="_to_dwellan"]
