@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c5a6kjjtcv43y"]
+
+[ext_resource type="Shader" path="res://maps/lyllian/props/scruffy_house/materials/shaders/shader_scruffpaper.gdshader" id="1_h5uur"]
+[ext_resource type="Texture2D" uid="uid://3bwa1vsqs3vt" path="res://maps/lyllian/props/scruffy_house/materials/textures/scruffpaper_norm.jpg" id="2_5jfaq"]
+[ext_resource type="Texture2D" uid="uid://dtqeh8d7uoein" path="res://maps/lyllian/props/scruffy_house/materials/textures/scruffpaper_grunge.jpg" id="2_554oa"]
+[ext_resource type="Texture2D" uid="uid://dm68k7vsufb3m" path="res://maps/lyllian/props/scruffy_house/materials/textures/scruffpaper_diff.jpg" id="2_yk7yx"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h5uur")
+shader_parameter/uv_scale = 17.0
+shader_parameter/grunge_scale = 2.4
+shader_parameter/wallpaper_texture = ExtResource("2_yk7yx")
+shader_parameter/wallpaper_normal = ExtResource("2_5jfaq")
+shader_parameter/wallpaper_grunge = ExtResource("2_554oa")

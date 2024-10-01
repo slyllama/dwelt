@@ -3,7 +3,7 @@ const FADE_TIME = 0.3
 
 var magnitude := 20.0
 var zoom := 1.0
-var image_offset = Vector2(0, 0.0)
+var image_offset = Vector2(0, 0)
 # Assume all sprites are 1/2th scale by default
 # TODO: retina (dynamic scaling)
 

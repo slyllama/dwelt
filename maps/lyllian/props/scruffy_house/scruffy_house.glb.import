@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d4lb7x14by0v0"
-path="res://.godot/imported/scruffy_house.glb-f545879da7641e3c2002df09179e26cf.scn"
+uid="uid://bcuwme63fr4hi"
+path="res://.godot/imported/scruffy_house.glb-452fce7c3cb57c5159bfa9fff710e953.scn"
 
 [deps]
 
-source_file="res://maps/lyllian/props/scruffy_house.glb"
-dest_files=["res://.godot/imported/scruffy_house.glb-f545879da7641e3c2002df09179e26cf.scn"]
+source_file="res://maps/lyllian/props/scruffy_house/scruffy_house.glb"
+dest_files=["res://.godot/imported/scruffy_house.glb-452fce7c3cb57c5159bfa9fff710e953.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="ScruffyHouse"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -33,9 +33,21 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"mat_oak_wood": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/dwellan_island/props/bookcase/materials/mat_oak.tres"
+},
 "mat_placeholder": {
 "use_external/enabled": true,
 "use_external/path": "res://generic/materials/mat_placeholder.tres"
+},
+"mat_rough_wood": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/dwellan_island/props/dias/materials/mat_rough_wood.tres"
+},
+"mat_wallpaper": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/props/scruffy_house/materials/mat_scruffpaper.tres"
 }
 }
 }

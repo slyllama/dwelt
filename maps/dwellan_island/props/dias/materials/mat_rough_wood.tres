@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cexmkw33jq37k" path="res://maps/dwellan_island/props/dias/materials/textures/rough_wood_norm.jpg" id="2_55ag4"]
 
 [resource]
-albedo_color = Color(1, 0.94, 0.94, 1)
 albedo_texture = ExtResource("1_syuh6")
-metallic_specular = 0.0
+metallic = 0.4
 normal_enabled = true
+normal_scale = 0.65
 normal_texture = ExtResource("2_55ag4")
 rim_tint = 0.0
-uv1_scale = Vector3(8, 8, 8)
+uv1_scale = Vector3(4, 4, 4)

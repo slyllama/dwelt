@@ -1,20 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://cg1m4k6i1fknp"]
+[gd_scene load_steps=7 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/environment.tres" id="2_rsjxv"]
 [ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_725dw"]
-[ext_resource type="PackedScene" uid="uid://ukiydgtfvrn3" path="res://lib/object/default_floor/default_floor.tscn" id="4_k5rax"]
-[ext_resource type="PackedScene" uid="uid://d4lb7x14by0v0" path="res://maps/lyllian/props/scruffy_house.glb" id="5_ibuyb"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
+[ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/props/scruffy_house/scruffy_house.glb" id="7_x6ach"]
 
 [node name="Lyllian" type="Node3D"]
 script = ExtResource("1_1mnll")
 environment = ExtResource("2_rsjxv")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0.5, -0.5, 0, 5, 0)
-visible = false
+transform = Transform3D(-0.836847, 0.0958226, 0.538986, 0.321394, 0.883022, 0.34202, -0.443163, 0.459445, -0.769751, 0, 5, 0)
 light_energy = 2.0
 light_indirect_energy = 2.0
 shadow_enabled = true
@@ -27,22 +25,16 @@ directional_shadow_blend_splits = true
 
 [node name="Player" parent="." instance=ExtResource("3_725dw")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.579273, 5.13549, -2.94095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="DefaultFloor" parent="." instance=ExtResource("4_k5rax")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="scruffy_house" parent="." instance=ExtResource("5_ibuyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10012, 7.63616, -6.37638)
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 1.5)
 light_color = Color(1, 0.785, 0.57, 1)
-light_energy = 4.0
-omni_range = 8.0
+light_energy = 5.0
+omni_range = 6.0
 
 [node name="Pylon" parent="." instance=ExtResource("6_rshg4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24153, 3.82961, -3.12524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65492, 0.973057, 1.99561)
 
 [node name="ToDwellan" parent="Pylon" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -51,5 +43,8 @@ title = "Portal to Dwellan"
 description = "Take me to Dwellan Courtyard!"
 can_interact = true
 interact_string = "Port"
+
+[node name="ScruffyHouse" parent="." instance=ExtResource("7_x6ach")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00651, 1, -2.13901)
 
 [connection signal="interacted" from="Pylon/ToDwellan" to="." method="_to_dwellan"]
