@@ -1,6 +1,13 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cl37vtkvlqlde"]
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://cl37vtkvlqlde"]
 
 [ext_resource type="Texture2D" uid="uid://cxdb7vmj8y1me" path="res://generic/textures/stars_hdr.png" id="1_8o6ni"]
+
+[sub_resource type="Gradient" id="Gradient_ac408"]
+offsets = PackedFloat32Array(0, 0.184211, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.18, 0.193667, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sk1oy"]
+gradient = SubResource("Gradient_ac408")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cq8dt"]
 panorama = ExtResource("1_8o6ni")
@@ -28,3 +35,4 @@ fog_depth_begin = 14.0
 fog_depth_end = 17.0
 adjustment_enabled = true
 adjustment_saturation = 1.25
+adjustment_color_correction = SubResource("GradientTexture1D_sk1oy")

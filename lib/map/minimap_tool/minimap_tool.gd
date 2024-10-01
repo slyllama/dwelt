@@ -14,6 +14,7 @@ func _ready() -> void:
 		# Set sliders
 		$Container/OffsetX.set_value(Global.minimap_data["offset_x"])
 		$Container/OffsetY.set_value(Global.minimap_data["offset_y"])
+		$Container/Magnitude.set_value(Global.minimap_data["magnitude"])
 		$Container/Rotation.set_value(Global.minimap_data["image_rotation"])
 		$Container/ImageScale.set_value(Global.minimap_data["image_scale"]))
 	Global.minimap_refresh.emit()
@@ -33,3 +34,11 @@ func _on_image_scale_value_changed(value: Variant) -> void:
 func _on_rotation_value_changed(value: Variant) -> void:
 	Global.minimap_data["image_rotation"] = value
 	Global.minimap_refresh.emit()
+
+func _on_magnitude_value_changed(value: Variant) -> void:
+	Global.minimap_data["magnitude"] = value
+	Global.minimap_refresh.emit()
+
+func _on_clipboard_pressed() -> void:
+	DisplayServer.clipboard_set(
+		str(Global.minimap_data).replace("\"bg_color\": ", "\"bg_color\": Color"))

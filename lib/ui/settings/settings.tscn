@@ -7,56 +7,53 @@
 script = ExtResource("2_511et")
 title = "Settings"
 
-[node name="Container" parent="." index="1"]
-theme_override_constants/separation = -2
-
-[node name="TitleSep" type="ColorRect" parent="Container" index="1"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-
-[node name="Sep" type="ColorRect" parent="Container" index="3"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-
-[node name="FOVTitle" type="RichTextLabel" parent="Container" index="4"]
+[node name="FOVTitle" type="RichTextLabel" parent="Container" index="3"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Field of view: ?deg"
 fit_content = true
 
-[node name="FOV" type="HSlider" parent="Container" index="5"]
+[node name="FOV" type="HSlider" parent="Container" index="4"]
 layout_mode = 2
 min_value = 40.0
 value = 90.0
 
-[node name="BrightnessTitle" type="RichTextLabel" parent="Container" index="6"]
+[node name="BrightnessTitle" type="RichTextLabel" parent="Container" index="5"]
 layout_mode = 2
 text = "Brightness"
 fit_content = true
 
-[node name="Brightness" type="HSlider" parent="Container" index="7"]
+[node name="Brightness" type="HSlider" parent="Container" index="6"]
 layout_mode = 2
 min_value = 0.5
 max_value = 1.5
 step = 0.02
 value = 1.0
 
-[node name="Button" type="Button" parent="Container" index="8"]
+[node name="ResetSettings" type="Button" parent="Container" index="7"]
 layout_mode = 2
 text = "Reset Settings"
 
-[node name="LowerSep" type="ColorRect" parent="Container" index="9"]
+[node name="MinimapTool" type="Button" parent="Container" index="8"]
+layout_mode = 2
+text = "Minimap Tool"
+
+[node name="FullScreen" type="Button" parent="Container" index="9"]
+layout_mode = 2
+text = "Toggle Full Screen"
+
+[node name="Quit" type="Button" parent="Container" index="10"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LowerSep" type="ColorRect" parent="Container" index="11"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="PlayerPos" type="RichTextLabel" parent="Container" index="10"]
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="12"]
 modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 bbcode_enabled = true
@@ -65,4 +62,7 @@ fit_content = true
 
 [connection signal="value_changed" from="Container/FOV" to="." method="_on_fov_value_changed"]
 [connection signal="value_changed" from="Container/Brightness" to="." method="_on_brightness_value_changed"]
-[connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Container/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[connection signal="pressed" from="Container/MinimapTool" to="." method="_on_minimap_tool_pressed"]
+[connection signal="pressed" from="Container/FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="Container/Quit" to="." method="_on_quit_pressed"]

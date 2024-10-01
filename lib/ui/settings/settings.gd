@@ -30,5 +30,12 @@ func _on_fov_value_changed(value: float) -> void:
 	SettingsHandler.update("fov", value)
 func _on_brightness_value_changed(value: float) -> void:
 	SettingsHandler.update("brightness", value)
-func _on_button_pressed() -> void:
-	SettingsHandler.reset()
+func _on_minimap_tool_pressed() -> void: get_parent().get_node_or_null("MinimapTool").open()
+func _on_reset_settings_pressed() -> void: SettingsHandler.reset()
+func _on_full_screen_pressed() -> void:
+	if get_window().mode != Window.MODE_FULLSCREEN:
+		get_window().mode = Window.MODE_FULLSCREEN
+	else: get_window().mode = Window.MODE_WINDOWED
+func _on_quit_pressed() -> void:
+	SettingsHandler.save_to_file()
+	get_tree().quit()

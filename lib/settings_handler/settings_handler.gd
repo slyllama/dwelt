@@ -34,10 +34,3 @@ func update(parameter, value) -> void:
 
 func _ready() -> void:
 	load_from_file()
-
-func _input(_event: InputEvent) -> void:
-	# Toggle full-screen
-	if Input.is_action_just_pressed("debug_key"):
-		if get_window().mode != Window.MODE_FULLSCREEN:
-			get_window().mode = Window.MODE_FULLSCREEN
-		else: get_window().mode = Window.MODE_WINDOWED

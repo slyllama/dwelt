@@ -21,7 +21,7 @@ func _add_star(child: Node) -> void:
 	child.add_child(star)
 
 # Animate the mesh bouncing when it lands on the floor
-func _bounce_mesh(delta: float):
+func _bounce_mesh(delta: float) -> void:
 	_mesh_y_state = lerp(_mesh_y_state, 0.0, 7 * delta)
 	var _adj_mesh_y_state = _mesh_y_state
 	if _adj_mesh_y_state > 0.5:
@@ -29,10 +29,11 @@ func _bounce_mesh(delta: float):
 	_adj_mesh_y_state *= 2.0
 	model.position.y = _adj_mesh_y_state * -0.04
 
-func update(get_direction: Vector3, velocity: Vector3, camera_direction: float) -> void:
+func update(get_direction: Vector3, velocity: Vector3, camera_direction: float, force = false) -> void:
 	var delta = get_process_delta_time()
-	
 	# Rotate the model to match movement direction
+	if force: # do it instantly - no idea how this works!?
+		model.rotation_degrees.y = camera_direction + 359.0
 	if get_direction.x > 0 or get_direction.z > 0:
 		model.rotation_degrees.y = lerp(
 			model.rotation_degrees.y, camera_direction + 180.0, 5.0 * delta)
@@ -43,7 +44,6 @@ func update(get_direction: Vector3, velocity: Vector3, camera_direction: float) 
 	_engine_rotate_magnitude = lerp(
 		_engine_rotate_magnitude, 0.2 + velocity.length() * 0.75, 7 * delta)
 	$Player/PlayerAnim.set("parameters/engine_time_scale/scale", _engine_rotate_magnitude)
-
 	_bounce_mesh(delta)
 
 func _ready() -> void:

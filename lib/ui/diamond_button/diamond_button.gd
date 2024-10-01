@@ -30,7 +30,9 @@ func fade_out() -> void:
 	self_fade_tween.tween_callback(func():
 		if visible: _reset(true))
 
-func _ready() -> void: _reset()
+func _ready() -> void:
+	_reset()
+
 func _on_mouse_entered() -> void:
 	Global.hover_sound.emit()
 	modulate = Color.WHITE

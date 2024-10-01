@@ -5,13 +5,13 @@ var magnitude := 20.0
 var zoom := 1.0
 var image_offset = Vector2(0, 0)
 var image_scale = Vector2(1, 1)
-# Assume all sprites are 1/2th scale by default
 
 var objects = []
 
-func configure_map() -> void:
+func update() -> void:
 	var data = Global.minimap_data
 	if "image_path" in data: $Root/MapImage.texture = load(data["image_path"])
+	if "magnitude" in data: magnitude = data["magnitude"]
 	if "image_scale" in data: image_scale = Vector2(data["image_scale"], data["image_scale"])
 	if "image_rotation" in data: $Root/MapImage.rotation_degrees = data["image_rotation"]
 	if "bg_color" in data: $Root.self_modulate = data["bg_color"]
@@ -27,20 +27,20 @@ func _ready() -> void:
 	Global.objects_loaded.connect(func():
 		for o in Global.object_data:
 			var o_node = $Root/ObjectBase/POI.duplicate()
-			var pos = -Vector2(o.position.x, o.position.z) * magnitude
-			o_node.position = pos
+			var pos = -Vector2(o.position.x, o.position.z)
+			o_node.position = pos * magnitude
 			o_node.modulate.a = 0.0
 			o_node.visible = true
 			
 			# Marker is always accurately tracked even when the point itself is constrained to the edge of the map
 			var o_marker = Marker2D.new()
-			o_marker.position = pos
+			o_marker.position = pos * magnitude
 			$Root/ObjectBase.add_child(o_node)
 			$Root/ObjectBase.add_child(o_marker)
 			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
 	
 	# Refresh map display. NOTE: this does not currently refresh objects
-	Global.minimap_refresh.connect(configure_map)
+	Global.minimap_refresh.connect(update)
 	
 	# Hide the map while things lerp into place; then fade in
 	# Because POIs are top-level, they need to be tweened independently
@@ -73,6 +73,8 @@ func _process(delta: float) -> void:
 	
 	# Constrain the object to the edge of the map if it goes out of bounds
 	for o in objects:
+		o.marker.position = o.position * magnitude
+		
 		var dist = o.marker.global_position.distance_to($Root/MarkerBase.global_position)
 		var angle = o.marker.global_position.angle_to_point($Root/MarkerBase.global_position)
 		angle += deg_to_rad(180)

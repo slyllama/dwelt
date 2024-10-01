@@ -20,7 +20,7 @@ var _jump_energy = 0.0
 var mesh_y_state = 0.0
 
 # Revive the player if it descends below the "kill height"
-func revive():
+func revive() -> void:
 	Global.move_player.emit(
 		Global.active_pylon.position + Vector3(-0.4, 1, 0))
 	is_kill_height = false
@@ -28,6 +28,7 @@ func revive():
 func _ready() -> void:
 	Global.move_player.connect(func(pos: Vector3):
 		global_position = pos)
+	%Mesh.update(_direction, velocity, $CameraHandler.rotation_degrees.y, true)
 
 func _physics_process(delta: float) -> void:
 	# Process inputs
@@ -65,7 +66,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	Global.player_position = position
-	
 	%Mesh.update(_direction, velocity, _camera_direction) # update mesh
 	%Listener.rotation_degrees.y = _camera_direction # use camera for sound direction
 	

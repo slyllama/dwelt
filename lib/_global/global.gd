@@ -12,6 +12,7 @@ const PROXIMAL_OBJECT = {
 const ACTIVE_PYLON = { "id": "none", "position": Vector3.ZERO }
 const MINIMAP_DATA = {
 	"image_path": "res://generic/materials/textures/tile_64px.png",
+	"magnitude": 20,
 	"image_scale": 1,
 	"image_rotation": 0,
 	"bg_color": Color(0.1, 0.1, 0.1),
@@ -29,7 +30,7 @@ signal click_sound
 signal hover_sound
 
 signal interact_pressed
-signal minimap_refresh # force Minimap to call configure_map() again
+signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
 signal objects_loaded # ObjectHandler has gathered all of its objects into object_data
 signal pylon_start_activated(id)

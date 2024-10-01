@@ -26,7 +26,6 @@ func _ready() -> void:
 		"image_rotation": 180.0,
 		"bg_color": Color("#285314")
 	})
-	$FG/MinimapTool.open()
 
 func _on_object_interacted() -> void:
 	# Reload foliage

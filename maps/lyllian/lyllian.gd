@@ -11,11 +11,8 @@ func _ready() -> void:
 	# Set custom camera starting rotation
 	$Player/CameraHandler._target_rotation.y = 30
 	$Player/CameraHandler.rotation_degrees.y = 30
-	configure_map({
-		"bg_color": Color(0.15, 0.15, 0.15)
-	})
+	configure_map({ "image_path": "res://maps/lyllian/textures/map.png", "magnitude": 33.4, "image_scale": 0.75, "image_rotation": 180, "bg_color": Color(0.15, 0.15, 0.15, 1), "offset_x": -38, "offset_y": 8 })
 	SettingsHandler.save_to_file()
-	$FG/MinimapTool.open()
 
 func _to_dwellan() -> void:
 	var r = RippleFX.instantiate()
