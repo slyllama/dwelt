@@ -4,21 +4,19 @@ const FADE_TIME = 0.3
 var magnitude := 20.0
 var zoom := 1.0
 var image_offset = Vector2(0, 0)
+var image_scale = Vector2(1, 1)
 # Assume all sprites are 1/2th scale by default
-# TODO: retina (dynamic scaling)
 
 var objects = []
 
-func configure_map(data: Dictionary) -> void:
-	if "image_path" in data:
-		$Root/MapImage.texture = load(data["image_path"])
-	if "image_scale" in data:
-		var _s = data["image_scale"]
-		$Root/MapImage.scale = Vector2(_s, _s)
-	if "image_rotation" in data:
-		$Root/MapImage.rotation_degrees = data["image_rotation"]
-	if "bg_color" in data:
-		$Root.self_modulate = data["bg_color"]
+func configure_map() -> void:
+	var data = Global.minimap_data
+	if "image_path" in data: $Root/MapImage.texture = load(data["image_path"])
+	if "image_scale" in data: image_scale = Vector2(data["image_scale"], data["image_scale"])
+	if "image_rotation" in data: $Root/MapImage.rotation_degrees = data["image_rotation"]
+	if "bg_color" in data: $Root.self_modulate = data["bg_color"]
+	if "offset_x" in data: image_offset.x = data["offset_x"]
+	if "offset_y" in data: image_offset.y = data["offset_y"]
 
 func _ready() -> void:
 	modulate.a = 0.0
@@ -40,6 +38,9 @@ func _ready() -> void:
 			$Root/ObjectBase.add_child(o_node)
 			$Root/ObjectBase.add_child(o_marker)
 			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
+	
+	# Refresh map display. NOTE: this does not currently refresh objects
+	Global.minimap_refresh.connect(configure_map)
 	
 	# Hide the map while things lerp into place; then fade in
 	# Because POIs are top-level, they need to be tweened independently
@@ -66,7 +67,7 @@ func _process(delta: float) -> void:
 	
 	$Root/MapImage.position = lerp(
 		$Root/MapImage.position, size / 2.0 + (offset + image_offset) * zoom, delta * 10)
-	$Root/MapImage.scale = lerp($Root/MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0), delta * 10)
+	$Root/MapImage.scale = lerp($Root/MapImage.scale, Vector2(zoom / 2.0, zoom / 2.0) * image_scale, delta * 10)
 	$Root/ObjectBase.position = lerp($Root/ObjectBase.position, global_position + size / 2.0 + offset * zoom, delta * 10)
 	$Root/ObjectBase.scale = lerp($Root/ObjectBase.scale, Vector2(zoom / 1.25, zoom / 1.25), delta * 10)
 	

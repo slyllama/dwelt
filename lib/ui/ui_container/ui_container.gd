@@ -43,8 +43,8 @@ func _ready():
 		if n is BaseButton or n is Range:
 			n.focus_entered.connect(func(): Global.click_sound.emit())
 			n.mouse_entered.connect(func(): Global.hover_sound.emit())
-	
-	
+	$Corner.mouse_filter = MOUSE_FILTER_IGNORE
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if mouse_in_title:

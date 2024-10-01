@@ -3,6 +3,7 @@ extends Node
 # Various handy tools!
 
 const DEG = "[char=0x000000B0]"
+const TICK = "[char=0x00002713]"
 
 # Get all children recursively
 func get_all_children(node: Node) -> Array:

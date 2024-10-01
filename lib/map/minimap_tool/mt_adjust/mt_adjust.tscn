@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://6u5les1ifkol"]
+
+[ext_resource type="Script" path="res://lib/map/minimap_tool/mt_adjust/mt_adjust.gd" id="1_y4kkn"]
+
+[node name="MTAdjust" type="HBoxContainer"]
+script = ExtResource("1_y4kkn")
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Parameter"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Value" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+alignment = 2
+max_length = 5
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
+select_all_on_focus = true
+
+[node name="Less" type="Button" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "-"
+
+[node name="More" type="Button" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "+"
+
+[node name="Apply" type="Button" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "✓"
+
+[connection signal="focus_exited" from="Value" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]

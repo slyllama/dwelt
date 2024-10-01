@@ -7,26 +7,19 @@ const HUD = preload("res://lib/ui/hud/hud.tscn")
 const ObjectHandler = preload("res://lib/object/object_handler/object_handler.tscn")
 
 @export var environment: Environment
-## Moss and ground decals will only be projected onto the children of this node.
-@export var decal_candidates: Node
+@export var decal_candidates: Node ## Moss and ground decals will only be projected onto the children of this node.
 @export var start_muted = false
 
 var sky: WorldEnvironment
 var hud: CanvasLayer
 var minimap: Minimap
 
-# Pass map configuration data to the Minimap
+# Pass map configuration data to the Minimap and ping it to update
 func configure_map(data: Dictionary):
-	minimap.configure_map(data)
-
-func _input(_event: InputEvent) -> void:
-	if Engine.is_editor_hint(): return
-	
-	# Toggle full-screen
-	if Input.is_action_just_pressed("debug_key"):
-		if get_window().mode != Window.MODE_FULLSCREEN:
-			get_window().mode = Window.MODE_FULLSCREEN
-		else: get_window().mode = Window.MODE_WINDOWED
+	Global.minimap_data = Global.MINIMAP_DATA.duplicate() # reset first
+	for d in data:
+		Global.minimap_data[d] = data[d]
+	Global.minimap_refresh.emit()
 
 func _fade_sound_in() -> void:
 	# Fade in the entire audio server after a delay, preventing any first-frame blips
@@ -43,9 +36,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
-	if !start_muted:
-		_fade_sound_in()
-
+	if !start_muted: _fade_sound_in()
+	
 	if sky != null: sky.queue_free()
 	sky = WorldEnvironment.new()
 	add_child(sky)

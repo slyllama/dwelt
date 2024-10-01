@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b3xj2nmifhpar"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b3xj2nmifhpar"]
 
 [ext_resource type="Texture2D" uid="uid://6hw6d688c3m5" path="res://lib/ui/hud/textures/slider.png" id="1_1p0q0"]
 [ext_resource type="Texture2D" uid="uid://bd6ydh2sjvnib" path="res://lib/ui/hud/textures/slider_hover.png" id="2_05svm"]
@@ -53,6 +53,24 @@ bg_color = Color(0, 0, 0, 1)
 border_width_top = 4
 border_color = Color(0.172833, 0.172833, 0.172833, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aj8q"]
+bg_color = Color(0.14, 0.14, 0.14, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.497474, 0.497474, 0.497473, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aig0d"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.11, 0.11, 0.11, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.435192, 0.435192, 0.435192, 1)
+
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_fagal")
 Button/styles/hover = SubResource("StyleBoxFlat_vt755")
@@ -62,3 +80,6 @@ HSlider/icons/grabber_highlight = ExtResource("2_05svm")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qvmh4")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ufxr7")
 HSlider/styles/slider = SubResource("StyleBoxFlat_onf8w")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_2aj8q")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_aig0d")
+RichTextLabel/font_sizes/normal_font_size = 14

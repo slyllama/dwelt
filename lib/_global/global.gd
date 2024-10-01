@@ -10,6 +10,14 @@ const PROXIMAL_OBJECT = {
 	"can_interact": false
 }
 const ACTIVE_PYLON = { "id": "none", "position": Vector3.ZERO }
+const MINIMAP_DATA = {
+	"image_path": "res://generic/materials/textures/tile_64px.png",
+	"image_scale": 1,
+	"image_rotation": 0,
+	"bg_color": Color(0.1, 0.1, 0.1),
+	"offset_x": 0,
+	"offset_y": 0
+}
 
 # Change this before invoking the loader - it will load whatever scene is here
 var target_scene = "res://maps/lyllian/lyllian.tscn"
@@ -21,6 +29,7 @@ signal click_sound
 signal hover_sound
 
 signal interact_pressed
+signal minimap_refresh # force Minimap to call configure_map() again
 signal move_player(pos: Vector3) # when called, will move the player
 signal objects_loaded # ObjectHandler has gathered all of its objects into object_data
 signal pylon_start_activated(id)
@@ -32,6 +41,7 @@ signal shake_camera()
 var active_pylon = ACTIVE_PYLON.duplicate()
 var foliage_count = 0
 var loaded_once = false
+var minimap_data = MINIMAP_DATA.duplicate()
 var object_data = []
 var player_position = Vector3.ZERO
 var proximal_object = PROXIMAL_OBJECT.duplicate()

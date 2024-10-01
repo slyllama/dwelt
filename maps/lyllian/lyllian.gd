@@ -15,6 +15,7 @@ func _ready() -> void:
 		"bg_color": Color(0.15, 0.15, 0.15)
 	})
 	SettingsHandler.save_to_file()
+	$FG/MinimapTool.open()
 
 func _to_dwellan() -> void:
 	var r = RippleFX.instantiate()

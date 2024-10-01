@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://jtl64blli4jh"]
+[gd_scene load_steps=8 format=3 uid="uid://jtl64blli4jh"]
 
 [ext_resource type="Script" path="res://lib/ui/minimap/minimap.gd" id="1_7m3lm"]
 [ext_resource type="Texture2D" uid="uid://cfjnnt0v8pwk6" path="res://lib/ui/minimap/textures/base.png" id="1_ik2hb"]
+[ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="3_6sv4s"]
 [ext_resource type="Texture2D" uid="uid://dlr6eni13ddvy" path="res://lib/ui/minimap/textures/poi.png" id="3_vghec"]
 [ext_resource type="Texture2D" uid="uid://jn5ybnqq8ksg" path="res://lib/ui/minimap/textures/marker.png" id="4_lr6mw"]
 [ext_resource type="Texture2D" uid="uid://bp8ggomc8okr3" path="res://lib/ui/minimap/textures/map_border.png" id="6_3bdj6"]
@@ -37,6 +38,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="MapImage" type="Sprite2D" parent="Root"]
+texture = ExtResource("3_6sv4s")
 
 [node name="ObjectBase" type="Node2D" parent="Root"]
 top_level = true

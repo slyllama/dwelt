@@ -24,9 +24,9 @@ func _ready() -> void:
 	configure_map({
 		"image_path": "res://maps/dwellan_island/textures/map.png",
 		"image_rotation": 180.0,
-		"image_scale": 0.5,
 		"bg_color": Color("#285314")
 	})
+	$FG/MinimapTool.open()
 
 func _on_object_interacted() -> void:
 	# Reload foliage
