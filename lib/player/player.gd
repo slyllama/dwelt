@@ -9,7 +9,6 @@ var is_kill_height = false
 @export var base_speed := 1.9
 @export var smoothing := 25.0
 @export var jump_strength := 8.0
-@export var hover_height := 1.0
 @export var kill_height := -10.0
 
 @onready var base: CollisionShape3D = get_node("Collision")

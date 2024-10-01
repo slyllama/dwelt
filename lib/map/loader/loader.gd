@@ -6,6 +6,12 @@ var loading_status: int
 var progress: Array[float]
 var load_bar_bias = 2.0 # only seems to go to 50% by default
 
+# Clear parameters set by the previous instance (e.g. active pylon)
+func _reset_map() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Global.object_data = []
+	Global.active_pylon = Global.ACTIVE_PYLON.duplicate()
+
 # Change scene after fading everything out
 func _transition():
 	var fg: ColorRect = $BG.duplicate()
@@ -26,9 +32,8 @@ func _center_cog() -> void:
 	$Spinner.position = get_window().size / Global.retina_scale / 2.0 + Vector2(0, -50.0)
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	AudioServer.set_bus_volume_db(0, -80)
-	Global.object_data = []
+	_reset_map()
 	
 	# Retina screen scaling - only gets checked once on initialisation
 	if !Global.loaded_once:

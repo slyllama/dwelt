@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+signal finished
+
 func _distort_prop(parameter: String, value: float) -> void:
 	get_active_material(0).set_shader_parameter(parameter, value)
 
@@ -14,4 +16,6 @@ func _ready() -> void:
 		_distort_prop("circle_position", val)
 		_distort_prop("alpha", ease(1.0 - val, -0.2))
 	, 0.0, 1.0, 1.0)
-	distort_tween.tween_callback(queue_free)
+	distort_tween.tween_callback(func():
+		finished.emit()
+		queue_free())

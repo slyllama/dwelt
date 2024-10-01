@@ -1,5 +1,8 @@
 @tool
 extends "res://lib/map/map.gd"
+# TODO: logic for light switching
+
+const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
 
 func _ready() -> void:
 	super()
@@ -11,8 +14,10 @@ func _ready() -> void:
 	configure_map({
 		"bg_color": Color(0.15, 0.15, 0.15)
 	})
-	
 	SettingsHandler.save_to_file()
 
 func _to_dwellan() -> void:
-	Global.change_map("dwellan_island")
+	var r = RippleFX.instantiate()
+	r.finished.connect(func():
+		Global.change_map("dwellan_island"))
+	$Pylon.add_child(r)

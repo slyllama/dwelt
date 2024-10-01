@@ -8,6 +8,7 @@ albedo_texture = ExtResource("1_bakv3")
 metallic = 0.3
 roughness = 0.65
 normal_enabled = true
+normal_scale = 0.35
 normal_texture = ExtResource("2_j1w40")
 rim_enabled = true
 rim = 0.5
