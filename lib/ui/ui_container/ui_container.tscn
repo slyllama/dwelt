@@ -601,6 +601,6 @@ color = Color(1, 1, 1, 0)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Container/TitleContainer/Title" to="." method="_on_title_mouse_entered"]
-[connection signal="mouse_exited" from="Container/TitleContainer/Title" to="." method="_on_title_mouse_exited"]
+[connection signal="mouse_entered" from="Container/TitleContainer" to="." method="_on_title_mouse_entered"]
+[connection signal="mouse_exited" from="Container/TitleContainer" to="." method="_on_title_mouse_exited"]
 [connection signal="pressed" from="Container/TitleContainer/CloseButton" to="." method="close"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://6u5les1ifkol"]
 
-[ext_resource type="Script" path="res://lib/map/minimap_tool/mt_adjust/mt_adjust.gd" id="1_y4kkn"]
+[ext_resource type="Script" path="res://lib/ui/minimap/minimap_tool/m_tool_field/m_tool_field.gd" id="1_y4kkn"]
 
-[node name="MTAdjust" type="HBoxContainer"]
+[node name="MToolField" type="HBoxContainer"]
 script = ExtResource("1_y4kkn")
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -41,5 +41,6 @@ custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 text = "✓"
 
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
 [connection signal="focus_exited" from="Value" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]

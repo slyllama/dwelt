@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://yuqpu8rhdu1j"]
 
 [ext_resource type="PackedScene" uid="uid://dqhmkchm2mv4e" path="res://lib/ui/ui_container/ui_container.tscn" id="1_pl0ff"]
-[ext_resource type="PackedScene" uid="uid://6u5les1ifkol" path="res://lib/map/minimap_tool/mt_adjust/mt_adjust.tscn" id="2_6u0r3"]
-[ext_resource type="Script" path="res://lib/map/minimap_tool/minimap_tool.gd" id="2_oemgr"]
+[ext_resource type="PackedScene" uid="uid://6u5les1ifkol" path="res://lib/ui/minimap/minimap_tool/m_tool_field/m_tool_field.tscn" id="2_6u0r3"]
+[ext_resource type="Script" path="res://lib/ui/minimap/minimap_tool/minimap_tool.gd" id="2_oemgr"]
 [ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="4_0css4"]
 
 [node name="MinimapTool" instance=ExtResource("1_pl0ff")]
@@ -21,26 +21,31 @@ offset_bottom = -10.0
 [node name="OffsetX" parent="Container" index="3" instance=ExtResource("2_6u0r3")]
 layout_mode = 2
 title = "Offset X"
-increment = 2.0
+increment = 1.0
+minimap_field_id = "offset_x"
 
 [node name="OffsetY" parent="Container" index="4" instance=ExtResource("2_6u0r3")]
 layout_mode = 2
 title = "Offset Y"
 increment = 2.0
+minimap_field_id = "offset_y"
 
 [node name="Magnitude" parent="Container" index="5" instance=ExtResource("2_6u0r3")]
 layout_mode = 2
 title = "Magnitude"
 increment = 0.2
+minimap_field_id = "magnitude"
 
 [node name="Rotation" parent="Container" index="6" instance=ExtResource("2_6u0r3")]
 layout_mode = 2
-title = "Rotation"
+title = "Map Rotation"
 increment = 1.0
+minimap_field_id = "image_rotation"
 
 [node name="ImageScale" parent="Container" index="7" instance=ExtResource("2_6u0r3")]
 layout_mode = 2
-title = "Map scale"
+title = "Scale"
+minimap_field_id = "image_scale"
 
 [node name="Separator2" type="ColorRect" parent="Container" index="8"]
 custom_minimum_size = Vector2(0, 10)
@@ -63,9 +68,4 @@ autowrap_mode = 0
 layout_mode = 2
 text = "Copy to Clipboard"
 
-[connection signal="value_changed" from="Container/OffsetX" to="." method="_on_offset_x_value_changed"]
-[connection signal="value_changed" from="Container/OffsetY" to="." method="_on_offset_y_value_changed"]
-[connection signal="value_changed" from="Container/Magnitude" to="." method="_on_magnitude_value_changed"]
-[connection signal="value_changed" from="Container/Rotation" to="." method="_on_rotation_value_changed"]
-[connection signal="value_changed" from="Container/ImageScale" to="." method="_on_image_scale_value_changed"]
 [connection signal="pressed" from="Container/Clipboard" to="." method="_on_clipboard_pressed"]

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmiarp0m8f0o8" path="res://lib/ui/hud/textures/interact_icon.png" id="8_45tje"]
 [ext_resource type="PackedScene" uid="uid://b47jl8wwysodp" path="res://lib/ui/diamond_button/diamond_button.tscn" id="8_oelrm"]
 [ext_resource type="PackedScene" uid="uid://cmkolvndsk61d" path="res://lib/ui/settings/settings.tscn" id="9_nl48w"]
-[ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/map/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
+[ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/ui/minimap/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7p4t"]
 content_margin_left = 16.0

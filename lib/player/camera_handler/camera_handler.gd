@@ -45,7 +45,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if Global.mouse_in_ui(): _clicked_in_ui = true
+		if Global.mouse_in_ui():
+			_clicked_in_ui = true
+		else:
+			get_viewport().gui_release_focus()
 		_last_click_position = get_window().get_mouse_position()
 	if Input.is_action_just_released("left_click"):
 		_clicked_in_ui = false
