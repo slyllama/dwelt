@@ -29,8 +29,6 @@ func _ready() -> void:
 
 func _on_grass_load() -> void:
 	# Reload foliage
-	for node: Node in Utilities.get_all_children(self):
-		if node is FoliageSpawner:
-			node.render()
+	SettingsHandler.setting_changed.emit("particle_density")
 
 func _to_lyllian() -> void: Global.change_map("lyllian")
