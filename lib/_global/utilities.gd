@@ -6,13 +6,13 @@ const DEG = "[char=0x000000B0]"
 const TICK = "[char=0x00002713]"
 
 # Get all children recursively
-func get_all_children(node: Node) -> Array:
+func get_all_children(node: Node, include_internal = false) -> Array:
 	var nodes: Array = []
 	if !node: return([])
-	for n in node.get_children():
+	for n in node.get_children(include_internal):
 		if n.get_child_count() > 0:
 			nodes.append(n)
-			nodes.append_array(get_all_children(n))
+			nodes.append_array(get_all_children(n, include_internal))
 		else: nodes.append(n)
 	return(nodes)
 

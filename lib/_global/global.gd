@@ -35,7 +35,6 @@ func change_map(map_name: String) -> void:
 signal click_sound
 signal hover_sound
 
-signal dropdown_closed # workaround - dropdowns don't trigger an input event on close! See CameraHandler
 signal interact_pressed
 signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
@@ -47,6 +46,7 @@ signal proximity_left
 signal shake_camera()
 
 var active_pylon = ACTIVE_PYLON.duplicate()
+var popup_open = false # mainly used for orbit checks in CameraHandler
 var foliage_count = 0
 var minimap_data = MINIMAP_DATA.duplicate()
 var object_data = []

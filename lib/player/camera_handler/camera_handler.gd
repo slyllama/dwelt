@@ -38,10 +38,8 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false)
 	
-	# Workaround - dropdowns don't trigger an input event on close!
-	Global.dropdown_closed.connect(func(): _clicked_in_ui = false)
 	Global.shake_camera.connect(func(): $Camera/CameraFX.play("shake"))
-
+	
 	# Make the camera node global so that other scenes can use unproject_position
 	CameraData.camera = camera
 
@@ -68,7 +66,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
-	if !orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click"):
+	if (!orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click")
+		and !Global.popup_open):
 		var _mouse_offset = get_window().get_mouse_position() - _last_click_position
 		if abs(_mouse_offset.x) > 5 or abs(_mouse_offset.y) > 5:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

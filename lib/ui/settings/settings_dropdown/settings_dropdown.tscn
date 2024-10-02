@@ -23,3 +23,5 @@ size_flags_horizontal = 3
 mouse_filter = 1
 flat = false
 alignment = 0
+
+[connection signal="about_to_popup" from="Menu" to="." method="_on_menu_about_to_popup"]
