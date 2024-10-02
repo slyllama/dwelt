@@ -1,19 +1,19 @@
 [gd_scene load_steps=22 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
-[ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/environment.tres" id="2_ahnhk"]
+[ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/env.tres" id="2_ahnhk"]
 [ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_725dw"]
 [ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="4_q3k13"]
 [ext_resource type="AudioStream" uid="uid://byoafwuotvs46" path="res://maps/lyllian/sound/awake.ogg" id="5_2luym"]
 [ext_resource type="AudioStream" uid="uid://cu060y4x2scnl" path="res://maps/lyllian/sound/rain.ogg" id="6_epu3l"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
-[ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/props/scruffy_house.glb" id="7_x6ach"]
+[ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/meshes/scruffy_house.glb" id="7_x6ach"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
 [ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/object/pylon/sound/heal.ogg" id="11_xuqaq"]
 [ext_resource type="Material" uid="uid://dcpk66bxnfqg1" path="res://generic/materials/mat_grey.tres" id="12_mlwfi"]
-[ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/props/side_table.glb" id="14_2awna"]
+[ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/meshes/side_table.glb" id="14_2awna"]
 
 [sub_resource type="Gradient" id="Gradient_1o2oh"]
 offsets = PackedFloat32Array(0, 0.266667, 0.751515, 1)

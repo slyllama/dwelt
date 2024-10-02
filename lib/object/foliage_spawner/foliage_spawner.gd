@@ -4,7 +4,7 @@ class_name FoliageSpawner extends MultiMeshInstance3D
 # Uses a MultiMeshInstance to render grasses and flowers.
 
 # Useful default
-const GRASS = preload("res://maps/dwellan/props/foliage/grass.res")
+const GRASS = preload("res://maps/dwellan/meshes/_grass.res")
 var rng = RandomNumberGenerator.new()
 var foliage_count = 0
 
