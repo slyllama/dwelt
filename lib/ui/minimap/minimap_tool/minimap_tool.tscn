@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="4_0css4"]
 
 [node name="MinimapTool" instance=ExtResource("1_pl0ff")]
+self_modulate = Color(1, 0.498039, 0, 1)
 custom_minimum_size = Vector2(300, 400)
 offset_right = 300.0
 offset_bottom = 350.0

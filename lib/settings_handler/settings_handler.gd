@@ -4,7 +4,9 @@ extends Node
 const FILE_PATH = "user://settings.dat"
 const DEFAULT_SETTINGS = { 
 	"fov": 90,
-	"brightness": 1.0
+	"brightness": 1.0,
+	"particle_density": "high",
+	"window_mode": "windowed"
 }
 @onready var settings = DEFAULT_SETTINGS.duplicate()
 signal setting_changed(parameter)
@@ -12,7 +14,13 @@ signal setting_changed(parameter)
 func load_from_file() -> void:
 	if FileAccess.file_exists(FILE_PATH):
 		var file = FileAccess.open(FILE_PATH, FileAccess.READ)
-		settings = file.get_var()
+		var _file_settings = file.get_var()
+		# Update from a full template rather than replacing it - means that if
+		# another setting is added, an old config file without it won't
+		# overwrite it
+		for f in _file_settings:
+			if f in settings:
+				settings[f] = _file_settings[f]
 
 func save_to_file() -> void:
 	var file = FileAccess.open(FILE_PATH, FileAccess.WRITE)

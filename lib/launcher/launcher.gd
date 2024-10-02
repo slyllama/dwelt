@@ -33,6 +33,7 @@ func _ready() -> void:
 	
 	# In case the user is orbiting when they return to the launcher
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_window().mode = Window.MODE_WINDOWED
 	
 	# Record original position and size, and set size/borderless
 	default_window_size = get_window().size

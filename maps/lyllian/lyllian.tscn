@@ -95,7 +95,6 @@ draw_pass_1 = SubResource("QuadMesh_ui8j8")
 
 [node name="Jukebox" parent="." instance=ExtResource("4_q3k13")]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
-enabled = false
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Jukebox"]
 stream = ExtResource("6_epu3l")

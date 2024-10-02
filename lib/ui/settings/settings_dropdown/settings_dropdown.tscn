@@ -9,6 +9,7 @@ offset_bottom = 27.0
 script = ExtResource("1_x6irl")
 
 [node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Setting:"
@@ -19,9 +20,6 @@ autowrap_mode = 0
 [node name="Menu" type="MenuButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 flat = false
 alignment = 0
-item_count = 2
-popup/item_0/text = "Setting"
-popup/item_1/text = "Another Setting"
-popup/item_1/id = 1

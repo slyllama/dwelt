@@ -31,28 +31,38 @@ max_value = 1.5
 step = 0.02
 value = 1.0
 
-[node name="ResetSettings" type="Button" parent="Container" index="7"]
-layout_mode = 2
-text = "Reset Settings"
-
-[node name="MinimapTool" type="Button" parent="Container" index="8"]
+[node name="MinimapTool" type="Button" parent="Container" index="7"]
 layout_mode = 2
 text = "Minimap Tool"
 
-[node name="FullScreen" type="Button" parent="Container" index="9"]
+[node name="ParticleDensity" parent="Container" index="8" instance=ExtResource("3_sckvf")]
 layout_mode = 2
-text = "Toggle Full Screen"
+title = "Particles"
+id = "particle_density"
+options = Array[String](["low", "medium", "high"])
+default_option = "high"
 
-[node name="FoliageDensity" type="Button" parent="Container" index="10"]
+[node name="WindowMode" parent="Container" index="9" instance=ExtResource("3_sckvf")]
 layout_mode = 2
-text = "Foliage Density"
+title = "Display"
+id = "window_mode"
+options = Array[String](["windowed", "full_screen"])
+default_option = "windowed"
 
-[node name="SettingsDropdown" parent="Container" index="11" instance=ExtResource("3_sckvf")]
+[node name="LowerSep2" type="ColorRect" parent="Container" index="10"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
 
-[node name="Quit" type="Button" parent="Container" index="12"]
+[node name="Close" type="Button" parent="Container" index="11"]
+self_modulate = Color(1, 0.25098, 0, 1)
 layout_mode = 2
-text = "Quit"
+text = "Close Dwelt"
+
+[node name="ResetSettings" type="Button" parent="Container" index="12"]
+layout_mode = 2
+text = "Reset Settings"
 
 [node name="LowerSep" type="ColorRect" parent="Container" index="13"]
 custom_minimum_size = Vector2(0, 10)
@@ -70,8 +80,6 @@ fit_content = true
 
 [connection signal="value_changed" from="Container/FOV" to="." method="_on_fov_value_changed"]
 [connection signal="value_changed" from="Container/Brightness" to="." method="_on_brightness_value_changed"]
-[connection signal="pressed" from="Container/ResetSettings" to="." method="_on_reset_settings_pressed"]
 [connection signal="pressed" from="Container/MinimapTool" to="." method="_on_minimap_tool_pressed"]
-[connection signal="pressed" from="Container/FullScreen" to="." method="_on_full_screen_pressed"]
-[connection signal="pressed" from="Container/FoliageDensity" to="." method="_on_foliage_density_pressed"]
-[connection signal="pressed" from="Container/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Container/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Container/ResetSettings" to="." method="_on_reset_settings_pressed"]

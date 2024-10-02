@@ -82,8 +82,8 @@ func render(density: float = 1.0) -> void:
 			grass_transform = grass_transform.translated_local(grass_scatter)
 			grass_transform = grass_transform.rotated_local(Vector3.UP, grass_rotation)
 			build_multimesh.set_instance_transform(i, grass_transform)
-			foliage_count += 1
 	
+	foliage_count = floor(count * count * density)
 	multimesh = build_multimesh
 	if !Engine.is_editor_hint():
 		set_display_distance()
@@ -91,7 +91,13 @@ func render(density: float = 1.0) -> void:
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
-		Global.foliage_density_changed.connect(render)
+		SettingsHandler.setting_changed.connect(func(parameter):
+			if parameter == "particle_density":
+				var _value = SettingsHandler.settings.particle_density
+				if _value == "low": render(0.3)
+				elif _value == "medium": render(0.6)
+				else: render())
+		
 		$DebugSphere.visible = false
 	render()
 

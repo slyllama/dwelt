@@ -55,10 +55,16 @@ func _ready() -> void:
 	for node in Utilities.get_all_children(decal_candidates):
 		if "layers" in node: node.set_layer_mask_value(2, true)
 	
-	# Connect settings and refresh
+	# Connect settings, apply, and refresh
 	SettingsHandler.setting_changed.connect(func(parameter):
+		var _value = SettingsHandler.settings[parameter]
 		match parameter:
-			"fov": CameraData.camera.fov = SettingsHandler.settings.fov
-			"brightness": sky.environment.adjustment_brightness = SettingsHandler.settings.brightness
+			"fov":
+				CameraData.camera.fov = _value
+			"brightness":
+				sky.environment.adjustment_brightness = _value
+			"window_mode":
+				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
+				else: get_window().mode = Window.MODE_WINDOWED
 	)
 	SettingsHandler.refresh()

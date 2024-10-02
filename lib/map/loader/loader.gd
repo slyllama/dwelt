@@ -15,6 +15,7 @@ func _reset_map() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Global.object_data = []
 	Global.active_pylon = Global.ACTIVE_PYLON.duplicate()
+	Global.foliage_count = 0.0
 
 # Change scene after fading everything out
 func _transition():
