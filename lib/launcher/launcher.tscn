@@ -24,9 +24,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 31.0
+offset_left = 61.0
 offset_top = 198.0
-offset_right = -31.0
+offset_right = -61.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -34,7 +34,7 @@ grow_vertical = 2
 [node name="PlayButton" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_k21dg")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "Play"
 
 [node name="Brand" type="TextureRect" parent="Menu"]

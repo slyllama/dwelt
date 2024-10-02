@@ -23,6 +23,9 @@ func _ready() -> void:
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/textures/cursor_2x.png"))
 	
+	AudioServer.set_bus_volume_db(0, 0)
+	$Menu/PlayButton.grab_focus()
+	
 	# Add sounds to buttons and configure mouse event passing
 	for n in Utilities.get_all_children(self):
 		if "mouse_filter" in n: n.mouse_filter = MOUSE_FILTER_PASS
@@ -36,15 +39,13 @@ func _ready() -> void:
 	get_window().mode = Window.MODE_WINDOWED
 	
 	# Record original position and size, and set size/borderless
+	get_window().borderless = true
 	default_window_size = get_window().size
 	default_window_pos = get_window().position
 	get_window().size = size * Global.retina_scale
 	get_window().position = (DisplayServer.screen_get_size() / 2.0
 		- get_window().size / 2.0 + Vector2(0, -100))
 	current_position = get_window().position
-	get_window().borderless = true
-	
-	$Menu/PlayButton.grab_focus()
 
 func _input(event: InputEvent) -> void:
 	# Functions for window dragging

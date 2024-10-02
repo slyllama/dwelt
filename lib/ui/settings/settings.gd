@@ -1,6 +1,10 @@
 extends "res://lib/ui/ui_container/ui_container.gd"
 # Settings
 
+func close():
+	SettingsHandler.save_to_file()
+	super()
+
 func _ready():
 	super()
 	# Use set_value_no_signal(value) to configure without re-triggering settings updates
@@ -14,7 +18,6 @@ func _ready():
 			"brightness":
 				$Container/Brightness.set_value_no_signal(_value)
 	)
-	
 	$Container/MinimapTool.modulate = Color.ORANGE
 
 # Open with a hotkey
@@ -44,5 +47,5 @@ func _on_reset_settings_pressed() -> void:
 	SettingsHandler.reset()
 
 func _on_close_pressed() -> void:
-	SettingsHandler.save_to_file()
+	close()
 	get_tree().quit()
