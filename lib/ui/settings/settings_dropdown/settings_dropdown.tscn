@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://u1aykf6w42gl"]
+
+[ext_resource type="Script" path="res://lib/ui/settings/settings_dropdown/settings_dropdown.gd" id="1_x6irl"]
+
+[node name="SettingsDropdown" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+offset_right = 320.0
+offset_bottom = 27.0
+script = ExtResource("1_x6irl")
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Setting:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Menu" type="MenuButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = false
+alignment = 0
+item_count = 2
+popup/item_0/text = "Setting"
+popup/item_1/text = "Another Setting"
+popup/item_1/id = 1
