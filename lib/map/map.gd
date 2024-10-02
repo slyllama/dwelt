@@ -14,6 +14,16 @@ var sky: WorldEnvironment
 var hud: CanvasLayer
 var minimap: Minimap
 
+func _get_all_children(node: Node) -> Array:
+	var nodes: Array = []
+	if !node: return([])
+	for n in node.get_children():
+		if n.get_child_count() > 0:
+			nodes.append(n)
+			nodes.append_array(_get_all_children(n, ))
+		else: nodes.append(n)
+	return(nodes)
+
 # Pass map configuration data to the Minimap and ping it to update
 func configure_map(data: Dictionary):
 	Global.minimap_data = Global.MINIMAP_DATA.duplicate() # reset first
@@ -46,14 +56,14 @@ func _ready() -> void:
 		var e = environment.duplicate(true)
 		sky.environment = e
 	
+	# Set culling mask for objects to be influenced by moss decals
+	for node in _get_all_children(decal_candidates):
+		if "layers" in node: node.set_layer_mask_value(2, true)
+	
 	if Engine.is_editor_hint(): return
 	# Set up the ObjectHandler and environment
 	var object_handler = ObjectHandler.instantiate()
 	add_child(object_handler)
-	
-	# Set culling mask for objects to be influenced by moss decals
-	for node in Utilities.get_all_children(decal_candidates):
-		if "layers" in node: node.set_layer_mask_value(2, true)
 	
 	# Connect settings, apply, and refresh
 	SettingsHandler.setting_changed.connect(func(parameter):
