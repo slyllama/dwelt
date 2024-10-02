@@ -6,8 +6,8 @@ func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
 	# Set custom camera starting rotation
-	$Player/CameraHandler._target_rotation.y = 30
-	$Player/CameraHandler.rotation_degrees.y = 30
+	$Player/CameraHandler._target_rotation.y = 90
+	$Player/CameraHandler.rotation_degrees.y = 90
 	configure_map({
 		"image_path": "res://maps/lyllian/textures/map.png",
 		"magnitude": 33.4,

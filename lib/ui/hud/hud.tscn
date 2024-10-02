@@ -120,6 +120,7 @@ offset_bottom = 260.0
 texture_normal = ExtResource("8_45tje")
 
 [node name="DebugContainer" type="VBoxContainer" parent="Minimap"]
+visible = false
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 1
 anchors_preset = 2
@@ -175,3 +176,5 @@ grow_vertical = 0
 
 [connection signal="pressed" from="Minimap/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Minimap/InteractButton" to="." method="_on_interact_pressed"]
+[connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
+[connection signal="opened" from="Settings" to="." method="_on_settings_opened"]

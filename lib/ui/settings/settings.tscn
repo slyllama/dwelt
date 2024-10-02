@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkolvndsk61d"]
+[gd_scene load_steps=5 format=3 uid="uid://cmkolvndsk61d"]
 
 [ext_resource type="PackedScene" uid="uid://dqhmkchm2mv4e" path="res://lib/ui/ui_container/ui_container.tscn" id="1_osjcg"]
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="2_511et"]
 [ext_resource type="PackedScene" uid="uid://u1aykf6w42gl" path="res://lib/ui/settings/settings_dropdown/settings_dropdown.tscn" id="3_sckvf"]
+[ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="4_7ctu6"]
 
 [node name="Settings" instance=ExtResource("1_osjcg")]
 script = ExtResource("2_511et")
@@ -79,8 +80,10 @@ mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
 [node name="PlayerPos" type="RichTextLabel" parent="Container" index="15"]
-modulate = Color(0.75, 0.75, 0.75, 1)
+modulate = Color(0.6, 0.6, 0.6, 1)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_7ctu6")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Player position]"
 fit_content = true

@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_broadleaf.tres"
 },
+"mat_grey": {
+"use_external/enabled": true,
+"use_external/path": "res://generic/materials/mat_grey.tres"
+},
 "mat_oak": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_oak.tres"

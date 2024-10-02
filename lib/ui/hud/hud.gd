@@ -50,3 +50,7 @@ func _on_settings_pressed() -> void:
 
 func _on_interact_pressed() -> void:
 	Global.interact_pressed.emit()
+
+# Toggle debug with settings
+func _on_settings_closed() -> void: $Minimap/DebugContainer.visible = false
+func _on_settings_opened() -> void: $Minimap/DebugContainer.visible = true

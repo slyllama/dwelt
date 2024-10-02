@@ -2,6 +2,8 @@ extends Panel
 # UIContainer
 # A general UI container
 const TRANS_TIME = 0.11
+signal opened
+signal closed
 
 @export var title = "Title"
 var is_open = false
@@ -15,6 +17,7 @@ func open():
 	if is_open: return
 	
 	is_open = true
+	opened.emit()
 	visible = true
 	var open_tween = create_tween()
 	open_tween.tween_property(self, "modulate:a", 1.0, TRANS_TIME)
@@ -23,6 +26,7 @@ func close():
 	if !is_open: return
 	
 	is_open = false
+	closed.emit()
 	SettingsHandler.save_to_file()
 	var close_tween = create_tween()
 	close_tween.tween_property(self, "modulate:a", 0.0, TRANS_TIME)
