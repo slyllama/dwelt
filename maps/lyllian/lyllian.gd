@@ -24,3 +24,6 @@ func _to_dwellan() -> void:
 	r.finished.connect(func():
 		Global.change_map("dwellan"))
 	$Pylon.add_child(r)
+
+func _on_to_launcher_interacted() -> void:
+	get_tree().change_scene_to_file("res://launcher/launcher.tscn")

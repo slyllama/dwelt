@@ -176,4 +176,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0352, 2.91588, 0.847679)
 size = Vector3(0.02, 0.84, 0.59)
 material = ExtResource("12_mlwfi")
 
+[node name="ToLauncher" parent="." instance=ExtResource("7_awmnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 1.5, -0.5)
+id = "to_launcher"
+title = "To Launcher"
+description = "Return to the game launcher."
+can_interact = true
+show_mote = true
+
 [connection signal="interacted" from="Pylon/ToDwellan" to="." method="_to_dwellan"]
+[connection signal="interacted" from="ToLauncher" to="." method="_on_to_launcher_interacted"]
