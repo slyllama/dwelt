@@ -63,10 +63,11 @@ albedo_texture = ExtResource("9_xfjyu")
 billboard_mode = 1
 billboard_keep_scale = true
 
-[node name="Lyllian" type="Node3D" node_paths=PackedStringArray("decal_candidates")]
+[node name="Lyllian" type="Node3D" node_paths=PackedStringArray("decal_candidates", "shadow_lights")]
 script = ExtResource("1_1mnll")
 environment = ExtResource("2_ahnhk")
 decal_candidates = NodePath("ScruffyHouse")
+shadow_lights = NodePath("ShadowLights")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.053, 0.535097, -0.843127, 0.299471, 0.813969, 0.497767, 0.952632, -0.22611, -0.203386, 0, 5, 0)
@@ -103,16 +104,6 @@ track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
 stream = ExtResource("6_epu3l")
 volume_db = -9.0
 autoplay = true
-
-[node name="Light" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95774, 3.84393, 0.675864)
-light_color = Color(1, 0.785, 0.57, 1)
-light_energy = 5.0
-shadow_enabled = true
-shadow_opacity = 0.75
-shadow_blur = 2.0
-omni_range = 6.0
-omni_attenuation = 1.4
 
 [node name="Light2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.5, 0)
@@ -199,6 +190,18 @@ texture_albedo = ExtResource("15_08dm5")
 modulate = Color(0.2, 0.4, 0, 1)
 normal_fade = 0.5
 cull_mask = 1048574
+
+[node name="ShadowLights" type="Node3D" parent="."]
+
+[node name="Light" type="OmniLight3D" parent="ShadowLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95774, 3.84393, 0.675864)
+light_color = Color(1, 0.785, 0.57, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 2.0
+omni_range = 6.0
+omni_attenuation = 1.4
 
 [connection signal="interacted" from="Pylon/ToDwellan" to="." method="_to_dwellan"]
 [connection signal="interacted" from="ToLauncher" to="." method="_on_to_launcher_interacted"]

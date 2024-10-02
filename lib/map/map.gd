@@ -7,7 +7,11 @@ const HUD = preload("res://lib/ui/hud/hud.tscn")
 const ObjectHandler = preload("res://lib/object/object_handler/object_handler.tscn")
 
 @export var environment: Environment
-@export var decal_candidates: Node ## Moss and ground decals will only be projected onto the children of this node.
+## Moss and ground decals will only be projected onto the children of this node.
+@export var decal_candidates: Node
+## Child lights of this node will cast shadows when shadows are enabled in the
+## game settings.
+@export var shadow_lights: Node = null
 @export var start_muted = false
 
 var sky: WorldEnvironment
@@ -23,6 +27,13 @@ func _get_all_children(node: Node) -> Array:
 			nodes.append_array(_get_all_children(n, ))
 		else: nodes.append(n)
 	return(nodes)
+
+# Enable or disable omni-shadows according to the export variable shadow_lights
+func _set_shadows(state) -> void:
+	if shadow_lights == null: return
+	for n in shadow_lights.get_children():
+		if n is OmniLight3D:
+			n.shadow_enabled = state
 
 # Pass map configuration data to the Minimap and ping it to update
 func configure_map(data: Dictionary):
@@ -76,5 +87,8 @@ func _ready() -> void:
 			"window_mode":
 				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
 				else: get_window().mode = Window.MODE_WINDOWED
+			"shadows":
+				if _value == "on": _set_shadows(true)
+				else: _set_shadows(false)
 	)
 	SettingsHandler.refresh()

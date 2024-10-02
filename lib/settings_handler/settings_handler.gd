@@ -6,7 +6,8 @@ const DEFAULT_SETTINGS = {
 	"fov": 90,
 	"brightness": 1.0,
 	"particle_density": "high",
-	"window_mode": "windowed"
+	"window_mode": "windowed",
+	"shadows": "on"
 }
 @onready var settings = DEFAULT_SETTINGS.duplicate()
 signal setting_changed(parameter)

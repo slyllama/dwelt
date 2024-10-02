@@ -42,36 +42,43 @@ id = "particle_density"
 options = Array[String](["low", "medium", "high"])
 default_option = "high"
 
-[node name="WindowMode" parent="Container" index="9" instance=ExtResource("3_sckvf")]
+[node name="Shadows" parent="Container" index="9" instance=ExtResource("3_sckvf")]
+layout_mode = 2
+title = "Shadows"
+id = "shadows"
+options = Array[String](["on", "off"])
+default_option = "on"
+
+[node name="WindowMode" parent="Container" index="10" instance=ExtResource("3_sckvf")]
 layout_mode = 2
 title = "Display"
 id = "window_mode"
 options = Array[String](["windowed", "full_screen"])
 default_option = "windowed"
 
-[node name="LowerSep2" type="ColorRect" parent="Container" index="10"]
+[node name="LowerSep2" type="ColorRect" parent="Container" index="11"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="Close" type="Button" parent="Container" index="11"]
+[node name="Close" type="Button" parent="Container" index="12"]
 self_modulate = Color(1, 0.25098, 0, 1)
 layout_mode = 2
 text = "Close Dwelt"
 
-[node name="ResetSettings" type="Button" parent="Container" index="12"]
+[node name="ResetSettings" type="Button" parent="Container" index="13"]
 layout_mode = 2
 text = "Reset Settings"
 
-[node name="LowerSep" type="ColorRect" parent="Container" index="13"]
+[node name="LowerSep" type="ColorRect" parent="Container" index="14"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="PlayerPos" type="RichTextLabel" parent="Container" index="14"]
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="15"]
 modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 bbcode_enabled = true
