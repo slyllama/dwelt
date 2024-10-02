@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://cg1m4k6i1fknp"]
+[gd_scene load_steps=21 format=3 uid="uid://cg1m4k6i1fknp"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
-[ext_resource type="Texture2D" uid="uid://cxdb7vmj8y1me" path="res://generic/textures/stars_hdr.png" id="2_2eq22"]
+[ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/environment.tres" id="2_ahnhk"]
 [ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_725dw"]
 [ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="4_q3k13"]
 [ext_resource type="AudioStream" uid="uid://byoafwuotvs46" path="res://maps/lyllian/sound/awake.ogg" id="5_2luym"]
@@ -13,41 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
 [ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/object/pylon/sound/heal.ogg" id="11_xuqaq"]
 [ext_resource type="Material" uid="uid://dcpk66bxnfqg1" path="res://generic/materials/mat_grey.tres" id="12_mlwfi"]
-
-[sub_resource type="Gradient" id="Gradient_ac408"]
-offsets = PackedFloat32Array(0, 0.184211, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.18, 0.193667, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sk1oy"]
-gradient = SubResource("Gradient_ac408")
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cq8dt"]
-panorama = ExtResource("2_2eq22")
-
-[sub_resource type="Sky" id="Sky_uxiyl"]
-sky_material = SubResource("PanoramaSkyMaterial_cq8dt")
-
-[sub_resource type="Environment" id="Environment_mlws5"]
-background_mode = 2
-sky = SubResource("Sky_uxiyl")
-ambient_light_source = 2
-ambient_light_color = Color(0.17307, 0.1422, 0.18, 1)
-tonemap_mode = 2
-glow_normalized = true
-glow_intensity = 0.2
-glow_strength = 0.5
-glow_bloom = 1.0
-glow_blend_mode = 0
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.0503195, 0.0357358, 0.0539876, 1)
-fog_density = 1.0
-fog_sky_affect = 0.2
-fog_depth_begin = 14.0
-fog_depth_end = 17.0
-adjustment_enabled = true
-adjustment_saturation = 1.25
-adjustment_color_correction = SubResource("GradientTexture1D_sk1oy")
 
 [sub_resource type="Gradient" id="Gradient_1o2oh"]
 offsets = PackedFloat32Array(0, 0.266667, 0.751515, 1)
@@ -98,7 +63,7 @@ billboard_keep_scale = true
 
 [node name="Lyllian" type="Node3D"]
 script = ExtResource("1_1mnll")
-environment = SubResource("Environment_mlws5")
+environment = ExtResource("2_ahnhk")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.053, 0.535097, -0.843127, 0.299471, 0.813969, 0.497767, 0.952632, -0.22611, -0.203386, 0, 5, 0)

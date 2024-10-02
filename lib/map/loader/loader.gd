@@ -35,16 +35,6 @@ func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
 	_reset_map()
 	
-	# Retina screen scaling - only gets checked once on initialisation
-	if !Global.loaded_once:
-		Global.loaded_once = true
-		if DisplayServer.screen_get_size().x > 2000:
-			get_window().size *= 2.0
-			get_window().content_scale_factor = 2.0
-			Global.retina_scale = 2.0
-			# macOS already configures the cursor for
-			if OS.get_name() != "macOS":
-				DisplayServer.cursor_set_custom_image(load("res://generic/textures/cursor_2x.png"))
 	get_window().size_changed.connect(_center_cog)
 	_center_cog()
 	

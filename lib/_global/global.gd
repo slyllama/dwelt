@@ -30,6 +30,7 @@ func change_map(map_name: String) -> void:
 		target_scene = _path + ".tscn"
 	elif FileAccess.file_exists(_path + ".scn"):
 		target_scene = _path + ".scn"
+	print(target_scene)
 	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 
 signal click_sound
@@ -48,7 +49,6 @@ signal shake_camera()
 
 var active_pylon = ACTIVE_PYLON.duplicate()
 var foliage_count = 0
-var loaded_once = false
 var minimap_data = MINIMAP_DATA.duplicate()
 var object_data = []
 var player_position = Vector3.ZERO
