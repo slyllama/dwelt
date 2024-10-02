@@ -31,6 +31,9 @@ func _ready() -> void:
 			n.focus_entered.connect(func(): Global.click_sound.emit())
 			n.mouse_entered.connect(func(): Global.hover_sound.emit())
 	
+	# In case the user is orbiting when they return to the launcher
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	# Record original position and size, and set size/borderless
 	default_window_size = get_window().size
 	default_window_pos = get_window().position

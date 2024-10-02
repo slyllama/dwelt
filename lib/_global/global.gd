@@ -30,7 +30,6 @@ func change_map(map_name: String) -> void:
 		target_scene = _path + ".tscn"
 	elif FileAccess.file_exists(_path + ".scn"):
 		target_scene = _path + ".scn"
-	print(target_scene)
 	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 
 signal click_sound
