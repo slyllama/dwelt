@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm68k7vsufb3m"
-path.s3tc="res://.godot/imported/scruffpaper_diff.jpg-8d60d4bd1922f9da9346e2608760eb72.s3tc.ctex"
+uid="uid://dtqeh8d7uoein"
+path.s3tc="res://.godot/imported/scruffpaper_grunge.jpg-44484e9017dcd712342a37ed3f9910a5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/lyllian/props/scruffy_house/materials/textures/scruffpaper_diff.jpg"
-dest_files=["res://.godot/imported/scruffpaper_diff.jpg-8d60d4bd1922f9da9346e2608760eb72.s3tc.ctex"]
+source_file="res://maps/lyllian/props/materials/textures/scruffpaper_grunge.jpg"
+dest_files=["res://.godot/imported/scruffpaper_grunge.jpg-44484e9017dcd712342a37ed3f9910a5.s3tc.ctex"]
 
 [params]
 

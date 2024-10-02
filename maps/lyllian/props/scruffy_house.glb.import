@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bcuwme63fr4hi"
-path="res://.godot/imported/scruffy_house.glb-452fce7c3cb57c5159bfa9fff710e953.scn"
+path="res://.godot/imported/scruffy_house.glb-f545879da7641e3c2002df09179e26cf.scn"
 
 [deps]
 
-source_file="res://maps/lyllian/props/scruffy_house/scruffy_house.glb"
-dest_files=["res://.godot/imported/scruffy_house.glb-452fce7c3cb57c5159bfa9fff710e953.scn"]
+source_file="res://maps/lyllian/props/scruffy_house.glb"
+dest_files=["res://.godot/imported/scruffy_house.glb-f545879da7641e3c2002df09179e26cf.scn"]
 
 [params]
 
