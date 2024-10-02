@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://21x2o3jutg3n"]
+[gd_scene load_steps=8 format=3 uid="uid://21x2o3jutg3n"]
 
 [ext_resource type="Script" path="res://lib/map/loader/loader.gd" id="1_g5lpx"]
 [ext_resource type="Texture2D" uid="uid://b71p0p22mumss" path="res://lib/map/loader/textures/loading_cog.png" id="2_puy7m"]
+[ext_resource type="Shader" path="res://lib/ui/hud/aberration/materials/shaders/shader_aberration.gdshader" id="3_lg6u7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6s5"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,6 +21,10 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cu1nb"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_krdpm"]
+shader = ExtResource("3_lg6u7")
+shader_parameter/intensity = 0.0
 
 [node name="Loader" type="CanvasLayer"]
 script = ExtResource("1_g5lpx")
@@ -58,4 +63,13 @@ show_percentage = false
 
 [node name="Spinner" type="Sprite2D" parent="."]
 texture_filter = 4
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_puy7m")
+
+[node name="Aberration" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_krdpm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

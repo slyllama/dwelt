@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dps7aab5tsscb"]
+[gd_scene load_steps=8 format=3 uid="uid://dps7aab5tsscb"]
 
-[ext_resource type="Texture2D" uid="uid://cvqrwvw5of3da" path="res://launcher/textures/base.png" id="1_6s2no"]
-[ext_resource type="Script" path="res://launcher/launcher.gd" id="1_mar3n"]
+[ext_resource type="Texture2D" uid="uid://cvqrwvw5of3da" path="res://lib/launcher/textures/base.png" id="1_6s2no"]
+[ext_resource type="Script" path="res://lib/launcher/launcher.gd" id="1_mar3n"]
 [ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="3_cbjp3"]
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="4_imdpf"]
+[ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="4_k21dg"]
+[ext_resource type="Texture2D" uid="uid://dh0ufev6pcxy8" path="res://generic/textures/splash.png" id="4_oju8j"]
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="5_mt1nc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11m65"]
 
 [node name="Launcher" type="TextureRect"]
 offset_right = 390.0
@@ -24,22 +24,26 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 185.0
-offset_right = -25.0
+offset_left = 31.0
+offset_top = 198.0
+offset_right = -31.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Padding" type="Panel" parent="Menu"]
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_styles/panel = SubResource("StyleBoxEmpty_11m65")
-
 [node name="PlayButton" type="Button" parent="Menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k21dg")
 theme_override_font_sizes/font_size = 24
 text = "Play"
+
+[node name="Brand" type="TextureRect" parent="Menu"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("4_oju8j")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CloseButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(27, 27)
