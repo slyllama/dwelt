@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dps7aab5tsscb"]
+[gd_scene load_steps=9 format=3 uid="uid://dps7aab5tsscb"]
 
 [ext_resource type="Texture2D" uid="uid://cvqrwvw5of3da" path="res://lib/launcher/textures/base.png" id="1_6s2no"]
 [ext_resource type="Script" path="res://lib/launcher/launcher.gd" id="1_mar3n"]
 [ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="3_cbjp3"]
+[ext_resource type="PackedScene" uid="uid://cvcdiaqfebh16" path="res://lib/launcher/web_updates/web_updates.tscn" id="4_c0nxu"]
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="4_imdpf"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="4_k21dg"]
 [ext_resource type="Texture2D" uid="uid://dh0ufev6pcxy8" path="res://generic/textures/splash.png" id="4_oju8j"]
@@ -24,12 +25,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 61.0
-offset_top = 198.0
-offset_right = -61.0
+offset_left = 40.0
+offset_top = 185.0
+offset_right = -40.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="WebUpdates" parent="Menu" instance=ExtResource("4_c0nxu")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="PlayButton" type="Button" parent="Menu"]
 layout_mode = 2
@@ -37,10 +43,16 @@ theme_override_fonts/font = ExtResource("4_k21dg")
 theme_override_font_sizes/font_size = 22
 text = "Play"
 
+[node name="QuitButton" type="Button" parent="Menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k21dg")
+theme_override_font_sizes/font_size = 22
+text = "Quit"
+
 [node name="Brand" type="TextureRect" parent="Menu"]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 8
 texture = ExtResource("4_oju8j")
 expand_mode = 1
 stretch_mode = 5
@@ -62,4 +74,5 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [connection signal="pressed" from="Menu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/QuitButton" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_pressed"]
