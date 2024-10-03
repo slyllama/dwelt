@@ -13,6 +13,8 @@ func update() -> void:
 	if "image_path" in data:
 		if ResourceLoader.exists(data["image_path"]):
 			$Root/MapImage.texture = load(data["image_path"])
+		else: $Root/MapImage.texture = null
+	else: $Root/MapImage.texture = null
 	if "magnitude" in data: magnitude = data["magnitude"]
 	if "image_scale" in data: image_scale = Vector2(data["image_scale"], data["image_scale"])
 	if "image_rotation" in data: $Root/MapImage.rotation_degrees = data["image_rotation"]

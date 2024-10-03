@@ -9,11 +9,11 @@ func _make_ortho_camera() -> void:
 	add_child(ortho)
 	ortho.set_orthogonal(40.0, 0.0, 100.0)
 	ortho.make_current()
-	sky.environment.fog_enabled = false
+	%Sky.environment.fog_enabled = false
 	
 	for o: Node in Utilities.get_all_children(self):
 		if o is WorldText: o.visible = false
-	hud.get_node("Minimap").visible = false
+	#hud.get_node("Minimap").visible = false
 	$Player.queue_free()
 
 func _ready() -> void:
