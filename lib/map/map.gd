@@ -3,10 +3,8 @@ extends Node3D
 # Map
 # Handles map setting-up functions; should be extended.
 
-const HUD = preload("res://lib/ui/hud/hud.tscn")
 const ObjectHandler = preload("res://lib/object/object_handler/object_handler.tscn")
 
-@export var environment: Environment
 ## Moss and ground decals will only be projected onto the children of this node.
 @export var decal_candidates: Node
 ## Child lights of this node will cast shadows when shadows are enabled in the
@@ -14,9 +12,8 @@ const ObjectHandler = preload("res://lib/object/object_handler/object_handler.ts
 @export var shadow_lights: Node = null
 @export var start_muted = false
 
-var sky: WorldEnvironment
-var hud: CanvasLayer
-var minimap: Minimap
+@onready var hud = %HUD
+@onready var minimap = %HUD.get_node("Minimap")
 
 func _get_all_children(node: Node) -> Array:
 	var nodes: Array = []
@@ -49,23 +46,9 @@ func _fade_sound_in() -> void:
 	audio_in.tween_method(func(vol):
 		AudioServer.set_bus_volume_db(0, linear_to_db(vol)), 0.0, 1.0, 1.0)
 
-func _init() -> void:
-	if !Engine.is_editor_hint():
-		hud = HUD.instantiate()
-		add_child(hud)
-		minimap = hud.get_node("Minimap")
-
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -80)
 	if !start_muted: _fade_sound_in()
-	
-	if sky != null: sky.queue_free()
-	sky = WorldEnvironment.new()
-	add_child(sky)
-	# Duplicate the environment to avoid editing the original resource
-	if environment != null:
-		var e = environment.duplicate(true)
-		sky.environment = e
 	
 	# Set culling mask for objects to be influenced by moss decals
 	for node in _get_all_children(decal_candidates):
@@ -83,7 +66,7 @@ func _ready() -> void:
 			"fov":
 				CameraData.camera.fov = _value
 			"brightness":
-				sky.environment.adjustment_brightness = _value
+				%Sky.environment.adjustment_brightness = _value
 			"window_mode":
 				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
 				else: get_window().mode = Window.MODE_WINDOWED

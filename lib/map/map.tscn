@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvfwn2u2p31wx"]
+
+[ext_resource type="Script" path="res://lib/map/map.gd" id="1_oukx7"]
+[ext_resource type="PackedScene" uid="uid://coo8lra5hpkuq" path="res://lib/ui/hud/hud.tscn" id="2_sg4wo"]
+[ext_resource type="PackedScene" uid="uid://ctalngjslyvct" path="res://lib/player/player.tscn" id="3_qrem7"]
+[ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="4_j0im0"]
+
+[sub_resource type="Environment" id="Environment_7nxd1"]
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_oukx7")
+
+[node name="HUD" parent="." instance=ExtResource("2_sg4wo")]
+unique_name_in_owner = true
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.279454, 0.694109, -0.663414, 0.262003, 0.719846, 0.642788, 0.923721, 0.0058133, -0.383022, 0, 5, 0)
+light_color = Color(0.883333, 0.86, 1, 1)
+light_energy = 3.0
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.5
+shadow_blur = 0.6
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_blend_splits = true
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_7nxd1")
+
+[node name="Player" parent="." instance=ExtResource("3_qrem7")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Jukebox" parent="." instance=ExtResource("4_j0im0")]
