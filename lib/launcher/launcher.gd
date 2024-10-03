@@ -59,6 +59,8 @@ func _input(event: InputEvent) -> void:
 			current_position = get_window().position
 
 func _on_play_button_pressed() -> void:
+	visible = false
+	
 	# Reset the window to its original state before proceeding
 	get_window().size = default_window_size
 	get_window().position = default_window_pos

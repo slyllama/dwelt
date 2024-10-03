@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/launcher/web_updates/web_updates.gd" id="1_xky0n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pil4k"]
-bg_color = Color(0.11, 0.11, 0.11, 1)
+bg_color = Color(0, 0, 0, 0.843137)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

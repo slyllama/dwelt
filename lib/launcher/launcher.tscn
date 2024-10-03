@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dps7aab5tsscb"]
+[gd_scene load_steps=8 format=3 uid="uid://dps7aab5tsscb"]
 
 [ext_resource type="Texture2D" uid="uid://cvqrwvw5of3da" path="res://lib/launcher/textures/base.png" id="1_6s2no"]
 [ext_resource type="Script" path="res://lib/launcher/launcher.gd" id="1_mar3n"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cvcdiaqfebh16" path="res://lib/launcher/web_updates/web_updates.tscn" id="4_c0nxu"]
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="4_imdpf"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="4_k21dg"]
-[ext_resource type="Texture2D" uid="uid://dh0ufev6pcxy8" path="res://generic/textures/splash.png" id="4_oju8j"]
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="5_mt1nc"]
 
 [node name="Launcher" type="TextureRect"]
@@ -28,14 +27,19 @@ anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 185.0
 offset_right = -40.0
-offset_bottom = -25.0
+offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 2
 
 [node name="WebUpdates" parent="Menu" instance=ExtResource("4_c0nxu")]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Separator" type="ColorRect" parent="Menu"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
 
 [node name="PlayButton" type="Button" parent="Menu"]
 layout_mode = 2
@@ -49,24 +53,16 @@ theme_override_fonts/font = ExtResource("4_k21dg")
 theme_override_font_sizes/font_size = 22
 text = "Quit"
 
-[node name="Brand" type="TextureRect" parent="Menu"]
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-size_flags_vertical = 8
-texture = ExtResource("4_oju8j")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="CloseButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(27, 27)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -35.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 35.0
+offset_left = -38.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = 38.0
 grow_horizontal = 0
 texture_normal = ExtResource("4_imdpf")
 texture_hover = ExtResource("5_mt1nc")
