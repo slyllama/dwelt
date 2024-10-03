@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dbw4gkyebxohg" path="res://maps/lyllian/materials/textures/brick_norm.jpg" id="2_ha8ga"]
 
 [resource]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+albedo_color = Color(0.35, 0.35, 0.35, 1)
 albedo_texture = ExtResource("1_jicnd")
 metallic = 0.3
 metallic_specular = 0.25
+roughness = 0.9
 normal_enabled = true
 normal_texture = ExtResource("2_ha8ga")
 uv1_scale = Vector3(2, 2, 2)

@@ -59,6 +59,9 @@ func _input(event: InputEvent) -> void:
 		_mouse_delta = event.relative
 	
 	if Global.mouse_in_ui(): return
+	
+	if event is InputEventPanGesture:
+		_target_zoom += event.delta.y / 2.0
 	if Input.is_action_just_pressed("zoom_in"):
 		_target_zoom -= zoom_increment
 	if Input.is_action_just_pressed("zoom_out"):
