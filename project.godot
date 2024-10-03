@@ -63,7 +63,9 @@ theme/custom_font="res://generic/fonts/libertinus_sans.otf"
 
 animation_library={
 "animation/fps": 60.0,
-"animation/import_rest_as_RESET": true
+"animation/import_rest_as_RESET": true,
+"fbx/embedded_image_handling": 2,
+"fbx/importer": 1
 }
 
 [input]

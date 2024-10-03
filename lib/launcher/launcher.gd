@@ -43,8 +43,8 @@ func _ready() -> void:
 	default_window_size = get_window().size
 	default_window_pos = get_window().position
 	get_window().size = size * Global.retina_scale
-	get_window().position = (DisplayServer.screen_get_size() / 2.0
-		- get_window().size / 2.0 + Vector2(0, -100))
+	#get_window().position = (DisplayServer.screen_get_size() / 2.0
+		#- get_window().size / 2.0 + Vector2(0, -100))
 	current_position = get_window().position
 
 func _input(event: InputEvent) -> void:

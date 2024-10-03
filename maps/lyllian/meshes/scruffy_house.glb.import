@@ -49,6 +49,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_rough_wood.tres"
 },
+"mat_rug": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/materials/mat_rug.tres"
+},
 "mat_wallpaper": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_scruffpaper.tres"

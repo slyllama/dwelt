@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://chrvfhdn5etbr"
-path="res://.godot/imported/aoibhe_frame.glb-bc4c11a6dbf96a799f78fe82a8d0a698.scn"
+uid="uid://j0gv1cjmedb0"
+path="res://.godot/imported/mushrooms.glb-6d2c6736b74c7ed65b76a0822f797325.scn"
 
 [deps]
 
-source_file="res://maps/lyllian/meshes/aoibhe_frame.glb"
-dest_files=["res://.godot/imported/aoibhe_frame.glb-bc4c11a6dbf96a799f78fe82a8d0a698.scn"]
+source_file="res://maps/lyllian/meshes/mushrooms.glb"
+dest_files=["res://.godot/imported/mushrooms.glb-6d2c6736b74c7ed65b76a0822f797325.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="AoibheFrame"
+nodes/root_name="Mushrooms"
 nodes/apply_root_scale=true
-nodes/root_scale=0.75
+nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -33,13 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"mat_aoibhe": {
+"mat_mushroom": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lyllian/materials/mat_aoibhe.tres"
-},
-"mat_oak": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_oak.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_mushroom.tres"
 }
 }
 }
