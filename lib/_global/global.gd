@@ -22,7 +22,7 @@ const MINIMAP_DATA = {
 
 # Change this before invoking the loader - it will load whatever scene is here
 # Allows for serialised (.scn) scenes too
-var target_scene = "res://maps/lyllian/lyllian.tscn"
+var target_scene = "res://lib/launcher/launcher.tscn"
 func change_map(map_name: String) -> void:
 	var _ext = ".tscn"
 	var _path = "res://maps/" + map_name + "/" + map_name

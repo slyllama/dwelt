@@ -6,6 +6,8 @@ signal opened
 signal closed
 
 @export var title = "Title"
+@export var closeable = true
+@export var moveable = true
 var is_open = false
 
 @onready var current_position = position
@@ -23,7 +25,7 @@ func open():
 	open_tween.tween_property(self, "modulate:a", 1.0, TRANS_TIME)
 
 func close():
-	if !is_open: return
+	if !closeable or !is_open: return
 	
 	is_open = false
 	closed.emit()
@@ -37,6 +39,7 @@ func _ready():
 	visible = false
 	modulate.a = 0.0
 	$Container/TitleContainer/Title.text = title
+	$Container/TitleContainer/CloseButton.visible = closeable
 	
 	# Update panel position on window resize to avoid jumping
 	get_window().size_changed.connect(func(): current_position = position)
@@ -53,7 +56,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if mouse_in_title:
 			last_mouse_title_click = get_window().get_mouse_position()
-			moving_window = true
+			if moveable: moving_window = true
 	if Input.is_action_just_released("left_click"):
 		moving_window = false
 		current_position = position
@@ -65,6 +68,7 @@ func _on_title_mouse_entered() -> void: mouse_in_title = true
 func _on_title_mouse_exited() -> void: mouse_in_title = false
 
 func _process(_delta: float) -> void:
+	if !moveable: return
 	if moving_window:
 		var mouse_delta = get_window().get_mouse_position() - last_mouse_title_click
 		position = current_position + mouse_delta

@@ -9,6 +9,7 @@ func _ready() -> void:
 	visible = true
 	$Stars.restart()
 	$Stars.emitting = true
+	$Heal.play()
 	Global.shake_camera.emit()
 	
 	var distort_tween = create_tween()
@@ -16,6 +17,7 @@ func _ready() -> void:
 		_distort_prop("circle_position", val)
 		_distort_prop("alpha", ease(1.0 - val, -0.2))
 	, 0.0, 1.0, 1.0)
-	distort_tween.tween_callback(func():
-		finished.emit()
-		queue_free())
+
+func _on_sound_finished() -> void:
+	finished.emit()
+	queue_free()

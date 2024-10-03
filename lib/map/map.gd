@@ -46,6 +46,7 @@ func _ready() -> void:
 			"brightness": %Sky.environment.adjustment_brightness = _value
 			"window_mode":
 				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
+				elif _value == "maximized": get_window().mode = Window.MODE_MAXIMIZED
 				else: get_window().mode = Window.MODE_WINDOWED
 			"shadows":
 				if _value == "on": _set_shadows(true)

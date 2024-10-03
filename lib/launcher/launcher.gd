@@ -12,6 +12,16 @@ var moving_window = false
 var default_window_size: Vector2
 var default_window_pos: Vector2
 
+func _switch_scene(scene: String):
+	visible = false
+	# Reset the window to its original state before proceeding
+	get_window().size = default_window_size
+	get_window().position = default_window_pos
+	get_window().borderless = false
+	if ResourceLoader.exists(scene):
+		Global.target_scene = scene
+		get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
+
 func _ready() -> void:
 	# Configure retina
 	if DisplayServer.screen_get_size().x > 2000:
@@ -58,19 +68,18 @@ func _input(event: InputEvent) -> void:
 			moving_window = false
 			current_position = get_window().position
 
-func _on_play_button_pressed() -> void:
-	visible = false
-	
-	# Reset the window to its original state before proceeding
-	get_window().size = default_window_size
-	get_window().position = default_window_pos
-	get_window().borderless = false
-	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
-
-func _on_close_pressed() -> void: get_tree().quit()
-
 func _process(_delta: float) -> void:
 	# Window movement
 	if moving_window:
-		var _mouse_delta: Vector2 = DisplayServer.mouse_get_position() - last_mouse_title_click
+		var _mouse_delta: Vector2 = (
+			DisplayServer.mouse_get_position() - last_mouse_title_click)
 		get_window().position = current_position + _mouse_delta
+
+func _on_play_button_pressed() -> void:
+	_switch_scene("res://maps/lyllian/lyllian.tscn")
+
+func _on_viewer_pressed() -> void:
+	_switch_scene("res://maps/viewer/viewer.tscn")
+
+func _on_close_pressed() -> void:
+	get_tree().quit()

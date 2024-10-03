@@ -54,7 +54,7 @@ default_option = "on"
 layout_mode = 2
 title = "Display"
 id = "window_mode"
-options = Array[String](["windowed", "full_screen"])
+options = Array[String](["windowed", "maximized", "full_screen"])
 default_option = "windowed"
 
 [node name="LowerSep2" type="ColorRect" parent="Container" index="11"]

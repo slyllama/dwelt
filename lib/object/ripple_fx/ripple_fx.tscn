@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4607j7rfw5l2"]
+[gd_scene load_steps=9 format=3 uid="uid://c4607j7rfw5l2"]
 
 [ext_resource type="Material" uid="uid://bop01avifoq8v" path="res://generic/materials/mat_ripple.tres" id="1_1ykk7"]
 [ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="2_48d0g"]
 [ext_resource type="Script" path="res://lib/object/ripple_fx/ripple_fx.gd" id="2_vcbtu"]
+[ext_resource type="AudioStream" uid="uid://bckvxdj7huiam" path="res://lib/object/pylon/sound/heal.ogg" id="4_jw1r5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3r7ly"]
 material = ExtResource("1_1ykk7")
@@ -41,3 +42,9 @@ explosiveness = 0.7
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_ocpl8")
 draw_pass_1 = ExtResource("2_48d0g")
+
+[node name="Heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jw1r5")
+max_polyphony = 2
+
+[connection signal="finished" from="Heal" to="." method="_on_sound_finished"]

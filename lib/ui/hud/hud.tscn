@@ -148,6 +148,8 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="Settings" parent="." instance=ExtResource("9_nl48w")]
+visible = false
+z_index = 1
 custom_minimum_size = Vector2(300, 500)
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,6 +164,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MinimapTool" parent="." instance=ExtResource("10_02eo2")]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

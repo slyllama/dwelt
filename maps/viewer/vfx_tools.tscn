@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddaxfw4kt2gx4"]
+
+[ext_resource type="PackedScene" uid="uid://dqhmkchm2mv4e" path="res://lib/ui/ui_container/ui_container.tscn" id="1_g1iiy"]
+[ext_resource type="Script" path="res://maps/viewer/vfx_tools.gd" id="2_nqgyq"]
+
+[node name="VFXTools" instance=ExtResource("1_g1iiy")]
+custom_minimum_size = Vector2(250, 500)
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 282.0
+offset_bottom = 532.0
+script = ExtResource("2_nqgyq")
+title = "VFX Tools"
+closeable = false
+moveable = false
+
+[node name="Ripple" type="Button" parent="Container" index="3"]
+layout_mode = 2
+text = "Ripple"
+
+[connection signal="pressed" from="Container/Ripple" to="." method="_button_pressed" binds= [&"ripple"]]
