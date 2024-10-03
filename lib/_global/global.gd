@@ -11,7 +11,7 @@ const PROXIMAL_OBJECT = {
 }
 const ACTIVE_PYLON = { "id": "none", "position": Vector3.ZERO }
 const MINIMAP_DATA = {
-	"image_path": "res://generic/materials/textures/tile_64px.png",
+	"image_path": "null",
 	"magnitude": 20,
 	"image_scale": 1,
 	"image_rotation": 0,
@@ -26,9 +26,9 @@ var target_scene = "res://maps/lyllian/lyllian.tscn"
 func change_map(map_name: String) -> void:
 	var _ext = ".tscn"
 	var _path = "res://maps/" + map_name + "/" + map_name
-	if FileAccess.file_exists(_path + ".tscn"):
+	if ResourceLoader.exists(_path + ".tscn"):
 		target_scene = _path + ".tscn"
-	elif FileAccess.file_exists(_path + ".scn"):
+	elif ResourceLoader.exists(_path + ".scn"):
 		target_scene = _path + ".scn"
 	get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 

@@ -10,7 +10,9 @@ var objects = []
 
 func update() -> void:
 	var data = Global.minimap_data
-	if "image_path" in data: $Root/MapImage.texture = load(data["image_path"])
+	if "image_path" in data:
+		if ResourceLoader.exists(data["image_path"]):
+			$Root/MapImage.texture = load(data["image_path"])
 	if "magnitude" in data: magnitude = data["magnitude"]
 	if "image_scale" in data: image_scale = Vector2(data["image_scale"], data["image_scale"])
 	if "image_rotation" in data: $Root/MapImage.rotation_degrees = data["image_rotation"]

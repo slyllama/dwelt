@@ -9,7 +9,7 @@ func _ready() -> void:
 	$Player/CameraHandler._target_rotation.y = 90
 	$Player/CameraHandler.rotation_degrees.y = 90
 	configure_map({
-		"image_path": "res://maps/lyllian/textures/map.png",
+		#"image_path": "res://maps/lyllian/textures/map.png",
 		"magnitude": 33.4,
 		"image_scale": 0.75,
 		"image_rotation": 180,

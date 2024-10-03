@@ -20,7 +20,7 @@ var _clicked_in_ui = false
 var _max_zoom_in = 1.0
 var _max_zoom_out = 3.0
 var _v_offset_in = 0.56
-var _v_offset_out = 1.25
+var _v_offset_out = 1.45
 
 # Adapt the v_offset of the camera to the zoom level
 func _get_v_offset() -> float:
