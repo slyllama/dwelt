@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cem1eomuiy5d3"]
+[gd_scene load_steps=5 format=3 uid="uid://cem1eomuiy5d3"]
 
 [ext_resource type="Script" path="res://lib/map/jukebox/jukebox.gd" id="1_dsxj5"]
 [ext_resource type="AudioStream" uid="uid://cokml1dsstp1d" path="res://generic/sound/hover.ogg" id="2_vbxmi"]
 [ext_resource type="AudioStream" uid="uid://bkab0spqunl8p" path="res://generic/sound/click.ogg" id="3_5xa7d"]
+[ext_resource type="AudioStream" uid="uid://bqpylchwai2f4" path="res://generic/sound/entry.ogg" id="4_uncyl"]
 
 [node name="Jukebox" type="AudioStreamPlayer"]
 volume_db = -11.0
@@ -17,6 +18,9 @@ stream = ExtResource("2_vbxmi")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5xa7d")
+
+[node name="Entry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uncyl")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

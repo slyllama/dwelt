@@ -15,5 +15,8 @@ func _ready() -> void:
 				add_child(r)
 	)
 
+func _physics_process(delta: float) -> void:
+	$Rune.rotation_degrees.y += 20.0 * delta
+
 func _on_to_launcher_interacted() -> void:
 	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")

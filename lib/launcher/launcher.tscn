@@ -18,6 +18,7 @@ stretch_mode = 5
 script = ExtResource("1_mar3n")
 
 [node name="Jukebox" parent="." instance=ExtResource("3_cbjp3")]
+entry_enabled = false
 
 [node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
