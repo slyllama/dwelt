@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkmtaacgo12cq"]
+
+[ext_resource type="Material" uid="uid://cny17chrx57gu" path="res://lib/player/summon_fx/materials/mat_rune.tres" id="1_sise5"]
+[ext_resource type="Script" path="res://lib/player/summon_fx/summon_fx.gd" id="2_0t1tc"]
+[ext_resource type="AudioStream" uid="uid://bqpylchwai2f4" path="res://generic/sound/entry.ogg" id="3_l45jx"]
+
+[sub_resource type="Gradient" id="Gradient_3m8lw"]
+offsets = PackedFloat32Array(0, 0.534653, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u2fqd"]
+gradient = SubResource("Gradient_3m8lw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5kpix"]
+emission_shape = 1
+emission_sphere_radius = 0.75
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.45
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+color = Color(1, 1, 1, 0.784314)
+color_ramp = SubResource("GradientTexture1D_u2fqd")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h2okc"]
+load_path = "res://.godot/imported/mote.png-6c4582c89aa6036eb2f8e657a9d8046d.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sm1j"]
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.639216, 1, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_h2okc")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_nlx11"]
+material = SubResource("StandardMaterial3D_0sm1j")
+size = Vector2(0.02, 0.25)
+
+[sub_resource type="QuadMesh" id="QuadMesh_mbee7"]
+material = ExtResource("1_sise5")
+size = Vector2(0.5, 0.5)
+orientation = 1
+
+[node name="SummonFX" type="Node3D"]
+script = ExtResource("2_0t1tc")
+
+[node name="Entry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_l45jx")
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
+cast_shadow = 0
+emitting = false
+amount = 24
+lifetime = 3.0
+preprocess = 0.1
+explosiveness = 1.0
+randomness = 0.5
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_5kpix")
+draw_pass_1 = SubResource("QuadMesh_nlx11")
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("QuadMesh_mbee7")
+
+[connection signal="finished" from="Entry" to="Plane" method="_on_entry_finished"]

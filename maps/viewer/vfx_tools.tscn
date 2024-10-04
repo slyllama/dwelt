@@ -16,6 +16,11 @@ moveable = false
 
 [node name="Ripple" type="Button" parent="Container" index="3"]
 layout_mode = 2
-text = "Ripple"
+text = "Play Ripple"
+
+[node name="Summon" type="Button" parent="Container" index="4"]
+layout_mode = 2
+text = "Play Summon"
 
 [connection signal="pressed" from="Container/Ripple" to="." method="_button_pressed" binds= [&"ripple"]]
+[connection signal="pressed" from="Container/Summon" to="." method="_button_pressed" binds= [&"summon"]]

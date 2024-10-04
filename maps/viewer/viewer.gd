@@ -1,6 +1,7 @@
 @tool
 extends "res://lib/map/map.gd"
 const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
+const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 
 func _ready() -> void:
 	super()
@@ -13,10 +14,10 @@ func _ready() -> void:
 				var r = RippleFX.instantiate()
 				r.position.z = 2.0
 				add_child(r)
+			"summon":
+				var s = SummonFX.instantiate()
+				%Player.add_child(s)
 	)
-
-func _physics_process(delta: float) -> void:
-	$Rune.rotation_degrees.y += 20.0 * delta
 
 func _on_to_launcher_interacted() -> void:
 	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")

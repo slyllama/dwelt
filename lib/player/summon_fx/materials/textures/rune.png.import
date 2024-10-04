@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd8qdr22jvs1m"
-path.s3tc="res://.godot/imported/rune.png-963f9bc625cb0aa6cc284bcf33176297.s3tc.ctex"
+path.s3tc="res://.godot/imported/rune.png-2a7a6bb30256769eb932560b49227478.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/viewer/rune.png"
-dest_files=["res://.godot/imported/rune.png-963f9bc625cb0aa6cc284bcf33176297.s3tc.ctex"]
+source_file="res://lib/player/summon_fx/materials/textures/rune.png"
+dest_files=["res://.godot/imported/rune.png-2a7a6bb30256769eb932560b49227478.s3tc.ctex"]
 
 [params]
 

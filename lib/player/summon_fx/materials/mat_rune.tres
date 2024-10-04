@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cny17chrx57gu"]
+
+[ext_resource type="Shader" path="res://lib/player/summon_fx/materials/shaders/shader_rune.gdshader" id="1_xj1xe"]
+[ext_resource type="Texture2D" uid="uid://dd8qdr22jvs1m" path="res://lib/player/summon_fx/materials/textures/rune.png" id="2_p4fff"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="3_bgxfg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xj1xe")
+shader_parameter/circle_position = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/rune_image = ExtResource("2_p4fff")
+shader_parameter/wobble_noise = ExtResource("3_bgxfg")

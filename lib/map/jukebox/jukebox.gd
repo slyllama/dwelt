@@ -5,7 +5,6 @@ extends AudioStreamPlayer
 @export var track_list: Array[AudioStreamOggVorbis]
 @export var start_muted := false
 @export var music_enabled := true
-@export var entry_enabled := true
 
 var rng = RandomNumberGenerator.new()
 var tracks: Array[AudioStreamOggVorbis] = []
@@ -18,9 +17,6 @@ func _fade_sound_in() -> void:
 	var audio_in = create_tween()
 	audio_in.tween_method(func(vol):
 		AudioServer.set_bus_volume_db(0, linear_to_db(vol)), 0.0, 1.0, 0.5)
-	audio_in.tween_callback(func():
-		if entry_enabled:
-			$Entry.play())
 
 # Will randomly select tracks from `tracks` and swap them over to `tracks_alt`
 # until they have all been used up, and then do the same from `tracks_alt`;
