@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 signal reached_kill_height
 var is_kill_height = false
+const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 
 @export var gravity := 160.0
 @export var base_speed := 1.9
@@ -29,6 +30,8 @@ func _ready() -> void:
 	Global.move_player.connect(func(pos: Vector3):
 		global_position = pos)
 	%Mesh.update(_direction, velocity, $CameraHandler.rotation_degrees.y, true)
+	var _s = SummonFX.instantiate()
+	add_child(_s)
 
 func _physics_process(delta: float) -> void:
 	# Process inputs
