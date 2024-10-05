@@ -33,7 +33,6 @@ func _ready() -> void:
 			var o_node = $Root/ObjectBase/POI.duplicate()
 			var pos = -Vector2(o.position.x, o.position.z)
 			o_node.position = pos * magnitude
-			print("mag = " + str(magnitude))
 			o_node.modulate.a = 0.0
 			o_node.visible = true
 			
