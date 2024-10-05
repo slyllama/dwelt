@@ -47,6 +47,12 @@ func _ready() -> void:
 	Global.hover_sound.connect(func(): $Hover.play())
 	Global.click_sound.connect(func(): $Click.play())
 	
+	SettingsHandler.setting_changed.connect(func(parameter):
+		if parameter == "music_vol":
+			var _v = SettingsHandler.settings.music_vol
+			var _vol = linear_to_db(_v / 100.0)
+			volume_db = clamp(_vol, -80.0, 0.0))
+	
 	# `enabled` only disables music, not sound effects
 	if !music_enabled: return
 	if track_list == []: return

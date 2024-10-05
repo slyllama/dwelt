@@ -43,7 +43,6 @@ func _ready() -> void:
 		var _value = SettingsHandler.settings[parameter]
 		match parameter:
 			"fov": CameraData.camera.fov = _value
-			"brightness": %Sky.environment.adjustment_brightness = _value
 			"window_mode":
 				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
 				elif _value == "maximized": get_window().mode = Window.MODE_MAXIMIZED

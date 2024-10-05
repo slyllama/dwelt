@@ -4,10 +4,10 @@ extends Node
 const FILE_PATH = "user://settings.dat"
 const DEFAULT_SETTINGS = { 
 	"fov": 90,
-	"brightness": 1.0,
 	"particle_density": "high",
 	"window_mode": "windowed",
-	"shadows": "on"
+	"shadows": "on",
+	"music_vol": 50 # percent
 }
 @onready var settings = DEFAULT_SETTINGS.duplicate()
 signal setting_changed(parameter)

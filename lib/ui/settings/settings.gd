@@ -12,11 +12,13 @@ func _ready():
 		var _value = SettingsHandler.settings[parameter]
 		match parameter:
 			"fov":
-				$Container/FOVTitle.text = ("Field of view: "
-					+ str(_value) + Utilities.DEG)
-				$Container/FOV.set_value_no_signal(_value)
-			"brightness":
-				$Container/Brightness.set_value_no_signal(_value)
+				$Container/HFOV/FOVTitle.text = ("FOV ("
+					+ str(_value) + Utilities.DEG + ")")
+				$Container/HFOV/FOV.set_value_no_signal(_value)
+			"music_vol":
+				$Container/HMusicVol/MusicVolTitle.text = ("Music ("
+					+ str(snapped(_value, 1)) + "%)")
+				$Container/HMusicVol/MusicVol.set_value_no_signal(_value)
 	)
 	$Container/MinimapTool.modulate = Color.ORANGE
 
@@ -37,9 +39,6 @@ func _physics_process(_delta: float) -> void:
 func _on_fov_value_changed(value: float) -> void:
 	SettingsHandler.update("fov", value)
 
-func _on_brightness_value_changed(value: float) -> void:
-	SettingsHandler.update("brightness", value)
-
 func _on_minimap_tool_pressed() -> void:
 	get_parent().get_node_or_null("MinimapTool").open()
 
@@ -49,3 +48,6 @@ func _on_reset_settings_pressed() -> void:
 func _on_close_pressed() -> void:
 	close()
 	get_tree().quit()
+
+func _on_music_vol_value_changed(value: float) -> void:
+	SettingsHandler.update("music_vol", value)
