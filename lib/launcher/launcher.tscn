@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dps7aab5tsscb"]
+[gd_scene load_steps=7 format=3 uid="uid://dps7aab5tsscb"]
 
 [ext_resource type="Texture2D" uid="uid://cvqrwvw5of3da" path="res://lib/launcher/textures/base.png" id="1_6s2no"]
 [ext_resource type="Script" path="res://lib/launcher/launcher.gd" id="1_mar3n"]
 [ext_resource type="PackedScene" uid="uid://cem1eomuiy5d3" path="res://lib/map/jukebox/jukebox.tscn" id="3_cbjp3"]
 [ext_resource type="PackedScene" uid="uid://cvcdiaqfebh16" path="res://lib/launcher/web_updates/web_updates.tscn" id="4_c0nxu"]
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="4_imdpf"]
-[ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="4_k21dg"]
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="5_mt1nc"]
 
 [node name="Launcher" type="TextureRect"]
-offset_right = 390.0
+offset_right = 356.0
 offset_bottom = 575.0
 mouse_filter = 2
 texture = ExtResource("1_6s2no")
@@ -18,20 +17,18 @@ stretch_mode = 5
 script = ExtResource("1_mar3n")
 
 [node name="Jukebox" parent="." instance=ExtResource("3_cbjp3")]
-entry_enabled = false
 
 [node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
+offset_left = 30.0
 offset_top = 185.0
-offset_right = -40.0
-offset_bottom = -89.0
+offset_right = -30.0
+offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 2
 
 [node name="WebUpdates" parent="Menu" instance=ExtResource("4_c0nxu")]
 layout_mode = 2
@@ -42,22 +39,25 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="PlayButton" type="Button" parent="Menu"]
+[node name="Buttons" type="HBoxContainer" parent="Menu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k21dg")
-theme_override_font_sizes/font_size = 22
-text = "Play"
 
-[node name="Viewer" type="Button" parent="Menu"]
+[node name="PlayButton" type="Button" parent="Menu/Buttons"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k21dg")
-theme_override_font_sizes/font_size = 22
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Lyllian
+"
+
+[node name="Viewer" type="Button" parent="Menu/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
 text = "Viewer"
 
 [node name="QuitButton" type="Button" parent="Menu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k21dg")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
 text = "Quit"
 
 [node name="CloseButton" type="TextureButton" parent="."]
@@ -76,7 +76,7 @@ texture_hover = ExtResource("5_mt1nc")
 ignore_texture_size = true
 stretch_mode = 5
 
-[connection signal="pressed" from="Menu/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Menu/Viewer" to="." method="_on_viewer_pressed"]
+[connection signal="pressed" from="Menu/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Viewer" to="." method="_on_viewer_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkmtaacgo12cq"]
+[gd_scene load_steps=12 format=3 uid="uid://bkmtaacgo12cq"]
 
 [ext_resource type="Material" uid="uid://cny17chrx57gu" path="res://lib/player/summon_fx/materials/mat_rune.tres" id="1_sise5"]
 [ext_resource type="Script" path="res://lib/player/summon_fx/summon_fx.gd" id="2_0t1tc"]
 [ext_resource type="AudioStream" uid="uid://bqpylchwai2f4" path="res://generic/sound/entry.ogg" id="3_l45jx"]
+[ext_resource type="AudioStream" uid="uid://gqm3iayg5iqc" path="res://generic/sound/pre_entry.ogg" id="3_xjl6d"]
 
 [sub_resource type="Gradient" id="Gradient_3m8lw"]
 offsets = PackedFloat32Array(0, 0.534653, 1)
@@ -52,6 +53,11 @@ script = ExtResource("2_0t1tc")
 
 [node name="Entry" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_l45jx")
+max_polyphony = 2
+
+[node name="PreEntry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xjl6d")
+max_polyphony = 2
 
 [node name="Motes" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -73,3 +79,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("QuadMesh_mbee7")
 
 [connection signal="finished" from="Entry" to="Plane" method="_on_entry_finished"]
+[connection signal="finished" from="PreEntry" to="Plane" method="_on_entry_finished"]

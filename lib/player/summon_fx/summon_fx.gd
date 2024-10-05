@@ -20,6 +20,7 @@ func _ready() -> void:
 	$Motes.global_position = global_position
 	$Motes.emitting = true
 	
+	$PreEntry.play()
 	var fx_tween_1 = create_tween()
 	fx_tween_1.tween_method(_set_params_1, 0.0, 1.0, 0.5)
 	await get_tree().create_timer(1).timeout

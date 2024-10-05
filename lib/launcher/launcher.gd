@@ -32,9 +32,7 @@ func _ready() -> void:
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/textures/cursor_2x.png"))
-	
-	AudioServer.set_bus_volume_db(0, 0)
-	$Menu/PlayButton.grab_focus()
+	$Menu/Buttons/PlayButton.grab_focus()
 	
 	# Add sounds to buttons and configure mouse event passing
 	for n in Utilities.get_all_children(self):
