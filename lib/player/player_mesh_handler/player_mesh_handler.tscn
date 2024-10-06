@@ -112,6 +112,7 @@ size = Vector3(0.45, 1.5, 0.45)
 texture_albedo = ExtResource("2_7quuy")
 texture_emission = ExtResource("2_7quuy")
 emission_energy = 0.25
+normal_fade = 0.5
 
 [node name="PlayerAnim" type="AnimationTree" parent="Player"]
 libraries = {
