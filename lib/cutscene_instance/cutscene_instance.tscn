@@ -73,8 +73,9 @@ visible = false
 layer = 12
 
 [node name="CSCamera" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0.83)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 fov = 90.0
 
+[connection signal="mouse_entered" from="FG/Bars/CloseButton" to="." method="_hover"]
 [connection signal="pressed" from="FG/Bars/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="dialogue_finished" from="Dialogue" to="." method="stop"]

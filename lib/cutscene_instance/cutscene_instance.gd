@@ -1,7 +1,13 @@
-extends Node
+class_name CutsceneInstance extends Node
 
 var stopped = false
 var fade_tween
+
+@export var camera_rotation_degrees := Vector3.ZERO
+@export var camera_original_position := Vector3.ZERO
+@export var camera_target_position := Vector3.ZERO
+@export var camera_animation_speed := 4.0
+@export var dialogue_script: Array[String] = []
 
 func stop():
 	stopped = true
@@ -25,7 +31,7 @@ func stop():
 	
 	queue_free()
 
-func _ready() -> void:
+func play() -> void:
 	Global.in_cutscene = true
 	$FG/Fade.modulate.a = 0.0
 	fade_tween = create_tween()
@@ -40,19 +46,29 @@ func _ready() -> void:
 	
 	# Cutscene actions go here
 	$CSCamera.make_current()
-	$CSCamera.position.y = 3.2
+	$CSCamera.position = camera_original_position
+	$CSCamera.rotation_degrees = camera_rotation_degrees
 	var move_tween = create_tween()
 	move_tween.tween_property(
-		$CSCamera, "position:x", -1.35, 4.0).set_trans(Tween.TRANS_SINE)
-	$Dialogue.play(["Line 1. I'm making this line extremely long so that we can like totally like like yeah", "Line 2"])
+		$CSCamera, "position", camera_original_position + camera_target_position,
+		camera_animation_speed).set_trans(Tween.TRANS_SINE)
+	
+	if dialogue_script.size() > 0:
+		$Dialogue.play(dialogue_script)
 	
 	$FG/Bars.visible = true
 	Global.hud_toggle_hidden.emit(true)
 	Global.player_can_move = false
 
+func _ready() -> void:
+	play()
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("test_action"):
 		stop()
 
+func _hover() -> void: Global.hover_sound.emit()
+
 func _on_close_button_pressed() -> void:
+	Global.click_sound.emit()
 	stop()

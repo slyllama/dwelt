@@ -28,7 +28,6 @@ grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_28n0p")
 bbcode_enabled = true
-text = "[center][fade start=-10 length=10]I simply couldn't bring myself to think about it - not in that way, at least.[/fade][/center]"
 scroll_active = false
 
 [node name="Continue" type="Button" parent="."]
@@ -46,4 +45,5 @@ grow_vertical = 0
 text = "Continue"
 
 [connection signal="line_finished_animating" from="." to="." method="_on_line_finished_animating"]
+[connection signal="mouse_entered" from="Continue" to="." method="_hover"]
 [connection signal="pressed" from="Continue" to="." method="_continue"]

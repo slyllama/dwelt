@@ -1,6 +1,7 @@
 @tool
 extends "res://lib/map/map.gd"
 const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
+const Cutscene = preload("res://lib/cutscene_instance/cutscene_instance.tscn")
 
 func _ready() -> void:
 	super()
@@ -28,5 +29,11 @@ func _on_to_launcher_interacted() -> void:
 	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")
 
 func _on_play_cutscene_interacted() -> void:
-	var _cu = load("res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
-	add_child(_cu)
+	# Cutscene test
+	var _cutscene: CutsceneInstance = Cutscene.instantiate()
+	_cutscene.camera_rotation_degrees.y = 90.0
+	_cutscene.camera_original_position = Vector3(-1.0, 3.2, 0.82)
+	_cutscene.camera_target_position.x = -0.35
+	_cutscene.dialogue_script = [
+		"apricot created this amazing art for me! This is a test of instanced dialogue. Blah blah blah."]
+	add_child(_cutscene)

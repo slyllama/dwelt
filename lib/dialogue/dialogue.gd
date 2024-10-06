@@ -9,7 +9,7 @@ var line_current = 0
 var lines_total: int
 
 @export var fade_width := 10
-@export var chars_per_sec := 40
+@export var chars_per_sec := 35
 
 # Fade the text in using BBCode's built-in rendering features
 func _set_fade(pos: int) -> void:
@@ -24,6 +24,7 @@ func _animate_line() -> void:
 	fade_tween.tween_callback(line_finished_animating.emit)
 
 func _continue() -> void:
+	Global.click_sound.emit()
 	if line_current >= lines_total - 1:
 		# Logic for clearing goes here
 		dialogue_finished.emit()
@@ -41,6 +42,8 @@ func _ready() -> void:
 	# Establish correct visibility
 	$Continue.visible = false
 	visible = false
+
+func _hover() -> void: Global.hover_sound.emit()
 
 func _on_line_finished_animating() -> void:
 	$Continue.visible = true
