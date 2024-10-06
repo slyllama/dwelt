@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://8nls5qd5pa56"]
+
+[ext_resource type="Script" path="res://lib/dialogue/dialogue.gd" id="1_4p2kj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28n0p"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="CanvasLayer"]
+script = ExtResource("1_4p2kj")
+
+[node name="Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(700, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -117.0
+offset_right = 350.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_28n0p")
+bbcode_enabled = true
+text = "[center][fade start=-10 length=10]I simply couldn't bring myself to think about it - not in that way, at least.[/fade][/center]"
+scroll_active = false
+
+[node name="Continue" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -46.0
+offset_right = 32.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue"
+
+[connection signal="line_finished_animating" from="." to="." method="_on_line_finished_animating"]
+[connection signal="pressed" from="Continue" to="." method="_continue"]

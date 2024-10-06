@@ -5,6 +5,7 @@ var fade_tween
 
 func stop():
 	stopped = true
+	$Dialogue.queue_free() # TODO: temp only
 	$SmokeTransition.fade_out(0.5)
 	
 	fade_tween = create_tween()
@@ -43,6 +44,7 @@ func _ready() -> void:
 	var move_tween = create_tween()
 	move_tween.tween_property(
 		$CSCamera, "position:x", -1.35, 4.0).set_trans(Tween.TRANS_SINE)
+	$Dialogue.play(["Line 1. I'm making this line extremely long so that we can like totally like like yeah", "Line 2"])
 	
 	$FG/Bars.visible = true
 	Global.hud_toggle_hidden.emit(true)

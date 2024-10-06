@@ -12,6 +12,10 @@ const DEFAULT_SETTINGS = {
 @onready var settings = DEFAULT_SETTINGS.duplicate()
 signal setting_changed(parameter)
 
+@onready var original_window_size = Vector2(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height"))
+
 func load_from_file() -> void:
 	if FileAccess.file_exists(FILE_PATH):
 		var file = FileAccess.open(FILE_PATH, FileAccess.READ)
@@ -42,4 +46,13 @@ func update(parameter, value) -> void:
 	setting_changed.emit(parameter)
 
 func _ready() -> void:
+		# Configure retina
+	if DisplayServer.screen_get_size().x > 2000:
+		get_window().size = original_window_size * 2.0
+		get_window().content_scale_factor = 2.0
+		Global.retina_scale = 2.0
+		# macOS already configures the cursor for retina
+		if OS.get_name() != "macOS":
+			DisplayServer.cursor_set_custom_image(
+				load("res://generic/textures/cursor_2x.png"))
 	load_from_file()

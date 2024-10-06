@@ -23,17 +23,6 @@ func _switch_scene(scene: String):
 		get_tree().change_scene_to_file("res://lib/map/loader/loader.tscn")
 
 func _ready() -> void:
-	# Configure retina
-	if DisplayServer.screen_get_size().x > 2000:
-		get_window().size = original_window_size * 2.0
-		get_window().content_scale_factor = 2.0
-		Global.retina_scale = 2.0
-		# macOS already configures the cursor for retina
-		if OS.get_name() != "macOS":
-			DisplayServer.cursor_set_custom_image(
-				load("res://generic/textures/cursor_2x.png"))
-	$Menu/Buttons/PlayButton.grab_focus()
-	
 	# Add sounds to buttons and configure mouse event passing
 	for n in Utilities.get_all_children(self):
 		if "mouse_filter" in n: n.mouse_filter = MOUSE_FILTER_PASS
