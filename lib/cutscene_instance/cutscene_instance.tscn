@@ -1,21 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://crnem0r5mh5st"]
+[gd_scene load_steps=5 format=3 uid="uid://crnem0r5mh5st"]
 
 [ext_resource type="Script" path="res://lib/cutscene_instance/cutscene_instance.gd" id="1_jkayl"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_imf5n"]
+[ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="2_veek3"]
+[ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="3_41yno"]
 
 [node name="CutsceneInstance" type="Node"]
 script = ExtResource("1_jkayl")
 
 [node name="FG" type="CanvasLayer" parent="."]
 layer = 11
-
-[node name="Fade" type="ColorRect" parent="FG"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Bars" type="Control" parent="FG"]
 visible = false
@@ -46,9 +40,36 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
+[node name="CloseButton" type="TextureButton" parent="FG/Bars"]
+custom_minimum_size = Vector2(27, 27)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 59.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_veek3")
+texture_hover = ExtResource("3_41yno")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Fade" type="ColorRect" parent="FG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="SmokeTransition" parent="." instance=ExtResource("2_imf5n")]
 visible = false
 
 [node name="CSCamera" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0.83)
 fov = 90.0
+
+[connection signal="pressed" from="FG/Bars/CloseButton" to="." method="_on_close_button_pressed"]

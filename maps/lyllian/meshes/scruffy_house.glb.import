@@ -33,6 +33,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"mat_brass": {
+"use_external/enabled": true,
+"use_external/path": "res://lib/player/materials/mat_brass.tres"
+},
 "mat_brick": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_brick.tres"

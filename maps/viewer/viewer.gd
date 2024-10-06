@@ -16,6 +16,9 @@ func _ready() -> void:
 			"summon":
 				var s = SummonFX.instantiate()
 				%Player.add_child(s)
+			"cutscene":
+				var c = load("res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
+				add_child(c)
 	)
 
 func _on_to_launcher_interacted() -> void:

@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="4_fge6j"]
 [ext_resource type="Animation" uid="uid://bs0xc5qw1mgwu" path="res://lib/player/meshes/animations/engine_rotate.res" id="4_w7kah"]
 [ext_resource type="Animation" uid="uid://dqg7rby2nrb2t" path="res://lib/player/meshes/animations/spin.res" id="5_pq07w"]
+[ext_resource type="Material" uid="uid://dkmhju7d7cbbp" path="res://generic/materials/mat_glow.tres" id="6_c88ar"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7fd1"]
 _data = {
@@ -25,7 +26,6 @@ animation = &"player/engine_rotate"
 animation = &"player/spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qvyn6"]
-graph_offset = Vector2(-591.072, 35.6253)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_g8tj7")
 nodes/Add2/position = Vector2(106.667, 146.667)
 nodes/engine_rotate/node = SubResource("AnimationNodeAnimation_8t23r")
@@ -40,20 +40,11 @@ node_connections = [&"Add2", 0, &"orb_spin", &"Add2", 1, &"engine_time_scale", &
 [sub_resource type="QuadMesh" id="QuadMesh_70vyj"]
 size = Vector2(0.65, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljnet"]
-transparency = 1
-shading_mode = 0
-specular_mode = 2
-albedo_color = Color(0.273, 0.65, 0.273, 1)
-albedo_texture = ExtResource("3_m7u27")
-billboard_mode = 2
-billboard_keep_scale = true
-
 [sub_resource type="Gradient" id="Gradient_rc0bw"]
 offsets = PackedFloat32Array(0, 0.118182, 0.409091, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.0596592, 0.465111, 0, 1, 0.745346, 0.867545, 1.92523e-06, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_kqsdp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fxwxp"]
 gradient = SubResource("Gradient_rc0bw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_peo0n"]
@@ -62,30 +53,30 @@ emission_sphere_radius = 0.05
 gravity = Vector3(0, -0.1, 0)
 scale_min = 0.4
 scale_max = 0.7
-color_ramp = SubResource("GradientTexture1D_kqsdp")
+color_ramp = SubResource("GradientTexture1D_fxwxp")
 
 [sub_resource type="Gradient" id="Gradient_qbtgv"]
 offsets = PackedFloat32Array(0, 0.654545)
 colors = PackedColorArray(1, 1, 1, 0.278431, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_t0aki"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y1d1k"]
 gradient = SubResource("Gradient_qbtgv")
 
 [sub_resource type="Curve" id="Curve_ijc3n"]
 _data = [Vector2(0, 1), 0.0, -0.905819, 0, 0, Vector2(1, 0.701031), 0.0282769, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_vi8x7"]
+[sub_resource type="CurveTexture" id="CurveTexture_j6146"]
 curve = SubResource("Curve_ijc3n")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hcbn1"]
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_vi8x7")
+scale_curve = SubResource("CurveTexture_j6146")
 color = Color(0.932, 1, 0.66, 1)
-color_ramp = SubResource("GradientTexture1D_t0aki")
+color_ramp = SubResource("GradientTexture1D_y1d1k")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtkdc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x888u"]
 transparency = 1
 shading_mode = 0
 specular_mode = 2
@@ -98,7 +89,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_t4gxa"]
-material = SubResource("StandardMaterial3D_gtkdc")
+material = SubResource("StandardMaterial3D_x888u")
 size = Vector2(0.1, 0.1)
 
 [node name="PlayerMeshHandler" type="Node3D"]
@@ -107,8 +98,8 @@ script = ExtResource("1_ydpi7")
 [node name="Player" parent="." instance=ExtResource("1_muid5")]
 
 [node name="Decal" type="Decal" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
-size = Vector3(0.45, 1.5, 0.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.455176, 0)
+size = Vector3(0.45, 0.610352, 0.45)
 texture_albedo = ExtResource("2_7quuy")
 texture_emission = ExtResource("2_7quuy")
 emission_energy = 0.25
@@ -131,7 +122,7 @@ omni_attenuation = 0.5
 [node name="Glow" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136863, 0)
 mesh = SubResource("QuadMesh_70vyj")
-material = SubResource("StandardMaterial3D_ljnet")
+material = ExtResource("6_c88ar")
 
 [node name="Stars" type="GPUParticles3D" parent="."]
 visible = false

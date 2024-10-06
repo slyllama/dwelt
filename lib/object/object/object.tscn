@@ -1,25 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://uct1byepa1wm"]
+[gd_scene load_steps=17 format=3 uid="uid://uct1byepa1wm"]
 
 [ext_resource type="Script" path="res://lib/object/object/object.gd" id="1_pxk5v"]
 [ext_resource type="PackedScene" uid="uid://bky4oadewjuyx" path="res://lib/ui/world_text/world_text.tscn" id="2_rtywh"]
 [ext_resource type="PackedScene" uid="uid://oqx4rag0lcc8" path="res://lib/object/object/meshes/object_orb.glb" id="3_fhdxx"]
+[ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="4_ejuu6"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_sf5gd"]
+[ext_resource type="Shader" uid="uid://5rw1ita7w3la" path="res://generic/materials/shaders/shader_glow.tres" id="5_l7o73"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="6_hb6co"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h1880"]
 height = 3.4
 radius = 1.7
 
+[sub_resource type="Gradient" id="Gradient_lq2ua"]
+offsets = PackedFloat32Array(0, 0.260417, 0.729167, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_16s8a"]
+gradient = SubResource("Gradient_lq2ua")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_55lwl"]
+emission_shape = 2
+emission_sphere_radius = 0.14
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.4
+color_ramp = SubResource("GradientTexture1D_16s8a")
+
 [sub_resource type="QuadMesh" id="QuadMesh_ka73w"]
 size = Vector2(0.4, 0.4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieq1f"]
-transparency = 1
-shading_mode = 0
-specular_mode = 2
-albedo_color = Color(1, 1, 1, 0.54902)
-albedo_texture = ExtResource("4_sf5gd")
-billboard_mode = 2
-billboard_keep_scale = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_us84k"]
+render_priority = 0
+shader = ExtResource("5_l7o73")
+shader_parameter/base_color = Color(1, 1, 1, 0.721569)
+shader_parameter/texture_albedo = ExtResource("4_sf5gd")
+shader_parameter/noise = ExtResource("6_hb6co")
 
 [sub_resource type="Animation" id="Animation_t1rkf"]
 length = 0.001
@@ -102,9 +117,18 @@ shape = SubResource("CylinderShape3D_h1880")
 [node name="ObjectOrb" parent="." instance=ExtResource("3_fhdxx")]
 visible = false
 
+[node name="Stars" type="GPUParticles3D" parent="ObjectOrb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136898, 0)
+amount = 10
+lifetime = 0.7
+preprocess = 5.0
+explosiveness = 0.4
+process_material = SubResource("ParticleProcessMaterial_55lwl")
+draw_pass_1 = ExtResource("4_ejuu6")
+
 [node name="Glow" type="CSGMesh3D" parent="ObjectOrb"]
 mesh = SubResource("QuadMesh_ka73w")
-material = SubResource("StandardMaterial3D_ieq1f")
+material = SubResource("ShaderMaterial_us84k")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {

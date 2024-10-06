@@ -22,5 +22,11 @@ text = "Play Ripple"
 layout_mode = 2
 text = "Play Summon"
 
+[node name="Cutscene" type="Button" parent="Container" index="5"]
+layout_mode = 2
+text = "Play Cutscene
+"
+
 [connection signal="pressed" from="Container/Ripple" to="." method="_button_pressed" binds= [&"ripple"]]
 [connection signal="pressed" from="Container/Summon" to="." method="_button_pressed" binds= [&"summon"]]
+[connection signal="pressed" from="Container/Cutscene" to="." method="_button_pressed" binds= [&"cutscene"]]
