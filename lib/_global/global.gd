@@ -36,6 +36,8 @@ func change_map(map_name: String) -> void:
 signal click_sound
 signal hover_sound
 
+signal hud_toggle_hidden(state)
+
 signal interact_pressed
 signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
@@ -47,11 +49,13 @@ signal proximity_left
 signal shake_camera()
 
 var active_pylon = ACTIVE_PYLON.duplicate()
-var popup_open = false # mainly used for orbit checks in CameraHandler
+
 var foliage_count = 0
 var minimap_data = MINIMAP_DATA.duplicate()
 var object_data = []
 var player_position = Vector3.ZERO
+var player_can_move = true
+var popup_open = false # mainly used for orbit checks in CameraHandler
 var proximal_object = PROXIMAL_OBJECT.duplicate()
 var retina_scale = 1.0
 

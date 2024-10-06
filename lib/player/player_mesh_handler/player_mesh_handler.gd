@@ -30,6 +30,11 @@ func _bounce_mesh(delta: float) -> void:
 	model.position.y = _adj_mesh_y_state * -0.04
 
 func update(get_direction: Vector3, velocity: Vector3, camera_direction: float, force = false) -> void:
+	if !Global.player_can_move: # reset the roll and pitch of the model if the player cannot move - avoids awkward leaning in cutscenes
+		model.rotation_degrees.x = 0.0
+		model.rotation_degrees.z = 0.0
+		return
+	
 	var delta = get_process_delta_time()
 	# Rotate the model to match movement direction
 	if force: # do it instantly - no idea how this works!?

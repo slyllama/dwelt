@@ -25,11 +25,13 @@ func _ready() -> void:
 	
 	# Check if the little button in the corner of the map has been pressed
 	Global.interact_pressed.connect(func():
-		if Global.proximal_object.id == id:
+		if Global.proximal_object.id == id and Global.player_can_move:
 			interacted.emit())
 
 func _input(_event: InputEvent) -> void:
-	if !can_interact: return
+	# Interactions cannot occur if the player is in a locked state
+	# (Prevents things like duplicate cutscenes)
+	if !can_interact or !Global.player_can_move: return
 	if Input.is_action_just_pressed("interact"):
 		if Global.proximal_object.id == id:
 			interacted.emit()

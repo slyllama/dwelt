@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://crnem0r5mh5st"]
+
+[ext_resource type="Script" path="res://lib/cutscene_instance/cutscene_instance.gd" id="1_jkayl"]
+[ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_imf5n"]
+
+[node name="CutsceneInstance" type="Node"]
+script = ExtResource("1_jkayl")
+
+[node name="FG" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="Fade" type="ColorRect" parent="FG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Bars" type="Control" parent="FG"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upper" type="ColorRect" parent="FG/Bars"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 75.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Lower" type="ColorRect" parent="FG/Bars"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="SmokeTransition" parent="." instance=ExtResource("2_imf5n")]
+visible = false
+
+[node name="CSCamera" type="Camera3D" parent="."]
+fov = 90.0

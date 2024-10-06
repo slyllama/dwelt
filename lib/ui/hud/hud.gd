@@ -43,6 +43,9 @@ func _ready() -> void:
 	Global.shake_camera.connect(func(): # chromatic aberration for camera shake
 		var aberration = Aberration.instantiate()
 		add_child(aberration))
+	
+	Global.hud_toggle_hidden.connect(func(state):
+		visible = !state)
 
 func _on_settings_pressed() -> void:
 	if !$Settings.is_open: $Settings.open()

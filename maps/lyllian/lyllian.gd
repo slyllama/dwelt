@@ -26,3 +26,7 @@ func _to_dwellan() -> void:
 
 func _on_to_launcher_interacted() -> void:
 	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")
+
+func _on_play_cutscene_interacted() -> void:
+	var _cu = load("res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
+	add_child(_cu)

@@ -67,7 +67,9 @@ func _physics_process(delta: float) -> void:
 	velocity.y += _jump_energy
 	if !is_on_floor(): velocity.y -= gravity * delta
 	
-	move_and_slide()
+	if Global.player_can_move:
+		move_and_slide()
+	
 	Global.player_position = position
 	%Mesh.update(_direction, velocity, _camera_direction) # update mesh
 	%Listener.rotation_degrees.y = _camera_direction # use camera for sound direction

@@ -31,7 +31,6 @@ func _ready() -> void:
 	$Root/MarkerBase.position = size / 2.0
 	
 	Global.objects_loaded.connect(func():
-		print(Global.object_data)
 		for o in Global.object_data:
 			var o_node = $Root/ObjectBase/POI.duplicate()
 			var pos = -Vector2(o.position.x, o.position.z)
