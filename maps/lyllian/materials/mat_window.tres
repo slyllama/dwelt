@@ -9,3 +9,4 @@ albedo_texture = ExtResource("1_edbxk")
 clearcoat_enabled = true
 clearcoat_roughness = 1.0
 clearcoat_texture = ExtResource("1_edbxk")
+disable_receive_shadows = true

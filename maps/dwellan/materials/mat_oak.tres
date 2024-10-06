@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvc2u30lxgwek" path="res://maps/dwellan/materials/textures/oak_norm.jpg" id="2_j1w40"]
 
 [resource]
-albedo_color = Color(0.783523, 0.783523, 0.783523, 1)
+albedo_color = Color(0.487009, 0.487009, 0.487009, 1)
 albedo_texture = ExtResource("1_bakv3")
 metallic = 0.3
 roughness = 0.65

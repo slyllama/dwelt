@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cglnyyad7tmam"
-path="res://.godot/imported/side_table.glb-6401c2eacb834e6f195bca03fb3e9294.scn"
+uid="uid://dsmqqtxgwqbg6"
+path="res://.godot/imported/broadleaf_plant_2.glb-86afcf24cd60f419d1dc48f4154c78dc.scn"
 
 [deps]
 
-source_file="res://maps/lyllian/meshes/side_table.glb"
-dest_files=["res://.godot/imported/side_table.glb-6401c2eacb834e6f195bca03fb3e9294.scn"]
+source_file="res://maps/lyllian/meshes/broadleaf_plant_2.glb"
+dest_files=["res://.godot/imported/broadleaf_plant_2.glb-86afcf24cd60f419d1dc48f4154c78dc.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="SideTable"
+nodes/root_name="BroadleafPlantB"
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.65
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -36,14 +36,6 @@ _subresources={
 "mat_broadleaf": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_broadleaf.tres"
-},
-"mat_cloth": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lyllian/materials/mat_cloth.tres"
-},
-"mat_oak": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_oak.tres"
 }
 }
 }

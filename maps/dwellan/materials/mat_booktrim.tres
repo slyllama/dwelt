@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://co8a6h34qroig"]
+
+[ext_resource type="Texture2D" uid="uid://rchqwwsnocd" path="res://maps/dwellan/materials/textures/booktrim_diff.jpg" id="1_30dfx"]
+[ext_resource type="Texture2D" uid="uid://rpgtxw3pnjka" path="res://maps/dwellan/materials/textures/booktrim_norm.jpg" id="2_yaskq"]
+
+[resource]
+albedo_color = Color(0.558287, 0.558287, 0.558287, 1)
+albedo_texture = ExtResource("1_30dfx")
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_yaskq")

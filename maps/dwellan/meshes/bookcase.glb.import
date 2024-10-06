@@ -33,6 +33,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"mat_booktrim": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/dwellan/materials/mat_booktrim.tres"
+},
 "mat_grey": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_oak.tres"

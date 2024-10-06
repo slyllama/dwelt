@@ -5,5 +5,5 @@
 
 [resource]
 shader = ExtResource("1_xuwu4")
-shader_parameter/size = 0.5
+shader_parameter/size = 0.0
 shader_parameter/swirl_texture = ExtResource("2_fkb4m")
