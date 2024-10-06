@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 signal reached_kill_height
 var is_kill_height = false
+var rng = RandomNumberGenerator.new()
 const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 
 @export var gravity := 160.0
@@ -32,6 +33,16 @@ func _ready() -> void:
 	%Mesh.update(_direction, velocity, $CameraHandler.rotation_degrees.y, true)
 	var _s = SummonFX.instantiate()
 	add_child(_s)
+
+# Play some mechanical sounds when starting and stopping the vessel
+func _input(_event: InputEvent) -> void:
+	if !Global.player_can_move: return
+	if Input.is_action_just_pressed("move_forward"):
+		$GroundDetector/Engage.pitch_scale = 0.9 + randf() * 0.2
+		$GroundDetector/Engage.play()
+	if Input.is_action_just_released("move_forward"):
+		$GroundDetector/Disengage.pitch_scale = 0.8 + randf() * 0.4
+		$GroundDetector/Disengage.play()
 
 func _physics_process(delta: float) -> void:
 	# Process inputs
@@ -66,6 +77,12 @@ func _physics_process(delta: float) -> void:
 	if _jump_energy < 1.0: _jump_energy = 0.0
 	velocity.y += _jump_energy
 	if !is_on_floor(): velocity.y -= gravity * delta
+	
+	# Change the pitch of the engine depending on how fast it's going, excluding
+	# vertical velocity (jumps)
+	$GroundDetector/Engine.pitch_scale = lerp(
+		$GroundDetector/Engine.pitch_scale,
+		1.0 + Vector3(velocity * Vector3(1, 0, 1)).length() / base_speed * 0.5, 0.07)
 	
 	if Global.player_can_move:
 		move_and_slide()

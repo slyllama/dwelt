@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctalngjslyvct"]
+[gd_scene load_steps=9 format=3 uid="uid://ctalngjslyvct"]
 
 [ext_resource type="PackedScene" uid="uid://cl1b5pyew2pj4" path="res://lib/player/camera_handler/camera_handler.tscn" id="1_ibaa5"]
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_io483"]
-[ext_resource type="AudioStream" uid="uid://dirdbxuk6mefo" path="res://lib/player/sound/engine_idle.ogg" id="5_pvg47"]
+[ext_resource type="AudioStream" uid="uid://dirdbxuk6mefo" path="res://lib/player/sound/engine.ogg" id="5_pvg47"]
 [ext_resource type="PackedScene" uid="uid://bpawer1uids2h" path="res://lib/player/ground_detector/ground_detector.tscn" id="6_t2ywj"]
+[ext_resource type="AudioStream" uid="uid://menhnvj2hbvk" path="res://lib/player/sound/engage.ogg" id="6_vfpqk"]
+[ext_resource type="AudioStream" uid="uid://cdb2sikpxaaah" path="res://lib/player/sound/disengage.ogg" id="7_ejn40"]
 [ext_resource type="PackedScene" uid="uid://cll2qx861q03l" path="res://lib/player/player_mesh_handler/player_mesh_handler.tscn" id="10_8nk1a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs250"]
@@ -28,6 +30,16 @@ unique_name_in_owner = true
 stream = ExtResource("5_pvg47")
 volume_db = -3.0
 autoplay = true
+
+[node name="Engage" type="AudioStreamPlayer" parent="GroundDetector"]
+stream = ExtResource("6_vfpqk")
+volume_db = -8.0
+pitch_scale = 1.05
+
+[node name="Disengage" type="AudioStreamPlayer" parent="GroundDetector"]
+stream = ExtResource("7_ejn40")
+volume_db = -8.0
+pitch_scale = 1.05
 
 [node name="Listener" type="AudioListener3D" parent="."]
 unique_name_in_owner = true
