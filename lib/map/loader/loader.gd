@@ -28,8 +28,11 @@ func _transition():
 	fade.tween_property(fg, "self_modulate:a", 1.0, TIME)
 	var scale_spinner = create_tween()
 	scale_spinner.tween_property($Spinner, "scale", Vector2(2.0, 2.0), TIME)
+	var scale_rune = create_tween()
+	scale_rune.tween_property($Spinner, "scale", Vector2(0.7, 0.7), TIME)
 	var aberration_tween = create_tween()
 	aberration_tween.tween_method(_set_aberration, 3.0, 200.0, TIME / 2.0)
+	
 	fade.tween_callback(func():
 		get_tree().change_scene_to_packed(
 			ResourceLoader.load_threaded_get(Global.target_scene)))
@@ -47,6 +50,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Spinner.rotation_degrees += delta * 120.0 # continuous spinning of cog
+	$Spinner/SpinnerRune.rotation_degrees -= delta * 150.0 # continuous spinning of cog
 	loading_status = ResourceLoader.load_threaded_get_status(Global.target_scene, progress)
 	
 	match loading_status:

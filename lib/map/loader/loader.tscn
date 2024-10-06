@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://21x2o3jutg3n"]
+[gd_scene load_steps=9 format=3 uid="uid://21x2o3jutg3n"]
 
 [ext_resource type="Script" path="res://lib/map/loader/loader.gd" id="1_g5lpx"]
 [ext_resource type="Texture2D" uid="uid://b71p0p22mumss" path="res://lib/map/loader/textures/loading_cog.png" id="2_puy7m"]
 [ext_resource type="Shader" path="res://lib/ui/hud/aberration/materials/shaders/shader_aberration.gdshader" id="3_lg6u7"]
+[ext_resource type="Texture2D" uid="uid://dd8qdr22jvs1m" path="res://lib/player/summon_fx/materials/textures/rune.png" id="3_sdqwe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6s5"]
 bg_color = Color(0, 0, 0, 1)
@@ -65,6 +66,11 @@ show_percentage = false
 texture_filter = 4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_puy7m")
+
+[node name="SpinnerRune" type="Sprite2D" parent="Spinner"]
+texture_filter = 4
+scale = Vector2(0.555698, 0.555698)
+texture = ExtResource("3_sdqwe")
 
 [node name="Aberration" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_krdpm")

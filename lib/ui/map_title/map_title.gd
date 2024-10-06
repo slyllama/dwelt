@@ -7,9 +7,9 @@ func _ready() -> void:
 	modulate.a = 0.0
 	
 	await get_tree().create_timer(1.0).timeout
-	$MapTitle.text = "[center]" + str(Global.target_scene_title) + "[/center]"
+	$MapTitle.text = ("[center]"
+		+ str(Global.target_scene_title) + "[/center]")
 	$AnimateTitle.play("play")
-
 
 func _on_animate_title_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "play":
