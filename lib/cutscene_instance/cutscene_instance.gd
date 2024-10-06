@@ -49,7 +49,7 @@ func _ready() -> void:
 	Global.player_can_move = false
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("debug_key"):
+	if Input.is_action_just_pressed("test_action"):
 		stop()
 
 func _on_close_button_pressed() -> void:

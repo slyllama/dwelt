@@ -16,6 +16,7 @@ func _ready() -> void:
 	$Minimap/InteractButton.visible = false
 	$Sidebar.visible = false
 	$FG.visible = true
+	Global.set_display_debug(false)
 
 	# Fade from black
 	var smoke_transition = SmokeTransition.instantiate()
@@ -47,13 +48,13 @@ func _ready() -> void:
 	Global.hud_toggle_hidden.connect(func(state):
 		visible = !state)
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("debug_key"):
+		Global.set_display_debug(!Global.debug_visible)
+
 func _on_settings_pressed() -> void:
 	if !$Settings.is_open: $Settings.open()
 	else: $Settings.close()
 
 func _on_interact_pressed() -> void:
 	Global.interact_pressed.emit()
-
-# Toggle debug with settings
-func _on_settings_closed() -> void: $Minimap/DebugContainer.visible = false
-func _on_settings_opened() -> void: $Minimap/DebugContainer.visible = true

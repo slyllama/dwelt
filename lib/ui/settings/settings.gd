@@ -21,6 +21,12 @@ func _ready():
 				$Container/HMusicVol/MusicVol.set_value_no_signal(_value)
 	)
 	$Container/MinimapTool.modulate = Color.ORANGE
+	
+	# Show or hide special utility buttons according to the debug visibility settings
+	Global.debug_visible_toggled.connect(func():
+		$Container/MinimapTool.visible = Global.debug_visible
+		$Container/PlayerPos.visible = Global.debug_visible
+		$Container/Close.visible = Global.debug_visible)
 
 # Open with a hotkey
 func _input(event: InputEvent) -> void:

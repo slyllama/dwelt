@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bvasva64chj7k"]
+
+[ext_resource type="Shader" path="res://lib/ui/map_title/materials/shaders/shader_bloom.gdshader" id="1_xuwu4"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="2_fkb4m"]
+
+[resource]
+shader = ExtResource("1_xuwu4")
+shader_parameter/size = 0.0
+shader_parameter/swirl_texture = ExtResource("2_fkb4m")

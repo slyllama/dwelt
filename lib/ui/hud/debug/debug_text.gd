@@ -20,8 +20,11 @@ func update() -> void:
 	
 	text += "[/right]"
 
-var time = 0.0
+func _ready() -> void:
+	Global.debug_visible_toggled.connect(func(): visible = Global.debug_visible)
+	visible = Global.debug_visible
 
+var time = 0.0
 func _process(delta: float) -> void:
 	time += delta
 	if time > 0.1:

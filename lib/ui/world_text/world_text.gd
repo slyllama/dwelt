@@ -37,6 +37,7 @@ func _process(_delta: float) -> void:
 	else: state = 0
 	
 	if Global.in_cutscene: state += 1
+	if !Global.debug_visible: state += 3
 	$Canvas/Label.modulate.a = 1 - clamp(state, 0.0, 1.0)
 
 func _on_screen_entered() -> void: $Canvas.visible = true

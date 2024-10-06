@@ -26,7 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Jukebox" parent="." index="5"]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_wbky2")])
-start_muted = true
 
 [node name="DefaultFloor" parent="." index="6" instance=ExtResource("3_nmf1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

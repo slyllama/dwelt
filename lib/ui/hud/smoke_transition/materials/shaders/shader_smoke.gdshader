@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-//uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D smoke_effect: filter_linear_mipmap, repeat_enable;
 uniform sampler2D wobble_pattern: filter_linear_mipmap, repeat_enable;
 uniform vec3 base_color: source_color = vec3(0.0, 0.0, 0.0);

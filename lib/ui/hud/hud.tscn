@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=14 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_u8gkr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b47jl8wwysodp" path="res://lib/ui/diamond_button/diamond_button.tscn" id="8_oelrm"]
 [ext_resource type="PackedScene" uid="uid://cmkolvndsk61d" path="res://lib/ui/settings/settings.tscn" id="9_nl48w"]
 [ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/ui/minimap/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
+[ext_resource type="PackedScene" uid="uid://yo758utciqsp" path="res://lib/ui/map_title/map_title.tscn" id="11_8rlsx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7p4t"]
 content_margin_left = 24.0
@@ -120,7 +121,6 @@ offset_bottom = 260.0
 texture_normal = ExtResource("8_45tje")
 
 [node name="DebugContainer" type="VBoxContainer" parent="Minimap"]
-visible = false
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 1
 anchors_preset = 2
@@ -177,7 +177,18 @@ offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="MapTitle" parent="." instance=ExtResource("11_8rlsx")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -159.0
+offset_right = 0.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="pressed" from="Minimap/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Minimap/InteractButton" to="." method="_on_interact_pressed"]
-[connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
-[connection signal="opened" from="Settings" to="." method="_on_settings_opened"]

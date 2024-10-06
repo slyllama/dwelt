@@ -24,6 +24,8 @@ const MINIMAP_DATA = {
 # Change this before invoking the loader - it will load whatever scene is here
 # Allows for serialised (.scn) scenes too
 var target_scene = "res://lib/launcher/launcher.tscn"
+var target_scene_title = ""
+
 func change_map(map_name: String) -> void:
 	var _ext = ".tscn"
 	var _path = "res://maps/" + map_name + "/" + map_name
@@ -37,7 +39,6 @@ signal click_sound
 signal hover_sound
 
 signal hud_toggle_hidden(state)
-
 signal interact_pressed
 signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
@@ -49,7 +50,6 @@ signal proximity_left
 signal shake_camera()
 
 var active_pylon = ACTIVE_PYLON.duplicate()
-
 var foliage_count = 0
 var in_cutscene = false
 var minimap_data = MINIMAP_DATA.duplicate()
@@ -68,3 +68,11 @@ func mouse_in_ui() -> bool:
 
 var mouse_in_map = false
 var mouse_in_ui_container = false
+
+# Debug
+
+signal debug_visible_toggled
+var debug_visible = true
+func set_display_debug(state):
+	debug_visible = state
+	debug_visible_toggled.emit()

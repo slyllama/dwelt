@@ -39,5 +39,8 @@ func _input(_event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	distance_to_player = Global.player_position.distance_to(global_position)
 	if distance_to_player < $Range/Collision.shape.radius:
+		if !in_range: $EntrySound.play() # only do once
 		in_range = true
-	else: in_range = false
+	else:
+		if in_range: $LeaveSound.play() # only do once
+		in_range = false

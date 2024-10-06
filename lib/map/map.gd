@@ -3,6 +3,9 @@ extends Node3D
 # Map
 # Handles map setting-up functions; should be extended.
 
+## This is passed to [code]Global.target_scene_title[/code], which
+## [code]MapTitle[/code] will use to render itself.
+@export var map_title = "((Map Name))"
 ## Moss and ground decals will only be projected onto the children of this node.
 @export var decal_candidates: Node
 ## Child lights of this node will cast shadows when shadows are enabled in the
@@ -37,7 +40,10 @@ func _ready() -> void:
 	# Set culling mask for objects to be influenced by moss decals
 	for node in _get_all_children(decal_candidates):
 		if "layers" in node: node.set_layer_mask_value(2, true)
+	
 	if Engine.is_editor_hint(): return
+	Global.target_scene_title = map_title
+	
 	# Connect settings, apply, and refresh
 	SettingsHandler.setting_changed.connect(func(parameter):
 		var _value = SettingsHandler.settings[parameter]
