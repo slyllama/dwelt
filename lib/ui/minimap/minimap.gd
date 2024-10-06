@@ -1,10 +1,11 @@
 class_name Minimap extends Panel
 const FADE_TIME = 0.3
 
-var magnitude := 20.0
-var zoom := 1.0
-var image_offset = Vector2(0, 0)
-var image_scale = Vector2(1, 1)
+var magnitude: float
+var zoom: float
+var image_offset: Vector2
+var image_scale: Vector2
+var object_scale: float
 
 var objects = []
 
@@ -21,6 +22,7 @@ func update() -> void:
 	if "bg_color" in data: $Root.self_modulate = data["bg_color"]
 	if "offset_x" in data: image_offset.x = data["offset_x"]
 	if "offset_y" in data: image_offset.y = data["offset_y"]
+	if "object_scale" in data: object_scale = data["object_scale"]
 
 func _ready() -> void:
 	modulate.a = 0.0
@@ -29,16 +31,17 @@ func _ready() -> void:
 	$Root/MarkerBase.position = size / 2.0
 	
 	Global.objects_loaded.connect(func():
+		print(Global.object_data)
 		for o in Global.object_data:
 			var o_node = $Root/ObjectBase/POI.duplicate()
 			var pos = -Vector2(o.position.x, o.position.z)
-			o_node.position = pos * magnitude
+			# o_node.position = pos * magnitude
 			o_node.modulate.a = 0.0
 			o_node.visible = true
 			
 			# Marker is always accurately tracked even when the point itself is constrained to the edge of the map
 			var o_marker = Marker2D.new()
-			o_marker.position = pos * magnitude
+			# o_marker.position = pos * magnitude
 			$Root/ObjectBase.add_child(o_node)
 			$Root/ObjectBase.add_child(o_marker)
 			objects.append({ "node": o_node, "marker": o_marker, "position": pos }))
@@ -77,7 +80,7 @@ func _process(delta: float) -> void:
 	
 	# Constrain the object to the edge of the map if it goes out of bounds
 	for o in objects:
-		o.marker.position = o.position * magnitude
+		o.marker.position = o.position * magnitude * object_scale
 		
 		var dist = o.marker.global_position.distance_to($Root/MarkerBase.global_position)
 		var angle = o.marker.global_position.angle_to_point($Root/MarkerBase.global_position)

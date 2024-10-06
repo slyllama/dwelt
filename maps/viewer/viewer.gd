@@ -7,7 +7,6 @@ func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
 	$HUD/VFXTools.open()
-	
 	$HUD/VFXTools.button_pressed.connect(func(id):
 		match id:
 			"ripple":

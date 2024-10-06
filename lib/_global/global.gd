@@ -17,7 +17,8 @@ const MINIMAP_DATA = {
 	"image_rotation": 0,
 	"bg_color": Color(0.1, 0.1, 0.1),
 	"offset_x": 0,
-	"offset_y": 0
+	"offset_y": 0,
+	"object_scale": 1.25 # I don't know why this works but it does
 }
 
 # Change this before invoking the loader - it will load whatever scene is here

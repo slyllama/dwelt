@@ -6,13 +6,17 @@ var proximal_object: Dictionary
 var proximal_distance: float = 999
 var objects: Array[DweltObject]
 
-func _ready() -> void:
+func load_objects() -> void:
+	objects = []
 	# Get all of the objects in the parent (i.e. root) scene
 	for o in Utilities.get_all_children(get_parent()):
 		if o is DweltObject:
 			objects.append(o)
 			Global.object_data.append({ "position": o.global_position })
 	Global.objects_loaded.emit()
+
+func _ready() -> void:
+	load_objects()
 
 var _f = false
 func _physics_process(_delta: float) -> void:

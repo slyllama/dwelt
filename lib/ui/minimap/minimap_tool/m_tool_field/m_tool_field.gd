@@ -41,5 +41,5 @@ func _on_apply_pressed() -> void:
 
 func _on_value_changed(value: Variant) -> void:
 	if minimap_field_id in Global.minimap_data:
-		Global.minimap_data[minimap_field_id] = value
+		Global.minimap_data[minimap_field_id] = float(value)
 		Global.minimap_refresh.emit()

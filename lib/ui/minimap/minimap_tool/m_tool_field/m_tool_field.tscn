@@ -24,7 +24,6 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 drag_and_drop_selection_enabled = false
-select_all_on_focus = true
 
 [node name="Less" type="Button" parent="."]
 custom_minimum_size = Vector2(24, 0)
@@ -43,4 +42,5 @@ text = "✓"
 
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]
 [connection signal="focus_exited" from="Value" to="." method="_on_apply_pressed"]
+[connection signal="text_submitted" from="Value" to="." method="_on_value_changed"]
 [connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]

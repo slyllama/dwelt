@@ -48,13 +48,18 @@ layout_mode = 2
 title = "Scale"
 minimap_field_id = "image_scale"
 
-[node name="Separator2" type="ColorRect" parent="Container" index="8"]
+[node name="ObjectScale" parent="Container" index="8" instance=ExtResource("2_6u0r3")]
+layout_mode = 2
+title = "Object Scale"
+minimap_field_id = "object_scale"
+
+[node name="Separator2" type="ColorRect" parent="Container" index="9"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="Debug" type="RichTextLabel" parent="Container" index="9"]
+[node name="Debug" type="RichTextLabel" parent="Container" index="10"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.5, 0.5, 0.5, 1)
@@ -65,7 +70,7 @@ text = "[Debug]"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Clipboard" type="Button" parent="Container" index="10"]
+[node name="Clipboard" type="Button" parent="Container" index="11"]
 layout_mode = 2
 text = "Copy to Clipboard"
 
