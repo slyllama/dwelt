@@ -68,6 +68,8 @@ func _input(event: InputEvent) -> void:
 		_target_zoom += zoom_increment
 
 func _process(delta: float) -> void:
+	if Global.in_cutscene: return
+	
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
 	if (!orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click")
 		and !Global.popup_open):

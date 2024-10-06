@@ -51,6 +51,7 @@ signal shake_camera()
 var active_pylon = ACTIVE_PYLON.duplicate()
 
 var foliage_count = 0
+var in_cutscene = false
 var minimap_data = MINIMAP_DATA.duplicate()
 var object_data = []
 var player_position = Vector3.ZERO

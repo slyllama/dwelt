@@ -35,7 +35,9 @@ func _process(_delta: float) -> void:
 	elif dist > distance_fade_start and dist < distance_fade_end:
 		state = (dist - distance_fade_start) / (distance_fade_end - distance_fade_start)
 	else: state = 0
-	$Canvas/Label.modulate.a = 1 - state
+	
+	if Global.in_cutscene: state += 1
+	$Canvas/Label.modulate.a = 1 - clamp(state, 0.0, 1.0)
 
 func _on_screen_entered() -> void: $Canvas.visible = true
 func _on_screen_exited() -> void: $Canvas.visible = false

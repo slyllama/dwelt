@@ -17,6 +17,7 @@ func stop():
 	Global.player_can_move = true
 	$FG/Bars.visible = false
 	
+	Global.in_cutscene = false
 	fade_tween = create_tween()
 	fade_tween.tween_property($FG/Fade, "modulate:a", 0.0, 0.5)
 	await fade_tween.finished
@@ -24,6 +25,7 @@ func stop():
 	queue_free()
 
 func _ready() -> void:
+	Global.in_cutscene = true
 	$FG/Fade.modulate.a = 0.0
 	fade_tween = create_tween()
 	fade_tween.tween_property($FG/Fade, "modulate:a", 1.0, 0.5)
@@ -37,9 +39,10 @@ func _ready() -> void:
 	
 	# Cutscene actions go here
 	$CSCamera.make_current()
+	$CSCamera.position.y = 3.2
 	var move_tween = create_tween()
 	move_tween.tween_property(
-		$CSCamera, "position:z", 1.0, 4.0).set_trans(Tween.TRANS_SINE)
+		$CSCamera, "position:x", -1.35, 4.0).set_trans(Tween.TRANS_SINE)
 	
 	$FG/Bars.visible = true
 	Global.hud_toggle_hidden.emit(true)
