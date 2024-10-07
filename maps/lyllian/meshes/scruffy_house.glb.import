@@ -33,10 +33,6 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"mat_brass": {
-"use_external/enabled": true,
-"use_external/path": "res://lib/player/materials/mat_brass.tres"
-},
 "mat_brick": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_brick.tres"
@@ -53,10 +49,6 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://generic/materials/mat_placeholder.tres"
 },
-"mat_rock": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lyllian/meshes/mat_rocks_shader_test.tres"
-},
 "mat_rough_wood": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_rough_wood.tres"
@@ -68,6 +60,10 @@ _subresources={
 "mat_wallpaper": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_scruffpaper.tres"
+},
+"mat_windowpane": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/materials/mat_window.tres"
 }
 }
 }
