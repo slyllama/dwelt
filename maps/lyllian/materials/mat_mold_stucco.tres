@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dqygd3moyvolb"]
+
+[ext_resource type="Texture2D" uid="uid://t0r2csgp2bet" path="res://maps/lyllian/materials/textures/mold_stucco_diff.jpg" id="1_vctec"]
+[ext_resource type="Texture2D" uid="uid://ccueck5cf8q2t" path="res://maps/lyllian/materials/textures/mold_stucco_norm.jpg" id="2_1kt8j"]
+
+[resource]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+albedo_texture = ExtResource("1_vctec")
+metallic = 0.5
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = ExtResource("2_1kt8j")
+rim = 0.2
+rim_tint = 1.0
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(0.25, 0, 0)
