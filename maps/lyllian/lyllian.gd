@@ -18,6 +18,9 @@ func _ready() -> void:
 		"offset_x": -38,
 		"offset_y": 8 })
 	SettingsHandler.save_to_file()
+	
+	$Environment/ScruffyHouse/c_007.set_collision_layer_value(1, false)
+	$Environment/ScruffyHouse/c_007.set_collision_layer_value(2, true)
 
 func _to_dwellan() -> void:
 	var r = RippleFX.instantiate()

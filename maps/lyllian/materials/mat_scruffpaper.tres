@@ -9,7 +9,7 @@
 render_priority = 0
 shader = ExtResource("1_h5uur")
 shader_parameter/uv_scale = 17.0
-shader_parameter/grunge_scale = 2.4
+shader_parameter/grunge_scale = 1.0
 shader_parameter/wallpaper_texture = ExtResource("2_yk7yx")
 shader_parameter/wallpaper_normal = ExtResource("2_5jfaq")
 shader_parameter/wallpaper_grunge = ExtResource("2_554oa")

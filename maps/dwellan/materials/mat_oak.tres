@@ -13,3 +13,6 @@ normal_scale = 0.35
 normal_texture = ExtResource("2_j1w40")
 rim_enabled = true
 rim = 0.5
+distance_fade_mode = 2
+distance_fade_min_distance = 0.2
+distance_fade_max_distance = 0.4
