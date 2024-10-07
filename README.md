@@ -1,6 +1,6 @@
 # Dwelt: Mechanical Dreams
 
-![Banner for Dwelt. Shows a render of the game featuring foliage and mushrooms in a dark, wooden room.](banner.jpg "Dwelt banner")
+![Banner for Dwelt. Shows a render of the game featuring foliage and mushrooms in a dark, wooden room.](banner.png "Dwelt banner")
 
 > "A winter dragon, winding about their twisted spire of disquiet memory. Vines creeping; metals unforged; broadleaves heavy with weary tears of damp-scent. Echoes; order; wandering. Meet the gaze of the orrery; it will divulge that which the serpent conceals in its ages of mourning."
 
