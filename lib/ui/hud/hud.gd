@@ -16,8 +16,7 @@ func _ready() -> void:
 	$Minimap/InteractButton.visible = false
 	$Sidebar.visible = false
 	$FG.visible = true
-	Global.set_display_debug(false)
-
+	
 	# Fade from black
 	var smoke_transition = SmokeTransition.instantiate()
 	add_child(smoke_transition)

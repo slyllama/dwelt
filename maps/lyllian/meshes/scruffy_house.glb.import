@@ -53,6 +53,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://generic/materials/mat_placeholder.tres"
 },
+"mat_rock": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/meshes/mat_rocks_shader_test.tres"
+},
 "mat_rough_wood": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/dwellan/materials/mat_rough_wood.tres"

@@ -1,4 +1,7 @@
 class_name CutsceneInstance extends Node
+# CutsceneInstance
+# Spawns a cutscene which takes over the screen, playing dialogue and following
+# a pre-set camera animation
 
 var stopped = false
 var fade_tween

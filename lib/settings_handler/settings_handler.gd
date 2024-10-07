@@ -46,7 +46,7 @@ func update(parameter, value) -> void:
 	setting_changed.emit(parameter)
 
 func _ready() -> void:
-		# Configure retina
+	# Configure retina
 	if DisplayServer.screen_get_size().x > 2000:
 		get_window().size = original_window_size * 2.0
 		get_window().content_scale_factor = 2.0
@@ -55,4 +55,7 @@ func _ready() -> void:
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/textures/cursor_2x.png"))
+	
+	# Start with debug on for development builds
+	Global.set_display_debug(true)
 	load_from_file()

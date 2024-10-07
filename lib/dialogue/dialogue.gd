@@ -1,6 +1,6 @@
 extends CanvasLayer
 # Dialogue
-# Plays simple, procedural dialogue passed to it in an array
+# Plays simple, procedural dialogue
 
 signal line_finished_animating
 signal dialogue_finished
