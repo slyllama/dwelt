@@ -3,11 +3,18 @@ extends "res://lib/map/map.gd"
 const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
 const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 
+func _toggle_tools_debug_visibility() -> void:
+	$HUD/VFXTools.visible = Global.debug_visible
+
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
 	
+	# Hide the tools panel if debug is toggled off
 	$HUD/VFXTools.open()
+	Global.debug_visible_toggled.connect(_toggle_tools_debug_visibility)
+	_toggle_tools_debug_visibility()
+	
 	$HUD/VFXTools.button_pressed.connect(func(id):
 		match id:
 			"ripple":

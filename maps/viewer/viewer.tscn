@@ -20,6 +20,7 @@ decal_candidates = NodePath("DefaultFloor")
 shadow_lights = NodePath("Summoner/Light")
 
 [node name="VFXTools" parent="HUD" index="7" instance=ExtResource("3_cr3fp")]
+title = "Debug Tools"
 
 [node name="Sky" parent="." index="2"]
 environment = ExtResource("2_abr43")
