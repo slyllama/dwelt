@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1cfdylxmtq6r"]
+[gd_scene load_steps=13 format=3 uid="uid://c1cfdylxmtq6r"]
 
 [ext_resource type="PackedScene" uid="uid://dvfwn2u2p31wx" path="res://lib/map/map.tscn" id="1_xcs8b"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/env.tres" id="2_abr43"]
@@ -11,11 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://j0gv1cjmedb0" path="res://maps/lyllian/meshes/mushrooms.glb" id="7_h5mhr"]
 [ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="8_f8tuc"]
 [ext_resource type="Texture2D" uid="uid://b08cx6hj32o2y" path="res://maps/dwellan/materials/textures/moss_norm.jpg" id="9_0wb4k"]
+[ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/viewer/bin/summoner/summoner.tscn" id="12_gx36l"]
 
-[node name="Viewer" node_paths=PackedStringArray("decal_candidates") instance=ExtResource("1_xcs8b")]
+[node name="Viewer" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_xcs8b")]
 script = ExtResource("2_lwcb1")
 map_title = "Test Zone"
 decal_candidates = NodePath("DefaultFloor")
+shadow_lights = NodePath("Summoner/Light")
 
 [node name="VFXTools" parent="HUD" index="7" instance=ExtResource("3_cr3fp")]
 
@@ -27,12 +29,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Jukebox" parent="." index="5"]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_wbky2")])
+start_muted = true
 
 [node name="DefaultFloor" parent="." index="6" instance=ExtResource("3_nmf1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Decorations" type="Node3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00994, 0, 2.07349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00994, 0, 2.07349)
 
 [node name="ToLauncher" parent="Decorations" index="0" instance=ExtResource("4_n6qk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -65,5 +68,17 @@ distance_fade_enabled = true
 distance_fade_begin = 20.0
 distance_fade_length = 1.0
 cull_mask = 1048574
+
+[node name="Summoner" parent="." index="8" instance=ExtResource("12_gx36l")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 2)
+
+[node name="Light" type="OmniLight3D" parent="Summoner" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.803667, 0.69, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 2.0
+omni_range = 3.0
 
 [connection signal="interacted" from="Decorations/ToLauncher" to="." method="_on_to_launcher_interacted"]

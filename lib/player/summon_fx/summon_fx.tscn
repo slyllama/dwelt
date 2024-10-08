@@ -74,9 +74,9 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5kpix")
 draw_pass_1 = SubResource("QuadMesh_nlx11")
 
-[node name="Plane" type="MeshInstance3D" parent="."]
+[node name="RunePlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("QuadMesh_mbee7")
 
-[connection signal="finished" from="Entry" to="Plane" method="_on_entry_finished"]
-[connection signal="finished" from="PreEntry" to="Plane" method="_on_entry_finished"]
+[connection signal="finished" from="Entry" to="RunePlane" method="_on_entry_finished"]
+[connection signal="finished" from="PreEntry" to="RunePlane" method="_on_entry_finished"]

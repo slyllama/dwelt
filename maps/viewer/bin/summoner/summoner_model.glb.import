@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://md8guus8rl6q"
-path="res://.godot/imported/kitchen_table.glb-263c0655225ce0585780811f8669d3c2.scn"
+uid="uid://y4a3yf0ag8er"
+path="res://.godot/imported/summoner_model.glb-c39ddca695c138417d4387530cf42788.scn"
 
 [deps]
 
-source_file="res://maps/lyllian/meshes/kitchen_table.glb"
-dest_files=["res://.godot/imported/kitchen_table.glb-263c0655225ce0585780811f8669d3c2.scn"]
+source_file="res://maps/viewer/bin/summoner/summoner_model.glb"
+dest_files=["res://.godot/imported/summoner_model.glb-c39ddca695c138417d4387530cf42788.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="KitchenTable"
+nodes/root_name="SummonerModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -26,18 +26,11 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=30
+animation/fps=60.0
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"mat_oak": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_oak.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

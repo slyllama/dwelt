@@ -38,5 +38,8 @@ func _on_play_cutscene_interacted() -> void:
 	_cutscene.camera_original_position = Vector3(-1.0, 3.2, 0.82)
 	_cutscene.camera_target_position.x = -0.35
 	_cutscene.dialogue_script = [
-		"apricot created this amazing art for me! This is a test of instanced dialogue. Blah blah blah."]
+		"Line 1.", "Line 2."]
 	add_child(_cutscene)
+
+func _on_summon_object_interacted() -> void:
+	$ShadowLights/Summoner.activate()

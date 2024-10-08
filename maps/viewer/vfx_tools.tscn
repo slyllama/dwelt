@@ -27,6 +27,11 @@ layout_mode = 2
 text = "Play Cutscene
 "
 
+[node name="ActivateSummoner" type="Button" parent="Container" index="6"]
+layout_mode = 2
+text = "Activate Summoner"
+
 [connection signal="pressed" from="Container/Ripple" to="." method="_button_pressed" binds= [&"ripple"]]
 [connection signal="pressed" from="Container/Summon" to="." method="_button_pressed" binds= [&"summon"]]
 [connection signal="pressed" from="Container/Cutscene" to="." method="_button_pressed" binds= [&"cutscene"]]
+[connection signal="pressed" from="Container/ActivateSummoner" to="." method="_button_pressed" binds= [&"activate_summoner"]]

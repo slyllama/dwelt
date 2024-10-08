@@ -6,6 +6,7 @@ const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
+	
 	$HUD/VFXTools.open()
 	$HUD/VFXTools.button_pressed.connect(func(id):
 		match id:
@@ -19,6 +20,8 @@ func _ready() -> void:
 			"cutscene":
 				var c = load("res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
 				add_child(c)
+			"activate_summoner":
+				$Summoner.activate()
 	)
 
 func _on_to_launcher_interacted() -> void:
