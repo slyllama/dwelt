@@ -25,8 +25,7 @@ func _ready():
 	# Show or hide special utility buttons according to the debug visibility settings
 	Global.debug_visible_toggled.connect(func():
 		$Container/MinimapTool.visible = Global.debug_visible
-		$Container/PlayerPos.visible = Global.debug_visible
-		$Container/Close.visible = Global.debug_visible)
+		$Container/PlayerPos.visible = Global.debug_visible)
 	
 	Global.set_display_debug(false)
 
@@ -53,9 +52,8 @@ func _on_minimap_tool_pressed() -> void:
 func _on_reset_settings_pressed() -> void:
 	SettingsHandler.reset()
 
-func _on_close_pressed() -> void:
-	close()
-	get_tree().quit()
-
 func _on_music_vol_value_changed(value: float) -> void:
 	SettingsHandler.update("music_vol", value)
+
+func _on_exit_to_launcher_pressed() -> void:
+	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")

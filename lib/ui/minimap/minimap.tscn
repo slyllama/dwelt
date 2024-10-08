@@ -52,6 +52,7 @@ position = Vector2(0, -77)
 texture = ExtResource("4_lr6mw")
 
 [node name="Border" type="TextureRect" parent="."]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -28,9 +28,6 @@ func _to_dwellan() -> void:
 		Global.change_map("dwellan"))
 	$Pylon.add_child(r)
 
-func _on_to_launcher_interacted() -> void:
-	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")
-
 func _on_play_cutscene_interacted() -> void:
 	# Cutscene test
 	var _cutscene: CutsceneInstance = Cutscene.instantiate()

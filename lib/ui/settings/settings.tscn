@@ -49,64 +49,66 @@ size_flags_vertical = 4
 theme_override_constants/center_grabber = 1
 value = 50.0
 
-[node name="MinimapTool" type="Button" parent="Container" index="5"]
-layout_mode = 2
-text = "Minimap Tool"
-
-[node name="ParticleDensity" parent="Container" index="6" instance=ExtResource("3_sckvf")]
+[node name="ParticleDensity" parent="Container" index="5" instance=ExtResource("3_sckvf")]
 layout_mode = 2
 title = "Particles"
 id = "particle_density"
 options = Array[String](["low", "medium", "high"])
 default_option = "high"
 
-[node name="Shadows" parent="Container" index="7" instance=ExtResource("3_sckvf")]
+[node name="Shadows" parent="Container" index="6" instance=ExtResource("3_sckvf")]
 layout_mode = 2
 title = "Shadows"
 id = "shadows"
 options = Array[String](["on", "off"])
 default_option = "on"
 
-[node name="WindowMode" parent="Container" index="8" instance=ExtResource("3_sckvf")]
+[node name="WindowMode" parent="Container" index="7" instance=ExtResource("3_sckvf")]
 layout_mode = 2
 title = "Display"
 id = "window_mode"
 options = Array[String](["windowed", "maximized", "full_screen"])
 default_option = "windowed"
 
-[node name="LowerSep2" type="ColorRect" parent="Container" index="9"]
+[node name="LowerSep2" type="ColorRect" parent="Container" index="8"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="Close" type="Button" parent="Container" index="10"]
-self_modulate = Color(1, 0.25098, 0, 1)
-layout_mode = 2
-text = "Close Dwelt"
-
-[node name="ResetSettings" type="Button" parent="Container" index="11"]
+[node name="ResetSettings" type="Button" parent="Container" index="9"]
 layout_mode = 2
 text = "Reset Settings"
 
-[node name="LowerSep" type="ColorRect" parent="Container" index="12"]
-custom_minimum_size = Vector2(0, 10)
+[node name="MinimapTool" type="Button" parent="Container" index="10"]
+layout_mode = 2
+text = "Minimap Tool"
+
+[node name="LowerSep" type="ColorRect" parent="Container" index="11"]
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
-[node name="PlayerPos" type="RichTextLabel" parent="Container" index="13"]
+[node name="PlayerPos" type="RichTextLabel" parent="Container" index="12"]
 modulate = Color(0.6, 0.6, 0.6, 1)
+custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_fonts/normal_font = ExtResource("4_7ctu6")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Player position]"
 fit_content = true
 
+[node name="ExitToLauncher" type="Button" parent="Container" index="13"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit To Launcher"
+
 [connection signal="value_changed" from="Container/HFOV/FOV" to="." method="_on_fov_value_changed"]
 [connection signal="value_changed" from="Container/HMusicVol/MusicVol" to="." method="_on_music_vol_value_changed"]
-[connection signal="pressed" from="Container/MinimapTool" to="." method="_on_minimap_tool_pressed"]
-[connection signal="pressed" from="Container/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Container/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[connection signal="pressed" from="Container/MinimapTool" to="." method="_on_minimap_tool_pressed"]
+[connection signal="pressed" from="Container/ExitToLauncher" to="." method="_on_exit_to_launcher_pressed"]

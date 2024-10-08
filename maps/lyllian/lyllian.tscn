@@ -165,21 +165,13 @@ title = "((Summon))"
 can_interact = true
 show_mote = true
 
-[node name="O_Launcher" parent="." index="11" instance=ExtResource("7_awmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4478, 2.3, -2.36672)
-id = "to_launcher"
-title = "((Launcher))"
-description = "((Debug - return to the game launcher.))"
-can_interact = true
-show_mote = true
-
-[node name="O_Books" parent="." index="12" instance=ExtResource("7_awmnj")]
+[node name="O_Books" parent="." index="11" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
 id = "faceless_books"
 title = "Faceless Books"
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
 
-[node name="O_Painting" parent="." index="13" instance=ExtResource("7_awmnj")]
+[node name="O_Painting" parent="." index="12" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72328, 2.50622, 0.668799)
 id = "aoibhe_painting"
 title = "Well-Preserved Canvas"
@@ -187,10 +179,10 @@ description = "A corner of quiet; fabric uninvaded by dust. The vegetation seems
 can_interact = true
 interact_string = "Observe"
 
-[node name="Pylon" parent="." index="14" instance=ExtResource("6_rshg4")]
+[node name="Pylon" parent="." index="13" instance=ExtResource("6_rshg4")]
 transform = Transform3D(0.954823, 0, 0.297175, 0, 1, 0, -0.297175, 0, 0.954823, 2.45097, 0.885428, 1.83734)
 
-[node name="ToDwellan" parent="Pylon" index="13" instance=ExtResource("7_awmnj")]
+[node name="O_Dwellan" parent="Pylon" index="13" instance=ExtResource("7_awmnj")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 id = "dwellan_portal"
 title = "((LandscapeTest Teleport))"
@@ -203,7 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968783, 0)
 mesh = SubResource("QuadMesh_7i7vt")
 material = ExtResource("8_kwxtx")
 
-[node name="Environment" type="Node3D" parent="." index="15"]
+[node name="Environment" type="Node3D" parent="." index="14"]
 
 [node name="ScruffyHouse" parent="Environment" index="0" instance=ExtResource("7_x6ach")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00651, 1, -2.13901)
@@ -229,7 +221,7 @@ transform = Transform3D(0.999251, 0, -0.0387017, 0, 1, 0, 0.0387017, 0, 0.999251
 [node name="AoibheFrame" parent="Environment" index="3" instance=ExtResource("15_a2yyc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.13494, 3.22859, 0.669575)
 
-[node name="Details" type="Node3D" parent="." index="16"]
+[node name="Details" type="Node3D" parent="." index="15"]
 
 [node name="Grunge" type="Decal" parent="Details" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61931, 0.957878, 1.01061)
@@ -410,7 +402,5 @@ mesh = SubResource("QuadMesh_a16na")
 material = SubResource("ShaderMaterial_33066")
 
 [connection signal="interacted" from="SummonObject" to="." method="_on_summon_object_interacted"]
-[connection signal="interacted" from="O_Launcher" to="." method="_on_to_launcher_interacted"]
-[connection signal="interacted" from="O_Books" to="." method="_on_to_launcher_interacted"]
 [connection signal="interacted" from="O_Painting" to="." method="_on_play_cutscene_interacted"]
-[connection signal="interacted" from="Pylon/ToDwellan" to="." method="_to_dwellan"]
+[connection signal="interacted" from="Pylon/O_Dwellan" to="." method="_to_dwellan"]

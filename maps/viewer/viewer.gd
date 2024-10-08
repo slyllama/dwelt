@@ -39,6 +39,3 @@ func _ready() -> void:
 			"activate_summoner":
 				$Summoner.activate()
 	)
-
-func _on_to_launcher_interacted() -> void:
-	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")
