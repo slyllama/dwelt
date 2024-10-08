@@ -17,3 +17,7 @@ vec3 aberration(sampler2D get_texture, vec2 uv, vec2 pixel_ratio, float intensit
 	float b = texture(get_texture, uv + vec2(pixel_ratio * b_displacement), 0.0).b;
 	return(vec3(r, g, b));
 }
+
+float ease_out_strong(float x) { // based on a quintic easing, but stronger
+	return (1.0 - pow(1.0 - x, 7));
+}

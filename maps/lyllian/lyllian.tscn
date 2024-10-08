@@ -174,7 +174,7 @@ can_interact = true
 show_mote = true
 
 [node name="O_Books" parent="." index="12" instance=ExtResource("7_awmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 1.54946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
 id = "faceless_books"
 title = "Faceless Books"
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
