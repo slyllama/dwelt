@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b47jl8wwysodp"]
+[gd_scene load_steps=7 format=3 uid="uid://b47jl8wwysodp"]
 
 [ext_resource type="Texture2D" uid="uid://cr5b4e8r5jqoo" path="res://lib/ui/hud/textures/settings_icon.png" id="1_fyrfl"]
 [ext_resource type="Script" path="res://lib/ui/diamond_button/diamond_button.gd" id="1_rh4fp"]
-[ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="3_yt0vw"]
+[ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_nnwjl"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="4_2mx6v"]
+[ext_resource type="Texture2D" uid="uid://b7r1lukvl15a8" path="res://generic/textures/blur_bright.png" id="5_ey6ah"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k16lh"]
+shader = ExtResource("3_nnwjl")
+shader_parameter/exp = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/swirl_texture = ExtResource("4_2mx6v")
 
 [node name="DiamondButton" type="TextureButton"]
 z_index = 1
@@ -14,40 +22,22 @@ script = ExtResource("1_rh4fp")
 
 [node name="Blur" type="TextureRect" parent="."]
 z_index = -1
+material = SubResource("ShaderMaterial_k16lh")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.0
-offset_top = -67.0
-offset_right = 66.0
-offset_bottom = 67.0
+offset_left = -73.0
+offset_top = -74.0
+offset_right = 73.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yt0vw")
+texture = ExtResource("5_ey6ah")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="BrightBlur" type="TextureRect" parent="Blur"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -66.0
-offset_top = -67.0
-offset_right = 66.0
-offset_bottom = 67.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_yt0vw")
-expand_mode = 1
-stretch_mode = 5
-flip_h = true
-flip_v = true
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

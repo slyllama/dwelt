@@ -2,7 +2,7 @@ extends TextureButton
 # DiamondButton
 # Used for the map buttons
 
-const TIME = 0.14
+const TIME = 0.07
 const TINT = Color(0.9, 0.9, 0.9)
 
 func _reset(conceal = false):
@@ -22,7 +22,7 @@ func fade_in(highlight = false) -> void:
 	if highlight:
 		self_fade_tween.tween_callback(func():
 			var fade_tween = create_tween()
-			fade_tween.tween_property($Blur, "modulate:a", 1.0, TIME * 2.0))
+			fade_tween.tween_property($Blur, "modulate:a", 1.0, TIME * 1.5))
 
 func fade_out() -> void:
 	var self_fade_tween = create_tween()

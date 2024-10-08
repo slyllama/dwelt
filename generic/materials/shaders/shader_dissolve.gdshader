@@ -8,6 +8,7 @@ uniform float alpha: hint_range(0.0, 1.0) = 1.0;
 void fragment() {
 	vec2 swirl_uv = SCREEN_UV + TIME * 0.05;
 	swirl_uv += texture(swirl_texture, SCREEN_UV * 0.5).rg * 0.1;
+	
 	COLOR.a *= pow(texture(swirl_texture, swirl_uv).r, exp);
 	COLOR.a *= ease_out_strong(alpha);
 }
