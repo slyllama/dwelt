@@ -34,7 +34,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	super(event)
 	if Input.is_action_just_pressed("settings"):
-		if !is_open: open()
+		if !is_open and !Global.in_cutscene: open()
 		else: close()
 
 func _physics_process(_delta: float) -> void:

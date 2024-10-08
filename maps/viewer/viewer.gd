@@ -7,6 +7,7 @@ func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
 	
+	Global.set_display_debug(true)
 	$HUD/VFXTools.open()
 	$HUD/VFXTools.button_pressed.connect(func(id):
 		match id:
@@ -18,8 +19,17 @@ func _ready() -> void:
 				var s = SummonFX.instantiate()
 				%Player.add_child(s)
 			"cutscene":
-				var c = load("res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
+				var c: CutsceneInstance = load(
+					"res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
+				c.dialogue_script = ["This is some test dialogue, blah blah blah. JANIS!!!"]
+				c.camera_rotation_degrees = Vector3(-23.0, 90.0, 0)
+				c.camera_original_position = Vector3(-2.1, 2.0, 2)
+				c.camera_target_position = Vector3(2.8, 2.0, 1.8)
+				c.camera_animation_speed = 4.0
 				add_child(c)
+				
+				get_tree().create_timer(0.6).timeout.connect($Summoner.set_idle)
+				get_tree().create_timer(2.0).timeout.connect($Summoner.activate)
 			"activate_summoner":
 				$Summoner.activate()
 	)

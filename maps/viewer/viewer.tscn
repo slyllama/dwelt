@@ -110,7 +110,7 @@ start_muted = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Decorations" type="Node3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00994, 0, 2.07349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01, 0, 2)
 
 [node name="ToLauncher" parent="Decorations" index="0" instance=ExtResource("4_n6qk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
