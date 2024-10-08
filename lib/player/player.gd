@@ -10,7 +10,7 @@ const SummonFX = preload("res://lib/player/summon_fx/summon_fx.tscn")
 @export var gravity := 160.0
 @export var base_speed := 1.9
 @export var smoothing := 25.0
-@export var jump_strength := 8.0
+@export var jump_strength := 8.5
 @export var kill_height := -10.0
 
 @onready var base: CollisionShape3D = get_node("Collision")
@@ -79,10 +79,10 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor(): velocity.y -= gravity * delta
 	
 	# Change the pitch of the engine depending on how fast it's going, excluding
-	# vertical velocity (jumps)
-	$GroundDetector/Engine.pitch_scale = lerp(
-		$GroundDetector/Engine.pitch_scale,
-		1.0 + Vector3(velocity * Vector3(1, 0, 1)).length() / base_speed * 0.5, 0.07)
+	# vertical velocity (jumps) - as long as we're not in a cutscene
+	var _target_pitch_scale: float = 1.0 + Vector3(velocity * Vector3(1, 0, 1)).length() / base_speed * 0.5
+	if Global.in_cutscene: _target_pitch_scale = 1.0
+	$GroundDetector/Engine.pitch_scale = lerp($GroundDetector/Engine.pitch_scale, _target_pitch_scale, 0.07)
 	
 	if Global.player_can_move:
 		move_and_slide()

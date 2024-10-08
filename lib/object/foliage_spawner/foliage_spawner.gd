@@ -99,7 +99,6 @@ func _ready() -> void:
 				else: render())
 		
 		$DebugSphere.visible = false
-	render()
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
