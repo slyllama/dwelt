@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://lib/player/ground_detector/ground_detector.gd" id="1_6bkef"]
 
 [node name="GroundDetector" type="RayCast3D"]
-target_position = Vector3(0, -0.5, 0)
+target_position = Vector3(0, -0.75, 0)
+collision_mask = 3
 script = ExtResource("1_6bkef")

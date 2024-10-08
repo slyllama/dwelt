@@ -30,7 +30,10 @@ func revive() -> void:
 func _ready() -> void:
 	Global.move_player.connect(func(pos: Vector3):
 		global_position = pos)
+	$GroundDetector.target_position.y = -$Collision.shape.size.y / 2.0 - 0.5
 	%Mesh.update(_direction, velocity, $CameraHandler.rotation_degrees.y, true)
+	
+	
 	var _s = SummonFX.instantiate()
 	add_child(_s)
 

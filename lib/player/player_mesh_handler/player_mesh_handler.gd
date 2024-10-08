@@ -26,7 +26,7 @@ func _bounce_mesh(delta: float) -> void:
 	var _adj_mesh_y_state = _mesh_y_state
 	if _adj_mesh_y_state > 0.5:
 		_adj_mesh_y_state = 1 - _adj_mesh_y_state
-	_adj_mesh_y_state *= 2.0
+	_adj_mesh_y_state *= 3.0
 	model.position.y = _adj_mesh_y_state * -0.04
 
 func update(get_direction: Vector3, velocity: Vector3, camera_direction: float, force = false) -> void:
