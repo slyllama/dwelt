@@ -3,6 +3,9 @@ extends Node3D
 # Map
 # Handles map setting-up functions; should be extended.
 
+const Cutscene = preload("res://lib/cutscene/cutscene_instance.tscn")
+const Inspector = preload("res://lib/object/inspector/inspector_instance.tscn")
+
 ## This is passed to [code]Global.target_scene_title[/code], which
 ## [code]MapTitle[/code] will use to render itself.
 @export var map_title = "((Map Name))"

@@ -3,8 +3,8 @@ class_name DweltObject extends Node3D
 # A generic interactable.
 
 @export var id = "object"
-@export var title = "(Object)"
-@export_multiline var description = "Object description."
+@export var title = "((Object))"
+@export_multiline var description = "((Object description.))"
 
 @export var can_interact = false
 @export var interact_string = "Interact"

@@ -25,8 +25,7 @@ func _ready() -> void:
 				var s = SummonFX.instantiate()
 				%Player.add_child(s)
 			"cutscene":
-				var c: CutsceneInstance = load(
-					"res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
+				var c: CutsceneInstance = Cutscene.instantiate()
 				c.dialogue_script = ["This is some test dialogue!"]
 				c.camera_rotation_degrees = Vector3(-26.0, 90.0, 0)
 				c.camera_original_position = Vector3(-2.1, 2.0, 2)
@@ -39,3 +38,7 @@ func _ready() -> void:
 			"activate_summoner":
 				$Summoner.activate()
 	)
+
+func _on_inspector_test() -> void:
+	var _i: InspectorInstance = Inspector.instantiate()
+	add_child(_i)

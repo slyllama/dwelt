@@ -1,7 +1,7 @@
 @tool
 extends "res://lib/map/map.gd"
 const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
-const Cutscene = preload("res://lib/cutscene_instance/cutscene_instance.tscn")
+
 
 func _ready() -> void:
 	super()
