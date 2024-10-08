@@ -21,9 +21,9 @@ func _ready() -> void:
 				var c: CutsceneInstance = load(
 					"res://lib/cutscene_instance/cutscene_instance.tscn").instantiate()
 				c.dialogue_script = ["This is some test dialogue!"]
-				c.camera_rotation_degrees = Vector3(-23.0, 90.0, 0)
+				c.camera_rotation_degrees = Vector3(-26.0, 90.0, 0)
 				c.camera_original_position = Vector3(-2.1, 2.0, 2)
-				c.camera_target_position = Vector3(2.8, 2.0, 1.8)
+				c.camera_target_position = Vector3(3.3, 2.0, 1.8)
 				c.camera_animation_speed = 4.0
 				add_child(c)
 				

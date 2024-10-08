@@ -35,10 +35,10 @@ func _on_play_cutscene_interacted() -> void:
 	# Cutscene test
 	var _cutscene: CutsceneInstance = Cutscene.instantiate()
 	_cutscene.camera_rotation_degrees.y = 90.0
-	_cutscene.camera_original_position = Vector3(-1.0, 3.2, 0.82)
-	_cutscene.camera_target_position.x = -0.35
-	_cutscene.dialogue_script = [
-		"Line 1.", "Line 2."]
+	_cutscene.camera_original_position = Vector3(-0.8, 3.2, 0.8)
+	_cutscene.camera_target_position = Vector3(-1.9, 3.2, 0.8)
+	_cutscene.camera_animation_speed = 6.0
+	_cutscene.dialogue_script = [ "The serpentine voice remains silent at the mention of this innocent-looking figure, the muffled rain speaking in her place." ]
 	add_child(_cutscene)
 
 func _on_summon_object_interacted() -> void:
