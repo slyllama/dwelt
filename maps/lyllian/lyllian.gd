@@ -42,4 +42,4 @@ func _on_play_cutscene_interacted() -> void:
 	add_child(_cutscene)
 
 func _on_summon_object_interacted() -> void:
-	$ShadowLights/Summoner.activate()
+	$Summoner.activate()

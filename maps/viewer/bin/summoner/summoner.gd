@@ -31,11 +31,7 @@ func _ready() -> void:
 			r.position.y = 0.25
 			add_child(r)
 			for _a: AnimationPlayer in anims:
-				_a.play("fire")
-		elif anim_name == "fire":
-			for _a: AnimationPlayer in anims:
-				_a.play("idle"))
-	
+				_a.play("fire"))
 	for _a in anims:
 		_a.set_blend_time("idle", "activate", 0.19)
 		_a.set_blend_time("fire", "idle", 0.5)

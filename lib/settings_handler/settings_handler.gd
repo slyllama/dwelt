@@ -56,6 +56,4 @@ func _ready() -> void:
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/textures/cursor_2x.png"))
 	
-	# Start with debug on for development builds
-	Global.set_display_debug(true)
 	load_from_file()

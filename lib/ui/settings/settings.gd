@@ -27,6 +27,8 @@ func _ready():
 		$Container/MinimapTool.visible = Global.debug_visible
 		$Container/PlayerPos.visible = Global.debug_visible
 		$Container/Close.visible = Global.debug_visible)
+	
+	Global.set_display_debug(false)
 
 # Open with a hotkey
 func _input(event: InputEvent) -> void:
