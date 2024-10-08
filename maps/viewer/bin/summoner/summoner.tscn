@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw5ku586v76wh"]
+[gd_scene load_steps=8 format=3 uid="uid://cw5ku586v76wh"]
 
 [ext_resource type="Script" path="res://maps/viewer/bin/summoner/summoner.gd" id="1_ab0xn"]
 [ext_resource type="PackedScene" uid="uid://y4a3yf0ag8er" path="res://maps/viewer/bin/summoner/summoner_model.glb" id="1_u7kfv"]
 [ext_resource type="Shader" path="res://lib/player/summon_fx/materials/shaders/shader_rune.gdshader" id="3_mxq47"]
 [ext_resource type="Texture2D" uid="uid://dd8qdr22jvs1m" path="res://lib/player/summon_fx/materials/textures/rune.png" id="4_1s4bs"]
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="5_35b3a"]
-[ext_resource type="Material" uid="uid://8xh5hdxkpjcd" path="res://maps/viewer/bin/summoner/materials/mat_nightmare.tres" id="6_c1hea"]
-[ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="6_kbqc2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63w71"]
 render_priority = 0
@@ -40,23 +38,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="RunePlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("QuadMesh_vai3b")
-
-[node name="NightmareBG" type="CanvasLayer" parent="."]
-
-[node name="Debug" type="TextureRect" parent="NightmareBG"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_kbqc2")
-stretch_mode = 1
-
-[node name="Nightmare" type="ColorRect" parent="NightmareBG"]
-material = ExtResource("6_c1hea")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

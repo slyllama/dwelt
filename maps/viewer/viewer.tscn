@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1cfdylxmtq6r"]
+[gd_scene load_steps=15 format=3 uid="uid://c1cfdylxmtq6r"]
 
 [ext_resource type="PackedScene" uid="uid://dvfwn2u2p31wx" path="res://lib/map/map.tscn" id="1_xcs8b"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/env.tres" id="2_abr43"]
@@ -12,6 +12,81 @@
 [ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="8_f8tuc"]
 [ext_resource type="Texture2D" uid="uid://b08cx6hj32o2y" path="res://maps/dwellan/materials/textures/moss_norm.jpg" id="9_0wb4k"]
 [ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/viewer/bin/summoner/summoner.tscn" id="12_gx36l"]
+
+[sub_resource type="Shader" id="Shader_86egi"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+
+	{
+		// Distance Fade: Pixel Dither
+		float fade_distance = length(VERTEX);
+
+		// Use interleaved gradient noise, which is fast but still looks good.
+		const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
+		float fade = clamp(smoothstep(distance_fade_min, distance_fade_max, fade_distance), 0.0, 1.0);
+		// Use a hard cap to prevent a few stray pixels from remaining when past the fade-out distance.
+		if (fade < 0.001 || fade < fract(magic.z * fract(dot(FRAGCOORD.xy, magic.xy)))) {
+			discard;
+		}
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pk3qv"]
+render_priority = 0
+shader = SubResource("Shader_86egi")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/distance_fade_min = 0.3
+shader_parameter/distance_fade_max = 0.4
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [node name="Viewer" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_xcs8b")]
 script = ExtResource("2_lwcb1")
@@ -80,5 +155,9 @@ shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 2.0
 omni_range = 3.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+material = SubResource("ShaderMaterial_pk3qv")
 
 [connection signal="interacted" from="Decorations/ToLauncher" to="." method="_on_to_launcher_interacted"]

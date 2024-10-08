@@ -99,6 +99,9 @@ func _process(delta: float) -> void:
 	
 	# Position, rotation, and offset smoothing
 	camera.position = lerp(camera.position, $Axis/Target.position, 6.0 * delta)
-	var _target_v_offset = lerp(camera.v_offset, _get_v_offset(), 6.0 * delta)
+	
+	var _spring_ratio = $Axis.get_hit_length() / $Axis.spring_length
+	var _target_v_offset = lerp(camera.v_offset, _get_v_offset() * _spring_ratio, 6.0 * delta)
 	camera.v_offset = _target_v_offset + second_vertical_offset
+	
 	CameraData.facing_angle = global_rotation.y - deg_to_rad(180)

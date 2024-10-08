@@ -16,4 +16,11 @@ void fragment()
 	vec3 final_color = color + basic_fresnel * fresnel_color;
 	ALBEDO = final_color;
 	EMISSION = final_color;
+	
+	float fade_distance = length(VERTEX);
+	const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
+	float fade = clamp(smoothstep(0.6, 0.8, fade_distance), 0.0, 1.0);
+	if (fade < 0.001 || fade < fract(magic.z * fract(dot(FRAGCOORD.xy, magic.xy)))) {
+		discard;
+	}
 }

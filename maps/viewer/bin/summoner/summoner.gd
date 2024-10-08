@@ -9,15 +9,10 @@ var idle = true
 	get_node("SummonerModel3/AnimationPlayer"),
 	get_node("SummonerModel4/AnimationPlayer") ]
 
-func _set_nightmare_fac(v):
-	$NightmareBG/Nightmare.material.set_shader_parameter("fac", v)
-
 func activate() -> void:
 	set_idle()
 	idle = false
 	
-	var nightmare_tween = create_tween()
-	nightmare_tween.tween_method(_set_nightmare_fac, 0.0, 1.0, 0.5)
 	for _a in anims:
 		if !idle:
 			_a.play("activate")

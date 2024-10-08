@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://8xh5hdxkpjcd"]
-
-[ext_resource type="Shader" path="res://maps/viewer/bin/summoner/materials/shaders/shader_nightmare.gdshader" id="1_amu8s"]
-
-[resource]
-shader = ExtResource("1_amu8s")
-shader_parameter/fac = 0.0
