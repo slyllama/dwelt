@@ -24,6 +24,7 @@ albedo_color = Color(1, 0, 0, 1)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_l0u5o")
 script = ExtResource("1_wxxxt")
+area_scale = null
 colour_2 = Color(0.433, 0.52, 0, 1)
 
 [node name="Moss" type="Decal" parent="."]
