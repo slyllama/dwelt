@@ -10,7 +10,7 @@ func _ready() -> void:
 	$SmokeTransition.set_value(0.5)
 
 func _process(_delta: float) -> void:
-	$Box3D/Viewport/InspectorWorld/Box.rotation_degrees = -$OrbitHandler.target_rotation
+	$Box3D/Viewport/InspectorWorld/ModelRoot.global_rotation_degrees.y = -$OrbitHandler.target_rotation.y
 
 func _on_close_button_pressed() -> void:
 	Global.in_cutscene = false

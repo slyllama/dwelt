@@ -6,6 +6,14 @@ class_name OrbitHandler extends Node
 @export var orbit_smoothing := 12.0
 @export var override_eligibility := false
 
+@export_category("Clamping")
+@export var clamp_x := true
+@export var clamp_x_lower := -65.0
+@export var clamp_x_upper := 10.0
+@export var clamp_y := false
+@export var clamp_y_lower := -180.0
+@export var clamp_y_upper := 180.0
+
 var orbiting = false
 var target_rotation = Vector3.ZERO
 var smooth_rotation = Vector3.ZERO
@@ -55,8 +63,9 @@ func _process(delta: float) -> void:
 	# This is handled here instead of _input() because handling without delta
 	# causes strange behaviour at low frame rates
 	if orbiting:
-		target_rotation.y -= _mouse_delta.x * orbit_sensitivity * delta * 100.0
 		target_rotation.x -= _mouse_delta.y * orbit_sensitivity * delta * 100.0
-		target_rotation.x = clamp(target_rotation.x, -65.0, 10.0)
+		if clamp_x: target_rotation.x = clamp(target_rotation.x, clamp_x_lower, clamp_x_upper)
+		target_rotation.y -= _mouse_delta.x * orbit_sensitivity * delta * 100.0
+		if clamp_y: target_rotation.y = clamp(target_rotation.y, clamp_y_lower, clamp_y_upper)
 	smooth_rotation = lerp(smooth_rotation, target_rotation, delta * orbit_smoothing)
 	_mouse_delta = Vector2.ZERO
