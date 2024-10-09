@@ -72,4 +72,4 @@ clamp_y = true
 clamp_y_lower = -60.0
 clamp_y_upper = 60.0
 
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_close"]

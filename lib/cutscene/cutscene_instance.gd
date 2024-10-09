@@ -2,7 +2,6 @@ class_name CutsceneInstance extends Node
 # CutsceneInstance
 # Spawns a cutscene which takes over the screen, playing dialogue and following
 # a pre-set camera animation
-
 const HINT = "[Alt] Rotate  [Shift] Raise/Lower  [LMB] Fine-Tune"
 
 var stopped = false
