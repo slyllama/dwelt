@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "mat_broadleaf": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_broadleaf.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_broadleaf.tres"
 },
 "mat_cloth": {
 "use_external/enabled": true,
@@ -43,7 +43,7 @@ _subresources={
 },
 "mat_oak": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_oak.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_oak.tres"
 }
 }
 }

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://y4a3yf0ag8er" path="res://maps/viewer/bin/summoner/summoner_model.glb" id="1_u7kfv"]
 [ext_resource type="Shader" path="res://lib/player/summon_fx/materials/shaders/shader_rune.gdshader" id="3_mxq47"]
 [ext_resource type="Texture2D" uid="uid://dd8qdr22jvs1m" path="res://lib/player/summon_fx/materials/textures/rune.png" id="4_1s4bs"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="5_35b3a"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_35b3a"]
 [ext_resource type="PackedScene" uid="uid://i4gx4thehb2p" path="res://maps/viewer/bin/summoner/pedestal_model.glb" id="6_jqw7h"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="7_sil1l"]
 

@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="4_ejuu6"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_sf5gd"]
 [ext_resource type="Shader" uid="uid://5rw1ita7w3la" path="res://generic/materials/shaders/shader_glow.tres" id="5_l7o73"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="6_hb6co"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="6_hb6co"]
 [ext_resource type="AudioStream" uid="uid://cjyq00psweao8" path="res://generic/sound/object_entry.ogg" id="8_gnh8r"]
 [ext_resource type="AudioStream" uid="uid://dlowvbn10v3nj" path="res://generic/sound/object_leave.ogg" id="9_l2u7u"]
 

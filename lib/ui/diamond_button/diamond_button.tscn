@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cr5b4e8r5jqoo" path="res://lib/ui/hud/textures/settings_icon.png" id="1_fyrfl"]
 [ext_resource type="Script" path="res://lib/ui/diamond_button/diamond_button.gd" id="1_rh4fp"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_nnwjl"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="4_2mx6v"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="4_2mx6v"]
 [ext_resource type="Texture2D" uid="uid://b7r1lukvl15a8" path="res://generic/textures/blur_bright.png" id="5_ey6ah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k16lh"]

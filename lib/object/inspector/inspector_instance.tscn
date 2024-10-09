@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://lib/object/inspector/inspector_instance.gd" id="1_ht1c1"]
 [ext_resource type="PackedScene" uid="uid://ciedyeth0k5f7" path="res://lib/object/inspector/inspector_world.tscn" id="2_e3j2f"]
-[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="3_h3a3p"]
+[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="3_h3a3p"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="3_phts2"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_vfug1"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="4_g0m8t"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="4_g0m8t"]
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="7_6b8to"]
 [ext_resource type="Script" path="res://lib/orbit_handler/orbit_handler.gd" id="7_32mrv"]
 [ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="10_sn5q2"]

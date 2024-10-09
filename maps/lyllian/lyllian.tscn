@@ -12,19 +12,19 @@
 [ext_resource type="Material" uid="uid://dkmhju7d7cbbp" path="res://generic/materials/mat_glow.tres" id="8_kwxtx"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
-[ext_resource type="PackedScene" uid="uid://bhitp7khof5px" path="res://maps/dwellan/meshes/bookcase.glb" id="13_k1ml3"]
+[ext_resource type="PackedScene" uid="uid://bhitp7khof5px" path="res://maps/lyllian/meshes/bookcase.glb" id="13_k1ml3"]
 [ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/meshes/side_table.glb" id="14_2awna"]
-[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="15_08dm5"]
+[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="15_08dm5"]
 [ext_resource type="PackedScene" uid="uid://chrvfhdn5etbr" path="res://maps/lyllian/meshes/aoibhe_frame.glb" id="15_a2yyc"]
 [ext_resource type="PackedScene" uid="uid://md8guus8rl6q" path="res://maps/lyllian/meshes/kitchen_table.glb" id="15_orv26"]
 [ext_resource type="PackedScene" uid="uid://kqtxsdr7abxc" path="res://lib/object/foliage_spawner/foliage_spawner.tscn" id="16_k8yd6"]
-[ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/dwellan/meshes/_grass.res" id="17_p6u1p"]
+[ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/lyllian/meshes/_grass.res" id="17_p6u1p"]
 [ext_resource type="PackedScene" uid="uid://2b8xnsa326ur" path="res://maps/lyllian/meshes/broadleaf_plant.glb" id="18_aii2i"]
-[ext_resource type="ArrayMesh" uid="uid://cbic5n8e1vf7i" path="res://maps/dwellan/meshes/_flower_1.res" id="19_ob6rd"]
+[ext_resource type="ArrayMesh" uid="uid://cbic5n8e1vf7i" path="res://maps/lyllian/meshes/_flower_1.res" id="19_ob6rd"]
 [ext_resource type="PackedScene" uid="uid://dsmqqtxgwqbg6" path="res://maps/lyllian/meshes/broadleaf_plant_2.glb" id="20_6s15p"]
 [ext_resource type="PackedScene" uid="uid://j0gv1cjmedb0" path="res://maps/lyllian/meshes/mushrooms.glb" id="21_16qfb"]
 [ext_resource type="Shader" uid="uid://5rw1ita7w3la" path="res://generic/materials/shaders/shader_glow.tres" id="21_h60s7"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="22_lkotp"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="22_lkotp"]
 
 [sub_resource type="Gradient" id="Gradient_pvctc"]
 offsets = PackedFloat32Array(0, 0.266667, 0.751515, 1)
@@ -313,7 +313,6 @@ size = 1.0
 scatter = 0.3
 min_scale = 2.0
 max_scale = 4.0
-area_scale = 1.0
 smooth = false
 moss_cover = false
 moss_scaling = 1.0
@@ -329,7 +328,6 @@ size = 0.5
 scatter = 0.5
 min_scale = 1.5
 max_scale = 2.0
-area_scale = 1.0
 smooth = false
 moss_cover = false
 moss_scaling = 1.0
@@ -345,7 +343,6 @@ size = 1.0
 scatter = 0.5
 min_scale = 2.0
 max_scale = 4.0
-area_scale = 1.0
 smooth = false
 moss_cover = false
 moss_scaling = 1.0
@@ -360,7 +357,6 @@ size = 1.0
 scatter = 0.07
 min_scale = 4.0
 max_scale = 5.5
-area_scale = 1.0
 moss_scaling = 3.419
 
 [node name="FoliageSpawner5" parent="Details" index="15" instance=ExtResource("16_k8yd6")]
@@ -371,7 +367,6 @@ size = 0.5
 scatter = 0.1
 min_scale = 4.0
 max_scale = 7.0
-area_scale = 1.0
 moss_scaling = 4.0
 
 [node name="FoliageSpawner2" parent="Details" index="16" instance=ExtResource("16_k8yd6")]
@@ -382,7 +377,6 @@ size = 0.6
 scatter = 0.1
 min_scale = 3.5
 max_scale = 6.5
-area_scale = 1.0
 smooth = false
 moss_cover = false
 
@@ -405,7 +399,6 @@ size = 0.7
 scatter = 0.1
 min_scale = 5.0
 max_scale = 7.0
-area_scale = 1.0
 moss_scaling = 2.0
 
 [node name="BroadleafPlantB2" parent="Details" index="19" instance=ExtResource("20_6s15p")]

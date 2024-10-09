@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://plbbv8m5ine7"]
 
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="1_yun7a"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="2_c3lb5"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="2_c3lb5"]
 
 [resource]
 shader = ExtResource("1_yun7a")

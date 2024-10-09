@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://5rw1ita7w3la" path="res://generic/materials/shaders/shader_glow.tres" id="1_7wwq6"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="2_dw3oa"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="2_gyinj"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="2_gyinj"]
 
 [resource]
 render_priority = 0

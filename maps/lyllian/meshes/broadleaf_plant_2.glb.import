@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "mat_broadleaf": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_broadleaf.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_broadleaf.tres"
 }
 }
 }

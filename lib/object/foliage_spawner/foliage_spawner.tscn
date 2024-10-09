@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://kqtxsdr7abxc"]
 
 [ext_resource type="Script" path="res://lib/object/foliage_spawner/foliage_spawner.gd" id="1_wxxxt"]
-[ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/dwellan/meshes/_grass.res" id="1_x76r4"]
-[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="3_33jmp"]
+[ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/lyllian/meshes/_grass.res" id="1_x76r4"]
+[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="3_33jmp"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_l0u5o"]
 transform_format = 1
@@ -24,7 +24,6 @@ albedo_color = Color(1, 0, 0, 1)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_l0u5o")
 script = ExtResource("1_wxxxt")
-area_scale = null
 colour_2 = Color(0.433, 0.52, 0, 1)
 
 [node name="Moss" type="Decal" parent="."]

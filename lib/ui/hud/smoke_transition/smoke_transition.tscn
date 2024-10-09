@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/ui/hud/smoke_transition/smoke_transition.gd" id="1_1jpdw"]
 [ext_resource type="Shader" path="res://lib/ui/hud/smoke_transition/materials/shaders/shader_smoke.gdshader" id="1_qyh3u"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="2_rhdxr"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="2_rhdxr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu52t"]
 shader = ExtResource("1_qyh3u")

@@ -3635,7 +3635,7 @@ _subresources={
 "materials": {
 "mat_brass": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/materials/mat_brass.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_brass.tres"
 },
 "mat_force_field": {
 "use_external/enabled": true,
@@ -3647,7 +3647,7 @@ _subresources={
 },
 "mat_swirl": {
 "use_external/enabled": true,
-"use_external/path": "res://lib/player/materials/mat_swirl.tres"
+"use_external/path": "res://generic/materials/mat_swirl.tres"
 }
 },
 "nodes": {

@@ -47,7 +47,7 @@ _subresources={
 },
 "mat_oak_wood": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_oak.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_oak.tres"
 },
 "mat_placeholder": {
 "use_external/enabled": true,
@@ -55,7 +55,7 @@ _subresources={
 },
 "mat_rough_wood": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/dwellan/materials/mat_rough_wood.tres"
+"use_external/path": "res://maps/lyllian/materials/mat_rough_wood.tres"
 },
 "mat_rug": {
 "use_external/enabled": true,
