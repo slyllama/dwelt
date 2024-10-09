@@ -4,5 +4,5 @@ extends TextureButton
 func _on_mouse_entered() -> void:
 	Global.hover_sound.emit()
 
-func _on_pressed() -> void:
+func _on_button_down() -> void:
 	Global.click_sound.emit()
