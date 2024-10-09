@@ -10,4 +10,4 @@ metallic_specular = 0.25
 roughness = 0.8
 normal_enabled = true
 normal_texture = ExtResource("2_ha8ga")
-uv1_scale = Vector3(2, 2, 2)
+uv1_scale = Vector3(2.45, 2.45, 2.45)
