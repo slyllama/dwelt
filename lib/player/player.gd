@@ -27,13 +27,19 @@ func revive() -> void:
 		Global.active_pylon.position + Vector3(-0.4, 1, 0))
 	is_kill_height = false
 
+# Set the original orientation of the player so that there isn't an awkward
+# segue to it when the level starts
+func set_initial_rotation(camera_rotation: Vector3) -> void:
+	# Strip out non-y rotation
+	$CameraHandler.rotation_degrees = camera_rotation * Vector3(0, 1, 0)
+	$CameraHandler/OrbitHandler.set_initial_rotation(
+		camera_rotation * Vector3(1, 1, 0)) # never roll the camera
+
 func _ready() -> void:
 	Global.move_player.connect(func(pos: Vector3):
 		global_position = pos)
 	$GroundDetector.target_position.y = -$Collision.shape.size.y / 2.0 - 0.5
 	%Mesh.update(_direction, velocity, $CameraHandler.rotation_degrees.y, true)
-	
-	
 	var _s = SummonFX.instantiate()
 	add_child(_s)
 

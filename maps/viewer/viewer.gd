@@ -9,6 +9,7 @@ func _toggle_tools_debug_visibility() -> void:
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
+	$Player.set_initial_rotation(Vector3(-45.0, 180.0, 0))
 	
 	# Hide the tools panel if debug is toggled off
 	$HUD/VFXTools.open()

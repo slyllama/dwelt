@@ -2,13 +2,11 @@
 extends "res://lib/map/map.gd"
 const RippleFX = preload("res://lib/object/ripple_fx/ripple_fx.tscn")
 
-
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
 	# Set custom camera starting rotation
-	$Player/CameraHandler._target_rotation.y = 90
-	$Player/CameraHandler.rotation_degrees.y = 90
+	$Player.set_initial_rotation(Vector3(-45.0, 60.0, -45.0))
 	configure_map({
 		#"image_path": "res://maps/lyllian/textures/map.png",
 		"magnitude": 50.0,

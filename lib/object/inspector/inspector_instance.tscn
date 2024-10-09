@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dml02ognr10l7"]
+[gd_scene load_steps=10 format=3 uid="uid://dml02ognr10l7"]
 
 [ext_resource type="Script" path="res://lib/object/inspector/inspector_instance.gd" id="1_ht1c1"]
 [ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="2_akhyb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="3_b3oeh"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="3_phts2"]
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="4_2s7ln"]
+[ext_resource type="Script" path="res://lib/orbit_handler/orbit_handler.gd" id="7_32mrv"]
 
 [sub_resource type="Environment" id="Environment_s6mnh"]
 
@@ -75,5 +76,9 @@ texture_normal = ExtResource("3_b3oeh")
 texture_hover = ExtResource("4_2s7ln")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="OrbitHandler" type="Node" parent="."]
+script = ExtResource("7_32mrv")
+override_eligibility = true
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
