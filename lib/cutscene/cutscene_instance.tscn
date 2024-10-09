@@ -55,6 +55,18 @@ offset_bottom = -16.0
 grow_vertical = 0
 text = "Print"
 
+[node name="Stop" type="Button" parent="FG/Bars/Upper"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 130.0
+offset_top = -47.0
+offset_right = 242.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Stop Tween"
+
 [node name="DebugText" type="RichTextLabel" parent="FG/Bars"]
 layout_mode = 0
 offset_left = 16.0
@@ -86,6 +98,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Fade" type="ColorRect" parent="FG"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -105,6 +118,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 fov = 90.0
 
 [connection signal="pressed" from="FG/Bars/Upper/Print" to="." method="_on_print_pressed"]
+[connection signal="pressed" from="FG/Bars/Upper/Stop" to="." method="_on_stop_pressed"]
 [connection signal="mouse_entered" from="FG/Bars/CloseButton" to="." method="_hover"]
 [connection signal="pressed" from="FG/Bars/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="dialogue_finished" from="Dialogue" to="." method="stop"]

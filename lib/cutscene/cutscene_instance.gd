@@ -5,7 +5,8 @@ class_name CutsceneInstance extends Node
 const HINT = "[Alt] Rotate  [Shift] Raise/Lower  [LMB] Fine-Tune"
 
 var stopped = false
-var fade_tween
+var fade_tween: Tween
+var move_tween: Tween
 
 @export var camera_rotation_degrees := Vector3.ZERO
 @export var camera_original_position := Vector3.ZERO
@@ -59,7 +60,7 @@ func play() -> void:
 	# Don't play any animation if the animation time is set to zero - good for
 	# static cutscenes and debugging
 	if camera_animation_speed > 0:
-		var move_tween = create_tween()
+		move_tween = create_tween()
 		move_tween.tween_property(
 			$CSCamera, "position", camera_target_position,
 			camera_animation_speed).set_trans(Tween.TRANS_SINE)
@@ -74,9 +75,11 @@ func play() -> void:
 func _toggle_debug() -> void:
 	$FG/Bars/DebugText.visible = Global.debug_visible
 	$FG/Bars/Upper/Print.visible = Global.debug_visible
+	$FG/Bars/Upper/Stop.visible = Global.debug_visible
 
 func _ready() -> void:
 	_toggle_debug()
+	$FG/Fade.visible = true
 	Global.debug_visible_toggled.connect(_toggle_debug)
 	play()
 
@@ -96,20 +99,30 @@ func _process(delta: float) -> void:
 	_sn = SENSITIVITY
 	if Input.is_action_pressed("left_click"): _sn /= 2.0
 	if Input.is_action_pressed("jump"):
-		if Input.is_action_pressed("move_left"): $CSCamera.rotation.y += delta * _sn
-		if Input.is_action_pressed("move_right"): $CSCamera.rotation.y -= delta * _sn
-		if Input.is_action_pressed("move_forward"): $CSCamera.rotation.x += delta * _sn
-		if Input.is_action_pressed("move_back"): $CSCamera.rotation.x -= delta * _sn
+		if Input.is_action_pressed("move_left"): 
+			$CSCamera.rotation.y += delta * _sn
+		if Input.is_action_pressed("move_right"):
+			$CSCamera.rotation.y -= delta * _sn
+		if Input.is_action_pressed("move_forward"):
+			$CSCamera.rotation.x += delta * _sn
+		if Input.is_action_pressed("move_back"):
+			$CSCamera.rotation.x -= delta * _sn
 	
 	elif Input.is_action_pressed("test_action"): # shift
-		if Input.is_action_pressed("move_forward"): $CSCamera.position.y += delta * _sn
-		if Input.is_action_pressed("move_back"): $CSCamera.position.y -= delta * _sn
+		if Input.is_action_pressed("move_forward"):
+			$CSCamera.position.y += delta * _sn
+		if Input.is_action_pressed("move_back"):
+			$CSCamera.position.y -= delta * _sn
 	
 	else:
-		if Input.is_action_pressed("move_left"): $CSCamera.position -= Vector3.LEFT * delta * $CSCamera.global_basis * Vector3(-1, 0, 1) * _sn
-		if Input.is_action_pressed("move_right"): $CSCamera.position -= Vector3.RIGHT * delta * $CSCamera.global_basis * Vector3(-1, 0, 1) * _sn
-		if Input.is_action_pressed("move_forward"): $CSCamera.position -= Vector3.FORWARD * delta * $CSCamera.global_basis * Vector3(1, 0, -1) * _sn
-		if Input.is_action_pressed("move_back"): $CSCamera.position -= Vector3.BACK * delta * $CSCamera.global_basis * Vector3(1, 0, -1) * _sn
+		if Input.is_action_pressed("move_left"):
+			$CSCamera.position -= Vector3.LEFT * delta * $CSCamera.global_basis * Vector3(-1, 0, 1) * _sn
+		if Input.is_action_pressed("move_right"):
+			$CSCamera.position -= Vector3.RIGHT * delta * $CSCamera.global_basis * Vector3(-1, 0, 1) * _sn
+		if Input.is_action_pressed("move_forward"):
+			$CSCamera.position -= Vector3.FORWARD * delta * $CSCamera.global_basis * Vector3(1, 0, -1) * _sn
+		if Input.is_action_pressed("move_back"):
+			$CSCamera.position -= Vector3.BACK * delta * $CSCamera.global_basis * Vector3(1, 0, -1) * _sn
 
 func _hover() -> void:
 	Global.hover_sound.emit()
@@ -121,3 +134,6 @@ func _on_close_button_pressed() -> void:
 func _on_print_pressed() -> void:
 	print("position = Vector3(" + Utilities.fmt_vec3($CSCamera.global_position) + ")")
 	print("rotation_degrees = Vector3(" + Utilities.fmt_vec3($CSCamera.global_rotation_degrees) + ")")
+
+func _on_stop_pressed() -> void:
+	move_tween.kill()

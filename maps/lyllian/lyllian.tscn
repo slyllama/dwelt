@@ -109,6 +109,7 @@ environment = ExtResource("2_ahnhk")
 
 [node name="Jukebox" parent="." index="5"]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
+start_muted = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_jja4b")
@@ -158,20 +159,20 @@ omni_range = 4.0
 [node name="Summoner" parent="." index="9" instance=ExtResource("7_tqgrq")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.39094, -3.04794, -0.386819)
 
-[node name="SummonObject" parent="." index="10" instance=ExtResource("7_awmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -2, 1.5)
+[node name="O_Summon" parent="Summoner" index="5" instance=ExtResource("7_awmnj")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1, 0)
 id = "summon"
 title = "((Summon))"
 can_interact = true
 show_mote = true
 
-[node name="O_Books" parent="." index="11" instance=ExtResource("7_awmnj")]
+[node name="O_Books" parent="." index="10" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
 id = "faceless_books"
 title = "Faceless Books"
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
 
-[node name="O_Painting" parent="." index="12" instance=ExtResource("7_awmnj")]
+[node name="O_Painting" parent="." index="11" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72328, 2.50622, 0.668799)
 id = "aoibhe_painting"
 title = "Well-Preserved Canvas"
@@ -179,7 +180,7 @@ description = "A corner of quiet; fabric uninvaded by dust. The vegetation seems
 can_interact = true
 interact_string = "Observe"
 
-[node name="Pylon" parent="." index="13" instance=ExtResource("6_rshg4")]
+[node name="Pylon" parent="." index="12" instance=ExtResource("6_rshg4")]
 transform = Transform3D(0.954823, 0, 0.297175, 0, 1, 0, -0.297175, 0, 0.954823, 2.45097, 0.885428, 1.83734)
 
 [node name="O_Dwellan" parent="Pylon" index="13" instance=ExtResource("7_awmnj")]
@@ -195,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968783, 0)
 mesh = SubResource("QuadMesh_7i7vt")
 material = ExtResource("8_kwxtx")
 
-[node name="Environment" type="Node3D" parent="." index="14"]
+[node name="Environment" type="Node3D" parent="." index="13"]
 
 [node name="ScruffyHouse" parent="Environment" index="0" instance=ExtResource("7_x6ach")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00651, 1, -2.13901)
@@ -221,7 +222,7 @@ transform = Transform3D(0.999251, 0, -0.0387017, 0, 1, 0, 0.0387017, 0, 0.999251
 [node name="AoibheFrame" parent="Environment" index="3" instance=ExtResource("15_a2yyc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.13494, 3.22859, 0.669575)
 
-[node name="Details" type="Node3D" parent="." index="15"]
+[node name="Details" type="Node3D" parent="." index="14"]
 
 [node name="Grunge" type="Decal" parent="Details" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61931, 0.957878, 1.01061)
@@ -401,6 +402,6 @@ visible = false
 mesh = SubResource("QuadMesh_a16na")
 material = SubResource("ShaderMaterial_33066")
 
-[connection signal="interacted" from="SummonObject" to="." method="_on_summon_object_interacted"]
+[connection signal="interacted" from="Summoner/O_Summon" to="." method="_on_summon_object_interacted"]
 [connection signal="interacted" from="O_Painting" to="." method="_on_play_cutscene_interacted"]
 [connection signal="interacted" from="Pylon/O_Dwellan" to="." method="_to_dwellan"]

@@ -52,6 +52,11 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("move_forward"):
 		$GroundDetector/Disengage.pitch_scale = 0.8 + randf() * 0.4
 		$GroundDetector/Disengage.play()
+	
+	#TODO: this is debug/presentation only and needs to be removed
+	if Input.is_action_just_pressed("ui_home"):
+		var _s = SummonFX.instantiate()
+		add_child(_s)
 
 func _physics_process(delta: float) -> void:
 	# Process inputs

@@ -12,7 +12,7 @@ func _ready() -> void:
 	$Player.set_initial_rotation(Vector3(-45.0, 180.0, 0))
 	
 	# Hide the tools panel if debug is toggled off
-	$HUD/VFXTools.open()
+	$HUD/VFXTools.open(true)
 	Global.debug_visible_toggled.connect(_toggle_tools_debug_visibility)
 	_toggle_tools_debug_visibility()
 	

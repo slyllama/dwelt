@@ -2,6 +2,7 @@ extends Panel
 # UIContainer
 # A general UI container
 const TRANS_TIME = 0.11
+var rng = RandomNumberGenerator.new()
 signal opened
 signal closed
 
@@ -15,12 +16,15 @@ var last_mouse_title_click = Vector2.ZERO
 var mouse_in_title = false
 var moving_window = false
 
-func open():
+func open(silent = false):
 	if is_open: return
 	
 	is_open = true
 	opened.emit()
 	visible = true
+	if !silent: # can set silent i.e., containers that spawn on map load
+		$Paper.pitch_scale = 0.9 + rng.randf() * 0.2 # pitch variation - more organic
+		$Paper.play()
 	var open_tween = create_tween()
 	open_tween.tween_property(self, "modulate:a", 1.0, TRANS_TIME)
 

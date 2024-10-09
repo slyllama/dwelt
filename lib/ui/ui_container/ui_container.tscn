@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://dqhmkchm2mv4e"]
+[gd_scene load_steps=21 format=4 uid="uid://dqhmkchm2mv4e"]
 
 [ext_resource type="Script" path="res://lib/ui/ui_container/ui_container.gd" id="1_wld3n"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_abe6x"]
 [ext_resource type="Texture2D" uid="uid://b71p0p22mumss" path="res://lib/map/loader/textures/loading_cog.png" id="2_onaxk"]
 [ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="3_7qnic"]
 [ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="4_eanis"]
+[ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="6_stpnk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j30ib"]
 bg_color = Color(0, 0, 0, 0.862745)
@@ -598,6 +599,10 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
+
+[node name="Paper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_stpnk")
+volume_db = -3.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
