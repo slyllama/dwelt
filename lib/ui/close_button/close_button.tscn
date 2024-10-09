@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://iscirmsdflue"]
+
+[ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="1_tw2oq"]
+[ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="2_eg3o3"]
+[ext_resource type="Script" path="res://lib/ui/close_button/close_button.gd" id="3_1vfhi"]
+
+[node name="CloseButton" type="TextureButton"]
+custom_minimum_size = Vector2(27, 27)
+texture_normal = ExtResource("1_tw2oq")
+texture_hover = ExtResource("2_eg3o3")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_1vfhi")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

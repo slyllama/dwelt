@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://crnem0r5mh5st"]
+[gd_scene load_steps=6 format=3 uid="uid://crnem0r5mh5st"]
 
 [ext_resource type="Script" path="res://lib/cutscene/cutscene_instance.gd" id="1_jkayl"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_imf5n"]
-[ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="2_veek3"]
-[ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="3_41yno"]
+[ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="3_4g2g3"]
 [ext_resource type="PackedScene" uid="uid://8nls5qd5pa56" path="res://lib/dialogue/dialogue.tscn" id="4_8dp3h"]
 [ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="6_h336q"]
 
@@ -67,6 +66,17 @@ offset_bottom = -16.0
 grow_vertical = 0
 text = "Stop Tween"
 
+[node name="CloseButton" parent="FG/Bars/Upper" instance=ExtResource("3_4g2g3")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 59.0
+grow_horizontal = 0
+
 [node name="DebugText" type="RichTextLabel" parent="FG/Bars"]
 layout_mode = 0
 offset_left = 16.0
@@ -80,22 +90,6 @@ bbcode_enabled = true
 text = "[Debug]"
 scroll_active = false
 autowrap_mode = 0
-
-[node name="CloseButton" type="TextureButton" parent="FG/Bars"]
-custom_minimum_size = Vector2(27, 27)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -59.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = 59.0
-grow_horizontal = 0
-texture_normal = ExtResource("2_veek3")
-texture_hover = ExtResource("3_41yno")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="Fade" type="ColorRect" parent="FG"]
 visible = false
@@ -119,6 +113,5 @@ fov = 90.0
 
 [connection signal="pressed" from="FG/Bars/Upper/Print" to="." method="_on_print_pressed"]
 [connection signal="pressed" from="FG/Bars/Upper/Stop" to="." method="_on_stop_pressed"]
-[connection signal="mouse_entered" from="FG/Bars/CloseButton" to="." method="_hover"]
-[connection signal="pressed" from="FG/Bars/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="FG/Bars/Upper/CloseButton" to="." method="stop"]
 [connection signal="dialogue_finished" from="Dialogue" to="." method="stop"]

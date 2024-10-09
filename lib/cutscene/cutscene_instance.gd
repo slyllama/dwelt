@@ -15,7 +15,10 @@ var move_tween: Tween
 @export var dialogue_script: Array[String] = []
 
 func stop() -> void:
+	if stopped: return # no double-ups
+	
 	stopped = true
+	$FG/Bars/Upper/CloseButton.queue_free()
 	$Dialogue.queue_free() # TODO: temp only
 	$SmokeTransition.fade_out(0.5)
 	

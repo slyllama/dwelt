@@ -109,7 +109,7 @@ environment = ExtResource("2_ahnhk")
 
 [node name="Jukebox" parent="." index="5"]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
-start_muted = true
+music_enabled = false
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_jja4b")

@@ -1,13 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dml02ognr10l7"]
+[gd_scene load_steps=16 format=3 uid="uid://dml02ognr10l7"]
 
 [ext_resource type="Script" path="res://lib/object/inspector/inspector_instance.gd" id="1_ht1c1"]
 [ext_resource type="PackedScene" uid="uid://ciedyeth0k5f7" path="res://lib/object/inspector/inspector_world.tscn" id="2_e3j2f"]
-[ext_resource type="Texture2D" uid="uid://ctlw3woictvqy" path="res://lib/ui/hud/textures/close_button.png" id="3_b3oeh"]
 [ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/dwellan/materials/textures/moss_mask.png" id="3_h3a3p"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="3_phts2"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_vfug1"]
-[ext_resource type="Texture2D" uid="uid://kiogqq3fbm7e" path="res://lib/ui/hud/textures/close_button_hover.png" id="4_2s7ln"]
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://lib/player/materials/textures/swirl_mask.jpg" id="4_g0m8t"]
+[ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="7_6b8to"]
 [ext_resource type="Script" path="res://lib/orbit_handler/orbit_handler.gd" id="7_32mrv"]
 [ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="10_sn5q2"]
 
@@ -146,6 +145,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="Blur" type="TextureRect" parent="BG"]
@@ -185,8 +185,7 @@ render_target_update_mode = 4
 
 [node name="InspectorWorld" parent="Box3D/Viewport" instance=ExtResource("2_e3j2f")]
 
-[node name="CloseButton" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(27, 27)
+[node name="CloseButton" parent="." instance=ExtResource("7_6b8to")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -195,10 +194,6 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 59.0
 grow_horizontal = 0
-texture_normal = ExtResource("3_b3oeh")
-texture_hover = ExtResource("4_2s7ln")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="OrbitHandler" type="Node" parent="."]
 script = ExtResource("7_32mrv")
