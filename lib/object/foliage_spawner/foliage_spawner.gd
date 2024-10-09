@@ -15,18 +15,36 @@ var foliage_count = 0
 @export var min_scale := 3.0
 @export var max_scale := 5.0
 @export var smooth := true
-@export var moss_cover := true
 
 @export var reload := false:
 	set(_value):
 		reload = false
 		render()
 	get: return(reload)
+@export_category("Undergrowth")
 
-@export_group("Shader Configuration")
-@export var vary_colours := false
-@export var colour_1 := Color(0.149, 0.38, 0.065)
-@export var colour_2 := Color(0.909, 1, 0.58)
+@export var moss_cover := true:
+	set(_value):
+		moss_cover = _value
+		_render_moss()
+	get: return(moss_cover)
+
+@export_range(0.0, 1.0) var moss_albedo_mix := 1.0:
+	set(_value):
+		moss_albedo_mix = _value
+		_render_moss()
+	get: return(moss_albedo_mix)
+
+@export_range(1.0, 4.0) var moss_scaling := 1.5:
+	set(_value):
+		moss_scaling = _value
+		_render_moss()
+	get: return(moss_scaling)
+
+@export_category("Shader Configuration")
+@export var vary_colours := true
+@export var colour_1 := Color(0.077, 0.17, 0)
+@export var colour_2 := Color(0.4, 0.48, 0)
 
 var active_foliage_mesh: ArrayMesh
 var render_distance := 20.0
@@ -39,11 +57,21 @@ func set_display_distance() -> void:
 	mat.distance_fade_min_distance = render_distance + render_fade_spread
 	mat.distance_fade_max_distance = render_distance
 
+# Moss functions are separated as to allow live undergrowh updating without
+# trigging a MeshInstance buffer replacement
+func _render_moss() -> void:
+	if moss_cover:
+		$Moss.visible = true
+		$Moss.albedo_mix = moss_albedo_mix
+		$Moss.size = Vector3(
+			size * moss_scaling, 0.5, size * moss_scaling)
+	else: 
+		$Moss.visible = false
+
 func render(density: float = 1.0) -> void:
 	if foliage_mesh == null: active_foliage_mesh = GRASS
 	else: active_foliage_mesh = foliage_mesh
-	if moss_cover: $Moss.size = Vector3(size * 1.2, 0.5, size * 1.2)
-	else: $Moss.visible = false
+	_render_moss()
 	
 	# Reset - clear foliage count
 	if !Engine.is_editor_hint():
@@ -68,7 +96,7 @@ func render(density: float = 1.0) -> void:
 			var base_pos = Vector3(x * separation, 0, y * separation) - midpoint
 			var grass_scatter = Vector3(rng.randf() * scatter, 0, rng.randf() * scatter)
 			var grass_scale = Vector3(
-				max_scale, min_scale + rng.randf() * (max_scale - min_scale), max_scale)
+				min_scale * 1.2, min_scale + rng.randf() * (max_scale - min_scale), min_scale * 1.2)
 			var grass_rotation = rng.randf() * deg_to_rad(360.0)
 			
 			var dist: float = 1
@@ -90,13 +118,15 @@ func render(density: float = 1.0) -> void:
 		Global.foliage_count += foliage_count
 
 func _ready() -> void:
+	_render_moss()
 	if !Engine.is_editor_hint():
 		SettingsHandler.setting_changed.connect(func(parameter):
 			if parameter == "particle_density":
 				var _value = SettingsHandler.settings.particle_density
-				if _value == "low": render(0.3)
-				elif _value == "medium": render(0.6)
-				else: render())
+				if _value == "low": multimesh.visible_instance_count = floor(count * count * 0.3)
+				elif _value == "medium": multimesh.visible_instance_count = floor(count * count * 0.6)
+				else: multimesh.visible_instance_count = floor(count * count * 1.0)
+		)
 		
 		$DebugSphere.visible = false
 

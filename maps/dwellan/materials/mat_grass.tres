@@ -9,7 +9,6 @@ alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 0.3
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.613362, 0.651121, 0.366147, 1)
 albedo_texture = ExtResource("1_uv8ml")
 metallic_specular = 0.0
 emission = Color(0.118581, 0.118581, 0.118581, 1)
