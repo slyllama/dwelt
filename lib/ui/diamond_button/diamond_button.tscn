@@ -10,6 +10,8 @@
 shader = ExtResource("3_nnwjl")
 shader_parameter/exp = 0.2
 shader_parameter/alpha = 1.0
+shader_parameter/ease_strong_alpha = true
+shader_parameter/uv_scale = 1.0
 shader_parameter/swirl_texture = ExtResource("4_2mx6v")
 
 [node name="DiamondButton" type="TextureButton"]

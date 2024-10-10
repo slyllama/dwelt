@@ -35,11 +35,16 @@ func _ready() -> void:
 	$ObjectOrb.visible = show_mote
 	set_use_hold_circle(use_hold_circle)
 	
-	# Check if the little button in the corner of the map has been pressed
+	# Check if the diamond in map corner has been pressed...
 	Global.interact_pressed.connect(func():
 		if (Global.proximal_object.id == id and Global.player_can_move):
-			if !use_hold_circle: # use _on_hold_circle_completed
-				interacted.emit())
+			if use_hold_circle: $Title/HoldCircle.spin()
+			else: interacted.emit())
+	# ...or held, if using a hold circle
+	Global.interact_released.connect(func():
+		if (Global.proximal_object.id == id and Global.player_can_move):
+			if use_hold_circle:
+				$Title/HoldCircle.stop())
 
 func _input(_event: InputEvent) -> void:
 	# Interactions cannot occur if the player is in a locked state
@@ -60,13 +65,11 @@ func _physics_process(_delta: float) -> void:
 	if distance_to_player < $Range/Collision.shape.radius:
 		if !in_range: $EntrySound.play() # only do once
 		in_range = true
-		if use_hold_circle:
-			$Title/HoldCircle.visible = true
+		if use_hold_circle: $Title/HoldCircle.visible = true
 	else:
 		if in_range: $LeaveSound.play() # only do once
 		in_range = false
-		if use_hold_circle:
-			$Title/HoldCircle.visible = false
+		if use_hold_circle: $Title/HoldCircle.visible = false
 
 func _on_hold_circle_completed() -> void:
 	if !can_interact or !Global.player_can_move: return

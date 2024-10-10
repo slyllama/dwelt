@@ -40,6 +40,7 @@ signal hover_sound
 
 signal hud_toggle_hidden(state)
 signal interact_pressed
+signal interact_released # for object hold circles
 signal minimap_refresh # force Minimap to call update() again
 signal move_player(pos: Vector3) # when called, will move the player
 signal objects_loaded # ObjectHandler has gathered all of its objects into object_data

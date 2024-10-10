@@ -18,7 +18,7 @@ func _set_right_poly(_angle: float) -> void:
 		cos(_angle - PI / 2) * 150.0, sin(_angle - PI / 2) * 150.0)
 
 # Use 'finished' to indicate that the bar has gone the whole way around
-func _stop(finished = false) -> void:
+func stop(finished = false) -> void:
 	if !is_spinning: return
 	
 	if rotator != null:
@@ -29,7 +29,9 @@ func _stop(finished = false) -> void:
 		completed.emit()
 		$Anims.play("complete")
 
-func _spin() -> void:
+func spin() -> void:
+	if is_spinning: return # don't start twice!
+	
 	is_spinning = true
 	root_node = Node2D.new()
 	add_child(root_node)
@@ -46,7 +48,7 @@ func _spin() -> void:
 			rotator.tween_method(_set_right_poly,
 				0.0, PI / 2, time / 4.0)
 			await rotator.finished
-	_stop(true)
+	stop(true)
 
 func _ready() -> void:
 	$EditorCircle.visible = false # circle for placing in editor only
@@ -54,10 +56,10 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if !visible: return # use visibility to set active/inactive
 	if Input.is_action_just_pressed("interact"):
-		_spin()
+		spin()
 	if Input.is_action_just_released("interact"):
-		_stop(false)
+		stop(false)
 
 func _on_visibility_changed() -> void:
 	if !visible: # suspend current activity if made invisible
-		_stop()
+		stop()
