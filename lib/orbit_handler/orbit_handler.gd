@@ -15,6 +15,7 @@ class_name OrbitHandler extends Node
 @export var clamp_y_upper := 180.0
 
 var orbiting = false
+var calculated_sensitivity = orbit_sensitivity
 var target_rotation = Vector3.ZERO
 var smooth_rotation = Vector3.ZERO
 
@@ -32,6 +33,11 @@ func _ready() -> void:
 	get_window().focus_exited.connect(func():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false)
+	
+	SettingsHandler.setting_changed.connect(func(param):
+		if param == "orbit_sensitivity":
+			calculated_sensitivity = (orbit_sensitivity
+				* SettingsHandler.settings.orbit_sensitivity * 0.01))
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
@@ -63,9 +69,9 @@ func _process(delta: float) -> void:
 	# This is handled here instead of _input() because handling without delta
 	# causes strange behaviour at low frame rates
 	if orbiting:
-		target_rotation.x -= _mouse_delta.y * orbit_sensitivity * delta * 100.0
+		target_rotation.x -= _mouse_delta.y * calculated_sensitivity * delta * 100.0
 		if clamp_x: target_rotation.x = clamp(target_rotation.x, clamp_x_lower, clamp_x_upper)
-		target_rotation.y -= _mouse_delta.x * orbit_sensitivity * delta * 100.0
+		target_rotation.y -= _mouse_delta.x * calculated_sensitivity * delta * 100.0
 		if clamp_y: target_rotation.y = clamp(target_rotation.y, clamp_y_lower, clamp_y_upper)
 	smooth_rotation = lerp(smooth_rotation, target_rotation, delta * orbit_smoothing)
 	_mouse_delta = Vector2.ZERO

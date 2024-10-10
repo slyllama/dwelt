@@ -7,7 +7,8 @@ const DEFAULT_SETTINGS = {
 	"particle_density": "high",
 	"window_mode": "windowed",
 	"shadows": "on",
-	"music_vol": 50 # percent
+	"music_vol": 50, # percent
+	"orbit_sensitivity": 100
 }
 @onready var settings = DEFAULT_SETTINGS.duplicate()
 signal setting_changed(parameter)

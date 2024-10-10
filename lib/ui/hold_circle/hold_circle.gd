@@ -20,19 +20,23 @@ func _set_right_poly(_angle: float) -> void:
 # Use 'finished' to indicate that the bar has gone the whole way around
 func stop(finished = false) -> void:
 	if !is_spinning: return
+	is_spinning = false
+	
+	$HoldSound.stop()
 	
 	if rotator != null:
 		rotator.stop()
 		root_node.queue_free()
-	is_spinning = false
+	
 	if finished:
 		completed.emit()
 		$Anims.play("complete")
 
 func spin() -> void:
 	if is_spinning: return # don't start twice!
-	
 	is_spinning = true
+	
+	$HoldSound.play()
 	root_node = Node2D.new()
 	add_child(root_node)
 	

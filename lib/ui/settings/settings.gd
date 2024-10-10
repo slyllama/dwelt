@@ -19,6 +19,8 @@ func _ready():
 				$Container/HMusicVol/MusicVolTitle.text = ("Music ("
 					+ str(snapped(_value, 1)) + "%)")
 				$Container/HMusicVol/MusicVol.set_value_no_signal(_value)
+			"orbit_sensitivity":
+				$Container/HOrbitSens/OrbitSens.set_value_no_signal(_value)
 	)
 	$Container/MinimapTool.modulate = Color.ORANGE
 	
@@ -57,3 +59,6 @@ func _on_music_vol_value_changed(value: float) -> void:
 
 func _on_exit_to_launcher_pressed() -> void:
 	get_tree().change_scene_to_file("res://lib/launcher/launcher.tscn")
+
+func _on_orbit_sens_value_changed(value: float) -> void:
+	SettingsHandler.update("orbit_sensitivity", value)
