@@ -129,10 +129,6 @@ material = SubResource("ShaderMaterial_m6016")
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_odiym")
 
-[node name="Backing" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.862745)
-texture = ExtResource("2_tu0cn")
-
 [node name="EditorCircle" type="Sprite2D" parent="."]
 use_parent_material = true
 texture = ExtResource("2_tu0cn")

@@ -23,7 +23,6 @@ func stop(finished = false) -> void:
 	is_spinning = false
 	
 	$HoldSound.stop()
-	
 	if rotator != null:
 		rotator.stop()
 		root_node.queue_free()
