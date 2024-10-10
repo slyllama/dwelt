@@ -208,6 +208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
 id = "faceless_books"
 title = "Faceless Books"
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
+can_interact = true
 use_hold_circle = true
 
 [node name="O_Painting" parent="." index="11" instance=ExtResource("7_awmnj")]

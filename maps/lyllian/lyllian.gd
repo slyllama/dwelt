@@ -39,5 +39,9 @@ func _on_play_cutscene_interacted() -> void:
 func _on_summon_object_interacted() -> void:
 	$Summoner.activate()
 
+# TODO: debug testing toggles the use of a hold circle
+var _hc = false
 func _on_o_books_interacted() -> void:
-	print("Hold circle interaction!")
+	Global.shake_camera.emit()
+	$O_Books.set_use_hold_circle(_hc)
+	_hc = !_hc

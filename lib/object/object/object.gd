@@ -17,6 +17,15 @@ var rng = RandomNumberGenerator.new()
 var in_range = false
 var distance_to_player: float
 
+# TODO: properly toggle interaction (i.e., trigger proximity left)
+
+func set_use_hold_circle(state):
+	use_hold_circle = state
+	if can_interact:
+		$Title/HoldCircle.visible = state
+	# If interaction is disabled the hold circle won't even show
+	else: $Title/HoldCircle.visible = false
+
 func set_radius(radius: float) -> void:
 	$Range/Collision.shape.radius = radius
 
@@ -24,6 +33,7 @@ func _ready() -> void:
 	$Title.set_text(title)
 	$Anim.speed_scale = 0.5 + rng.randf() * 0.5
 	$ObjectOrb.visible = show_mote
+	set_use_hold_circle(use_hold_circle)
 	
 	# Check if the little button in the corner of the map has been pressed
 	Global.interact_pressed.connect(func():
@@ -35,10 +45,11 @@ func _input(_event: InputEvent) -> void:
 	# Interactions cannot occur if the player is in a locked state
 	# (Prevents things like duplicate cutscenes). Interactions will also
 	# not trigger here if the object is using a hold circle
-	if !can_interact or !Global.player_can_move or use_hold_circle: return
+	if !can_interact or !Global.player_can_move: return
 	if Input.is_action_just_pressed("interact"):
 		if Global.proximal_object.id == id:
-			interacted.emit()
+			if !use_hold_circle:
+				interacted.emit()
 
 func _process(_delta: float) -> void:
 	if $Title/HoldCircle.visible:
@@ -58,5 +69,6 @@ func _physics_process(_delta: float) -> void:
 			$Title/HoldCircle.visible = false
 
 func _on_hold_circle_completed() -> void:
+	if !can_interact or !Global.player_can_move: return
 	if Global.proximal_object.id == id:
 		interacted.emit()

@@ -19,13 +19,24 @@ _data = {
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8t23r"]
 animation = &"player/engine_rotate"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6oudw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kj44c"]
 animation = &"player/spin"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qvyn6"]
+graph_offset = Vector2(-518.4, 155.52)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_g8tj7")
 nodes/Add2/position = Vector2(106.667, 146.667)
 nodes/engine_rotate/node = SubResource("AnimationNodeAnimation_8t23r")
