@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhx3rksv1luaw"]
+
+[ext_resource type="Script" path="res://lib/ui/hold_circle/hold_circle.gd" id="1_odiym"]
+[ext_resource type="Texture2D" uid="uid://dly8hvd7l212r" path="res://lib/ui/hold_circle/circle_hollow.png" id="2_tu0cn"]
+
+[node name="HoldCircle" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_odiym")
+
+[node name="Backing" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.862745)
+texture = ExtResource("2_tu0cn")
+
+[node name="EditorCircle" type="Sprite2D" parent="."]
+texture = ExtResource("2_tu0cn")
+
+[node name="CircleBool" type="Polygon2D" parent="."]
+visible = false
+clip_children = 1
+color = Color(0, 0, 0, 1)
+antialiased = true
+polygon = PackedVector2Array(0, 0, 0, -150, 0, -150)
+
+[node name="Circle" type="Sprite2D" parent="CircleBool"]
+texture = ExtResource("2_tu0cn")

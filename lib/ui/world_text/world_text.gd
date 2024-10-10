@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 	if !is_on_screen: return
 	var screen_pos = CameraData.world_to_screen(global_position)
 	$Canvas/Label.position = screen_pos + label_offset
+	$Canvas/ProgressCircle.global_position = $Canvas/Label.global_position - label_offset
 	
 	# Fade the text as the player moves further away from it
 	var dist = global_position.distance_to(Global.player_position)

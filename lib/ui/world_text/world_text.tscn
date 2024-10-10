@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bky4oadewjuyx"]
+[gd_scene load_steps=3 format=3 uid="uid://bky4oadewjuyx"]
 
 [ext_resource type="Script" path="res://lib/ui/world_text/world_text.gd" id="1_7xq6t"]
+[ext_resource type="PackedScene" uid="uid://bhx3rksv1luaw" path="res://lib/ui/hold_circle/hold_circle.tscn" id="2_fpsmo"]
 
 [node name="WorldText" type="VisibleOnScreenNotifier3D"]
 aabb = AABB(-0.02, -0.02, -0.02, 0.04, 0.04, 0.04)
@@ -20,6 +21,9 @@ bbcode_enabled = true
 text = "[center](Text)[/center]"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="ProgressCircle" parent="Canvas" instance=ExtResource("2_fpsmo")]
+position = Vector2(0, -74)
 
 [connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="." to="." method="_on_screen_exited"]
