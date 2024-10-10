@@ -5,10 +5,12 @@ class_name DweltObject extends Node3D
 @export var id = "object"
 @export var title = "((Object))"
 @export_multiline var description = "((Object description.))"
-
-@export var can_interact = false
-@export var interact_string = "Interact"
 @export var show_mote = false
+
+@export_category("Interaction")
+@export var can_interact = false
+@export var use_hold_circle = false
+@export var interact_string = "Interact"
 
 signal interacted
 var rng = RandomNumberGenerator.new()
@@ -25,22 +27,36 @@ func _ready() -> void:
 	
 	# Check if the little button in the corner of the map has been pressed
 	Global.interact_pressed.connect(func():
-		if Global.proximal_object.id == id and Global.player_can_move:
-			interacted.emit())
+		if (Global.proximal_object.id == id and Global.player_can_move):
+			if !use_hold_circle: # use _on_hold_circle_completed
+				interacted.emit())
 
 func _input(_event: InputEvent) -> void:
 	# Interactions cannot occur if the player is in a locked state
-	# (Prevents things like duplicate cutscenes)
-	if !can_interact or !Global.player_can_move: return
+	# (Prevents things like duplicate cutscenes). Interactions will also
+	# not trigger here if the object is using a hold circle
+	if !can_interact or !Global.player_can_move or use_hold_circle: return
 	if Input.is_action_just_pressed("interact"):
 		if Global.proximal_object.id == id:
 			interacted.emit()
+
+func _process(_delta: float) -> void:
+	if $Title/HoldCircle.visible:
+		$Title/HoldCircle.global_position = $Title.track_position
 
 func _physics_process(_delta: float) -> void:
 	distance_to_player = Global.player_position.distance_to(global_position)
 	if distance_to_player < $Range/Collision.shape.radius:
 		if !in_range: $EntrySound.play() # only do once
 		in_range = true
+		if use_hold_circle:
+			$Title/HoldCircle.visible = true
 	else:
 		if in_range: $LeaveSound.play() # only do once
 		in_range = false
+		if use_hold_circle:
+			$Title/HoldCircle.visible = false
+
+func _on_hold_circle_completed() -> void:
+	if Global.proximal_object.id == id:
+		interacted.emit()

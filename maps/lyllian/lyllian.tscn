@@ -200,14 +200,15 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1, 0)
 id = "summon"
 title = "((Summon))"
-can_interact = true
 show_mote = true
+can_interact = true
 
 [node name="O_Books" parent="." index="10" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
 id = "faceless_books"
 title = "Faceless Books"
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
+use_hold_circle = true
 
 [node name="O_Painting" parent="." index="11" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72328, 2.50622, 0.668799)
@@ -460,4 +461,5 @@ transform = Transform3D(1.41421, 0.521135, -1.31469, 0, 1.85926, 0.736996, 1.414
 mesh = ExtResource("19_ob6rd")
 
 [connection signal="interacted" from="Summoner/O_Summon" to="." method="_on_summon_object_interacted"]
+[connection signal="interacted" from="O_Books" to="." method="_on_o_books_interacted"]
 [connection signal="interacted" from="O_Painting" to="." method="_on_play_cutscene_interacted"]

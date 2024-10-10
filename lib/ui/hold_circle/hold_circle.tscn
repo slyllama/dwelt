@@ -23,3 +23,5 @@ polygon = PackedVector2Array(0, 0, 0, -150, 0, -150)
 
 [node name="Circle" type="Sprite2D" parent="CircleBool"]
 texture = ExtResource("2_tu0cn")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

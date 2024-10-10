@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://uct1byepa1wm"]
+[gd_scene load_steps=20 format=3 uid="uid://uct1byepa1wm"]
 
 [ext_resource type="Script" path="res://lib/object/object/object.gd" id="1_pxk5v"]
 [ext_resource type="PackedScene" uid="uid://bky4oadewjuyx" path="res://lib/ui/world_text/world_text.tscn" id="2_rtywh"]
 [ext_resource type="PackedScene" uid="uid://oqx4rag0lcc8" path="res://lib/object/object/meshes/object_orb.glb" id="3_fhdxx"]
+[ext_resource type="PackedScene" uid="uid://bhx3rksv1luaw" path="res://lib/ui/hold_circle/hold_circle.tscn" id="3_mv0af"]
 [ext_resource type="ArrayMesh" uid="uid://ddg88wxt30lc5" path="res://lib/player/meshes/star.res" id="4_ejuu6"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="4_sf5gd"]
 [ext_resource type="Shader" uid="uid://5rw1ita7w3la" path="res://generic/materials/shaders/shader_glow.tres" id="5_l7o73"]
@@ -111,6 +112,9 @@ color = Color(1, 1, 0, 1)
 distance_fade_start = 6.0
 distance_fade_end = 6.8
 
+[node name="HoldCircle" parent="Title" instance=ExtResource("3_mv0af")]
+visible = false
+
 [node name="Range" type="Area3D" parent="."]
 
 [node name="Collision" type="CollisionShape3D" parent="Range"]
@@ -147,3 +151,5 @@ max_polyphony = 3
 stream = ExtResource("9_l2u7u")
 volume_db = -3.0
 max_polyphony = 3
+
+[connection signal="completed" from="Title/HoldCircle" to="." method="_on_hold_circle_completed"]

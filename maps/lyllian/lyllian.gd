@@ -38,3 +38,6 @@ func _on_play_cutscene_interacted() -> void:
 
 func _on_summon_object_interacted() -> void:
 	$Summoner.activate()
+
+func _on_o_books_interacted() -> void:
+	print("it works!!!")
