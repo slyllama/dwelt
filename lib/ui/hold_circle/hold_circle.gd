@@ -27,6 +27,7 @@ func _stop(finished = false) -> void:
 	is_spinning = false
 	if finished:
 		completed.emit()
+		$Anims.play("complete")
 
 func _spin() -> void:
 	is_spinning = true
@@ -48,7 +49,7 @@ func _spin() -> void:
 	_stop(true)
 
 func _ready() -> void:
-	$EditorCircle.queue_free() # circle for placing in editor only
+	$EditorCircle.visible = false # circle for placing in editor only
 
 func _input(_event: InputEvent) -> void:
 	if !visible: return # use visibility to set active/inactive

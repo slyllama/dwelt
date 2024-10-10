@@ -42,7 +42,7 @@ func _input(_event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if $Title/HoldCircle.visible:
-		$Title/HoldCircle.global_position = $Title.track_position
+		$Title/HoldCircle.global_position = $Title.track_position + Vector2(0, 50.0)
 
 func _physics_process(_delta: float) -> void:
 	distance_to_player = Global.player_position.distance_to(global_position)

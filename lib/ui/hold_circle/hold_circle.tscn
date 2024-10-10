@@ -1,9 +1,130 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhx3rksv1luaw"]
+[gd_scene load_steps=9 format=3 uid="uid://bhx3rksv1luaw"]
 
 [ext_resource type="Script" path="res://lib/ui/hold_circle/hold_circle.gd" id="1_odiym"]
 [ext_resource type="Texture2D" uid="uid://dly8hvd7l212r" path="res://lib/ui/hold_circle/circle_hollow.png" id="2_tu0cn"]
+[ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_unikf"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="4_wlwoh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6016"]
+shader = ExtResource("3_unikf")
+shader_parameter/exp = 2.0
+shader_parameter/alpha = 1.0
+shader_parameter/ease_strong_alpha = false
+shader_parameter/uv_scale = 7.0
+shader_parameter/swirl_texture = ExtResource("4_wlwoh")
+
+[sub_resource type="Animation" id="Animation_nvxok"]
+resource_name = "complete"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EditorCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("EditorCircle:self_modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EditorCircle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_k3cj7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EditorCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EditorCircle:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EditorCircle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0agus"]
+_data = {
+"RESET": SubResource("Animation_k3cj7"),
+"complete": SubResource("Animation_nvxok")
+}
 
 [node name="HoldCircle" type="Node2D"]
+material = SubResource("ShaderMaterial_m6016")
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_odiym")
 
@@ -12,16 +133,24 @@ self_modulate = Color(0, 0, 0, 0.862745)
 texture = ExtResource("2_tu0cn")
 
 [node name="EditorCircle" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("2_tu0cn")
 
 [node name="CircleBool" type="Polygon2D" parent="."]
 visible = false
 clip_children = 1
+use_parent_material = true
 color = Color(0, 0, 0, 1)
 antialiased = true
 polygon = PackedVector2Array(0, 0, 0, -150, 0, -150)
 
 [node name="Circle" type="Sprite2D" parent="CircleBool"]
+use_parent_material = true
 texture = ExtResource("2_tu0cn")
+
+[node name="Anims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0agus")
+}
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
