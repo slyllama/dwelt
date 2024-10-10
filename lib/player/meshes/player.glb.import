@@ -3654,6 +3654,9 @@ _subresources={
 "PATH:SpiritArmature/Skeleton3D/Base/Base": {
 "mesh_instance/cast_shadow": 0
 },
+"PATH:SpiritArmature/Skeleton3D/CogY_004/CogY_004": {
+"mesh_instance/layers": 0
+},
 "PATH:SpiritArmature/Skeleton3D/InternalBase/InternalBase": {
 "mesh_instance/cast_shadow": 0
 },

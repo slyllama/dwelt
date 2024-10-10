@@ -41,7 +41,10 @@ func update(get_direction: Vector3, velocity: Vector3, camera_direction: float, 
 		model.rotation_degrees.y = camera_direction + 359.0
 	if get_direction.x > 0 or get_direction.z > 0:
 		model.rotation_degrees.y = lerp(
-			model.rotation_degrees.y, camera_direction + 180.0, 5.0 * delta)
+			model.rotation_degrees.y, camera_direction + 180.0, 3.0 * delta)
+		# Head follows smoothly, but at a different rate
+		$Head.rotation_degrees.y = lerp(
+			$Head.rotation_degrees.y, camera_direction + 180.0, 7.0 * delta)
 	model.rotation_degrees.x = lerp(model.rotation_degrees.x, get_direction.x * -10.0, 4 * delta)
 	model.rotation_degrees.z = lerp(model.rotation_degrees.z, get_direction.z * -10.0, 4 * delta)
 	
@@ -61,3 +64,7 @@ func _ready() -> void:
 		if node is GeometryInstance3D:
 			_set_shadow(node, false)
 	_set_shadow(sphere_mesh, true)
+
+func _process(_delta: float) -> void:
+	# Head should follow the animation of the body
+	$Head.position.y = skeleton.get_node("Ring").position.y + 0.07
