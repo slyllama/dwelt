@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6016"]
 shader = ExtResource("3_unikf")
-shader_parameter/exp = 2.0
+shader_parameter/exp = 0.1
 shader_parameter/alpha = 1.0
 shader_parameter/ease_strong_alpha = false
 shader_parameter/uv_scale = 7.0
