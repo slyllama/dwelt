@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ss2fqp2recd3"
-path="res://.godot/imported/curio_base.png-89d3b58230677b62d93c509c8ad72739.ctex"
+path="res://.godot/imported/curio_base.png-15e346484d789f954cb3f7a6e767baa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/thingistry/textures/curio_base.png"
-dest_files=["res://.godot/imported/curio_base.png-89d3b58230677b62d93c509c8ad72739.ctex"]
+source_file="res://lib/thingistry/curio_button/textures/curio_base.png"
+dest_files=["res://.godot/imported/curio_base.png-15e346484d789f954cb3f7a6e767baa8.ctex"]
 
 [params]
 

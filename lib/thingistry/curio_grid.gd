@@ -1,24 +1,15 @@
 class_name CurioGrid extends VBoxContainer
 
-class CurioButton extends TextureButton:
-	const BASE_TEXTURE = preload("res://lib/thingistry/textures/curio_base.png")
-	@export var tile_size := 98.0
-	
-	func _ready() -> void:
-		texture_normal = BASE_TEXTURE
-		ignore_texture_size = true
-		stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		custom_minimum_size = Vector2(tile_size, tile_size)
-		button_down.connect(func():
-			pass)
+const CurioButton = preload("res://lib/thingistry/curio_button/curio_button.tscn")
 
 var total_tiles = 19
 @export var width := 5 # grid width, in tiles
 
 func generate_row(row_width: int) -> void:
 	var _row = HBoxContainer.new()
+	_row.custom_minimum_size.y = 110
 	for _i in row_width:
-		var _curio = CurioButton.new()
+		var _curio = CurioButton.instantiate()
 		_row.add_child(_curio)
 	add_child(_row)
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d35krm14gfiv8"]
+
+[ext_resource type="Texture2D" uid="uid://ss2fqp2recd3" path="res://lib/thingistry/curio_button/textures/curio_base.png" id="1_vv5fn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e838r"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="CurioButton" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+texture_normal = ExtResource("1_vv5fn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Progress" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_e838r")
+value = 50.0
+show_percentage = false
