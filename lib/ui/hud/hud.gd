@@ -4,6 +4,7 @@ extends CanvasLayer
 
 const SmokeTransition = preload("res://lib/ui/hud/smoke_transition/smoke_transition.tscn")
 const Aberration = preload("res://lib/ui/hud/aberration/aberration.tscn")
+const Thingistry = preload("res://lib/thingistry/thingistry.tscn")
 
 # Box dissolving - gets and controls the 'dissolve' of the object box and lerps
 # smoothly between values (see _process() as well)
@@ -70,14 +71,19 @@ func _process(delta: float) -> void:
 	_oibox_dissolve = lerp(_oibox_dissolve, _target_oibox_dissolve, delta * 13.0)
 	_set_oibox_dissolve(_oibox_dissolve)
 
-func _on_settings_pressed() -> void:
-	if Global.in_exclusive_ui: return
-	if !$Settings.is_open: $Settings.open()
-	else: $Settings.close()
-
 func _on_interact_button_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if Global.in_exclusive_ui: return
 		Global.interact_pressed.emit()
 	if Input.is_action_just_released("left_click"):
 		Global.interact_released.emit() # for object hold circles
+
+func _on_settings_pressed() -> void:
+	if Global.in_exclusive_ui: return
+	if !$Settings.is_open: $Settings.open()
+	else: $Settings.close()
+
+func _on_thingistry_pressed() -> void:
+	if Global.in_exclusive_ui: return
+	var _thingistry = Thingistry.instantiate()
+	add_child(_thingistry)

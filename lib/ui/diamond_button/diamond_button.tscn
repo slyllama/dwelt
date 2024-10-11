@@ -13,6 +13,7 @@ stretch_mode = 0
 script = ExtResource("1_rh4fp")
 
 [node name="Highlight" parent="." instance=ExtResource("3_l7xh4")]
+visible = false
 position = Vector2(42, 42)
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

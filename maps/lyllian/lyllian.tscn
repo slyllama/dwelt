@@ -141,6 +141,9 @@ map_title = "Lyllian"
 decal_candidates = NodePath("Environment/ScruffyHouse")
 shadow_lights = NodePath("ShadowLights")
 
+[node name="HUD" parent="." index="0"]
+metadata/_edit_horizontal_guides_ = [692.0]
+
 [node name="Sky" parent="." index="2"]
 environment = ExtResource("2_ahnhk")
 

@@ -18,6 +18,7 @@ func fade_in(highlight = false) -> void:
 	var self_fade_tween = create_tween()
 	self_fade_tween.tween_property(self, "modulate:a", 1.0, TIME)
 	if highlight:
+		$Highlight.visible = true
 		$Highlight.flash()
 
 func fade_out() -> void:
