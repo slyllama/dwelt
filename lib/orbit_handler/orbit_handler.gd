@@ -55,7 +55,7 @@ func _input(event: InputEvent) -> void:
 		_mouse_delta = event.relative
 
 func _process(delta: float) -> void:
-	if Global.in_cutscene and !override_eligibility: return
+	if Global.in_exclusive_ui and !override_eligibility: return
 	
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
 	if (!orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click")

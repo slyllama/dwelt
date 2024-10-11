@@ -32,7 +32,7 @@ func stop() -> void:
 	Global.player_can_move = true
 	$FG/Bars.visible = false
 	
-	Global.in_cutscene = false
+	Global.in_exclusive_ui = false
 	fade_tween = create_tween()
 	fade_tween.tween_property($FG/Fade, "modulate:a", 0.0, 0.5)
 	await fade_tween.finished
@@ -40,7 +40,7 @@ func stop() -> void:
 	queue_free()
 
 func play() -> void:
-	Global.in_cutscene = true
+	Global.in_exclusive_ui = true
 	$FG/Fade.modulate.a = 0.0
 	$FG/Bars.visible = false
 	fade_tween = create_tween()

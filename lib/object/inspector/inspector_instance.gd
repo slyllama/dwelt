@@ -6,11 +6,11 @@ class_name InspectorInstance extends CanvasLayer
 func _ready() -> void:
 	# A restricting has already been initiated and so the inspector is
 	#ineligible
-	if !Global.player_can_move or Global.in_cutscene:
+	if !Global.player_can_move or Global.in_exclusive_ui:
 		queue_free()
 		return
 	
-	Global.in_cutscene = true
+	Global.in_exclusive_ui = true
 	Global.player_can_move = false
 	$SmokeTransition.visible = true
 	$SmokeTransition.set_value(0.5)
@@ -28,6 +28,6 @@ func _input(_event: InputEvent) -> void:
 		_close()
 
 func _close() -> void:
-	Global.in_cutscene = false
+	Global.in_exclusive_ui = false
 	Global.player_can_move = true
 	queue_free()

@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	# Change the pitch of the engine depending on how fast it's going, excluding
 	# vertical velocity (jumps) - as long as we're not in a cutscene
 	var _target_pitch_scale: float = 1.0 + Vector3(velocity * Vector3(1, 0, 1)).length() / base_speed * 0.5
-	if Global.in_cutscene: _target_pitch_scale = 1.0
+	if Global.in_exclusive_ui: _target_pitch_scale = 1.0
 	$GroundDetector/Engine.pitch_scale = lerp($GroundDetector/Engine.pitch_scale, _target_pitch_scale, 0.07)
 	
 	if Global.player_can_move:

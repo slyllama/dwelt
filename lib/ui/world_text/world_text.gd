@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		state = (dist - distance_fade_start) / (distance_fade_end - distance_fade_start)
 	else: state = 0
 	
-	if Global.in_cutscene: state += 1
+	if Global.in_exclusive_ui: state += 1
 	if !Global.debug_visible: state += 3
 	$Canvas/Label.modulate.a = 1 - clamp(state, 0.0, 1.0)
 

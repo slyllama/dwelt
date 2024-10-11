@@ -14,6 +14,8 @@
 shader = ExtResource("3_vfug1")
 shader_parameter/exp = 0.1
 shader_parameter/alpha = 0.0
+shader_parameter/ease_strong_alpha = true
+shader_parameter/uv_scale = 1.0
 shader_parameter/swirl_texture = ExtResource("4_g0m8t")
 
 [sub_resource type="Environment" id="Environment_s6mnh"]
@@ -166,9 +168,15 @@ expand_mode = 1
 
 [node name="Box3D" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_ofbym")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -332.0
+offset_right = 450.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
@@ -180,7 +188,7 @@ transparent_bg = true
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(1280, 720)
+size = Vector2i(900, 600)
 render_target_update_mode = 4
 
 [node name="InspectorWorld" parent="Box3D/Viewport" instance=ExtResource("2_e3j2f")]

@@ -71,13 +71,13 @@ func _process(delta: float) -> void:
 	_set_oibox_dissolve(_oibox_dissolve)
 
 func _on_settings_pressed() -> void:
-	if Global.in_cutscene: return
+	if Global.in_exclusive_ui: return
 	if !$Settings.is_open: $Settings.open()
 	else: $Settings.close()
 
 func _on_interact_button_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if Global.in_cutscene: return
+		if Global.in_exclusive_ui: return
 		Global.interact_pressed.emit()
 	if Input.is_action_just_released("left_click"):
 		Global.interact_released.emit() # for object hold circles
