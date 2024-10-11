@@ -1,0 +1,23 @@
+class_name CurioDweltObject extends DweltObject
+
+signal interacted_with_collected # this will only call if the curio has been collected
+var collected = false
+
+func collect() -> void:
+	collected = true
+	Curio.collected_objects.append(id)
+	print(Curio.collected_objects)
+	set_use_hold_circle(false)
+
+func _ready() -> void:
+	super()
+	can_interact = true
+	set_use_hold_circle(true)
+
+func _on_interacted() -> void:
+	if !collected:
+		collect()
+		print("just collected!!")
+		return
+	else:
+		interacted_with_collected.emit()

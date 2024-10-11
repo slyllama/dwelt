@@ -31,7 +31,10 @@ const DATA = {
 		]
 	},
 	"foo": {
-		"name": "Foo"
+		"name": "Foo",
+		"objects": [
+			"curio_test"
+		]
 	},
 	"bar": {
 		"name": "Bar"

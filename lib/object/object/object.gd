@@ -20,9 +20,9 @@ var distance_to_player: float
 # TODO: properly toggle interaction (i.e., trigger proximity left)
 
 func set_use_hold_circle(state):
-	use_hold_circle = state
 	if can_interact:
 		$Title/HoldCircle.visible = state
+		use_hold_circle = state
 	# If interaction is disabled the hold circle won't even show
 	else: $Title/HoldCircle.visible = false
 

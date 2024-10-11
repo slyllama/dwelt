@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://varaosrn2amc"]
+
+[ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="1_7e58x"]
+[ext_resource type="Script" path="res://lib/object/object/curio_object/curio_object.gd" id="2_hlkjw"]
+
+[node name="CurioObject" instance=ExtResource("1_7e58x")]
+script = ExtResource("2_hlkjw")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
