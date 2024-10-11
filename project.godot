@@ -31,6 +31,7 @@ CameraData="*res://lib/_global/camera_data.gd"
 Global="*res://lib/_global/global.gd"
 Utilities="*res://lib/_global/utilities.gd"
 SettingsHandler="*res://lib/settings_handler/settings_handler.tscn"
+Curio="*res://lib/_global/curio.gd"
 
 [debug]
 
