@@ -259,7 +259,6 @@ transform = Transform3D(0.999251, 0, -0.0387017, 0, 1, 0, 0.0387017, 0, 0.999251
 
 [node name="AoibheFrame" parent="Environment" index="3" instance=ExtResource("15_a2yyc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.13494, 3.22859, 0.669575)
-visible = false
 
 [node name="Details" type="Node3D" parent="." index="15"]
 
