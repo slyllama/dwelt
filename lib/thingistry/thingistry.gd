@@ -26,10 +26,16 @@ func _ready() -> void:
 	$Transitions.play("fade")
 	
 	Curio.curio_selected.connect(func(id):
-		info_title.text = Curio.DATA[id].name
-		info_body.text = ("((Short introductory information about this curio, '"
-			+ id + "'. This information displays at the top of the info panel.))")
-		info_progress.value = Curio.get_progress(id) * 100)
+		var _progress = Curio.get_progress(id)
+		if _progress > 0:
+			info_title.text = Curio.DATA[id].name
+			info_body.text = ("((Short introductory information about this curio, '"
+				+ id + "'. This information displays at the top of the info panel.))")
+			info_progress.value = _progress * 100
+		else:
+			info_title.text = "((???))"
+			info_body.text = ("((???))")
+			info_progress.value = 0)
 	
 	var grid = CurioGrid.new()
 	grid_base.add_child(grid)

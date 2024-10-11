@@ -23,7 +23,7 @@ func get_progress(id: String) -> float:
 		return(0)
 
 const DATA = {
-	"test_curio": {
+	"test": {
 		"name": "Test Curio",
 		"objects": [
 			"faceless_books",

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
-[ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/curio_cursor.png" id="10_or660"]
+[ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
 shader = ExtResource("2_w4rnl")
