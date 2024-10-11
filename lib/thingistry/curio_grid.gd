@@ -2,10 +2,13 @@ class_name CurioGrid extends VBoxContainer
 # CurioGrid
 # Renders the grid of curios which plays in the Thingistry
 
-const CurioButton = preload("res://lib/thingistry/curio_button/curio_button.tscn")
+const CurioButtonScene = preload("res://lib/thingistry/curio_button/curio_button.tscn")
 
 @export var width := 5 # grid width, in tiles
 @export var height := 4 # grid height, in tils
+
+# we get the first child so we can check its id
+var button_nodes: Array[CurioButton]
 
 # Get tiles from Curio.DATA, offset by the given index
 func generate(index: int) -> void:
@@ -17,8 +20,8 @@ func generate(index: int) -> void:
 			var _ind = index + _h * width + _w
 			# Only instantiate if the index is actually in the dataset
 			if _ind < Curio.DATA.size():
-				var _curio = CurioButton.instantiate()
-				#_curio.get_node("DebugTitle").text = Curio.DATA.keys()[_ind].name
+				var _curio = CurioButtonScene.instantiate()
 				_curio.curio_id = Curio.DATA.keys()[_ind]
 				_row.add_child(_curio)
+				button_nodes.append(_curio)
 	add_child(_row)

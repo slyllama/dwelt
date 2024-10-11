@@ -4,14 +4,31 @@ extends Node
 # descriptions and lore, as well as the signals and parameters which bind
 # everything together.
 
-signal curio_hovered(id)
+signal curio_selected(id)
+
+# Returns a ratio between the total number of objects associated with a curio and
+# the amount of those objects collected by the player
+func get_progress(id: String) -> float:
+	if "objects" in DATA[id]:
+		var _objects = DATA[id].objects
+		var _object_count = _objects.size()
+		var _collected_object_count = 0
+		for _o in collected_objects: # compare collected objects with associated
+			if _o in _objects:
+				_collected_object_count += 1
+		if _collected_object_count > 0:
+			return(float(_collected_object_count) / float(_object_count))
+		else: return(0)
+	else:
+		return(0)
 
 const DATA = {
-	"none": {
-		"name": " "
-	},
 	"test_curio": {
-		"name": "Test Curio"
+		"name": "Test Curio",
+		"objects": [
+			"faceless_books",
+			"aoibhe_painting"
+		]
 	},
 	"foo": {
 		"name": "Foo"
@@ -20,3 +37,7 @@ const DATA = {
 		"name": "Bar"
 	}
 }
+
+var collected_objects = [
+	"faceless_books"
+]

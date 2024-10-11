@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwyah14n0ldeh"]
+[gd_scene load_steps=20 format=3 uid="uid://dwyah14n0ldeh"]
 
 [ext_resource type="Script" path="res://lib/thingistry/thingistry.gd" id="1_fewt1"]
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
+[ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/curio_cursor.png" id="10_or660"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
 shader = ExtResource("2_w4rnl")
@@ -28,6 +29,9 @@ shader_parameter/swirl_texture = ExtResource("5_d8a6f")
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfmus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiba"]
+bg_color = Color(0, 1, 0, 1)
 
 [sub_resource type="Animation" id="Animation_a1hop"]
 length = 0.001
@@ -262,6 +266,12 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="Progress" type="ProgressBar" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_0uiba")
+show_percentage = false
+
 [node name="Padding" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 12)
@@ -281,5 +291,9 @@ scroll_active = false
 libraries = {
 "": SubResource("AnimationLibrary_ipxrp")
 }
+
+[node name="Cursor" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_or660")
 
 [connection signal="button_down" from="Base/Panel/VBox/HeadingBox/CloseButton" to="." method="_on_close_button_button_down"]
