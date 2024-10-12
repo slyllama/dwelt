@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
-[ext_resource type="Texture2D" uid="uid://dmawmyj580ffc" path="res://lib/thingistry/curio_button/textures/curio_test_banner.png" id="10_80sir"]
 [ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
+[ext_resource type="PackedScene" uid="uid://dml02ognr10l7" path="res://lib/object/inspector/inspector_instance.tscn" id="11_usmbh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
 shader = ExtResource("2_w4rnl")
@@ -38,8 +38,6 @@ border_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiba"]
 bg_color = Color(0.215686, 0.65098, 0.231373, 1)
-border_width_top = 2
-border_color = Color(0.188235, 1, 0.223529, 1)
 
 [sub_resource type="Animation" id="Animation_a1hop"]
 length = 0.001
@@ -132,6 +130,7 @@ layer = 11
 script = ExtResource("1_fewt1")
 
 [node name="SmokeTransition" parent="." instance=ExtResource("2_hn57a")]
+time = 0.1
 
 [node name="DebugTexture" type="TextureRect" parent="."]
 visible = false
@@ -249,21 +248,44 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bbp5n")
 
 [node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("10_80sir")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="TextureRect" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
+[node name="InspectorInstance" parent="Base/Panel/VBox/BodyBox/Image" instance=ExtResource("11_usmbh")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OverlayTop" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 217.0
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("2_oq4q3")
 expand_mode = 1
+
+[node name="OverlayBottom" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_oq4q3")
+expand_mode = 1
+flip_h = true
+flip_v = true
 
 [node name="Infobase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
 layout_mode = 2
@@ -289,7 +311,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Progress" type="ProgressBar" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
-custom_minimum_size = Vector2(0, 14)
+custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ff06h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0uiba")
@@ -317,21 +339,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("9_s1nwp")
 theme_override_font_sizes/normal_font_size = 17
-text = "((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))
-
-((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))"
 
 [node name="Placeholder" type="ColorRect" parent="Base/Panel/VBox"]
 custom_minimum_size = Vector2(0, 44)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4h1td20jboaj"
-path="res://.godot/imported/curio_foo_banner.png-0c08f3c748644c0be51b84005ab1cdbe.ctex"
+uid="uid://dmawmyj580ffc"
+path="res://.godot/imported/bat_banner.png-2f83825e96be9b43dd84c63cdf55bc0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/thingistry/curio_button/textures/curio_foo_banner.png"
-dest_files=["res://.godot/imported/curio_foo_banner.png-0c08f3c748644c0be51b84005ab1cdbe.ctex"]
+source_file="res://lib/thingistry/curio_button/textures/items/bat_banner.png"
+dest_files=["res://.godot/imported/bat_banner.png-2f83825e96be9b43dd84c63cdf55bc0f.ctex"]
 
 [params]
 

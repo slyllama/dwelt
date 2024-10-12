@@ -1,33 +1,9 @@
-class_name InspectorInstance extends CanvasLayer
-# InspectorInstance
-# Displays an object on the screen which can be manipulated and observed
+class_name InspectorInstance extends Panel
 @onready var model_root = get_node("Box3D/Viewport/InspectorWorld/ModelRoot")
-
-func _ready() -> void:
-	# A restricting has already been initiated and so the inspector is
-	#ineligible
-	if !Global.player_can_move or Global.in_exclusive_ui:
-		queue_free()
-		return
-	
-	Global.in_exclusive_ui = true
-	Global.player_can_move = false
-	$SmokeTransition.visible = true
-	$SmokeTransition.set_value(0.5)
-	$Transitions.play("fade_in")
-	$Paper.play()
 
 func _process(_delta: float) -> void:
 	model_root.global_rotation_degrees.y = -$OrbitHandler.target_rotation.y
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
-		$Transitions.play_backwards("fade_in")
-		$SmokeTransition.fade_out()
-		await $Transitions.animation_finished
-		_close()
-
-func _close() -> void:
-	Global.in_exclusive_ui = false
-	Global.player_can_move = true
-	queue_free()
+# Disable orbiting if the cursor is out of the display box
+func _on_mouse_entered() -> void: $OrbitHandler.disable_temporary = false
+func _on_mouse_exited() -> void: $OrbitHandler.disable_temporary = true

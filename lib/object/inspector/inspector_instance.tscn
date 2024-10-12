@@ -1,182 +1,36 @@
-[gd_scene load_steps=16 format=3 uid="uid://dml02ognr10l7"]
+[gd_scene load_steps=7 format=3 uid="uid://dml02ognr10l7"]
 
 [ext_resource type="Script" path="res://lib/object/inspector/inspector_instance.gd" id="1_ht1c1"]
 [ext_resource type="PackedScene" uid="uid://ciedyeth0k5f7" path="res://lib/object/inspector/inspector_world.tscn" id="2_e3j2f"]
-[ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="3_h3a3p"]
-[ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="3_phts2"]
-[ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="3_vfug1"]
-[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="4_g0m8t"]
-[ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="7_6b8to"]
 [ext_resource type="Script" path="res://lib/orbit_handler/orbit_handler.gd" id="7_32mrv"]
-[ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="10_sn5q2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofbym"]
-shader = ExtResource("3_vfug1")
-shader_parameter/exp = 0.1
-shader_parameter/alpha = 0.0
-shader_parameter/ease_strong_alpha = true
-shader_parameter/uv_scale = 1.0
-shader_parameter/swirl_texture = ExtResource("4_g0m8t")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oessc"]
 
-[sub_resource type="Environment" id="Environment_s6mnh"]
+[sub_resource type="Environment" id="Environment_qkwlc"]
+background_mode = 1
+background_color = Color(0.0807834, 0.0807833, 0.0807833, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.5, 0.5, 0.5, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+fog_density = 1.0
+fog_depth_begin = 3.0
+fog_depth_end = 4.5
 
 [sub_resource type="World3D" id="World3D_h1r5v"]
-environment = SubResource("Environment_s6mnh")
+environment = SubResource("Environment_qkwlc")
 
-[sub_resource type="Animation" id="Animation_uq730"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Box3D:material:shader_parameter/exp")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Box3D:material:shader_parameter/alpha")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BG:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BG:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2uthi"]
-resource_name = "fade_in"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Box3D:material:shader_parameter/exp")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [10.0, 0.1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Box3D:material:shader_parameter/alpha")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("BG:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BG:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8p8a6"]
-_data = {
-"RESET": SubResource("Animation_uq730"),
-"fade_in": SubResource("Animation_2uthi")
-}
-
-[node name="InspectorInstance" type="CanvasLayer"]
-layer = 11
+[node name="InspectorInstance" type="Panel"]
+custom_minimum_size = Vector2(340, 474)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_oessc")
 script = ExtResource("1_ht1c1")
 
-[node name="SmokeTransition" parent="." instance=ExtResource("3_phts2")]
-
-[node name="BG" type="ColorRect" parent="."]
+[node name="Box3D" type="SubViewportContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.784314)
-
-[node name="Blur" type="TextureRect" parent="BG"]
-modulate = Color(0, 0, 0, 0.745098)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -303.0
-offset_right = 303.0
-offset_bottom = 215.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_h3a3p")
-expand_mode = 1
-
-[node name="Box3D" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_ofbym")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -332.0
-offset_right = 450.0
-offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
@@ -184,41 +38,29 @@ stretch = true
 [node name="Viewport" type="SubViewport" parent="Box3D"]
 own_world_3d = true
 world_3d = SubResource("World3D_h1r5v")
-transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(900, 600)
+mesh_lod_threshold = 0.0
+scaling_3d_scale = 2.0
+sdf_oversize = 0
+sdf_scale = 0
+size = Vector2i(340, 474)
 render_target_update_mode = 4
 
 [node name="InspectorWorld" parent="Box3D/Viewport" instance=ExtResource("2_e3j2f")]
 
-[node name="CloseButton" parent="." instance=ExtResource("7_6b8to")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -59.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = 59.0
-grow_horizontal = 0
-
 [node name="OrbitHandler" type="Node" parent="."]
 script = ExtResource("7_32mrv")
 override_eligibility = true
+disable_temporary = true
 clamp_x_lower = -50.0
 clamp_x_upper = 50.0
 clamp_y = true
 clamp_y_lower = -60.0
 clamp_y_upper = 60.0
 
-[node name="Transitions" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_8p8a6")
-}
-
-[node name="Paper" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_sn5q2")
-volume_db = -3.0
-
-[connection signal="pressed" from="CloseButton" to="." method="_close"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

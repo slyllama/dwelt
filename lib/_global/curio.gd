@@ -4,7 +4,7 @@ extends Node
 # descriptions and lore, as well as the signals and parameters which bind
 # everything together.
 
-const TEXTURE_PATH = "res://lib/thingistry/curio_button/textures/"
+const TEXTURE_PATH = "res://lib/thingistry/curio_button/textures/items/"
 
 signal collected(id)
 signal curio_selected(id)
@@ -35,32 +35,32 @@ func get_is_newly_collected(id: String) -> bool:
 	return(false)
 
 const DATA = {
-	"test_curio": {
-		"name": "Test Curio",
+	"ant": {
+		"name": "Ant",
 		"objects": [
-			"faceless_books",
-			"aoibhe_painting"
-		]
+			"amber",
+			"blue"
+		],
+		"short_desc": "((This one actually has a short description!))"
 	},
-	"foo": {
-		"name": "Foo",
+	"bat": {
+		"name": "Bat",
 		"objects": [
-			"test",
 			"apples",
 			"bananas",
 			"cucumber"
 		]
 	},
-	"bar": { "name": "Bar" },
-	"bar2": { "name": "Bar" },
-	"bar3": { "name": "Bar" },
-	"bar4": { "name": "Bar" },
-	"bar5": { "name": "Bar" },
-	"bar6": { "name": "Bar" }
+	"cat": { "name": "Cat" },
+	"dog": { "name": "Dog" },
+	"eagle": { "name": "Eagle" },
+	"fox": { "name": "Fox" },
+	"gecko": { "name": "Gecko" },
+	"horse": { "name": "Horse" }
 }
 
 var collected_objects = [
-	"faceless_books"
+	"amber"
 ]
 
 var collected_since_last_open = [] # used to highlight newly-collected curios
