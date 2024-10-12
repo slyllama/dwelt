@@ -1,5 +1,7 @@
 class_name CurioButton extends VBoxContainer
 const TEXTURE_UNKNOWN = preload("res://lib/thingistry/curio_button/textures/uncollected.png")
+const TEXTURE_EMPTY = preload("res://lib/thingistry/curio_button/textures/empty.png")
+
 @export var curio_id: String
 
 # Send the global position of this button up the chain when hovered
@@ -10,18 +12,23 @@ func get_center() -> Vector2:
 	return($Button.global_position + $Button.size / 2) # center global position
 
 func _ready() -> void:
-	$Progress.value = Curio.get_progress(curio_id) * 100
-	if Curio.get_progress(curio_id) == 0:
-		$Button.texture_normal = TEXTURE_UNKNOWN
-	else:
-		var texture_path = Curio.TEXTURE_PATH + "curio_" + curio_id + ".png"
-		if ResourceLoader.exists(texture_path):
-			$Button/ItemTexture.texture = load(texture_path)
-	
-	if Curio.get_is_newly_collected(curio_id):
-		$Button/Notification.visible = true
+	if !curio_id == "none":
+		$Button/Progress.value = Curio.get_progress(curio_id) * 100
+		if Curio.get_progress(curio_id) == 0:
+			$Button.texture_normal = TEXTURE_UNKNOWN
+		else:
+			var texture_path = Curio.TEXTURE_PATH + "curio_" + curio_id + ".png"
+			if ResourceLoader.exists(texture_path):
+				$Button/ItemTexture.texture = load(texture_path)
+		
+		if Curio.get_is_newly_collected(curio_id):
+			$Button/Notification.visible = true
+	else: # buttons with a "none" id will just render as empty squares in the grid
+		$Button/Progress.visible = false
+		$Button.texture_normal = TEXTURE_EMPTY
 
 func _on_button_down() -> void:
+	if curio_id == "none": return
 	if $Button/Notification.visible: # dismiss 'newly collected' notification
 		$Button/Notification.visible = false
 	

@@ -51,9 +51,12 @@ const DATA = {
 			"cucumber"
 		]
 	},
-	"bar": {
-		"name": "Bar"
-	}
+	"bar": { "name": "Bar" },
+	"bar2": { "name": "Bar" },
+	"bar3": { "name": "Bar" },
+	"bar4": { "name": "Bar" },
+	"bar5": { "name": "Bar" },
+	"bar6": { "name": "Bar" }
 }
 
 var collected_objects = [

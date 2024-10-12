@@ -237,6 +237,12 @@ size_flags_horizontal = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tbu3e")
 
+[node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+texture = ExtResource("10_80sir")
+expand_mode = 1
+
 [node name="Infobase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -280,15 +286,6 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
-
-[node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
-visible = false
-custom_minimum_size = Vector2(524, 172)
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("10_80sir")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="PaddingBottom" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 use_parent_material = true

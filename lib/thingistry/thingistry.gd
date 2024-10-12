@@ -9,7 +9,7 @@ const BANNER_NO_IMAGE = preload("res://lib/thingistry/curio_button/textures/curi
 @onready var info_base = get_node("Base/Panel/VBox/BodyBox/Infobase")
 @onready var info_title = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Title")
 @onready var info_progress = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Progress")
-@onready var info_banner = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Image")
+@onready var info_banner = get_node("Base/Panel/VBox/BodyBox/Image")
 @onready var info_body = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Body")
 
 var current_curio_position = Vector2(-300, 300)

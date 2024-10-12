@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d35krm14gfiv8"]
+[gd_scene load_steps=6 format=3 uid="uid://d35krm14gfiv8"]
 
 [ext_resource type="Script" path="res://lib/thingistry/curio_button/curio_button.gd" id="1_uf4dd"]
 [ext_resource type="Texture2D" uid="uid://ss2fqp2recd3" path="res://lib/thingistry/curio_button/textures/base.png" id="1_vv5fn"]
 [ext_resource type="Texture2D" uid="uid://cpvf8pogsy1ej" path="res://lib/thingistry/textures/notification.png" id="3_ud7ni"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hjtt"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e838r"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(0.215686, 0.65098, 0.231373, 1)
 
 [node name="CurioButton" type="VBoxContainer"]
 offset_right = 40.0
@@ -17,16 +20,6 @@ custom_minimum_size = Vector2(92, 92)
 layout_mode = 2
 texture_normal = ExtResource("1_vv5fn")
 ignore_texture_size = true
-stretch_mode = 5
-
-[node name="ItemTexture" type="TextureRect" parent="Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
 stretch_mode = 5
 
 [node name="Notification" type="TextureRect" parent="Button"]
@@ -42,11 +35,36 @@ texture = ExtResource("3_ud7ni")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Progress" type="ProgressBar" parent="."]
+[node name="Progress" type="ProgressBar" parent="Button"]
 custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -13.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_0hjtt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_e838r")
 show_percentage = false
+
+[node name="ItemTexture" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]
