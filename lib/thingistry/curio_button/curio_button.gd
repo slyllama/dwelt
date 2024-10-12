@@ -6,7 +6,7 @@ const TEXTURE_PATH = "res://lib/thingistry/curio_button/textures/"
 
 # Send the global position of this button up the chain when hovered
 # This allows Thingistry to move its cursor to it
-signal mouse_entered_button(global_position)
+signal clicked_button(global_position)
 
 func get_center() -> Vector2:
 	return($Button.global_position + $Button.size / 2) # center global position
@@ -20,7 +20,7 @@ func _ready() -> void:
 		if ResourceLoader.exists(texture_path):
 			$Button/ItemTexture.texture = load(texture_path)
 
-func _on_mouse_entered() -> void:
-	mouse_entered_button.emit(get_center())
+func _on_button_down() -> void:
+	clicked_button.emit(get_center())
 	Global.hover_sound.emit()
 	Curio.curio_selected.emit(curio_id)

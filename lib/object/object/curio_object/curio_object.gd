@@ -6,7 +6,6 @@ var collected = false
 func collect() -> void:
 	collected = true
 	Curio.collected_objects.append(id)
-	print(Curio.collected_objects)
 	set_use_hold_circle(false)
 
 func _ready() -> void:
@@ -15,9 +14,6 @@ func _ready() -> void:
 	set_use_hold_circle(true)
 
 func _on_interacted() -> void:
-	if !collected:
-		collect()
-		print("just collected!!")
-		return
-	else:
-		interacted_with_collected.emit()
+	if !collected: collect()
+	# Always happens afterward
+	interacted_with_collected.emit()

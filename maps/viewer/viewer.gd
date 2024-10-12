@@ -43,3 +43,6 @@ func _ready() -> void:
 func _on_inspector_test() -> void:
 	var _i: InspectorInstance = Inspector.instantiate()
 	add_child(_i)
+
+func _on_curio_object_interacted_with_collected() -> void:
+	$Summoner.activate()

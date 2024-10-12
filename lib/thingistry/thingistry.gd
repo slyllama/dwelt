@@ -42,7 +42,7 @@ func _ready() -> void:
 	grid.generate(0)
 	
 	for _button: CurioButton in grid.button_nodes:
-		_button.mouse_entered_button.connect(func(_pos):
+		_button.clicked_button.connect(func(_pos):
 			current_curio_position = _pos)
 	
 	# Set the active curio (and corresponding display data) to the first curio
@@ -55,7 +55,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Cursor.global_position = lerp(
-		$Cursor.global_position, current_curio_position, delta * 50)
+		$Cursor.global_position, current_curio_position, delta * 20)
 
 func _on_close_button_button_down() -> void:
 	close()

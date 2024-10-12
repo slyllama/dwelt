@@ -34,4 +34,5 @@ layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_e838r")
 show_percentage = false
 
+[connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]

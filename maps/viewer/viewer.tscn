@@ -88,3 +88,4 @@ title = "((Curio Test))"
 show_mote = true
 
 [connection signal="interacted" from="O_InspectorTest" to="." method="_on_inspector_test"]
+[connection signal="interacted_with_collected" from="CurioObject" to="." method="_on_curio_object_interacted_with_collected"]
