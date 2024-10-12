@@ -16,11 +16,11 @@ const BANNER_NO_IMAGE = preload("res://lib/thingistry/curio_button/textures/curi
 var current_curio_position = Vector2(-300, 300)
 
 func close() -> void:
-	Global.in_exclusive_ui = false
-	Global.player_can_move = true
 	Curio.collected_since_last_open = [] # reset newly collected objects
 	$Transitions.play_backwards("fade")
 	await $Transitions.animation_finished
+	Global.in_exclusive_ui = false
+	Global.player_can_move = true
 	
 	queue_free()
 
@@ -78,6 +78,10 @@ func _ready() -> void:
 	await get_tree().process_frame # needs a chance to know its true global position
 	current_curio_position = grid.button_nodes[0].get_center()
 	$Cursor.global_position = current_curio_position
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("thingistry"):
+		close()
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return

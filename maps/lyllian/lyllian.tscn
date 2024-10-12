@@ -1,10 +1,12 @@
-[gd_scene load_steps=42 format=3 uid="uid://c53od80m5wr3j"]
+[gd_scene load_steps=44 format=3 uid="uid://c53od80m5wr3j"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="PackedScene" uid="uid://dvfwn2u2p31wx" path="res://lib/map/map.tscn" id="1_wjums"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/env.tres" id="2_ahnhk"]
+[ext_resource type="AudioStream" uid="uid://b2ej3w2qqxhsv" path="res://maps/lyllian/sound/glass_darkly.ogg" id="5_1puii"]
 [ext_resource type="AudioStream" uid="uid://byoafwuotvs46" path="res://maps/lyllian/sound/sanctuary.ogg" id="5_2luym"]
 [ext_resource type="AudioStream" uid="uid://cu060y4x2scnl" path="res://maps/lyllian/sound/rain.ogg" id="5_jja4b"]
+[ext_resource type="AudioStream" uid="uid://uuof241qx3k4" path="res://maps/lyllian/sound/phantom.ogg" id="6_dmxwh"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
 [ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/viewer/bin/summoner/summoner.tscn" id="7_tqgrq"]
@@ -148,8 +150,7 @@ metadata/_edit_horizontal_guides_ = [692.0]
 environment = ExtResource("2_ahnhk")
 
 [node name="Jukebox" parent="." index="5"]
-track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym")])
-start_muted = true
+track_list = Array[AudioStreamOggVorbis]([ExtResource("5_2luym"), ExtResource("5_1puii"), ExtResource("6_dmxwh")])
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_jja4b")

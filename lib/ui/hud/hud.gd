@@ -79,6 +79,11 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_key"):
 		Global.set_display_debug(!Global.debug_visible)
+	
+	if Input.is_action_just_pressed("thingistry"):
+		if Global.in_exclusive_ui: return
+		var _thingistry = Thingistry.instantiate()
+		add_child(_thingistry)
 
 func _process(delta: float) -> void:
 	_oibox_dissolve = lerp(_oibox_dissolve, _target_oibox_dissolve, delta * 13.0)

@@ -256,15 +256,14 @@ texture = ExtResource("10_80sir")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ImageBacking" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Image"]
-z_index = -1
+[node name="TextureRect" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 217.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.27451)
+texture = ExtResource("2_oq4q3")
+expand_mode = 1
 
 [node name="Infobase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
 layout_mode = 2

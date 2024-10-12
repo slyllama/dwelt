@@ -28,15 +28,7 @@ func _ready():
 	Global.debug_visible_toggled.connect(func():
 		$Container/MinimapTool.visible = Global.debug_visible
 		$Container/PlayerPos.visible = Global.debug_visible)
-	
 	Global.set_display_debug(false)
-
-# Open with a hotkey
-func _input(event: InputEvent) -> void:
-	super(event)
-	if Input.is_action_just_pressed("settings"):
-		if !is_open and !Global.in_exclusive_ui: open()
-		else: close()
 
 func _physics_process(_delta: float) -> void:
 	# Display some more debug data, because we can

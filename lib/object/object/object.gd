@@ -5,7 +5,7 @@ class_name DweltObject extends Node3D
 
 @export var id = "object"
 @export var title = "((Object))"
-@export var radius = 1.0:
+@export var radius = 1.7:
 	set(_value):
 		radius = _value
 		set_radius(_value)

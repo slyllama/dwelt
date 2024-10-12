@@ -183,7 +183,7 @@ script = ExtResource("1_tgrmb")
 
 [node name="GlowInner" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.784314)
-scale = Vector2(0.92, 0.92)
+scale = Vector2(0.78125, 0.78125)
 texture = ExtResource("1_a716e")
 
 [node name="GlowOuter" type="Sprite2D" parent="."]

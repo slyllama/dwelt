@@ -11,9 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cjyq00psweao8" path="res://generic/sound/object_entry.ogg" id="8_gnh8r"]
 [ext_resource type="AudioStream" uid="uid://dlowvbn10v3nj" path="res://generic/sound/object_leave.ogg" id="9_l2u7u"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1880"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6x7nq"]
 height = 3.4
-radius = 0.8
+radius = 1.7
 
 [sub_resource type="Gradient" id="Gradient_lq2ua"]
 offsets = PackedFloat32Array(0, 0.260417, 0.729167, 1)
@@ -118,7 +118,7 @@ visible = false
 [node name="Range" type="Area3D" parent="."]
 
 [node name="Collision" type="CollisionShape3D" parent="Range"]
-shape = SubResource("CylinderShape3D_h1880")
+shape = SubResource("CylinderShape3D_6x7nq")
 
 [node name="ObjectOrb" parent="." instance=ExtResource("3_fhdxx")]
 
