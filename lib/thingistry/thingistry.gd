@@ -14,6 +14,7 @@ var current_curio_position = Vector2(-300, 300)
 func close() -> void:
 	Global.in_exclusive_ui = false
 	Global.player_can_move = true
+	Curio.collected_since_last_open = [] # reset newly collected objects
 	$Transitions.play_backwards("fade")
 	await $Transitions.animation_finished
 	
@@ -24,6 +25,7 @@ func _ready() -> void:
 	Global.player_can_move = false
 	info_title.text = " "
 	$Transitions.play("fade")
+	Curio.panel_opened.emit()
 	
 	Curio.curio_selected.connect(func(id):
 		var _progress = Curio.get_progress(id)

@@ -6,10 +6,13 @@ const SmokeTransition = preload("res://lib/ui/hud/smoke_transition/smoke_transit
 const Aberration = preload("res://lib/ui/hud/aberration/aberration.tscn")
 const Thingistry = preload("res://lib/thingistry/thingistry.tscn")
 
+@onready var notif = get_node("Minimap/ThingistryButton/Notification")
+
 # Box dissolving - gets and controls the 'dissolve' of the object box and lerps
 # smoothly between values (see _process() as well)
 var _target_oibox_dissolve := 0.0
 var _oibox_dissolve := 0.0
+
 func _get_oibox_dissolve() -> float:
 	return(float($Sidebar/OIBox.material.get_shader_parameter("exp")))
 func _set_oibox_dissolve(_v: float):
@@ -62,6 +65,16 @@ func _ready() -> void:
 	# because we know the map name is set before this signal is called
 	SettingsHandler.setting_changed.connect(func(_parameter):
 		$Sidebar/MTBox/MTHeading/MTTitle.text = Global.target_scene_title)
+	
+	# Thingistry toggling of curio notification
+	Curio.collected.connect(func(_id):
+		notif.visible = true
+		$Minimap/InteractButton.reset(false)
+		$Minimap/ThingistryButton.fade_in(true))
+	
+	Curio.panel_opened.connect(func():
+		notif.visible = false
+		$Minimap/ThingistryButton.reset(false))
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_key"):

@@ -19,8 +19,14 @@ func _ready() -> void:
 		var texture_path = TEXTURE_PATH + "curio_" + curio_id + ".png"
 		if ResourceLoader.exists(texture_path):
 			$Button/ItemTexture.texture = load(texture_path)
+	
+	if Curio.get_is_newly_collected(curio_id):
+		$Button/Notification.visible = true
 
 func _on_button_down() -> void:
+	if $Button/Notification.visible:
+		$Button/Notification.visible = false
+	
 	clicked_button.emit(get_center())
 	Global.hover_sound.emit()
 	Curio.curio_selected.emit(curio_id)

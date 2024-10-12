@@ -5,7 +5,7 @@ extends TextureButton
 const TIME = 0.07
 const TINT = Color(0.9, 0.9, 0.9)
 
-func _reset(conceal = false):
+func reset(conceal = false):
 	$Highlight.clear()
 	modulate = TINT
 	if conceal:
@@ -25,10 +25,10 @@ func fade_out() -> void:
 	var self_fade_tween = create_tween()
 	self_fade_tween.tween_property(self, "modulate:a", 0.0, TIME)
 	self_fade_tween.tween_callback(func():
-		if visible: _reset(true))
+		if visible: reset(true))
 
 func _ready() -> void:
-	_reset()
+	reset()
 
 func _on_mouse_entered() -> void:
 	Global.hover_sound.emit()

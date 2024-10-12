@@ -4,7 +4,9 @@ extends Node
 # descriptions and lore, as well as the signals and parameters which bind
 # everything together.
 
+signal collected(id)
 signal curio_selected(id)
+signal panel_opened
 
 # Returns a ratio between the total number of objects associated with a curio and
 # the amount of those objects collected by the player
@@ -22,8 +24,16 @@ func get_progress(id: String) -> float:
 	else:
 		return(0)
 
+func get_is_newly_collected(id: String) -> bool:
+	if "objects" in DATA[id]:
+		var _objects = DATA[id].objects
+		for _o in collected_since_last_open:
+			if _o in _objects:
+				return(true)
+	return(false)
+
 const DATA = {
-	"test": {
+	"test_curio": {
 		"name": "Test Curio",
 		"objects": [
 			"faceless_books",
@@ -33,7 +43,7 @@ const DATA = {
 	"foo": {
 		"name": "Foo",
 		"objects": [
-			"curio_test"
+			"test"
 		]
 	},
 	"bar": {
@@ -44,3 +54,5 @@ const DATA = {
 var collected_objects = [
 	"faceless_books"
 ]
+
+var collected_since_last_open = [] # used to highlight newly-collected curios
