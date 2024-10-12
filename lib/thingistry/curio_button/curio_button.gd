@@ -1,7 +1,5 @@
 class_name CurioButton extends VBoxContainer
 const TEXTURE_UNKNOWN = preload("res://lib/thingistry/curio_button/textures/uncollected.png")
-const TEXTURE_PATH = "res://lib/thingistry/curio_button/textures/"
-
 @export var curio_id: String
 
 # Send the global position of this button up the chain when hovered
@@ -16,7 +14,7 @@ func _ready() -> void:
 	if Curio.get_progress(curio_id) == 0:
 		$Button.texture_normal = TEXTURE_UNKNOWN
 	else:
-		var texture_path = TEXTURE_PATH + "curio_" + curio_id + ".png"
+		var texture_path = Curio.TEXTURE_PATH + "curio_" + curio_id + ".png"
 		if ResourceLoader.exists(texture_path):
 			$Button/ItemTexture.texture = load(texture_path)
 	
@@ -24,7 +22,7 @@ func _ready() -> void:
 		$Button/Notification.visible = true
 
 func _on_button_down() -> void:
-	if $Button/Notification.visible:
+	if $Button/Notification.visible: # dismiss 'newly collected' notification
 		$Button/Notification.visible = false
 	
 	clicked_button.emit(get_center())

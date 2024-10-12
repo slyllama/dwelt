@@ -87,5 +87,12 @@ id = "test"
 title = "((Curio Test))"
 show_mote = true
 
+[node name="CurioObject2" parent="." index="11" instance=ExtResource("13_2lymo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -2)
+id = "apples"
+title = "((Apples - Curio Test))"
+show_mote = true
+
 [connection signal="interacted" from="O_InspectorTest" to="." method="_on_inspector_test"]
 [connection signal="interacted_with_collected" from="CurioObject" to="." method="_on_curio_object_interacted_with_collected"]
+[connection signal="interacted_with_collected" from="CurioObject2" to="." method="_on_curio_object_interacted_with_collected"]

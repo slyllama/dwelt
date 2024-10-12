@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwyah14n0ldeh"]
+[gd_scene load_steps=21 format=3 uid="uid://dwyah14n0ldeh"]
 
 [ext_resource type="Script" path="res://lib/thingistry/thingistry.gd" id="1_fewt1"]
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
+[ext_resource type="Texture2D" uid="uid://dmawmyj580ffc" path="res://lib/thingistry/curio_button/textures/curio_test_banner.png" id="10_80sir"]
 [ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
@@ -272,15 +273,34 @@ layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_0uiba")
 show_percentage = false
 
-[node name="Padding" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+[node name="PaddingTop" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+visible = false
+custom_minimum_size = Vector2(524, 172)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("10_80sir")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PaddingBottom" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_vertical = 0
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
 [node name="Body" type="RichTextLabel" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("9_s1nwp")
 theme_override_font_sizes/normal_font_size = 17
 text = "((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))"

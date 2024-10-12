@@ -4,6 +4,8 @@ extends Node
 # descriptions and lore, as well as the signals and parameters which bind
 # everything together.
 
+const TEXTURE_PATH = "res://lib/thingistry/curio_button/textures/"
+
 signal collected(id)
 signal curio_selected(id)
 signal panel_opened
@@ -43,7 +45,10 @@ const DATA = {
 	"foo": {
 		"name": "Foo",
 		"objects": [
-			"test"
+			"test",
+			"apples",
+			"bananas",
+			"cucumber"
 		]
 	},
 	"bar": {
