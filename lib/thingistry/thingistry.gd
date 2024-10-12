@@ -1,3 +1,4 @@
+@tool
 extends CanvasLayer
 # Thingistry
 # UI to show curios and curio collection progress
@@ -24,10 +25,17 @@ func close() -> void:
 	queue_free()
 
 func _ready() -> void:
+	var grid = CurioGrid.new()
+	grid_base.add_child(grid)
+	
+	if Engine.is_editor_hint(): return
+	grid.generate(0)
+	
 	Global.in_exclusive_ui = true
 	Global.player_can_move = false
 	info_title.text = " "
 	$Transitions.play("fade")
+	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
 	
 	Curio.curio_selected.connect(func(id):
@@ -36,7 +44,7 @@ func _ready() -> void:
 			# Display information - something is known about the curio
 			info_title.text = Curio.DATA[id].name
 			info_body.text = ("((Short introductory information about this curio, '"
-				+ id + "'. This information displays at the top of the info panel.))")
+				+ id + "'. This information displays at the top of the info panel. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.\n\nRichard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..'', comes from a line in section 1.10.32. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))")
 			info_progress.value = _progress * 100
 			
 			info_banner.visible = true
@@ -52,10 +60,6 @@ func _ready() -> void:
 			info_title.text = "((???))"
 			info_body.text = ("((???))")
 			info_progress.value = 0)
-	
-	var grid = CurioGrid.new()
-	grid_base.add_child(grid)
-	grid.generate(0)
 	
 	for _button: CurioButton in grid.button_nodes:
 		_button.clicked_button.connect(func(_pos):
@@ -76,6 +80,8 @@ func _ready() -> void:
 	$Cursor.global_position = current_curio_position
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	
 	$Cursor.global_position = lerp(
 		$Cursor.global_position, current_curio_position, delta * 20)
 

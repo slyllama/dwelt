@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwyah14n0ldeh"]
+[gd_scene load_steps=23 format=3 uid="uid://dwyah14n0ldeh"]
 
 [ext_resource type="Script" path="res://lib/thingistry/thingistry.gd" id="1_fewt1"]
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
+[ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_hn57a"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_oq4q3"]
 [ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="2_tqgrx"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_blur.gdshader" id="2_w4rnl"]
@@ -26,13 +27,19 @@ shader_parameter/swirl_texture = ExtResource("5_d8a6f")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bs6r"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbu3e"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbp5n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfmus"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff06h"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_top = 2
+border_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiba"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(0.215686, 0.65098, 0.231373, 1)
+border_width_top = 2
+border_color = Color(0.188235, 1, 0.223529, 1)
 
 [sub_resource type="Animation" id="Animation_a1hop"]
 length = 0.001
@@ -124,6 +131,8 @@ _data = {
 layer = 11
 script = ExtResource("1_fewt1")
 
+[node name="SmokeTransition" parent="." instance=ExtResource("2_hn57a")]
+
 [node name="DebugTexture" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 15
@@ -182,9 +191,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -526.0
-offset_top = -260.0
+offset_top = -300.0
 offset_right = 526.0
-offset_bottom = 228.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6bs6r")
@@ -197,7 +206,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Separator" type="ColorRect" parent="Base/Panel/VBox"]
+[node name="SepTop" type="ColorRect" parent="Base/Panel/VBox"]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
@@ -211,7 +220,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("7_8tbdq")
-theme_override_font_sizes/normal_font_size = 37
+theme_override_font_sizes/normal_font_size = 40
 text = "Thingistry"
 fit_content = true
 scroll_active = false
@@ -230,18 +239,32 @@ color = Color(1, 1, 1, 0)
 [node name="BodyBox" type="HBoxContainer" parent="Base/Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 
 [node name="GridBase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbu3e")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bbp5n")
 
 [node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 texture = ExtResource("10_80sir")
 expand_mode = 1
+stretch_mode = 6
+
+[node name="ImageBacking" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Image"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
 
 [node name="Infobase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
 layout_mode = 2
@@ -256,18 +279,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Separator" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
-use_parent_material = true
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0.627451)
-
 [node name="Title" type="RichTextLabel" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("9_s1nwp")
-theme_override_font_sizes/normal_font_size = 27
+theme_override_fonts/normal_font = ExtResource("7_8tbdq")
+theme_override_font_sizes/normal_font_size = 30
 text = "((Curio Title))"
 fit_content = true
 scroll_active = false
@@ -276,7 +292,9 @@ autowrap_mode = 0
 [node name="Progress" type="ProgressBar" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
 custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ff06h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0uiba")
+value = 50.0
 show_percentage = false
 
 [node name="PaddingTop" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
@@ -300,9 +318,34 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("9_s1nwp")
 theme_override_font_sizes/normal_font_size = 17
-text = "((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))"
-fit_content = true
-scroll_active = false
+text = "((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))
+
+((Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.))"
+
+[node name="Placeholder" type="ColorRect" parent="Base/Panel/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="SepBottom" type="ColorRect" parent="Base/Panel/VBox"]
+visible = false
+use_parent_material = true
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0.784314)
 
 [node name="Transitions" type="AnimationPlayer" parent="."]
 libraries = {
@@ -310,6 +353,7 @@ libraries = {
 }
 
 [node name="Cursor" type="Sprite2D" parent="."]
+position = Vector2(-300, 300)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_or660")
 

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://b3xj2nmifhpar"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://b3xj2nmifhpar"]
 
 [ext_resource type="Texture2D" uid="uid://6hw6d688c3m5" path="res://lib/ui/hud/textures/slider.png" id="1_1p0q0"]
 [ext_resource type="Texture2D" uid="uid://bd6ydh2sjvnib" path="res://lib/ui/hud/textures/slider_hover.png" id="2_05svm"]
@@ -123,6 +123,24 @@ content_margin_right = 8.0
 content_margin_bottom = 2.0
 bg_color = Color(0.11, 0.11, 0.11, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g1o1"]
+bg_color = Color(0, 0, 0, 0)
+border_width_right = 8
+border_color = Color(0.374139, 0.374139, 0.374139, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28o1j"]
+bg_color = Color(0, 0, 0, 0)
+border_width_right = 8
+border_color = Color(0.644663, 0.644664, 0.644663, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oh5rp"]
+bg_color = Color(0, 0, 0, 0)
+border_width_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73cfk"]
+content_margin_left = 30.0
+bg_color = Color(0, 0, 0, 0)
+
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_fagal")
 Button/styles/hover = SubResource("StyleBoxFlat_vt755")
@@ -141,3 +159,7 @@ MenuButton/styles/pressed = SubResource("StyleBoxFlat_cb2eh")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_b2i3v")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_6cnyg")
 RichTextLabel/font_sizes/normal_font_size = 16
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_8g1o1")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_28o1j")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_oh5rp")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_73cfk")

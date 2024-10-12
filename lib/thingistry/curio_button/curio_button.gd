@@ -2,7 +2,7 @@ class_name CurioButton extends VBoxContainer
 const TEXTURE_UNKNOWN = preload("res://lib/thingistry/curio_button/textures/uncollected.png")
 const TEXTURE_EMPTY = preload("res://lib/thingistry/curio_button/textures/empty.png")
 
-@export var curio_id: String
+@export var curio_id: String = "none" # default to none to make an empty, non-interactable button
 
 # Send the global position of this button up the chain when hovered
 # This allows Thingistry to move its cursor to it
