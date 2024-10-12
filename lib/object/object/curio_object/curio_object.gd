@@ -1,3 +1,4 @@
+@tool
 class_name CurioDweltObject extends DweltObject
 # CurioDweltObject
 # An extension of the regular object which handles curio collecting
@@ -13,6 +14,8 @@ func collect() -> void:
 	set_use_hold_circle(false)
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	
 	super()
 	can_interact = true
 	set_use_hold_circle(true)
