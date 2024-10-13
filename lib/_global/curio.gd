@@ -44,12 +44,7 @@ const DATA = {
 		"short_desc": "((This one actually has a short description!))"
 	},
 	"bat": {
-		"name": "Bat",
-		"objects": [
-			"apples",
-			"bananas",
-			"cucumber"
-		]
+		"name": "Bat"
 	},
 	"cat": { "name": "Cat" },
 	"dog": { "name": "Dog" },
@@ -65,7 +60,17 @@ const DATA = {
 	"nice_creature": { "name": "Nice Creature" },
 	"orangutan": { "name": "Orangutan" },
 	"parrot": { "name": "Parrot" },
-	"quacker": { "name": "Quacker" },
+	"quacker": {
+		"name": "Quacker",
+		"objects": [
+			"apples",
+			"bananas",
+			"cucumber"
+		],
+		"object_text": {
+			"apples": "((This text gets added to the 'quacker' curio when the 'apples' object is picked up.))"
+		}
+	}
 }
 
 var collected_objects = [

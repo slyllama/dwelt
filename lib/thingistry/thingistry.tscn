@@ -77,6 +77,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jpmma"]
 resource_name = "fade"
@@ -113,6 +125,18 @@ tracks/2/path = NodePath("Base:modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -331,10 +355,31 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("9_s1nwp")
 theme_override_font_sizes/normal_font_size = 17
 
-[node name="Placeholder" type="ColorRect" parent="Base/Panel/VBox"]
-custom_minimum_size = Vector2(0, 44)
+[node name="Navigation" type="HBoxContainer" parent="Base/Panel/VBox"]
+custom_minimum_size = Vector2(282, 27)
 layout_mode = 2
-color = Color(0, 0, 0, 0)
+size_flags_horizontal = 0
+
+[node name="PreviousButton" type="Button" parent="Base/Panel/VBox/Navigation"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Previous"
+
+[node name="PageCount" type="RichTextLabel" parent="Base/Panel/VBox/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]?[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NextButton" type="Button" parent="Base/Panel/VBox/Navigation"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Next"
 
 [node name="SepBottom" type="ColorRect" parent="Base/Panel/VBox"]
 visible = false
@@ -350,6 +395,7 @@ libraries = {
 }
 
 [node name="Cursor" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_or660")
 
@@ -358,3 +404,5 @@ stream = ExtResource("13_rtd5m")
 volume_db = -3.0
 
 [connection signal="button_down" from="Base/Panel/VBox/HeadingBox/CloseButton" to="." method="_on_close_button_button_down"]
+[connection signal="button_down" from="Base/Panel/VBox/Navigation/PreviousButton" to="." method="_on_previous_button"]
+[connection signal="button_down" from="Base/Panel/VBox/Navigation/NextButton" to="." method="_on_next_button"]

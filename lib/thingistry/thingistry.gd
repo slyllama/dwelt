@@ -12,6 +12,8 @@ extends CanvasLayer
 @onready var info_body = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Body")
 
 var current_curio_position = Vector2(-300, 300)
+var grid: CurioGrid
+var _current_page = 0
 
 func close() -> void:
 	Curio.collected_since_last_open = [] # reset newly collected objects
@@ -21,13 +23,22 @@ func close() -> void:
 	Global.player_can_move = true
 	queue_free()
 
+func go_to_page(_page: int):
+	grid.clear()
+	grid.generate(_page * grid.grid_size)
+	for _button: CurioButton in grid.button_nodes:
+		_button.clicked_button.connect(func(_pos):
+			current_curio_position = _pos)
+	current_curio_position = grid.button_nodes[0].get_center()
+	$Base/Panel/VBox/Navigation/PageCount.text = ("[center]"
+		+ str(_page + 1) + "/?[/center]")
+	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
+
 func _ready() -> void:
-	var grid = CurioGrid.new()
+	grid = CurioGrid.new()
 	grid_base.add_child(grid)
 	
 	if Engine.is_editor_hint(): return
-	grid.generate(0)
-	
 	Global.in_exclusive_ui = true
 	Global.player_can_move = false
 	info_title.text = " "
@@ -36,6 +47,7 @@ func _ready() -> void:
 	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
 	
+	# Fill in details when a curio is selected
 	Curio.curio_selected.connect(func(id):
 		var _progress = Curio.get_progress(id)
 		var _data = Curio.DATA[id]
@@ -47,22 +59,29 @@ func _ready() -> void:
 			info_progress.visible = visible
 			info_progress.value = _progress * 100
 			
+			# Add additional text to information depending on which objects have been collected
+			if "objects" in _data and "object_text" in _data:
+				for _o in _data.objects:
+					if _o in _data.object_text:
+						if info_body.text != "":
+							# Only add a paragraph break if text came before it
+							info_body.text += "\n\n"
+						info_body.text += _data.object_text[_o]
+			
+			# Configure banner image
 			info_banner.visible = true
 			var banner_texture_path = Curio.TEXTURE_PATH + str(id) + "_banner.png"
 			if ResourceLoader.exists(banner_texture_path):
 				info_banner.texture = load(banner_texture_path) # TODO: parallelise?
-			else:
-				info_banner.texture = null
+			else: info_banner.texture = null
 			
 		else: # nothing is known yet about the curio and no information should be shown
-			info_banner.visible = false
+			info_banner.texture = null
 			info_title.text = ""
 			info_body.text = ""
 			info_progress.visible = false)
 	
-	for _button: CurioButton in grid.button_nodes:
-		_button.clicked_button.connect(func(_pos):
-			current_curio_position = _pos)
+	go_to_page(0)
 	
 	# Set the active curio (and corresponding display data) to the first curio in the grid
 	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
@@ -83,9 +102,19 @@ func _input(_event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	
 	$Cursor.global_position = lerp(
 		$Cursor.global_position, current_curio_position, delta * 20)
 
-func _on_close_button_button_down() -> void:
-	close()
+func _on_close_button_button_down() -> void: close()
+
+func _on_next_button() -> void:
+	# Advance the curio grid by a page, if there are more left
+	if (_current_page + 1) * grid.grid_size < Curio.DATA.size():
+		_current_page += 1
+		go_to_page(_current_page)
+
+func _on_previous_button() -> void:
+	# Go back a curio grid page, if you're not already at the beginning
+	if _current_page > 0:
+		_current_page -= 1
+		go_to_page(_current_page)
