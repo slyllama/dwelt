@@ -141,6 +141,7 @@ shader_parameter/noise = ExtResource("22_lkotp")
 [node name="Lyllian" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_wjums")]
 script = ExtResource("1_1mnll")
 map_title = "Lyllian"
+map_description = "((Lyllian Description))"
 decal_candidates = NodePath("Environment/ScruffyHouse")
 shadow_lights = NodePath("ShadowLights")
 

@@ -64,6 +64,7 @@ func _ready() -> void:
 	# Use setting_changed to trigger an update to display of the map name,
 	# because we know the map name is set before this signal is called
 	SettingsHandler.setting_changed.connect(func(_parameter):
+		$Sidebar/MTBox/MTBody.text = Global.target_scene_description
 		$Sidebar/MTBox/MTHeading/MTTitle.text = Global.target_scene_title)
 	
 	# Thingistry toggling of curio notification

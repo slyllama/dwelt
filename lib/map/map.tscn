@@ -10,7 +10,6 @@
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_oukx7")
-map_title = null
 
 [node name="HUD" parent="." instance=ExtResource("2_sg4wo")]
 unique_name_in_owner = true

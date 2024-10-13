@@ -25,6 +25,7 @@ const MINIMAP_DATA = {
 # Allows for serialised (.scn) scenes too
 var target_scene = "res://lib/launcher/launcher.tscn"
 var target_scene_title = ""
+var target_scene_description = ""
 
 func change_map(map_name: String) -> void:
 	var _ext = ".tscn"
