@@ -6,8 +6,6 @@ const SmokeTransition = preload("res://lib/ui/hud/smoke_transition/smoke_transit
 const Aberration = preload("res://lib/ui/hud/aberration/aberration.tscn")
 const Thingistry = preload("res://lib/thingistry/thingistry.tscn")
 
-@onready var notif = get_node("Minimap/ThingistryButton/Notification")
-
 # Box dissolving - gets and controls the 'dissolve' of the object box and lerps
 # smoothly between values (see _process() as well)
 var _target_oibox_dissolve := 0.0
@@ -64,18 +62,21 @@ func _ready() -> void:
 	# Use setting_changed to trigger an update to display of the map name,
 	# because we know the map name is set before this signal is called
 	SettingsHandler.setting_changed.connect(func(_parameter):
-		$Sidebar/MTBox/MTBody.text = Global.target_scene_description
+		if Global.target_scene_description != null:
+			$Sidebar/MTBox/MTBody.text = Global.target_scene_description
 		$Sidebar/MTBox/MTHeading/MTTitle.text = Global.target_scene_title)
 	
 	# Thingistry toggling of curio notification
 	Curio.collected.connect(func(_id):
-		notif.visible = true
 		$Minimap/InteractButton.reset(false)
-		$Minimap/ThingistryButton.fade_in(true))
-	
-	Curio.panel_opened.connect(func():
-		notif.visible = false
-		$Minimap/ThingistryButton.reset(false))
+		
+		for _c in Curio.DATA:
+			if "objects" in Curio.DATA[_c]:
+				if _id in Curio.DATA[_c].objects:
+					var _thingistry = Thingistry.instantiate()
+					add_child(_thingistry)
+					_thingistry.open_at_id(_c)
+					break)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_key"):
@@ -85,6 +86,7 @@ func _input(_event: InputEvent) -> void:
 		if Global.in_exclusive_ui: return
 		var _thingistry = Thingistry.instantiate()
 		add_child(_thingistry)
+		_thingistry.go_to_page(0)
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Global.in_exclusive_ui: return

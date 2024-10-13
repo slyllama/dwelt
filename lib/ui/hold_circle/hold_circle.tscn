@@ -133,7 +133,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_odiym")
 
 [node name="Blur" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.392157)
+modulate = Color(0, 0, 0, 0.666667)
 texture = ExtResource("4_0l5oj")
 
 [node name="Highlight" parent="." instance=ExtResource("4_mkfpi")]

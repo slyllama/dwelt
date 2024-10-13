@@ -9,7 +9,6 @@ var collected = false
 func collect() -> void:
 	collected = true
 	Curio.collected_objects.append(id) # add to saved collected objects
-	Curio.collected_since_last_open.append(id) # add to objects collected since last panel open
 	Curio.collected.emit(id)
 	set_use_hold_circle(false)
 

@@ -1,14 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwyah14n0ldeh"]
+[gd_scene load_steps=22 format=3 uid="uid://dwyah14n0ldeh"]
 
 [ext_resource type="Script" path="res://lib/thingistry/thingistry.gd" id="1_fewt1"]
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
-[ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_hn57a"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_oq4q3"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_blur.gdshader" id="2_w4rnl"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="4_l2dmw"]
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
 [ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
-[ext_resource type="Texture2D" uid="uid://cpvf8pogsy1ej" path="res://lib/thingistry/textures/notification.png" id="7_62vq7"]
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
 [ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
 [ext_resource type="PackedScene" uid="uid://dml02ognr10l7" path="res://lib/object/inspector/inspector_instance.tscn" id="11_usmbh"]
@@ -76,7 +74,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -154,11 +152,8 @@ _data = {
 layer = 11
 script = ExtResource("1_fewt1")
 
-[node name="SmokeTransition" parent="." instance=ExtResource("2_hn57a")]
-visible = false
-time = 0.1
-
 [node name="Base" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,13 +235,6 @@ text = "Thingistry"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-
-[node name="GlobalNotifIcon" type="TextureRect" parent="Base/Panel/VBox/HeadingBox"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-texture = ExtResource("7_62vq7")
-expand_mode = 5
-stretch_mode = 5
 
 [node name="ExpandPadding" type="Control" parent="Base/Panel/VBox/HeadingBox"]
 layout_mode = 2

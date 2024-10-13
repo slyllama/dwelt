@@ -9,7 +9,7 @@ const Inspector = preload("res://lib/object/inspector/inspector_instance.tscn")
 ## This is passed to [code]Global.target_scene_title[/code], which
 ## [code]MapTitle[/code] will use to render itself.
 @export var map_title = "((Map Name))"
-@export var map_description = "((Map Description))"
+@export_multiline var map_description = "((Map Description))"
 ## Moss and ground decals will only be projected onto the children of this node.
 @export var decal_candidates: Node
 ## Child lights of this node will cast shadows when shadows are enabled in the

@@ -35,14 +35,6 @@ func get_page_count(size: int) -> int:
 		_page_count += 1
 	return(_page_count)
 
-func get_is_newly_collected(id: String) -> bool:
-	if "objects" in DATA[id]:
-		var _objects = DATA[id].objects
-		for _o in collected_since_last_open:
-			if _o in _objects:
-				return(true)
-	return(false)
-
 const DATA = {
 	"gratitude": {
 		"name": "Gratitude",
@@ -62,5 +54,3 @@ const DATA = {
 var collected_objects = [
 	"gratitude_note"
 ]
-
-var collected_since_last_open = [] # used to highlight newly-collected curios

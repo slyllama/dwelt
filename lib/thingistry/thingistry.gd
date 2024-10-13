@@ -1,5 +1,6 @@
 @tool
 extends CanvasLayer
+const Highlight = preload("res://lib/ui/highlight/highlight.tscn")
 # Thingistry
 # UI to show curios and curio collection progress
 
@@ -11,16 +12,14 @@ extends CanvasLayer
 @onready var info_banner = get_node("Base/Panel/VBox/BodyBox/Image")
 @onready var info_body = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Body")
 
-@onready var global_notif_icon = get_node("Base/Panel/VBox/HeadingBox/GlobalNotifIcon")
 @onready var previous_button = get_node("Base/Panel/VBox/Navigation/PreviousButton")
 @onready var next_button = get_node("Base/Panel/VBox/Navigation/NextButton")
 
 var current_curio_position = Vector2(-300, 300)
 var grid: CurioGrid
-var _current_page = 0
+var current_page = 0
 
 func close() -> void:
-	Curio.collected_since_last_open = [] # reset newly collected objects
 	$Transitions.play_backwards("fade")
 	await $Transitions.animation_finished
 	Global.in_exclusive_ui = false
@@ -29,6 +28,7 @@ func close() -> void:
 
 # Switches the curio grid over to the indices which match the player's current page
 func go_to_page(_page: int):
+	current_page = _page
 	$Paper.play()
 	
 	grid.clear()
@@ -42,30 +42,60 @@ func go_to_page(_page: int):
 	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
 	
 	# Toggle whether pagination buttons are enabled or not
-	if _current_page == Curio.get_page_count(grid.grid_size) - 1:
+	if current_page == Curio.get_page_count(grid.grid_size) - 1:
 		next_button.disabled = true
 		next_button.mouse_filter = next_button.MOUSE_FILTER_IGNORE
 	else:
 		next_button.disabled = false
 		next_button.mouse_filter = next_button.MOUSE_FILTER_STOP
-	if _current_page == 0:
+	if current_page == 0:
 		previous_button.disabled = true
 		previous_button.mouse_filter = next_button.MOUSE_FILTER_IGNORE
 	else:
 		previous_button.disabled = false
 		previous_button.mouse_filter = next_button.MOUSE_FILTER_STOP
+	
+	await get_tree().process_frame
+	current_curio_position = grid.button_nodes[0].get_center()
+	$Cursor.global_position = current_curio_position
+
+func open_at_id(id: String) -> void:
+	var _page_place = 0
+	var _page_count = 0
+	for _c in Curio.DATA.keys():
+		if id == _c:
+			break
+		_page_place += 1
+	
+	while _page_place > grid.grid_size:
+		_page_place -= grid.grid_size
+		_page_count += 1
+	
+	go_to_page(_page_count)
+	Curio.curio_selected.emit(id)
+	
+	await get_tree().process_frame
+	current_curio_position = grid.button_nodes[_page_place].get_center()
+	$Cursor.global_position = current_curio_position
+	
+	await get_tree().create_timer(0.2).timeout
+	var _flasher = Highlight.instantiate()
+	_flasher.position = current_curio_position
+	_flasher.z_index = 100
+	add_child(_flasher)
+	_flasher.flash(true) # highlight the newly-collected curio but clear after
 
 func _ready() -> void:
 	grid = CurioGrid.new()
 	grid_base.add_child(grid)
-	
 	if Engine.is_editor_hint(): return
+	
 	Global.in_exclusive_ui = true
 	Global.player_can_move = false
 	info_title.text = " "
 	
+	$Transitions.play("RESET") # prevents a frame of visibility from happening sometimes
 	$Transitions.play("fade")
-	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
 	
 	# Fill in details when a curio is selected
@@ -105,25 +135,11 @@ func _ready() -> void:
 			info_body.text = ""
 			info_progress.visible = false)
 	
-	go_to_page(0)
-	
-	# Set the active curio (and corresponding display data) to the first curio in the grid
-	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
-	
-	if Curio.collected_since_last_open.size() > 0:
-		global_notif_icon.visible = true
-	else:
-		global_notif_icon.visible = false
-	
 	# Get new node positions when window changes - resizing can leave the cursor
 	# off in the middle of nowhere
 	get_window().size_changed.connect(func():
 		current_curio_position = grid.button_nodes[0].get_center()
 		$Cursor.global_position = current_curio_position)
-	
-	await get_tree().process_frame # needs a chance to know its true global position
-	current_curio_position = grid.button_nodes[0].get_center()
-	$Cursor.global_position = current_curio_position
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("thingistry"):
@@ -138,15 +154,15 @@ func _on_close_button_button_down() -> void: close()
 
 func _on_next_button() -> void:
 	# Advance the curio grid by a page, if there are more left
-	if (_current_page + 1) * grid.grid_size < Curio.DATA.size():
-		_current_page += 1
-		go_to_page(_current_page)
+	if (current_page + 1) * grid.grid_size < Curio.DATA.size():
+		current_page += 1
+		go_to_page(current_page)
 
 func _on_previous_button() -> void:
 	# Go back a curio grid page, if you're not already at the beginning
-	if _current_page > 0:
-		_current_page -= 1
-		go_to_page(_current_page)
+	if current_page > 0:
+		current_page -= 1
+		go_to_page(current_page)
 
 func _on_button_mouse_entered() -> void:
 	# Connect other buttons here so that they will make the sound

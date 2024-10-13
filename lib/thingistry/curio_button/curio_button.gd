@@ -26,18 +26,13 @@ func _ready() -> void:
 			var texture_path = Curio.TEXTURE_PATH + curio_id + ".png"
 			if ResourceLoader.exists(texture_path):
 				$Button/ItemTexture.texture = load(texture_path)
-		
-		if Curio.get_is_newly_collected(curio_id):
-			$Button/Notification.visible = true
-			newly_collected = true
+	
 	else: # buttons with a "none" id will just render as empty squares in the grid
 		$Button/Progress.visible = false
 		$Button.texture_normal = TEXTURE_EMPTY
 
 func _on_button_down() -> void:
 	if curio_id == "none": return
-	if $Button/Notification.visible: # dismiss 'newly collected' notification
-		$Button/Notification.visible = false
 	
 	clicked_button.emit(get_center())
 	Global.hover_sound.emit()

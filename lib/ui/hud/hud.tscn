@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=18 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_u8gkr"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b47jl8wwysodp" path="res://lib/ui/diamond_button/diamond_button.tscn" id="8_oelrm"]
 [ext_resource type="PackedScene" uid="uid://cmkolvndsk61d" path="res://lib/ui/settings/settings.tscn" id="9_nl48w"]
 [ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/ui/minimap/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
-[ext_resource type="Texture2D" uid="uid://cpvf8pogsy1ej" path="res://lib/thingistry/textures/notification.png" id="10_70nmb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84ane"]
 shader = ExtResource("4_qufeq")
@@ -188,14 +187,6 @@ offset_right = 288.0
 offset_bottom = 215.0
 scale = Vector2(0.85, 0.85)
 texture_normal = ExtResource("8_45tje")
-
-[node name="Notification" type="TextureRect" parent="Minimap/ThingistryButton"]
-visible = false
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("10_70nmb")
-expand_mode = 1
 
 [node name="SettingsButton" parent="Minimap" instance=ExtResource("8_oelrm")]
 layout_mode = 1
