@@ -154,6 +154,7 @@ layer = 11
 script = ExtResource("1_fewt1")
 
 [node name="SmokeTransition" parent="." instance=ExtResource("2_hn57a")]
+visible = false
 time = 0.1
 
 [node name="Base" type="Control" parent="."]
@@ -405,4 +406,6 @@ volume_db = -3.0
 
 [connection signal="button_down" from="Base/Panel/VBox/HeadingBox/CloseButton" to="." method="_on_close_button_button_down"]
 [connection signal="button_down" from="Base/Panel/VBox/Navigation/PreviousButton" to="." method="_on_previous_button"]
+[connection signal="mouse_entered" from="Base/Panel/VBox/Navigation/PreviousButton" to="." method="_on_button_mouse_entered"]
 [connection signal="button_down" from="Base/Panel/VBox/Navigation/NextButton" to="." method="_on_next_button"]
+[connection signal="mouse_entered" from="Base/Panel/VBox/Navigation/NextButton" to="." method="_on_button_mouse_entered"]

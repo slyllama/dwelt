@@ -26,6 +26,15 @@ func get_progress(id: String) -> float:
 	else:
 		return(0)
 
+# Get the total page count - useful for displaying pagination
+func get_page_count(size: int) -> int:
+	var _page_count = 0
+	var _curio_count = DATA.size()
+	while _curio_count > 0:
+		_curio_count -= size
+		_page_count += 1
+	return(_page_count)
+
 func get_is_newly_collected(id: String) -> bool:
 	if "objects" in DATA[id]:
 		var _objects = DATA[id].objects
@@ -62,13 +71,15 @@ const DATA = {
 	"parrot": { "name": "Parrot" },
 	"quacker": {
 		"name": "Quacker",
+		"short_desc": "WELL HELLO THERE",
 		"objects": [
 			"apples",
 			"bananas",
 			"cucumber"
 		],
 		"object_text": {
-			"apples": "((This text gets added to the 'quacker' curio when the 'apples' object is picked up.))"
+			"apples": "((This text gets added to the 'quacker' curio when the 'apples' object is picked up.))",
+			"cucumber": "((What the actual fudge))"
 		}
 	}
 }

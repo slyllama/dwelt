@@ -11,6 +11,9 @@ extends CanvasLayer
 @onready var info_banner = get_node("Base/Panel/VBox/BodyBox/Image")
 @onready var info_body = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Body")
 
+@onready var previous_button = get_node("Base/Panel/VBox/Navigation/PreviousButton")
+@onready var next_button = get_node("Base/Panel/VBox/Navigation/NextButton")
+
 var current_curio_position = Vector2(-300, 300)
 var grid: CurioGrid
 var _current_page = 0
@@ -23,7 +26,10 @@ func close() -> void:
 	Global.player_can_move = true
 	queue_free()
 
+# Switches the curio grid over to the indices which match the player's current page
 func go_to_page(_page: int):
+	$Paper.play()
+	
 	grid.clear()
 	grid.generate(_page * grid.grid_size)
 	for _button: CurioButton in grid.button_nodes:
@@ -31,8 +37,17 @@ func go_to_page(_page: int):
 			current_curio_position = _pos)
 	current_curio_position = grid.button_nodes[0].get_center()
 	$Base/Panel/VBox/Navigation/PageCount.text = ("[center]"
-		+ str(_page + 1) + "/?[/center]")
+		+ str(_page + 1) + "/" + str(Curio.get_page_count(grid.grid_size))+ "[/center]")
 	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
+	
+	if _current_page == Curio.get_page_count(grid.grid_size) - 1:
+		next_button.disabled = true
+	else:
+		next_button.disabled = false
+	if _current_page == 0:
+		previous_button.disabled = true
+	else:
+		previous_button.disabled = false
 
 func _ready() -> void:
 	grid = CurioGrid.new()
@@ -43,7 +58,6 @@ func _ready() -> void:
 	Global.player_can_move = false
 	info_title.text = " "
 	$Transitions.play("fade")
-	$Paper.play()
 	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
 	
@@ -62,7 +76,7 @@ func _ready() -> void:
 			# Add additional text to information depending on which objects have been collected
 			if "objects" in _data and "object_text" in _data:
 				for _o in _data.objects:
-					if _o in _data.object_text:
+					if _o in _data.object_text and _o in Curio.collected_objects:
 						if info_body.text != "":
 							# Only add a paragraph break if text came before it
 							info_body.text += "\n\n"
@@ -118,3 +132,7 @@ func _on_previous_button() -> void:
 	if _current_page > 0:
 		_current_page -= 1
 		go_to_page(_current_page)
+
+func _on_button_mouse_entered() -> void:
+	# Connect other buttons here so that they will make the sound
+	Global.hover_sound.emit()
