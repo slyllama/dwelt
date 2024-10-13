@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmiarp0m8f0o8"
-path="res://.godot/imported/interact_icon.png-45255614fc6cf30081047c7a6313003c.ctex"
+uid="uid://bxabddpud6ag"
+path="res://.godot/imported/settings_small.png-3d5b52a912d961b3ac9c65aeef71f9c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/hud/textures/interact_icon.png"
-dest_files=["res://.godot/imported/interact_icon.png-45255614fc6cf30081047c7a6313003c.ctex"]
+source_file="res://lib/ui/hud/corner_button/textures/settings_small.png"
+dest_files=["res://.godot/imported/settings_small.png-3d5b52a912d961b3ac9c65aeef71f9c6.ctex"]
 
 [params]
 

@@ -25,7 +25,6 @@ func _fmt_color_tags(input: String) -> String:
 
 func _ready() -> void:
 	# Establish visibilty and modulation
-	$Minimap/InteractButton.visible = false
 	_target_oibox_dissolve = 0.0
 	$FG.visible = true
 	
@@ -42,14 +41,9 @@ func _ready() -> void:
 	Global.proximity_entered.connect(func():
 		_target_oibox_dissolve = 1.0
 		$Sidebar/OIBox/OIHeading/OITitle.text = Global.proximal_object.title
-		$Sidebar/OIBox/OIBody.text = _fmt_color_tags(Global.proximal_object.description)
-		if Global.proximal_object.can_interact:
-			# Interact button will glow on fade in
-			$Minimap/InteractButton.fade_in(true)
-		else: $Minimap/InteractButton.fade_out())
+		$Sidebar/OIBox/OIBody.text = _fmt_color_tags(Global.proximal_object.description))
 	
 	Global.proximity_left.connect(func():
-		$Minimap/InteractButton.fade_out()
 		_target_oibox_dissolve = 0.0)
 	
 	Global.shake_camera.connect(func(): # chromatic aberration for camera shake
@@ -68,8 +62,6 @@ func _ready() -> void:
 	
 	# Thingistry toggling of curio notification
 	Curio.collected.connect(func(_id):
-		$Minimap/InteractButton.reset(false)
-		
 		for _c in Curio.DATA:
 			if "objects" in Curio.DATA[_c]:
 				if _id in Curio.DATA[_c].objects:
@@ -113,3 +105,4 @@ func _on_thingistry_pressed() -> void:
 	if Global.in_exclusive_ui: return
 	var _thingistry = Thingistry.instantiate()
 	add_child(_thingistry)
+	_thingistry.go_to_page(0)

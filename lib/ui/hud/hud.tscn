@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_1axyw"]
 [ext_resource type="Texture2D" uid="uid://dxcty3ssnk61q" path="res://lib/ui/hud/textures/panel_gradient.tres" id="5_1e3af"]
 [ext_resource type="PackedScene" uid="uid://jtl64blli4jh" path="res://lib/ui/minimap/minimap.tscn" id="6_btust"]
-[ext_resource type="Texture2D" uid="uid://cmiarp0m8f0o8" path="res://lib/ui/hud/textures/interact_icon.png" id="8_45tje"]
-[ext_resource type="PackedScene" uid="uid://b47jl8wwysodp" path="res://lib/ui/diamond_button/diamond_button.tscn" id="8_oelrm"]
 [ext_resource type="PackedScene" uid="uid://cmkolvndsk61d" path="res://lib/ui/settings/settings.tscn" id="9_nl48w"]
 [ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/ui/minimap/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
+[ext_resource type="PackedScene" uid="uid://dt8q82hilms4t" path="res://lib/ui/hud/corner_button/corner_button.tscn" id="11_vloyh"]
+[ext_resource type="Texture2D" uid="uid://qweh6te8m0rm" path="res://lib/ui/hud/corner_button/textures/thingistry_small.png" id="12_pu032"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84ane"]
 shader = ExtResource("4_qufeq")
@@ -178,40 +178,6 @@ offset_right = -20.0
 offset_bottom = -20.0
 size_flags_vertical = 8
 
-[node name="ThingistryButton" parent="Minimap" instance=ExtResource("8_oelrm")]
-self_modulate = Color(1, 0.65098, 0.301961, 1)
-layout_mode = 0
-offset_left = 204.0
-offset_top = 131.0
-offset_right = 288.0
-offset_bottom = 215.0
-scale = Vector2(0.85, 0.85)
-texture_normal = ExtResource("8_45tje")
-
-[node name="SettingsButton" parent="Minimap" instance=ExtResource("8_oelrm")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -79.0
-offset_right = 4.00006
-offset_bottom = 5.00003
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.85, 0.85)
-
-[node name="InteractButton" parent="Minimap" instance=ExtResource("8_oelrm")]
-layout_mode = 0
-offset_left = 129.0
-offset_top = 205.0
-offset_right = 213.0
-offset_bottom = 289.0
-scale = Vector2(0.85, 0.85)
-texture_normal = ExtResource("8_45tje")
-
 [node name="DebugContainer" type="VBoxContainer" parent="Minimap"]
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 1
@@ -269,6 +235,19 @@ offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[connection signal="button_down" from="Minimap/ThingistryButton" to="." method="_on_thingistry_pressed"]
-[connection signal="button_down" from="Minimap/SettingsButton" to="." method="_on_settings_pressed"]
-[connection signal="gui_input" from="Minimap/InteractButton" to="." method="_on_interact_button_gui_input"]
+[node name="CornerButtons" type="HBoxContainer" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 72.0
+offset_bottom = 36.0
+theme_override_constants/separation = 12
+
+[node name="SettingsButton" parent="CornerButtons" instance=ExtResource("11_vloyh")]
+layout_mode = 2
+
+[node name="ThingistryButton" parent="CornerButtons" instance=ExtResource("11_vloyh")]
+layout_mode = 2
+texture_normal = ExtResource("12_pu032")
+
+[connection signal="button_down" from="CornerButtons/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="CornerButtons/ThingistryButton" to="." method="_on_thingistry_pressed"]

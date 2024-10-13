@@ -133,11 +133,12 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_odiym")
 
 [node name="Blur" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.666667)
 texture = ExtResource("4_0l5oj")
 
 [node name="Highlight" parent="." instance=ExtResource("4_mkfpi")]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.65, 0.65)
 
 [node name="EditorCircle" type="Sprite2D" parent="."]
 use_parent_material = true

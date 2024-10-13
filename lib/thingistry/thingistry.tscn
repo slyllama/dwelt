@@ -115,7 +115,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.5]
+"values": [0.0, 0.15]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -216,13 +216,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SepTop" type="ColorRect" parent="Base/Panel/VBox"]
-use_parent_material = true
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0.784314)
-
 [node name="HeadingBox" type="HBoxContainer" parent="Base/Panel/VBox"]
 layout_mode = 2
 
@@ -242,6 +235,13 @@ size_flags_horizontal = 3
 
 [node name="CloseButton" parent="Base/Panel/VBox/HeadingBox" instance=ExtResource("2_8utiv")]
 layout_mode = 2
+
+[node name="SepTop" type="ColorRect" parent="Base/Panel/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0.784314)
 
 [node name="Padding" type="ColorRect" parent="Base/Panel/VBox"]
 use_parent_material = true
@@ -364,12 +364,14 @@ size_flags_horizontal = 0
 [node name="PreviousButton" type="Button" parent="Base/Panel/VBox/Navigation"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Previous"
 
 [node name="PageCount" type="RichTextLabel" parent="Base/Panel/VBox/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]?[/center]"
 fit_content = true
@@ -380,6 +382,7 @@ autowrap_mode = 0
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 18
 text = "Next"
 
 [node name="SepBottom" type="ColorRect" parent="Base/Panel/VBox"]

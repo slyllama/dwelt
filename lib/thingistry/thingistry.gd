@@ -142,8 +142,8 @@ func _ready() -> void:
 		$Cursor.global_position = current_curio_position)
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("thingistry"):
-		close()
+	if Input.is_action_just_pressed("thingistry"): close()
+	if Input.is_action_just_pressed("ui_cancel"): close()
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return

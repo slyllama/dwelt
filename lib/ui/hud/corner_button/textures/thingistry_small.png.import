@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr5b4e8r5jqoo"
-path="res://.godot/imported/settings_icon.png-780f41af8b96358f08f4d8255fb48568.ctex"
+uid="uid://qweh6te8m0rm"
+path="res://.godot/imported/thingistry_small.png-cb9cf1f35d9b9c5bb2567a7978569f6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/hud/textures/settings_icon.png"
-dest_files=["res://.godot/imported/settings_icon.png-780f41af8b96358f08f4d8255fb48568.ctex"]
+source_file="res://lib/ui/hud/corner_button/textures/thingistry_small.png"
+dest_files=["res://.godot/imported/thingistry_small.png-cb9cf1f35d9b9c5bb2567a7978569f6d.ctex"]
 
 [params]
 
