@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cpvf8pogsy1ej" path="res://lib/thingistry/textures/notification.png" id="3_ud7ni"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hjtt"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e838r"]
-bg_color = Color(0.215686, 0.65098, 0.231373, 1)
+bg_color = Color(0.2145, 0.65, 0.229017, 0.784314)
 
 [node name="CurioButton" type="VBoxContainer"]
 offset_right = 40.0
@@ -22,16 +22,17 @@ texture_normal = ExtResource("1_vv5fn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Notification" type="TextureRect" parent="Button"]
-visible = false
+[node name="ItemTexture" type="TextureRect" parent="Button"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-texture = ExtResource("3_ud7ni")
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
@@ -52,17 +53,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_0hjtt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_e838r")
 show_percentage = false
 
-[node name="ItemTexture" type="TextureRect" parent="Button"]
+[node name="Notification" type="TextureRect" parent="Button"]
+visible = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -30.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 30.0
+grow_horizontal = 0
+texture = ExtResource("3_ud7ni")
 expand_mode = 1
 stretch_mode = 5
 

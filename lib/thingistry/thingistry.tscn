@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
 [ext_resource type="PackedScene" uid="uid://2hmmmbs3rxxl" path="res://lib/ui/hud/smoke_transition/smoke_transition.tscn" id="2_hn57a"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_oq4q3"]
-[ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="2_tqgrx"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_blur.gdshader" id="2_w4rnl"]
 [ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="4_l2dmw"]
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
@@ -12,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
 [ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
 [ext_resource type="PackedScene" uid="uid://dml02ognr10l7" path="res://lib/object/inspector/inspector_instance.tscn" id="11_usmbh"]
+[ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="13_rtd5m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
 shader = ExtResource("2_w4rnl")
@@ -132,16 +132,6 @@ script = ExtResource("1_fewt1")
 [node name="SmokeTransition" parent="." instance=ExtResource("2_hn57a")]
 time = 0.1
 
-[node name="DebugTexture" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_tqgrx")
-stretch_mode = 1
-
 [node name="Base" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -252,9 +242,10 @@ custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="InspectorInstance" parent="Base/Panel/VBox/BodyBox/Image" instance=ExtResource("11_usmbh")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,8 +350,11 @@ libraries = {
 }
 
 [node name="Cursor" type="Sprite2D" parent="."]
-position = Vector2(-300, 300)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_or660")
+
+[node name="Paper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rtd5m")
+volume_db = -3.0
 
 [connection signal="button_down" from="Base/Panel/VBox/HeadingBox/CloseButton" to="." method="_on_close_button_button_down"]

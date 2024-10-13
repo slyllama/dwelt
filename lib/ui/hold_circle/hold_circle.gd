@@ -22,7 +22,8 @@ func stop(finished = false) -> void:
 	if !is_spinning: return
 	is_spinning = false
 	
-	$HoldSound.stop()
+	$Blur.visible = false
+	$Hold.stop()
 	if rotator != null:
 		rotator.stop()
 		root_node.queue_free()
@@ -35,7 +36,8 @@ func spin() -> void:
 	if is_spinning: return # don't start twice!
 	is_spinning = true
 	
-	$HoldSound.play()
+	$Blur.visible = true
+	$Hold.play()
 	root_node = Node2D.new()
 	add_child(root_node)
 	

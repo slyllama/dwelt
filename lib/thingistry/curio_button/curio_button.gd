@@ -18,7 +18,6 @@ func _ready() -> void:
 			$Button.texture_normal = TEXTURE_UNKNOWN
 		else:
 			var texture_path = Curio.TEXTURE_PATH + curio_id + ".png"
-			print(texture_path)
 			if ResourceLoader.exists(texture_path):
 				$Button/ItemTexture.texture = load(texture_path)
 		

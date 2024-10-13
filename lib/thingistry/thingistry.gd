@@ -19,7 +19,6 @@ func close() -> void:
 	await $Transitions.animation_finished
 	Global.in_exclusive_ui = false
 	Global.player_can_move = true
-	
 	queue_free()
 
 func _ready() -> void:
@@ -33,6 +32,7 @@ func _ready() -> void:
 	Global.player_can_move = false
 	info_title.text = " "
 	$Transitions.play("fade")
+	$Paper.play()
 	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
 	
@@ -51,6 +51,8 @@ func _ready() -> void:
 			var banner_texture_path = Curio.TEXTURE_PATH + str(id) + "_banner.png"
 			if ResourceLoader.exists(banner_texture_path):
 				info_banner.texture = load(banner_texture_path) # TODO: parallelise?
+			else:
+				info_banner.texture = null
 			
 		else: # nothing is known yet about the curio and no information should be shown
 			info_banner.visible = false
