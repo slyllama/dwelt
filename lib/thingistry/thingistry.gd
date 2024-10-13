@@ -78,6 +78,8 @@ func _ready() -> void:
 			info_title.text = _data.name
 			if "short_desc" in _data:
 				info_body.text = _data.short_desc
+			else:
+				info_body.text = ""
 			info_progress.visible = visible
 			info_progress.value = _progress * 100
 			
