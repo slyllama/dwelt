@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c53od80m5wr3j"]
+[gd_scene load_steps=45 format=3 uid="uid://c53od80m5wr3j"]
 
 [ext_resource type="Script" path="res://maps/lyllian/lyllian.gd" id="1_1mnll"]
 [ext_resource type="PackedScene" uid="uid://dvfwn2u2p31wx" path="res://lib/map/map.tscn" id="1_wjums"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://dkmhju7d7cbbp" path="res://generic/materials/mat_glow.tres" id="8_kwxtx"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
 [ext_resource type="Texture2D" uid="uid://rv3u0hm835os" path="res://generic/textures/mote.png" id="10_gpxie"]
+[ext_resource type="PackedScene" uid="uid://varaosrn2amc" path="res://lib/object/object/curio_object/curio_object.tscn" id="11_8k1x8"]
 [ext_resource type="PackedScene" uid="uid://bhitp7khof5px" path="res://maps/lyllian/meshes/bookcase.glb" id="13_k1ml3"]
 [ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/meshes/side_table.glb" id="14_2awna"]
 [ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="15_08dm5"]
@@ -207,18 +208,18 @@ title = "((Summon))"
 show_mote = true
 can_interact = true
 
-[node name="O_Books" parent="." index="10" instance=ExtResource("7_awmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133247, 2.28103, 2.29168)
+[node name="O_FacelessBooks" parent="." index="10" instance=ExtResource("11_8k1x8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 2, 1.7)
 id = "faceless_books"
 title = "Faceless Books"
+radius = 1.2
 description = "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are."
-can_interact = true
-use_hold_circle = true
 
 [node name="O_Painting" parent="." index="11" instance=ExtResource("7_awmnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72328, 2.50622, 0.668799)
 id = "aoibhe_painting"
 title = "Well-Preserved Canvas"
+radius = 1.2
 description = "A corner of quiet; fabric uninvaded by dust. The vegetation seems to congregate here."
 can_interact = true
 interact_string = "Observe"
@@ -466,5 +467,4 @@ transform = Transform3D(1.41421, 0.521135, -1.31469, 0, 1.85926, 0.736996, 1.414
 mesh = ExtResource("19_ob6rd")
 
 [connection signal="interacted" from="Summoner/O_Summon" to="." method="_on_summon_object_interacted"]
-[connection signal="interacted" from="O_Books" to="." method="_on_o_books_interacted"]
 [connection signal="interacted" from="O_Painting" to="." method="_on_play_cutscene_interacted"]

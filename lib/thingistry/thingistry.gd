@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var info_banner = get_node("Base/Panel/VBox/BodyBox/Image")
 @onready var info_body = get_node("Base/Panel/VBox/BodyBox/Infobase/VBox/Body")
 
+@onready var global_notif_icon = get_node("Base/Panel/VBox/HeadingBox/GlobalNotifIcon")
 @onready var previous_button = get_node("Base/Panel/VBox/Navigation/PreviousButton")
 @onready var next_button = get_node("Base/Panel/VBox/Navigation/NextButton")
 
@@ -40,14 +41,19 @@ func go_to_page(_page: int):
 		+ str(_page + 1) + "/" + str(Curio.get_page_count(grid.grid_size))+ "[/center]")
 	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
 	
+	# Toggle whether pagination buttons are enabled or not
 	if _current_page == Curio.get_page_count(grid.grid_size) - 1:
 		next_button.disabled = true
+		next_button.mouse_filter = next_button.MOUSE_FILTER_IGNORE
 	else:
 		next_button.disabled = false
+		next_button.mouse_filter = next_button.MOUSE_FILTER_STOP
 	if _current_page == 0:
 		previous_button.disabled = true
+		previous_button.mouse_filter = next_button.MOUSE_FILTER_IGNORE
 	else:
 		previous_button.disabled = false
+		previous_button.mouse_filter = next_button.MOUSE_FILTER_STOP
 
 func _ready() -> void:
 	grid = CurioGrid.new()
@@ -57,6 +63,7 @@ func _ready() -> void:
 	Global.in_exclusive_ui = true
 	Global.player_can_move = false
 	info_title.text = " "
+	
 	$Transitions.play("fade")
 	$SmokeTransition.set_value(0.5)
 	Curio.panel_opened.emit()
@@ -65,6 +72,7 @@ func _ready() -> void:
 	Curio.curio_selected.connect(func(id):
 		var _progress = Curio.get_progress(id)
 		var _data = Curio.DATA[id]
+		
 		if _progress > 0:
 			# Display information - something is known about the curio
 			info_title.text = _data.name
@@ -99,6 +107,11 @@ func _ready() -> void:
 	
 	# Set the active curio (and corresponding display data) to the first curio in the grid
 	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
+	
+	if Curio.collected_since_last_open.size() > 0:
+		global_notif_icon.visible = true
+	else:
+		global_notif_icon.visible = false
 	
 	# Get new node positions when window changes - resizing can leave the cursor
 	# off in the middle of nowhere

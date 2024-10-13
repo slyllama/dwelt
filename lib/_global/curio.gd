@@ -44,48 +44,23 @@ func get_is_newly_collected(id: String) -> bool:
 	return(false)
 
 const DATA = {
-	"ant": {
-		"name": "Ant",
+	"gratitude": {
+		"name": "Gratitude",
 		"objects": [
-			"amber",
-			"blue"
-		],
-		"short_desc": "((This one actually has a short description!))"
+			"gratitude_note"
+		]
 	},
-	"bat": {
-		"name": "Bat"
-	},
-	"cat": { "name": "Cat" },
-	"dog": { "name": "Dog" },
-	"eagle": { "name": "Eagle" },
-	"fox": { "name": "Fox" },
-	"gecko": { "name": "Gecko" },
-	"horse": { "name": "Horse" },
-	"iguana": { "name": "Iguana" },
-	"jackelope": { "name": "Jackelope" },
-	"kitten": { "name": "Kitten" },
-	"lemur": { "name": "Lemur" },
-	"monkey": { "name": "Monkey" },
-	"nice_creature": { "name": "Nice Creature" },
-	"orangutan": { "name": "Orangutan" },
-	"parrot": { "name": "Parrot" },
-	"quacker": {
-		"name": "Quacker",
-		"short_desc": "WELL HELLO THERE",
+	"erudite_mushrooms": {
+		"name": "Erudite Mushrooms",
+		"short_desc": "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are.",
 		"objects": [
-			"apples",
-			"bananas",
-			"cucumber"
-		],
-		"object_text": {
-			"apples": "((This text gets added to the 'quacker' curio when the 'apples' object is picked up.))",
-			"cucumber": "((What the actual fudge))"
-		}
+			"faceless_books"
+		]
 	}
 }
 
 var collected_objects = [
-	"amber"
+	"gratitude_note"
 ]
 
 var collected_since_last_open = [] # used to highlight newly-collected curios
