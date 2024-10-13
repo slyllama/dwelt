@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d35krm14gfiv8"]
+[gd_scene load_steps=7 format=3 uid="uid://d35krm14gfiv8"]
 
 [ext_resource type="Script" path="res://lib/thingistry/curio_button/curio_button.gd" id="1_uf4dd"]
 [ext_resource type="Texture2D" uid="uid://ss2fqp2recd3" path="res://lib/thingistry/curio_button/textures/base.png" id="1_vv5fn"]
 [ext_resource type="Texture2D" uid="uid://cpvf8pogsy1ej" path="res://lib/thingistry/textures/notification.png" id="3_ud7ni"]
+[ext_resource type="FontFile" uid="uid://c16qe5rfq1jhg" path="res://generic/fonts/ibm_plex_mono.otf" id="4_cesbn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hjtt"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -11,8 +12,8 @@ bg_color = Color(0, 0, 0, 0.392157)
 bg_color = Color(0.2145, 0.65, 0.229017, 0.784314)
 
 [node name="CurioButton" type="VBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 92.0
+offset_bottom = 92.0
 script = ExtResource("1_uf4dd")
 
 [node name="Button" type="TextureButton" parent="."]
@@ -67,6 +68,24 @@ grow_horizontal = 0
 texture = ExtResource("3_ud7ni")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="DebugDetails" type="RichTextLabel" parent="Button"]
+visible = false
+modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_cesbn")
+scroll_active = false
+autowrap_mode = 0
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]

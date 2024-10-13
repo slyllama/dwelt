@@ -56,7 +56,16 @@ const DATA = {
 	"eagle": { "name": "Eagle" },
 	"fox": { "name": "Fox" },
 	"gecko": { "name": "Gecko" },
-	"horse": { "name": "Horse" }
+	"horse": { "name": "Horse" },
+	"iguana": { "name": "Iguana" },
+	"jackelope": { "name": "Jackelope" },
+	"kitten": { "name": "Kitten" },
+	"lemur": { "name": "Lemur" },
+	"monkey": { "name": "Monkey" },
+	"nice_creature": { "name": "Nice Creature" },
+	"orangutan": { "name": "Orangutan" },
+	"parrot": { "name": "Parrot" },
+	"quacker": { "name": "Quacker" },
 }
 
 var collected_objects = [

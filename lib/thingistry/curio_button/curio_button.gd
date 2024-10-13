@@ -12,6 +12,11 @@ func get_center() -> Vector2:
 	return($Button.global_position + $Button.size / 2) # center global position
 
 func _ready() -> void:
+	$Button/DebugDetails.text = curio_id
+	$Button/DebugDetails.visible = Global.debug_visible
+	Global.debug_visible_toggled.connect(func():
+		$Button/DebugDetails.visible = Global.debug_visible)
+	
 	if !curio_id == "none":
 		$Button/Progress.value = Curio.get_progress(curio_id) * 100
 		if Curio.get_progress(curio_id) == 0:
