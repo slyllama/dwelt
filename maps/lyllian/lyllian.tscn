@@ -210,7 +210,7 @@ show_mote = true
 can_interact = true
 
 [node name="O_FacelessBooks" parent="." index="10" instance=ExtResource("11_8k1x8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 2, 1.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142656, 2.04492, 1.59365)
 id = "faceless_books"
 title = "Faceless Books"
 radius = 1.2
@@ -220,7 +220,7 @@ description = "The mushrooms have absorbed almost all that these books contain, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72328, 2.50622, 0.668799)
 id = "aoibhe_painting"
 title = "Well-Preserved Canvas"
-radius = 1.2
+radius = 1.4
 description = "A corner of quiet; fabric uninvaded by dust. The vegetation seems to congregate here."
 can_interact = true
 interact_string = "Observe"

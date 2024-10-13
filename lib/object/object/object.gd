@@ -45,6 +45,7 @@ func _ready() -> void:
 	$Title.set_text(title)
 	$Anim.speed_scale = 0.5 + rng.randf() * 0.5
 	$ObjectOrb.visible = show_mote
+	$Stars.emitting = false
 	set_use_hold_circle(use_hold_circle)
 	
 	# Check if the diamond in map corner has been pressed...
@@ -83,10 +84,12 @@ func _physics_process(_delta: float) -> void:
 	if distance_to_player < $Range/Collision.shape.radius:
 		if !in_range: $EntrySound.play() # only do once
 		in_range = true
+		$Stars.emitting = true
 		if use_hold_circle: $Title/HoldCircle.visible = true
 	else:
 		if in_range: $LeaveSound.play() # only do once
 		in_range = false
+		$Stars.emitting = false
 		if use_hold_circle: $Title/HoldCircle.visible = false
 
 func _on_hold_circle_completed() -> void:
