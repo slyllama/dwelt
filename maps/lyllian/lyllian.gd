@@ -33,7 +33,7 @@ func _on_play_cutscene_interacted() -> void:
 	_cutscene.camera_original_position = Vector3(-0.8, 3.2, 0.8)
 	_cutscene.camera_target_position = Vector3(-1.9, 3.2, 0.8)
 	_cutscene.camera_animation_speed = 6.0
-	_cutscene.dialogue_script = [ "The serpentine voice remains silent at the mention of this innocent-looking figure, the muffled rain speaking in her place." ]
+	_cutscene.dialogue_script = [ "The serpentine air remains silent at the thought of this innocent-looking figure, the muffled rain overtaking the mute motes of dust." ]
 	add_child(_cutscene)
 
 func _on_summon_object_interacted() -> void:

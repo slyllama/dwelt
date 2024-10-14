@@ -23,6 +23,12 @@ func _fmt_color_tags(input: String) -> String:
 	output = output.replace(">", "[/color]")
 	return(output)
 
+func open_thingistry() -> void:
+	if Global.in_exclusive_ui: return
+	var _thingistry = Thingistry.instantiate()
+	add_child(_thingistry)
+	_thingistry.go_to_page(0)
+
 func _ready() -> void:
 	# Establish visibilty and modulation
 	_target_oibox_dissolve = 0.0
@@ -76,10 +82,7 @@ func _input(_event: InputEvent) -> void:
 		Global.set_display_debug(!Global.debug_visible)
 	
 	if Input.is_action_just_pressed("thingistry"):
-		if Global.in_exclusive_ui: return
-		var _thingistry = Thingistry.instantiate()
-		add_child(_thingistry)
-		_thingistry.go_to_page(0)
+		open_thingistry()
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Global.in_exclusive_ui: return
@@ -103,7 +106,4 @@ func _on_settings_pressed() -> void:
 	else: $Settings.close()
 
 func _on_thingistry_pressed() -> void:
-	if Global.in_exclusive_ui: return
-	var _thingistry = Thingistry.instantiate()
-	add_child(_thingistry)
-	_thingistry.go_to_page(0)
+	open_thingistry()

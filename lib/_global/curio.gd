@@ -49,6 +49,13 @@ const DATA = {
 		"objects": [
 			"faceless_books"
 		]
+	},
+	"aoibhe": {
+		"name": "Aoibhe",
+		"short_desc": "The very air seems to whisper the name 'Aoibhe', as if the walls know her better than any living soul.",
+		"objects": [
+			"aoibhe_painting"
+		]
 	}
 }
 

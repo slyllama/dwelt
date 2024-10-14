@@ -54,6 +54,7 @@ func go_to_page(_page: int):
 	else:
 		previous_button.disabled = false
 		previous_button.mouse_filter = next_button.MOUSE_FILTER_STOP
+	Curio.curio_selected.emit(grid.button_nodes[0].curio_id)
 	
 	await get_tree().process_frame
 	current_curio_position = grid.button_nodes[0].get_center()
@@ -85,61 +86,63 @@ func go_to_id(id: String) -> void:
 	add_child(_flasher)
 	_flasher.flash(true) # highlight the newly-collected curio but clear after
 
+func render_info(id) -> void:
+	var _progress = Curio.get_progress(id)
+	var _data = Curio.DATA[id]
+	
+	if _progress > 0:
+		# Display information - something is known about the curio
+		info_title.text = _data.name
+		if "short_desc" in _data:
+			info_body.text = _data.short_desc
+		else:
+			info_body.text = ""
+		info_progress.visible = visible
+		info_progress.value = _progress * 100
+		
+		# Add additional text to information depending on which objects have been collected
+		if "objects" in _data and "object_text" in _data:
+			for _o in _data.objects:
+				if _o in _data.object_text and _o in Curio.collected_objects:
+					if info_body.text != "":
+						# Only add a paragraph break if text came before it
+						info_body.text += "\n\n"
+					info_body.text += _data.object_text[_o]
+		
+		# Configure banner image
+		info_banner.visible = true
+		var banner_texture_path = Curio.TEXTURE_PATH + str(id) + "_banner.png"
+		if ResourceLoader.exists(banner_texture_path):
+			info_banner.texture = load(banner_texture_path) # TODO: parallelise?
+		else: info_banner.texture = null
+		
+	else: # nothing is known yet about the curio and no information should be shown
+		info_banner.texture = null
+		info_title.text = ""
+		info_body.text = ""
+		info_progress.visible = false
+
 func _ready() -> void:
 	grid = CurioGrid.new()
 	grid_base.add_child(grid)
 	if Engine.is_editor_hint(): return
-	
-	Global.in_exclusive_ui = true
-	Global.player_can_move = false
-	info_title.text = " "
 	
 	$Transitions.play("RESET") # prevents a frame of visibility from happening sometimes
 	$Transitions.play("fade")
 	Curio.panel_opened.emit()
 	
 	# Fill in details when a curio is selected
-	Curio.curio_selected.connect(func(id):
-		var _progress = Curio.get_progress(id)
-		var _data = Curio.DATA[id]
-		
-		if _progress > 0:
-			# Display information - something is known about the curio
-			info_title.text = _data.name
-			if "short_desc" in _data:
-				info_body.text = _data.short_desc
-			else:
-				info_body.text = ""
-			info_progress.visible = visible
-			info_progress.value = _progress * 100
-			
-			# Add additional text to information depending on which objects have been collected
-			if "objects" in _data and "object_text" in _data:
-				for _o in _data.objects:
-					if _o in _data.object_text and _o in Curio.collected_objects:
-						if info_body.text != "":
-							# Only add a paragraph break if text came before it
-							info_body.text += "\n\n"
-						info_body.text += _data.object_text[_o]
-			
-			# Configure banner image
-			info_banner.visible = true
-			var banner_texture_path = Curio.TEXTURE_PATH + str(id) + "_banner.png"
-			if ResourceLoader.exists(banner_texture_path):
-				info_banner.texture = load(banner_texture_path) # TODO: parallelise?
-			else: info_banner.texture = null
-			
-		else: # nothing is known yet about the curio and no information should be shown
-			info_banner.texture = null
-			info_title.text = ""
-			info_body.text = ""
-			info_progress.visible = false)
+	Curio.curio_selected.connect(render_info)
 	
 	# Get new node positions when window changes - resizing can leave the cursor
 	# off in the middle of nowhere
 	get_window().size_changed.connect(func():
 		current_curio_position = grid.button_nodes[0].get_center()
 		$Cursor.global_position = current_curio_position)
+	
+	await get_tree().process_frame
+	Global.in_exclusive_ui = true
+	Global.player_can_move = false
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("thingistry"): close()
