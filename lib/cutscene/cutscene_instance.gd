@@ -4,7 +4,8 @@ class_name CutsceneInstance extends Node
 # a pre-set camera animation
 const HINT = "[Alt] Rotate  [Shift] Raise/Lower  [LMB] Fine-Tune"
 
-var stopped = false
+signal finished
+var has_stopped = false
 var fade_tween: Tween
 var move_tween: Tween
 
@@ -15,9 +16,9 @@ var move_tween: Tween
 @export var dialogue_script: Array[String] = []
 
 func stop() -> void:
-	if stopped: return # no double-ups
+	if has_stopped: return # no double-ups
 	
-	stopped = true
+	has_stopped = true
 	$FG/Bars/Upper/CloseButton.queue_free()
 	$Dialogue.queue_free() # TODO: temp only
 	$SmokeTransition.fade_out(0.5)
@@ -46,7 +47,7 @@ func play() -> void:
 	$FG/Bars.visible = false
 	fade_tween = create_tween()
 	fade_tween.tween_property($FG/Fade, "modulate:a", 1.0, 0.5)
-	if stopped: return
+	if has_stopped: return
 	await fade_tween.finished
 	
 	fade_tween = create_tween()
@@ -68,6 +69,7 @@ func play() -> void:
 		move_tween.tween_property(
 			$CSCamera, "position", camera_target_position,
 			camera_animation_speed).set_trans(Tween.TRANS_SINE)
+		move_tween.tween_callback(finished.emit)
 	
 	if dialogue_script.size() > 0:
 		$Dialogue.play(dialogue_script)

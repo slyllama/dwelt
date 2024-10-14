@@ -40,4 +40,14 @@ func _on_summon_object_interacted() -> void:
 	$Summoner.activate()
 
 func _faceless_books_collected() -> void:
-	_on_play_cutscene_interacted() # debug
+	var _cutscene: CutsceneInstance = Cutscene.instantiate()
+	_cutscene.camera_rotation_degrees = Vector3(-30.6, 90, 0)
+	_cutscene.camera_original_position = Vector3(0.1, -1.7, -0.4)
+	_cutscene.camera_target_position = Vector3(2.7, -0.4, -0.4)
+	_cutscene.camera_animation_speed = 5.0
+	_cutscene.dialogue_script = [ "eeby deeby" ]
+	add_child(_cutscene)
+	
+	await _cutscene.finished
+	if Global.in_exclusive_ui:
+		$Summoner.activate() # don't aminate if the player left the cutscene early
