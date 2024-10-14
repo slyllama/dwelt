@@ -30,6 +30,7 @@ func stop() -> void:
 	CameraData.camera.make_current()
 	Global.hud_toggle_hidden.emit(false)
 	Global.player_can_move = true
+	Global.interaction_ended.emit()
 	$FG/Bars.visible = false
 	
 	Global.in_exclusive_ui = false

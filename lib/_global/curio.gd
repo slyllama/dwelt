@@ -54,3 +54,8 @@ const DATA = {
 var collected_objects = [
 	"gratitude_note"
 ]
+
+# Interacting with a curio will fill this value - it will be used to summon
+# the thingistry with the correct curio once the interaction sequence has
+# completed
+var last_collected = ""

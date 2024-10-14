@@ -61,14 +61,15 @@ func _ready() -> void:
 		$Sidebar/MTBox/MTHeading/MTTitle.text = Global.target_scene_title)
 	
 	# Thingistry toggling of curio notification
-	Curio.collected.connect(func(_id):
+	Global.interaction_ended.connect(func():
 		for _c in Curio.DATA:
 			if "objects" in Curio.DATA[_c]:
-				if _id in Curio.DATA[_c].objects:
+				if Curio.last_collected in Curio.DATA[_c].objects:
 					var _thingistry = Thingistry.instantiate()
 					add_child(_thingistry)
 					_thingistry.open_at_id(_c)
-					break)
+					break
+		Curio.last_collected = "")
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_key"):
