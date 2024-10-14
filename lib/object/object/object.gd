@@ -1,9 +1,16 @@
+@tool
 class_name DweltObject extends Node3D
 # Object
 # A generic interactable.
 
 @export var id = "object"
 @export var title = "((Object))"
+@export var radius = 1.7:
+	set(_value):
+		radius = _value
+		set_radius(_value)
+	get:
+		return(radius)
 @export_multiline var description = "((Object description.))"
 @export var show_mote = false
 
@@ -20,19 +27,25 @@ var distance_to_player: float
 # TODO: properly toggle interaction (i.e., trigger proximity left)
 
 func set_use_hold_circle(state):
-	use_hold_circle = state
 	if can_interact:
 		$Title/HoldCircle.visible = state
+		use_hold_circle = state
 	# If interaction is disabled the hold circle won't even show
 	else: $Title/HoldCircle.visible = false
 
-func set_radius(radius: float) -> void:
-	$Range/Collision.shape.radius = radius
+# unique_shape prevents this from affecting all objects
+func set_radius(get_radius: float) -> void:
+	var _unique_shape = $Range/Collision.shape.duplicate()
+	$Range/Collision.shape = _unique_shape
+	$Range/Collision.shape.radius = get_radius
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	
 	$Title.set_text(title)
 	$Anim.speed_scale = 0.5 + rng.randf() * 0.5
 	$ObjectOrb.visible = show_mote
+	$Stars.emitting = false
 	set_use_hold_circle(use_hold_circle)
 	
 	# Check if the diamond in map corner has been pressed...
@@ -47,6 +60,8 @@ func _ready() -> void:
 				$Title/HoldCircle.stop())
 
 func _input(_event: InputEvent) -> void:
+	if Engine.is_editor_hint(): return
+	
 	# Interactions cannot occur if the player is in a locked state
 	# (Prevents things like duplicate cutscenes). Interactions will also
 	# not trigger here if the object is using a hold circle
@@ -57,18 +72,24 @@ func _input(_event: InputEvent) -> void:
 				interacted.emit()
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	
 	if $Title/HoldCircle.visible:
 		$Title/HoldCircle.global_position = $Title.track_position + Vector2(0, 50.0)
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	
 	distance_to_player = Global.player_position.distance_to(global_position)
 	if distance_to_player < $Range/Collision.shape.radius:
 		if !in_range: $EntrySound.play() # only do once
 		in_range = true
+		$Stars.emitting = true
 		if use_hold_circle: $Title/HoldCircle.visible = true
 	else:
 		if in_range: $LeaveSound.play() # only do once
 		in_range = false
+		$Stars.emitting = false
 		if use_hold_circle: $Title/HoldCircle.visible = false
 
 func _on_hold_circle_completed() -> void:

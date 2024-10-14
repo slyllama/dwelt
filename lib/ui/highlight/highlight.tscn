@@ -178,15 +178,16 @@ _data = {
 
 [node name="Highlight" type="Node2D"]
 z_index = -1
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_tgrmb")
 
 [node name="GlowInner" type="Sprite2D" parent="."]
-scale = Vector2(0.92, 0.92)
+self_modulate = Color(1, 1, 1, 0.784314)
+scale = Vector2(0.78125, 0.78125)
 texture = ExtResource("1_a716e")
 
 [node name="GlowOuter" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(1, 1, 1, 0.235294)
 texture = ExtResource("1_a716e")
 flip_h = true
 flip_v = true

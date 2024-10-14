@@ -1,24 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciedyeth0k5f7"]
+[gd_scene load_steps=9 format=3 uid="uid://ciedyeth0k5f7"]
 
 [ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/meshes/side_table.glb" id="1_xbuow"]
+[ext_resource type="PackedScene" uid="uid://chrvfhdn5etbr" path="res://maps/lyllian/meshes/aoibhe_frame.glb" id="2_8b46y"]
+[ext_resource type="Texture2D" uid="uid://cbjoagab4ji2y" path="res://generic/materials/textures/tile_64px.png" id="3_d56j7"]
+[ext_resource type="Texture2D" uid="uid://x7qo1o0nlbrj" path="res://generic/materials/textures/tile_64px_norm.png" id="4_21wgg"]
+[ext_resource type="Texture2D" uid="uid://fid5u06y0o7f" path="res://generic/materials/textures/tile_64px_rough.png" id="5_7usdf"]
+[ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_78jn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1f88"]
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+albedo_texture = ExtResource("3_d56j7")
+metallic_specular = 0.0
+roughness_texture = ExtResource("5_7usdf")
+normal_enabled = true
+normal_texture = ExtResource("4_21wgg")
+uv1_scale = Vector3(16, 16, 16)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qi2mk"]
+material = SubResource("StandardMaterial3D_s1f88")
+size = Vector2(6, 6)
+orientation = 1
 
 [node name="InspectorWorld" type="Node3D"]
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.7117, 2.17385)
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 1.1, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.458)
 fov = 55.0
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.803179, 0.139276, -0.579228, 0.280166, 0.769751, 0.573576, 0.525747, -0.622965, 0.579228, 0, 0, 0)
-light_energy = 1.5
+transform = Transform3D(0.896061, -0.298401, -0.32868, 0.41775, 0.316295, 0.851729, -0.150197, -0.900508, 0.408077, 0, 0, 0)
+light_color = Color(1, 0.956156, 0.891145, 1)
+light_energy = 4.0
+shadow_blur = 0.2
 
 [node name="ModelRoot" type="Node3D" parent="."]
 
 [node name="SideTable" parent="ModelRoot" instance=ExtResource("1_xbuow")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.2, 0, 0)
 
-[node name="PointLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.4, 0.7)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 6.0
+[node name="AoibheFrame" parent="ModelRoot" instance=ExtResource("2_8b46y")]
+transform = Transform3D(0.910648, -0.127358, 0.393066, 0, 0.95131, 0.308237, -0.413184, -0.280695, 0.866308, -0.243585, 1.58182, 0.0420917)
+visible = false
+
+[node name="Pylon" parent="ModelRoot" instance=ExtResource("6_78jn5")]
+transform = Transform3D(0.999717, 0, 0.023804, 0, 1, 0, -0.023804, 0, 0.999717, -0.111936, 1.03352, 0.0556214)
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.90136)
+mesh = SubResource("QuadMesh_qi2mk")

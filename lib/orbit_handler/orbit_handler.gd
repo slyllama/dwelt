@@ -5,6 +5,7 @@ class_name OrbitHandler extends Node
 @export var orbit_sensitivity := 0.3
 @export var orbit_smoothing := 12.0
 @export var override_eligibility := false
+@export var disable_temporary := false
 
 @export_category("Clamping")
 @export var clamp_x := true
@@ -41,6 +42,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
+		if disable_temporary: return
 		if Global.mouse_in_ui():
 			_clicked_in_ui = true
 		else:
@@ -55,6 +57,7 @@ func _input(event: InputEvent) -> void:
 		_mouse_delta = event.relative
 
 func _process(delta: float) -> void:
+	if disable_temporary: return
 	if Global.in_exclusive_ui and !override_eligibility: return
 	
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly

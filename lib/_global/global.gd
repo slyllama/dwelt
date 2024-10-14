@@ -25,6 +25,7 @@ const MINIMAP_DATA = {
 # Allows for serialised (.scn) scenes too
 var target_scene = "res://lib/launcher/launcher.tscn"
 var target_scene_title = ""
+var target_scene_description = ""
 
 func change_map(map_name: String) -> void:
 	var _ext = ".tscn"
@@ -39,6 +40,7 @@ signal click_sound
 signal hover_sound
 
 signal hud_toggle_hidden(state)
+signal interaction_ended # emits when a cutscene or dialogue has completed
 signal interact_pressed
 signal interact_released # for object hold circles
 signal minimap_refresh # force Minimap to call update() again

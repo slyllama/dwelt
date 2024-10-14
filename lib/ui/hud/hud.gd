@@ -4,11 +4,13 @@ extends CanvasLayer
 
 const SmokeTransition = preload("res://lib/ui/hud/smoke_transition/smoke_transition.tscn")
 const Aberration = preload("res://lib/ui/hud/aberration/aberration.tscn")
+const Thingistry = preload("res://lib/thingistry/thingistry.tscn")
 
 # Box dissolving - gets and controls the 'dissolve' of the object box and lerps
 # smoothly between values (see _process() as well)
 var _target_oibox_dissolve := 0.0
 var _oibox_dissolve := 0.0
+
 func _get_oibox_dissolve() -> float:
 	return(float($Sidebar/OIBox.material.get_shader_parameter("exp")))
 func _set_oibox_dissolve(_v: float):
@@ -23,7 +25,6 @@ func _fmt_color_tags(input: String) -> String:
 
 func _ready() -> void:
 	# Establish visibilty and modulation
-	$Minimap/InteractButton.visible = false
 	_target_oibox_dissolve = 0.0
 	$FG.visible = true
 	
@@ -40,14 +41,9 @@ func _ready() -> void:
 	Global.proximity_entered.connect(func():
 		_target_oibox_dissolve = 1.0
 		$Sidebar/OIBox/OIHeading/OITitle.text = Global.proximal_object.title
-		$Sidebar/OIBox/OIBody.text = _fmt_color_tags(Global.proximal_object.description)
-		if Global.proximal_object.can_interact:
-			# Interact button will glow on fade in
-			$Minimap/InteractButton.fade_in(true)
-		else: $Minimap/InteractButton.fade_out())
+		$Sidebar/OIBox/OIBody.text = _fmt_color_tags(Global.proximal_object.description))
 	
 	Global.proximity_left.connect(func():
-		$Minimap/InteractButton.fade_out()
 		_target_oibox_dissolve = 0.0)
 	
 	Global.shake_camera.connect(func(): # chromatic aberration for camera shake
@@ -60,20 +56,39 @@ func _ready() -> void:
 	# Use setting_changed to trigger an update to display of the map name,
 	# because we know the map name is set before this signal is called
 	SettingsHandler.setting_changed.connect(func(_parameter):
+		if Global.target_scene_description != null:
+			$Sidebar/MTBox/MTBody.text = Global.target_scene_description
 		$Sidebar/MTBox/MTHeading/MTTitle.text = Global.target_scene_title)
+	
+	# Thingistry toggling of curio notification
+	Global.interaction_ended.connect(func():
+		for _c in Curio.DATA:
+			if "objects" in Curio.DATA[_c]:
+				if Curio.last_collected in Curio.DATA[_c].objects:
+					var _thingistry = Thingistry.instantiate()
+					add_child(_thingistry)
+					_thingistry.open_at_id(_c)
+					break
+		Curio.last_collected = "")
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_key"):
 		Global.set_display_debug(!Global.debug_visible)
+	
+	if Input.is_action_just_pressed("thingistry"):
+		if Global.in_exclusive_ui: return
+		var _thingistry = Thingistry.instantiate()
+		add_child(_thingistry)
+		_thingistry.go_to_page(0)
+		
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Global.in_exclusive_ui: return
+		if !$Settings.is_open: $Settings.open()
+		else: $Settings.close()
 
 func _process(delta: float) -> void:
 	_oibox_dissolve = lerp(_oibox_dissolve, _target_oibox_dissolve, delta * 13.0)
 	_set_oibox_dissolve(_oibox_dissolve)
-
-func _on_settings_pressed() -> void:
-	if Global.in_exclusive_ui: return
-	if !$Settings.is_open: $Settings.open()
-	else: $Settings.close()
 
 func _on_interact_button_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
@@ -81,3 +96,14 @@ func _on_interact_button_gui_input(_event: InputEvent) -> void:
 		Global.interact_pressed.emit()
 	if Input.is_action_just_released("left_click"):
 		Global.interact_released.emit() # for object hold circles
+
+func _on_settings_pressed() -> void:
+	if Global.in_exclusive_ui: return
+	if !$Settings.is_open: $Settings.open()
+	else: $Settings.close()
+
+func _on_thingistry_pressed() -> void:
+	if Global.in_exclusive_ui: return
+	var _thingistry = Thingistry.instantiate()
+	add_child(_thingistry)
+	_thingistry.go_to_page(0)

@@ -1,0 +1,414 @@
+[gd_scene load_steps=22 format=3 uid="uid://dwyah14n0ldeh"]
+
+[ext_resource type="Script" path="res://lib/thingistry/thingistry.gd" id="1_fewt1"]
+[ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="2_8utiv"]
+[ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_oq4q3"]
+[ext_resource type="Shader" path="res://generic/materials/shaders/shader_blur.gdshader" id="2_w4rnl"]
+[ext_resource type="Shader" path="res://generic/materials/shaders/shader_dissolve.gdshader" id="4_l2dmw"]
+[ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="5_d8a6f"]
+[ext_resource type="FontFile" uid="uid://d37lb1lgw2m5c" path="res://generic/fonts/pirata_one.ttf" id="7_8tbdq"]
+[ext_resource type="FontFile" uid="uid://de5qbl2sbwy03" path="res://generic/fonts/libertinus_sans.otf" id="9_s1nwp"]
+[ext_resource type="Texture2D" uid="uid://dildglyieiwfx" path="res://lib/thingistry/curio_button/textures/cursor.png" id="10_or660"]
+[ext_resource type="PackedScene" uid="uid://dml02ognr10l7" path="res://lib/object/inspector/inspector_instance.tscn" id="11_usmbh"]
+[ext_resource type="AudioStream" uid="uid://blf88uoyh1e0o" path="res://generic/sound/paper.ogg" id="13_rtd5m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18xvf"]
+shader = ExtResource("2_w4rnl")
+shader_parameter/blur_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iatkc"]
+shader = ExtResource("4_l2dmw")
+shader_parameter/exp = 10.0
+shader_parameter/alpha = 0.0
+shader_parameter/ease_strong_alpha = true
+shader_parameter/uv_scale = 1.0
+shader_parameter/swirl_texture = ExtResource("5_d8a6f")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bs6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbp5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfmus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff06h"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_top = 2
+border_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiba"]
+bg_color = Color(0.215686, 0.65098, 0.231373, 1)
+
+[sub_resource type="Animation" id="Animation_a1hop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/BG:material:shader_parameter/exp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base/BG:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Base:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jpmma"]
+resource_name = "fade"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/BG:material:shader_parameter/exp")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base/BG:material:shader_parameter/alpha")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Base:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipxrp"]
+_data = {
+"RESET": SubResource("Animation_a1hop"),
+"fade": SubResource("Animation_jpmma")
+}
+
+[node name="Thingistry" type="CanvasLayer"]
+layer = 11
+script = ExtResource("1_fewt1")
+
+[node name="Base" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurBG" type="ColorRect" parent="Base"]
+material = SubResource("ShaderMaterial_18xvf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="Base"]
+material = SubResource("ShaderMaterial_iatkc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.878431)
+
+[node name="CornerNE" type="TextureRect" parent="Base"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -466.0
+offset_bottom = 562.0
+grow_horizontal = 0
+texture = ExtResource("2_oq4q3")
+stretch_mode = 5
+flip_h = true
+
+[node name="Panel" type="Panel" parent="Base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -526.0
+offset_top = -300.0
+offset_right = 526.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6bs6r")
+
+[node name="VBox" type="VBoxContainer" parent="Base/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeadingBox" type="HBoxContainer" parent="Base/Panel/VBox"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Base/Panel/VBox/HeadingBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("7_8tbdq")
+theme_override_font_sizes/normal_font_size = 40
+text = "Thingistry"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ExpandPadding" type="Control" parent="Base/Panel/VBox/HeadingBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" parent="Base/Panel/VBox/HeadingBox" instance=ExtResource("2_8utiv")]
+layout_mode = 2
+
+[node name="SepTop" type="ColorRect" parent="Base/Panel/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Padding" type="ColorRect" parent="Base/Panel/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="BodyBox" type="HBoxContainer" parent="Base/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="GridBase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bbp5n")
+
+[node name="Image" type="TextureRect" parent="Base/Panel/VBox/BodyBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InspectorInstance" parent="Base/Panel/VBox/BodyBox/Image" instance=ExtResource("11_usmbh")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OverlayTop" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 217.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_oq4q3")
+expand_mode = 1
+
+[node name="OverlayBottom" type="TextureRect" parent="Base/Panel/VBox/BodyBox/Image"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_oq4q3")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Infobase" type="Panel" parent="Base/Panel/VBox/BodyBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pfmus")
+
+[node name="VBox" type="VBoxContainer" parent="Base/Panel/VBox/BodyBox/Infobase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("7_8tbdq")
+theme_override_font_sizes/normal_font_size = 30
+text = "((Curio Title))"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Progress" type="ProgressBar" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ff06h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0uiba")
+value = 50.0
+show_percentage = false
+
+[node name="PaddingTop" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="PaddingBottom" type="ColorRect" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="Body" type="RichTextLabel" parent="Base/Panel/VBox/BodyBox/Infobase/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("9_s1nwp")
+theme_override_font_sizes/normal_font_size = 17
+
+[node name="Navigation" type="HBoxContainer" parent="Base/Panel/VBox"]
+custom_minimum_size = Vector2(282, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PreviousButton" type="Button" parent="Base/Panel/VBox/Navigation"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Previous"
+
+[node name="PageCount" type="RichTextLabel" parent="Base/Panel/VBox/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]?[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NextButton" type="Button" parent="Base/Panel/VBox/Navigation"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 18
+text = "Next"
+
+[node name="SepBottom" type="ColorRect" parent="Base/Panel/VBox"]
+visible = false
+use_parent_material = true
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Transitions" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ipxrp")
+}
+
+[node name="Cursor" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_or660")
+
+[node name="Paper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rtd5m")
+volume_db = -3.0
+
+[connection signal="button_down" from="Base/Panel/VBox/HeadingBox/CloseButton" to="." method="_on_close_button_button_down"]
+[connection signal="button_down" from="Base/Panel/VBox/Navigation/PreviousButton" to="." method="_on_previous_button"]
+[connection signal="mouse_entered" from="Base/Panel/VBox/Navigation/PreviousButton" to="." method="_on_button_mouse_entered"]
+[connection signal="button_down" from="Base/Panel/VBox/Navigation/NextButton" to="." method="_on_next_button"]
+[connection signal="mouse_entered" from="Base/Panel/VBox/Navigation/NextButton" to="." method="_on_button_mouse_entered"]

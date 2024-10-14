@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt8q82hilms4t"]
+
+[ext_resource type="Texture2D" uid="uid://bxabddpud6ag" path="res://lib/ui/hud/corner_button/textures/settings_small.png" id="1_qt4ea"]
+[ext_resource type="Script" path="res://lib/ui/hud/corner_button/corner_button.gd" id="2_765ii"]
+
+[node name="CornerButton" type="TextureButton"]
+modulate = Color(1, 1, 1, 0.745098)
+custom_minimum_size = Vector2(24, 24)
+texture_normal = ExtResource("1_qt4ea")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_765ii")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

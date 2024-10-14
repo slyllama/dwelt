@@ -39,16 +39,5 @@ func _on_play_cutscene_interacted() -> void:
 func _on_summon_object_interacted() -> void:
 	$Summoner.activate()
 
-# TODO: debug testing toggles the use of a hold circle
-var _hc = false
-func _on_o_books_interacted() -> void:
-	Global.shake_camera.emit()
-	
-	if !_hc:
-		# Dirty stinky scripted trick to show the circle dissolve before
-		# being disabled. TODO: this should be handled properly
-		$O_Books.can_interact = false
-		await get_tree().create_timer(0.3).timeout
-		$O_Books.can_interact = true
-	$O_Books.set_use_hold_circle(_hc)
-	_hc = !_hc
+func _faceless_books_collected() -> void:
+	_on_play_cutscene_interacted() # debug

@@ -22,7 +22,7 @@ func stop(finished = false) -> void:
 	if !is_spinning: return
 	is_spinning = false
 	
-	$HoldSound.stop()
+	$Hold.stop()
 	if rotator != null:
 		rotator.stop()
 		root_node.queue_free()
@@ -35,7 +35,7 @@ func spin() -> void:
 	if is_spinning: return # don't start twice!
 	is_spinning = true
 	
-	$HoldSound.play()
+	$Hold.play()
 	root_node = Node2D.new()
 	add_child(root_node)
 	
@@ -53,9 +53,6 @@ func spin() -> void:
 			await rotator.finished
 	stop(true)
 
-func _ready() -> void:
-	$EditorCircle.visible = false # circle for placing in editor only
-
 func _input(_event: InputEvent) -> void:
 	if !visible: return # use visibility to set active/inactive
 	if Input.is_action_just_pressed("interact"):
@@ -64,5 +61,7 @@ func _input(_event: InputEvent) -> void:
 		stop(false)
 
 func _on_visibility_changed() -> void:
-	if !visible: # suspend current activity if made invisible
+	if visible:
+		$Highlight.flash()
+	else: # suspend current activity if made invisible
 		stop()

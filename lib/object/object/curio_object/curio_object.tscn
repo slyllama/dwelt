@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://varaosrn2amc"]
+
+[ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="1_7e58x"]
+[ext_resource type="Script" path="res://lib/object/object/curio_object/curio_object.gd" id="2_hlkjw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nufhc"]
+height = 3.4
+radius = 1.7
+
+[node name="CurioObject" instance=ExtResource("1_7e58x")]
+script = ExtResource("2_hlkjw")
+simultaneous_curio = null
+
+[node name="Collision" parent="Range" index="0"]
+shape = SubResource("CylinderShape3D_nufhc")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1cfdylxmtq6r"]
+[gd_scene load_steps=12 format=3 uid="uid://c1cfdylxmtq6r"]
 
 [ext_resource type="PackedScene" uid="uid://dvfwn2u2p31wx" path="res://lib/map/map.tscn" id="1_xcs8b"]
 [ext_resource type="Environment" uid="uid://cl37vtkvlqlde" path="res://maps/lyllian/env.tres" id="2_abr43"]
 [ext_resource type="Script" path="res://maps/viewer/viewer.gd" id="2_lwcb1"]
 [ext_resource type="PackedScene" uid="uid://ddaxfw4kt2gx4" path="res://maps/viewer/vfx_tools.tscn" id="3_cr3fp"]
 [ext_resource type="PackedScene" uid="uid://ukiydgtfvrn3" path="res://lib/object/default_floor/default_floor.tscn" id="3_nmf1r"]
-[ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="4_n6qk0"]
 [ext_resource type="AudioStream" uid="uid://b2ej3w2qqxhsv" path="res://maps/lyllian/sound/glass_darkly.ogg" id="5_oy340"]
 [ext_resource type="PackedScene" uid="uid://cglnyyad7tmam" path="res://maps/lyllian/meshes/side_table.glb" id="7_85oob"]
 [ext_resource type="PackedScene" uid="uid://j0gv1cjmedb0" path="res://maps/lyllian/meshes/mushrooms.glb" id="7_h5mhr"]
@@ -16,6 +15,7 @@
 [node name="Viewer" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_xcs8b")]
 script = ExtResource("2_lwcb1")
 map_title = "Test Zone"
+map_description = null
 decal_candidates = NodePath("DefaultFloor")
 shadow_lights = NodePath("Summoner/Light")
 
@@ -34,14 +34,7 @@ track_list = Array[AudioStreamOggVorbis]([ExtResource("5_oy340")])
 [node name="DefaultFloor" parent="." index="6" instance=ExtResource("3_nmf1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="O_InspectorTest" parent="." index="7" instance=ExtResource("4_n6qk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1, 1.4)
-id = "inspector_test"
-title = "((Inspector Test))"
-can_interact = true
-show_mote = true
-
-[node name="Decorations" type="Node3D" parent="." index="8"]
+[node name="Decorations" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01, 0, 2)
 
 [node name="SideTable" parent="Decorations" index="0" instance=ExtResource("7_85oob")]
@@ -68,7 +61,7 @@ distance_fade_begin = 20.0
 distance_fade_length = 1.0
 cull_mask = 1048574
 
-[node name="Summoner" parent="." index="9" instance=ExtResource("12_gx36l")]
+[node name="Summoner" parent="." index="8" instance=ExtResource("12_gx36l")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 2)
 
 [node name="Light" type="OmniLight3D" parent="Summoner" index="4"]
@@ -79,5 +72,3 @@ shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 2.0
 omni_range = 3.0
-
-[connection signal="interacted" from="O_InspectorTest" to="." method="_on_inspector_test"]

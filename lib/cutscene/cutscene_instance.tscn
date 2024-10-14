@@ -113,5 +113,5 @@ fov = 90.0
 
 [connection signal="pressed" from="FG/Bars/Upper/Print" to="." method="_on_print_pressed"]
 [connection signal="pressed" from="FG/Bars/Upper/Stop" to="." method="_on_stop_pressed"]
-[connection signal="pressed" from="FG/Bars/Upper/CloseButton" to="." method="stop"]
+[connection signal="button_down" from="FG/Bars/Upper/CloseButton" to="." method="stop"]
 [connection signal="dialogue_finished" from="Dialogue" to="." method="stop"]
