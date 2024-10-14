@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx1t2mansagqo"
-path="res://.godot/imported/bat.png-4e267a24d62569d4bc8502ab815ce848.ctex"
+uid="uid://ccyahuowk7wco"
+path="res://.godot/imported/erudite_mushrooms.png-492ed630f387d150a3094035d7bd979c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/thingistry/curio_button/textures/items/bat.png"
-dest_files=["res://.godot/imported/bat.png-4e267a24d62569d4bc8502ab815ce848.ctex"]
+source_file="res://lib/thingistry/curio_button/textures/items/erudite_mushrooms.png"
+dest_files=["res://.godot/imported/erudite_mushrooms.png-492ed630f387d150a3094035d7bd979c.ctex"]
 
 [params]
 

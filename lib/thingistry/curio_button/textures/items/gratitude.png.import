@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xjoas0qha60w"
-path.s3tc="res://.godot/imported/bat_banner.png-2f83825e96be9b43dd84c63cdf55bc0f.s3tc.ctex"
+uid="uid://cg1gmnldvandn"
+path="res://.godot/imported/gratitude.png-2c7c8085a47de51672d3b5a80c0a8565.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/thingistry/curio_button/textures/items/bat_banner.png"
-dest_files=["res://.godot/imported/bat_banner.png-2f83825e96be9b43dd84c63cdf55bc0f.s3tc.ctex"]
+source_file="res://lib/thingistry/curio_button/textures/items/gratitude.png"
+dest_files=["res://.godot/imported/gratitude.png-2c7c8085a47de51672d3b5a80c0a8565.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
