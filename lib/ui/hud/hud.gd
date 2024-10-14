@@ -67,7 +67,7 @@ func _ready() -> void:
 				if Curio.last_collected in Curio.DATA[_c].objects:
 					var _thingistry = Thingistry.instantiate()
 					add_child(_thingistry)
-					_thingistry.open_at_id(_c)
+					_thingistry.go_to_id(_c)
 					break
 		Curio.last_collected = "")
 

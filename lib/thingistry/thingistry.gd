@@ -59,7 +59,7 @@ func go_to_page(_page: int):
 	current_curio_position = grid.button_nodes[0].get_center()
 	$Cursor.global_position = current_curio_position
 
-func open_at_id(id: String) -> void:
+func go_to_id(id: String) -> void:
 	var _page_place = 0
 	var _page_count = 0
 	for _c in Curio.DATA.keys():

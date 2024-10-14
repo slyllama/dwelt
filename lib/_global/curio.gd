@@ -38,6 +38,7 @@ func get_page_count(size: int) -> int:
 const DATA = {
 	"gratitude": {
 		"name": "Gratitude",
+		"short_desc": "You could be doing any number of cool and interesting things right now; but you're here, wandering through some guy's dream space-slash-environment art portfolio. And that guy is very, very grateful for your time and presence.\n\nThere's no real gameplay or through-line here, but there are a number of vistas and curiosities to seek out, some of which might resonate and remain with you.",
 		"objects": [
 			"gratitude_note"
 		]
