@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://0w4wxmoqn0gn"]
+
+[ext_resource type="Shader" uid="uid://6qxevrnm6sc4" path="res://maps/viewer/bin/shader_plush.tres" id="1_j0u4b"]
+[ext_resource type="Texture2D" uid="uid://1tni2sio382j" path="res://maps/viewer/bin/plush_diff.jpg" id="1_ls6af"]
+[ext_resource type="Texture2D" uid="uid://cl8v5hbl0ut4d" path="res://maps/viewer/bin/plush_parallax.jpg" id="2_us0uv"]
+[ext_resource type="Texture2D" uid="uid://c71wfmmg2pktd" path="res://maps/viewer/bin/plush_norm.jpg" id="5_gmr14"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j0u4b")
+shader_parameter/albedo = Color(0.548962, 0.548963, 0.548962, 1)
+shader_parameter/heightmap_scale = 2.0
+shader_parameter/heightmap_min_layers = 1
+shader_parameter/heightmap_max_layers = 3
+shader_parameter/heightmap_flip = Vector2(1, 1)
+shader_parameter/fresnel_color = Color(0.69, 0.61571, 0.4278, 1)
+shader_parameter/uv_scale = 7.0
+shader_parameter/texture_albedo = ExtResource("1_ls6af")
+shader_parameter/texture_heightmap = ExtResource("2_us0uv")
+shader_parameter/texture_normal = ExtResource("5_gmr14")

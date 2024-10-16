@@ -1,0 +1,65 @@
+[gd_resource type="Shader" format=3 uid="uid://6qxevrnm6sc4"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix;
+
+uniform vec4 albedo: source_color;
+uniform sampler2D texture_albedo: source_color, filter_linear_mipmap, repeat_enable;
+
+uniform sampler2D texture_heightmap : hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_normal: hint_normal, filter_linear_mipmap, repeat_enable;
+uniform float heightmap_scale : hint_range(-16.0, 16.0, 0.001);
+uniform int heightmap_min_layers : hint_range(1, 64);
+uniform int heightmap_max_layers : hint_range(1, 64);
+uniform vec2 heightmap_flip;
+uniform vec4 fresnel_color: source_color;
+
+uniform float uv_scale = 4.0;
+
+void vertex() {
+	UV = UV * vec2(uv_scale);
+}
+
+float fresnel(float amount, vec3 normal, vec3 view) {
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec3 view_dir = normalize(normalize(-VERTEX + EYE_OFFSET) * mat3(TANGENT * heightmap_flip.x, -BINORMAL * heightmap_flip.y, NORMAL));
+
+	float num_layers = mix(float(heightmap_max_layers), float(heightmap_min_layers), abs(dot(vec3(0.0, 0.0, 1.0), view_dir)));
+	float layer_depth = 1.0 / num_layers;
+	float current_layer_depth = 0.0;
+	vec2 p = view_dir.xy * heightmap_scale * 0.01;
+	vec2 delta = p / num_layers;
+	vec2 ofs = base_uv;
+	float depth = 1.0 - texture(texture_heightmap, ofs).r;
+
+	float current_depth = 0.0;
+	while (current_depth < depth) {
+		ofs -= delta;
+		depth = 1.0 - texture(texture_heightmap, ofs).r;
+		current_depth += layer_depth;
+	}
+
+	vec2 prev_ofs = ofs + delta;
+	float after_depth = depth - current_depth;
+	float before_depth = (1.0 - texture(texture_heightmap, prev_ofs).r) - current_depth + layer_depth;
+
+	float weight = after_depth / (after_depth - before_depth);
+	ofs = mix(ofs, prev_ofs, weight);
+	base_uv = ofs;
+	
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ALBEDO += vec3(fresnel(5.0, NORMAL, VIEW)) * fresnel_color.rgb;
+	
+	SPECULAR = 0.4;
+	ROUGHNESS = 0.7;
+	
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	NORMAL_MAP_DEPTH = 0.25;
+}
+"

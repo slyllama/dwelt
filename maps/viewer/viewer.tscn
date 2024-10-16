@@ -15,9 +15,9 @@
 [node name="Viewer" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_xcs8b")]
 script = ExtResource("2_lwcb1")
 map_title = "Test Zone"
-map_description = null
+map_description = "((Test map!))"
 decal_candidates = NodePath("DefaultFloor")
-shadow_lights = NodePath("Summoner/Light")
+shadow_lights = NodePath("ShadowLights/Light")
 
 [node name="VFXTools" parent="HUD" index="7" instance=ExtResource("3_cr3fp")]
 title = "Debug Tools"
@@ -30,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Jukebox" parent="." index="5"]
 track_list = Array[AudioStreamOggVorbis]([ExtResource("5_oy340")])
+music_enabled = false
 
 [node name="DefaultFloor" parent="." index="6" instance=ExtResource("3_nmf1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -64,11 +65,23 @@ cull_mask = 1048574
 [node name="Summoner" parent="." index="8" instance=ExtResource("12_gx36l")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 2)
 
-[node name="Light" type="OmniLight3D" parent="Summoner" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="ShadowLights" type="Node3D" parent="." index="9"]
+
+[node name="Light" type="OmniLight3D" parent="ShadowLights" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2, 2)
 light_color = Color(1, 0.803667, 0.69, 1)
 light_energy = 5.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 2.0
 omni_range = 3.0
+
+[node name="Light2" type="OmniLight3D" parent="ShadowLights" index="1"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3.29219, 2.00657, 1.1871)
+light_color = Color(1, 0.803667, 0.69, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 2.0
+omni_range = 2.0
+omni_attenuation = 0.5

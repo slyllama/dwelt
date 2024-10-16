@@ -56,6 +56,12 @@ const DATA = {
 		"objects": [
 			"aoibhe_painting"
 		]
+	},
+	"scruffy": {
+		"name": "Scruffy",
+		"objects": [
+			"scruffy_plush"
+		]
 	}
 }
 

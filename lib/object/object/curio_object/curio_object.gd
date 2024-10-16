@@ -17,6 +17,9 @@ func collect() -> void:
 	Curio.last_collected = id
 	Curio.collected.emit(id)
 	set_use_hold_circle(false)
+	
+	if simultaneous_curio:
+		Global.interaction_ended.emit()
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
