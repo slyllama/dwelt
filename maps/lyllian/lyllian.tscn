@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://chrvfhdn5etbr" path="res://maps/lyllian/meshes/aoibhe_frame.glb" id="15_a2yyc"]
 [ext_resource type="PackedScene" uid="uid://md8guus8rl6q" path="res://maps/lyllian/meshes/kitchen_table.glb" id="15_orv26"]
 [ext_resource type="PackedScene" uid="uid://kqtxsdr7abxc" path="res://lib/object/foliage_spawner/foliage_spawner.tscn" id="16_k8yd6"]
-[ext_resource type="PackedScene" uid="uid://d06mjyghfqmjn" path="res://maps/viewer/bin/scruffy_model.glb" id="17_6dqcm"]
+[ext_resource type="PackedScene" uid="uid://d06mjyghfqmjn" path="res://maps/lyllian/meshes/scruffy_model.glb" id="17_6dqcm"]
 [ext_resource type="ArrayMesh" uid="uid://c7phlfbwaswsa" path="res://maps/lyllian/meshes/_grass.res" id="17_p6u1p"]
 [ext_resource type="PackedScene" uid="uid://2b8xnsa326ur" path="res://maps/lyllian/meshes/broadleaf_plant.glb" id="18_aii2i"]
 [ext_resource type="PackedScene" uid="uid://din7qgmxj24ai" path="res://maps/lyllian/meshes/kitchen_bench.glb" id="19_nck3v"]
@@ -212,21 +212,21 @@ show_mote = true
 can_interact = true
 
 [node name="O_FacelessBooks" parent="." index="11" instance=ExtResource("11_8k1x8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260945, 2.04492, 1.59365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260945, 2.04492, 1.54779)
 id = "faceless_books"
 title = "Faceless Books"
 radius = 1.35
 description = "Eschewing the base comforts of the ground, these mushrooms seem to be acting on more erudite ambitions, seated with dignity amongst the crumbling pages of nameless books."
 
 [node name="O_AoibhePainting" parent="." index="12" instance=ExtResource("11_8k1x8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67127, 2.16795, -1.4184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68289, 2.41784, -1.38624)
 id = "aoibhe_painting"
 title = "Well-Preserved Canvas"
 radius = 1.2
 description = "A corner of quiet; fabric uninvaded by dust. The vegetation seems to congregate here."
 
 [node name="O_ScruffyPlush" parent="." index="13" instance=ExtResource("11_8k1x8")]
-transform = Transform3D(0.999674, -0.0255488, 0, 0.0255488, 0.999674, 0, 0, 0, 1, -2.18317, 2.09521, 0.897046)
+transform = Transform3D(0.999674, -0.0255488, 0, 0.0255488, 0.999674, 0, 0, 0, 1, -2.15713, 2.09521, 0.952316)
 simultaneous_curio = true
 id = "scruffy_plush"
 title = "A Plush Like You"

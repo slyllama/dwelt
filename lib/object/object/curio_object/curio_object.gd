@@ -20,6 +20,8 @@ func collect() -> void:
 	
 	if simultaneous_curio:
 		Global.interaction_ended.emit()
+	
+	if !$ObjectOrb.visible: $ObjectOrb.visible = true
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
