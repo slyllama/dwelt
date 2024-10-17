@@ -23,8 +23,7 @@ func get_progress(id: String) -> float:
 		if _collected_object_count > 0:
 			return(float(_collected_object_count) / float(_object_count))
 		else: return(0)
-	else:
-		return(0)
+	else: return(0)
 
 # Get the total page count - useful for displaying pagination
 func get_page_count(size: int) -> int:
@@ -35,42 +34,8 @@ func get_page_count(size: int) -> int:
 		_page_count += 1
 	return(_page_count)
 
-const DATA = {
-	"gratitude": {
-		"name": "Gratitude",
-		"short_desc": "You could be doing any number of cool and interesting things right now; but you're here, wandering through some guy's dream space-slash-environment art portfolio. And that guy is very, very grateful for your time and presence.\n\nThere's no real gameplay or through-line here, but there are a number of vistas and curiosities to seek out, some of which might resonate and remain with you.",
-		"objects": [
-			"gratitude_note"
-		]
-	},
-	"erudite_mushrooms": {
-		"name": "Erudite Mushrooms",
-		"short_desc": "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are.",
-		"objects": [
-			"faceless_books"
-		]
-	},
-	"aoibhe": {
-		"name": "Aoibhe",
-		"short_desc": "The very air seems to whisper the name 'Aoibhe', as if the walls know her better than any living soul.",
-		"objects": [
-			"aoibhe_painting"
-		]
-	},
-	"scruffy": {
-		"name": "Scruffy",
-		"objects": [
-			"scruffy_plush"
-		],
-		"object_text": {
-			"scruffy_plush": "The main difference between your floating core and this Scruffy plush is that he seems much newer and crisper, perhaps even unused and untouched. Are there more around?"
-		}
-	}
-}
-
-var collected_objects = [
-	"gratitude_note"
-]
+var DATA = {} # now loaded from JSON (SettingsHandler)
+var collected_objects = [ "gratitude_note" ]
 
 # Interacting with a curio will fill this value - it will be used to summon
 # the thingistry with the correct curio once the interaction sequence has

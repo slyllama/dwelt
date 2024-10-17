@@ -1,3 +1,4 @@
+@icon("res://generic/textures/icons/icon_curio.svg")
 @tool
 class_name CurioDweltObject extends DweltObject
 # CurioDweltObject

@@ -1,3 +1,4 @@
+@icon("res://generic/textures/icons/icon_map.svg")
 @tool
 extends Node3D
 # Map

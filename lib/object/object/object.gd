@@ -1,3 +1,4 @@
+@icon("res://generic/textures/icons/icon_object.svg")
 @tool
 class_name DweltObject extends Node3D
 # Object

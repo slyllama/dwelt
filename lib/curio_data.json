@@ -1,0 +1,32 @@
+{
+	"gratitude": {
+		"name": "Gratitude",
+		"short_desc": "You could be doing any number of cool and interesting things right now; but you're here, wandering through some guy's dream space-slash-environment art portfolio. And that guy is very, very grateful for your time and presence.\n\nThere's no real gameplay or through-line here, but there are a number of vistas and curiosities to seek out, some of which might resonate and remain with you.",
+		"objects": [
+			"gratitude_note"
+		]
+	},
+	"erudite_mushrooms": {
+		"name": "Erudite Mushrooms",
+		"short_desc": "The mushrooms have absorbed almost all that these books contain, ink crumbling further into anonymity with each fungal inquiry. Particularly voracious readers, these caps are.",
+		"objects": [
+			"faceless_books"
+		]
+	},
+	"aoibhe": {
+		"name": "Aoibhe",
+		"short_desc": "The very air seems to whisper the name 'Aoibhe', as if the walls know her better than any living soul.",
+		"objects": [
+			"aoibhe_painting"
+		]
+	},
+	"scruffy": {
+		"name": "Scruffy",
+		"objects": [
+			"scruffy_plush"
+		],
+		"object_text": {
+			"scruffy_plush": "The main difference between your floating core and this Scruffy plush is that he seems much newer and crisper, perhaps even unused and untouched. Are there more around?"
+		}
+	}
+}

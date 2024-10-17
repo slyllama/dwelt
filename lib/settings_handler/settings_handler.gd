@@ -46,6 +46,11 @@ func update(parameter, value) -> void:
 	settings[parameter] = value
 	setting_changed.emit(parameter)
 
+func load_curio_data() -> void:
+	var file = FileAccess.open("res://lib/curio_data.json", FileAccess.READ)
+	Curio.DATA = JSON.parse_string(file.get_as_text())
+	file.close()
+
 func _ready() -> void:
 	# Configure retina
 	if DisplayServer.screen_get_size().x > 2000:
@@ -56,5 +61,5 @@ func _ready() -> void:
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/textures/cursor_2x.png"))
-	
+	load_curio_data()
 	load_from_file()
