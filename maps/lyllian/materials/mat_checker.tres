@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c2j63rjyn7sf6"]
+
+[ext_resource type="Texture2D" uid="uid://c3880xf7blxul" path="res://maps/lyllian/materials/textures/checker_diff.jpg" id="1_np7om"]
+[ext_resource type="Texture2D" uid="uid://dv5hrw68mrjs6" path="res://maps/lyllian/materials/textures/checker_norm.jpg" id="2_2mq72"]
+
+[resource]
+albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
+albedo_texture = ExtResource("1_np7om")
+metallic = 0.25
+roughness = 0.35
+normal_enabled = true
+normal_scale = -0.2
+normal_texture = ExtResource("2_2mq72")
+uv1_scale = Vector3(2, 2, 2)

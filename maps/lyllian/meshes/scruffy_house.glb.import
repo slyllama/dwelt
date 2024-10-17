@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_brick.tres"
 },
+"mat_checker": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/materials/mat_checker.tres"
+},
 "mat_cloth": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_cloth.tres"

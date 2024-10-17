@@ -304,31 +304,34 @@ transform = Transform3D(1.09655, 0, -0.600069, 0, 1.25, 0, 0.600069, 0, 1.09655,
 [node name="Mushrooms7" parent="Details" index="3" instance=ExtResource("21_16qfb")]
 transform = Transform3D(-0.116354, 0, 1.24457, 0, 1.25, 0, -1.24457, 0, -0.116354, 5.00885, 0.957386, 0.580288)
 
-[node name="Mushrooms2" parent="Details" index="4" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms12" parent="Details" index="4" instance=ExtResource("21_16qfb")]
+transform = Transform3D(-1.054, 0, 0.671991, 0, 1.25, 0, -0.671991, 0, -1.054, 5.45132, 0.957386, -0.846301)
+
+[node name="Mushrooms2" parent="Details" index="5" instance=ExtResource("21_16qfb")]
 transform = Transform3D(-0.975191, 0, -0.933543, 0, 1.35, 0, 0.933543, 0, -0.975191, -2.76344, 0.933829, -0.45655)
 
-[node name="Mushrooms3" parent="Details" index="5" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms3" parent="Details" index="6" instance=ExtResource("21_16qfb")]
 transform = Transform3D(-0.412057, 0, 1.12704, 0, 1.2, 0, -1.12704, 0, -0.412057, -1.43577, 0.926446, 1.86198)
 
-[node name="Mushrooms6" parent="Details" index="6" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms6" parent="Details" index="7" instance=ExtResource("21_16qfb")]
 transform = Transform3D(0.912746, 0, 1.19033, 0, 1.5, 0, -1.19033, 0, 0.912746, -0.234284, -3.08662, 2.1377)
 
-[node name="Mushrooms4" parent="Details" index="7" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms4" parent="Details" index="8" instance=ExtResource("21_16qfb")]
 transform = Transform3D(0.206724, 0, 0.875937, 0, 0.9, 0, -0.875937, 0, 0.206724, -1.36692, 0.947827, 1.48327)
 
-[node name="Mushrooms11" parent="Details" index="8" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms11" parent="Details" index="9" instance=ExtResource("21_16qfb")]
 transform = Transform3D(-3.10005e-08, -2.42203e-08, 0.9, -0.554096, 0.70921, 0, -0.70921, -0.554095, -3.93403e-08, 0.316, 1.93881, 1.87297)
 
-[node name="Mushrooms9" parent="Details" index="9" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms9" parent="Details" index="10" instance=ExtResource("21_16qfb")]
 transform = Transform3D(0.901855, 0, -0.432039, 0, 1, 0, 0.432039, 0, 0.901855, -0.423369, 0.95813, -1.55343)
 
-[node name="Mushrooms8" parent="Details" index="10" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms8" parent="Details" index="11" instance=ExtResource("21_16qfb")]
 transform = Transform3D(0.941494, 0, 0.337029, 0, 1.5, 0, -0.337029, 0, 0.941494, -0.116945, 0.922633, 1.67656)
 
-[node name="Mushrooms10" parent="Details" index="11" instance=ExtResource("21_16qfb")]
+[node name="Mushrooms10" parent="Details" index="12" instance=ExtResource("21_16qfb")]
 transform = Transform3D(0.560993, 0, -0.512725, 0, 0.76, 0, 0.512725, 0, 0.560993, -0.838437, 2.64435, 2.04269)
 
-[node name="FlowerSpawner" parent="Details" index="12" instance=ExtResource("16_k8yd6")]
+[node name="FlowerSpawner" parent="Details" index="13" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(-0.581791, 0, 0.389254, 0, 0.7, 0, -0.389254, 0, -0.581791, -2.09649, 0.90702, 0.485948)
 multimesh = SubResource("MultiMesh_qu2l2")
 foliage_mesh = ExtResource("19_ob6rd")
@@ -343,7 +346,7 @@ moss_scaling = 1.0
 vary_colours = false
 colour_1 = Color(0.073, 0.16, 0.002, 1)
 
-[node name="FlowerSpawner3" parent="Details" index="13" instance=ExtResource("16_k8yd6")]
+[node name="FlowerSpawner3" parent="Details" index="14" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(-0.0671802, 0.6167, 0.324296, -0.695883, -0.075806, 1.86265e-09, 0.0351194, -0.322389, 0.620348, -2.99627, 4.25473, 1.65067)
 multimesh = SubResource("MultiMesh_iq1fv")
 foliage_mesh = ExtResource("19_ob6rd")
@@ -358,7 +361,7 @@ moss_scaling = 1.0
 vary_colours = false
 colour_1 = Color(0.073, 0.16, 0.002, 1)
 
-[node name="FlowerSpawner2" parent="Details" index="14" instance=ExtResource("16_k8yd6")]
+[node name="FlowerSpawner2" parent="Details" index="15" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(0.0194837, 0, 0.699728, 0, 0.7, 0, -0.699728, 0, 0.0194837, 0.129288, 0.90702, 1.683)
 multimesh = SubResource("MultiMesh_ajo5p")
 foliage_mesh = ExtResource("19_ob6rd")
@@ -373,7 +376,7 @@ moss_scaling = 1.0
 vary_colours = false
 colour_1 = Color(0.073, 0.16, 0.002, 1)
 
-[node name="FoliageSpawner" parent="Details" index="15" instance=ExtResource("16_k8yd6")]
+[node name="FoliageSpawner" parent="Details" index="16" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.9893, 0.892929, 0.752679)
 multimesh = SubResource("MultiMesh_xogl8")
 count = 4
@@ -383,7 +386,7 @@ min_scale = 4.0
 max_scale = 5.5
 moss_scaling = 3.419
 
-[node name="FoliageSpawner5" parent="Details" index="16" instance=ExtResource("16_k8yd6")]
+[node name="FoliageSpawner5" parent="Details" index="17" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20013, 0.937841, -0.962616)
 multimesh = SubResource("MultiMesh_m3vqj")
 count = 3
@@ -393,7 +396,7 @@ min_scale = 4.0
 max_scale = 7.0
 moss_scaling = 4.0
 
-[node name="FoliageSpawner2" parent="Details" index="17" instance=ExtResource("16_k8yd6")]
+[node name="FoliageSpawner2" parent="Details" index="18" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69631, 0.912863, 2.01569)
 multimesh = SubResource("MultiMesh_bnx6v")
 count = 4
@@ -404,7 +407,7 @@ max_scale = 6.5
 smooth = false
 moss_cover = false
 
-[node name="FoliageSpawner3" parent="Details" index="18" instance=ExtResource("16_k8yd6")]
+[node name="FoliageSpawner3" parent="Details" index="19" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324045, 0.912863, 1.62955)
 multimesh = SubResource("MultiMesh_rlvxw")
 count = 4
@@ -415,7 +418,7 @@ max_scale = 7.0
 area_scale = 0.7
 moss_scaling = 3.782
 
-[node name="FoliageSpawner4" parent="Details" index="19" instance=ExtResource("16_k8yd6")]
+[node name="FoliageSpawner4" parent="Details" index="20" instance=ExtResource("16_k8yd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89184, 0.952432, 1.002)
 multimesh = SubResource("MultiMesh_s8rde")
 count = 3
@@ -425,64 +428,70 @@ min_scale = 5.0
 max_scale = 7.0
 moss_scaling = 2.0
 
-[node name="BroadleafPlantB2" parent="Details" index="20" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB2" parent="Details" index="21" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.322185, 0.110471, -0.723874, 0, 0.790844, 0.120691, 0.732255, -0.0486061, 0.318496, -2.87536, 4.67279, 2.07777)
 
-[node name="BroadleafPlantB12" parent="Details" index="21" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB12" parent="Details" index="22" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.595347, -0.0330625, -0.128719, 0.0323158, 0.609103, -0.00698693, 0.128908, 4.65661e-10, 0.596224, -1.42753, 4.67251, 2.5235)
 
-[node name="BroadleafPlantB8" parent="Details" index="22" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB8" parent="Details" index="23" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.482337, 0, -1.0988, 0, 1.2, 0, 1.0988, 0, 0.482337, -2.87536, 0.839809, 1.96428)
 
-[node name="BroadleafPlantB9" parent="Details" index="23" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB9" parent="Details" index="24" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.293813, 0, -0.85069, 0, 0.9, 0, 0.85069, 0, -0.293813, -2.87536, 0.781012, -1.71287)
 
-[node name="BroadleafPlantB10" parent="Details" index="24" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB10" parent="Details" index="25" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.144965, 0.0106874, -0.684741, -0.0811159, 0.69472, 0.028016, 0.680004, 0.0851497, -0.142633, -3.11181, 0.739069, -1.22858)
 
-[node name="BroadleafPlantB11" parent="Details" index="25" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB11" parent="Details" index="26" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.00882067, 0, -0.699944, 0, 0.7, 0, 0.699944, 0, 0.00882067, -2.89131, -0.252381, -1.09532)
 
-[node name="BroadleafPlantB3" parent="Details" index="26" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB3" parent="Details" index="27" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.42898, 0, -0.675261, 0, 0.8, 0, 0.675261, 0, -0.42898, -2.91802, 4.26683, -2.61378)
 
-[node name="BroadleafPlantB4" parent="Details" index="27" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB4" parent="Details" index="28" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.71686, -0.0991241, -0.615456, -0.140167, 0.939527, 0.0119426, 0.607424, 0.0998185, -0.723583, 5.31166, 4.53395, 1.81856)
 
-[node name="BroadleafPlantB6" parent="Details" index="28" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB6" parent="Details" index="29" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.704343, -0.10921, 0.101856, 0.109032, 0.711639, 0.00905126, -0.102047, 0.00656995, 0.712701, 5.04358, 4.52743, 2.36681)
 
-[node name="BroadleafPlantB5" parent="Details" index="29" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB5" parent="Details" index="30" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.426084, 0.0864485, -0.617255, 0.157371, 0.738398, -0.00521645, 0.603085, -0.131603, -0.434735, 5.79647, 4.53331, 1.33003)
 
-[node name="BroadleafPlantB13" parent="Details" index="30" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB13" parent="Details" index="31" instance=ExtResource("20_6s15p")]
 transform = Transform3D(0.249319, 0.0104496, 0.71257, -0.0316161, 0.754337, 0, -0.711945, -0.0298393, 0.249538, 6.00897, 4.10038, -1.79307)
 
-[node name="BroadleafPlantB7" parent="Details" index="31" instance=ExtResource("20_6s15p")]
+[node name="BroadleafPlantB7" parent="Details" index="32" instance=ExtResource("20_6s15p")]
 transform = Transform3D(-0.974691, 0, 0.223557, 0.0511291, 0.973495, 0.222919, -0.217631, 0.228708, -0.948857, 4.16765, 4.4214, -2.94919)
 
-[node name="BroadleafPlant" parent="Details" index="32" instance=ExtResource("18_aii2i")]
+[node name="BroadleafPlant" parent="Details" index="33" instance=ExtResource("18_aii2i")]
 transform = Transform3D(0.611437, 0, -0.434332, 0, 0.75, 0, 0.434332, 0, 0.611437, -2.58408, 0.931492, 0.152193)
 
-[node name="BroadleafPlant9" parent="Details" index="33" instance=ExtResource("18_aii2i")]
+[node name="BroadleafPlant9" parent="Details" index="34" instance=ExtResource("18_aii2i")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.64734, 0.990477, 1.52257)
 
-[node name="BroadleafPlant6" parent="Details" index="34" instance=ExtResource("18_aii2i")]
-transform = Transform3D(-0.754771, 0, 0.412215, 0, 0.86, 0, -0.412215, 0, -0.754771, 5.63108, 0.961032, -1.11685)
+[node name="BroadleafPlant6" parent="Details" index="35" instance=ExtResource("18_aii2i")]
+transform = Transform3D(-0.754771, 0, 0.412215, 0, 0.86, 0, -0.412215, 0, -0.754771, 5.63108, 0.961032, -1.68242)
 
-[node name="BroadleafPlant3" parent="Details" index="35" instance=ExtResource("18_aii2i")]
+[node name="BroadleafPlant7" parent="Details" index="36" instance=ExtResource("18_aii2i")]
+transform = Transform3D(0.19294, 0.189917, 0.828458, -0.0287181, 1.27594, -0.123311, -0.837585, 0, 0.195066, 5.64378, 0.800945, -1.08682)
+
+[node name="BroadleafPlant3" parent="Details" index="37" instance=ExtResource("18_aii2i")]
 transform = Transform3D(0.441823, 0, -0.606047, 0, 0.75, 0, 0.606047, 0, 0.441823, 4.20181, 0.974707, 1.16232)
 
-[node name="BroadleafPlant5" parent="Details" index="36" instance=ExtResource("18_aii2i")]
+[node name="BroadleafPlant4" parent="Details" index="38" instance=ExtResource("18_aii2i")]
+transform = Transform3D(-0.504537, 0, -0.554926, 0, 0.75, 0, 0.554926, 0, -0.504537, 3.44149, 0.974707, 1.42257)
+
+[node name="BroadleafPlant5" parent="Details" index="39" instance=ExtResource("18_aii2i")]
 transform = Transform3D(0.241915, 0, -0.656869, 0, 0.7, 0, 0.656869, 0, 0.241915, -0.951163, -3.13459, 1.84707)
 
-[node name="Glow" type="CSGMesh3D" parent="Details" index="37"]
+[node name="Glow" type="CSGMesh3D" parent="Details" index="40"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88563, 3.86472, 0.645908)
 visible = false
 mesh = SubResource("QuadMesh_a16na")
 material = SubResource("ShaderMaterial_33066")
 
-[node name="Flower1" type="MeshInstance3D" parent="Details" index="38"]
+[node name="Flower1" type="MeshInstance3D" parent="Details" index="41"]
 transform = Transform3D(0.748705, 0.345572, -0.871792, 0, 1.11555, 0.442197, 0.937785, -0.275896, 0.696017, -2.26089, 2.04507, 1.26706)
 mesh = ExtResource("19_ob6rd")
 
