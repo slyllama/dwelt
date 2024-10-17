@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://y4a3yf0ag8er"
-path="res://.godot/imported/summoner_model.glb-c39ddca695c138417d4387530cf42788.scn"
+path="res://.godot/imported/summoner_model.glb-50d276460dbbf2f9f5582f7878d5a7d6.scn"
 
 [deps]
 
-source_file="res://maps/viewer/bin/summoner/summoner_model.glb"
-dest_files=["res://.godot/imported/summoner_model.glb-c39ddca695c138417d4387530cf42788.scn"]
+source_file="res://maps/lyllian/summoner/summoner_model.glb"
+dest_files=["res://.godot/imported/summoner_model.glb-50d276460dbbf2f9f5582f7878d5a7d6.scn"]
 
 [params]
 

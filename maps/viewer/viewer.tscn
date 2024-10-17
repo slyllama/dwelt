@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://j0gv1cjmedb0" path="res://maps/lyllian/meshes/mushrooms.glb" id="7_h5mhr"]
 [ext_resource type="Texture2D" uid="uid://rdnbmpumdtqq" path="res://maps/lyllian/materials/textures/moss_mask.png" id="8_f8tuc"]
 [ext_resource type="Texture2D" uid="uid://b08cx6hj32o2y" path="res://maps/lyllian/materials/textures/moss_norm.jpg" id="9_0wb4k"]
-[ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/viewer/bin/summoner/summoner.tscn" id="12_gx36l"]
+[ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/lyllian/summoner/summoner.tscn" id="12_gx36l"]
 
 [node name="Viewer" node_paths=PackedStringArray("decal_candidates", "shadow_lights") instance=ExtResource("1_xcs8b")]
 script = ExtResource("2_lwcb1")

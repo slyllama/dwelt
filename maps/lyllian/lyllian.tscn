@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://uuof241qx3k4" path="res://maps/lyllian/sound/phantom.ogg" id="6_dmxwh"]
 [ext_resource type="PackedScene" uid="uid://bwlogapifvemw" path="res://lib/object/pylon/meshes/pylon.glb" id="6_rshg4"]
 [ext_resource type="PackedScene" uid="uid://uct1byepa1wm" path="res://lib/object/object/object.tscn" id="7_awmnj"]
-[ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/viewer/bin/summoner/summoner.tscn" id="7_tqgrq"]
+[ext_resource type="PackedScene" uid="uid://cw5ku586v76wh" path="res://maps/lyllian/summoner/summoner.tscn" id="7_tqgrq"]
 [ext_resource type="PackedScene" uid="uid://bcuwme63fr4hi" path="res://maps/lyllian/meshes/scruffy_house.glb" id="7_x6ach"]
 [ext_resource type="Material" uid="uid://dkmhju7d7cbbp" path="res://generic/materials/mat_glow.tres" id="8_kwxtx"]
 [ext_resource type="Texture2D" uid="uid://ddf4xr255syot" path="res://generic/textures/blur.png" id="9_xfjyu"]
@@ -231,7 +231,7 @@ simultaneous_curio = true
 id = "scruffy_plush"
 title = "A Plush Like You"
 radius = 1.1
-description = "((Description))"
+description = "Propped up carefully against the umbrella handle."
 
 [node name="Pylon" parent="." index="14" instance=ExtResource("6_rshg4")]
 transform = Transform3D(0.954823, 0, 0.297175, 0, 1, 0, -0.297175, 0, 0.954823, 2.45097, 0.885428, 1.83734)

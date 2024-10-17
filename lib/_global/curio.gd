@@ -61,7 +61,10 @@ const DATA = {
 		"name": "Scruffy",
 		"objects": [
 			"scruffy_plush"
-		]
+		],
+		"object_text": {
+			"scruffy_plush": "The main difference between your floating core and this Scruffy plush is that he seems much newer and crisper, perhaps even unused and untouched. Are there more around?"
+		}
 	}
 }
 

@@ -86,6 +86,6 @@ libraries = {
 
 [node name="Hold" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ch3ft")
-volume_db = -2.0
+volume_db = -3.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
