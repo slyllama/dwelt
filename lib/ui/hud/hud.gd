@@ -107,3 +107,6 @@ func _on_settings_pressed() -> void:
 
 func _on_thingistry_pressed() -> void:
 	open_thingistry()
+
+func _on_close_button_button_down() -> void:
+	get_tree().quit()

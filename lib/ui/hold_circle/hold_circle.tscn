@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhx3rksv1luaw"]
+[gd_scene load_steps=12 format=3 uid="uid://bhx3rksv1luaw"]
 
 [ext_resource type="Script" path="res://lib/ui/hold_circle/hold_circle.gd" id="1_odiym"]
 [ext_resource type="Texture2D" uid="uid://dly8hvd7l212r" path="res://lib/ui/hold_circle/textures/circle_hollow.png" id="2_tu0cn"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bq7u8tco5458l" path="res://lib/ui/highlight/highlight.tscn" id="4_mkfpi"]
 [ext_resource type="Texture2D" uid="uid://b3vad0d5yu6fh" path="res://generic/materials/textures/swirl_mask.jpg" id="4_wlwoh"]
 [ext_resource type="AudioStream" uid="uid://cp6kpgwey2mip" path="res://generic/sound/hold_circle.ogg" id="5_ch3ft"]
-[ext_resource type="Texture2D" uid="uid://bovwpsvfhp258" path="res://lib/ui/hold_circle/textures/circle_hollow_base.png" id="5_xvxf7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6016"]
 shader = ExtResource("3_unikf")
@@ -22,46 +21,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EditorCircle:visible")
+tracks/0/path = NodePath(".:material:shader_parameter/alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EditorCircle:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EditorCircle:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/alpha")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -75,46 +38,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EditorCircle:visible")
+tracks/0/path = NodePath(".:material:shader_parameter/alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("EditorCircle:self_modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EditorCircle:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/alpha")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
@@ -138,11 +65,7 @@ modulate = Color(0, 0, 0, 0.666667)
 texture = ExtResource("4_0l5oj")
 
 [node name="Highlight" parent="." instance=ExtResource("4_mkfpi")]
-scale = Vector2(0.65, 0.65)
-
-[node name="EditorCircle" type="Sprite2D" parent="."]
-use_parent_material = true
-texture = ExtResource("5_xvxf7")
+scale = Vector2(1, 1)
 
 [node name="CircleBool" type="Polygon2D" parent="."]
 visible = false

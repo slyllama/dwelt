@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	
 	if $Title/HoldCircle.visible:
-		$Title/HoldCircle.global_position = $Title.track_position + Vector2(0, 50.0)
+		$Title/HoldCircle.global_position = $Title.track_position + Vector2(0, 100.0)
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return

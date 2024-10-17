@@ -22,7 +22,6 @@ func stop(finished = false) -> void:
 	if !is_spinning: return
 	is_spinning = false
 	
-	$Hold.stop()
 	if rotator != null:
 		rotator.stop()
 		root_node.queue_free()
@@ -30,6 +29,8 @@ func stop(finished = false) -> void:
 	if finished:
 		completed.emit()
 		$Anims.play("complete")
+	else:
+		$Hold.stop()
 
 func spin() -> void:
 	if is_spinning: return # don't start twice!

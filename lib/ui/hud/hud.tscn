@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://coo8lra5hpkuq"]
+[gd_scene load_steps=19 format=3 uid="uid://coo8lra5hpkuq"]
 
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_n4rw6"]
 [ext_resource type="Texture2D" uid="uid://bklbqbfm8726k" path="res://lib/ui/hud/textures/corner.png" id="2_u8gkr"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://yuqpu8rhdu1j" path="res://lib/ui/minimap/minimap_tool/minimap_tool.tscn" id="10_02eo2"]
 [ext_resource type="PackedScene" uid="uid://dt8q82hilms4t" path="res://lib/ui/hud/corner_button/corner_button.tscn" id="11_vloyh"]
 [ext_resource type="Texture2D" uid="uid://qweh6te8m0rm" path="res://lib/ui/hud/corner_button/textures/thingistry_small.png" id="12_pu032"]
+[ext_resource type="PackedScene" uid="uid://iscirmsdflue" path="res://lib/ui/close_button/close_button.tscn" id="13_fjtv2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84ane"]
 shader = ExtResource("4_qufeq")
@@ -249,5 +250,16 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("12_pu032")
 
+[node name="CloseButton" parent="." instance=ExtResource("13_fjtv2")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 43.0
+grow_horizontal = 0
+
 [connection signal="button_down" from="CornerButtons/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="button_down" from="CornerButtons/ThingistryButton" to="." method="_on_thingistry_pressed"]
+[connection signal="button_down" from="CloseButton" to="." method="_on_close_button_button_down"]

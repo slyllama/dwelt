@@ -110,7 +110,6 @@ script = ExtResource("1_ydpi7")
 
 [node name="Decal" type="Decal" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.455176, 0)
-visible = false
 size = Vector3(0.45, 0.610352, 0.45)
 texture_albedo = ExtResource("2_7quuy")
 texture_emission = ExtResource("2_7quuy")
