@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_brass.tres"
 },
+"mat_gold": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/materials/mat_gold.tres"
+},
 "mat_swirl": {
 "use_external/enabled": true,
 "use_external/path": "res://generic/materials/mat_swirl.tres"

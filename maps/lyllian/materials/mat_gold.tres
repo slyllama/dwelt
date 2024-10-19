@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b0rytv1oqbmil"]
+
+[ext_resource type="Texture2D" uid="uid://ndlilxl05q3t" path="res://maps/lyllian/materials/textures/gold_diff.jpg" id="1_se2eg"]
+[ext_resource type="Texture2D" uid="uid://dr002t0f8lw3b" path="res://maps/lyllian/materials/textures/gold_norm.jpg" id="2_51dmm"]
+
+[resource]
+albedo_texture = ExtResource("1_se2eg")
+metallic = 0.2
+roughness = 0.4
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_51dmm")
+uv1_scale = Vector3(7, 7, 7)
