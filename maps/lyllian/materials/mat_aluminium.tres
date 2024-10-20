@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bnpsew1hafmy7"]
+
+[ext_resource type="Texture2D" uid="uid://ca8j0vsdtiwui" path="res://maps/lyllian/materials/textures/aluminium_diff.jpg" id="1_nugbq"]
+[ext_resource type="Texture2D" uid="uid://8grmgjbpg4r8" path="res://maps/lyllian/materials/textures/aluminium_norm.jpg" id="2_o0xm2"]
+
+[resource]
+albedo_texture = ExtResource("1_nugbq")
+metallic = 0.25
+roughness = 0.25
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_o0xm2")
+uv1_scale = Vector3(2, 2, 2)

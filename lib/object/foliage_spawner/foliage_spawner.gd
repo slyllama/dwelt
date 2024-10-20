@@ -1,3 +1,4 @@
+@icon("res://generic/textures/icons/icon_foliage_spawner.svg")
 @tool
 class_name FoliageSpawner extends MultiMeshInstance3D
 # FoliageSpawner
