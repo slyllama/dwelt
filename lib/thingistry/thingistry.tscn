@@ -270,7 +270,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="InspectorInstance" parent="Base/Panel/VBox/BodyBox/Image" instance=ExtResource("11_usmbh")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

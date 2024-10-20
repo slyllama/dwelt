@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_brass.tres"
 },
+"mat_dome_rune": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lyllian/materials/mat_window.tres"
+},
 "mat_gold": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lyllian/materials/mat_gold.tres"
@@ -44,6 +48,11 @@ _subresources={
 "mat_swirl": {
 "use_external/enabled": true,
 "use_external/path": "res://generic/materials/mat_swirl.tres"
+}
+},
+"nodes": {
+"PATH:Sphere": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }
