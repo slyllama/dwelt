@@ -32,10 +32,17 @@ func revive() -> void:
 func set_initial_rotation(camera_rotation: Vector3) -> void:
 	# Strip out non-y rotation
 	$CameraHandler.rotation_degrees = camera_rotation * Vector3(0, 1, 0)
-	$CameraHandler/OrbitHandler.set_initial_rotation(
+	$CameraHandler.orbit_handler.set_initial_rotation(
 		camera_rotation * Vector3(1, 1, 0)) # never roll the camera
 
 func _ready() -> void:
+	CameraData.camera = $CameraHandler.camera
+	
+	SettingsHandler.setting_changed.connect(func(param):
+		if param == "orbit_sensitivity":
+			$CameraHandler.calculated_sensitivity = ($CameraHandler.orbit_sensitivity
+				* SettingsHandler.settings.orbit_sensitivity * 0.01))
+	
 	Global.move_player.connect(func(pos: Vector3):
 		global_position = pos)
 	$GroundDetector.target_position.y = -$Collision.shape.size.y / 2.0 - 0.5
@@ -57,6 +64,9 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_home"):
 		var _s = SummonFX.instantiate()
 		add_child(_s)
+
+func _process(_delta: float) -> void:
+	$CameraHandler.mouse_in_ui = Global.mouse_in_ui()
 
 func _physics_process(delta: float) -> void:
 	# Process inputs

@@ -3,24 +3,9 @@ extends Node
 # OrbitHandler
 # Handles getting mouse drag events for orbiting
 
-@export var orbit_sensitivity := 0.3
-@export var orbit_smoothing := 12.0
-@export var override_eligibility := false
-@export var disabled := false
-
-@export_category("Clamping")
-@export var clamp_x := true
-@export var clamp_x_lower := -65.0
-@export var clamp_x_upper := 10.0
-@export var clamp_y := false
-@export var clamp_y_lower := -180.0
-@export var clamp_y_upper := 180.0
-
 var orbiting = false
-var calculated_sensitivity = orbit_sensitivity
 var target_rotation = Vector3.ZERO
 var smooth_rotation = Vector3.ZERO
-var mouse_in_ui = false
 
 var _mouse_delta = Vector2.ZERO # event.relative
 var _last_click_position = Vector2.ZERO
@@ -34,7 +19,6 @@ func set_initial_rotation(rotation: Vector3) -> void:
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	
 	get_window().focus_exited.connect(func():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		orbiting = false)
@@ -43,7 +27,7 @@ func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	
 	if Input.is_action_just_pressed("left_click"):
-		if disabled: return
+		if get_parent().orbit_disabled: return
 		if get_parent().mouse_in_ui:
 			_clicked_in_ui = true
 		else:
@@ -60,8 +44,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	
-	if disabled: return
-	if Global.in_exclusive_ui and !override_eligibility: return
+	if get_parent().orbit_disabled: return
+	if get_parent().mouse_in_ui and !get_parent().override_eligibility: return
 	
 	# Only enter orbit mode after dragging the screen a certain amount i.e., not instantly
 	if (!orbiting and !_clicked_in_ui and Input.is_action_pressed("left_click")
@@ -75,9 +59,11 @@ func _process(delta: float) -> void:
 	# This is handled here instead of _input() because handling without delta
 	# causes strange behaviour at low frame rates
 	if orbiting:
-		target_rotation.x -= _mouse_delta.y * calculated_sensitivity * delta * 100.0
-		if clamp_x: target_rotation.x = clamp(target_rotation.x, clamp_x_lower, clamp_x_upper)
-		target_rotation.y -= _mouse_delta.x * calculated_sensitivity * delta * 100.0
-		if clamp_y: target_rotation.y = clamp(target_rotation.y, clamp_y_lower, clamp_y_upper)
-	smooth_rotation = lerp(smooth_rotation, target_rotation, delta * orbit_smoothing)
+		target_rotation.x -= _mouse_delta.y * get_parent().calculated_sensitivity * delta * 100.0
+		if get_parent().clamp_x: target_rotation.x = clamp(
+			target_rotation.x, get_parent().clamp_x_lower, get_parent().clamp_x_upper)
+		target_rotation.y -= _mouse_delta.x * get_parent().calculated_sensitivity * delta * 100.0
+		if get_parent().clamp_y: target_rotation.y = clamp(
+			target_rotation.y, get_parent().clamp_y_lower, get_parent().clamp_y_upper)
+	smooth_rotation = lerp(smooth_rotation, target_rotation, delta * get_parent().orbit_smoothing)
 	_mouse_delta = Vector2.ZERO

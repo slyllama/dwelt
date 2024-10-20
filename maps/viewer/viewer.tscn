@@ -89,3 +89,13 @@ omni_attenuation = 0.5
 
 [node name="MMOCamera" type="Node3D" parent="." index="10"]
 script = ExtResource("12_t33ow")
+orbit_disabled = null
+orbit_sensitivity = null
+orbit_smoothing = null
+override_eligibility = null
+clamp_x = null
+clamp_x_lower = null
+clamp_x_upper = null
+clamp_y = null
+clamp_y_lower = null
+clamp_y_upper = null

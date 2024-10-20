@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctalngjslyvct"]
 
-[ext_resource type="PackedScene" uid="uid://cl1b5pyew2pj4" path="res://lib/player/camera_handler/camera_handler.tscn" id="1_ibaa5"]
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_io483"]
 [ext_resource type="AudioStream" uid="uid://dirdbxuk6mefo" path="res://lib/player/sound/engine.ogg" id="5_pvg47"]
 [ext_resource type="PackedScene" uid="uid://bpawer1uids2h" path="res://lib/player/ground_detector/ground_detector.tscn" id="6_t2ywj"]
 [ext_resource type="AudioStream" uid="uid://menhnvj2hbvk" path="res://lib/player/sound/engage.ogg" id="6_vfpqk"]
 [ext_resource type="AudioStream" uid="uid://cdb2sikpxaaah" path="res://lib/player/sound/disengage.ogg" id="7_ejn40"]
+[ext_resource type="Script" path="res://addons/mmo_camera/mmo_camera.gd" id="7_niqex"]
 [ext_resource type="PackedScene" uid="uid://cll2qx861q03l" path="res://lib/player/player_mesh_handler/player_mesh_handler.tscn" id="10_8nk1a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs250"]
@@ -16,9 +16,6 @@ collision_layer = 3
 collision_mask = 3
 floor_max_angle = 1.22173
 script = ExtResource("1_io483")
-
-[node name="CameraHandler" parent="." instance=ExtResource("1_ibaa5")]
-transform = Transform3D(-1, 0, -8.74228e-08, -4.37114e-08, 0.866025, 0.5, 7.57104e-08, 0.5, -0.866025, 0, 0, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_hs250")
@@ -46,5 +43,18 @@ pitch_scale = 1.05
 [node name="Listener" type="AudioListener3D" parent="."]
 unique_name_in_owner = true
 current = true
+
+[node name="CameraHandler" type="Node3D" parent="."]
+script = ExtResource("7_niqex")
+orbit_disabled = null
+orbit_sensitivity = null
+orbit_smoothing = null
+override_eligibility = null
+clamp_x = null
+clamp_x_lower = null
+clamp_x_upper = null
+clamp_y = null
+clamp_y_lower = null
+clamp_y_upper = null
 
 [connection signal="ground_collided" from="GroundDetector" to="." method="_on_ground_collided"]

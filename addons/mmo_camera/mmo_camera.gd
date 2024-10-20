@@ -2,9 +2,22 @@
 extends Node3D
 const MMOOrbitHandler = preload("res://addons/mmo_camera/orbit_handler.gd")
 
+@export var orbit_disabled := false
+@export var orbit_sensitivity := 0.3
+@export var orbit_smoothing := 12.0
+@export var override_eligibility := false
 @export var zoom_increment = 0.3
 
+@export_category("Clamping")
+@export var clamp_x := true
+@export var clamp_x_lower := -65.0
+@export var clamp_x_upper := 10.0
+@export var clamp_y := false
+@export var clamp_y_lower := -180.0
+@export var clamp_y_upper := 180.0
+
 var mouse_in_ui = false
+var calculated_sensitivity = orbit_sensitivity
 
 var _target_zoom = 2.0 # set by the spring length of the axis
 var _max_zoom_in = 1.0

@@ -54,7 +54,9 @@ func _ready() -> void:
 	SettingsHandler.setting_changed.connect(func(parameter):
 		var _value = SettingsHandler.settings[parameter]
 		match parameter:
-			"fov": CameraData.camera.fov = _value
+			"fov":
+				if CameraData.camera != null:
+					CameraData.camera.fov = _value
 			"window_mode":
 				if _value == "full_screen": get_window().mode = Window.MODE_FULLSCREEN
 				elif _value == "maximized": get_window().mode = Window.MODE_MAXIMIZED
