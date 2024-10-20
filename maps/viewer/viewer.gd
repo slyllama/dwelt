@@ -39,3 +39,9 @@ func _ready() -> void:
 			"activate_summoner":
 				$Summoner.activate()
 	)
+	
+	$Player.queue_free()
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	$MMOCamera.mouse_in_ui = Global.mouse_in_ui()

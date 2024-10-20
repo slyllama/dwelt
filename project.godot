@@ -51,6 +51,10 @@ mouse_cursor/custom_image="res://generic/textures/cursor.png"
 movie_writer/movie_file="D:/Repos/dwelt/dwelt.avi"
 movie_writer/disable_vsync=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mmo_camera/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
