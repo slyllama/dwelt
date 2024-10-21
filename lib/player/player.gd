@@ -67,6 +67,7 @@ func _input(_event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	$CameraHandler.mouse_in_ui = Global.mouse_in_ui()
+	$CameraHandler.in_exclusive_ui = Global.in_exclusive_ui
 
 func _physics_process(delta: float) -> void:
 	# Process inputs
