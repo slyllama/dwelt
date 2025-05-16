@@ -16,6 +16,8 @@ func _ready() -> void:
 		focus_mode = false)
 	
 	Reporter.player = self
+	
+	$RobotMesh/AnimationPlayer.play("idle")
 
 func _input(_event) -> void:
 	if Input.is_action_just_pressed("right_click"):

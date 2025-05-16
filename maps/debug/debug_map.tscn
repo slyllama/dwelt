@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cwbcsfej31lgq" path="res://lib/debug/debug_pane/debug_pane.tscn" id="3_cxxq4"]
 [ext_resource type="PackedScene" uid="uid://d2nie80wc6pr1" path="res://lib/debug/spatial_text/spatial_text.tscn" id="4_3alq3"]
 [ext_resource type="PackedScene" uid="uid://bipu5fqladj2s" path="res://lib/player/player_camera/player_camera.tscn" id="4_ki8xt"]
-[ext_resource type="PackedScene" uid="uid://cfbuog8a600ka" path="res://generic/meshes/hollow_cylinder_collision.glb" id="8_n5la1"]
+[ext_resource type="PackedScene" uid="uid://cfbuog8a600ka" path="res://maps/debug/meshes/hollow_cylinder_collision.glb" id="8_n5la1"]
 
 [sub_resource type="Environment" id="Environment_v37e6"]
 tonemap_mode = 2

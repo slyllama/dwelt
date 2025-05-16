@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cfbuog8a600ka"
-path="res://.godot/imported/hollow_cylinder_collision.glb-dd4b89cad90b99767f6abd67b1140db2.scn"
+path="res://.godot/imported/hollow_cylinder_collision.glb-099b5ce68a985d0aeaf79d68729dfcdc.scn"
 
 [deps]
 
-source_file="res://generic/meshes/hollow_cylinder_collision.glb"
-dest_files=["res://.godot/imported/hollow_cylinder_collision.glb-dd4b89cad90b99767f6abd67b1140db2.scn"]
+source_file="res://maps/debug/meshes/hollow_cylinder_collision.glb"
+dest_files=["res://.godot/imported/hollow_cylinder_collision.glb-099b5ce68a985d0aeaf79d68729dfcdc.scn"]
 
 [params]
 
