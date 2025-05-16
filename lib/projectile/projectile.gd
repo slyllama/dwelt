@@ -70,5 +70,5 @@ var _z_speed = 0.0
 func _process(delta: float) -> void:
 	# TODO: more paramaterised _process(); most of these are just for debugging
 	_z_speed += delta * z_acceleration
-	area.position.x += delta * 1.2
+	area.position.x += delta * 0.8
 	area.position.z += _z_speed
