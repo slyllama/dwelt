@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwbcsfej31lgq"]
+
+[ext_resource type="FontFile" uid="uid://cp58gnof1ookj" path="res://generic/fonts/ibm_plex_mono.otf" id="1_io2ww"]
+[ext_resource type="Script" uid="uid://b5vbonkq38be3" path="res://lib/debug/debug_pane/debug_pane.gd" id="1_vfeok"]
+
+[node name="DebugPane" type="RichTextLabel"]
+custom_minimum_size = Vector2(500, 200)
+offset_right = 500.0
+offset_bottom = 200.0
+theme_override_fonts/normal_font = ExtResource("1_io2ww")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[right]((Debug pane))[/right]"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("1_vfeok")

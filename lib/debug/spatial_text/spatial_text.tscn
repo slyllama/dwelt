@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2nie80wc6pr1"]
+
+[ext_resource type="Script" uid="uid://wjphp7w7qk28" path="res://lib/debug/spatial_text/spatial_text.gd" id="1_vqmas"]
+[ext_resource type="FontFile" uid="uid://bwo4ijv2yk05k" path="res://generic/fonts/libertinus_sans.otf" id="2_oa286"]
+
+[node name="SpatialText" type="VisibleOnScreenNotifier3D"]
+aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("1_vqmas")
+
+[node name="FG" type="CanvasLayer" parent="."]
+
+[node name="Text" type="RichTextLabel" parent="FG"]
+custom_minimum_size = Vector2(200, 100)
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.352941)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("2_oa286")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]((Text))[/center]"

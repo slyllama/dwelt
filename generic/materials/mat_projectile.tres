@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c7q46oimumudq"]
+
+[ext_resource type="Shader" uid="uid://dbebu8bkm7ae5" path="res://generic/materials/shaders/shader_projectile.gdshader" id="1_3h6qi"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3h6qi")
+shader_parameter/albedo = Color(0.997334, 0.628992, 1, 1)
+shader_parameter/fresnel_amount = 1.75
+shader_parameter/fresnel_exponent = 2.0
