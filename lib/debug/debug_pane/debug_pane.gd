@@ -29,8 +29,6 @@ func _process(delta: float) -> void:
 		render([
 			_render_fps() + " (" + str(_prims) + ")",
 			Utils.fmt_vec3(Reporter.player_position),
-			"Lives: " + str(GameHandler.lives) + "/" + str(GameHandler.max_lives),
-			"Score: " + str(GameHandler.score), "",
 			"Reporter.orbiting = " + str(Reporter.orbiting),
 			"Reporter.projectile_count = " + str(Reporter.projectile_count)
 		])

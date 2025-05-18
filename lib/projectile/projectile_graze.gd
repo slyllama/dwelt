@@ -6,14 +6,12 @@ var is_grazed = false
 signal has_grazed
 
 func grazed() -> void:
-	var _lives_at_creation = GameHandler.lives
 	var timer = Timer.new()
 	timer.wait_time = 0.25
 	timer.one_shot = true
 	timer.timeout.connect(func():
-		if GameHandler.lives == _lives_at_creation:
-			has_grazed.emit()
-		else: return)
+		# TODO: check that the player hasn't been hit since graze
+		has_grazed.emit())
 	add_child(timer)
 	timer.start()
 

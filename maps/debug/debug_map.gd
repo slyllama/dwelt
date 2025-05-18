@@ -4,13 +4,13 @@ extends Node3D
 
 var clockwise = true
 
-func _ready() -> void:
-	get_window().mode = Window.MODE_FULLSCREEN
+#func _ready() -> void:
+	#get_window().mode = Window.MODE_FULLSCREEN
 
-func _process(delta: float) -> void:
-	$Camera.position = lerp(
-		$Camera.position, $Player.position,
-		Utils.crit_lerp(delta, 20.0))
+#func _process(delta: float) -> void:
+	#$Camera.position = lerp(
+		#$Camera.position, $Player.position,
+		#Utils.crit_lerp(delta, 20.0))
 
 func _on_test_timer_timeout() -> void:
 	clockwise = !clockwise

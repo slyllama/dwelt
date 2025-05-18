@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	area.body_entered.connect(func(body):
 		if body == Reporter.player: # connection for hitting player
-			GameHandler.lose_life()
+			Reporter.do_shake_camera.emit()
 			destroy())
 	add_child(area)
 	area.position.x = 0.5
@@ -52,7 +52,7 @@ func _ready() -> void:
 	# Add graze
 	var graze = ProjectileGraze.new()
 	graze.has_grazed.connect(func():
-		GameHandler.score += graze_score)
+		print("[Projectile] Grazed."))
 	area.add_child(graze)
 	
 	var timer = Timer.new()
