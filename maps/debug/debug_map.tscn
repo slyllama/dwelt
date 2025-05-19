@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnr7it7jfrdgv"]
+[gd_scene load_steps=15 format=3 uid="uid://bnr7it7jfrdgv"]
 
 [ext_resource type="Script" uid="uid://ovhtx76d2rl8" path="res://maps/debug/debug_map.gd" id="1_cxxq4"]
 [ext_resource type="PackedScene" uid="uid://dt1ioqij5hj4b" path="res://lib/hud/hud.tscn" id="2_31nek"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://d2nie80wc6pr1" path="res://lib/debug/spatial_text/spatial_text.tscn" id="4_3alq3"]
 [ext_resource type="PackedScene" uid="uid://bipu5fqladj2s" path="res://lib/player/player_camera/player_camera.tscn" id="4_ki8xt"]
 [ext_resource type="PackedScene" uid="uid://day1wnd5dm531" path="res://maps/debug/meshes/ribs.glb" id="8_31nek"]
-[ext_resource type="PackedScene" uid="uid://cfbuog8a600ka" path="res://maps/debug/meshes/hollow_cylinder_collision.glb" id="8_n5la1"]
 [ext_resource type="PackedScene" uid="uid://fq8nxbsbb255" path="res://lib/gadget/gadget.tscn" id="9_31nek"]
 
 [sub_resource type="Environment" id="Environment_v37e6"]
@@ -35,15 +34,11 @@ size = Vector3(30, 0.1, 30)
 [sub_resource type="BoxMesh" id="BoxMesh_ki8xt"]
 size = Vector3(2, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5la1"]
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.87, 0.0174, 0.74211, 1)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_n5la1"]
+plane = Plane(1, 0, 0, 0)
 
-[sub_resource type="QuadMesh" id="QuadMesh_31nek"]
-material = SubResource("StandardMaterial3D_n5la1")
-size = Vector2(0.05, 20)
-orientation = 1
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_31nek"]
+plane = Plane(-1, 0, 0, 0)
 
 [node name="DebugMap" type="Node3D"]
 script = ExtResource("1_cxxq4")
@@ -71,11 +66,13 @@ skeleton = NodePath("../..")
 [node name="Collision" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gvumf")
+debug_fill = false
 
 [node name="Player" parent="." instance=ExtResource("2_hctbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 
 [node name="Camera" parent="." instance=ExtResource("4_ki8xt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="SpatialText" parent="." instance=ExtResource("4_3alq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
@@ -83,9 +80,6 @@ text = "((Spatial Text Test))"
 
 [node name="TestTimer" type="Timer" parent="."]
 wait_time = 1.2
-
-[node name="Boundary" parent="." instance=ExtResource("8_n5la1")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0.15, 3)
 
 [node name="Environment" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
@@ -136,22 +130,20 @@ transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 3,
 [node name="Ribs2" parent="Environment" instance=ExtResource("8_31nek")]
 transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, -3, 0, 0)
 
-[node name="Mesh2" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-cast_shadow = 0
-mesh = SubResource("QuadMesh_31nek")
-skeleton = NodePath("../..")
-
 [node name="Gadget" parent="." instance=ExtResource("9_31nek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29888, 0, 2.5)
-title = "Bullet Test"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
 radius = 0.65
-interact_text = "hello"
+interact_text = "Test Projectiles"
 
-[node name="Gadget2" parent="." instance=ExtResource("9_31nek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0555345, 0, 2.5)
-title = "Test Gadget"
-radius = 0.65
+[node name="Bounds" type="StaticBody3D" parent="."]
+
+[node name="Shape" type="CollisionShape3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_n5la1")
+
+[node name="Shape2" type="CollisionShape3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_31nek")
 
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
 [connection signal="interacted" from="Gadget" to="." method="_on_gadget_interacted"]

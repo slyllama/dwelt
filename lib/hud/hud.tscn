@@ -7,17 +7,18 @@
 [ext_resource type="Script" uid="uid://o537atgmmsth" path="res://lib/texture_rect_dissolve/texture_rect_dissolve.gd" id="4_pm6i7"]
 [ext_resource type="FontFile" uid="uid://bjaq6ks7h6ipp" path="res://generic/fonts/pirata_one.ttf" id="6_3pj68"]
 
-[sub_resource type="Gradient" id="Gradient_hctin"]
+[sub_resource type="Gradient" id="Gradient_oa3at"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_636yr"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hctin"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04i23"]
-color_ramp = SubResource("Gradient_hctin")
-noise = SubResource("FastNoiseLite_636yr")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_636yr"]
+seamless = true
+color_ramp = SubResource("Gradient_oa3at")
+noise = SubResource("FastNoiseLite_hctin")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpybq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pj68"]
 shader = ExtResource("3_pm6i7")
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_04i23")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_636yr")
 shader_parameter/dissolve_value = 1.0
 
 [node name="HUD" type="CanvasLayer"]
@@ -34,7 +35,7 @@ offset_bottom = 232.0
 grow_horizontal = 0
 
 [node name="InteractLabel" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_tpybq")
+material = SubResource("ShaderMaterial_3pj68")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

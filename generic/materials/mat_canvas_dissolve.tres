@@ -1,9 +1,17 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://byym4a8hrvgjg"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://byym4a8hrvgjg"]
 
 [ext_resource type="Shader" uid="uid://b4552e4yw8kki" path="res://generic/materials/shaders/shader_canvas_dissolve.gdshader" id="1_oa3at"]
-[ext_resource type="Texture2D" uid="uid://cv0i2yg877vce" path="res://generic/materials/textures/paint_mask.jpg" id="2_hctin"]
+
+[sub_resource type="Gradient" id="Gradient_oa3at"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hctin"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_636yr"]
+seamless = true
+color_ramp = SubResource("Gradient_oa3at")
+noise = SubResource("FastNoiseLite_hctin")
 
 [resource]
 shader = ExtResource("1_oa3at")
-shader_parameter/dissolve_texture = ExtResource("2_hctin")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_636yr")
 shader_parameter/dissolve_value = 0.0

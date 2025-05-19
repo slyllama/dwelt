@@ -11,7 +11,7 @@ const ProjectileMaterial = preload("res://generic/materials/mat_projectile.tres"
 
 @export var forward_speed = 1.0
 @export var forward_acceleration = 5.0
-@export var sideways_speed = 1.0
+@export var sideways_speed = 0.0
 @export var sideways_acceleration = 0.0
 
 func destroy() -> void:
@@ -73,6 +73,5 @@ func _ready() -> void:
 @onready var _sideways_speed = sideways_speed
 
 func _process(delta: float) -> void:
-	
 	area.position.x += delta * _forward_speed
 	area.position.z += delta * _sideways_speed
