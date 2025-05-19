@@ -11,16 +11,16 @@ extends VisibleOnScreenNotifier3D
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	var _screen_pos = Reporter.camera.unproject_position(position)
-	var _in_window = (_screen_pos.x > 10.0 and _screen_pos.x < get_window().size.x - 10.0
-		and _screen_pos.y > 10.0 and _screen_pos.y < get_window().size.y - 10.0)
+	#var _screen_pos = Reporter.camera.unproject_position(position)
+	#var _in_window = (_screen_pos.x > 10.0 and _screen_pos.x < get_window().size.x - 10.0
+		#and _screen_pos.y > 10.0 and _screen_pos.y < get_window().size.y - 10.0)
 	
-	if _in_window and is_on_screen():
+	if is_on_screen():
 		if !$FG/Text.visible:
 			$FG/Text.visible = true
 	else:
 		if $FG/Text.visible:
 			$FG/Text.visible = false
 	
-	$FG/Text.position = Reporter.camera.unproject_position(position)
+	$FG/Text.position = Reporter.camera.unproject_position(global_position)
 	$FG/Text.position.x -= $FG/Text.size.x / 2.0

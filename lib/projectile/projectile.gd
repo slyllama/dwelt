@@ -29,7 +29,7 @@ func _ready() -> void:
 	area.body_entered.connect(func(body):
 		if body == Reporter.player: # connection for hitting player
 			Reporter.do_shake_camera.emit()
-			destroy())
+		destroy())
 	add_child(area)
 	area.position.x = 2.0
 	

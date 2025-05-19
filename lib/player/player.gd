@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 	_target_velocity = (Vector3.FORWARD * _direction.x)
 	_target_velocity += (Vector3.RIGHT * _direction.z)
 	_target_velocity.y += 2.0 * -98.0 * delta # apply gravity
-	
 	velocity = lerp(velocity, _target_velocity, Utils.crit_lerp(26.0))
 	move_and_slide()
 	

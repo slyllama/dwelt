@@ -2,9 +2,9 @@ extends Node3D
 # PlayerCamera
 # Camera controls and rotation
 
-@export var zoom_increment = 0.35
-@export var zoom_clamp_near = 1.0
-@export var zoom_clamp_far = 20.0
+@export var zoom_increment = 0.15
+@export var zoom_clamp_near = 2.0
+@export var zoom_clamp_far = 6.0
 
 @onready var target_zoom_distance = $Axis/Camera.position.z
 

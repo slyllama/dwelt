@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt1ioqij5hj4b"]
+
+[ext_resource type="Script" uid="uid://bvpr5qsawkemv" path="res://lib/hud/hud.gd" id="1_dcyf8"]
+[ext_resource type="PackedScene" uid="uid://cwbcsfej31lgq" path="res://lib/debug/debug_pane/debug_pane.tscn" id="1_o36f6"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dcyf8")
+
+[node name="DebugPane" parent="." instance=ExtResource("1_o36f6")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -532.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 232.0
+grow_horizontal = 0
+
+[node name="InteractLabel" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Interact[/center]"

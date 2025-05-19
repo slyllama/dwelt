@@ -30,5 +30,11 @@ func _process(delta: float) -> void:
 			_render_fps() + " (" + str(_prims) + ")",
 			Utils.fmt_vec3(Reporter.player_position),
 			"Reporter.orbiting = " + str(Reporter.orbiting),
-			"Reporter.projectile_count = " + str(Reporter.projectile_count)
+			"Reporter.projectile_count = " + str(Reporter.projectile_count), "",
+			"Reporter.lives = " + str(GameHandler.lives)
 		])
+		
+		if Reporter.current_gadget:
+			render([
+				"Reporter.current_gadget = " + str(Reporter.current_gadget)
+			], false, "yellow")

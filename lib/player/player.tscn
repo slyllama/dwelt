@@ -14,6 +14,7 @@ shading_mode = 0
 specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
+albedo_color = Color(0.9, 0.9, 0.9, 1)
 albedo_texture = ExtResource("2_2ocui")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0y160"]

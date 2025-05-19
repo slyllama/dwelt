@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://fq8nxbsbb255"]
+
+[ext_resource type="Script" uid="uid://dn0sdsrkibig0" path="res://lib/gadget/gadget.gd" id="1_xefrw"]
+[ext_resource type="PackedScene" uid="uid://d2nie80wc6pr1" path="res://lib/debug/spatial_text/spatial_text.tscn" id="2_bdga2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bdga2"]
+resource_local_to_scene = true
+radius = 1.0
+
+[node name="Gadget" type="Area3D"]
+script = ExtResource("1_xefrw")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_bdga2")
+
+[node name="SpatialText" parent="." instance=ExtResource("2_bdga2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+text = "((Gadget))"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

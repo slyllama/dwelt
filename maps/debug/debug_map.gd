@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var rng = RandomNumberGenerator.new()
 
+const AMOUNT = 12
 var clockwise = true
 
 func _process(_delta: float) -> void:
@@ -20,3 +21,14 @@ func _on_test_timer_timeout() -> void:
 		_p.lifetime = 3.0
 		
 		add_child(_p)
+
+func _on_gadget_interacted() -> void:
+	for z in AMOUNT:
+		for x in AMOUNT:
+			var _p = Projectile.new()
+			_p.position.x = x * 0.7 - AMOUNT * 0.5
+			_p.position.z = z * 1.2 - AMOUNT * 0.75
+			_p.lifetime = 7.0
+			_p.rotation.y = rng.randf_range(PI + 0.8, 2 * PI - 0.8)
+			_p.forward_speed = randf_range(0.8, 1.4)
+			add_child(_p)

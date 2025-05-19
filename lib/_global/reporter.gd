@@ -6,9 +6,13 @@ extends Node
 # A "do" signal can be propogated from anywhere; it is a cause, not an effect
 signal do_shake_camera
 
+signal gadget_changed
+
+# References to objects
 var camera: Camera3D
 var player: DweltPlayer
 
+var current_gadget = null
 var mouse_in_ui = false
 var orbiting = false
 var player_position = Vector3.ZERO
