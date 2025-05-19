@@ -4,5 +4,10 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Reporter.gadget_changed.connect(func():
-		await get_tree().process_frame
-		$InteractLabel.visible = (Reporter.current_gadget != null))
+		if Reporter.current_gadget:
+			var _r: Gadget = Reporter.current_gadget
+			if _r.interact_text:
+				$InteractLabel/InteractText.text = "[center]" + _r.interact_text + "[/center]"
+			else: $InteractLabel/InteractText.text = "[center]Interact[/center]"
+			$InteractLabel.dissolve_in()
+		else: $InteractLabel.dissolve_out())

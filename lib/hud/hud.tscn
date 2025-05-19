@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt1ioqij5hj4b"]
+[gd_scene load_steps=11 format=3 uid="uid://dt1ioqij5hj4b"]
 
 [ext_resource type="Script" uid="uid://bvpr5qsawkemv" path="res://lib/hud/hud.gd" id="1_dcyf8"]
 [ext_resource type="PackedScene" uid="uid://cwbcsfej31lgq" path="res://lib/debug/debug_pane/debug_pane.tscn" id="1_o36f6"]
+[ext_resource type="Shader" uid="uid://b4552e4yw8kki" path="res://generic/materials/shaders/shader_canvas_dissolve.gdshader" id="3_pm6i7"]
+[ext_resource type="Texture2D" uid="uid://cxemcgoplp0ff" path="res://lib/hud/textures/interact.png" id="3_u1rn0"]
+[ext_resource type="Script" uid="uid://o537atgmmsth" path="res://lib/texture_rect_dissolve/texture_rect_dissolve.gd" id="4_pm6i7"]
+[ext_resource type="FontFile" uid="uid://bjaq6ks7h6ipp" path="res://generic/fonts/pirata_one.ttf" id="6_3pj68"]
+
+[sub_resource type="Gradient" id="Gradient_hctin"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_636yr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04i23"]
+color_ramp = SubResource("Gradient_hctin")
+noise = SubResource("FastNoiseLite_636yr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpybq"]
+shader = ExtResource("3_pm6i7")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_04i23")
+shader_parameter/dissolve_value = 1.0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_dcyf8")
@@ -16,21 +33,43 @@ offset_right = -32.0
 offset_bottom = 232.0
 grow_horizontal = 0
 
-[node name="InteractLabel" type="RichTextLabel" parent="."]
-visible = false
-custom_minimum_size = Vector2(200, 50)
+[node name="InteractLabel" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_tpybq")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -25.0
-offset_right = 100.0
-offset_bottom = 25.0
+offset_left = -259.0
+offset_top = -272.0
+offset_right = 259.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 32
+texture = ExtResource("3_u1rn0")
+script = ExtResource("4_pm6i7")
+initial_dissolve_value = 0.0
+metadata/_custom_type_script = "uid://o537atgmmsth"
+
+[node name="InteractText" type="RichTextLabel" parent="InteractLabel"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -98.5
+offset_right = 131.0
+offset_bottom = -33.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_3pj68")
+theme_override_font_sizes/normal_font_size = 44
 bbcode_enabled = true
 text = "[center]Interact[/center]"
+scroll_active = false
+autowrap_mode = 0

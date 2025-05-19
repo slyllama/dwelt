@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://byym4a8hrvgjg"]
+
+[ext_resource type="Shader" uid="uid://b4552e4yw8kki" path="res://generic/materials/shaders/shader_canvas_dissolve.gdshader" id="1_oa3at"]
+[ext_resource type="Texture2D" uid="uid://cv0i2yg877vce" path="res://generic/materials/textures/paint_mask.jpg" id="2_hctin"]
+
+[resource]
+shader = ExtResource("1_oa3at")
+shader_parameter/dissolve_texture = ExtResource("2_hctin")
+shader_parameter/dissolve_value = 0.0

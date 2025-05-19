@@ -60,6 +60,7 @@ directional_shadow_blend_splits = true
 [node name="HUD" parent="." instance=ExtResource("2_31nek")]
 
 [node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
@@ -129,26 +130,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 3)
 height = 6.0
 sides = 16
 
-[node name="Ribs" parent="." instance=ExtResource("8_31nek")]
-transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 3, 0, 2)
+[node name="Ribs" parent="Environment" instance=ExtResource("8_31nek")]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 3, 0, 0)
 
-[node name="Ribs2" parent="." instance=ExtResource("8_31nek")]
-transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, -3, 0, 2)
+[node name="Ribs2" parent="Environment" instance=ExtResource("8_31nek")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, -3, 0, 0)
 
-[node name="Mesh2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+[node name="Mesh2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_31nek")
+skeleton = NodePath("../..")
 
 [node name="Gadget" parent="." instance=ExtResource("9_31nek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 2.5)
 title = "Bullet Test"
-radius = 0.4
+radius = 0.65
+interact_text = "hello"
 
 [node name="Gadget2" parent="." instance=ExtResource("9_31nek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0555345, 0, 2.5)
 title = "Test Gadget"
-radius = 0.6
+radius = 0.65
 
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
 [connection signal="interacted" from="Gadget" to="." method="_on_gadget_interacted"]

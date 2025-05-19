@@ -16,13 +16,17 @@ signal interacted
 	set(_val):
 		radius = _val
 		$Collision.shape.radius = radius
+@export var interact_text = "((blahblah))"
+
+func _interact() -> void:
+	Reporter.do_shake_camera.emit()
+	interacted.emit()
+	print("Interacting with '" + title + "'")
 
 func _input(event: InputEvent) -> void:
 	if Reporter.current_gadget != self: return
 	if Input.is_action_just_pressed("interact"):
-		Reporter.do_shake_camera.emit()
-		interacted.emit()
-		print("Interacting with '" + title + "'")
+		_interact()
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is DweltPlayer:
