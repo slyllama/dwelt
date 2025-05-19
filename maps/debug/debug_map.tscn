@@ -79,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 text = "((Spatial Text Test))"
 
 [node name="TestTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.2
 autostart = true
 
 [node name="Boundary" parent="." instance=ExtResource("8_n5la1")]

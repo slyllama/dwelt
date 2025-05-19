@@ -16,8 +16,6 @@ func _ready() -> void:
 		focus_mode = false)
 	
 	Reporter.player = self
-	
-	$RobotMesh/AnimationPlayer.play("idle")
 
 func _input(_event) -> void:
 	if Input.is_action_just_pressed("right_click"):
@@ -39,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("strafe_left"): _direction.z = -1.0
 	elif Input.is_action_pressed("strafe_right"): _direction.z = 1.0
 	else: _direction.z = 0.0
+
+	$PlayerModel.update_anim_targets(_direction.x, _direction.z)
 	
 	_direction = _direction.normalized()
 	_direction *= _speed
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	_target_velocity += (Vector3.RIGHT * _direction.z)
 	_target_velocity.y += 2.0 * -98.0 * delta # apply gravity
 	
-	velocity = lerp(velocity, _target_velocity, Utils.crit_lerp(delta, 26.0))
+	velocity = lerp(velocity, _target_velocity, Utils.crit_lerp(26.0))
 	move_and_slide()
 	
 	Reporter.player_position = global_position

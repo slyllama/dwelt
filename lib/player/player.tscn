@@ -1,16 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dthn2ymslag7k"]
+[gd_scene load_steps=7 format=3 uid="uid://dthn2ymslag7k"]
 
 [ext_resource type="Script" uid="uid://x4ivip3rc418" path="res://lib/player/player.gd" id="1_al4t3"]
-[ext_resource type="PackedScene" uid="uid://bwtmwf1jjm3rr" path="res://lib/player/meshes/robot.glb" id="2_al4t3"]
+[ext_resource type="Texture2D" uid="uid://b6u8rdph3uu6w" path="res://generic/materials/textures/player_circle.png" id="2_2ocui"]
+[ext_resource type="PackedScene" uid="uid://cya78xg5xgre4" path="res://lib/player/player_model.tscn" id="3_2ocui"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
-radius = 0.25
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_al4t3"]
+radius = 0.09
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lbbh"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("2_2ocui")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
+material = SubResource("StandardMaterial3D_5lbbh")
+size = Vector2(0.2, 0.2)
+orientation = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_al4t3")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("SphereShape3D_iochv")
+shape = SubResource("CylinderShape3D_al4t3")
 
-[node name="RobotMesh" parent="." instance=ExtResource("2_al4t3")]
+[node name="PlayerCircle" type="MeshInstance3D" parent="Collision"]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_0y160")
+
+[node name="PlayerModel" parent="." instance=ExtResource("3_2ocui")]

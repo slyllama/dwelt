@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_test_disabled;
 
 uniform vec3 albedo: source_color = vec3(1.0);
 uniform float fresnel_amount = 1.0;

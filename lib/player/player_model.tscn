@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://cya78xg5xgre4"]
+
+[ext_resource type="PackedScene" uid="uid://bwtmwf1jjm3rr" path="res://lib/player/meshes/robot.glb" id="1_tjqoq"]
+[ext_resource type="Script" uid="uid://by08h843s165e" path="res://lib/player/player_model.gd" id="2_f1q40"]
+[ext_resource type="Animation" uid="uid://dnpq1qfb4lmxl" path="res://lib/player/anims/idle.res" id="2_fixga"]
+[ext_resource type="Animation" uid="uid://jab7gu8e87bk" path="res://lib/player/anims/move.res" id="3_f1q40"]
+[ext_resource type="Animation" uid="uid://dr7hvod5ap40d" path="res://lib/player/anims/strafe.res" id="4_e8ca1"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6g68y"]
+_data = {
+&"idle": ExtResource("2_fixga"),
+&"move": ExtResource("3_f1q40"),
+&"strafe": ExtResource("4_e8ca1")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5o3bo"]
+animation = &"robot_anims/move"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_dpvyl"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6p4bg"]
+animation = &"robot_anims/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qbtq2"]
+animation = &"robot_anims/strafe"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_mwxvm"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_shb1r"]
+graph_offset = Vector2(-335.795, -22.0193)
+nodes/forward/node = SubResource("AnimationNodeAnimation_5o3bo")
+nodes/forward/position = Vector2(60, 160)
+nodes/forward_target/node = SubResource("AnimationNodeAdd2_dpvyl")
+nodes/forward_target/position = Vector2(260, -20)
+nodes/idle/node = SubResource("AnimationNodeAnimation_6p4bg")
+nodes/idle/position = Vector2(60, -20)
+nodes/output/position = Vector2(700, -20)
+nodes/strafe/node = SubResource("AnimationNodeAnimation_qbtq2")
+nodes/strafe/position = Vector2(260, 220)
+nodes/strafe_target/node = SubResource("AnimationNodeAdd2_mwxvm")
+nodes/strafe_target/position = Vector2(440, -20)
+node_connections = [&"forward_target", 0, &"idle", &"forward_target", 1, &"forward", &"output", 0, &"strafe_target", &"strafe_target", 0, &"forward_target", &"strafe_target", 1, &"strafe"]
+
+[node name="PlayerModel" instance=ExtResource("1_tjqoq")]
+script = ExtResource("2_f1q40")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
+bones/3/rotation = Quaternion(0.18062, -4.11272e-10, -4.11272e-10, 0.983553)
+bones/5/rotation = Quaternion(0.824966, 5.79118e-09, 5.79119e-09, 0.565182)
+
+[node name="Sphere" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 2.68222e-22, 0, -2.68222e-22, 1, 0, 0, 0, 1, -8.03266e-09, 2.99316e-08, -1.26493e-09)
+
+[node name="Cube_002" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -3.05441e-08, -9.19711e-09, 3.05441e-08, 1, 2.98023e-08, 9.19712e-09, 5.96046e-08, 1, -1.49589e-08, 0.193295, 0.0315135)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -2.1518e-09, -2.78627e-08, 2.15183e-09, 1, -2.98023e-07, 2.78627e-08, -5.66244e-07, 1, -1.58442e-08, -0.0717471, 0.207067)
+
+[node name="AnimTree" type="AnimationTree" parent="." index="3"]
+libraries = {
+&"robot_anims": SubResource("AnimationLibrary_6g68y")
+}
+tree_root = SubResource("AnimationNodeBlendTree_shb1r")
+parameters/forward_target/add_amount = 0.0
+parameters/strafe_target/add_amount = 0

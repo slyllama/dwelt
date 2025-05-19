@@ -4,13 +4,10 @@ extends Node3D
 
 var clockwise = true
 
-#func _ready() -> void:
-	#get_window().mode = Window.MODE_FULLSCREEN
-
-#func _process(delta: float) -> void:
-	#$Camera.position = lerp(
-		#$Camera.position, $Player.position,
-		#Utils.crit_lerp(delta, 20.0))
+func _process(_delta: float) -> void:
+	$Camera.position = lerp(
+		$Camera.position, $Player.position,
+		Utils.crit_lerp(20.0))
 
 func _on_test_timer_timeout() -> void:
 	clockwise = !clockwise
@@ -21,8 +18,5 @@ func _on_test_timer_timeout() -> void:
 		_p.rotation_degrees.y = _i * 360 / 15.0
 		_p.radius = 0.17
 		_p.lifetime = 3.0
-		
-		if clockwise: _p.z_acceleration = 0.03
-		else: _p.z_acceleration = -0.03
 		
 		add_child(_p)

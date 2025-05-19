@@ -7,8 +7,12 @@ const ProjectileMaterial = preload("res://generic/materials/mat_projectile.tres"
 @export var active = false
 @export var radius = 0.25
 @export var lifetime = 1.0
-@export var z_acceleration = 0.05
 @export var graze_score = 10
+
+@export var forward_speed = 1.0
+@export var forward_acceleration = 5.0
+@export var sideways_speed = 1.0
+@export var sideways_acceleration = 0.0
 
 func destroy() -> void:
 	if !active: return
@@ -27,7 +31,7 @@ func _ready() -> void:
 			Reporter.do_shake_camera.emit()
 			destroy())
 	add_child(area)
-	area.position.x = 0.5
+	area.position.x = 2.0
 	
 	# Set up collision shape
 	var collision_shape = SphereShape3D.new()
@@ -65,10 +69,10 @@ func _ready() -> void:
 	_scale_tween.tween_property(area, "scale", Vector3(1.0, 1.0, 1.0), 0.12)
 	_scale_tween.tween_callback(func(): active = true)
 
-var _z_speed = 0.0
+@onready var _forward_speed = forward_speed
+@onready var _sideways_speed = sideways_speed
 
 func _process(delta: float) -> void:
-	# TODO: more paramaterised _process(); most of these are just for debugging
-	_z_speed += delta * z_acceleration
-	area.position.x += delta * 0.8
-	area.position.z += _z_speed
+	
+	area.position.x += delta * _forward_speed
+	area.position.z += delta * _sideways_speed

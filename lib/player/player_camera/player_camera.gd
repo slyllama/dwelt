@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	Reporter.camera = $Axis/Camera # assign camera to Reporter
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Clamp zoom distances
 	target_zoom_distance = clamp(
 		target_zoom_distance, zoom_clamp_near, zoom_clamp_far)
@@ -29,4 +29,4 @@ func _process(delta: float) -> void:
 	# Smooth and update camera zoom
 	$Axis/Camera.position.z = lerp(
 		$Axis/Camera.position.z, target_zoom_distance,
-		Utils.crit_lerp(delta, 10.0))
+		Utils.crit_lerp(10.0))
