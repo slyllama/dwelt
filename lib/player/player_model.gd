@@ -13,6 +13,6 @@ func update_anim_targets(forward: float, strafe: float) -> void:
 	_forward_target = lerp(_forward_target, forward, _smooth)
 	_strafe_target = lerp(_strafe_target, strafe, _smooth)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$AnimTree.set("parameters/forward_target/add_amount", _forward_target)
 	$AnimTree.set("parameters/strafe_target/add_amount", _strafe_target)

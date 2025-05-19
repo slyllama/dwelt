@@ -18,10 +18,10 @@ func _ready() -> void:
 	Reporter.player = self
 
 func _input(_event) -> void:
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("focus_mode"):
 		focus_mode_entered.emit()
 		focus_mode = true
-	elif Input.is_action_just_released("right_click"):
+	elif Input.is_action_just_released("focus_mode"):
 		focus_mode_exited.emit()
 		focus_mode = false
 
@@ -37,6 +37,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("strafe_left"): _direction.z = -1.0
 	elif Input.is_action_pressed("strafe_right"): _direction.z = 1.0
 	else: _direction.z = 0.0
+	
+	_direction.z += Input.get_action_strength("strafe_axis_right")
+	_direction.z -= Input.get_action_strength("strafe_axis_left")
+	_direction.x += Input.get_action_strength("move_axis_up")
+	_direction.x -= Input.get_action_strength("move_axis_down")
 
 	$PlayerModel.update_anim_targets(_direction.x, _direction.z)
 	

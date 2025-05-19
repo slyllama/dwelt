@@ -34,7 +34,7 @@ func _ready() -> void:
 	area.position.x = 2.0
 	
 	# Set up collision shape
-	var collision_shape = SphereShape3D.new()
+	var collision_shape = CylinderShape3D.new()
 	collision_shape.radius = radius
 	var collision = CollisionShape3D.new()
 	collision.shape = collision_shape

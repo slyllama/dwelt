@@ -8,7 +8,7 @@ extends Node3D
 
 @onready var target_zoom_distance = $Axis/Camera.position.z
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("zoom_in"):
 		target_zoom_distance -= zoom_increment
 	if Input.is_action_just_pressed("zoom_out"):

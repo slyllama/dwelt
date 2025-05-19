@@ -23,14 +23,13 @@ func _interact() -> void:
 	interacted.emit()
 	print("Interacting with '" + title + "'")
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Reporter.current_gadget != self: return
 	if Input.is_action_just_pressed("interact"):
 		_interact()
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is DweltPlayer:
-		await get_tree().process_frame
 		Reporter.current_gadget = self
 		Reporter.gadget_changed.emit()
 
