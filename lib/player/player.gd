@@ -55,3 +55,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	Reporter.player_position = global_position
+	$EngineSound.pitch_scale = 1.0 + velocity.length() / 3.0 * 0.25

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dthn2ymslag7k"]
+[gd_scene load_steps=8 format=3 uid="uid://dthn2ymslag7k"]
 
 [ext_resource type="Script" uid="uid://x4ivip3rc418" path="res://lib/player/player.gd" id="1_al4t3"]
 [ext_resource type="Texture2D" uid="uid://b6u8rdph3uu6w" path="res://generic/textures/player_circle.png" id="2_2ocui"]
 [ext_resource type="PackedScene" uid="uid://cya78xg5xgre4" path="res://lib/player/player_model.tscn" id="3_2ocui"]
+[ext_resource type="AudioStream" uid="uid://b0onquty2yl1s" path="res://lib/player/sounds/engine.ogg" id="4_5lbbh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_al4t3"]
 height = 1.0
@@ -36,3 +37,7 @@ cast_shadow = 0
 mesh = SubResource("QuadMesh_0y160")
 
 [node name="PlayerModel" parent="." instance=ExtResource("3_2ocui")]
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_5lbbh")
+autoplay = true

@@ -36,6 +36,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is DweltPlayer:
 		Reporter.current_gadget = self
 		Reporter.gadget_changed.emit()
+		$EnterSound.play()
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is DweltPlayer and Reporter.current_gadget == self:

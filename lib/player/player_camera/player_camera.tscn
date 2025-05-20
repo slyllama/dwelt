@@ -51,6 +51,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 6)
 current = true
 fov = 55.0
 
+[node name="Listener" type="AudioListener3D" parent="Axis/Camera"]
+current = true
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6jbv4")
