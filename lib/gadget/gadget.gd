@@ -16,12 +16,16 @@ signal interacted
 	set(_val):
 		radius = _val
 		$Collision.shape.radius = radius
-@export var interact_text = "((blahblah))"
+@export var interact_text = "Interact"
+@export var dismiss_interaction = true
 
 func _interact() -> void:
 	Reporter.do_shake_camera.emit()
 	interacted.emit()
-	print("Interacting with '" + title + "'")
+	
+	if dismiss_interaction:
+		Reporter.current_gadget = null
+		Reporter.gadget_changed.emit()
 
 func _input(_event: InputEvent) -> void:
 	if Reporter.current_gadget != self: return

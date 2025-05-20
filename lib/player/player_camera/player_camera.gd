@@ -1,32 +1,45 @@
-extends Node3D
+class_name DweltCamera extends Node3D
 # PlayerCamera
 # Camera controls and rotation
 
-@export var zoom_increment = 0.15
-@export var zoom_clamp_near = 2.0
-@export var zoom_clamp_far = 6.0
+@export var track_object = false
+@export var track_target = null
 
 @onready var target_zoom_distance = $Axis/Camera.position.z
+@onready var target_position = Reporter.player_position
+@onready var target_roll = $Axis.rotation_degrees.x
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("zoom_in"):
-		target_zoom_distance -= zoom_increment
-	if Input.is_action_just_pressed("zoom_out"):
-		target_zoom_distance += zoom_increment
+var frozen = false
+
+func freeze_camera(hold_position: Vector3) -> void:
+	frozen = true
+	target_position = hold_position
+	target_zoom_distance = 9.0
+	target_roll = -90.0
+
+func unfreeze_camera() -> void:
+	frozen = false
+	target_position = Reporter.player_position
+	target_zoom_distance = 8.0
+	target_roll = -70.0
 
 func _ready() -> void:
 	Reporter.do_shake_camera.connect(func(): $Anim.play("shake"))
-	Reporter.player.focus_mode_entered.connect(func(): target_zoom_distance -= 0.5)
-	Reporter.player.focus_mode_exited.connect(func(): target_zoom_distance += 0.5)
+	Reporter.player.focus_mode_entered.connect(func(): target_zoom_distance -= 0.1)
+	Reporter.player.focus_mode_exited.connect(func(): target_zoom_distance += 0.1)
 	
+	unfreeze_camera()
+	Reporter.camera_axis = self
 	Reporter.camera = $Axis/Camera # assign camera to Reporter
 
 func _process(_delta: float) -> void:
-	# Clamp zoom distances
-	target_zoom_distance = clamp(
-		target_zoom_distance, zoom_clamp_near, zoom_clamp_far)
-
-	# Smooth and update camera zoom
+	if !frozen: target_position = Reporter.player_position
+	position = lerp(position, target_position, Utils.crit_lerp(20.0))
+	
+	# Update roll
+	$Axis.rotation_degrees.x = lerp(
+		$Axis.rotation_degrees.x, target_roll, Utils.crit_lerp(6.0))
+	
 	$Axis/Camera.position.z = lerp(
 		$Axis/Camera.position.z, target_zoom_distance,
-		Utils.crit_lerp(10.0))
+		Utils.crit_lerp(6.0))

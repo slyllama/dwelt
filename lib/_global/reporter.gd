@@ -10,6 +10,7 @@ signal gadget_changed
 
 # References to objects
 var camera: Camera3D
+var camera_axis: DweltCamera # handles orbiting etc (not just frustrum)
 var player: DweltPlayer
 
 var current_gadget = null
