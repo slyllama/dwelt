@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			Utils.fmt_vec3(Reporter.player_position),
 			"Reporter.orbiting = " + str(Reporter.orbiting),
 			"Reporter.projectile_count = " + str(Reporter.projectile_count), "",
-			"Reporter.lives = " + str(GameHandler.lives)
+			"GameHandler.lives = " + str(GameHandler.lives)
 		])
 		
 		if Reporter.current_gadget:

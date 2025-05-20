@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo618rg2ywoem"]
+[gd_scene load_steps=7 format=3 uid="uid://bo618rg2ywoem"]
 
 [ext_resource type="Script" uid="uid://d1bq5apl8q4ym" path="res://lib/screen_effects/screen_fx.gd" id="1_0vt01"]
 [ext_resource type="Texture2D" uid="uid://o5ixppyxx26w" path="res://generic/materials/textures/tile_diff.jpg" id="1_s6quk"]
 [ext_resource type="Shader" uid="uid://db3xq6kj8vymn" path="res://lib/screen_effects/materials/shaders/shader_screen_fx.gdshader" id="2_scdlq"]
 [ext_resource type="Texture2D" uid="uid://cxqhd537ehn5x" path="res://lib/screen_effects/materials/textures/grain_mask.jpg" id="3_k5v6p"]
+[ext_resource type="Texture2D" uid="uid://cbslc22jbycxg" path="res://lib/screen_effects/materials/textures/damage_splash.png" id="6_7rb4x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_at23u"]
 shader = ExtResource("2_scdlq")
@@ -18,7 +19,6 @@ shader_parameter/aberration_displacement = 0.0
 script = ExtResource("1_0vt01")
 
 [node name="Underlay" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,3 +38,67 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="DamageSplash" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Corner" type="TextureRect" parent="DamageSplash"]
+custom_minimum_size = Vector2(494, 314)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -494.0
+offset_bottom = 314.0
+grow_horizontal = 0
+texture = ExtResource("6_7rb4x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Corner2" type="TextureRect" parent="DamageSplash"]
+custom_minimum_size = Vector2(494, 314)
+layout_mode = 1
+offset_right = 494.0
+offset_bottom = 314.0
+texture = ExtResource("6_7rb4x")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Corner3" type="TextureRect" parent="DamageSplash"]
+custom_minimum_size = Vector2(494, 314)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -314.0
+offset_right = 494.0
+grow_vertical = 0
+texture = ExtResource("6_7rb4x")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+flip_v = true
+
+[node name="Corner4" type="TextureRect" parent="DamageSplash"]
+custom_minimum_size = Vector2(494, 314)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -494.0
+offset_top = -314.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_7rb4x")
+expand_mode = 1
+stretch_mode = 5
+flip_v = true

@@ -31,6 +31,7 @@ func _ready() -> void:
 	
 	area.body_entered.connect(func(body):
 		if body == Reporter.player: # connection for hitting player
+			GameHandler.lose_life()
 			Reporter.do_shake_camera.emit()
 		destroy())
 	add_child(area)

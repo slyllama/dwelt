@@ -132,6 +132,7 @@ transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 
 
 [node name="Gadget" parent="." instance=ExtResource("9_31nek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
+radius = 0.5
 interact_text = "Test Projectiles"
 dismiss_interaction = false
 
