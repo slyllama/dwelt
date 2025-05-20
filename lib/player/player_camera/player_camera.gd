@@ -20,9 +20,8 @@ func freeze_camera(hold_position: Vector3) -> void:
 func unfreeze_camera() -> void:
 	frozen = false
 	target_position = Reporter.player_position
-	target_zoom_distance = 8.0
-	target_roll = -70.0
-
+	target_zoom_distance = 5.0
+	target_roll = -60.0
 func _ready() -> void:
 	Reporter.do_shake_camera.connect(func(): $Anim.play("shake"))
 	Reporter.player.focus_mode_entered.connect(func(): target_zoom_distance -= 0.1)

@@ -20,7 +20,7 @@ func _ready() -> void:
 	body_entered.connect(func(body):
 		if body == Reporter.player: grazed())
 	
-	var graze_shape = SphereShape3D.new()
+	var graze_shape = CylinderShape3D.new()
 	graze_shape.radius = radius
 	
 	var graze_collision = CollisionShape3D.new()

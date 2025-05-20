@@ -5,6 +5,7 @@ extends Node
 
 # A "do" signal can be propogated from anywhere; it is a cause, not an effect
 signal do_shake_camera
+signal do_aberrate_camera
 
 signal gadget_changed
 

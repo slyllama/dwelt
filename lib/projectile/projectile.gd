@@ -14,9 +14,12 @@ const ProjectileMaterial = preload("res://generic/materials/mat_projectile.tres"
 @export var sideways_speed = 0.0
 @export var sideways_acceleration = 0.0
 
+signal destroyed
+
 func destroy() -> void:
 	if !active: return
 	Reporter.projectile_count -= 1 # track projectile count
+	destroyed.emit()
 	
 	active = false
 	var _scale_tween = create_tween()

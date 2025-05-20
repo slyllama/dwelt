@@ -11,6 +11,5 @@ func _on_gadget_interacted() -> void:
 	else: Reporter.camera_axis.unfreeze_camera()
 	
 	var _e = ProjectileEvent.new()
-	_e.position.y = -1.0
 	add_child(_e)
 	_e.play({ "type": "test" })

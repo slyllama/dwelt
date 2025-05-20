@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo618rg2ywoem"]
+
+[ext_resource type="Script" uid="uid://d1bq5apl8q4ym" path="res://lib/screen_effects/screen_fx.gd" id="1_0vt01"]
+[ext_resource type="Texture2D" uid="uid://o5ixppyxx26w" path="res://generic/materials/textures/tile_diff.jpg" id="1_s6quk"]
+[ext_resource type="Shader" uid="uid://db3xq6kj8vymn" path="res://lib/screen_effects/materials/shaders/shader_screen_fx.gdshader" id="2_scdlq"]
+[ext_resource type="Texture2D" uid="uid://cxqhd537ehn5x" path="res://lib/screen_effects/materials/textures/grain_mask.jpg" id="3_k5v6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_at23u"]
+shader = ExtResource("2_scdlq")
+shader_parameter/grain_mask = ExtResource("3_k5v6p")
+shader_parameter/grain_strength = 0.15
+shader_parameter/vignette_feather = 0.25
+shader_parameter/vignette_midpoint = 0.5
+shader_parameter/vignette_alpha = 1.0
+shader_parameter/aberration_displacement = 0.0
+
+[node name="ScreenFX" type="CanvasLayer"]
+script = ExtResource("1_0vt01")
+
+[node name="Underlay" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_s6quk")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Canvas" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_at23u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
