@@ -30,7 +30,7 @@ offset_top = 8.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Settings" type="Button" parent="MenuBar"]

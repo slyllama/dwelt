@@ -1,5 +1,8 @@
 extends Node3D
 
+#func _init() -> void:
+	#AudioServer.set_bus_volume_db(0, linear_to_db(0.0))
+
 func _ready() -> void:
 	# Saving and loading
 	Global.quit_requested.connect(func():

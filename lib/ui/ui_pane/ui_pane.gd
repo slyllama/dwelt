@@ -20,4 +20,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	var _t = create_tween()
 	_t.tween_property(self, "modulate:a", 1.0, 0.1)
+	$PaperSound.play()
 	Utils.pdebug("Opening pane with title '" + title_text + "'.", "UIPane")
+	
+	for _n in $Box.get_children():
+		if _n is Button:
+			_n.mouse_entered.connect($HoverSound.play)

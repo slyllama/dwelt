@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://pkyykx3mybn1"]
+[gd_scene load_steps=5 format=3 uid="uid://pkyykx3mybn1"]
 
 [ext_resource type="Script" uid="uid://bm2pl14bgrebq" path="res://lib/ui/ui_pane/ui_pane.gd" id="1_5x0ax"]
+[ext_resource type="AudioStream" uid="uid://dmlx5j2g0x8si" path="res://generic/sounds/paper.ogg" id="2_27dhb"]
+[ext_resource type="AudioStream" uid="uid://cxva2mjvwcdma" path="res://generic/sounds/tick.ogg" id="3_mo3yh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yapeh"]
 bg_color = Color(0, 0, 0, 0.8627451)
@@ -53,3 +55,9 @@ color = Color(0.6, 0.6, 0.6, 1)
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
+
+[node name="PaperSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_27dhb")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mo3yh")
