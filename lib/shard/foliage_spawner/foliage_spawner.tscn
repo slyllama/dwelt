@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn4mx27dqt7yo"]
+
+[ext_resource type="Script" uid="uid://5aj0ygh7le30" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="1_k6dj7"]
+
+[node name="FoliageSpawner" type="MultiMeshInstance3D" unique_id=706612831]
+script = ExtResource("1_k6dj7")

@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcujwe0fvh7lt"]
+
+[ext_resource type="Script" uid="uid://cpsx3vaa561sv" path="res://lib/hud/hud.gd" id="1_3pj68"]
+[ext_resource type="PackedScene" uid="uid://dvwqtf0altti1" path="res://lib/hud/screen_fx/screen_fx.tscn" id="1_dcyf8"]
+[ext_resource type="Texture2D" uid="uid://fblioaxfa6ug" path="res://lib/hud/textures/cursor.png" id="1_o36f6"]
+[ext_resource type="Texture2D" uid="uid://bd8iwdtdqag7o" path="res://generic/materials/textures/tile_diff.png" id="2_tpybq"]
+[ext_resource type="Script" uid="uid://dxtptwlhn7yyh" path="res://lib/hud/scripts/cursor.gd" id="2_u1rn0"]
+[ext_resource type="Script" uid="uid://bmy574lqa6ocy" path="res://lib/hud/scripts/render_monitor.gd" id="4_pm6i7"]
+[ext_resource type="FontFile" uid="uid://c5pbivjn686ld" path="res://generic/fonts/trebuchet.ttf" id="7_d84xd"]
+[ext_resource type="PackedScene" uid="uid://o7bc7alof20s" path="res://lib/hud/menu_bar/menu_bar.tscn" id="7_tpybq"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_3pj68")
+
+[node name="Debug" type="TextureRect" parent="."]
+modulate = Color(0.5, 0.5, 0.5, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_tpybq")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScreenFX" parent="." instance=ExtResource("1_dcyf8")]
+
+[node name="Cursor" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+custom_minimum_size = Vector2(9, 9)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -4.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_o36f6")
+expand_mode = 1
+script = ExtResource("2_u1rn0")
+
+[node name="MenuBar" parent="." instance=ExtResource("7_tpybq")]
+
+[node name="RenderMonitor" type="Label" parent="MenuBar"]
+modulate = Color(1, 1, 1, 0.7058824)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("7_d84xd")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+script = ExtResource("4_pm6i7")
+
+[node name="UILayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FadeIn" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="menu_button_pressed" from="MenuBar" to="." method="_menu_button_pressed"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvwqtf0altti1"]
+
+[ext_resource type="Shader" uid="uid://ba1j3cidenj2a" path="res://lib/hud/screen_fx/materials/shaders/screen_fx.gdshader" id="1_h2nih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_visue"]
+shader = ExtResource("1_h2nih")
+shader_parameter/position = 0.450000021375
+shader_parameter/feather = 0.350000016625
+shader_parameter/overall_alpha = 0.650000030875
+
+[node name="ScreenFX" type="CanvasLayer"]
+layer = -1
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_visue")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

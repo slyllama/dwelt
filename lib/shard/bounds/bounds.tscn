@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnl3en4v6jy6b"]
+
+[ext_resource type="Script" uid="uid://duv43a3hqfw02" path="res://lib/shard/bounds/bounds.gd" id="1_uwiis"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nvp6p"]
+plane = Plane(1, 0, 0, 0)
+
+[node name="Bounds" type="Node3D"]
+script = ExtResource("1_uwiis")
+
+[node name="B" type="Marker3D" parent="."]
+
+[node name="Boundary" type="StaticBody3D" parent="B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="B/Boundary"]
+shape = SubResource("WorldBoundaryShape3D_nvp6p")
+
+[node name="B2" type="Marker3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Boundary" type="StaticBody3D" parent="B2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="B2/Boundary"]
+shape = SubResource("WorldBoundaryShape3D_nvp6p")
+
+[node name="B3" type="Marker3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Boundary" type="StaticBody3D" parent="B3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="B3/Boundary"]
+shape = SubResource("WorldBoundaryShape3D_nvp6p")
+
+[node name="B4" type="Marker3D" parent="."]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="Boundary" type="StaticBody3D" parent="B4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="B4/Boundary"]
+shape = SubResource("WorldBoundaryShape3D_nvp6p")

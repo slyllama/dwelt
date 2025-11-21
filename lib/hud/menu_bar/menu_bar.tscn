@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://o7bc7alof20s"]
+
+[ext_resource type="Script" uid="uid://b6lu1fxmfaepf" path="res://lib/hud/menu_bar/menu_bar.gd" id="1_rytol"]
+[ext_resource type="Script" uid="uid://c6g5lg6ayrgon" path="res://lib/hud/menu_bar/scripts/hud_button.gd" id="3_1qskf"]
+
+[sub_resource type="Gradient" id="Gradient_d2253"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rytol"]
+gradient = SubResource("Gradient_d2253")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkhly"]
+texture = SubResource("GradientTexture2D_rytol")
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mkhly")
+script = ExtResource("1_rytol")
+
+[node name="MenuBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Settings" type="Button" parent="MenuBar"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 21
+text = "Settings"
+flat = true
+script = ExtResource("3_1qskf")
+id = "settings"
+metadata/_custom_type_script = "uid://c6g5lg6ayrgon"
+
+[node name="Quit" type="Button" parent="MenuBar"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 21
+text = "Quit"
+flat = true
+script = ExtResource("3_1qskf")
+id = "quit"
+metadata/_custom_type_script = "uid://c6g5lg6ayrgon"
+
+[node name="Reset Save" type="Button" parent="MenuBar"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 21
+text = "Reset Save"
+flat = true
+script = ExtResource("3_1qskf")
+id = "reset_save"
+metadata/_custom_type_script = "uid://c6g5lg6ayrgon"

@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bowffptraek8d"]
+
+[ext_resource type="PackedScene" uid="uid://c6p2pcw7f1sns" path="res://lib/player/player.tscn" id="1_22u7k"]
+[ext_resource type="PackedScene" uid="uid://dcujwe0fvh7lt" path="res://lib/hud/hud.tscn" id="1_oj3rm"]
+[ext_resource type="Script" uid="uid://b3ftgyhqlo7vs" path="res://lib/shard/shard.gd" id="1_v2fjr"]
+[ext_resource type="PackedScene" uid="uid://dnl3en4v6jy6b" path="res://lib/shard/bounds/bounds.tscn" id="3_3tfg5"]
+[ext_resource type="Shader" uid="uid://brqvgl3362ega" path="res://generic/materials/shaders/nospec.gdshader" id="4_5i5j7"]
+[ext_resource type="Texture2D" uid="uid://bd8iwdtdqag7o" path="res://generic/materials/textures/tile_diff.png" id="5_v2fjr"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ca0gg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4rrd"]
+render_priority = 0
+shader = ExtResource("4_5i5j7")
+shader_parameter/albedo_texture = ExtResource("5_v2fjr")
+shader_parameter/albedo_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/uv_scale = 90.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_jwhhd"]
+material = SubResource("ShaderMaterial_h4rrd")
+size = Vector2(50, 50)
+orientation = 1
+
+[node name="Shard" type="Node3D"]
+script = ExtResource("1_v2fjr")
+
+[node name="HUD" parent="." instance=ExtResource("1_oj3rm")]
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+
+[node name="Sun" type="DirectionalLight3D" parent="Sky"]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 0, 2, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("1_22u7k")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="Bounds" parent="." instance=ExtResource("3_3tfg5")]
+
+[node name="DebugFloor" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="DebugFloor"]
+shape = SubResource("WorldBoundaryShape3D_ca0gg")
+
+[node name="Mesh" type="MeshInstance3D" parent="DebugFloor"]
+mesh = SubResource("QuadMesh_jwhhd")

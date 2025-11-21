@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c20usjd45b5b"]
+
+[ext_resource type="Shader" uid="uid://cvl7s58w07og6" path="res://generic/materials/shaders/foliage.gdshader" id="1_wj315"]
+[ext_resource type="Texture2D" uid="uid://bspqcqd3uoon5" path="res://shards/sandbox/props/bamboo/materials/textures/bamboo_leaf.png" id="2_uvvj8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wj315")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/foliage_texture = ExtResource("2_uvvj8")
+shader_parameter/alpha_scissor_threshold = 0.95
+shader_parameter/fade_threshold = 11.0

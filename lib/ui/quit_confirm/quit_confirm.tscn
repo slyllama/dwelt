@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://sx2od766koms"]
+
+[ext_resource type="PackedScene" uid="uid://pkyykx3mybn1" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_30nad"]
+[ext_resource type="Script" uid="uid://cuqrwdqva8pba" path="res://lib/ui/quit_confirm/quit_confirm.gd" id="2_xmtqm"]
+
+[node name="QuitConfirm" instance=ExtResource("1_30nad")]
+script = ExtResource("2_xmtqm")
+title_text = "Exit Dwelt"
+
+[node name="QuitWarning" type="Label" parent="Box" index="3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Are you sure you want to exit the game? Your progress is automatically saved."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Padding2" type="ColorRect" parent="Box" index="4"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Continue" type="Button" parent="Box" index="5"]
+layout_mode = 2
+text = "Continue Playing
+"
+
+[node name="Exit" type="Button" parent="Box" index="6"]
+modulate = Color(0.9999662, 0.6485901, 0.59428823, 1)
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="Box/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Box/Exit" to="." method="_on_exit_pressed"]

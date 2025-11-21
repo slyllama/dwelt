@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5mi2sfwdfxc5"]
+
+[ext_resource type="Script" uid="uid://w64c47y7tjgo" path="res://lib/shard/shard_loader/shard_loader.gd" id="1_dqd06"]
+
+[node name="ShardLoader" type="CanvasLayer"]
+script = ExtResource("1_dqd06")

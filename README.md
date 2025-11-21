@@ -1,0 +1,5 @@
+## Why are there two versions of Dwelt?
+
+You might have seen that there are two versions of _Dwelt_ here on GitHub: _Dwelt: Iron Solstice_ (`dwelt-solstice`) and just _Dwelt_ (`dwelt`). This is basically because I can't at all make up my mind on what I want the game to become! Both games deal with concepts of loss, grief, and remembrance, but in different ways and settings. _Solstice_ is about building and rehabilitating a post-apocalyptic earth, expecting the eventual return of humanity. _Dwelt_ focuses more heavily on death, and is centered around exploration and puzzle solving, _Myst_-style.
+
+In the past I've really struggled with not just deleting all the work that I've stopped vibing with (or feel is just plain bad). For that reason I'm making and maintaining two repos, and allowing myself to switch between them as I feel. I'm hoping that, in having the option of switching any time, actually committing to one might paradoxically be easier (because I no longer feel "trapped" in any creative commitment I make). But enough about me! Thank you for reading.
