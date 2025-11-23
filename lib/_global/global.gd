@@ -2,5 +2,18 @@ extends Node
 
 signal input_captured
 signal input_uncaptured
-signal quit_requested
 signal ui_closed
+
+func request_quit() -> void:
+	Utils.pdebug("About to quit!", "Global")
+	get_tree().quit()
+
+func _ready() -> void:
+	if DisplayServer.screen_get_size().x > 2000:
+		get_window().content_scale_factor = 2.0 # retina
+		DisplayServer.cursor_set_custom_image(load(
+			"res://generic/textures/cursor_2x.png"))
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		request_quit()

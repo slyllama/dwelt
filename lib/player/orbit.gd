@@ -22,17 +22,6 @@ func _uncapture_input() -> void:
 		Global.input_uncaptured.emit()
 
 func _ready() -> void:
-	# Saving and loading
-	Global.quit_requested.connect(func():
-		Save.save_value("camera_rotation", Vector3(
-			_target_orbit_x_rotation,
-			_target_orbit_y_rotation,
-			0.0)))
-	var _camera_rotation = Save.get_value("camera_rotation")
-	if _camera_rotation:
-		_target_orbit_x_rotation = _camera_rotation.x
-		_target_orbit_y_rotation = _camera_rotation.y
-	
 	get_window().focus_exited.connect(_uncapture_input)
 	Global.ui_closed.connect(func(): _capture_input(true))
 

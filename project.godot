@@ -21,7 +21,6 @@ config/icon="res://icon.svg"
 
 Utils="*res://lib/_global/utils.gd"
 Global="*res://lib/_global/global.gd"
-Save="*res://lib/_global/save.gd"
 
 [debug]
 
@@ -32,6 +31,7 @@ gdscript/warnings/unused_signal=0
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=3
+mouse_cursor/custom_image="uid://cfqxpfbd8d4ih"
 
 [gui]
 

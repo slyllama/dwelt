@@ -28,8 +28,4 @@ func _menu_button_pressed(id: String) -> void:
 		"quit":
 			var _q = QuitConfirmPane.instantiate()
 			$UILayer.add_child(_q)
-		"reset_save":
-			Save.create()
-			get_tree().change_scene_to_file(
-				"res://lib/shard/shard_loader/shard_loader.tscn")
 		_: pass

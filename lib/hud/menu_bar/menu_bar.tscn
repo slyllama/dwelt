@@ -58,16 +58,3 @@ flat = true
 script = ExtResource("3_1qskf")
 id = "quit"
 metadata/_custom_type_script = "uid://c6g5lg6ayrgon"
-
-[node name="Reset Save" type="Button" parent="MenuBar"]
-modulate = Color(0.8, 0.8, 0.8, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_vertical = 0
-focus_mode = 0
-theme_override_font_sizes/font_size = 21
-text = "Reset Save"
-flat = true
-script = ExtResource("3_1qskf")
-id = "reset_save"
-metadata/_custom_type_script = "uid://c6g5lg6ayrgon"
