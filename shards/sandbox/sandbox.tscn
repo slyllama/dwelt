@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsbm7yhekgmgo"]
+[gd_scene load_steps=30 format=3 uid="uid://dsbm7yhekgmgo"]
 
 [ext_resource type="PackedScene" uid="uid://bowffptraek8d" path="res://lib/shard/shard.tscn" id="1_5qlda"]
 [ext_resource type="Script" uid="uid://dsqu4grd7fteg" path="res://shards/sandbox/sandbox.gd" id="2_dvk6p"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://pconmu7n0aev" path="res://shards/sandbox/props/bamboo/meshes/bamboo.glb" id="8_dsjrq"]
 [ext_resource type="PackedScene" uid="uid://bjxnclc0qw4o3" path="res://shards/sandbox/meshes/greybox.glb" id="8_dvk6p"]
 [ext_resource type="PackedScene" uid="uid://cuomrfy0fj1e0" path="res://shards/sandbox/props/crystal_spire/meshes/crystal_spire.glb" id="8_jch2b"]
+[ext_resource type="AudioStream" uid="uid://ci0u1vityqbrv" path="res://shards/sandbox/sounds/mus_patchwork.ogg" id="12_d4kja"]
 
 [sub_resource type="Gradient" id="Gradient_ktxp2"]
 offsets = PackedFloat32Array(0.5, 0.52, 0.6)
@@ -182,7 +183,7 @@ mesh = SubResource("QuadMesh_ox7j5")
 [node name="Greybox" parent="." index="15" instance=ExtResource("8_dvk6p")]
 
 [node name="SpawnPoint" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7676923, -12.371731)
 
 [node name="ElevatorLamp" type="OmniLight3D" parent="." index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46308327, -1.564708)
@@ -193,8 +194,33 @@ distance_fade_length = 4.0
 omni_range = 7.0
 omni_attenuation = 0.0
 
-[node name="CrystalSpire" parent="." index="18" instance=ExtResource("8_jch2b")]
-transform = Transform3D(0.21318378, 0, -0.9770121, 0, 1, 0, 0.9770121, 0, 0.21318378, 6.918285, 0.8833363, -2.0035064)
+[node name="CrystalSpire2" parent="." index="18" instance=ExtResource("8_jch2b")]
+transform = Transform3D(-0.89298683, 0, -0.4500828, 0, 1, 0, 0.4500828, 0, -0.89298683, 5.1580644, 1.4879277, 0.86742234)
+visible = false
 
-[node name="CrystalSpire2" parent="." index="19" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-0.89298683, 0, -0.4500828, 0, 1, 0, 0.4500828, 0, -0.89298683, 5.1580644, 0.88333654, 0.86742234)
+[node name="Music" type="AudioStreamPlayer" parent="." index="19"]
+stream = ExtResource("12_d4kja")
+volume_db = -3.0
+
+[node name="CSRotator" type="Marker3D" parent="." index="20"]
+
+[node name="CrystalSpire" parent="CSRotator" index="0" instance=ExtResource("8_jch2b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
+
+[node name="CSRotator2" type="Marker3D" parent="." index="21"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CrystalSpire" parent="CSRotator2" index="0" instance=ExtResource("8_jch2b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
+
+[node name="CSRotator3" type="Marker3D" parent="." index="22"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CrystalSpire" parent="CSRotator3" index="0" instance=ExtResource("8_jch2b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
+
+[node name="CSRotator4" type="Marker3D" parent="." index="23"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CrystalSpire" parent="CSRotator4" index="0" instance=ExtResource("8_jch2b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)

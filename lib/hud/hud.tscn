@@ -47,9 +47,8 @@ script = ExtResource("2_u1rn0")
 
 [node name="MenuBar" parent="." instance=ExtResource("7_tpybq")]
 
-[node name="RenderMonitor" type="Label" parent="MenuBar"]
+[node name="RenderMonitor" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0.7058824)
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

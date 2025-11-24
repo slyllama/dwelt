@@ -21,5 +21,8 @@ func pdebug(text: String, source := "") -> void:
 		line = "[" + source + "] " + line
 	print(line)
 
+func set_vol(vol := 1.0) -> void:
+	AudioServer.set_bus_volume_linear(0, vol)
+
 func _process(delta: float) -> void: _delta = delta
 func _physics_process(delta: float) -> void: _pdelta = delta

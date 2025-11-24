@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "landscape": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://shards/sandbox/materials/mat_grass.tres",
+"use_external/fallback_path": "res://shards/sandbox/materials/grass.tres",
 "use_external/path": "uid://23xj6f662u62"
 }
 }

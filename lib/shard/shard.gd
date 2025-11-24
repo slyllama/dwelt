@@ -4,8 +4,14 @@ extends Node3D
 @export var respawn_height_limit := -4.0
 
 func _ready() -> void:
+	Utils.set_vol(0.0)
+	
 	if floor_disabled == true: $DebugFloor.set_collision_layer_value(1, false)
 	else: $DebugFloor.set_collision_layer_value(1, true)
+	
+	await get_tree().process_frame
+	var _t = create_tween()
+	_t.tween_method(Utils.set_vol, 0.0, 1.0, 2.0)
 
 var _c = 0
 
