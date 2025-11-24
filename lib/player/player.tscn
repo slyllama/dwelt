@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6p2pcw7f1sns"]
+[gd_scene load_steps=15 format=3 uid="uid://c6p2pcw7f1sns"]
 
 [ext_resource type="Script" uid="uid://b1n7d4krwpw8b" path="res://lib/player/player.gd" id="1_2ocui"]
-[ext_resource type="Script" uid="uid://toowlclx3jsg" path="res://lib/player/orbit.gd" id="1_odf55"]
+[ext_resource type="Script" uid="uid://toowlclx3jsg" path="res://lib/player/scripts/orbit.gd" id="1_odf55"]
 [ext_resource type="Texture2D" uid="uid://cyv30vfpc5ddt" path="res://generic/textures/mote.png" id="2_5lbbh"]
 [ext_resource type="Script" uid="uid://c6gq6l1ysw6b2" path="res://lib/player/scripts/input_handler.gd" id="2_al4t3"]
+[ext_resource type="Script" uid="uid://byf0eat0icokd" path="res://lib/player/scripts/step_handler.gd" id="5_0y160"]
 
 [sub_resource type="Curve" id="Curve_5lbbh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28448275, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -115,3 +116,9 @@ libraries = {
 [node name="InputHandler" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_al4t3")
+
+[node name="StepHandler" type="RayCast3D" parent="."]
+collide_with_areas = true
+script = ExtResource("5_0y160")
+
+[node name="StepSound" type="AudioStreamPlayer" parent="StepHandler"]

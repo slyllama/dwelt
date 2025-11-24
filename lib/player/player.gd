@@ -47,10 +47,12 @@ func _physics_process(_delta: float) -> void:
 			_target_fov = 95.0 # increase FOV for sprinting
 		if !_moving:
 			$Orbit/Camera/Anim.play("bob")
+			$StepHandler.mute(false)
 			_moving = true
 	else:
 		if _moving:
 			$Orbit/Camera/Anim.play("RESET")
+			$StepHandler.mute()
 			_moving = false
 	
 	$Orbit/Camera.fov = lerp(
