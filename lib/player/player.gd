@@ -33,6 +33,8 @@ func _physics_process(_delta: float) -> void:
 	# Calculate basis and move player based on player input
 	var _basis_x: Vector3 = Vector3.RIGHT * _camera_basis * Vector3(1, 0, -1)
 	var _basis_z: Vector3 = Vector3.FORWARD * _camera_basis * Vector3(-1, 0, 1)
+	_basis_x = _basis_x.normalized()
+	_basis_z = _basis_z.normalized()
 	_target_velocity += _basis_z * %InputHandler.direction.z * true_speed
 	_target_velocity += _basis_x * %InputHandler.direction.x * true_speed * 2.0
 	velocity = lerp(velocity, _target_velocity, Utils.crit_plerp(friction))

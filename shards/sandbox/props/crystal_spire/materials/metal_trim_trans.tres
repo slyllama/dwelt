@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c8h0v7ajpj8s8"]
+
+[ext_resource type="Shader" uid="uid://x78srrxghpfc" path="res://generic/materials/shaders/nospec_alpha.gdshader" id="1_vhii6"]
+[ext_resource type="Texture2D" uid="uid://ck7fsca1774f0" path="res://shards/sandbox/props/crystal_spire/materials/textures/metal_trim_diff.png" id="2_m3s47"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vhii6")
+shader_parameter/albedo_texture = ExtResource("2_m3s47")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/uv_scale = 1.0
+shader_parameter/alpha_scissor_threshold = 0.5

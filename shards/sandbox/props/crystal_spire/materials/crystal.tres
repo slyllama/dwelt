@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://uea1dmk2d21i"]
+
+[ext_resource type="Shader" uid="uid://c38ba4yvikrhg" path="res://shards/sandbox/materials/shaders/crystal.gdshader" id="1_mwna4"]
+[ext_resource type="Texture2D" uid="uid://ggh8hhfgn1f5" path="res://shards/sandbox/props/crystal_spire/materials/textures/crystal_diff.png" id="2_0ewa1"]
+
+[sub_resource type="Gradient" id="Gradient_krt0j"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_di054"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_87j3t"]
+noise = SubResource("FastNoiseLite_di054")
+color_ramp = SubResource("Gradient_krt0j")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mwna4")
+shader_parameter/crystal_texture = ExtResource("2_0ewa1")
+shader_parameter/wobble_mask = SubResource("NoiseTexture2D_87j3t")
+shader_parameter/uv_scale = 2.0

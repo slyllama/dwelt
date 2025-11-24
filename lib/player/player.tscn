@@ -22,9 +22,7 @@ scale_max = 0.75
 scale_curve = SubResource("CurveTexture_0y160")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr174"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
+transparency = 1
 shading_mode = 0
 disable_fog = true
 albedo_texture = ExtResource("2_5lbbh")
@@ -37,7 +35,7 @@ particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4ok3w"]
 material = SubResource("StandardMaterial3D_kr174")
-size = Vector2(0.25, 0.25)
+size = Vector2(0.12, 0.12)
 orientation = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iochv"]

@@ -47,3 +47,5 @@ shape = SubResource("WorldBoundaryShape3D_ca0gg")
 
 [node name="Mesh" type="MeshInstance3D" parent="DebugFloor"]
 mesh = SubResource("QuadMesh_jwhhd")
+
+[node name="SpawnPoint" type="Marker3D" parent="."]

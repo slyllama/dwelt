@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://23xj6f662u62"]
 
-[ext_resource type="Shader" uid="uid://cxcr60urypguj" path="res://generic/materials/shaders/landscape.gdshader" id="1_phfqd"]
-[ext_resource type="Texture2D" uid="uid://d0wweh6smd2i7" path="res://shards/sandbox/materials/textures/grass_1_diff.jpg" id="2_6mhx0"]
-[ext_resource type="Texture2D" uid="uid://dfvnw7o84fb43" path="res://shards/sandbox/materials/textures/grass_2_diff.jpg" id="3_wdj87"]
-[ext_resource type="Texture2D" uid="uid://1jausq7uwtf5" path="res://shards/sandbox/materials/textures/roots_diff.jpg" id="4_6mhx0"]
+[ext_resource type="Shader" uid="uid://cxcr60urypguj" path="res://generic/materials/shaders/landscape.gdshader" id="1_8iqwy"]
+[ext_resource type="Texture2D" uid="uid://d0wweh6smd2i7" path="res://shards/sandbox/materials/textures/grass_1_diff.jpg" id="2_n0wyo"]
+[ext_resource type="Texture2D" uid="uid://dfvnw7o84fb43" path="res://shards/sandbox/materials/textures/grass_2_diff.jpg" id="3_11o0w"]
+[ext_resource type="Texture2D" uid="uid://1jausq7uwtf5" path="res://shards/sandbox/materials/textures/roots_diff.jpg" id="4_wueua"]
 
 [sub_resource type="Gradient" id="Gradient_vrx7r"]
 offsets = PackedFloat32Array(0, 0.79452056)
@@ -31,14 +31,14 @@ color_ramp = SubResource("Gradient_wdj87")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_phfqd")
+shader = ExtResource("1_8iqwy")
 shader_parameter/grass_mask = SubResource("NoiseTexture2D_vkvq2")
-shader_parameter/grass_1_texture = ExtResource("2_6mhx0")
-shader_parameter/grass_2_texture = ExtResource("3_wdj87")
+shader_parameter/grass_1_texture = ExtResource("2_n0wyo")
+shader_parameter/grass_2_texture = ExtResource("3_11o0w")
 shader_parameter/grass_1_albedo = Color(1, 1, 1, 1)
 shader_parameter/grass_2_albedo = Color(0.4390491, 0.43904912, 0.43904912, 1)
-shader_parameter/grass_1_uv_scale = 12.0
-shader_parameter/grass_2_uv_scale = 9.0
+shader_parameter/grass_1_uv_scale = 24.0
+shader_parameter/grass_2_uv_scale = 18.0
 shader_parameter/roots_mask = SubResource("NoiseTexture2D_owlcn")
-shader_parameter/roots_texture = ExtResource("4_6mhx0")
-shader_parameter/roots_uv_scale = 16.0
+shader_parameter/roots_texture = ExtResource("4_wueua")
+shader_parameter/roots_uv_scale = 32.0

@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dysveubn1dnjo"
-path="res://.godot/imported/landscape.glb-c59a83d10c4db7d7f5c910849b7e94c4.scn"
+uid="uid://bjxnclc0qw4o3"
+path="res://.godot/imported/greybox.glb-2ef8b58ab27117af1a4a0aa698600919.scn"
 
 [deps]
 
-source_file="res://shards/sandbox/meshes/landscape.glb"
-dest_files=["res://.godot/imported/landscape.glb-c59a83d10c4db7d7f5c910849b7e94c4.scn"]
+source_file="res://shards/sandbox/meshes/greybox.glb"
+dest_files=["res://.godot/imported/greybox.glb-2ef8b58ab27117af1a4a0aa698600919.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="Greybox"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -39,15 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"grass": {
+"landscape": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/sandbox/materials/mat_grass.tres",
 "use_external/path": "uid://23xj6f662u62"
-}
-},
-"nodes": {
-"PATH:@StaticBody3D@27373": {
-"import/skip_import": true
 }
 }
 }

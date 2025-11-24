@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b267vs6pr1pbq"]
+
+[ext_resource type="Shader" uid="uid://brqvgl3362ega" path="res://generic/materials/shaders/nospec.gdshader" id="1_63a67"]
+[ext_resource type="Texture2D" uid="uid://ctta0yv6s6kh5" path="res://shards/sandbox/materials/textures/stone_diff.jpg" id="2_fjydm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_63a67")
+shader_parameter/albedo_texture = ExtResource("2_fjydm")
+shader_parameter/albedo_color = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/uv_scale = 1.0
