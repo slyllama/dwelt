@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled, specular_disabled;
+render_mode cull_disabled, specular_disabled, shadows_disabled;
 
 const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
 

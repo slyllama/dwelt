@@ -176,14 +176,14 @@ transform = Transform3D(0.690179, 0, 0.9136071, 0, 1.145, 0, -0.9136071, 0, 0.69
 transform = Transform3D(0.80994797, 0, -0.80932635, 0.058555126, 1.1419992, 0.0586001, 0.8072053, -0.08284125, 0.80782527, -2.6326714, -0.9407138, -5.9326506)
 
 [node name="FogLayer" type="MeshInstance3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ox7j5")
 
 [node name="Greybox" parent="." index="15" instance=ExtResource("8_dvk6p")]
 
 [node name="SpawnPoint" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7676923, -12.371731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4760294, -12.371731)
 
 [node name="ElevatorLamp" type="OmniLight3D" parent="." index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46308327, -1.564708)
@@ -203,24 +203,25 @@ stream = ExtResource("12_d4kja")
 volume_db = -3.0
 
 [node name="CSRotator" type="Marker3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
 [node name="CSRotator2" type="Marker3D" parent="." index="21"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator2" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
 [node name="CSRotator3" type="Marker3D" parent="." index="22"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator3" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
 [node name="CSRotator4" type="Marker3D" parent="." index="23"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator4" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)

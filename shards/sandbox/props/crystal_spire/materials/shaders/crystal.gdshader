@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, fog_disabled;
 
 uniform sampler2D crystal_texture: source_color;
 uniform sampler2D wobble_mask: hint_default_black;

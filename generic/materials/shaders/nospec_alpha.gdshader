@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode specular_disabled, cull_disabled;
+render_mode specular_disabled, cull_disabled, shadows_disabled;
 
 uniform sampler2D albedo_texture: source_color;
 uniform vec3 albedo_color: source_color = vec3(1.0);
