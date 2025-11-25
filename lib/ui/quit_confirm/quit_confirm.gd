@@ -1,3 +1,4 @@
+@tool
 extends UIPane
 
 func _on_exit_pressed() -> void:

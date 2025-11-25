@@ -21,8 +21,8 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	# Toggle sprinting by holding right-click
-	if Input.is_action_just_pressed("right_click"): _start_sprint()
-	elif Input.is_action_just_released("right_click"): _stop_sprint()
+	if Input.is_action_just_pressed("sprint"): _start_sprint()
+	elif Input.is_action_just_released("sprint"): _stop_sprint()
 
 func _physics_process(_delta: float) -> void:
 	_target_velocity = Vector3.ZERO

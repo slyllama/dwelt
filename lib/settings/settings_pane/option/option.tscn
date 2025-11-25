@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2sodtcljbgrf"]
+
+[ext_resource type="Script" uid="uid://2soobccjgrne" path="res://lib/settings/settings_pane/option/option.gd" id="1_mnp7a"]
+[ext_resource type="Texture2D" uid="uid://bd8iwdtdqag7o" path="res://generic/materials/textures/tile_diff.png" id="1_vyr2f"]
+
+[node name="Option" type="HBoxContainer"]
+theme_override_constants/separation = 0
+script = ExtResource("1_mnp7a")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Title)"
+
+[node name="Left" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_vyr2f")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Value" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "(Value)"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Right" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_vyr2f")
+ignore_texture_size = true
+stretch_mode = 4
+
+[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
