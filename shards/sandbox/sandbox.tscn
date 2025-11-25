@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dsbm7yhekgmgo"]
+[gd_scene load_steps=35 format=3 uid="uid://dsbm7yhekgmgo"]
 
 [ext_resource type="PackedScene" uid="uid://bowffptraek8d" path="res://lib/shard/shard.tscn" id="1_5qlda"]
 [ext_resource type="Script" uid="uid://dsqu4grd7fteg" path="res://shards/sandbox/sandbox.gd" id="2_dvk6p"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bjxnclc0qw4o3" path="res://shards/sandbox/meshes/greybox.glb" id="8_dvk6p"]
 [ext_resource type="PackedScene" uid="uid://cuomrfy0fj1e0" path="res://shards/sandbox/props/crystal_spire/meshes/crystal_spire.glb" id="8_jch2b"]
 [ext_resource type="AudioStream" uid="uid://ci0u1vityqbrv" path="res://shards/sandbox/sounds/mus_patchwork.ogg" id="12_d4kja"]
+[ext_resource type="PackedScene" uid="uid://cr0a87tm4a313" path="res://shards/sandbox/collections/pillar_rotator.tscn" id="14_ycjac"]
 
 [sub_resource type="Resource" id="Resource_ycjac"]
 script = ExtResource("3_2xspi")
@@ -20,8 +21,8 @@ shard_id = "sandbox"
 metadata/_custom_type_script = "uid://6tag82rmd2jd"
 
 [sub_resource type="Gradient" id="Gradient_ktxp2"]
-offsets = PackedFloat32Array(0.5, 0.52, 0.6)
-colors = PackedColorArray(0.35686275, 0.34509805, 0.24705882, 1, 0.84, 0.7973, 0.32759997, 1, 0.28, 0.24266668, 0, 1)
+offsets = PackedFloat32Array(0, 0.4, 0.5, 0.55, 0.7)
+colors = PackedColorArray(0.05, 0.04521667, 0.009000001, 1, 0.31, 0.29636002, 0.1736, 1, 0.5419593, 0.5156009, 0.24099948, 1, 0.84, 0.7973, 0.32759997, 1, 0.3, 0.275, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ceulp"]
 gradient = SubResource("Gradient_ktxp2")
@@ -60,11 +61,10 @@ sky_material = SubResource("ShaderMaterial_ceulp")
 [sub_resource type="Environment" id="Environment_34mle"]
 background_mode = 2
 sky = SubResource("Sky_r33gg")
-ambient_light_energy = 0.75
 tonemap_mode = 2
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.35686275, 0.34509805, 0.24705882, 1)
+fog_light_color = Color(0.5411765, 0.5137255, 0.23921569, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
 fog_depth_begin = 13.0
@@ -222,29 +222,16 @@ colour_1 = Color(0.35237828, 0.63620067, 7.70092e-07, 1)
 stream = ExtResource("12_d4kja")
 volume_db = -3.0
 
-[node name="CSRotator" type="Marker3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+[node name="CrystalSpire" parent="." index="11" instance=ExtResource("8_jch2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2453663e-07, 1.25, -12)
 
-[node name="CrystalSpire" parent="CSRotator" index="0" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
-
-[node name="CSRotator2" type="Marker3D" parent="." index="12"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.25, 0)
-
-[node name="CrystalSpire" parent="CSRotator2" index="0" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
-
-[node name="CSRotator3" type="Marker3D" parent="." index="13"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.25, 0)
-
-[node name="CrystalSpire" parent="CSRotator3" index="0" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
-
-[node name="CSRotator4" type="Marker3D" parent="." index="14"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.25, 0)
-
-[node name="CrystalSpire" parent="CSRotator4" index="0" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
-
-[node name="Bamboo" parent="." index="15" instance=ExtResource("8_dsjrq")]
+[node name="Bamboo" parent="." index="12" instance=ExtResource("8_dsjrq")]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -9.681047, 1.4124806, 3.9939904)
+
+[node name="PillarRotator" parent="." index="13" instance=ExtResource("14_ycjac")]
+
+[node name="PillarRotator2" parent="." index="14" instance=ExtResource("14_ycjac")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="PillarRotator3" parent="." index="15" instance=ExtResource("14_ycjac")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)

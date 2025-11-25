@@ -3,8 +3,8 @@
 [ext_resource type="Shader" uid="uid://cfhkxonb11svr" path="res://shards/sandbox/props/light_ray/materials/shaders/light_ray.gdshader" id="1_64caw"]
 
 [sub_resource type="Gradient" id="Gradient_64caw"]
-offsets = PackedFloat32Array(0.09580839, 0.19161677, 0.8682635, 0.98203593)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.28851873, 0.28851777, 0.2885175, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.09580839, 0.19161677, 0.4311377)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_byklb"]
 gradient = SubResource("Gradient_64caw")

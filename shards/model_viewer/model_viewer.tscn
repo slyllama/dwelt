@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4hipx7qxd447"]
+[gd_scene load_steps=6 format=3 uid="uid://d4hipx7qxd447"]
 
 [ext_resource type="PackedScene" uid="uid://bowffptraek8d" path="res://lib/shard/shard.tscn" id="1_7hq2f"]
 [ext_resource type="Script" uid="uid://g7vhimmvlkbo" path="res://shards/model_viewer/model_viewer.gd" id="2_wm0f5"]
-[ext_resource type="PackedScene" uid="uid://cuomrfy0fj1e0" path="res://shards/sandbox/props/crystal_spire/meshes/crystal_spire.glb" id="3_ejjdr"]
 [ext_resource type="Script" uid="uid://6tag82rmd2jd" path="res://lib/shard/scripts/shard_data.gd" id="3_i4y7a"]
-[ext_resource type="Texture2D" uid="uid://cyv30vfpc5ddt" path="res://generic/textures/mote.png" id="5_ixfik"]
-[ext_resource type="PackedScene" uid="uid://cr0a87tm4a313" path="res://shards/model_viewer/pillar_rotator.tscn" id="6_vfkuq"]
 
 [sub_resource type="Resource" id="Resource_ixfik"]
 script = ExtResource("3_i4y7a")
@@ -25,39 +22,6 @@ fog_depth_begin = 2.0
 fog_depth_end = 15.0
 adjustment_enabled = true
 adjustment_saturation = 1.1
-
-[sub_resource type="Curve" id="Curve_vfkuq"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28448275, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_0y160"]
-curve = SubResource("Curve_vfkuq")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vfkuq"]
-emission_shape_scale = Vector3(1.5, 2, 1.5)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, 1, 0)
-scale_min = 0.099999994
-scale_max = 0.29999998
-scale_curve = SubResource("CurveTexture_0y160")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr174"]
-transparency = 1
-shading_mode = 0
-disable_fog = true
-albedo_texture = ExtResource("5_ixfik")
-disable_receive_shadows = true
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qc6j3"]
-material = SubResource("StandardMaterial3D_kr174")
-size = Vector2(0.12, 0.12)
-orientation = 2
 
 [node name="ModelViewer" instance=ExtResource("1_7hq2f")]
 script = ExtResource("2_wm0f5")
@@ -82,31 +46,3 @@ transform = Transform3D(0.7071067, -0.18301268, 0.6830126, 0, 0.9659257, 0.25881
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 current = true
 fov = 35.0
-
-[node name="MachinePillar" parent="." index="8" instance=ExtResource("3_ejjdr")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-
-[node name="Light" type="OmniLight3D" parent="MachinePillar" index="27"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="Motes" type="GPUParticles3D" parent="MachinePillar" index="28"]
-cast_shadow = 0
-amount = 32
-lifetime = 3.0
-preprocess = 10.0
-speed_scale = 0.13
-randomness = 0.1
-fixed_fps = 15
-process_material = SubResource("ParticleProcessMaterial_vfkuq")
-draw_pass_1 = SubResource("PlaneMesh_qc6j3")
-
-[node name="PillarRotator" parent="." index="9" instance=ExtResource("6_vfkuq")]
-
-[node name="PillarRotator2" parent="." index="10" instance=ExtResource("6_vfkuq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="PillarRotator3" parent="." index="11" instance=ExtResource("6_vfkuq")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="PillarRotator4" parent="." index="12" instance=ExtResource("6_vfkuq")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
