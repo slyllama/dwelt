@@ -3,11 +3,14 @@ extends RayCast3D
 var current_walk_type := "none"
 
 const walk_sounds := {
-	"grass": preload("res://generic/sounds/step/step_grass.ogg")
+	"grass": preload("res://generic/sounds/step/step_grass.ogg"),
+	"metal": preload("res://generic/sounds/step/step_metal.ogg")
 }
 
 func mute(state := true) -> void:
-	if state: $StepSound.volume_linear = 0.0
+	if state:
+		$StepSound.stop()
+		$StepSound.volume_linear = 0.0
 	else:
 		$StepSound.play()
 		$StepSound.volume_linear = 0.65

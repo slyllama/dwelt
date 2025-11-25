@@ -120,7 +120,7 @@ shadow_bias = 2.0
 directional_shadow_max_distance = 50.0
 
 [node name="Player" parent="." index="2"]
-transform = Transform3D(-0.69410574, 0, -0.7198731, 0, 1, 0, 0.7198731, 0, -0.69410574, 2.4401379, -4.7683716e-07, -3.2330039)
+transform = Transform3D(-0.69410574, 0, -0.7198731, 0, 1, 0, 0.7198731, 0, -0.69410574, 2.44, -0.8, -3.233)
 
 [node name="Ambience" parent="." index="3"]
 stream = ExtResource("4_r33gg")
@@ -194,33 +194,29 @@ distance_fade_length = 4.0
 omni_range = 7.0
 omni_attenuation = 0.0
 
-[node name="CrystalSpire2" parent="." index="18" instance=ExtResource("8_jch2b")]
-transform = Transform3D(-0.89298683, 0, -0.4500828, 0, 1, 0, 0.4500828, 0, -0.89298683, 5.1580644, 1.4879277, 0.86742234)
-visible = false
-
-[node name="Music" type="AudioStreamPlayer" parent="." index="19"]
+[node name="Music" type="AudioStreamPlayer" parent="." index="18"]
 stream = ExtResource("12_d4kja")
 volume_db = -3.0
 
-[node name="CSRotator" type="Marker3D" parent="." index="20"]
+[node name="CSRotator" type="Marker3D" parent="." index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
-[node name="CSRotator2" type="Marker3D" parent="." index="21"]
+[node name="CSRotator2" type="Marker3D" parent="." index="20"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator2" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
-[node name="CSRotator3" type="Marker3D" parent="." index="22"]
+[node name="CSRotator3" type="Marker3D" parent="." index="21"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator3" index="0" instance=ExtResource("8_jch2b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
 
-[node name="CSRotator4" type="Marker3D" parent="." index="23"]
+[node name="CSRotator4" type="Marker3D" parent="." index="22"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.25, 0)
 
 [node name="CrystalSpire" parent="CSRotator4" index="0" instance=ExtResource("8_jch2b")]

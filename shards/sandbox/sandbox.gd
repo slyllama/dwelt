@@ -8,7 +8,10 @@ extends "res://lib/shard/shard.gd"
 func _ready() -> void:
 	super()
 	
-	$Greybox/Central/StaticBody3D.set_meta("walk_type", "grass") # assign terrain
+	# Assign terrain
+	$Greybox/Central/StaticBody3D.set_meta("walk_type", "grass")
+	$CSRotator2/CrystalSpire/Platform/StaticBody3D.set_meta("walk_type", "metal")
+	
 	$CSRotator2/CrystalSpire/Cube.visible = false
 	
 	# Start animations at a random time

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bdotv2pd50aj1"]
+
+[ext_resource type="Shader" uid="uid://brqvgl3362ega" path="res://generic/materials/shaders/nospec.gdshader" id="1_fphps"]
+[ext_resource type="Texture2D" uid="uid://mdqfw6xje6ew" path="res://shards/sandbox/props/crystal_spire/materials/textures/roof_tile_diff.jpg" id="2_fphps"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fphps")
+shader_parameter/albedo_texture = ExtResource("2_fphps")
+shader_parameter/albedo_color = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/uv_scale = 1.0

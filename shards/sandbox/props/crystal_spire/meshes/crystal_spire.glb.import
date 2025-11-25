@@ -54,6 +54,11 @@ _subresources={
 "use_external/fallback_path": "res://shards/sandbox/props/crystal_spire/materials/metal_trim_trans.tres",
 "use_external/path": "uid://c8h0v7ajpj8s8"
 },
+"roof_tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/sandbox/props/crystal_spire/materials/roof_tile_diff.tres",
+"use_external/path": "uid://bdotv2pd50aj1"
+},
 "stone": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/sandbox/materials/stone.tres",
