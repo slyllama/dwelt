@@ -43,6 +43,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/sandbox/materials/grass.tres",
 "use_external/path": "uid://23xj6f662u62"
+},
+"metal_trim": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/sandbox/props/crystal_spire/materials/metal_trim.tres",
+"use_external/path": "uid://grd8e2x4xn63"
 }
 }
 }
