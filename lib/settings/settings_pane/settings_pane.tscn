@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d21av7254bdf0"]
+[gd_scene load_steps=9 format=3 uid="uid://d21av7254bdf0"]
 
 [ext_resource type="PackedScene" uid="uid://pkyykx3mybn1" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
 [ext_resource type="Script" uid="uid://qoceaqjyummc" path="res://lib/settings/settings_pane/settings_pane.gd" id="2_85e62"]
@@ -11,10 +11,22 @@ title = "Windowed"
 id = "windowed"
 metadata/_custom_type_script = "uid://c4mj6am3n1bak"
 
+[sub_resource type="Resource" id="Resource_5tk31"]
+script = ExtResource("3_8t512")
+title = "Maximized"
+id = "maximized"
+metadata/_custom_type_script = "uid://c4mj6am3n1bak"
+
 [sub_resource type="Resource" id="Resource_8t512"]
 script = ExtResource("3_8t512")
 title = "Full Screen"
 id = "full_screen"
+metadata/_custom_type_script = "uid://c4mj6am3n1bak"
+
+[sub_resource type="Resource" id="Resource_8l32a"]
+script = ExtResource("3_8t512")
+title = "Exclusive Full Screen"
+id = "exclusive_full_screen"
 metadata/_custom_type_script = "uid://c4mj6am3n1bak"
 
 [node name="SettingsPane" instance=ExtResource("1_1mlct")]
@@ -29,7 +41,7 @@ text = "Settings"
 layout_mode = 2
 title = "Window Mode"
 id = "window_mode"
-options = Array[ExtResource("3_8t512")]([SubResource("Resource_85e62"), SubResource("Resource_8t512")])
+options = Array[ExtResource("3_8t512")]([SubResource("Resource_85e62"), SubResource("Resource_5tk31"), SubResource("Resource_8t512"), SubResource("Resource_8l32a")])
 
 [node name="Padding2" type="ColorRect" parent="Box" index="4"]
 custom_minimum_size = Vector2(0, 4)

@@ -16,13 +16,20 @@ class_name Option extends HBoxContainer
 @onready var current_option: OptionAlias
 
 func refresh() -> void:
+	SettingsHandler.queued_changes[id] = current_option.id
 	$Value.text = current_option.title
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return # live only
-	if options.size() > 0: # apply first option, for now
-		current_option = options[0]
-		refresh()
+	if id in SettingsHandler.settings:
+		for _o: OptionAlias in options:
+			if _o.id == SettingsHandler.settings[id]:
+				current_option = _o
+				refresh()
+	else:
+		if options.size() > 0: # apply first option, for now
+			current_option = options[0]
+			refresh()
 
 func _on_left_pressed() -> void:
 	var _idx = options.find(current_option)

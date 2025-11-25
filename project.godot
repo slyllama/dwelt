@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://lib/_global/utils.gd"
 Global="*res://lib/_global/global.gd"
+SettingsHandler="*res://lib/_global/settings_handler.gd"
 
 [debug]
 
