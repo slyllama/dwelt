@@ -4,6 +4,8 @@ signal input_captured
 signal input_uncaptured
 signal ui_closed
 
+var current_shard := "none"
+
 func request_quit() -> void:
 	Utils.pdebug("About to quit!", "Global")
 	get_tree().quit()

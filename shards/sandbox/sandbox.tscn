@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsbm7yhekgmgo"]
+[gd_scene load_steps=34 format=3 uid="uid://dsbm7yhekgmgo"]
 
 [ext_resource type="PackedScene" uid="uid://bowffptraek8d" path="res://lib/shard/shard.tscn" id="1_5qlda"]
 [ext_resource type="Script" uid="uid://dsqu4grd7fteg" path="res://shards/sandbox/sandbox.gd" id="2_dvk6p"]
 [ext_resource type="Shader" uid="uid://du5agsy3vcfq8" path="res://generic/materials/shaders/sky.gdshader" id="2_ktxp2"]
+[ext_resource type="Script" uid="uid://6tag82rmd2jd" path="res://lib/shard/scripts/shard_data.gd" id="3_2xspi"]
 [ext_resource type="Texture2D" uid="uid://ba44jffkul5fn" path="res://generic/materials/textures/smoke_diff.jpg" id="4_jch2b"]
 [ext_resource type="AudioStream" uid="uid://cu2cjj71fq1wc" path="res://shards/sandbox/sounds/ambience.ogg" id="4_r33gg"]
 [ext_resource type="Texture2D" uid="uid://bfv2ckjarj5ga" path="res://generic/materials/textures/stars_diff.jpg" id="5_kr174"]
@@ -12,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://bjxnclc0qw4o3" path="res://shards/sandbox/meshes/greybox.glb" id="8_dvk6p"]
 [ext_resource type="PackedScene" uid="uid://cuomrfy0fj1e0" path="res://shards/sandbox/props/crystal_spire/meshes/crystal_spire.glb" id="8_jch2b"]
 [ext_resource type="AudioStream" uid="uid://ci0u1vityqbrv" path="res://shards/sandbox/sounds/mus_patchwork.ogg" id="12_d4kja"]
+
+[sub_resource type="Resource" id="Resource_ycjac"]
+script = ExtResource("3_2xspi")
+shard_id = "sandbox"
+metadata/_custom_type_script = "uid://6tag82rmd2jd"
 
 [sub_resource type="Gradient" id="Gradient_ktxp2"]
 offsets = PackedFloat32Array(0.5, 0.52, 0.6)
@@ -123,8 +129,9 @@ visible_instance_count = 16
 mesh = ExtResource("6_ox7j5")
 buffer = PackedFloat32Array(-0.9489817, 0, -1.3912959, 0.63442457, 0, 1.4736077, 0, 0, 1.3912959, 0, -0.9489817, -0.5870291, 0.54248047, 0.6977539, 0, 1, -0.8614637, 0, 1.5613965, 1.3926498, 0, 1.3374581, 0, 0, -1.5613965, 0, -0.8614637, 1.5054564, 0.421875, 0.6586914, 0, 1, 1.0569451, 0, 1.3337276, 1.0304735, 0, 1.0635954, 0, 0, -1.3337276, 0, 1.0569451, -1.4558841, 0.58691406, 0.71191406, 0, 1, -1.4632204, 0, 1.1897365, 1.0978067, 0, 1.6501318, 0, 0, -1.1897365, 0, -1.4632204, 0.42958066, 0.49145508, 0.68115234, 0, 1, -1.7516874, 0, -0.085342765, 1.2758522, 0, 1.3153238, 0, 0, 0.085342765, 0, -1.7516874, -0.7606823, 0.5161133, 0.68896484, 0, 1, 1.5014229, 0, 0.9310137, 0.33302563, 0, 1.3249886, 0, 0, -0.9310137, 0, 1.5014229, -1.1675308, 0.61816406, 0.72216797, 0, 1, 0.67525995, 0, -1.0518212, -1.2064459, 0, 0.9374412, 0, 0, 1.0518212, 0, 0.67525995, 0.41930994, 0.59375, 0.71435547, 0, 1, -0.7769962, 0, 1.5559481, -1.1707271, 0, 1.0869787, 0, 0, -1.5559481, 0, -0.7769962, 1.1266729, 0.47607422, 0.67626953, 0, 1, 0.5651591, 0, -1.1761801, -0.72928476, 0, 0.8155722, 0, 0, 1.1761801, 0, 0.5651591, -1.6647981, 0.42211914, 0.6586914, 0, 1, 1.772691, 0, 0.83418494, -1.5035028, 0, 1.2244735, 0, 0, -0.83418494, 0, 1.772691, -0.47609296, 0.5263672, 0.6923828, 0, 1, 0.67240876, 0, -1.7541927, -0.16854292, 0, 1.4089875, 0, 0, 1.7541927, 0, 0.67240876, -0.13316679, 0.47998047, 0.6772461, 0, 1, 1.7543991, 0, 0.7129121, 0.030057576, 0, 1.6570014, 0, 0, -0.7129121, 0, 1.7543991, 1.4930787, 0.37280273, 0.6425781, 0, 1, -1.3988836, 0, 0.43991786, 0.18525149, 0, 1.4664252, 0, 0, -0.43991786, 0, -1.3988836, 0.15911384, 0.62597656, 0.7246094, 0, 1, -1.5815513, 0, -0.3089605, -0.8006706, 0, 1.4100161, 0, 0, 0.3089605, 0, -1.5815513, 0.17317809, 0.5136719, 0.68847656, 0, 1, 1.2899191, 0, -0.9683624, -0.5689846, 0, 1.2097147, 0, 0, 0.9683624, 0, 1.2899191, 0.9314597, 0.48901367, 0.6801758, 0, 1, -1.3848155, 0, -1.1850154, -1.0978405, 0, 0.91131437, 0, 0, 1.1850154, 0, -1.3848155, -1.4414775, 0.5385742, 0.69628906, 0, 1)
 
-[node name="Shard" instance=ExtResource("1_5qlda")]
+[node name="Sandbox" instance=ExtResource("1_5qlda")]
 script = ExtResource("2_dvk6p")
+shard_data = SubResource("Resource_ycjac")
 
 [node name="Sky" parent="." index="1"]
 environment = SubResource("Environment_34mle")

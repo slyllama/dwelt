@@ -4,3 +4,4 @@
 
 [node name="ShardLoader" type="CanvasLayer"]
 script = ExtResource("1_dqd06")
+load_model_viewer = true

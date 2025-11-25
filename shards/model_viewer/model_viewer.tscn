@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4hipx7qxd447"]
+
+[ext_resource type="PackedScene" uid="uid://bowffptraek8d" path="res://lib/shard/shard.tscn" id="1_7hq2f"]
+[ext_resource type="Script" uid="uid://g7vhimmvlkbo" path="res://shards/model_viewer/model_viewer.gd" id="2_wm0f5"]
+[ext_resource type="PackedScene" uid="uid://cuomrfy0fj1e0" path="res://shards/sandbox/props/crystal_spire/meshes/crystal_spire.glb" id="3_ejjdr"]
+[ext_resource type="Script" uid="uid://6tag82rmd2jd" path="res://lib/shard/scripts/shard_data.gd" id="3_i4y7a"]
+
+[sub_resource type="Resource" id="Resource_ixfik"]
+script = ExtResource("3_i4y7a")
+shard_id = "model_viewer"
+metadata/_custom_type_script = "uid://6tag82rmd2jd"
+
+[sub_resource type="Environment" id="Environment_ejjdr"]
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_end = 20.0
+
+[node name="ModelViewer" instance=ExtResource("1_7hq2f")]
+script = ExtResource("2_wm0f5")
+shard_data = SubResource("Resource_ixfik")
+
+[node name="Sky" parent="." index="1"]
+environment = SubResource("Environment_ejjdr")
+
+[node name="Sun" parent="Sky" index="0"]
+shadow_enabled = false
+
+[node name="DebugFloor" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+
+[node name="Orbit" type="Marker3D" parent="." index="7"]
+transform = Transform3D(0.7071067, -0.18301268, 0.6830126, 0, 0.9659257, 0.258819, -0.7071067, -0.18301268, 0.6830126, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="Orbit" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
+fov = 35.0
+
+[node name="MachinePillar" parent="." index="8" instance=ExtResource("3_ejjdr")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MachinePillar" index="27"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)

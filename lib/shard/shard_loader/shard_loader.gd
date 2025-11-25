@@ -1,8 +1,11 @@
 extends CanvasLayer
 
-const TARGET_SCENE = "res://shards/sandbox/sandbox.tscn"
-var target_scene = TARGET_SCENE
+@export var load_model_viewer := false
 
+const TARGET_SCENE = "res://shards/sandbox/sandbox.tscn"
+const MODEL_VIEWER_SCENE = "res://shards/model_viewer/model_viewer.tscn"
+
+var target_scene = TARGET_SCENE
 var status: int
 var progress: Array[float]
 var has_loaded = false
@@ -17,6 +20,8 @@ func _transition():
 
 func _ready() -> void:
 	Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
+	if load_model_viewer:
+		target_scene = MODEL_VIEWER_SCENE
 	ResourceLoader.load_threaded_request(target_scene)
 
 func _process(_delta: float) -> void:
