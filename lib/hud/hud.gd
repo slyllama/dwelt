@@ -20,6 +20,7 @@ func _ready() -> void:
 	$FadeIn.visible = true
 	$Debug.queue_free()
 	await get_tree().create_timer(0.25).timeout
+	
 	_fade_in()
 
 func _menu_button_pressed(id: String) -> void:

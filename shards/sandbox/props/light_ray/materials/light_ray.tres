@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cx51nkiat22ka"]
+
+[ext_resource type="Shader" uid="uid://cfhkxonb11svr" path="res://shards/sandbox/props/light_ray/materials/shaders/light_ray.gdshader" id="1_64caw"]
+
+[sub_resource type="Gradient" id="Gradient_64caw"]
+offsets = PackedFloat32Array(0.09580839, 0.19161677, 0.8682635, 0.98203593)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.28851873, 0.28851777, 0.2885175, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_byklb"]
+gradient = SubResource("Gradient_64caw")
+
+[sub_resource type="Gradient" id="Gradient_byklb"]
+offsets = PackedFloat32Array(0.35, 0.9)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cv13g"]
+noise_type = 2
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_33tfr"]
+noise = SubResource("FastNoiseLite_cv13g")
+color_ramp = SubResource("Gradient_byklb")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_64caw")
+shader_parameter/length_mask_texture = SubResource("GradientTexture2D_byklb")
+shader_parameter/smoke_mask_texture = SubResource("NoiseTexture2D_33tfr")

@@ -2,7 +2,10 @@ extends "res://lib/shard/shard.gd"
 
 func _ready() -> void:
 	$Player.queue_free()
+	$HUD/MenuBar.disappear()
 	super()
+	
+	$MachinePillar/AnimationPlayer.play("float")
 
 func _physics_process(delta: float) -> void:
 	super(delta)
