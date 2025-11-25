@@ -33,7 +33,7 @@ color_ramp = SubResource("Gradient_ceulp")
 seamless = true
 
 [sub_resource type="Gradient" id="Gradient_r33gg"]
-offsets = PackedFloat32Array(0.06363636, 0.44545454, 0.61214954, 1)
+offsets = PackedFloat32Array(0.05, 0.49, 0.51, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhhsg"]
@@ -61,19 +61,18 @@ fog_mode = 1
 fog_light_color = Color(0.35686275, 0.34509805, 0.24705882, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
-fog_depth_begin = 5.0
-fog_depth_end = 20.0
+fog_depth_begin = 13.0
+fog_depth_end = 17.0
 adjustment_enabled = true
 adjustment_saturation = 1.1
 
 [sub_resource type="Gradient" id="Gradient_ox7j5"]
-offsets = PackedFloat32Array(0.16, 1)
+offsets = PackedFloat32Array(0.25, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5254902)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dsjrq"]
 noise_type = 2
-frequency = 0.012
-fractal_lacunarity = 2.5
+frequency = 0.0075
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dvk6p"]
 width = 1024
@@ -148,7 +147,7 @@ size = 25.0
 visible = false
 
 [node name="FogLayer" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5778462, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ox7j5")
 
@@ -158,9 +157,10 @@ mesh = SubResource("QuadMesh_ox7j5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4760294, -12.371731)
 
 [node name="Natural" type="Node3D" parent="." index="9"]
+transform = Transform3D(0.9655726, 0, 0.26013377, 0, 1, 0, -0.26013377, 0, 0.9655726, 0, 0, 0)
 
 [node name="Grass" parent="Natural" index="0" instance=ExtResource("5_qhhsg")]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -5.064508, -1.4130828, 0.6557355)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -5.4251194, -1.063159, 0.543903)
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_d4kja")
@@ -173,7 +173,7 @@ max_scale = 2.0
 colour_1 = Color(0.35237828, 0.63620067, 7.70092e-07, 1)
 
 [node name="Grass2" parent="Natural" index="1" instance=ExtResource("5_qhhsg")]
-transform = Transform3D(0.9210019, 0, -0.38955805, 0, 2, 0, 0.38955805, 0, 0.9210019, -1.4252844, -1.4130828, 5.0300317)
+transform = Transform3D(0.9210019, 0, -0.38955808, 0, 2, 0, 0.38955808, 0, 0.9210019, -1.4828387, -0.97632456, 5.243664)
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_2xspi")
@@ -186,7 +186,7 @@ max_scale = 2.0
 colour_1 = Color(0.35237828, 0.63620067, 7.70092e-07, 1)
 
 [node name="Grass3" parent="Natural" index="2" instance=ExtResource("5_qhhsg")]
-transform = Transform3D(0.98297065, 0, 0.18376264, 0, 2, 0, -0.18376264, 0, 0.98297065, -0.39243698, -1.4130828, -5.001108)
+transform = Transform3D(0.3644544, 0, -0.93122125, 0, 2, 0, 0.93122125, 0, 0.3644544, -1.583228, -1.486744, -5.232745)
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_ycjac")
@@ -199,7 +199,7 @@ max_scale = 2.0
 colour_1 = Color(0.35237828, 0.63620067, 7.70092e-07, 1)
 
 [node name="Grass4" parent="Natural" index="3" instance=ExtResource("5_qhhsg")]
-transform = Transform3D(0.9903794, 0, -0.13837804, 0, 2, 0, 0.13837804, 0, 0.9903794, 5.0584297, -1.4130828, -1.6631167)
+transform = Transform3D(0.9903794, 0, -0.13837804, 0, 2, 0, 0.13837804, 0, 0.9903794, 5.0584297, -1.5890568, -1.6631167)
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_uvfd6")
