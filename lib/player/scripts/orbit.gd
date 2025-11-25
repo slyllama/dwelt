@@ -8,10 +8,9 @@ var last_event_relative := event_relative
 @onready var _target_orbit_x_rotation: float = rotation.x
 @onready var _target_orbit_y_rotation: float = rotation.y
 
-func _capture_input(force := false) -> void:
+func _capture_input() -> void:
 	# Don't capture when clicking on UI
-	if !force:
-		if get_window().gui_get_hovered_control(): return
+	if get_window().gui_get_hovered_control(): return
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		Global.input_captured.emit()
@@ -23,7 +22,7 @@ func _uncapture_input() -> void:
 
 func _ready() -> void:
 	get_window().focus_exited.connect(_uncapture_input)
-	Global.ui_closed.connect(func(): _capture_input(true))
+	Global.ui_closed.connect(_capture_input)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"): _uncapture_input()

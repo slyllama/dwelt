@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d21av7254bdf0"]
+
+[ext_resource type="PackedScene" uid="uid://pkyykx3mybn1" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
+
+[node name="SettingsPane" instance=ExtResource("1_1mlct")]
+title_text = "Settings"

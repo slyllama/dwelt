@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const QuitConfirmPane = preload("res://lib/ui/quit_confirm/quit_confirm.tscn")
+const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tscn")
 
 func _fade_in() -> void:
 	var _t = create_tween()
@@ -28,4 +29,7 @@ func _menu_button_pressed(id: String) -> void:
 		"quit":
 			var _q = QuitConfirmPane.instantiate()
 			$UILayer.add_child(_q)
+		"settings":
+			var _s = SettingsPane.instantiate()
+			$UILayer.add_child(_s)
 		_: pass

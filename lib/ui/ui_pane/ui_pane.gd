@@ -1,3 +1,4 @@
+@tool
 class_name UIPane extends Panel
 
 @export var title_text := "(Title)":
@@ -14,9 +15,12 @@ func close() -> void:
 	_t.tween_callback(queue_free)
 
 func _init() -> void:
+	if Engine.is_editor_hint(): return
 	modulate.a = 0.0
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	
 	await get_tree().process_frame
 	var _t = create_tween()
 	_t.tween_property(self, "modulate:a", 1.0, 0.1)
