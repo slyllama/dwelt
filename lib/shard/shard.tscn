@@ -16,12 +16,19 @@ material = SubResource("StandardMaterial3D_5i5j7")
 size = Vector2(24, 24)
 orientation = 1
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3xe27"]
+
 [node name="Shard" type="Node3D" unique_id=1127074071]
 
 [node name="HUD" parent="." unique_id=717398159 instance=ExtResource("1_3xe27")]
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=1446901427]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1367160262]
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1446901427]
 mesh = SubResource("QuadMesh_22u7k")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=1890741999]
+shape = SubResource("WorldBoundaryShape3D_3xe27")
 
 [node name="Player" parent="." unique_id=1853110306 instance=ExtResource("1_22u7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

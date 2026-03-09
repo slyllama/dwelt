@@ -16,6 +16,8 @@ run/main_scene="uid://bsm57u4128nqw"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="dwelt"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://co62h4me8g13"
 config/icon="uid://bxi8u5vulcvbt"
 
 [autoload]
@@ -27,7 +29,6 @@ Utils="*uid://gjxkiq74de68"
 
 gdscript/warnings/unused_signal=0
 gdscript/warnings/untyped_declaration=1
-gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_cast=1
 
 [display]
