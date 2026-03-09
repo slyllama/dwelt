@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cq0glayorp0f8"]
+
+[ext_resource type="Script" uid="uid://bg1ei8q60jyre" path="res://lib/player/player.gd" id="1_al4t3"]
+[ext_resource type="PackedScene" uid="uid://rcxc53qc24c" path="res://lib/player/meshes/robot.glb" id="1_odf55"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
+radius = 0.2
+
+[node name="Player" type="CharacterBody3D" unique_id=1853110306]
+script = ExtResource("1_al4t3")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=455674221]
+shape = SubResource("SphereShape3D_iochv")
+
+[node name="RobotMesh" parent="." unique_id=760357577 instance=ExtResource("1_odf55")]
+transform = Transform3D(1, 0, 7.450581e-09, 0, 1, 2.9802322e-08, 7.450581e-09, 0, 1, 0, 0, 0)
+
+[node name="Light" type="OmniLight3D" parent="RobotMesh" unique_id=657934483]
+transform = Transform3D(1, 0, -1.4901161e-08, 0, 1, -2.9802322e-08, 0, 0, 1, 0, 0, 0.4)
+light_energy = 1.5
+omni_range = 1.35
+omni_attenuation = 0.0
+
+[node name="Orbit" type="Marker3D" parent="." unique_id=576846863]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+v_offset = 0.2
+fov = 40.0

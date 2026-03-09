@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://rqrqjxwxxqnp"]
+
+[ext_resource type="Script" uid="uid://d3y0vt62gqudf" path="res://lib/_global/dwelt/dwelt.gd" id="1_16b2d"]
+[ext_resource type="Script" uid="uid://dmu0ffky3j7ey" path="res://lib/_global/dwelt/scripts/window_handler.gd" id="2_10tc7"]
+
+[node name="Dwelt" type="Node" unique_id=2059487431]
+script = ExtResource("1_16b2d")
+
+[node name="WindowHandler" type="Node" parent="." unique_id=1521404903]
+script = ExtResource("2_10tc7")
