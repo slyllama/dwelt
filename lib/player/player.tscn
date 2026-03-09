@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bg1ei8q60jyre" path="res://lib/player/player.gd" id="1_al4t3"]
 [ext_resource type="PackedScene" uid="uid://rcxc53qc24c" path="res://lib/player/meshes/robot.glb" id="1_odf55"]
 [ext_resource type="Script" uid="uid://5f8pu05qoa6u" path="res://lib/player/scripts/input_handler.gd" id="3_2ocui"]
+[ext_resource type="Script" uid="uid://c7gm8g1thvnet" path="res://lib/player/orbit.gd" id="3_5lbbh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.2
@@ -26,6 +27,7 @@ omni_attenuation = 0.0
 [node name="Orbit" type="Marker3D" parent="." unique_id=576846863]
 unique_name_in_owner = true
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+script = ExtResource("3_5lbbh")
 
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)

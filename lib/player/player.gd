@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 @export_category("Physics")
-@export var speed := 3.0
+@export var speed := 3.4
 @export var speed_multiplier := 1.0 # used for lethargy etc
-@export var friction := 15.0
+@export var friction := 16.0
 @export var gravity_damping := 10.0
 
 var _target_velocity := Vector3.ZERO
