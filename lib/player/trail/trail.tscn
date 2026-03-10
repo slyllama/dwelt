@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cch37nak71yn0"]
+
+[ext_resource type="Script" uid="uid://igrspsg5s00o" path="res://lib/player/trail/trail.gd" id="1_381wv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaarn"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qiiga"]
+
+[node name="Trail" type="MeshInstance3D" unique_id=125210422]
+top_level = true
+material_override = SubResource("StandardMaterial3D_eaarn")
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_qiiga")
+script = ExtResource("1_381wv")
+from = 0.02
+motion_delta = 0.05
+lifespan = 1.2
+start_color = Color(1, 1, 1, 0.13725491)

@@ -12,6 +12,9 @@ func _ready() -> void:
 	$RobotMesh/AnimationPlayer.play("idle")
 
 func _physics_process(_delta: float) -> void:
+	$Trail_L.global_position = $RobotMesh/Armature/Skeleton3D/Foot_NE/Leg_NE.global_position
+	$Trail_R.global_position = $RobotMesh/Armature/Skeleton3D/Foot_NW/Leg_NW.global_position
+	
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = %Orbit.global_transform.basis
 	
