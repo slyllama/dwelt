@@ -3,6 +3,9 @@ extends Node
 var _delta := 0.0
 var _pdelta := 0.0
 
+signal debug_sent(string: String)
+signal pdebug_sent(string: String)
+
 func crit_lerp(speed: float) -> float:
 	return(clamp(1.0 - exp(-speed * _delta), 0.0, 1.0))
 
@@ -21,6 +24,7 @@ func pdebug(text: String, source := "") -> void:
 	var line := text
 	if source != "":
 		line = "[" + source + "] " + line
+	pdebug_sent.emit(line)
 	print(line)
 
 func _process(delta: float) -> void: _delta = delta

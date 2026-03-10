@@ -37,3 +37,6 @@ func animate() -> void:
 
 func _init() -> void:
 	z_index = 100 # play on top of everything else
+
+func _ready() -> void:
+	visible = true

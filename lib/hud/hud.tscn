@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/hud/screen_fx/screen_fx.tscn" id="1_o36f6"]
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
+[ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
@@ -52,4 +53,11 @@ vertical_alignment = 1
 script = ExtResource("2_dcyf8")
 
 [node name="EyesAnim" parent="." unique_id=1456570687 instance=ExtResource("7_tpybq")]
+visible = false
 mouse_filter = 0
+
+[node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
+offset_left = 4.0
+offset_top = -134.0
+offset_right = 404.0
+offset_bottom = -4.0

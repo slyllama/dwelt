@@ -9,6 +9,10 @@ func is_input_down() -> bool:
 		return(true)
 	else: return(false)
 
+func is_input_allowed() -> bool:
+	if get_window().gui_get_focus_owner(): return(false)
+	else: return(true)
+
 func _ready() -> void:
 	get_window().focus_exited.connect(func() -> void:
 		# Clear input if window focus is lost
@@ -38,6 +42,9 @@ func _input(event: InputEvent) -> void:
 			_last_z_input = []
 
 func _physics_process(_delta: float) -> void:
+	if !is_input_allowed():
+		direction = Vector3.ZERO
+		return
 	# Retrieve directions from input stacks
 	var _dir := Vector3.ZERO
 	if _last_x_input.size() > 0:
