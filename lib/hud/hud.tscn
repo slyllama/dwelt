@@ -40,7 +40,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/line_separation = -2
 theme_override_constants/paragraph_separation = -2
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("2_u1rn0")
 theme_override_font_sizes/normal_font_size = 13
 bbcode_enabled = true
@@ -55,6 +55,7 @@ script = ExtResource("2_dcyf8")
 [node name="EyesAnim" parent="." unique_id=1456570687 instance=ExtResource("7_tpybq")]
 visible = false
 mouse_filter = 0
+frame_duration = 0.035
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_left = 4.0

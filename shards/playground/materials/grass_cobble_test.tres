@@ -23,4 +23,5 @@ shader_parameter/grass_base_texture = ExtResource("2_x2u64")
 shader_parameter/grass_blend_texture = ExtResource("3_vmmb5")
 shader_parameter/cobble_texture = ExtResource("2_vmmb5")
 shader_parameter/blend_mask_texture = SubResource("NoiseTexture2D_gf45x")
-shader_parameter/uv_scale = 9.0
+shader_parameter/tint = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/uv_scale = 11.0

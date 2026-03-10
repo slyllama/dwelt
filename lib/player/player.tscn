@@ -126,6 +126,7 @@ draw_pass_1 = SubResource("QuadMesh_r1bse")
 unique_name_in_owner = true
 transform = Transform3D(0.8660254, -0.43301272, 0.24999999, 0, 0.49999997, 0.86602545, -0.5, -0.75, 0.43301266, 0, 0, 0)
 script = ExtResource("3_5lbbh")
+zoom_max = 14.0
 
 [node name="InputHandler" type="Node" parent="Orbit" unique_id=2064876489]
 unique_name_in_owner = true
@@ -135,7 +136,7 @@ script = ExtResource("3_2ocui")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 v_offset = 0.4
 current = true
-fov = 50.0
+fov = 37.0
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=422817751]
 unique_name_in_owner = true

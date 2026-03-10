@@ -5,6 +5,7 @@ uniform sampler2D grass_base_texture: source_color;
 uniform sampler2D grass_blend_texture: source_color;
 uniform sampler2D cobble_texture: source_color;
 uniform sampler2D blend_mask_texture;
+uniform vec3 tint: source_color = vec3(1.0);
 uniform float uv_scale = 4.0;
 
 void fragment() {
@@ -19,4 +20,5 @@ void fragment() {
 	// Cobble
 	vec3 cobble = texture(cobble_texture, UV * uv_scale).rgb;
 	ALBEDO = mix(grass, cobble, blend_mask * 0.6);
+	ALBEDO *= tint;
 }

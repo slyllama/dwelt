@@ -22,6 +22,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	status = ResourceLoader.load_threaded_get_status(target_scene, progress)
 	match status:
-		ResourceLoader.THREAD_LOAD_IN_PROGRESS: pass
+		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			$ProgressBar.value = progress[0] * 200.0
 		ResourceLoader.THREAD_LOAD_LOADED: _transition()
 		ResourceLoader.THREAD_LOAD_FAILED: pass
