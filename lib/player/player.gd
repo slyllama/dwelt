@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var gravity_damping := 10.0
 
 var _target_velocity := Vector3.ZERO
+var _target_y_rotation := 0.0
 
 func _ready() -> void:
 	$RobotMesh/AnimationPlayer.play("idle")
@@ -36,3 +37,8 @@ func _physics_process(_delta: float) -> void:
 	if _y_diff < _y_target: velocity.y += _y_target - _y_diff
 	
 	move_and_slide()
+	
+	if velocity.length_squared() > 0:
+		_target_y_rotation = %Orbit.rotation.y + PI
+	%RobotMesh.rotation.y = lerp_angle(
+		%RobotMesh.rotation.y, _target_y_rotation, Utils.crit_plerp(6.0))

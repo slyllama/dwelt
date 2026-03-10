@@ -14,7 +14,6 @@ script = ExtResource("1_al4t3")
 
 [node name="Trail_L" parent="." unique_id=125210422 instance=ExtResource("4_0y160")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54826784, 0)
-from = 0.02
 motion_delta = 0.01
 start_color = Color(1, 1, 1, 0.627451)
 
@@ -39,14 +38,15 @@ unique_name_in_owner = true
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
 script = ExtResource("3_5lbbh")
 
-[node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
-v_offset = 0.2
-fov = 40.0
-
-[node name="InputHandler" type="Node" parent="." unique_id=2064876489]
+[node name="InputHandler" type="Node" parent="Orbit" unique_id=2064876489]
 unique_name_in_owner = true
 script = ExtResource("3_2ocui")
+
+[node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+v_offset = 0.4
+current = true
+fov = 50.0
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=422817751]
 unique_name_in_owner = true
