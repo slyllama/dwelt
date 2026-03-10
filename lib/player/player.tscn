@@ -90,6 +90,7 @@ start_color = Color(1, 1, 1, 0.627451)
 
 [node name="Trail_R" parent="." unique_id=783753205 instance=ExtResource("4_0y160")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54826784, 0)
+start_color = Color(1, 1, 1, 0.627451)
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=455674221]
 shape = SubResource("SphereShape3D_iochv")
@@ -138,4 +139,4 @@ fov = 50.0
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=422817751]
 unique_name_in_owner = true
-target_position = Vector3(0, -0.75, 0)
+target_position = Vector3(0, -1.7, 0)

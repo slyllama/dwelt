@@ -93,4 +93,4 @@ func _ready() -> void:
 	set_layer_mask_value(2, 1)
 	
 	if Engine.is_editor_hint(): return
-	set_fade_distance(8.0)
+	set_fade_distance(20.0)
