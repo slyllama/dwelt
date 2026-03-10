@@ -33,6 +33,6 @@ shader_parameter/wobble_intensity = 0.03
 shader_parameter/emission_intensity = 0.25
 shader_parameter/speed = 0.015
 shader_parameter/normal_uv_relative_scale = 0.5
-shader_parameter/underlay_pass_through = 0.50000002375
+shader_parameter/underlay_pass_through = 0.350000016625
 shader_parameter/normal_map_depth = 2.0
 shader_parameter/roughness = 0.10000000475

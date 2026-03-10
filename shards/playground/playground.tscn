@@ -2,7 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/playground/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
+[ext_resource type="Texture2D" uid="uid://oo7hmk7j7uyw" path="res://shards/playground/materials/textures/cobble_diff.jpg" id="2_t5hkx"]
+[ext_resource type="Texture2D" uid="uid://del7ex7wmlfmi" path="res://shards/playground/materials/textures/cobble_norm.jpg" id="3_t5hkx"]
 [ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/spatial_text/spatial_text.tscn" id="3_uaqr7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgmr2"]
+albedo_texture = ExtResource("2_t5hkx")
+metallic = 0.35
+normal_enabled = true
+normal_texture = ExtResource("3_t5hkx")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_aut2g"]
+material = SubResource("StandardMaterial3D_rgmr2")
+size = Vector2(24, 24)
+orientation = 1
 
 [sub_resource type="Environment" id="Environment_nwqnf"]
 background_mode = 1
@@ -23,6 +37,12 @@ orientation = 1
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
+
+[node name="Mesh" parent="Floor" index="0" unique_id=1446901427]
+visible = false
+
+[node name="Stones" type="MeshInstance3D" parent="Floor" index="1" unique_id=1219824147]
+mesh = SubResource("QuadMesh_aut2g")
 
 [node name="Sky" parent="." index="3" unique_id=756974854]
 environment = SubResource("Environment_nwqnf")
