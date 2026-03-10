@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://buw3dn6gh38fy"]
 
 [ext_resource type="Script" uid="uid://cee2yxhp3otcw" path="res://lib/hud/hud.gd" id="1_3pj68"]
-[ext_resource type="Texture2D" uid="uid://dp30o4nm06kc4" path="res://generic/textures/tile_diff.jpg" id="1_4etgo"]
+[ext_resource type="Texture2D" uid="uid://dp30o4nm06kc4" path="res://generic/materials/textures/tile_diff.jpg" id="1_4etgo"]
 [ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/hud/screen_fx/screen_fx.tscn" id="1_o36f6"]
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
