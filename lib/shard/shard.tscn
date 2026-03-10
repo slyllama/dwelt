@@ -29,6 +29,7 @@ mesh = SubResource("QuadMesh_22u7k")
 
 [node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=1890741999]
 shape = SubResource("WorldBoundaryShape3D_3xe27")
+debug_fill = false
 
 [node name="Player" parent="." unique_id=1853110306 instance=ExtResource("1_22u7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

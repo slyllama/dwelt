@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://divu78cudiebe"]
+
+[ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/spatial_text/spatial_text.gd" id="1_abws1"]
+[ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="2_hicyh"]
+
+[node name="SpatialText" type="VisibleOnScreenNotifier3D" unique_id=283445859]
+aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("1_abws1")
+
+[node name="FG" type="CanvasLayer" parent="." unique_id=2136787715]
+layer = -1
+
+[node name="Root2D" type="Control" parent="FG" unique_id=2145299695]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Text" type="Label" parent="FG/Root2D" unique_id=581365964]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -7.5
+offset_right = 39.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_hicyh")
+theme_override_font_sizes/font_size = 14
+text = "((SpatialText))"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

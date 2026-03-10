@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/playground/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
+[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/spatial_text/spatial_text.tscn" id="3_uaqr7"]
 
 [sub_resource type="Environment" id="Environment_nwqnf"]
 background_mode = 1
-background_color = Color(0.25, 0.25, 0.25, 1)
+background_color = Color(0.022400003, 0.041999985, 0.14, 1)
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.5
@@ -20,7 +21,7 @@ orientation = 1
 
 [node name="Shard" unique_id=1127074071 instance=ExtResource("1_nwqnf")]
 
-[node name="Floor" parent="." index="1" unique_id=1446901427]
+[node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
 
 [node name="Sky" parent="." index="3" unique_id=756974854]
@@ -42,3 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
 cast_shadow = 0
 instance_shader_parameters/uv_scale = 1.25
 mesh = SubResource("QuadMesh_rfpxw")
+
+[node name="SpatialText" parent="." index="7" unique_id=283445859 instance=ExtResource("3_uaqr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+text = "Hello, World!"
