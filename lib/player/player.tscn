@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://5f8pu05qoa6u" path="res://lib/player/scripts/input_handler.gd" id="3_2ocui"]
 [ext_resource type="Script" uid="uid://c7gm8g1thvnet" path="res://lib/player/orbit.gd" id="3_5lbbh"]
 [ext_resource type="PackedScene" uid="uid://cch37nak71yn0" path="res://lib/player/trail/trail.tscn" id="4_0y160"]
-[ext_resource type="Animation" uid="uid://bhttpj01eluru" path="res://lib/player/meshes/anims/eye.res" id="4_jyhpi"]
+[ext_resource type="Animation" uid="uid://cj8c1vcvdxet3" path="res://lib/player/meshes/anims/eye.res" id="4_jyhpi"]
 [ext_resource type="Script" uid="uid://bred4fcjr26c" path="res://lib/player/scripts/robot_mesh.gd" id="4_up78s"]
-[ext_resource type="Animation" uid="uid://b7i8kdsblsb2v" path="res://lib/player/meshes/anims/idle.res" id="5_up78s"]
-[ext_resource type="Animation" uid="uid://cop5mk1c84grj" path="res://lib/player/meshes/anims/move_forward.res" id="6_5x5nn"]
-[ext_resource type="Animation" uid="uid://8jfr2ngt6hw" path="res://lib/player/meshes/anims/strafe.res" id="7_ram4p"]
+[ext_resource type="Animation" uid="uid://b5fruyr5qfevi" path="res://lib/player/meshes/anims/idle.res" id="5_up78s"]
+[ext_resource type="Animation" uid="uid://0pwpecpow0jy" path="res://lib/player/meshes/anims/move_forward.res" id="6_5x5nn"]
+[ext_resource type="Animation" uid="uid://bwegt1tgbnn7h" path="res://lib/player/meshes/anims/strafe.res" id="7_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_5x5nn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
@@ -96,7 +96,7 @@ start_color = Color(1, 1, 1, 0.627451)
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=455674221]
 shape = SubResource("SphereShape3D_iochv")
 
-[node name="RobotMesh" parent="." unique_id=1084452433 instance=ExtResource("1_odf55")]
+[node name="RobotMesh" parent="." unique_id=1616749653 instance=ExtResource("1_odf55")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 7.450581e-09, 0, 1, 2.9802322e-08, 7.450581e-09, 0, 1, 0, 0, 0)
 script = ExtResource("4_up78s")
@@ -135,7 +135,7 @@ script = ExtResource("3_2ocui")
 
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
-v_offset = 0.4
+v_offset = 0.7
 current = true
 fov = 37.0
 

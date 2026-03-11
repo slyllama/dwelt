@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b5fa5b6y5yf6n"]
+
+[ext_resource type="Texture2D" uid="uid://cbnsyaydo0yjw" path="res://lib/ui/avatar_plate/textures/base.png" id="1_j6pvl"]
+[ext_resource type="Texture2D" uid="uid://dv3btwwdi83l5" path="res://lib/ui/avatar_plate/textures/ring.png" id="2_fk1xt"]
+[ext_resource type="Texture2D" uid="uid://p77jxwvumxlp" path="res://lib/ui/avatar_plate/textures/mask.png" id="2_o5nup"]
+
+[sub_resource type="Animation" id="Animation_fk1xt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center/Ring:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o5nup"]
+resource_name = "rotate"
+length = 16.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center/Ring:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urcp2"]
+_data = {
+&"RESET": SubResource("Animation_fk1xt"),
+&"rotate": SubResource("Animation_o5nup")
+}
+
+[node name="AvatarPlate" type="TextureRect" unique_id=1901079431]
+custom_minimum_size = Vector2(205, 205)
+texture = ExtResource("1_j6pvl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Mask" type="TextureRect" parent="." unique_id=647567875]
+z_index = -1
+custom_minimum_size = Vector2(172, 172)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -86.0
+offset_right = 86.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o5nup")
+expand_mode = 1
+
+[node name="Center" type="Control" parent="." unique_id=1140443440]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ring" type="Sprite2D" parent="Center" unique_id=258212096]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fk1xt")
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=94406883]
+libraries/ = SubResource("AnimationLibrary_urcp2")
+autoplay = &"rotate"

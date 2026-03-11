@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b0jqajc5v0n2e"]
+
+[ext_resource type="Script" uid="uid://cewyprrai3aqg" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.gd" id="1_oifva"]
+
+[node name="UIPaneManager" type="CanvasLayer" unique_id=888113672]
+layer = 0
+script = ExtResource("1_oifva")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

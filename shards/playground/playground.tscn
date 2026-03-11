@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/playground/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
 [ext_resource type="Material" uid="uid://crh4w0j6fl6vs" path="res://shards/playground/materials/grass_cobble_test.tres" id="2_tahua"]
-[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/spatial_text/spatial_text.tscn" id="3_uaqr7"]
+[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/ui/spatial_text/spatial_text.tscn" id="3_uaqr7"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="7_rgmr2"]
