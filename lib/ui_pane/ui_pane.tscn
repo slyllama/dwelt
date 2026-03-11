@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdmj0yox0hfkt" path="res://lib/ui_pane/textures/bg.jpg" id="1_b3r4o"]
 [ext_resource type="Texture2D" uid="uid://uyowt2urphuw" path="res://lib/ui_pane/textures/close_button.jpg" id="3_43t6n"]
 [ext_resource type="Texture2D" uid="uid://3kr2vi8df8g8" path="res://lib/ui_pane/textures/close_button_hover.jpg" id="4_gwgqe"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="5_4f35j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
 content_margin_left = 9.0
@@ -27,6 +28,7 @@ script = ExtResource("1_6rdn8")
 
 [node name="Box" type="VBoxContainer" parent="." unique_id=1241117236]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Header" type="HBoxContainer" parent="Box" unique_id=169153113]
 custom_minimum_size = Vector2(0, 24)
@@ -39,6 +41,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "((UIPane))"
+vertical_alignment = 1
 
 [node name="Close" type="TextureButton" parent="Box/Header" unique_id=1273695005]
 custom_minimum_size = Vector2(18, 18)
@@ -47,6 +50,14 @@ texture_normal = ExtResource("3_43t6n")
 texture_hover = ExtResource("4_gwgqe")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Separator" type="TextureRect" parent="Box" unique_id=2098540919]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+texture = ExtResource("5_4f35j")
+expand_mode = 1
+flip_h = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]

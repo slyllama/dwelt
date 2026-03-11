@@ -72,7 +72,7 @@ vertical_alignment = 2
 
 [node name="Separator" type="TextureRect" parent="Box" unique_id=1642629265]
 modulate = Color(0.8, 0.8, 0.8, 1)
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 texture = ExtResource("3_ub0md")
 expand_mode = 1

@@ -37,7 +37,6 @@ func _on_gui_input(_event: InputEvent) -> void:
 	# Handle dragging initiation and ending
 	if Input.is_action_just_pressed("left_click"):
 		dragging = true
-		Utils.pdebug("Clicked pane " + str(name))
 		clicked.emit()
 	elif Input.is_action_just_released("left_click"):
 		dragging = false
