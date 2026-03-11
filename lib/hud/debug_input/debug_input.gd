@@ -3,9 +3,8 @@ extends PanelContainer
 # Used for inputting debug command and seeing their results
 # TODO: output size limit
 
-const INACTIVE_ALPHA := 0.5
 const INPUT_BUFFER_SIZE := 16
-const OUTPUT_MAX_LINES := 3
+const OUTPUT_MAX_LINES := 7
 
 var buffer: Array[String] = []
 var buffer_pos := 0
@@ -45,10 +44,12 @@ func trim_output() -> void:
 	%Output.text = %Output.text.strip_edges(false, true)
 
 func _ready() -> void:
-	modulate.a = INACTIVE_ALPHA
 	Utils.pdebug_sent.connect(func(string: String) -> void:
 		%Output.text += "\n" + string
 		trim_output())
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/hello":
+			Utils.pdebug("Hello, world!"))
 
 func _input(_event: InputEvent) -> void:
 	# Toggle input focusing
@@ -57,6 +58,11 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("debug_input"):
 		await get_tree().process_frame
 		%Input.grab_focus()
+	
+	if Input.is_action_just_pressed("left_click"):
+		if (%Input.has_focus()
+			and !get_window().gui_get_hovered_control() is LineEdit):
+			_release()
 	
 	if %Input.has_focus():
 		# Handle browsing through old debug commands
@@ -77,7 +83,3 @@ func _input(_event: InputEvent) -> void:
 		elif Input.is_action_just_pressed("ui_cancel"):
 			if %Input.text == "/": %Input.text = ""
 			_release()
-
-# Fade the panel out depending on whether focused or not
-func _on_input_focus_entered() -> void: modulate.a = 1.0
-func _on_input_focus_exited() -> void: modulate.a = INACTIVE_ALPHA

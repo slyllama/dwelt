@@ -12,6 +12,14 @@ func crit_lerp(speed: float) -> float:
 func crit_plerp(speed: float) -> float:
 	return(clamp(1.0 - exp(-speed * _pdelta), 0.0, 1.0))
 
+func cursor_in_window(padding: float) -> bool:
+	var _pos := get_window().get_mouse_position()
+	var _size := get_window().size
+	var _in_window := true
+	if _pos.x < padding or _pos.x > _size.x - padding: _in_window = false
+	if _pos.y < padding or _pos.y > _size.y - padding: _in_window = false
+	return(_in_window)
+
 # Get all children recursively
 func get_all_children(node: Node, arr := []) -> Array:
 	arr.push_back(node)

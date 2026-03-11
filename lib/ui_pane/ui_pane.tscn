@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cwyl8l4fhu6gj"]
+
+[ext_resource type="Script" uid="uid://pf2i05f5a4sc" path="res://lib/ui_pane/ui_pane.gd" id="1_6rdn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkovj"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+
+[node name="UIPane" type="Panel" unique_id=16817640]
+custom_minimum_size = Vector2(100, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_kkovj")
+script = ExtResource("1_6rdn8")
+
+[node name="Box" type="VBoxContainer" parent="." unique_id=1241117236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="Box" unique_id=169153113]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Box/Header" unique_id=411912598]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "((Title))"
+
+[connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]

@@ -62,7 +62,8 @@ curve = SubResource("Curve_5x5nn")
 emission_shape = 3
 emission_box_extents = Vector3(4, 1, 4)
 gravity = Vector3(0, 0.1, 0)
-scale_min = 0.5
+scale_min = 0.39999998
+scale_max = 0.7
 alpha_curve = SubResource("CurveTexture_ram4p")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ram4p"]
