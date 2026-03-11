@@ -5,3 +5,5 @@
 [node name="UIPaneManager" type="CanvasLayer" unique_id=888113672]
 layer = 0
 script = ExtResource("1_oifva")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

@@ -34,7 +34,7 @@ stretch_mode = 1
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("4_r2k48")]
 
-[node name="UIPane" parent="UIPaneManager" unique_id=16817640 instance=ExtResource("5_d84xd")]
+[node name="UIPaneWhite" parent="UIPaneManager" unique_id=16817640 instance=ExtResource("5_d84xd")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -46,9 +46,9 @@ offset_right = 50.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+title = "This Is a Title"
 
-[node name="UIPane2" parent="UIPaneManager" unique_id=1901150673 instance=ExtResource("5_d84xd")]
-modulate = Color(1, 0, 0, 1)
+[node name="UIPaneRed" parent="UIPaneManager" unique_id=1901150673 instance=ExtResource("5_d84xd")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -60,6 +60,7 @@ offset_right = 99.0
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
+title = "Somehow Another Title"
 
 [node name="RenderMonitor" type="RichTextLabel" parent="." unique_id=838523613]
 anchors_preset = 6
