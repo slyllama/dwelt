@@ -14,7 +14,7 @@ func crit_plerp(speed: float) -> float:
 
 func cursor_in_window(padding: float) -> bool:
 	var _pos := get_window().get_mouse_position()
-	var _size := get_window().size
+	var _size := get_window().size / get_window().content_scale_factor
 	var _in_window := true
 	if _pos.x < padding or _pos.x > _size.x - padding: _in_window = false
 	if _pos.y < padding or _pos.y > _size.y - padding: _in_window = false
