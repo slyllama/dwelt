@@ -3,10 +3,28 @@ extends CanvasLayer
 
 var panes: Array[UIPane] = []
 
+# TODO: debug function only to test adding windows
+func test_add_pane() -> void:
+	var _uip: UIPane = load(
+		"res://lib/ui/ui_pane/ui_pane.tscn").instantiate()
+	_uip.title = "Test Pane"
+	add_child(_uip)
+
+# Registering a UI pane puts it in the drawing queue, ensuring that it gets
+# moved to the front when clicked etc
+func register_pane(pane: UIPane) -> void:
+	panes.push_back(pane)
+	pane.clicked.connect(func() -> void:
+		put_on_top(pane))
+
+# Visually orders the node hierarchy of UIPanes according to their sorting
+# in the array
 func update_draw_order() -> void:
 	for pane in panes:
 		pane.move_to_front.call_deferred()
 
+# Moves a UIPane to the end of the `panes` array, and then visually orders
+# them using `update_draw_order()`
 func put_on_top(pane: UIPane) -> void:
 	if pane in panes:
 		panes.erase(pane)
@@ -14,15 +32,16 @@ func put_on_top(pane: UIPane) -> void:
 	update_draw_order()
 
 func _ready() -> void:
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/testpane":
+			Utils.pdebug("[color=yellow]Spawning test UIPane.[/color]", "UIPaneManager")
+			test_add_pane())
 	for child in get_children():
 		if child is UIPane:
-			panes.append(child)
-			child.clicked.connect(func() -> void:
-				put_on_top(child))
+			register_pane(child)
 	update_draw_order()
 
-# TODO: needs testing
 func _on_child_entered_tree(node: Node) -> void:
 	if node is UIPane:
-		panes.push_back(node)
+		register_pane(node)
 		update_draw_order()

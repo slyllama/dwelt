@@ -11,8 +11,8 @@ var _target_y_rotation := 0.0
 var _target_z_rotation := 0.0 # tilt when rotating camera
 
 func _physics_process(_delta: float) -> void:
-	$Trail_L.global_position = $RobotMesh/Armature/Skeleton3D/Foot_NE/Leg_NE.global_position
-	$Trail_R.global_position = $RobotMesh/Armature/Skeleton3D/Foot_NW/Leg_NW.global_position
+	$Trail_L.global_position = $RobotMesh/Armature/Skeleton3D/Foot_SE/Leg_SE.global_position
+	$Trail_R.global_position = $RobotMesh/Armature/Skeleton3D/Foot_SW/Leg_SW.global_position
 	
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = %Orbit.global_transform.basis
