@@ -8,34 +8,37 @@ class_name UIPane extends PanelContainer
 		title = _title
 		%Title.text = title
 
-const PADDING := 30.0 # pane can't be carried outside of this padding around the window
+const PADDING := 100.0 # used to calculate pane position limits
 var cursor_last_in_window := true
 var dragging := false
+# Difference between where the drag was initiated and the pane's
+# actual position
+var offset := Vector2.ZERO
 
 signal clicked
 
-func _on_header_gui_input(event: InputEvent) -> void:
+func _on_header_gui_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	
-	# Handle window dragging, including stopping dragging if the cursor gets
-	# too close to the game window, and recovering once it re-enters
+	# Handle pane dragging, including clamping its position when the cursor
+	# leaves the window
 	if Input.is_action_pressed("left_click"):
-		# only drag the pane if the operation was started within the pane's
-		# header
+		# Only drag the pane if the operation was started within the
+		# pane's header
 		if !dragging: return
-		if (!cursor_last_in_window
-			and Utils.cursor_in_window(PADDING)):
-			position = get_window().get_mouse_position()
-		if (event is InputEventMouseMotion
-			and Utils.cursor_in_window(PADDING)):
-			position += event.relative
-		cursor_last_in_window = Utils.cursor_in_window(PADDING)
+		# Get scaled window size
+		var _w: Vector2 = get_window().size / get_window().content_scale_factor
+		
+		position = get_window().get_mouse_position() + offset
+		position.x = clamp(position.x, -PADDING, _w.x - PADDING)
+		position.y = clamp(position.y, 0.0, _w.y - PADDING)
 
 func _on_gui_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	
 	# Handle dragging initiation and ending
 	if Input.is_action_just_pressed("left_click"):
+		offset = position - get_window().get_mouse_position()
 		dragging = true
 		clicked.emit()
 	elif Input.is_action_just_released("left_click"):
