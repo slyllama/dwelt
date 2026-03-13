@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/playground/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
+[ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_rvw1y"]
 [ext_resource type="Material" uid="uid://crh4w0j6fl6vs" path="res://shards/playground/materials/grass_cobble_test.tres" id="2_tahua"]
+[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_aut2g"]
+[ext_resource type="Script" uid="uid://dll8xy8txe1vr" path="res://lib/effect/effect_viewer/effect_viewer.gd" id="3_rfd7c"]
 [ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/ui/spatial_text/spatial_text.tscn" id="3_uaqr7"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
@@ -54,6 +57,35 @@ buffer = PackedFloat32Array(1.3022184, 0, -2.2011561, -0.16765386, 0, 3.653587, 
 
 [node name="Shard" unique_id=1127074071 instance=ExtResource("1_nwqnf")]
 
+[node name="EffectViewer" type="RichTextLabel" parent="HUD" parent_id_path=PackedInt32Array(717398159) index="6" unique_id=1216475495 node_paths=PackedStringArray("effect_manager")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -7.0
+offset_right = -12.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -2
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_rvw1y")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "((EffectViewer))"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("3_rfd7c")
+effect_manager = NodePath("../../Box2/EffectManager")
+metadata/_custom_type_script = "uid://dll8xy8txe1vr"
+
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
 
@@ -76,6 +108,10 @@ mesh = SubResource("BoxMesh_nwqnf")
 [node name="Box2" type="MeshInstance3D" parent="." index="5" unique_id=706585814]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3, 1, 0)
 mesh = SubResource("BoxMesh_nwqnf")
+
+[node name="EffectManager" type="Node" parent="Box2" index="0" unique_id=496517498]
+script = ExtResource("3_aut2g")
+metadata/_custom_type_script = "uid://dwm4elmsp1th0"
 
 [node name="AcidPool" type="MeshInstance3D" parent="." index="6" unique_id=467954685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
