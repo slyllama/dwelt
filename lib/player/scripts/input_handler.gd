@@ -1,20 +1,13 @@
 extends Node
 
 var direction := Vector3.ZERO
-var camera_rotate_input := 0.0
-
 var _last_x_input: Array[int] = []
 var _last_z_input: Array[int] = []
-var _last_camera_rotate_input: Array[int] = []
 
 func is_input_down() -> bool:
 	if _last_x_input.size() > 0 or _last_z_input.size() > 0:
 		return(true)
 	else: return(false)
-
-func is_input_allowed() -> bool:
-	if get_window().gui_get_focus_owner(): return(false)
-	else: return(true)
 
 func _ready() -> void:
 	get_window().focus_exited.connect(func() -> void:
@@ -29,16 +22,11 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("move_right"): _last_x_input.push_front(1)
 	if Input.is_action_just_released("move_left"): _last_x_input.erase(-1)
 	if Input.is_action_just_released("move_right"): _last_x_input.erase(1)
+	
 	if Input.is_action_just_pressed("move_forward"): _last_z_input.push_front(1)
 	if Input.is_action_just_pressed("move_back"): _last_z_input.push_front(-1)
 	if Input.is_action_just_released("move_forward"): _last_z_input.erase(1)
 	if Input.is_action_just_released("move_back"): _last_z_input.erase(-1)
-	
-	# Also handle camera rotating in the same way
-	if Input.is_action_just_pressed("camera_rotate_left"): _last_camera_rotate_input.push_front(-1)
-	if Input.is_action_just_pressed("camera_rotate_right"): _last_camera_rotate_input.push_front(1)
-	if Input.is_action_just_released("camera_rotate_left"): _last_camera_rotate_input.erase(-1)
-	if Input.is_action_just_released("camera_rotate_right"): _last_camera_rotate_input.erase(1)
 	
 	# Clear input in instances where two keys are released at once
 	if event is InputEventKey:
@@ -48,15 +36,8 @@ func _input(event: InputEvent) -> void:
 		if (!Input.is_action_pressed("move_forward")
 			and !Input.is_action_pressed("move_back")):
 			_last_z_input = []
-		if (!Input.is_action_pressed("camera_rotate_left")
-			and !Input.is_action_pressed("camera_rotate_right")):
-			_last_camera_rotate_input = []
 
 func _physics_process(_delta: float) -> void:
-	if !is_input_allowed():
-		direction = Vector3.ZERO
-		return
-	
 	# Retrieve directions from input stacks
 	var _dir := Vector3.ZERO
 	if _last_x_input.size() > 0:
@@ -65,9 +46,6 @@ func _physics_process(_delta: float) -> void:
 	if _last_z_input.size() > 0:
 		_dir.z = _last_z_input[0]
 	else: _dir.z = 0
-	direction = _dir.normalized()
-	
-	# Retrieve camera rotation
-	if _last_camera_rotate_input.size() > 0:
-		camera_rotate_input = _last_camera_rotate_input[0]
-	else: camera_rotate_input = 0.0
+	if !get_window().gui_get_focus_owner():
+		direction = _dir.normalized()
+	else: direction = Vector3.ZERO

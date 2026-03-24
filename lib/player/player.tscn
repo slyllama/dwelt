@@ -1,144 +1,281 @@
-[gd_scene format=3 uid="uid://cq0glayorp0f8"]
+[gd_scene format=3 uid="uid://crbctqd55n6f6"]
 
-[ext_resource type="Script" uid="uid://bg1ei8q60jyre" path="res://lib/player/player.gd" id="1_al4t3"]
-[ext_resource type="PackedScene" uid="uid://rcxc53qc24c" path="res://lib/player/meshes/robot.glb" id="1_odf55"]
-[ext_resource type="Script" uid="uid://5f8pu05qoa6u" path="res://lib/player/scripts/input_handler.gd" id="3_2ocui"]
-[ext_resource type="Script" uid="uid://c7gm8g1thvnet" path="res://lib/player/orbit.gd" id="3_5lbbh"]
-[ext_resource type="PackedScene" uid="uid://cch37nak71yn0" path="res://lib/player/trail/trail.tscn" id="4_0y160"]
-[ext_resource type="Animation" uid="uid://bhttpj01eluru" path="res://lib/player/meshes/anims/eye.res" id="4_jyhpi"]
-[ext_resource type="Script" uid="uid://bred4fcjr26c" path="res://lib/player/scripts/robot_mesh.gd" id="4_up78s"]
-[ext_resource type="Animation" uid="uid://b5fruyr5qfevi" path="res://lib/player/meshes/anims/idle.res" id="5_up78s"]
-[ext_resource type="Animation" uid="uid://cop5mk1c84grj" path="res://lib/player/meshes/anims/move_forward.res" id="6_5x5nn"]
-[ext_resource type="Animation" uid="uid://8jfr2ngt6hw" path="res://lib/player/meshes/anims/strafe.res" id="7_ram4p"]
-[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_5x5nn"]
+[ext_resource type="Script" uid="uid://cro16agkt5mwp" path="res://lib/player/player.gd" id="1_al4t3"]
+[ext_resource type="Script" uid="uid://djkynrad87367" path="res://lib/player/scripts/input_handler.gd" id="1_odf55"]
+[ext_resource type="PackedScene" uid="uid://fok2dlvwn6yg" path="res://lib/player/meshes/robot.glb" id="3_5lbbh"]
+[ext_resource type="Script" uid="uid://dk7uyha00yo40" path="res://lib/player/scripts/robot_mesh.gd" id="4_0y160"]
+[ext_resource type="Script" uid="uid://bwno2ytfmc7xi" path="res://lib/player/scripts/sound.gd" id="4_jlw2j"]
+[ext_resource type="Script" uid="uid://bqa58q5n27tp4" path="res://lib/player/scripts/orbit.gd" id="5_4ok3w"]
+[ext_resource type="Animation" uid="uid://cqpsbwgy2uxcd" path="res://lib/player/meshes/anims/idle.res" id="5_dyt5v"]
+[ext_resource type="ArrayMesh" uid="uid://bbnipptkru66r" path="res://lib/player/meshes/star.res" id="5_jyhpi"]
+[ext_resource type="Animation" uid="uid://dft5l21562sq" path="res://lib/player/meshes/anims/move_forward.res" id="6_jyhpi"]
+[ext_resource type="PackedScene" uid="uid://cch37nak71yn0" path="res://lib/player/trail/trail.tscn" id="8_1x433"]
+[ext_resource type="Animation" uid="uid://dn6jbc7cb2gch" path="res://lib/player/meshes/anims/strafe.res" id="8_g61qk"]
+[ext_resource type="Animation" uid="uid://b5rkwbh24208k" path="res://lib/player/meshes/anims/eye.res" id="8_up78s"]
+[ext_resource type="AudioStream" uid="uid://bkxx1ti38653a" path="res://lib/player/sounds/engine_idle.ogg" id="9_5x5nn"]
+[ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
+[ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.2
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1bse"]
+[sub_resource type="Curve" id="Curve_up78s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15357141, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5x5nn"]
+curve = SubResource("Curve_up78s")
+
+[sub_resource type="Gradient" id="Gradient_jyhpi"]
+colors = PackedColorArray(0, 0.1625, 0.65, 1, 0.89411765, 0.827451, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_up78s"]
+gradient = SubResource("Gradient_jyhpi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ram4p"]
+emission_shape = 2
+emission_sphere_radius = 0.16
+gravity = Vector3(0, 0.2, 0)
+scale_min = 0.39999998
+scale_max = 0.7
+color_initial_ramp = SubResource("GradientTexture1D_up78s")
+alpha_curve = SubResource("CurveTexture_5x5nn")
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_up78s"]
 _data = {
-&"eye": ExtResource("4_jyhpi"),
-&"idle": ExtResource("5_up78s"),
-&"move_forward": ExtResource("6_5x5nn"),
-&"strafe": ExtResource("7_ram4p")
+&"eye": ExtResource("8_up78s"),
+&"idle": ExtResource("5_dyt5v"),
+&"move_forward": ExtResource("6_jyhpi"),
+&"strafe": ExtResource("8_g61qk")
 }
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jyhpi"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_r1bse"]
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_up78s"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jlw2j"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_up78s"]
-animation = &"player/move_forward"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ram4p"]
+animation = &"player/eye"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5x5nn"]
 animation = &"player/idle"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ram4p"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5x5nn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jyhpi"]
+animation = &"player/move_forward"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ego0t"]
 animation = &"player/strafe"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ram4p"]
-graph_offset = Vector2(-411.45453, 116.81818)
-nodes/output/position = Vector2(680, 160)
-nodes/anim_idle/node = SubResource("AnimationNodeAnimation_5x5nn")
-nodes/anim_idle/position = Vector2(-220, 160)
-nodes/add_forward/node = SubResource("AnimationNodeAdd2_jyhpi")
-nodes/add_forward/position = Vector2(60, 160)
-nodes/anim_forward/node = SubResource("AnimationNodeAnimation_up78s")
-nodes/anim_forward/position = Vector2(-220, 320)
-nodes/add_strafe/node = SubResource("AnimationNodeAdd2_up78s")
-nodes/add_strafe/position = Vector2(500, 160)
-nodes/anim_strafe/node = SubResource("AnimationNodeAnimation_ram4p")
-nodes/anim_strafe/position = Vector2(60, 380)
-node_connections = [&"output", 0, &"add_strafe", &"add_forward", 0, &"anim_idle", &"add_forward", 1, &"anim_forward", &"add_strafe", 0, &"add_forward", &"add_strafe", 1, &"anim_strafe"]
+graph_offset = Vector2(-231, 144)
+nodes/output/position = Vector2(660, 140)
+nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
+nodes/idle/position = Vector2(-180, 140)
+nodes/move_forward/node = SubResource("AnimationNodeAnimation_jyhpi")
+nodes/move_forward/position = Vector2(-180, 300)
+nodes/add_forward/node = SubResource("AnimationNodeAdd2_r1bse")
+nodes/add_forward/position = Vector2(240, 140)
+nodes/eye/node = SubResource("AnimationNodeAnimation_ram4p")
+nodes/eye/position = Vector2(-180, -20)
+nodes/idle_mix_eye/node = SubResource("AnimationNodeAdd2_5x5nn")
+nodes/idle_mix_eye/position = Vector2(0, -20)
+nodes/add_strafe/node = SubResource("AnimationNodeAdd2_jlw2j")
+nodes/add_strafe/position = Vector2(400, 140)
+nodes/strafe/node = SubResource("AnimationNodeAnimation_ego0t")
+nodes/strafe/position = Vector2(240, -40)
+node_connections = [&"output", 0, &"add_strafe", &"add_forward", 0, &"idle_mix_eye", &"add_forward", 1, &"move_forward", &"idle_mix_eye", 0, &"eye", &"idle_mix_eye", 1, &"idle", &"add_strafe", 0, &"add_forward", &"add_strafe", 1, &"strafe"]
 
-[sub_resource type="Curve" id="Curve_5x5nn"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.30312496, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Animation" id="Animation_1x433"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
-[sub_resource type="CurveTexture" id="CurveTexture_ram4p"]
-curve = SubResource("Curve_5x5nn")
+[sub_resource type="Animation" id="Animation_ego0t"]
+resource_name = "glow"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.45, 1.0]
+}
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5x5nn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5dhk"]
+_data = {
+&"RESET": SubResource("Animation_1x433"),
+&"glow": SubResource("Animation_ego0t")
+}
+
+[sub_resource type="Curve" id="Curve_2ocui"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5lbbh"]
+curve = SubResource("Curve_2ocui")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
 emission_shape = 3
-emission_box_extents = Vector3(4, 1, 4)
-gravity = Vector3(0, 0.1, 0)
-scale_min = 0.39999998
-scale_max = 0.7
-alpha_curve = SubResource("CurveTexture_ram4p")
+emission_box_extents = Vector3(5, 3, 5)
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_5lbbh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ram4p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lbbh"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("9_5x5nn")
+albedo_texture = ExtResource("14_1x433")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_r1bse"]
-material = SubResource("StandardMaterial3D_ram4p")
-size = Vector2(0.1, 0.1)
+[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
+material = SubResource("StandardMaterial3D_5lbbh")
+size = Vector2(0.04, 0.04)
 
-[node name="Player" type="CharacterBody3D" unique_id=1853110306]
+[sub_resource type="SphereShape3D" id="SphereShape3D_g61qk"]
+radius = 0.25
+
+[node name="Player" type="CharacterBody3D" unique_id=568758090]
 script = ExtResource("1_al4t3")
+gravity_damping = 7.0
 
-[node name="Trail_L" parent="." unique_id=125210422 instance=ExtResource("4_0y160")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54826784, 0)
-motion_delta = 0.01
-start_color = Color(1, 1, 1, 0.627451)
-
-[node name="Trail_R" parent="." unique_id=783753205 instance=ExtResource("4_0y160")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54826784, 0)
-start_color = Color(1, 1, 1, 0.627451)
-
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=455674221]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=920840416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
 shape = SubResource("SphereShape3D_iochv")
 
-[node name="RobotMesh" parent="." unique_id=1616749653 instance=ExtResource("1_odf55")]
+[node name="LookTarget" type="Marker3D" parent="." unique_id=858288277]
+transform = Transform3D(0.8660253, -0.35355335, 0.35355335, 0, 0.7071067, 0.7071067, -0.49999997, -0.61237234, 0.61237234, 0.7071067, 1.4142134, 1.2247447)
+
+[node name="RobotMesh" parent="." unique_id=1185871662 node_paths=PackedStringArray("look_target") instance=ExtResource("3_5lbbh")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 7.450581e-09, 0, 1, 2.9802322e-08, 7.450581e-09, 0, 1, 0, 0, 0)
-script = ExtResource("4_up78s")
+script = ExtResource("4_0y160")
+look_target = NodePath("../LookTarget")
+animation_smoothing = 5.0
+turn_rotation_multiplier = 7.0
 
-[node name="Light" type="OmniLight3D" parent="RobotMesh" unique_id=657934483]
-transform = Transform3D(1, 0, -1.4901161e-08, 0, 1, -2.9802322e-08, 0, 0, 1, 0, 0, 0.4)
-light_energy = 1.5
-omni_range = 1.35
-omni_attenuation = 0.0
+[node name="Sound" type="Node3D" parent="RobotMesh" unique_id=2142391288]
+script = ExtResource("4_jlw2j")
 
-[node name="Animations" type="AnimationTree" parent="RobotMesh" unique_id=2052620820]
-libraries/player = SubResource("AnimationLibrary_r1bse")
+[node name="EngineIdle" type="AudioStreamPlayer3D" parent="RobotMesh/Sound" unique_id=632971567]
+stream = ExtResource("9_5x5nn")
+volume_db = -10.0
+unit_size = 4.0
+autoplay = true
+
+[node name="EngineMoving" type="AudioStreamPlayer3D" parent="RobotMesh/Sound" unique_id=2109622695]
+stream = ExtResource("10_ram4p")
+autoplay = true
+max_polyphony = 2
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="RobotMesh/Sound" unique_id=1191106218]
+volume_db = -2.0
+unit_size = 4.0
+autoplay = true
+
+[node name="Stars" type="GPUParticles3D" parent="RobotMesh" unique_id=519014292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11239728, -0.1578772)
+cast_shadow = 0
+amount = 32
+amount_ratio = 0.25
+process_material = SubResource("ParticleProcessMaterial_ram4p")
+draw_pass_1 = ExtResource("5_jyhpi")
+
+[node name="Light" type="OmniLight3D" parent="RobotMesh" unique_id=399922897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.75)
+omni_range = 1.0
+
+[node name="JetTrail_L" parent="RobotMesh" unique_id=125210422 instance=ExtResource("8_1x433")]
+
+[node name="JetTrail_R" parent="RobotMesh" unique_id=934605387 instance=ExtResource("8_1x433")]
+
+[node name="Anim" type="AnimationTree" parent="RobotMesh" unique_id=733744648]
+libraries/player = SubResource("AnimationLibrary_up78s")
 tree_root = SubResource("AnimationNodeBlendTree_ram4p")
 parameters/add_forward/add_amount = 0.0
+parameters/idle_mix_eye/add_amount = 1.0
 parameters/add_strafe/add_amount = 0.0
 
-[node name="Motes" type="GPUParticles3D" parent="RobotMesh" unique_id=1657487024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-amount = 64
-lifetime = 2.0
-preprocess = 5.0
-speed_scale = 0.75
-randomness = 0.5
-process_material = SubResource("ParticleProcessMaterial_5x5nn")
-draw_pass_1 = SubResource("QuadMesh_r1bse")
+[node name="Glow" type="AnimationPlayer" parent="RobotMesh" unique_id=1643044225]
+libraries/ = SubResource("AnimationLibrary_v5dhk")
+autoplay = &"glow"
 
-[node name="Orbit" type="Marker3D" parent="." unique_id=576846863]
+[node name="Orbit" type="Marker3D" parent="." unique_id=13830377]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, -0.43301272, 0.24999999, 0, 0.49999997, 0.86602545, -0.5, -0.75, 0.43301266, 0, 0, 0)
-script = ExtResource("3_5lbbh")
-zoom_max = 14.0
+transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
+script = ExtResource("5_4ok3w")
 
-[node name="InputHandler" type="Node" parent="Orbit" unique_id=2064876489]
-unique_name_in_owner = true
-script = ExtResource("3_2ocui")
-
-[node name="Camera" type="Camera3D" parent="Orbit" unique_id=1846326960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
-v_offset = 0.7
+[node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
+v_offset = 0.5
 current = true
-fov = 37.0
+fov = 87.0
+far = 200.0
 
-[node name="YCast" type="RayCast3D" parent="." unique_id=422817751]
+[node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
+transform = Transform3D(0.8660255, 7.45058e-09, -0.49999997, -0.12940954, 0.96592575, -0.22414388, 0.48296294, 0.258819, 0.83651626, -2.3692846e-07, 0.1931852, -2.5482357)
+visible = false
+cast_shadow = 0
+amount = 128
+preprocess = 5.0
+speed_scale = 0.18
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2ocui")
+draw_pass_1 = SubResource("QuadMesh_0y160")
+
+[node name="Listener" type="AudioListener3D" parent="Orbit/Camera" unique_id=1102468141]
+current = true
+
+[node name="CursorCast" type="Node" parent="Orbit/Camera" unique_id=1663147991]
+script = ExtResource("14_ego0t")
+
+[node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
+collision_mask = 2
+shape = SubResource("SphereShape3D_g61qk")
+spring_length = 2.0
+
+[node name="CameraAnchor" type="Marker3D" parent="Orbit/SpringArm" unique_id=582860990]
+
+[node name="InputHandler" type="Node" parent="." unique_id=710152317]
 unique_name_in_owner = true
-target_position = Vector3(0, -1.7, 0)
+script = ExtResource("1_odf55")
+
+[node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
+target_position = Vector3(0, -1.85, 0)

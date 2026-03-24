@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://rcxc53qc24c"
+uid="uid://fok2dlvwn6yg"
 path="res://.godot/imported/robot.glb-0bdc83df708e13124ed7ec63ee9581a4.scn"
 
 [deps]
@@ -14,23 +14,23 @@ dest_files=["res://.godot/imported/robot.glb-0bdc83df708e13124ed7ec63ee9581a4.sc
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="Robot"
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.8
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=30
-animation/trimming=false
+animation/fps=60.0
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
@@ -43,8 +43,8 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://lib/player/meshes/anims/eye.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://cj8c1vcvdxet3",
-"settings/loop_mode": 1,
+"save_to_file/path": "uid://b5rkwbh24208k",
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -2099,8 +2099,8 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://lib/player/meshes/anims/idle.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://b5fruyr5qfevi",
-"settings/loop_mode": 1,
+"save_to_file/path": "uid://cqpsbwgy2uxcd",
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -4155,7 +4155,7 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://lib/player/meshes/anims/move_forward.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://0pwpecpow0jy",
+"save_to_file/path": "uid://dft5l21562sq",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -6211,7 +6211,7 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://lib/player/meshes/anims/strafe.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bwegt1tgbnn7h",
+"save_to_file/path": "uid://dn6jbc7cb2gch",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -8262,6 +8262,56 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": 0
+}
+},
+"materials": {
+"eye": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/mat_eye.tres",
+"use_external/path": "uid://bskgfhv3gtmxk"
+},
+"flowery_iron": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/flowery_iron.tres",
+"use_external/path": "uid://driucsyut41sq"
+},
+"glow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/mat_glow.tres",
+"use_external/path": "uid://gslpiectqnqm"
+},
+"mat_hologram": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/mat_hologram.tres",
+"use_external/path": "uid://bfwqa6c7utort"
+},
+"robot": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/mat_robot.tres",
+"use_external/path": "uid://mnnyua8alamv"
+},
+"swirl": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/mat_swirl.tres",
+"use_external/path": "uid://cybs7v8g3k2lt"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D/Pivot/Glow_NE": {
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 512
+},
+"PATH:Armature/Skeleton3D/Pivot/Glow_NW": {
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 512
+},
+"PATH:Armature/Skeleton3D/Pivot/Glow_SE": {
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 512
+},
+"PATH:Armature/Skeleton3D/Pivot/Glow_SW": {
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 512
 }
 }
 }

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://gslpiectqnqm"]
+
+[ext_resource type="Shader" uid="uid://8q2klny327qy" path="res://lib/player/materials/shaders/glow.gdshader" id="1_6u117"]
+[ext_resource type="Texture2D" uid="uid://uc2uqec8rdrv" path="res://lib/player/materials/textures/wobble_noise.tres" id="2_o1j6d"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_6u117")
+shader_parameter/wobble_texture = ExtResource("2_o1j6d")
+shader_parameter/light_strength = 0.85
+shader_parameter/wobble_strength = 0.1
+shader_parameter/wobble_speed = 0.07

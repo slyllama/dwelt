@@ -88,6 +88,8 @@ metadata/_custom_type_script = "uid://dll8xy8txe1vr"
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Mesh" parent="Floor" index="0" unique_id=1446901427]
 visible = false

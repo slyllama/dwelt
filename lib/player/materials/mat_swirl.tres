@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cybs7v8g3k2lt"]
+
+[ext_resource type="Shader" uid="uid://cu57i3rcjwlo3" path="res://lib/player/materials/shaders/swirl.gdshader" id="1_de1sb"]
+[ext_resource type="Texture2D" uid="uid://uc2uqec8rdrv" path="res://lib/player/materials/textures/wobble_noise.tres" id="3_pqis1"]
+
+[sub_resource type="Gradient" id="Gradient_pqis1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.14568764, 0.3181818, 0.6351981)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_onlbm"]
+gradient = SubResource("Gradient_pqis1")
+fill_to = Vector2(0, 1)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_de1sb")
+shader_parameter/wobble_texture = ExtResource("3_pqis1")
+shader_parameter/wobble_strength = 0.350000016625
+shader_parameter/wobble_speed = 0.1
+shader_parameter/swirl_mask = SubResource("GradientTexture2D_onlbm")

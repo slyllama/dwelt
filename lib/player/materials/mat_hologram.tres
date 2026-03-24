@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bfwqa6c7utort"]
+
+[ext_resource type="Shader" uid="uid://bwt4duw1t3y0v" path="res://lib/player/materials/shaders/hologram.gdshader" id="1_i7sm3"]
+[ext_resource type="Texture2D" uid="uid://c3ta1dijhey7h" path="res://lib/player/materials/textures/hologram_mask.jpg" id="2_6u1nd"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_i7sm3")
+shader_parameter/hologram_mask_texture = ExtResource("2_6u1nd")
+shader_parameter/hologram_color = Color(0, 0.47366646, 0.98, 1)
+shader_parameter/hologram_uv_scale = 196.0

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bskgfhv3gtmxk"]
+
+[ext_resource type="Texture2D" uid="uid://dr88wd272q1vy" path="res://lib/player/materials/textures/eye_diff.jpg" id="1_ocijm"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_ocijm")

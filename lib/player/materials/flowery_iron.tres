@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://driucsyut41sq"]
+
+[ext_resource type="Texture2D" uid="uid://8o7vibokxv8t" path="res://lib/player/materials/textures/flowery_iron_diff.jpg" id="1_vapwi"]
+[ext_resource type="Texture2D" uid="uid://1vq7rfeiym6i" path="res://lib/player/materials/textures/flowery_iron_norm.jpg" id="2_enen7"]
+
+[resource]
+albedo_texture = ExtResource("1_vapwi")
+metallic = 0.5
+roughness = 0.5
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("2_enen7")
+uv1_scale = Vector3(12, 12, 12)

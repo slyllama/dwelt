@@ -1,2 +1,3 @@
 /hello			[DebugInput]		Print a test into debug input
 /testpane		[UIPaneManager]		Spawn a test UIPane
+/playvoice		[Player/Sound]		Play a random voice effect

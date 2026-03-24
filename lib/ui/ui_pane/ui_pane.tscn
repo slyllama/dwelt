@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://pf2i05f5a4sc" path="res://lib/ui/ui_pane/ui_pane.gd" id="1_6rdn8"]
 [ext_resource type="Texture2D" uid="uid://cdmj0yox0hfkt" path="res://lib/ui/ui_pane/textures/bg.jpg" id="1_b3r4o"]
 [ext_resource type="Texture2D" uid="uid://uyowt2urphuw" path="res://lib/ui/ui_pane/textures/close_button.jpg" id="3_43t6n"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="3_spqtq"]
 [ext_resource type="Texture2D" uid="uid://3kr2vi8df8g8" path="res://lib/ui/ui_pane/textures/close_button_hover.jpg" id="4_gwgqe"]
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="5_4f35j"]
 
@@ -39,6 +40,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_spqtq")
 theme_override_font_sizes/font_size = 16
 text = "((UIPane))"
 vertical_alignment = 1
