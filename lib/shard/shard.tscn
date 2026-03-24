@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dp30o4nm06kc4" path="res://generic/materials/textures/tile_diff.jpg" id="1_3tfg5"]
 [ext_resource type="PackedScene" uid="uid://buw3dn6gh38fy" path="res://lib/ui/hud/hud.tscn" id="1_3xe27"]
+[ext_resource type="Script" uid="uid://bp3rck4ew5qnc" path="res://lib/shard/shard.gd" id="1_5i5j7"]
 [ext_resource type="PackedScene" uid="uid://crbctqd55n6f6" path="res://lib/player/player.tscn" id="1_22u7k"]
 [ext_resource type="Texture2D" uid="uid://0ivnnt6tjr0i" path="res://generic/materials/textures/tile_norm.jpg" id="2_3xe27"]
 
@@ -19,6 +20,7 @@ orientation = 1
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3xe27"]
 
 [node name="Shard" type="Node3D" unique_id=1127074071]
+script = ExtResource("1_5i5j7")
 
 [node name="HUD" parent="." unique_id=717398159 instance=ExtResource("1_3xe27")]
 

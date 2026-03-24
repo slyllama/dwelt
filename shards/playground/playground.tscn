@@ -136,5 +136,5 @@ max_scale = 2.0
 scale_offset = Vector3(1, 2, 1)
 colour_2 = Color(0.5224371, 0.7625799, 3.85046e-07, 1)
 
-[node name="Platform" parent="." index="9" unique_id=1364672946 instance=ExtResource("11_r4xcf")]
+[node name="Platform" parent="." index="9" unique_id=1904394552 instance=ExtResource("11_r4xcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

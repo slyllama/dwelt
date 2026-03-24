@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/ui/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
-[ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="5_d84xd"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
@@ -45,17 +44,6 @@ grow_vertical = 0
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("4_r2k48")]
 layer = 1
-
-[node name="TestPanel" parent="UIPaneManager" unique_id=16817640 instance=ExtResource("5_d84xd")]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 12.0
-offset_top = -283.0
-offset_right = 312.0
-offset_bottom = 117.0
-grow_vertical = 2
-title = "This Is a Title"
 
 [node name="Override" type="CanvasLayer" parent="." unique_id=1195063702]
 layer = 99

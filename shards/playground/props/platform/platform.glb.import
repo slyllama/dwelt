@@ -59,6 +59,11 @@ _subresources={
 "use_external/fallback_path": "res://shards/playground/props/platform/materials/rope.tres",
 "use_external/path": "uid://cmtgrdiqsbiqa"
 }
+},
+"nodes": {
+"PATH:Platform/StaticBody3D": {
+"node/node_type": "StaticBody3D"
+}
 }
 }
 gltf/naming_version=2

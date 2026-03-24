@@ -50,6 +50,7 @@ func _physics_process(_delta: float) -> void:
 	var _last_event_relative := _event_relative
 	view_length = clamp(view_length, zoom_min, zoom_max)
 	
+	# Only enter panning mode once a mouse click-and-drag passes a certain threshold
 	if (Input.is_action_pressed("left_click")
 		and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
 		var _mouse_pos := get_window().get_mouse_position()
@@ -57,6 +58,7 @@ func _physics_process(_delta: float) -> void:
 		if _mouse_delta.length_squared() > 100.0 and _eligible_to_capture:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	# Update panning outcomes (even if no user input is happening)
 	target_x_rotation -= _event_relative.y * 0.01
 	target_y_rotation -= _event_relative.x * 0.01
 	target_x_rotation = clamp(
@@ -66,15 +68,18 @@ func _physics_process(_delta: float) -> void:
 	rotation.y = lerp_angle(rotation.y,
 		target_y_rotation, Utils.crit_lerp(20.0))
 	
-	global_position = lerp(
-		global_position,
-		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
-		Utils.crit_plerp(10.0))
-	
 	# Handle camera view_length
 	$SpringArm.spring_length = lerp($SpringArm.spring_length,
 		view_length, Utils.crit_plerp(10.0))
 	
+	# Update vertical offset
+	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
+	vertical_offset = 0.2 + _vo_ratio * 0.9
+	
+	# Update positions
+	global_position = lerp(global_position,
+		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
+		Utils.crit_plerp(10.0))
 	$Camera.global_position = $SpringArm/CameraAnchor.global_position
 	$Camera.global_rotation = $SpringArm/CameraAnchor.global_rotation
 	

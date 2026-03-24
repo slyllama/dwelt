@@ -244,7 +244,6 @@ script = ExtResource("5_4ok3w")
 
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
-v_offset = 0.5
 current = true
 fov = 87.0
 far = 200.0
