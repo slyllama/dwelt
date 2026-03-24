@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://p226ywghnwyf"]
+
+[ext_resource type="Texture2D" uid="uid://dxh0cb6ftv1kk" path="res://shards/playground/props/platform/materials/textures/platform_diff.jpg" id="1_a5cwa"]
+[ext_resource type="Texture2D" uid="uid://yg2uh7ueesx2" path="res://shards/playground/props/platform/materials/textures/platform_norm.jpg" id="2_fyy7b"]
+
+[resource]
+albedo_texture = ExtResource("1_a5cwa")
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_fyy7b")

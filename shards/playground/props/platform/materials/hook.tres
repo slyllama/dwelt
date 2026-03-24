@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://h0gtlb78nd7k"]
+
+[ext_resource type="Texture2D" uid="uid://by3mxjj4rs4ih" path="res://shards/playground/props/platform/materials/textures/hook_diff.jpg" id="1_n3g4c"]
+[ext_resource type="Texture2D" uid="uid://dllwia87byi2f" path="res://shards/playground/props/platform/materials/textures/hook_norm.jpg" id="2_qe4kp"]
+[ext_resource type="Texture2D" uid="uid://bhoav1q4qmjog" path="res://shards/playground/props/platform/materials/textures/hook_rough.jpg" id="3_y05ep"]
+
+[resource]
+albedo_texture = ExtResource("1_n3g4c")
+roughness_texture = ExtResource("3_y05ep")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("2_qe4kp")
