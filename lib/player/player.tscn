@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
-radius = 0.2
+radius = 0.121391475
 
 [sub_resource type="Curve" id="Curve_up78s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15357141, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -178,7 +178,7 @@ script = ExtResource("1_al4t3")
 gravity_damping = 7.0
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=920840416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09234956, 0)
 shape = SubResource("SphereShape3D_iochv")
 
 [node name="LookTarget" type="Marker3D" parent="." unique_id=858288277]
@@ -186,6 +186,7 @@ transform = Transform3D(0.8660253, -0.35355335, 0.35355335, 0, 0.7071067, 0.7071
 
 [node name="RobotMesh" parent="." unique_id=1185871662 node_paths=PackedStringArray("look_target") instance=ExtResource("3_5lbbh")]
 unique_name_in_owner = true
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
 script = ExtResource("4_0y160")
 look_target = NodePath("../LookTarget")
 animation_smoothing = 5.0
@@ -277,4 +278,4 @@ unique_name_in_owner = true
 script = ExtResource("1_odf55")
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
-target_position = Vector3(0, -1.85, 0)
+target_position = Vector3(0, -1.6, 0)

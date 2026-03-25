@@ -4,8 +4,8 @@ extends Marker3D
 @export var view_length := 2.0
 @export var view_sensitivity := 0.75
 @export var zoom_min := 1.0
-@export var zoom_max := 3.0
-@export var zoom_increment := 0.2
+@export var zoom_max := 2.0
+@export var zoom_increment := 0.1
 
 @onready var target_x_rotation := rotation.x
 @onready var target_y_rotation := global_rotation.y
@@ -74,12 +74,12 @@ func _physics_process(_delta: float) -> void:
 	
 	# Update vertical offset
 	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
-	vertical_offset = 0.2 + _vo_ratio * 0.9
+	vertical_offset = 0.2 + _vo_ratio * 0.6
 	
 	# Update positions
 	global_position = lerp(global_position,
 		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
-		Utils.crit_plerp(10.0))
+		Utils.crit_plerp(20.0))
 	$Camera.global_position = $SpringArm/CameraAnchor.global_position
 	$Camera.global_rotation = $SpringArm/CameraAnchor.global_rotation
 	

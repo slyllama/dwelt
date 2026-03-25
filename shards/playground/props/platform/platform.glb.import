@@ -39,6 +39,21 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"acid": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/playground/props/acid_pool/materials/acid_pool.tres",
+"use_external/path": "uid://c5wup88y2e6ia"
+},
+"floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/playground/materials/grass_cobble_test.tres",
+"use_external/path": "uid://crh4w0j6fl6vs"
+},
+"grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/playground/props/platform/materials/grass.tres",
+"use_external/path": "uid://mx5gu3jygscr"
+},
 "hook": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/playground/props/platform/materials/hook.tres",
@@ -61,6 +76,30 @@ _subresources={
 }
 },
 "nodes": {
+"PATH:Grass8": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem/Grass": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_001/Grass2": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_002/Grass3": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_003/Grass4": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_004/Grass5": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_005/Grass6": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:HookSystem_006/Grass7": {
+"mesh_instance/cast_shadow": 0
+},
 "PATH:Platform/StaticBody3D": {
 "node/node_type": "StaticBody3D"
 }

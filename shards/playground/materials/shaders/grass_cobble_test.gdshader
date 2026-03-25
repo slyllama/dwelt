@@ -9,8 +9,8 @@ uniform vec3 tint: source_color = vec3(1.0);
 uniform float uv_scale = 4.0;
 
 void fragment() {
-	float grass_blend_mask = texture(blend_mask_texture, UV).r;
-	float blend_mask = texture(blend_mask_texture, UV + vec2(0.25, 0.0)).r;
+	float grass_blend_mask = texture(blend_mask_texture, UV * 4.0).r;
+	float blend_mask = texture(blend_mask_texture, UV * 2.0 + vec2(0.25, 0.0)).r;
 	
 	// Grass
 	vec3 grass_base = texture(grass_base_texture, UV * uv_scale).rgb;
@@ -19,6 +19,6 @@ void fragment() {
 	
 	// Cobble
 	vec3 cobble = texture(cobble_texture, UV * uv_scale).rgb;
-	ALBEDO = mix(grass, cobble, blend_mask * 0.6);
+	ALBEDO = mix(grass, cobble, pow(blend_mask, 2.0) * 0.6);
 	ALBEDO *= tint;
 }

@@ -25,6 +25,7 @@ func send() -> void:
 	var _u := true
 	if buffer.size() > 0:
 		if _o == buffer[0]: _u = false
+		if _o == "/": _u = false # don't store an empty command
 	if _u: buffer.push_front(_o)
 	# Remove the oldest command if the buffer size is passed
 	if buffer.size() > INPUT_BUFFER_SIZE:

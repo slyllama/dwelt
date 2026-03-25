@@ -1,7 +1,7 @@
 class_name DweltPlayer extends CharacterBody3D
 
 @export_category("Physics")
-@export var speed := 3.0
+@export var speed := 2.0
 @export var speed_multiplier := 1.0 # used for lethargy etc
 @export var friction := 15.0
 @export var gravity_damping := 10.0

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3rafrkdjfvbw"]
+
+[ext_resource type="Shader" uid="uid://v0s6nhv18rer" path="res://shards/playground/materials/shaders/sky.gdshader" id="1_j1dlv"]
+
+[sub_resource type="Gradient" id="Gradient_j1dlv"]
+offsets = PackedFloat32Array(0.4, 0.47)
+colors = PackedColorArray(0.02, 0.019, 0, 1, 0.29803923, 0.30588236, 0.23921569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_78v5e"]
+gradient = SubResource("Gradient_j1dlv")
+fill_to = Vector2(0, 1)
+
+[resource]
+shader = ExtResource("1_j1dlv")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_78v5e")

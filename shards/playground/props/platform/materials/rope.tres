@@ -5,4 +5,4 @@
 [resource]
 specular_mode = 2
 albedo_texture = ExtResource("1_rpfii")
-uv1_scale = Vector3(48, 48, 48)
+uv1_scale = Vector3(128, 128, 128)
