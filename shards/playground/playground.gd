@@ -3,6 +3,11 @@ extends "res://lib/shard/shard.gd"
 func _ready() -> void:
 	super()
 	
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/te":
+			if %EffectViewer.effect_manager:
+				%EffectViewer.effect_manager.add_time_effect("test_effect", 8.0))
+	
 	# Populate the EffectViewer with the clicked Gadget's effects, if one was clicked
 	Dwelt.clicked_collision_object.connect(func(object: CollisionObject3D) -> void:
 		if object:

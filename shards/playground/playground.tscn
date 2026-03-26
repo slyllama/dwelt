@@ -209,3 +209,6 @@ normal_fade = 0.75
 
 [node name="TestGadget" parent="." index="11" unique_id=2141649679 instance=ExtResource("14_kte83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+
+[node name="TestGadget2" parent="." index="12" unique_id=607971673 instance=ExtResource("14_kte83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3406956, 0.5, 3.4417224)

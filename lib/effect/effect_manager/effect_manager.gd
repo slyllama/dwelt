@@ -19,11 +19,6 @@ var _t := 0.0 # time
 func add_time_effect(id: String, time_left: float) -> void:
 	effects[id] = { "time_left": str(snapped(time_left, TICK)) }
 
-func _ready() -> void:
-	Utils.debug_sent.connect(func(string: String) -> void:
-		if string == "/te":
-			add_time_effect("test_effect", 8.0))
-
 func _process(delta: float) -> void:
 	if _t > TICK:
 		_t = 0

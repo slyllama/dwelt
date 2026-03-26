@@ -80,13 +80,13 @@ expand_mode = 1
 [node name="Input" type="LineEdit" parent="Box" unique_id=1891612101]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/selection_color = Color(0.15179999, 0.30920997, 0.33, 1)
 theme_override_fonts/font = ExtResource("2_hfhfk")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_hfhfk")
 theme_override_styles/focus = SubResource("StyleBoxFlat_hfhfk")
 context_menu_enabled = false
 emoji_menu_enabled = false
-selecting_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 caret_blink = true
