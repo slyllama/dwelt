@@ -5,14 +5,13 @@
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/playground/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_rvw1y"]
 [ext_resource type="Material" uid="uid://crh4w0j6fl6vs" path="res://shards/playground/materials/grass_cobble_test.tres" id="2_tahua"]
-[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_aut2g"]
 [ext_resource type="Script" uid="uid://dll8xy8txe1vr" path="res://lib/effect/effect_viewer/effect_viewer.gd" id="3_rfd7c"]
-[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/ui/spatial_text/spatial_text.tscn" id="3_uaqr7"]
 [ext_resource type="Material" uid="uid://c3rafrkdjfvbw" path="res://shards/playground/materials/sky.tres" id="5_r4xcf"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/playground/props/platform/platform.glb" id="11_r4xcf"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/playground/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
+[ext_resource type="PackedScene" uid="uid://xtt4ducvtj05" path="res://lib/gadget/test_gadget.tscn" id="14_kte83"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_aut2g"]
 material = ExtResource("2_tahua")
@@ -81,7 +80,8 @@ buffer = PackedFloat32Array(2.5098376, 0, -0.27452898, -0.8499865, 0, 3.787211, 
 [node name="Shard" unique_id=1127074071 instance=ExtResource("1_nwqnf")]
 script = ExtResource("2_58tgt")
 
-[node name="EffectViewer" type="RichTextLabel" parent="HUD" parent_id_path=PackedInt32Array(717398159) index="6" unique_id=1216475495 node_paths=PackedStringArray("effect_manager")]
+[node name="EffectViewer" type="RichTextLabel" parent="HUD" parent_id_path=PackedInt32Array(717398159) index="6" unique_id=1216475495]
+unique_name_in_owner = true
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -107,7 +107,6 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("3_rfd7c")
-effect_manager = NodePath("../../EffectManager")
 metadata/_custom_type_script = "uid://dll8xy8txe1vr"
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
@@ -133,27 +132,19 @@ cast_shadow = 0
 instance_shader_parameters/uv_scale = 24.0
 mesh = SubResource("QuadMesh_rfpxw")
 
-[node name="EffectManager" type="Node" parent="." index="5" unique_id=496517498]
-script = ExtResource("3_aut2g")
-metadata/_custom_type_script = "uid://dwm4elmsp1th0"
-
-[node name="SpatialText" parent="." index="6" unique_id=283445859 instance=ExtResource("3_uaqr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-text = "Hello, World!"
-
-[node name="FogTest" type="FogVolume" parent="." index="7" unique_id=792664385]
+[node name="FogTest" type="FogVolume" parent="." index="5" unique_id=792664385]
 transform = Transform3D(0.8874939, 0, 0.46081948, 0, 1, 0, -0.46081948, 0, 0.8874939, 4.2083135, 1.1234448, 6.9830904)
 size = Vector3(9.921875, 2.8651123, 5.3476563)
 shape = 0
 material = SubResource("FogMaterial_t5hkx")
 
-[node name="FogTest2" type="FogVolume" parent="." index="8" unique_id=2039181471]
+[node name="FogTest2" type="FogVolume" parent="." index="6" unique_id=2039181471]
 transform = Transform3D(0.024205297, 0, -0.9997071, 0, 1, 0, 0.9997071, 0, 0.024205297, -9.61042, 1.1234448, -1.2095625)
 size = Vector3(9.921875, 2.8651123, 5.3476563)
 shape = 0
 material = SubResource("FogMaterial_t5hkx")
 
-[node name="Grass" type="MultiMeshInstance3D" parent="." index="9" unique_id=125048527]
+[node name="Grass" type="MultiMeshInstance3D" parent="." index="7" unique_id=125048527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0229335, 0.09067559, -13.1529255)
 layers = 2
 cast_shadow = 0
@@ -170,7 +161,7 @@ scale_offset = Vector3(1, 1.5, 1)
 colour_1 = Color(0.028982915, 0.20619318, 2.4065375e-08, 1)
 colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
-[node name="Grass2" type="MultiMeshInstance3D" parent="." index="10" unique_id=2134664926]
+[node name="Grass2" type="MultiMeshInstance3D" parent="." index="8" unique_id=2134664926]
 transform = Transform3D(0.9244596, 0.040959682, 0.37907365, 0, 0.994213, -0.10742675, -0.38128012, 0.09931169, 0.9191097, 0.34438384, 0.43650198, -15.733524)
 layers = 2
 cast_shadow = 0
@@ -188,7 +179,7 @@ scale_offset = Vector3(1, 1.5, 1)
 colour_1 = Color(0.028982915, 0.20619318, 2.4065375e-08, 1)
 colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
-[node name="Grass3" type="MultiMeshInstance3D" parent="." index="11" unique_id=1993475624]
+[node name="Grass3" type="MultiMeshInstance3D" parent="." index="9" unique_id=1993475624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8331202, 0.55204284, -19.285503)
 layers = 2
 cast_shadow = 0
@@ -206,7 +197,7 @@ scale_offset = Vector3(1, 1.5, 1)
 colour_1 = Color(0.028982915, 0.20619318, 2.4065375e-08, 1)
 colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
-[node name="Platform" parent="." index="12" unique_id=1079043106 instance=ExtResource("11_r4xcf")]
+[node name="Platform" parent="." index="10" unique_id=1079043106 instance=ExtResource("11_r4xcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Decal" type="Decal" parent="Platform" index="15" unique_id=1053253109]
@@ -215,3 +206,6 @@ layers = 512
 size = Vector3(2.5, 0.5, 2.5)
 texture_albedo = ExtResource("12_fq4iu")
 normal_fade = 0.75
+
+[node name="TestGadget" parent="." index="11" unique_id=2141649679 instance=ExtResource("14_kte83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)

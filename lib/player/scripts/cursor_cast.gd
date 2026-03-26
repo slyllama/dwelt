@@ -4,6 +4,8 @@ extends Node
 
 @onready var camera: Camera3D = get_parent()
 
+var current_collider: CollisionObject3D
+
 func handle_mouse_raycast() -> void:
 	var mouse_pos := get_viewport().get_mouse_position()
 	var _from := camera.project_ray_origin(mouse_pos)
@@ -15,10 +17,14 @@ func handle_mouse_raycast() -> void:
 	
 	var intersection := space_state.intersect_ray(query)
 	if intersection:
-		pass # TODO: cursor intersection
+		current_collider = intersection.collider
+	else: current_collider = null
 
 # Only perform when a valid input event is happening
 func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseMotion
-		and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
+	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: return
+	if event is InputEventMouseMotion:
 		handle_mouse_raycast()
+	if Input.is_action_just_released("left_click"):
+		Utils.pdebug(str(current_collider))
+		Dwelt.clicked_collision_object.emit(current_collider)

@@ -34,6 +34,9 @@ func _input(event: InputEvent) -> void:
 		_last_click_position = get_window().get_mouse_position()
 		_eligible_to_capture = true
 	if Input.is_action_just_released("left_click"):
+		# Wait a frame before releasing the pan, so that CursorCast etc can
+		# determine whether the player is clicking without dragging
+		await get_tree().process_frame
 		_release()
 	
 	if (event is InputEventMouseMotion

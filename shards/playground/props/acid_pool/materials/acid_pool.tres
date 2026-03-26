@@ -24,7 +24,7 @@ seamless = true
 as_normal_map = true
 
 [resource]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("1_hx6uf")
 shader_parameter/acid_texture = ExtResource("2_8wnaq")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_jydr7")

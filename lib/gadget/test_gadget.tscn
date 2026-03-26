@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://xtt4ducvtj05"]
+
+[ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_2x8es"]
+[ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="2_chn4g"]
+[ext_resource type="Script" uid="uid://ckvoivkvssn84" path="res://lib/gadget/scripts/cull_handler.gd" id="3_qlv78"]
+[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/ui/spatial_text/spatial_text.tscn" id="4_47ybm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47ybm"]
+
+[node name="TestGadget" type="StaticBody3D" unique_id=607971673]
+script = ExtResource("1_2x8es")
+metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
+
+[node name="Mesh" parent="." unique_id=341358605 instance=ExtResource("2_chn4g")]
+
+[node name="CullHandler" type="Node" parent="." unique_id=983659199 node_paths=PackedStringArray("cull_model")]
+script = ExtResource("3_qlv78")
+cull_model = NodePath("../Mesh")
+cull_distance = 10.0
+metadata/_custom_type_script = "uid://ckvoivkvssn84"
+
+[node name="SpatialText" parent="." unique_id=283445859 instance=ExtResource("4_47ybm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1843570502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_47ybm")

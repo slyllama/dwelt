@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://c8er0wmrrj08p" path="res://generic/materials/textures/1m_diff.jpg" id="1_k1xfr"]
 
 [resource]
+transparency = 1
 specular_mode = 2
 albedo_texture = ExtResource("1_k1xfr")
