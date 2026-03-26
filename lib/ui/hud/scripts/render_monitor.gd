@@ -1,8 +1,16 @@
 extends RichTextLabel
 # Monitor various rendering aspects such as FPS and primitive draw calls
 
+func _init() -> void:
+	text = ""
+
+func _ready() -> void:
+	# Debug mode toggling
+	Utils.debug_mode_changed.connect(func() -> void:
+		visible = Utils.debug_mode)
+
 var _c := 0
-func _process(_delta: float) -> void:
+func update() -> void:
 	_c += 1
 	if _c >= 3: _c = 0
 	else: return # don't run every frame
@@ -23,3 +31,7 @@ func _process(_delta: float) -> void:
 	var _mem := Performance.get_monitor(
 		Performance.RENDER_VIDEO_MEM_USED)
 	text += "\n VRAM: " + str(snapped(_mem * 0.000001, 1)) + "MB"
+
+func _process(_delta: float) -> void:
+	if !Utils.debug_mode: return
+	update()

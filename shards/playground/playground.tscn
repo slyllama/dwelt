@@ -18,14 +18,21 @@ material = ExtResource("2_tahua")
 size = Vector2(48, 48)
 orientation = 1
 
+[sub_resource type="Gradient" id="Gradient_fq4iu"]
+offsets = PackedFloat32Array(0, 0.09297521, 0.570229, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0864, 0.12, 0.10767999, 1, 0.61214995, 0.63, 0.5229, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_58tgt"]
+gradient = SubResource("Gradient_fq4iu")
+
 [sub_resource type="Sky" id="Sky_rfd7c"]
 sky_material = ExtResource("5_r4xcf")
 
 [sub_resource type="Environment" id="Environment_nwqnf"]
 background_mode = 2
 sky = SubResource("Sky_rfd7c")
-ambient_light_source = 2
-ambient_light_color = Color(0.250872, 0.2728033, 0.1658332, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.18266666, 0.2, 0.120000005, 1)
 tonemap_mode = 2
 ssao_radius = 0.25
 ssao_intensity = 4.0
@@ -42,6 +49,8 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_gi_inject = 0.0
 volumetric_fog_anisotropy = 0.0
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_58tgt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_rfpxw"]
 material = ExtResource("2_rfpxw")
@@ -125,11 +134,11 @@ mesh = SubResource("QuadMesh_aut2g")
 environment = SubResource("Environment_nwqnf")
 
 [node name="Sun" parent="Sky" index="0" unique_id=777693513]
-transform = Transform3D(0.17364824, 0.69636416, -0.69636416, 0, 0.7071067, 0.7071067, 0.98480785, -0.122787826, 0.122787826, 0, 2, 0)
+transform = Transform3D(-0.5348539, 0.42247236, -0.73174345, 2.0890301e-08, 0.8660254, 0.50000006, 0.8449446, 0.26742694, -0.46319702, 0, 2, 0)
 
 [node name="AcidPool" type="MeshInstance3D" parent="." index="4" unique_id=467954685]
 cast_shadow = 0
-instance_shader_parameters/uv_scale = 24.0
+instance_shader_parameters/uv_scale = 16.0
 mesh = SubResource("QuadMesh_rfpxw")
 
 [node name="FogTest" type="FogVolume" parent="." index="5" unique_id=792664385]

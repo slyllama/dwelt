@@ -45,6 +45,10 @@ func trim_output() -> void:
 	%Output.text = %Output.text.strip_edges(false, true)
 
 func _ready() -> void:
+	# Debug mode toggling
+	Utils.debug_mode_changed.connect(func() -> void:
+		visible = Utils.debug_mode)
+	
 	Utils.pdebug_sent.connect(func(string: String) -> void:
 		%Output.text += "\n" + string
 		trim_output())
@@ -53,6 +57,8 @@ func _ready() -> void:
 			Utils.pdebug("Hello, world!"))
 
 func _input(_event: InputEvent) -> void:
+	if !Utils.debug_mode: return
+	
 	# Toggle input focusing
 	if Input.is_action_just_pressed("debug_prefix"):
 		%Input.grab_focus()

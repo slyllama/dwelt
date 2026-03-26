@@ -3,6 +3,9 @@ extends Node
 var _delta := 0.0
 var _pdelta := 0.0
 
+var debug_mode := false
+
+signal debug_mode_changed
 signal debug_sent(string: String)
 signal pdebug_sent(string: String)
 
@@ -34,6 +37,11 @@ func pdebug(text: String, source := "") -> void:
 		line = "[" + source + "] " + line
 	pdebug_sent.emit(line)
 	print(line)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("toggle_debug_mode"):
+		debug_mode = !debug_mode
+		debug_mode_changed.emit()
 
 func _process(delta: float) -> void: _delta = delta
 func _physics_process(delta: float) -> void: _pdelta = delta

@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
-radius = 0.121391475
+radius = 0.16
 
 [sub_resource type="Curve" id="Curve_up78s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15357141, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -149,10 +149,11 @@ point_count = 4
 curve = SubResource("Curve_2ocui")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
-emission_shape = 3
-emission_box_extents = Vector3(5, 3, 5)
-gravity = Vector3(0, 1, 0)
-scale_min = 0.5
+emission_shape_scale = Vector3(1, 0.4, 1)
+emission_shape = 2
+emission_sphere_radius = 4.0
+gravity = Vector3(0, 0.03, 0)
+scale_min = 0.59999996
 alpha_curve = SubResource("CurveTexture_5lbbh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lbbh"]
@@ -178,7 +179,7 @@ script = ExtResource("1_al4t3")
 gravity_damping = 7.0
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=920840416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09234956, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
 shape = SubResource("SphereShape3D_iochv")
 
 [node name="LookTarget" type="Marker3D" parent="." unique_id=858288277]
@@ -249,22 +250,23 @@ current = true
 fov = 87.0
 far = 200.0
 
-[node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
-transform = Transform3D(0.8660255, 7.45058e-09, -0.49999997, -0.12940954, 0.96592575, -0.22414388, 0.48296294, 0.258819, 0.83651626, -2.3692846e-07, 0.1931852, -2.5482357)
-visible = false
-cast_shadow = 0
-amount = 128
-preprocess = 5.0
-speed_scale = 0.18
-randomness = 0.25
-process_material = SubResource("ParticleProcessMaterial_2ocui")
-draw_pass_1 = SubResource("QuadMesh_0y160")
-
 [node name="Listener" type="AudioListener3D" parent="Orbit/Camera" unique_id=1102468141]
 current = true
 
 [node name="CursorCast" type="Node" parent="Orbit/Camera" unique_id=1663147991]
 script = ExtResource("14_ego0t")
+
+[node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1)
+visible = false
+cast_shadow = 0
+amount = 196
+lifetime = 2.5
+preprocess = 5.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2ocui")
+draw_pass_1 = SubResource("QuadMesh_0y160")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2

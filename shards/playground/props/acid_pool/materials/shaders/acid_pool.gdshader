@@ -1,5 +1,4 @@
 shader_type spatial;
-render_mode shadows_disabled;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D acid_texture: repeat_enable, source_color;
