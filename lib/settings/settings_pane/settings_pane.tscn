@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
+[ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 title = "Settings"
@@ -23,14 +24,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=2064374269]
+[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=2012263079]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
 text = "Bloom"
+script = ExtResource("3_8t512")
+setting_id = "bloom"
+metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=909477241]
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=1704226208]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
 text = "Colour grading"
+script = ExtResource("3_8t512")
+setting_id = "colour_grading"
+metadata/_custom_type_script = "uid://1fnxqvppawai"

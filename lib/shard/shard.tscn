@@ -37,6 +37,7 @@ debug_fill = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Sky" type="WorldEnvironment" parent="." unique_id=756974854]
+unique_name_in_owner = true
 
 [node name="Sun" type="DirectionalLight3D" parent="Sky" unique_id=777693513]
 transform = Transform3D(0.64278764, -0.5416752, 0.5416752, 0, 0.70710677, 0.70710677, -0.76604444, -0.45451948, 0.45451948, 0, 2, 0)
