@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_2x8es"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="2_chn4g"]
-[ext_resource type="PackedScene" uid="uid://divu78cudiebe" path="res://lib/ui/spatial_text/spatial_text.tscn" id="4_47ybm"]
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="4_jca7r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47ybm"]
 
 [node name="TestGadget" type="StaticBody3D" unique_id=607971673 node_paths=PackedStringArray("model", "effect_manager")]
 script = ExtResource("1_2x8es")
+gadget_id = "test_gadget"
 model = NodePath("Mesh")
 effect_manager = NodePath("EffectManager")
-cull_distance = 1.0
+cull_distance = 10.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mesh" parent="." unique_id=341358605 instance=ExtResource("2_chn4g")]
@@ -19,10 +19,6 @@ metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 [node name="EffectManager" type="Node" parent="." unique_id=1507144609]
 script = ExtResource("4_jca7r")
 metadata/_custom_type_script = "uid://dwm4elmsp1th0"
-
-[node name="SpatialText" parent="." unique_id=283445859 instance=ExtResource("4_47ybm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-text = "test_gadget"
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1843570502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

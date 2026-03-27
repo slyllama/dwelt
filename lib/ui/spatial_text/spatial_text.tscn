@@ -1,11 +1,9 @@
-[gd_scene format=3 uid="uid://divu78cudiebe"]
+[gd_scene format=3 uid="uid://bv2sf41x1ndhr"]
 
-[ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/ui/spatial_text/spatial_text.gd" id="1_abws1"]
 [ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="2_hicyh"]
 
 [node name="SpatialText" type="VisibleOnScreenNotifier3D" unique_id=283445859]
 aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
-script = ExtResource("1_abws1")
 
 [node name="FG" type="CanvasLayer" parent="." unique_id=2136787715]
 layer = -1
