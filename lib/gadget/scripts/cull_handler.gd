@@ -1,6 +1,8 @@
 class_name CullHandler extends Node
 # The cull handler ensures that meshes are properly configured for fading out
-# once they reach a certain distance from the camera
+# once they reach a certain distance from the camera.
+# NOTE: the cull model must be set before adding the cull handler as a child
+# of a Gadget. it cannot be changed.
 
 @export var cull_model: Node3D
 @export var cull_distance := 5.0:

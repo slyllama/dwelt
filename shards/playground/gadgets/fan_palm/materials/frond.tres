@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ccotd8gggpb8n"]
+
+[ext_resource type="Texture2D" uid="uid://b7tn6gjcaqb1s" path="res://shards/playground/gadgets/fan_palm/materials/textures/frond_diff.png" id="1_mhxxb"]
+
+[resource]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+specular_mode = 2
+albedo_color = Color(1, 0.8501667, 0.69, 1)
+albedo_texture = ExtResource("1_mhxxb")
+normal_enabled = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+disable_receive_shadows = true
