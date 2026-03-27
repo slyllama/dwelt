@@ -1,10 +1,13 @@
 [gd_resource type="Theme" format=3 uid="uid://dtm5ac15yopp2"]
 
+[ext_resource type="Texture2D" uid="uid://ddxqh5vh3x0u7" path="res://generic/textures/unchecked.png" id="1_657oj"]
+[ext_resource type="Texture2D" uid="uid://n73qb0xrtbvy" path="res://generic/textures/checked.png" id="1_gfn0m"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03ohn"]
 content_margin_left = 4.0
-content_margin_top = 2.0
+content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 2.0
+content_margin_bottom = 0.0
 bg_color = Color(0.05, 0.05, 0.05, 1)
 border_width_left = 1
 border_width_top = 1
@@ -14,9 +17,9 @@ border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1hk6"]
 content_margin_left = 4.0
-content_margin_top = 2.0
+content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 2.0
+content_margin_bottom = 0.0
 bg_color = Color(0.05, 0.05, 0.05, 1)
 border_width_left = 1
 border_width_top = 1
@@ -26,9 +29,9 @@ border_color = Color(0.6, 0.6, 0.6, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_657oj"]
 content_margin_left = 4.0
-content_margin_top = 2.0
+content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 2.0
+content_margin_bottom = 0.0
 bg_color = Color(0.15, 0.15, 0.15, 1)
 border_width_left = 1
 border_width_top = 1
@@ -38,15 +41,21 @@ border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfn0m"]
 content_margin_left = 4.0
-content_margin_top = 2.0
+content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 2.0
+content_margin_bottom = 0.0
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_657oj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1hk6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfn0m"]
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -56,3 +65,8 @@ Button/styles/focus = SubResource("StyleBoxFlat_j1hk6")
 Button/styles/hover = SubResource("StyleBoxFlat_657oj")
 Button/styles/normal = SubResource("StyleBoxFlat_03ohn")
 Button/styles/pressed = SubResource("StyleBoxFlat_gfn0m")
+CheckBox/icons/checked = ExtResource("1_gfn0m")
+CheckBox/icons/unchecked = ExtResource("1_657oj")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_657oj")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_j1hk6")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_gfn0m")
