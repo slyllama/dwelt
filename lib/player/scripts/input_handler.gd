@@ -46,6 +46,6 @@ func _physics_process(_delta: float) -> void:
 	if _last_z_input.size() > 0:
 		_dir.z = _last_z_input[0]
 	else: _dir.z = 0
-	if !get_window().gui_get_focus_owner():
+	if !get_window().gui_get_focus_owner() is LineEdit:
 		direction = _dir.normalized()
 	else: direction = Vector3.ZERO

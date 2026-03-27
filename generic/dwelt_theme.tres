@@ -51,11 +51,17 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_657oj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfn0m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1hk6"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfn0m"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvgo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qjph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alr2b"]
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -65,8 +71,11 @@ Button/styles/focus = SubResource("StyleBoxFlat_j1hk6")
 Button/styles/hover = SubResource("StyleBoxFlat_657oj")
 Button/styles/normal = SubResource("StyleBoxFlat_03ohn")
 Button/styles/pressed = SubResource("StyleBoxFlat_gfn0m")
-CheckBox/icons/checked = ExtResource("1_gfn0m")
-CheckBox/icons/unchecked = ExtResource("1_657oj")
-CheckBox/styles/focus = SubResource("StyleBoxEmpty_657oj")
-CheckBox/styles/hover = SubResource("StyleBoxEmpty_j1hk6")
-CheckBox/styles/normal = SubResource("StyleBoxEmpty_gfn0m")
+CheckButton/icons/checked = ExtResource("1_gfn0m")
+CheckButton/icons/unchecked = ExtResource("1_657oj")
+CheckButton/styles/disabled = SubResource("StyleBoxEmpty_gfn0m")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_j1hk6")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_dvgo0")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_6qjph")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_p1wc6")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_alr2b")

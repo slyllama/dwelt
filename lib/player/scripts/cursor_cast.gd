@@ -5,6 +5,7 @@ extends Node
 @onready var camera: Camera3D = get_parent()
 
 var current_collider: CollisionObject3D
+var last_click_in_ui := false
 
 func handle_mouse_raycast() -> void:
 	var mouse_pos := get_viewport().get_mouse_position()
@@ -22,9 +23,15 @@ func handle_mouse_raycast() -> void:
 
 # Only perform when a valid input event is happening
 func _input(event: InputEvent) -> void:
-	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: return
+	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: return # don't check during panning events
 	if event is InputEventMouseMotion:
 		handle_mouse_raycast()
+	
+	if Input.is_action_just_pressed("left_click"):
+		last_click_in_ui = false
+		if get_window().gui_get_hovered_control():
+			last_click_in_ui = true
 	if Input.is_action_just_released("left_click"):
-		Utils.pdebug(str(current_collider))
-		Dwelt.clicked_collision_object.emit(current_collider)
+		if !last_click_in_ui:
+			Utils.pdebug(str(current_collider))
+			Dwelt.clicked_collision_object.emit(current_collider)

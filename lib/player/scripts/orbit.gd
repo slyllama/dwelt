@@ -29,28 +29,24 @@ func _ready() -> void:
 	$Camera.top_level = true
 
 func _input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("left_click")
-		and !get_window().gui_get_hovered_control()):
-		_last_click_position = get_window().get_mouse_position()
-		_eligible_to_capture = true
+	if Input.is_action_just_pressed("left_click"):
+		if !get_window().gui_get_hovered_control():
+			_last_click_position = get_window().get_mouse_position()
+			_eligible_to_capture = true
+		else: _eligible_to_capture = false # this needs to be checked/reset on every click
 	if Input.is_action_just_released("left_click"):
-		# Wait a frame before releasing the pan, so that CursorCast etc can
-		# determine whether the player is clicking without dragging. However,
-		# if a GUI control has been selected, then mode switching needs to
-		# happen instantly to prevent an unwanted mouse warp.
-		if get_window().gui_get_focus_owner():
-			await get_tree().process_frame
 		_release()
 	
 	if (event is InputEventMouseMotion
 		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		_event_relative = event.relative * view_sensitivity
 	
-	# Handle zoom
-	if Input.is_action_just_pressed("zoom_in"):
-		view_length -= zoom_increment
-	if Input.is_action_just_pressed("zoom_out"):
-		view_length += zoom_increment
+	# Handle zoom (if a GUI element isn't being hovered)
+	if !get_window().gui_get_hovered_control():
+		if Input.is_action_just_pressed("zoom_in"):
+			view_length -= zoom_increment
+		if Input.is_action_just_pressed("zoom_out"):
+			view_length += zoom_increment
 
 func _physics_process(_delta: float) -> void:
 	var _last_event_relative := _event_relative

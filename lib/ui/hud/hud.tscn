@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
+[ext_resource type="PackedScene" uid="uid://0250edkj4l4t" path="res://lib/settings/settings_pane/settings_pane.tscn" id="10_pxgdb"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 script = ExtResource("1_3pj68")
@@ -44,6 +45,19 @@ grow_vertical = 0
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("4_r2k48")]
 layer = 1
+
+[node name="SettingsPane" parent="UIPaneManager" unique_id=1181014453 instance=ExtResource("10_pxgdb")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -312.0
+offset_right = -272.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Override" type="CanvasLayer" parent="." unique_id=1195063702]
 layer = 99
@@ -84,24 +98,3 @@ offset_right = 320.0
 offset_bottom = 180.0
 mouse_filter = 0
 frame_duration = 0.035
-
-[node name="TextBox" type="VBoxContainer" parent="." unique_id=1550898652]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
-
-[node name="CheckBox" type="CheckBox" parent="TextBox" unique_id=1507489015]
-layout_mode = 2
-text = "This is a checkbox"
-
-[node name="CheckBox2" type="CheckBox" parent="TextBox" unique_id=327010868]
-layout_mode = 2
-text = "Another checkbox, this is"
-
-[node name="Button" type="Button" parent="TextBox" unique_id=608406040]
-layout_mode = 2
-text = "Test button"
-
-[node name="Button2" type="Button" parent="TextBox" unique_id=806779840]
-layout_mode = 2
-text = "Test button"

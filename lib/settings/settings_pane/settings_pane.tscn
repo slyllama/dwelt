@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://0250edkj4l4t"]
+
+[ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
+[ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
+
+[node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
+title = "Settings"
+
+[node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="0" unique_id=411912598]
+text = "Settings"
+
+[node name="Pad" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="2" unique_id=1551153604]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Scroll" type="ScrollContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=885632349]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollBox" type="VBoxContainer" parent="Box/Scroll" index="0" unique_id=956486370]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=2064374269]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l5xdt")
+text = "Bloom"
+
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=909477241]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l5xdt")
+text = "Colour grading"
