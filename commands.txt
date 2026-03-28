@@ -1,3 +1,8 @@
-/hello			[DebugInput]		Print a test into debug input
-/testpane		[UIPaneManager]		Spawn a test UIPane
-/playvoice		[Player/Sound]		Play a random voice effect
+Gadgets
+	/savegadgets	[GadgetManager]		Save gadgets to file
+	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload save
+
+General commands
+	/hello			[DebugInput]		Print a test into debug input
+	/testpane		[UIPaneManager]		Spawn a test UIPane
+	/playvoice		[Player/Sound]		Play a random voice effect

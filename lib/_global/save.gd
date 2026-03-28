@@ -3,12 +3,11 @@ extends Node
 
 const SAVE_PATH := "user://save.json"
 const DEFAULT_SAVE := {
-	"gadgets": [
-		{
-			"path": "res://lib/gadget/test_gadget.tscn",
-			"position": "0.00, 0.50, 2.50"
-		}
-	]
+	"gadgets": {
+		"test_gadget": [
+			{ "position": "3.00, 3.00, 3.00" }
+		]
+	}
 }
 
 @onready var save := DEFAULT_SAVE.duplicate()

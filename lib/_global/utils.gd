@@ -47,6 +47,11 @@ func str_to_vec3(string: String) -> Vector3:
 	if _a.size() != 3: return(Vector3.ZERO) # return 0 if the input size isn't right
 	return(Vector3(_a[0].to_float(), _a[1].to_float(), _a[2].to_float()))
 
+func vec3_to_str(vec: Vector3) -> String:
+	return(str(snapped(vec.x, 0.01)) + ", "
+		+ str(snapped(vec.y, 0.01)) + ", "
+		+ str(snapped(vec.z, 0.01)))
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_debug_mode"):
 		debug_mode = !debug_mode

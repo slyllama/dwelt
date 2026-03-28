@@ -6,27 +6,25 @@ var status: int
 var progress: Array[float]
 var has_loaded := false
 var valid := false
+var scene: Node3D
 
-signal loaded
+signal loaded()
 
-func spawn() -> void:
+func add_scene(scene_position: Vector3, scene_rotation: Vector3, scene_scale: Vector3) -> void:
+	if !has_loaded: return
+	scene.position = scene_position
+	scene.rotation = scene_rotation
+	scene.scale = scene_scale
+	get_parent().call_deferred("add_child", scene.duplicate())
+
+func load_scene() -> void:
 	var _pscene: PackedScene = ResourceLoader.load_threaded_get(path)
-	var _scene := _pscene.instantiate()
-	if !_scene is Node3D:
-		Utils.pdebug("Failed thread loading of '" + path + "': not Node3D."
-			, "Async3DLoader")
-		queue_free()
-		return
-	
-	# Apply this nodes 3D properties to the target scene
-	_scene.position = position
-	_scene.rotation = rotation
-	_scene.scale = scale
-	
-	# Add to parent and free this node
-	get_parent().call_deferred("add_child", _scene)
+	scene = _pscene.instantiate()
 	loaded.emit()
 	Utils.pdebug("Completed thread loading of '" + path + "'.", "Async3DLoader")
+
+func close() -> void:
+	scene.queue_free()
 	queue_free()
 
 func _ready() -> void:
@@ -41,7 +39,9 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			has_loaded = true
 			if !has_loaded: return # can't attempt more than once
-			spawn()
+			# The Async3DLoader no longer immediately spawns its scene - it holds
+			# it in memory, allowing it to be repeatedly duplicated with `add_scene`
+			load_scene()
 		ResourceLoader.THREAD_LOAD_FAILED:
-			Utils.pdebug("Failed thread loading of '" + path + "': THREAD_LOAD_FAILED."
-				, "Async3DLoader")
+			Utils.pdebug("Failed thread loading of '" + path + "': THREAD_LOAD_FAILED.",
+				"Async3DLoader")

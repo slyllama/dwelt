@@ -1,16 +1,57 @@
 class_name GadgetManager extends Node3D
 
 func load_gadgets_from_save() -> void:
-	for _data: Dictionary in Save.save.gadgets:
-		if !"id" in _data: continue
-		if _data.id in GadgetData.DATA:
-			var _async_loader := Async3DLoader.new()
-			var _path: String = GadgetData.DATA[_data.id].path
-			_async_loader.path = _path
-			if "position" in _data:
-				_async_loader.position = Utils.str_to_vec3(_data.position)
-			add_child(_async_loader)
+	for id: String in Save.save.gadgets:
+		# Get the list of all gadgets in the shard with the same ID
+		var gadget_list: Array = Save.save.gadgets[id]
+		
+		# Load the first gadget in the array
+		var _async_loader := Async3DLoader.new()
+		var _path: String = GadgetData.DATA[id].path
+		_async_loader.path = _path
+		add_child(_async_loader)
+		await _async_loader.loaded
+		
+		# Create a node for each dictionary instance in the gadget data array
+		for gadget_data: Dictionary in gadget_list:
+			var _scene_position := Vector3.ZERO
+			var _scene_rotation := Vector3.ZERO
+			var _scene_scale := Vector3(1.0, 1.0, 1.0)
+			
+			# Apply transformations if they have been saved to file
+			if "position" in gadget_data:
+				_scene_position = Utils.str_to_vec3(gadget_data.position)
+			if "rotation" in gadget_data:
+				_scene_rotation = Utils.str_to_vec3(gadget_data.rotation)
+			if "scale" in gadget_data:
+				_scene_scale = Utils.str_to_vec3(gadget_data.scale)
+			
+			_async_loader.add_scene(_scene_position, _scene_rotation, _scene_scale)
+		# Gracefully free the AsyncLoader as it is no longer needed
+		_async_loader.close()
+
+func save_gadgets() -> void:
+	var _gadgets := {} # will be populated before being applied to the save
+	for _n: Node in get_children():
+		if _n is Gadget:
+			var _data := {
+				"position": Utils.vec3_to_str(_n.position),
+				"rotation": Utils.vec3_to_str(_n.rotation),
+				"scale": Utils.vec3_to_str(_n.scale)
+			}
+			
+			if !_n.gadget_id in _gadgets: _gadgets[_n.gadget_id] = []
+			_gadgets[_n.gadget_id].append(_data)
+	Save.save.gadgets = _gadgets.duplicate()
+	Save.save_file()
 
 func _ready() -> void:
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/reloadgadgets":
+			for _n: Node in get_children(): _n.queue_free()
+			load_gadgets_from_save()
+		elif string == "/savegadgets":
+			save_gadgets())
+	
 	if "gadgets" in Save.save:
 		load_gadgets_from_save()
