@@ -6,6 +6,7 @@
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 title = "Settings"
+ui_id = "settings_pane"
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="0" unique_id=411912598]
 text = "Settings"

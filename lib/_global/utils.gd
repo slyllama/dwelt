@@ -30,6 +30,9 @@ func get_all_children(node: Node, arr := []) -> Array:
 		arr = get_all_children(_child, arr)
 	return(arr)
 
+func get_window_center() -> Vector2:
+	return(get_window().size / 2.0 / get_window().content_scale_factor)
+
 # Togglable debug printing with class/node prefixes
 func pdebug(text: String, source := "") -> void:
 	var line := text

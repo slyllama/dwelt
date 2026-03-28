@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name UIPaneManager extends CanvasLayer
 # UIPaneManager - handles ordering of panes, bringing panes to top, etc
 
 var panes: Array[UIPane] = []
@@ -8,6 +8,7 @@ func test_add_pane() -> void:
 	var _uip: UIPane = load(
 		"res://lib/ui/ui_pane/ui_pane.tscn").instantiate()
 	_uip.title = "Test Pane"
+	_uip.position = Vector2(24, 24)
 	add_child(_uip)
 
 # Registering a UI pane puts it in the drawing queue, ensuring that it gets
@@ -16,6 +17,11 @@ func register_pane(pane: UIPane) -> void:
 	panes.push_back(pane)
 	pane.clicked.connect(func() -> void:
 		put_on_top(pane))
+
+# Panes must be closed through this method so they can be deregistered
+func close_pane(pane: UIPane) -> void:
+	panes.erase(pane)
+	pane.close()
 
 # Visually orders the node hierarchy of UIPanes according to their sorting
 # in the array
@@ -32,6 +38,8 @@ func put_on_top(pane: UIPane) -> void:
 	update_draw_order()
 
 func _ready() -> void:
+	Dwelt.ui_pane_manager = self
+	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/testpane":
 			Utils.pdebug("[color=yellow]Spawning test UIPane.[/color]", "UIPaneManager")
