@@ -25,7 +25,9 @@ config/icon="uid://bxi8u5vulcvbt"
 
 Dwelt="*uid://rqrqjxwxxqnp"
 Utils="*uid://gjxkiq74de68"
+Save="*uid://ct3godu0v0l37"
 Settings="*uid://b48mkw44c6463"
+GadgetData="*uid://dij7nue5ek225"
 
 [debug]
 

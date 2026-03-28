@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bp3rck4ew5qnc" path="res://lib/shard/shard.gd" id="1_5i5j7"]
 [ext_resource type="PackedScene" uid="uid://crbctqd55n6f6" path="res://lib/player/player.tscn" id="1_22u7k"]
 [ext_resource type="Texture2D" uid="uid://0ivnnt6tjr0i" path="res://generic/materials/textures/tile_norm.jpg" id="2_3xe27"]
+[ext_resource type="Script" uid="uid://d13netbsqbwuu" path="res://lib/gadget/gadget_manager/gadget_manager.gd" id="6_v2fjr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i5j7"]
 albedo_texture = ExtResource("1_3tfg5")
@@ -32,6 +33,10 @@ mesh = SubResource("QuadMesh_22u7k")
 [node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=1890741999]
 shape = SubResource("WorldBoundaryShape3D_3xe27")
 debug_fill = false
+
+[node name="GadgetManager" type="Node3D" parent="." unique_id=319105425]
+script = ExtResource("6_v2fjr")
+metadata/_custom_type_script = "uid://d13netbsqbwuu"
 
 [node name="Player" parent="." unique_id=1853110306 instance=ExtResource("1_22u7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

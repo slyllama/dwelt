@@ -45,6 +45,10 @@ func _ready() -> void:
 	# Finalise label text and anchors
 	label.set_anchors_preset(Control.PRESET_CENTER)
 	update_text()
+	
+	# Process this again (for late-comers)
+	await get_tree().process_frame
+	if debug_only: canvas.visible = Utils.debug_mode
 
 func _process(_delta: float) -> void:
 	if debug_only and !Utils.debug_mode: return

@@ -41,6 +41,12 @@ func pdebug(text: String, source := "") -> void:
 	pdebug_sent.emit(line)
 	print(line)
 
+# Convert a vector in string format "X, Y, Z" to a typed Vector3
+func str_to_vec3(string: String) -> Vector3:
+	var _a: PackedStringArray = string.split(", ")
+	if _a.size() != 3: return(Vector3.ZERO) # return 0 if the input size isn't right
+	return(Vector3(_a[0].to_float(), _a[1].to_float(), _a[2].to_float()))
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_debug_mode"):
 		debug_mode = !debug_mode
