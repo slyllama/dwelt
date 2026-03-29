@@ -17,3 +17,7 @@ func _on_settings_pressed() -> void:
 	%UIPaneManager.add_child(settings_pane)
 	settings_pane.set_anchors_preset(Control.PRESET_CENTER)
 	settings_pane.move_to_center()
+
+func _on_quit_pressed() -> void:
+	Save.save_file()
+	get_tree().quit()

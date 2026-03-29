@@ -4,7 +4,8 @@ extends Node
 const SETTINGS_PATH := "user://settings.json"
 const DEFAULT_SETTINGS := {
 	"bloom": "true",
-	"colour_grading": "true"
+	"colour_grading": "true",
+	"full_screen": "false"
 }
 
 @onready var settings := DEFAULT_SETTINGS.duplicate()
@@ -25,6 +26,11 @@ func apply_all_settings() -> void:
 	for _s: String in settings:
 		apply_setting(_s, settings[_s])
 		setting_applied.emit(_s, settings[_s])
+
+func apply_default_settings() -> void:
+	settings = DEFAULT_SETTINGS.duplicate()
+	save_file()
+	apply_all_settings()
 
 func load_file() -> void:
 	if FileAccess.file_exists(SETTINGS_PATH):

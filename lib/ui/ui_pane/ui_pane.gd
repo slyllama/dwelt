@@ -34,7 +34,8 @@ func move_to_center() -> void:
 	position = Utils.get_window_center() - size / 2.0
 
 func _init() -> void:
-	modulate.a = 0.0
+	if !Engine.is_editor_hint():
+		modulate.a = 0.0
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -79,3 +80,6 @@ func _on_gui_input(_event: InputEvent) -> void:
 
 func _on_close_pressed() -> void:
 	Dwelt.ui_pane_manager.close_pane(self)
+
+func _on_default_pressed() -> void:
+	Settings.apply_default_settings()

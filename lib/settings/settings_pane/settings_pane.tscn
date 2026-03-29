@@ -5,10 +5,13 @@
 [ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
+custom_minimum_size = Vector2(360, 460)
+offset_right = 360.0
+offset_bottom = 460.0
 title = "Settings"
 ui_id = "settings_pane"
 
-[node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="0" unique_id=411912598]
+[node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Settings"
 
 [node name="Pad" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="2" unique_id=1551153604]
@@ -25,7 +28,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=2012263079]
+[node name="FullScreen" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=1771262]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l5xdt")
+text = "Full Screen"
+script = ExtResource("3_8t512")
+setting_id = "full_screen"
+metadata/_custom_type_script = "uid://1fnxqvppawai"
+
+[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=2012263079]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -34,7 +46,7 @@ script = ExtResource("3_8t512")
 setting_id = "bloom"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=1704226208]
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="2" unique_id=1704226208]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -42,3 +54,9 @@ text = "Colour grading"
 script = ExtResource("3_8t512")
 setting_id = "colour_grading"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
+
+[node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1037660848]
+layout_mode = 2
+text = "Reset To Default"
+
+[connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]

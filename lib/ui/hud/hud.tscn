@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/ui/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
+[ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
+[ext_resource type="Texture2D" uid="uid://q0lj3eshgnxb" path="res://lib/ui/hud/textures/icon_quit.png" id="7_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
+[ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
@@ -44,15 +47,31 @@ offset_bottom = -7.0
 grow_vertical = 0
 
 [node name="TopLeftMenu" type="HBoxContainer" parent="." unique_id=1545174863]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 36.0
+theme_override_constants/separation = 8
+script = ExtResource("6_2eonm")
 
 [node name="Settings" type="TextureButton" parent="TopLeftMenu" unique_id=1001341405]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture_normal = ExtResource("6_pxgdb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Quit" type="TextureButton" parent="TopLeftMenu" unique_id=1218367037]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("7_pxgdb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Screenshot" type="TextureButton" parent="TopLeftMenu" unique_id=376360912]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("8_l8w22")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -103,3 +122,4 @@ mouse_filter = 0
 frame_duration = 0.035
 
 [connection signal="pressed" from="TopLeftMenu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="TopLeftMenu/Quit" to="." method="_on_quit_pressed"]
