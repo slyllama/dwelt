@@ -13,14 +13,8 @@ class_name Gadget extends StaticBody3D
 			cull_handler.cull_distance = cull_distance
 
 @onready var cull_handler := CullHandler.new()
-@onready var debug_title := SpatialText.new()
 
 func _ready() -> void:
-	# Configure debug title
-	add_child(debug_title)
-	debug_title.text = gadget_id
-	debug_title.debug_only = true
-	
 	if model:
 		add_child(cull_handler)
 		cull_handler.cull_model = model

@@ -2,12 +2,16 @@ class_name GadgetManager extends Node3D
 
 func load_gadgets_from_save() -> void:
 	for id: String in Save.save.gadgets:
+		if !id in GadgetData.DATA:
+			Utils.pdebug("Couldn't load gadget '" + id + "' because it could not be found in GadgetData.DATA.", "GadgetManager")
+			continue
+		
 		# Get the list of all gadgets in the shard with the same ID
 		var gadget_list: Array = Save.save.gadgets[id]
-		
 		# Load the first gadget in the array
 		var _async_loader := Async3DLoader.new()
 		var _path: String = GadgetData.DATA[id].path
+		
 		_async_loader.path = _path
 		add_child(_async_loader)
 		await _async_loader.loaded

@@ -37,10 +37,10 @@ stretch_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -224.0
-offset_right = 224.0
-offset_bottom = -19.0
+offset_left = 7.0
+offset_top = -212.0
+offset_right = 212.0
+offset_bottom = -7.0
 grow_vertical = 0
 
 [node name="TopLeftMenu" type="HBoxContainer" parent="." unique_id=1545174863]
