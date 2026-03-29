@@ -69,6 +69,11 @@ texture = ExtResource("5_4f35j")
 expand_mode = 1
 flip_h = true
 
+[node name="Padding" type="ColorRect" parent="Box" unique_id=1678670969]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
 [node name="Open" type="AudioStreamPlayer" parent="." unique_id=2105154938]
 stream = ExtResource("7_lu8lm")
 volume_db = 3.0

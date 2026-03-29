@@ -5,12 +5,15 @@ const SETTINGS_PATH := "user://settings.json"
 const DEFAULT_SETTINGS := {
 	"bloom": "true",
 	"colour_grading": "true",
-	"full_screen": "false"
+	"full_screen": "true",
+	"shadows": "high",
+	"draw_distance": "medium"
 }
 
 @onready var settings := DEFAULT_SETTINGS.duplicate()
 
 signal setting_applied(parameter: String, value: String)
+signal settings_reset
 
 # Apply a setting, but only if it exists in the settings file (so individual
 # nodes don't have to do their own checks)
@@ -31,6 +34,7 @@ func apply_default_settings() -> void:
 	settings = DEFAULT_SETTINGS.duplicate()
 	save_file()
 	apply_all_settings()
+	settings_reset.emit()
 
 func load_file() -> void:
 	if FileAccess.file_exists(SETTINGS_PATH):

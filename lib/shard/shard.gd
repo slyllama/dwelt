@@ -18,7 +18,19 @@ func _ready() -> void:
 				elif value == "false": %Sky.environment.glow_enabled = false
 			elif setting == "colour_grading":
 				if value == "true": %Sky.environment.adjustment_enabled = true
-				elif value == "false": %Sky.environment.adjustment_enabled = false)
+				elif value == "false": %Sky.environment.adjustment_enabled = false
+		if setting == "shadows":
+			if value == "low":
+				%Sun.shadow_enabled = true
+				%Sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
+			elif value == "medium":
+				%Sun.shadow_enabled = true
+				%Sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+			elif value == "high":
+				%Sun.shadow_enabled = true
+				%Sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
+			elif value == "off":
+				%Sun.shadow_enabled = false)
 	
 	# Apply all settings now that each node has had a chance to load
 	await get_tree().process_frame

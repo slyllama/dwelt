@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
 [ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
+[ext_resource type="Script" uid="uid://c7haqafm4mwf0" path="res://lib/settings/settings_ui_element/settings_selector.gd" id="4_85e62"]
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 custom_minimum_size = Vector2(360, 460)
@@ -54,6 +55,24 @@ text = "Colour grading"
 script = ExtResource("3_8t512")
 setting_id = "colour_grading"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
+
+[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="3" unique_id=160438576]
+layout_mode = 2
+theme_override_constants/separation = 7
+script = ExtResource("4_85e62")
+setting_id = "shadows"
+options = Array[String](["off", "low", "medium", "high"])
+title = "Shadow quality"
+metadata/_custom_type_script = "uid://c7haqafm4mwf0"
+
+[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="4" unique_id=170264208]
+layout_mode = 2
+theme_override_constants/separation = 7
+script = ExtResource("4_85e62")
+setting_id = "draw_distance"
+options = Array[String](["low", "medium", "high"])
+title = "Draw distance"
+metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
 [node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1037660848]
 layout_mode = 2
