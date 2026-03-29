@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
+process_mode = 3
 script = ExtResource("1_3pj68")
 
 [node name="DebugBG" type="CanvasLayer" parent="." unique_id=921701795]
@@ -36,6 +37,7 @@ stretch_mode = 1
 [node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("1_o36f6")]
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
+offset_top = -294.0
 
 [node name="AvatarPlate" parent="." unique_id=1901079431 instance=ExtResource("10_l7ms4")]
 anchors_preset = 2

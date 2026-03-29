@@ -52,6 +52,9 @@ func vec3_to_str(vec: Vector3) -> String:
 		+ str(snapped(vec.y, 0.01)) + ", "
 		+ str(snapped(vec.z, 0.01)))
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_debug_mode"):
 		debug_mode = !debug_mode

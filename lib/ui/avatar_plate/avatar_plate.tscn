@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbnsyaydo0yjw" path="res://lib/ui/avatar_plate/textures/base.png" id="1_j6pvl"]
 [ext_resource type="Texture2D" uid="uid://dv3btwwdi83l5" path="res://lib/ui/avatar_plate/textures/ring.png" id="2_fk1xt"]
-[ext_resource type="Texture2D" uid="uid://23w5367dqjdq" path="res://effect_plate.png" id="4_eg00k"]
-[ext_resource type="Texture2D" uid="uid://73dtpnsrn01b" path="res://test.png" id="4_urcp2"]
-[ext_resource type="Texture2D" uid="uid://dwc1hrsoqdiso" path="res://slow.png" id="4_yxxjm"]
+[ext_resource type="Texture2D" uid="uid://73dtpnsrn01b" path="res://lib/ui/avatar_plate/textures/foxxo.png" id="4_urcp2"]
 
 [sub_resource type="Animation" id="Animation_fk1xt"]
 length = 0.001
@@ -73,33 +71,3 @@ autoplay = &"rotate"
 position = Vector2(103, 101)
 scale = Vector2(0.3310547, 0.3310547)
 texture = ExtResource("4_urcp2")
-
-[node name="Effect3" type="TextureRect" parent="." unique_id=1784259303]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_left = 206.0
-offset_top = 137.0
-offset_right = 266.0
-offset_bottom = 197.0
-texture = ExtResource("4_yxxjm")
-expand_mode = 1
-
-[node name="Effect" type="TextureRect" parent="." unique_id=1365593533]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_left = 196.0
-offset_top = 127.0
-offset_right = 276.0
-offset_bottom = 207.0
-texture = ExtResource("4_eg00k")
-expand_mode = 1
-
-[node name="Effect2" type="TextureRect" parent="." unique_id=138107423]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_left = 272.0
-offset_top = 127.0
-offset_right = 352.0
-offset_bottom = 207.0
-texture = ExtResource("4_eg00k")
-expand_mode = 1

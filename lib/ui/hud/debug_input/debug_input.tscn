@@ -6,10 +6,11 @@
 
 [sub_resource type="Gradient" id="Gradient_hfhfk"]
 offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.9411765)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5882353)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ub0md"]
 gradient = SubResource("Gradient_hfhfk")
+fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mh0q"]
 content_margin_left = 2.0

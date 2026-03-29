@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://23w5367dqjdq"
-path="res://.godot/imported/effect_plate.png-3f94d484a5b511a96e9359e37483eb2d.ctex"
+uid="uid://73dtpnsrn01b"
+path.s3tc="res://.godot/imported/foxxo.png-3d513813e457f229c242d7b9cccabfe4.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://effect_plate.png"
-dest_files=["res://.godot/imported/effect_plate.png-3f94d484a5b511a96e9359e37483eb2d.ctex"]
+source_file="res://lib/ui/avatar_plate/textures/foxxo.png"
+dest_files=["res://.godot/imported/foxxo.png-3d513813e457f229c242d7b9cccabfe4.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

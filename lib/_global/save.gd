@@ -30,5 +30,6 @@ func save_file() -> void:
 	_f.close()
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_file()
 	save_file()

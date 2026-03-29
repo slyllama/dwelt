@@ -19,6 +19,10 @@ func _ready() -> void:
 	Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
 	ResourceLoader.load_threaded_request(target_scene)
 
+func _physics_process(delta: float) -> void:
+	%CogL.rotation += delta * 2.0
+	%CogR.rotation -= delta * 4.0
+
 func _process(_delta: float) -> void:
 	status = ResourceLoader.load_threaded_get_status(target_scene, progress)
 	match status:

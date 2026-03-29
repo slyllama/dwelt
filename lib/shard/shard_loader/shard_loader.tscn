@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsm57u4128nqw"]
 
 [ext_resource type="Script" uid="uid://bj0nhuufirc15" path="res://lib/shard/shard_loader/shard_loader.gd" id="1_dqd06"]
+[ext_resource type="Texture2D" uid="uid://hqrwehuc40ol" path="res://lib/shard/shard_loader/textures/cog.png" id="2_pxbv5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqd06"]
 
@@ -47,6 +48,7 @@ _data = {
 
 [node name="ShardLoader" type="CanvasLayer" unique_id=1447843937]
 script = ExtResource("1_dqd06")
+metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=749622641]
 custom_minimum_size = Vector2(0, 8)
@@ -64,3 +66,27 @@ show_percentage = false
 [node name="Animation" type="AnimationPlayer" parent="ProgressBar" unique_id=1619664897]
 libraries/ = SubResource("AnimationLibrary_ulvkr")
 autoplay = &"pulse"
+
+[node name="CogAnchor" type="Control" parent="." unique_id=770158952]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CogL" type="Sprite2D" parent="CogAnchor" unique_id=691223724]
+unique_name_in_owner = true
+position = Vector2(-10, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pxbv5")
+
+[node name="CogR" type="Sprite2D" parent="CogAnchor" unique_id=1437400229]
+unique_name_in_owner = true
+position = Vector2(25, 30)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_pxbv5")

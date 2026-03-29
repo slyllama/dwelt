@@ -4,7 +4,7 @@ extends PanelContainer
 # TODO: output size limit
 
 const INPUT_BUFFER_SIZE := 16
-const OUTPUT_MAX_LINES := 7
+const OUTPUT_MAX_LINES := 32
 
 var buffer: Array[String] = []
 var buffer_pos := 0

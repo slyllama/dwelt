@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://73dtpnsrn01b"
-path.s3tc="res://.godot/imported/test.png-2b0b935732229e5bd5e655f2644b2498.s3tc.ctex"
+uid="uid://hqrwehuc40ol"
+path.s3tc="res://.godot/imported/cog.png-0887c6a50526ea7aa8b03f2e27879aa5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://test.png"
-dest_files=["res://.godot/imported/test.png-2b0b935732229e5bd5e655f2644b2498.s3tc.ctex"]
+source_file="res://lib/shard/shard_loader/textures/cog.png"
+dest_files=["res://.godot/imported/cog.png-0887c6a50526ea7aa8b03f2e27879aa5.s3tc.ctex"]
 
 [params]
 

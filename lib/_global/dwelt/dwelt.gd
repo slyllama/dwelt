@@ -15,3 +15,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	click_sound_requested.connect($Click.play)
+	
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/pause": get_tree().paused = true
+		elif string == "/unpause": get_tree().paused = false)

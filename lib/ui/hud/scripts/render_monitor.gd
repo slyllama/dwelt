@@ -5,6 +5,7 @@ func _init() -> void:
 	text = ""
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Debug mode toggling
 	Utils.debug_mode_changed.connect(func() -> void:
 		visible = Utils.debug_mode)
