@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwc1hrsoqdiso"
-path="res://.godot/imported/slow.png-16a0f0a12de3fc7442a5871d54113ac9.ctex"
+uid="uid://23w5367dqjdq"
+path.s3tc="res://.godot/imported/frame.png-7a611573205b8dc9f82dde38ae3c7964.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://slow.png"
-dest_files=["res://.godot/imported/slow.png-16a0f0a12de3fc7442a5871d54113ac9.ctex"]
+source_file="res://lib/effect/effect_card/textures/frame.png"
+dest_files=["res://.godot/imported/frame.png-7a611573205b8dc9f82dde38ae3c7964.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

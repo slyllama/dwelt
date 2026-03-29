@@ -11,9 +11,9 @@ shader_parameter/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdeap"]
 shader = ExtResource("2_ovsh1")
-shader_parameter/position = 0.470000022325
+shader_parameter/position = 0.450000021375
 shader_parameter/feather = 0.2
-shader_parameter/strength = 0.1
+shader_parameter/strength = 5.0
 
 [node name="ScreenFX" type="CanvasLayer" unique_id=727361419]
 layer = -1

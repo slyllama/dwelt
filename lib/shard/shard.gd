@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var original_player_position: Vector3 = $Player.position
+
 func _set_bus_vol(vol: float) -> void:
 	AudioServer.set_bus_volume_linear(0, vol)
 
@@ -9,6 +11,10 @@ func _ready() -> void:
 	# TODO: move sound fade in
 	var _sound_fade_in := create_tween()
 	_sound_fade_in.tween_method(_set_bus_vol, 0.0, 1.0, 1.0)
+	
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/resetpos":
+			$Player.position = original_player_position)
 	
 	# Connect settings
 	Settings.setting_applied.connect(func(setting: String, value: String) -> void:

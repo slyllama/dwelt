@@ -4,5 +4,8 @@ Gadgets
 
 General commands
 	/hello			[DebugInput]		Print a test into debug input
-	/testpane		[UIPaneManager]		Spawn a test UIPane
+	/pause			[Dwelt]				Pause the game
 	/playvoice		[Player/Sound]		Play a random voice effect
+	/resetpos		[Shard]			Reset player position
+	/testpane		[UIPaneManager]		Spawn a test UIPane
+	/unpause		[Dwelt]				Resume the game

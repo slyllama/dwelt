@@ -13,6 +13,7 @@ func take_screenshot() -> void:
 	var image_path := PATH + image_name + ".png"
 	var screenshot := get_viewport().get_texture().get_image()
 	screenshot.save_png(image_path)
+	screenshot = null
 
 func open_folder() -> void:
 	OS.shell_show_in_file_manager(global_path)

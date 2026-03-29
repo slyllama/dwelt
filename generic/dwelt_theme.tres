@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://n73qb0xrtbvy" path="res://generic/textures/checked.png" id="1_gfn0m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03ohn"]
-content_margin_left = 4.0
+content_margin_left = 9.0
 content_margin_top = 2.0
-content_margin_right = 4.0
+content_margin_right = 9.0
 content_margin_bottom = 2.0
 bg_color = Color(0.05, 0.05, 0.05, 1)
 border_width_left = 1
@@ -16,9 +16,9 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1hk6"]
-content_margin_left = 4.0
+content_margin_left = 9.0
 content_margin_top = 2.0
-content_margin_right = 4.0
+content_margin_right = 9.0
 content_margin_bottom = 2.0
 bg_color = Color(0.05, 0.05, 0.05, 1)
 border_width_left = 1
@@ -28,9 +28,9 @@ border_width_bottom = 1
 border_color = Color(0.6, 0.6, 0.6, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_657oj"]
-content_margin_left = 4.0
+content_margin_left = 9.0
 content_margin_top = 2.0
-content_margin_right = 4.0
+content_margin_right = 9.0
 content_margin_bottom = 2.0
 bg_color = Color(0.15, 0.15, 0.15, 1)
 border_width_left = 1
@@ -40,9 +40,9 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfn0m"]
-content_margin_left = 4.0
+content_margin_left = 9.0
 content_margin_top = 2.0
-content_margin_right = 4.0
+content_margin_right = 9.0
 content_margin_bottom = 2.0
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1

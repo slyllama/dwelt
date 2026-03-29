@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="3_ub0md"]
 
 [sub_resource type="Gradient" id="Gradient_hfhfk"]
-offsets = PackedFloat32Array(0.2, 1)
+offsets = PackedFloat32Array(0.5, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5882353)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ub0md"]
