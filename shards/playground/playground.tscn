@@ -70,6 +70,7 @@ sky = SubResource("Sky_rfd7c")
 ambient_light_source = 2
 ambient_light_color = Color(0.24718907, 0.26685467, 0.1687262, 1)
 tonemap_mode = 2
+tonemap_exposure = 1.12
 ssao_radius = 0.25
 ssao_intensity = 4.0
 glow_enabled = true

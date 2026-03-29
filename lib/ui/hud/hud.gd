@@ -7,17 +7,33 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	%EyesAnim.animate()
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		_on_settings_pressed()
+
+# Toggle the settings menu
 func _on_settings_pressed() -> void:
-	# Close original pane if it is open
+	var _pane_open := false
 	for _n: UIPane in %UIPaneManager.get_children():
 		if _n.ui_id == "settings_pane":
+			_pane_open = true
 			%UIPaneManager.close_pane(_n)
 	
-	var settings_pane: UIPane = SettingsPane.instantiate()
-	%UIPaneManager.add_child(settings_pane)
-	settings_pane.set_anchors_preset(Control.PRESET_CENTER)
-	settings_pane.move_to_center()
+	if !_pane_open:
+		var settings_pane: UIPane = SettingsPane.instantiate()
+		%UIPaneManager.add_child(settings_pane)
+		settings_pane.set_anchors_preset(Control.PRESET_CENTER)
+		settings_pane.move_to_center()
 
-func _on_quit_pressed() -> void:
-	Save.save_file()
-	get_tree().quit()
+func _on_screenshot_pressed() -> void:
+	if !Input.is_action_pressed("ui_shift"):
+		visible = false
+		for _i in 2: await get_tree().process_frame
+	%ScreenshotManager.take_screenshot()
+	visible = true
+
+# Right-click on the screenshot icon to go to the screenshot folder
+func _on_screenshot_gui_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("right_click"):
+		Dwelt.click_sound_requested.emit()
+		%ScreenshotManager.open_folder()

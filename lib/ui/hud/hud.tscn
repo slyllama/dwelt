@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
-[ext_resource type="Texture2D" uid="uid://q0lj3eshgnxb" path="res://lib/ui/hud/textures/icon_quit.png" id="7_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
+[ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
+[ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 script = ExtResource("1_3pj68")
@@ -58,13 +59,6 @@ script = ExtResource("6_2eonm")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture_normal = ExtResource("6_pxgdb")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Quit" type="TextureButton" parent="TopLeftMenu" unique_id=1218367037]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture_normal = ExtResource("7_pxgdb")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -121,5 +115,13 @@ offset_bottom = 180.0
 mouse_filter = 0
 frame_duration = 0.035
 
+[node name="ScreenshotManager" type="Node" parent="." unique_id=449517999]
+unique_name_in_owner = true
+script = ExtResource("13_2eonm")
+
+[node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
+stream = ExtResource("14_6rdt5")
+
 [connection signal="pressed" from="TopLeftMenu/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="TopLeftMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="gui_input" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_gui_input"]
+[connection signal="pressed" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_pressed"]

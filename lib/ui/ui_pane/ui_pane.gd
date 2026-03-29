@@ -83,3 +83,7 @@ func _on_close_pressed() -> void:
 
 func _on_default_pressed() -> void:
 	Settings.apply_default_settings()
+
+func _on_quit_pressed() -> void:
+	Save.save_file()
+	get_tree().quit()

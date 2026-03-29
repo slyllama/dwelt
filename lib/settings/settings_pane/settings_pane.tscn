@@ -59,4 +59,9 @@ metadata/_custom_type_script = "uid://1fnxqvppawai"
 layout_mode = 2
 text = "Reset To Default"
 
+[node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1169901860]
+layout_mode = 2
+text = "Quit Game"
+
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
+[connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
