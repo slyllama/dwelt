@@ -25,6 +25,9 @@ func _ready() -> void:
 			elif setting == "colour_grading":
 				if value == "true": %Sky.environment.adjustment_enabled = true
 				elif value == "false": %Sky.environment.adjustment_enabled = false
+			elif setting == "volumetric_fog":
+				if value == "true": %Sky.environment.volumetric_fog_enabled = true
+				elif value == "false": %Sky.environment.volumetric_fog_enabled = false
 		if setting == "shadows":
 			if value == "low":
 				%Sun.shadow_enabled = true

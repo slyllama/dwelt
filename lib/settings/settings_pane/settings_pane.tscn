@@ -76,7 +76,7 @@ color = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
-text = "Full Screen"
+text = "Full screen"
 script = ExtResource("3_8t512")
 setting_id = "full_screen"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
@@ -90,7 +90,16 @@ script = ExtResource("3_8t512")
 setting_id = "bloom"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="7" unique_id=1704226208]
+[node name="VolFog" type="CheckButton" parent="Box/Scroll/ScrollBox" index="7" unique_id=149068363]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l5xdt")
+text = "Volumetric fog"
+script = ExtResource("3_8t512")
+setting_id = "volumetric_fog"
+metadata/_custom_type_script = "uid://1fnxqvppawai"
+
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="8" unique_id=1704226208]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -99,7 +108,7 @@ script = ExtResource("3_8t512")
 setting_id = "colour_grading"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="8" unique_id=160438576]
+[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="9" unique_id=160438576]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
@@ -108,7 +117,7 @@ options = Array[String](["off", "low", "medium", "high"])
 title = "Shadow quality"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="9" unique_id=170264208]
+[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="10" unique_id=170264208]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
