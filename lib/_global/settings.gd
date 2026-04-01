@@ -13,28 +13,29 @@ const DEFAULT_SETTINGS := {
 @onready var settings := DEFAULT_SETTINGS.duplicate()
 
 signal setting_applied(parameter: String, value: String)
-signal settings_reset
+signal settings_redraw
 
 # Apply a setting, but only if it exists in the settings file (so individual
 # nodes don't have to do their own checks)
-func apply_setting(parameter: String, value: String) -> void:
+func apply_setting(parameter: String, value: String, do_save := true) -> void:
 	if parameter in settings:
 		settings[parameter] = value
 		setting_applied.emit(parameter, value)
 	else: Utils.pdebug("Couldn't save setting '"
 		+ parameter + "': no such setting.", "Settings")
-	save_file()
+	if do_save:
+		save_file()
 
-func apply_all_settings() -> void:
+func apply_all_settings(do_save := true) -> void:
 	for _s: String in settings:
-		apply_setting(_s, settings[_s])
+		apply_setting(_s, settings[_s], do_save)
 		setting_applied.emit(_s, settings[_s])
 
 func apply_default_settings() -> void:
 	settings = DEFAULT_SETTINGS.duplicate()
 	save_file()
-	apply_all_settings()
-	settings_reset.emit()
+	apply_all_settings(false) # no need to re-save
+	settings_redraw.emit()
 
 func load_file() -> void:
 	if FileAccess.file_exists(SETTINGS_PATH):

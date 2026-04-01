@@ -17,8 +17,8 @@ func _ready() -> void:
 		if button_pressed: Settings.apply_setting(setting_id, "true")
 		else: Settings.apply_setting(setting_id, "false"))
 	
-	# Redraw settings if they are reset
-	Settings.settings_reset.connect(redraw)
+	# Redraw settings if they are reset or a redraw is requested
+	Settings.settings_redraw.connect(redraw)
 	
 	if setting_id in Settings.settings:
 		redraw()

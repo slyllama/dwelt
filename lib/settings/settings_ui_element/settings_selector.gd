@@ -48,8 +48,8 @@ func _ready() -> void:
 	
 	if Engine.is_editor_hint(): return
 	
-	# Redraw settings if they are reset
-	Settings.settings_reset.connect(redraw)
+	# Redraw settings if they are reset or a redraw is requested
+	Settings.settings_redraw.connect(redraw)
 	
 	if !setting_id in Settings.settings:
 		queue_free()

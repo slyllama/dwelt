@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://0250edkj4l4t"]
 
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="2_5tk31"]
+[ext_resource type="Script" uid="uid://b8tc3q0ulna4b" path="res://lib/settings/settings_pane/scripts/presets.gd" id="2_8l32a"]
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
 [ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
 [ext_resource type="Script" uid="uid://c7haqafm4mwf0" path="res://lib/settings/settings_ui_element/settings_selector.gd" id="4_85e62"]
@@ -29,7 +31,48 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="FullScreen" type="CheckButton" parent="Box/Scroll/ScrollBox" index="0" unique_id=1771262]
+[node name="Presets" type="Label" parent="Box/Scroll/ScrollBox" index="0" unique_id=320447489]
+layout_mode = 2
+text = "Graphics presets"
+
+[node name="PresetsBox" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="1" unique_id=707176794]
+layout_mode = 2
+script = ExtResource("2_8l32a")
+
+[node name="Low" type="Button" parent="Box/Scroll/ScrollBox/PresetsBox" index="0" unique_id=2032983713]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Low"
+
+[node name="Medium" type="Button" parent="Box/Scroll/ScrollBox/PresetsBox" index="1" unique_id=745686893]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Medium"
+
+[node name="High" type="Button" parent="Box/Scroll/ScrollBox/PresetsBox" index="2" unique_id=1081550929]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "High"
+
+[node name="Pad2" type="ColorRect" parent="Box/Scroll/ScrollBox" index="2" unique_id=1732538175]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Separator2" type="TextureRect" parent="Box/Scroll/ScrollBox" index="3" unique_id=2140534578]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+texture = ExtResource("2_5tk31")
+expand_mode = 1
+flip_h = true
+
+[node name="Pad3" type="ColorRect" parent="Box/Scroll/ScrollBox" index="4" unique_id=1939295304]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="FullScreen" type="CheckButton" parent="Box/Scroll/ScrollBox" index="5" unique_id=1771262]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -38,7 +81,7 @@ script = ExtResource("3_8t512")
 setting_id = "full_screen"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="1" unique_id=2012263079]
+[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="6" unique_id=2012263079]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -47,7 +90,7 @@ script = ExtResource("3_8t512")
 setting_id = "bloom"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="2" unique_id=1704226208]
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="7" unique_id=1704226208]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -56,7 +99,7 @@ script = ExtResource("3_8t512")
 setting_id = "colour_grading"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="3" unique_id=160438576]
+[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="8" unique_id=160438576]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
@@ -65,7 +108,7 @@ options = Array[String](["off", "low", "medium", "high"])
 title = "Shadow quality"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="4" unique_id=170264208]
+[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="9" unique_id=170264208]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
@@ -82,5 +125,8 @@ text = "Reset To Default"
 layout_mode = 2
 text = "Quit Game"
 
+[connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Low" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_low_pressed"]
+[connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Medium" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_medium_pressed"]
+[connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/High" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_high_pressed"]
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
