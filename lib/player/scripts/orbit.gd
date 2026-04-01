@@ -47,6 +47,8 @@ func _input(event: InputEvent) -> void:
 			view_length -= zoom_increment
 		if Input.is_action_just_pressed("zoom_out"):
 			view_length += zoom_increment
+		if event is InputEventPanGesture:
+			view_length -= event.delta.y * 0.15
 
 func _physics_process(_delta: float) -> void:
 	var _last_event_relative := _event_relative
