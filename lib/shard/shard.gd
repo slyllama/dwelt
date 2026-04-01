@@ -39,7 +39,10 @@ func _ready() -> void:
 				%Sun.shadow_enabled = true
 				%Sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 			elif value == "off":
-				%Sun.shadow_enabled = false)
+				%Sun.shadow_enabled = false
+		elif setting == "taa_anti_aliasing":
+			if value == "true": get_viewport().use_taa = true
+			elif value == "false": get_viewport().use_taa = false)
 	
 	# Apply all settings now that each node has had a chance to load
 	await get_tree().process_frame

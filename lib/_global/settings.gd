@@ -8,7 +8,8 @@ const DEFAULT_SETTINGS := {
 	"full_screen": "true",
 	"shadows": "high",
 	"draw_distance": "medium",
-	"volumetric_fog": "true"
+	"volumetric_fog": "true",
+	"taa_anti_aliasing": "true"
 }
 
 @onready var settings := DEFAULT_SETTINGS.duplicate()

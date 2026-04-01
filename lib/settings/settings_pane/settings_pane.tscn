@@ -76,7 +76,16 @@ custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="FullScreen" type="CheckButton" parent="Box/Scroll/ScrollBox" index="5" unique_id=1771262]
+[node name="FullScreen2" type="CheckButton" parent="Box/Scroll/ScrollBox" index="5" unique_id=729321647]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l5xdt")
+text = "TAA anti-aliasing"
+script = ExtResource("3_8t512")
+setting_id = "taa_anti_aliasing"
+metadata/_custom_type_script = "uid://1fnxqvppawai"
+
+[node name="FullScreen" type="CheckButton" parent="Box/Scroll/ScrollBox" index="6" unique_id=1771262]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -85,7 +94,7 @@ script = ExtResource("3_8t512")
 setting_id = "full_screen"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="6" unique_id=2012263079]
+[node name="Bloom" type="CheckButton" parent="Box/Scroll/ScrollBox" index="7" unique_id=2012263079]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -94,7 +103,7 @@ script = ExtResource("3_8t512")
 setting_id = "bloom"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="VolFog" type="CheckButton" parent="Box/Scroll/ScrollBox" index="7" unique_id=149068363]
+[node name="VolFog" type="CheckButton" parent="Box/Scroll/ScrollBox" index="8" unique_id=149068363]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -103,7 +112,7 @@ script = ExtResource("3_8t512")
 setting_id = "volumetric_fog"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="8" unique_id=1704226208]
+[node name="ColourGrading" type="CheckButton" parent="Box/Scroll/ScrollBox" index="9" unique_id=1704226208]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_l5xdt")
@@ -112,7 +121,7 @@ script = ExtResource("3_8t512")
 setting_id = "colour_grading"
 metadata/_custom_type_script = "uid://1fnxqvppawai"
 
-[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="9" unique_id=160438576]
+[node name="Shadows" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="10" unique_id=160438576]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
@@ -121,7 +130,7 @@ options = Array[String](["off", "low", "medium", "high"])
 title = "Shadow quality"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="10" unique_id=170264208]
+[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="11" unique_id=170264208]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("4_85e62")
@@ -130,7 +139,7 @@ options = Array[String](["low", "medium", "high"])
 title = "Draw distance"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="11" unique_id=1871284538]
+[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="12" unique_id=1871284538]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
