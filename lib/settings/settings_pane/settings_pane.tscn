@@ -8,9 +8,7 @@
 [ext_resource type="Script" uid="uid://c7haqafm4mwf0" path="res://lib/settings/settings_ui_element/settings_selector.gd" id="4_85e62"]
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
-custom_minimum_size = Vector2(360, 460)
 offset_right = 360.0
-offset_bottom = 460.0
 title = "Settings"
 ui_id = "settings_pane"
 
@@ -25,6 +23,7 @@ color = Color(1, 1, 1, 0)
 [node name="Scroll" type="ScrollContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=885632349]
 layout_mode = 2
 size_flags_vertical = 3
+vertical_scroll_mode = 2
 
 [node name="ScrollBox" type="VBoxContainer" parent="Box/Scroll" index="0" unique_id=956486370]
 layout_mode = 2
@@ -53,6 +52,11 @@ text = "Medium"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "High"
+
+[node name="Pad" type="ColorRect" parent="Box/Scroll/ScrollBox/PresetsBox" index="3" unique_id=2127655466]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Pad2" type="ColorRect" parent="Box/Scroll/ScrollBox" index="2" unique_id=1732538175]
 custom_minimum_size = Vector2(0, 8)
@@ -126,11 +130,21 @@ options = Array[String](["low", "medium", "high"])
 title = "Draw distance"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1037660848]
+[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="11" unique_id=1871284538]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BottomPad" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=2041497946]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1037660848]
 layout_mode = 2
 text = "Reset To Default"
 
-[node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1169901860]
+[node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1169901860]
 layout_mode = 2
 text = "Quit Game"
 

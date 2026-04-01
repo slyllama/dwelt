@@ -52,16 +52,43 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfn0m"]
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1hk6"]
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvgo0"]
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qjph"]
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wc6"]
+content_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alr2b"]
+content_margin_right = 8.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gfn0m"]
+color = Color(0.5, 0.5, 0.5, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j1hk6"]
+color = Color(0.6, 0.6, 0.6, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dvgo0"]
+color = Color(0.9, 0.9, 0.9, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ai5m"]
+content_margin_left = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxxd8"]
+content_margin_left = 8.0
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -79,3 +106,8 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_dvgo0")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_6qjph")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_p1wc6")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_alr2b")
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_gfn0m")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_j1hk6")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_dvgo0")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_0ai5m")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_vxxd8")

@@ -11,6 +11,7 @@ class_name SettingsSelector extends HBoxContainer
 @onready var left_button := TextureButton.new()
 @onready var value_label := Label.new()
 @onready var right_button := TextureButton.new()
+@onready var right_padding := ColorRect.new()
 
 func redraw() -> void:
 	value_label.text = Settings.settings[setting_id].capitalize()
@@ -39,11 +40,16 @@ func _ready() -> void:
 	right_button.stretch_mode = TextureButton.STRETCH_SCALE
 	right_button.custom_minimum_size = Vector2(12.0, 24.0)
 	
+	# Right-most padding setup
+	right_padding.color = Color(0.0, 0.0, 0.0, 0.0)
+	right_padding.custom_minimum_size.x = 4.0
+	
 	# Add children
 	add_child(title_label)
 	add_child(left_button)
 	add_child(value_label)
 	add_child(right_button)
+	add_child(right_padding)
 	title_label.text = title
 	
 	if Engine.is_editor_hint(): return
