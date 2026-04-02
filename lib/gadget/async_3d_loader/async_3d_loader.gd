@@ -21,7 +21,7 @@ func load_scene() -> void:
 	var _pscene: PackedScene = ResourceLoader.load_threaded_get(path)
 	scene = _pscene.instantiate()
 	loaded.emit()
-	Utils.pdebug("Completed thread loading of '" + path + "'.", "Async3DLoader")
+	#Utils.pdebug("Completed thread loading of '" + path + "'.", "Async3DLoader")
 
 func close() -> void:
 	scene.queue_free()

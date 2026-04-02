@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://u3mwifw55h5d"]
+
+[ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_ynaiw"]
+[ext_resource type="Script" uid="uid://d28r6al163qi3" path="res://lib/effect/effect_debug_pane/effect_debug_pane.gd" id="2_3wf8i"]
+[ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="3_3wf8i"]
+
+[node name="EffectDebugPane" unique_id=1181014453 instance=ExtResource("1_ynaiw")]
+custom_minimum_size = Vector2(380, 380)
+script = ExtResource("2_3wf8i")
+title = "Effect Viewer"
+ui_id = "effect_debug_pane"
+closeable = false
+
+[node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
+text = "Effect Viewer"
+
+[node name="Close" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="2" unique_id=1273695005]
+visible = false
+
+[node name="AddDurationEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=887119477]
+layout_mode = 2
+text = "Add Timed Effect"
+
+[node name="AddQtyEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1119133114]
+layout_mode = 2
+text = "Add Quantity Effect"
+
+[node name="Padding2" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=791016531]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="DebugText" type="RichTextLabel" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1945448346]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_3wf8i")
+theme_override_font_sizes/normal_font_size = 12
+text = "((Text))"
+fit_content = true
+
+[connection signal="pressed" from="Box/AddDurationEffect" to="." method="_on_add_timed_effect_pressed"]
+[connection signal="pressed" from="Box/AddQtyEffect" to="." method="_on_add_qty_effect_pressed"]

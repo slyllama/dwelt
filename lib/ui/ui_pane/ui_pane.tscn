@@ -53,6 +53,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Close" type="TextureButton" parent="Box/Header" unique_id=1273695005]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 focus_mode = 0

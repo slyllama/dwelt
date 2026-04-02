@@ -10,6 +10,11 @@ const FADE_SPEED = 0.08 # time to fade in and out during opening and closing
 		title = _title
 		%Title.text = title
 @export var ui_id := "ui_pane"
+@export var closeable := true:
+	get: return(closeable)
+	set(_closeable):
+		closeable = _closeable
+		%Close.visible = closeable
 
 const PADDING := 100.0 # used to calculate pane position limits
 var cursor_last_in_window := true
@@ -38,6 +43,7 @@ func _init() -> void:
 		modulate.a = 0.0
 
 func _ready() -> void:
+	%Close.visible = closeable
 	if Engine.is_editor_hint(): return
 	
 	# Play "click" effects on every button

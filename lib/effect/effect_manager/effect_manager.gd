@@ -1,34 +1,27 @@
 class_name EffectManager extends Node
-# The EffectManager is responsible for tracking a gadget's active effects, and
-# their durations and quantities:
-#
-# <effect ID>: {
-#	"qty": <quantity - optional>,
-#	"time_left": <remaining time - optional>
-# }
 
-const TICK := 0.1
+var active_effects: Dictionary[String, EffectInstance]
 
-var effects := {
-	"test_effect": { "time_left": "5.0" },
-	"qty_effect": { "qty": "10" }
-}
-
-var _t := 0.0 # time
-
-func add_time_effect(id: String, time_left: float) -> void:
-	effects[id] = { "time_left": str(snapped(time_left, TICK)) }
+func add_effect(effect: EffectInstance) -> void:
+	var id := effect.id
+	# If an effect with this ID isn't already active, add it
+	if !id in active_effects:
+		active_effects[id] = effect
+	else: # logic for 'compounding' an existing effect
+		var existing_effect := active_effects[id]
+		if effect.type == EffectInstance.Type.DURATION:
+			if effect.duration_stacks:
+				existing_effect.current_duration += effect.total_duration
+			else: existing_effect.current_duration = effect.total_duration
+		elif effect.type == EffectInstance.Type.QUANTITY:
+			if effect.quantity_stacks:
+				existing_effect.current_quantity += effect.total_quantity
+			else: existing_effect.current_quantity = effect.total_quantity
 
 func _process(delta: float) -> void:
-	if _t > TICK:
-		_t = 0
-		# Decrement effect times if they have that property
-		for _e: String in effects:
-			var effect: Dictionary = effects[_e]
-			if "time_left" in effect:
-				var time_left: float = effect.time_left.to_float()
-				if time_left > 0.0:
-					time_left -= TICK
-					effect.time_left = str(snapped(time_left, 0.1))
-				else: effects.erase(_e)
-	_t += delta
+	for _e in active_effects:
+		var effect := active_effects[_e]
+		effect.current_duration -= delta
+		if effect.type == EffectInstance.Type.DURATION:
+			if effect.current_duration <= 0:
+				active_effects.erase(_e)

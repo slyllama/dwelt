@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://cbef063jijuwq"]
+
+[ext_resource type="Script" uid="uid://dcpt2q4l5o0ue" path="res://lib/effect/effect_instance/effect_instance.gd" id="1_08s2o"]
+
+[resource]
+script = ExtResource("1_08s2o")
+id = "duration_bingus"
+duration_stacks = true
+metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://beyh344whefp8"]
+
+[ext_resource type="Script" uid="uid://dcpt2q4l5o0ue" path="res://lib/effect/effect_instance/effect_instance.gd" id="1_qpnbr"]
+
+[resource]
+script = ExtResource("1_qpnbr")
+id = "qty_bingus"
+type = 1
+quantity_stacks = true
+metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"
