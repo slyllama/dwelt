@@ -49,6 +49,6 @@ func _on_dev_menu_pressed() -> void:
 	if !_pane_open:
 		var debug_pane: UIPane = DebugPane.instantiate()
 		%UIPaneManager.add_child(debug_pane)
-		debug_pane.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		debug_pane.set_anchors_preset(Control.PRESET_CENTER)
 		#debug_pane.move_to_center()
 		debug_pane.position += Vector2(100, 100)
