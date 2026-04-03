@@ -2,17 +2,36 @@
 
 [ext_resource type="Texture2D" uid="uid://23w5367dqjdq" path="res://lib/effect/effect_card/textures/frame.png" id="1_k77om"]
 [ext_resource type="Script" uid="uid://38vlj2aouox2" path="res://lib/effect/effect_card/effect_card.gd" id="1_tj6u5"]
+[ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="2_min1y"]
+[ext_resource type="Texture2D" uid="uid://pqhffoigrcp7" path="res://lib/effect/effect_card/textures/text_base.png" id="3_6m503"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_min1y"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+texture = ExtResource("3_6m503")
+expand_margin_left = 4.0
+expand_margin_right = 4.0
 
 [node name="EffectCard" type="VBoxContainer" unique_id=1438258294]
+theme_override_constants/separation = -2
 script = ExtResource("1_tj6u5")
 
 [node name="Text" type="Label" parent="." unique_id=502552618]
+z_index = 1
+custom_minimum_size = Vector2(56, 24)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/line_spacing = -3
 theme_override_constants/paragraph_spacing = -3
-text = "((X))"
+theme_override_fonts/font = ExtResource("2_min1y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_min1y")
 horizontal_alignment = 1
-text_overrun_behavior = 3
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=16201477]
+position = Vector2(40.000004, 66)
+scale = Vector2(0.465, 0.465)
 
 [node name="Frame" type="TextureRect" parent="." unique_id=948333004]
 custom_minimum_size = Vector2(80, 80)

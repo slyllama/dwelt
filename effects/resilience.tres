@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://clxa2imuufafl"]
+
+[ext_resource type="Script" uid="uid://dcpt2q4l5o0ue" path="res://lib/effect/effect_instance/effect_instance.gd" id="1_ns8kn"]
+
+[resource]
+script = ExtResource("1_ns8kn")
+metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

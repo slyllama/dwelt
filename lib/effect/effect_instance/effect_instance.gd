@@ -5,6 +5,7 @@ signal finished
 enum Type {DURATION, QUANTITY}
 
 @export var id := "blank_effect"
+@export var icon: Texture2D
 @export var type: Type
 
 @export_category("Effect State")
