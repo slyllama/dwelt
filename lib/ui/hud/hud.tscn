@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
+[ext_resource type="PackedScene" uid="uid://dphe4e6etfimm" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="10_panat"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
@@ -62,6 +63,17 @@ offset_right = 212.0
 offset_bottom = -7.0
 grow_vertical = 0
 
+[node name="PlayerEffects" parent="." unique_id=1169365333 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 214.0
+offset_top = -108.0
+offset_right = 294.0
+offset_bottom = -2.0
+grow_vertical = 0
+
 [node name="TopLeftMenu" type="HBoxContainer" parent="." unique_id=1545174863]
 offset_left = 12.0
 offset_top = 12.0
@@ -95,6 +107,8 @@ layer = 1
 
 [node name="Override" type="CanvasLayer" parent="." unique_id=1195063702]
 layer = 99
+
+[node name="EffectTooltip" parent="Override" unique_id=1279715620 instance=ExtResource("10_panat")]
 
 [node name="RenderMonitor" type="RichTextLabel" parent="Override" unique_id=838523613]
 anchors_preset = 6
@@ -141,17 +155,6 @@ script = ExtResource("13_2eonm")
 
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
-
-[node name="PlayerEffects" parent="." unique_id=1169365333 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 214.0
-offset_top = -108.0
-offset_right = 294.0
-offset_bottom = -2.0
-grow_vertical = 0
 
 [connection signal="pressed" from="TopLeftMenu/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_gui_input"]

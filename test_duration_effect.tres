@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_08s2o")
 id = "duration_bingus"
+title = "Test Duration Effect"
 icon = ExtResource("1_fi82b")
 duration_stacks = true
 metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

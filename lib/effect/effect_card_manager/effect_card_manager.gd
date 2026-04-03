@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var EffectCard := load("res://lib/effect/effect_card/effect_card.tscn")
+var EffectCardScene := load("res://lib/effect/effect_card/effect_card.tscn")
 
 @export var effect_manager: EffectManager:
 	get: return(effect_manager)
@@ -16,7 +16,7 @@ func deregister_effect_manager() -> void:
 
 func on_effect_added(id: String) -> void:
 	var effect := effect_manager.active_effects[id]
-	var card: VBoxContainer = EffectCard.instantiate()
+	var card: VBoxContainer = EffectCardScene.instantiate()
 	card.effect_instance = effect
 	add_child(card)
 
@@ -29,7 +29,7 @@ func on_effect_manager_change() -> void:
 	
 	for _e in effect_manager.active_effects:
 		var effect := effect_manager.active_effects[_e]
-		var card: VBoxContainer = EffectCard.instantiate()
+		var card: VBoxContainer = EffectCardScene.instantiate()
 		card.effect_instance = effect
 		add_child(card)
 	

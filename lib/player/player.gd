@@ -23,6 +23,8 @@ func _ready() -> void:
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)
+	
+	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 
 func _physics_process(_delta: float) -> void:
 	_target_velocity = Vector3.ZERO

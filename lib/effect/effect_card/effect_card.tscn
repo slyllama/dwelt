@@ -17,7 +17,6 @@ theme_override_constants/separation = -2
 script = ExtResource("1_tj6u5")
 
 [node name="Text" type="Label" parent="." unique_id=502552618]
-z_index = 1
 custom_minimum_size = Vector2(56, 24)
 layout_mode = 2
 size_flags_horizontal = 4

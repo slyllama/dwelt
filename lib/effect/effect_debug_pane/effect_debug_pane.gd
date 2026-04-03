@@ -34,12 +34,12 @@ func _process(_delta: float) -> void:
 func _on_add_timed_effect_pressed() -> void:
 	if effect_manager:
 		effect_manager.add_effect(load(
-			"res://test_duration_effect.tres").duplicate())
+			"res://test_duration_effect.tres"))
 
 func _on_add_qty_effect_pressed() -> void:
 	if effect_manager:
 		effect_manager.add_effect(load(
-			"res://test_quantity_effect.tres").duplicate())
+			"res://test_quantity_effect.tres"))
 
 func _on_clear_pressed() -> void:
 	effect_manager = null

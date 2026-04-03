@@ -10,7 +10,10 @@ func add_effect(effect: EffectInstance) -> void:
 	var id := effect.id
 	# If an effect with this ID isn't already active, add it
 	if !id in active_effects:
-		active_effects[id] = effect
+		active_effects[id] = effect.duplicate()
+		# Reset effect quantities and durations
+		active_effects[id].current_duration = active_effects[id].total_duration
+		active_effects[id].current_quantity = active_effects[id].total_quantity
 		effect_added.emit(id)
 	else: # logic for 'compounding' an existing effect
 		var existing_effect := active_effects[id]

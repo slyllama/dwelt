@@ -1,4 +1,4 @@
-extends VBoxContainer
+class_name EffectCard extends VBoxContainer
 
 @export var effect_instance: EffectInstance:
 	set(_effect_instance):
@@ -8,7 +8,6 @@ extends VBoxContainer
 			if effect_instance.icon: $Icon.texture = effect_instance.icon
 
 func _process(_delta: float) -> void:
-	
 	if effect_instance:
 		$Text.text = ""
 		if effect_instance.type == EffectInstance.Type.DURATION:
@@ -18,6 +17,14 @@ func _process(_delta: float) -> void:
 			else:
 				$Text.text += str(snapped(_current_duration, 1)) + "s"
 		elif effect_instance.type == EffectInstance.Type.QUANTITY:
-			$Text.text += str(snapped(effect_instance.current_quantity, 1))
+			var quantity := effect_instance.current_quantity
+			
+			# Hide text if it has a quantity of 1
+			# TODO: this might be able to be more efficient
+			if quantity == 1:
+				if effect_instance.hide_single_quantity:
+					$Text.modulate.a = 0.0
+			else: $Text.modulate.a = 1.0
+			$Text.text += str(snapped(quantity, 1))
 		
 		$Icon.position = $Frame.position + $Frame.size / 2.0

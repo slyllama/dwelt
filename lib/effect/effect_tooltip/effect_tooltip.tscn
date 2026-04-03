@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dphe4e6etfimm"]
+
+[ext_resource type="Texture2D" uid="uid://cdmj0yox0hfkt" path="res://lib/ui/ui_pane/textures/bg.jpg" id="1_ld8d2"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_hu00g"]
+[ext_resource type="Script" uid="uid://dpbgc10v1wy38" path="res://lib/effect/effect_tooltip/effect_tooltip.gd" id="2_x22yt"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="3_x22yt"]
+[ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="5_x22yt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5h4qd"]
+content_margin_left = 13.0
+content_margin_top = 9.0
+content_margin_right = 13.0
+content_margin_bottom = 17.0
+texture = ExtResource("1_ld8d2")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="EffectTooltip" type="PanelContainer" unique_id=1279715620]
+custom_minimum_size = Vector2(256, 0)
+offset_right = 256.0
+offset_bottom = 76.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5h4qd")
+script = ExtResource("2_x22yt")
+
+[node name="Box" type="VBoxContainer" parent="." unique_id=1114843925]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Box" unique_id=1179447213]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hu00g")
+theme_override_font_sizes/font_size = 17
+text = "((Tooltip))"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator" type="TextureRect" parent="Box" unique_id=1635748951]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+texture = ExtResource("3_x22yt")
+expand_mode = 1
+flip_h = true
+
+[node name="Description" type="RichTextLabel" parent="Box" unique_id=232969965]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 0.78431374)
+theme_override_constants/line_separation = -3
+theme_override_fonts/normal_font = ExtResource("5_x22yt")
+theme_override_font_sizes/normal_font_size = 14
+text = "((Description))"
+fit_content = true
