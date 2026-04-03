@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
+[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="17_1x433"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
@@ -284,3 +285,8 @@ script = ExtResource("1_odf55")
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
+
+[node name="EffectManager" type="Node" parent="." unique_id=802570379]
+unique_name_in_owner = true
+script = ExtResource("17_1x433")
+metadata/_custom_type_script = "uid://dwm4elmsp1th0"

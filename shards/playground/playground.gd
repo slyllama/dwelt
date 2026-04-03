@@ -10,7 +10,6 @@ func _ready() -> void:
 	# Debugging for effects - so I can see them :)
 	var _edp := load("res://lib/effect/effect_debug_pane/effect_debug_pane.tscn")
 	var _effect_debug_pane: UIPane = _edp.instantiate()
-	_effect_debug_pane.effect_manager = $Platform/Dirt/TestEffectManager
 	_effect_debug_pane.position = Vector2(32, 42)
 	Dwelt.ui_pane_manager.add_child(_effect_debug_pane)
 	

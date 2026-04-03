@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3kr2vi8df8g8" path="res://lib/ui/ui_pane/textures/close_button_hover.jpg" id="4_gwgqe"]
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="5_4f35j"]
 [ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="7_lu8lm"]
+[ext_resource type="Texture2D" uid="uid://6geao0ocadpn" path="res://lib/ui/ui_pane/textures/border_effect.png" id="8_hipgv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
 content_margin_left = 13.0
@@ -78,6 +79,11 @@ color = Color(1, 1, 1, 0)
 [node name="Open" type="AudioStreamPlayer" parent="." unique_id=2105154938]
 stream = ExtResource("7_lu8lm")
 volume_db = 3.0
+
+[node name="BorderEffect" type="Sprite2D" parent="." unique_id=599452808]
+position = Vector2(220, 278)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_hipgv")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]

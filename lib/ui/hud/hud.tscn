@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
+[ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bly2c"]
 content_margin_left = 9.0
@@ -140,6 +141,17 @@ script = ExtResource("13_2eonm")
 
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
+
+[node name="PlayerEffects" parent="." unique_id=1169365333 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -108.0
+offset_right = 280.0
+offset_bottom = -2.0
+grow_vertical = 0
 
 [connection signal="pressed" from="TopLeftMenu/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_gui_input"]

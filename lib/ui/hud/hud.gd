@@ -7,6 +7,8 @@ func _ready() -> void:
 	$DebugBG.queue_free()
 	await get_tree().create_timer(0.1).timeout
 	%EyesAnim.animate()
+	
+	%PlayerEffects.effect_manager = Dwelt.player_effect_manager
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

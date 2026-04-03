@@ -8,8 +8,15 @@ extends UIPane
 
 func _ready() -> void:
 	super()
+	
+	if Engine.is_editor_hint(): return
+	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
+		if gadget:
+			effect_manager = gadget.effect_manager)
 
 func _process(_delta: float) -> void:
+	super(_delta)
+	
 	if effect_manager:
 		%DebugText.text = str(effect_manager)
 		var active_effects := effect_manager.active_effects
@@ -36,3 +43,6 @@ func _on_add_qty_effect_pressed() -> void:
 
 func _on_clear_pressed() -> void:
 	effect_manager = null
+
+func _on_set_to_player_pressed() -> void:
+	effect_manager = Dwelt.player_effect_manager

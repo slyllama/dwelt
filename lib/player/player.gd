@@ -18,6 +18,8 @@ signal move_stopped
 
 func _ready() -> void:
 	#Dwelt.player = self
+	Dwelt.player_effect_manager = %EffectManager
+	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)

@@ -22,10 +22,10 @@ func on_effect_added(id: String) -> void:
 
 func on_effect_manager_change() -> void:
 	# The effect manager has been cleared, and so all children need to be removed
-	if !effect_manager:
-		for _n: Node in get_children():
-			_n.queue_free()
-		return
+	for _n: Node in get_children():
+		_n.queue_free()
+	
+	if !effect_manager: return
 	
 	for _e in effect_manager.active_effects:
 		var effect := effect_manager.active_effects[_e]
@@ -35,3 +35,7 @@ func on_effect_manager_change() -> void:
 	
 	# Otherwise there is a new effect manager, and its signals need to be connected
 	effect_manager.effect_added.connect(on_effect_added)
+
+func _ready() -> void:
+	for _n: Node in get_children():
+		_n.queue_free()

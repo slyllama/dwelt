@@ -50,12 +50,17 @@ func _ready() -> void:
 	for _n: Node in Utils.get_all_children(self):
 		if _n is BaseButton:
 			_n.pressed.connect(func() -> void:
+				if !_n == %Close:
+					clicked.emit()
 				Dwelt.click_sound_requested.emit())
 	
 	# Fade in and play open sound
 	var _fade_tween := create_tween()
 	_fade_tween.tween_property(self, "modulate:a", 1.0, FADE_SPEED)
 	$Open.play()
+
+func _process(_delta: float) -> void:
+	$BorderEffect.global_position = global_position + size - Vector2(80.0, 122.0)
 
 func _on_header_gui_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
