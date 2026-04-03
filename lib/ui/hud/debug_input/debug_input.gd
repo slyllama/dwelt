@@ -11,6 +11,7 @@ var buffer_pos := 0
 
 func _release() -> void: # focus release and buffer reset shortcut
 	buffer_pos = 0
+	modulate.a = 0.5
 	get_window().gui_release_focus()
 
 func _eol() -> void: # go to end-of-line shortcut
@@ -45,9 +46,13 @@ func trim_output() -> void:
 	%Output.text = %Output.text.strip_edges(false, true)
 
 func _ready() -> void:
+	modulate.a = 0.5
+	
 	# Debug mode toggling
 	Utils.debug_mode_changed.connect(func() -> void:
 		visible = Utils.debug_mode)
+	
+	%Input.focus_entered.connect(func() -> void: modulate.a = 0.8)
 	
 	Utils.pdebug_sent.connect(func(string: String) -> void:
 		%Output.text += "\n" + string

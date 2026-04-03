@@ -1,5 +1,7 @@
 class_name EffectInstance extends Resource
 
+signal finished
+
 enum Type {DURATION, QUANTITY}
 
 @export var id := "blank_effect"

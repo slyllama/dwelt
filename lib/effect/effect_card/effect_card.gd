@@ -1,14 +1,15 @@
-@tool
-class_name EffectCard extends VBoxContainer
+extends VBoxContainer
 
-# Frame components
-var frame_texture := load("res://lib/effect/effect_card/textures/frame.png")
-@onready var frame := TextureRect.new()
+@export var effect_instance: EffectInstance:
+	set(_effect_instance):
+		effect_instance = _effect_instance
+		if effect_instance:
+			effect_instance.finished.connect(queue_free)
 
-func _ready() -> void:
-	# Create frame
-	frame.texture = frame_texture
-	frame.ignore_texture_size = true
-	frame.stretch_mode = TextureRect.STRETCH_SCALE
-	frame.custom_minimum_size = Vector2(80.0, 80.0)
-	add_child(frame)
+func _process(_delta: float) -> void:
+	if effect_instance:
+		$Text.text = effect_instance.id
+		if effect_instance.type == EffectInstance.Type.DURATION:
+			$Text.text += "\n(" + str(snapped(effect_instance.current_duration, 0.1)) + "s)"
+		elif effect_instance.type == EffectInstance.Type.QUANTITY:
+			$Text.text += "\n(" + str(snapped(effect_instance.current_quantity, 1)) + ")"

@@ -230,7 +230,6 @@ normal_fade = 0.75
 
 [node name="TestEffectManager" type="Node" parent="Platform/Dirt" index="0" unique_id=457844593]
 script = ExtResource("8_rfd7c")
-debug_mode = true
 metadata/_custom_type_script = "uid://dwm4elmsp1th0"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." index="12" unique_id=2032629365]

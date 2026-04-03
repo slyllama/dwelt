@@ -13,3 +13,7 @@ func _ready() -> void:
 	_effect_debug_pane.effect_manager = $Platform/Dirt/TestEffectManager
 	_effect_debug_pane.position = Vector2(32, 42)
 	Dwelt.ui_pane_manager.add_child(_effect_debug_pane)
+	
+	# NOTE: temporarily enabling debug by default
+	Utils.debug_mode = true
+	Utils.debug_mode_changed.emit()

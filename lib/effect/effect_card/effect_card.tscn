@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cd7xu7yvamnd"]
+
+[ext_resource type="Texture2D" uid="uid://23w5367dqjdq" path="res://lib/effect/effect_card/textures/frame.png" id="1_k77om"]
+[ext_resource type="Script" uid="uid://38vlj2aouox2" path="res://lib/effect/effect_card/effect_card.gd" id="1_tj6u5"]
+
+[node name="EffectCard" type="VBoxContainer" unique_id=1438258294]
+script = ExtResource("1_tj6u5")
+
+[node name="Text" type="Label" parent="." unique_id=502552618]
+layout_mode = 2
+theme_override_constants/line_spacing = -3
+theme_override_constants/paragraph_spacing = -3
+text = "((X))"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Frame" type="TextureRect" parent="." unique_id=948333004]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_k77om")
+expand_mode = 1

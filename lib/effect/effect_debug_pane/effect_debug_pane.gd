@@ -1,7 +1,10 @@
 @tool
 extends UIPane
 
-@export var effect_manager: EffectManager
+@export var effect_manager: EffectManager:
+	set(_effect_manager):
+		effect_manager = _effect_manager
+		%EffectCardManager.effect_manager = effect_manager
 
 func _ready() -> void:
 	super()
@@ -23,8 +26,13 @@ func _process(_delta: float) -> void:
 
 func _on_add_timed_effect_pressed() -> void:
 	if effect_manager:
-		effect_manager.add_effect(load("res://test_duration_effect.tres"))
+		effect_manager.add_effect(load(
+			"res://test_duration_effect.tres").duplicate())
 
 func _on_add_qty_effect_pressed() -> void:
 	if effect_manager:
-		effect_manager.add_effect(load("res://test_quantity_effect.tres"))
+		effect_manager.add_effect(load(
+			"res://test_quantity_effect.tres").duplicate())
+
+func _on_clear_pressed() -> void:
+	effect_manager = null
