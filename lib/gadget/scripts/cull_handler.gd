@@ -24,8 +24,8 @@ func get_mesh_instances() -> Array[MeshInstance3D]:
 	var mesh_instances: Array[MeshInstance3D] = []
 	if cull_model:
 		for _n: Node in Utils.get_all_children(cull_model):
-				if _n is MeshInstance3D:
-					mesh_instances.append(_n)
+			if _n is MeshInstance3D:
+				mesh_instances.append(_n)
 	return(mesh_instances)
 
 func apply_cull_amounts() -> void:
