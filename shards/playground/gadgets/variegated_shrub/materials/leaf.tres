@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dly823oo7rbri"]
+
+[ext_resource type="Shader" uid="uid://him1uppv5for" path="res://lib/gadget/materials/shaders/gadget_foliage.gdshader" id="1_om5ab"]
+[ext_resource type="Texture2D" uid="uid://d0ycxcvkdpfn6" path="res://shards/playground/gadgets/variegated_shrub/materials/textures/variegated_leaf.png" id="2_a6hec"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_om5ab")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_a6hec")
+shader_parameter/uv_scale = 1.0
+shader_parameter/uses_wind = true

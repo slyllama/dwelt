@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		if !last_click_in_ui:
 			if current_collider is Gadget:
-				if current_collider != Dwelt.selected_gadget:
-					Dwelt.update_selected_gadget(current_collider)
-			else: Dwelt.update_selected_gadget(null)
+				Dwelt.update_selected_gadget(current_collider)
+			else:
+				Dwelt.update_selected_gadget(null)
 			Dwelt.clicked_collision_object.emit(current_collider)

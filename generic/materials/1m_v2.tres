@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1i03m16nva2f"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://lib/gadget/materials/shaders/gadget.gdshader" id="1_xnkin"]
+[ext_resource type="Texture2D" uid="uid://c8er0wmrrj08p" path="res://generic/materials/textures/1m_diff.jpg" id="2_oc6xw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xnkin")
+shader_parameter/uv_scale = 1.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_oc6xw")
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0

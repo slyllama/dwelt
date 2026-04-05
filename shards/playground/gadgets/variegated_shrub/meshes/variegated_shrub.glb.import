@@ -41,8 +41,8 @@ _subresources={
 "materials": {
 "variegated_leaf": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://shards/playground/gadgets/variegated_shrub/materials/variegated_shrub.tres",
-"use_external/path": "uid://gxctkk2lv2an"
+"use_external/fallback_path": "res://shards/playground/gadgets/variegated_shrub/materials/leaf.tres",
+"use_external/path": "uid://dly823oo7rbri"
 }
 }
 }

@@ -19,4 +19,4 @@ metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_dfkn4")
 
-[node name="FanPalm" parent="." unique_id=1045484574 instance=ExtResource("5_2kac4")]
+[node name="FanPalm" parent="." unique_id=159511341 instance=ExtResource("5_2kac4")]

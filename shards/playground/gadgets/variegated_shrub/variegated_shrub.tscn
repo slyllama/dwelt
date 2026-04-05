@@ -19,4 +19,4 @@ metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_dfkn4")
 
-[node name="VariegatedShrub" parent="." unique_id=807484433 instance=ExtResource("2_v2im6")]
+[node name="VariegatedShrub" parent="." unique_id=306290645 instance=ExtResource("2_v2im6")]

@@ -2,19 +2,17 @@ class_name HoverHandler extends Node
 # The HoverHandler is responsibly for correctly highlighting gadgets when the
 # player hovers over them with the mouse
 
-@export var hover_model: Node3D:
-	set(_hover_model):
-		hover_model = _hover_model
-
-var materials: Array[StandardMaterial3D]
+# WARNING: these must be set before adding the child
+@export var hover_model: Node3D
+@export var hover_shape: StaticBody3D
 
 func hover() -> void:
-	for _m: StandardMaterial3D in materials:
-		_m.albedo_color = Color(1.1, 1.1, 1.1)
+	for _n: MeshInstance3D in get_mesh_instances():
+		_n.set_instance_shader_parameter("highlight", true)
 
 func unhover() -> void:
-	for _m: StandardMaterial3D in materials:
-		_m.albedo_color = Color(1, 1, 1)
+	for _n: MeshInstance3D in get_mesh_instances():
+		_n.set_instance_shader_parameter("highlight", false)
 
 func get_mesh_instances() -> Array[MeshInstance3D]:
 	var mesh_instances: Array[MeshInstance3D] = []
@@ -25,13 +23,7 @@ func get_mesh_instances() -> Array[MeshInstance3D]:
 	return(mesh_instances)
 
 func _ready() -> void:
-	# Append all unique materials to the array
-	for _n: MeshInstance3D in get_mesh_instances():
-			if !_n.get_active_material(0) in materials:
-				materials.append(_n.get_active_material(0))
-	
 	# Connect UI input events
-	if get_parent() is StaticBody3D:
-		var _parent: StaticBody3D = get_parent()
-		_parent.mouse_entered.connect(hover)
-		_parent.mouse_exited.connect(unhover)
+	if hover_shape:
+		hover_shape.mouse_entered.connect(hover)
+		hover_shape.mouse_exited.connect(unhover)

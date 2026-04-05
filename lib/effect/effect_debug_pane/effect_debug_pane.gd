@@ -11,8 +11,12 @@ func _ready() -> void:
 	
 	if Engine.is_editor_hint(): return
 	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
+		%DebugText.text = ""
 		if gadget:
-			effect_manager = gadget.effect_manager)
+			effect_manager = gadget.effect_manager
+			if !effect_manager:
+				%DebugText.text = "No registered effect manager."
+		else: effect_manager = null)
 
 func _process(_delta: float) -> void:
 	super(_delta)
