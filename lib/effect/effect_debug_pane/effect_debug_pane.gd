@@ -12,10 +12,14 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
 		%DebugText.text = ""
+		%AddDurationEffect.disabled = true
+		%AddQtyEffect.disabled = true
 		if gadget:
 			effect_manager = gadget.effect_manager
-			if !effect_manager:
-				%DebugText.text = "No registered effect manager."
+			if effect_manager:
+				%AddDurationEffect.disabled = false
+				%AddQtyEffect.disabled = false
+			else: %DebugText.text = "No registered effect manager."
 		else: effect_manager = null)
 
 func _process(_delta: float) -> void:
@@ -45,9 +49,8 @@ func _on_add_qty_effect_pressed() -> void:
 		effect_manager.add_effect(load(
 			"res://test_quantity_effect.tres"))
 
-func _on_clear_pressed() -> void:
-	effect_manager = null
-
 func _on_set_to_player_pressed() -> void:
 	effect_manager = Dwelt.player_effect_manager
-	Dwelt.update_selected_gadget(null)
+	#Dwelt.update_selected_gadget(null)
+	%AddDurationEffect.disabled = false
+	%AddQtyEffect.disabled = false

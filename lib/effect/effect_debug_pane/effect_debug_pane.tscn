@@ -22,33 +22,33 @@ visible = false
 layout_mode = 2
 text = "Set To Player Effect Manager"
 
-[node name="Clear" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=174601518]
+[node name="AddDurationEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=887119477]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Clear Effect Manager"
-
-[node name="AddDurationEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=887119477]
-layout_mode = 2
+disabled = true
 text = "Add Timed Effect"
 
-[node name="AddQtyEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1119133114]
+[node name="AddQtyEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1119133114]
+unique_name_in_owner = true
 layout_mode = 2
+disabled = true
 text = "Add Quantity Effect"
 
-[node name="Padding3" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1722611918]
+[node name="Padding3" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1722611918]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="EffectCardManager" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=1169365333 instance=ExtResource("3_3p2l0")]
+[node name="EffectCardManager" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1169365333 instance=ExtResource("3_3p2l0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Padding2" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="9" unique_id=791016531]
+[node name="Padding2" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=791016531]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="DebugText" type="RichTextLabel" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="10" unique_id=1945448346]
+[node name="DebugText" type="RichTextLabel" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="9" unique_id=1945448346]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_3wf8i")
@@ -59,6 +59,5 @@ fit_content = true
 position = Vector2(300, 278)
 
 [connection signal="pressed" from="Box/SetToPlayer" to="." method="_on_set_to_player_pressed"]
-[connection signal="pressed" from="Box/Clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="Box/AddDurationEffect" to="." method="_on_add_timed_effect_pressed"]
 [connection signal="pressed" from="Box/AddQtyEffect" to="." method="_on_add_qty_effect_pressed"]
