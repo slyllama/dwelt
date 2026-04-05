@@ -6,7 +6,7 @@ class_name SettingsSelector extends HBoxContainer
 @export var options: Array[String] = []
 @export var title: String
 
-@onready var arrow_texture := load("res://lib/settings/settings_ui_element/textures/arrow.png")
+@onready var arrow_texture := load("res://lib/ui/ui_pane/textures/arrow.png")
 @onready var title_label := Label.new()
 @onready var left_button := TextureButton.new()
 @onready var value_label := Label.new()
@@ -33,16 +33,16 @@ func _ready() -> void:
 	left_button.texture_normal = arrow_texture
 	left_button.ignore_texture_size = true
 	left_button.stretch_mode = TextureButton.STRETCH_SCALE
-	left_button.custom_minimum_size = Vector2(12.0, 24.0)
+	left_button.custom_minimum_size = Vector2(12.0, 18.0)
 	right_button.texture_normal = arrow_texture
 	right_button.flip_h = true
 	right_button.ignore_texture_size = true
 	right_button.stretch_mode = TextureButton.STRETCH_SCALE
-	right_button.custom_minimum_size = Vector2(12.0, 24.0)
+	right_button.custom_minimum_size = Vector2(12.0, 18.0)
 	
 	# Right-most padding setup
 	right_padding.color = Color(0.0, 0.0, 0.0, 0.0)
-	right_padding.custom_minimum_size.x = 4.0
+	right_padding.custom_minimum_size.x = 1.0
 	
 	# Add children
 	add_child(title_label)

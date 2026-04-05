@@ -1,3 +1,4 @@
+@tool
 class_name SettingsCheckButton extends CheckButton
 
 @export var setting_id: String
@@ -12,6 +13,8 @@ func _ready() -> void:
 	if !setting_id:
 		queue_free()
 		return
+	
+	if Engine.is_editor_hint(): return
 	
 	pressed.connect(func() -> void:
 		if button_pressed: Settings.apply_setting(setting_id, "true")

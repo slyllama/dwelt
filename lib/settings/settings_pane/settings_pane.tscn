@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
 [ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
 [ext_resource type="Script" uid="uid://c7haqafm4mwf0" path="res://lib/settings/settings_ui_element/settings_selector.gd" id="4_85e62"]
+[ext_resource type="Script" uid="uid://hpst6xoekyfs" path="res://lib/settings/settings_ui_element/settings_slider.gd" id="7_k5u3j"]
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 offset_right = 360.0
@@ -139,7 +140,15 @@ options = Array[String](["low", "medium", "high"])
 title = "Draw distance"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="12" unique_id=1871284538]
+[node name="Volume" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="12" unique_id=22502718]
+layout_mode = 2
+theme_override_constants/separation = 7
+script = ExtResource("7_k5u3j")
+setting_id = "volume"
+title = "Overall volume"
+metadata/_custom_type_script = "uid://hpst6xoekyfs"
+
+[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="13" unique_id=1871284538]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -156,6 +165,9 @@ text = "Reset To Default"
 [node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1169901860]
 layout_mode = 2
 text = "Quit Game"
+
+[node name="BorderEffect" parent="." index="2" unique_id=599452808]
+position = Vector2(280, 278)
 
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Low" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_low_pressed"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Medium" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_medium_pressed"]

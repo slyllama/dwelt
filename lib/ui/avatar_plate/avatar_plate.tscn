@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cbnsyaydo0yjw" path="res://lib/ui/avatar_plate/textures/base.png" id="1_j6pvl"]
 [ext_resource type="Texture2D" uid="uid://dv3btwwdi83l5" path="res://lib/ui/avatar_plate/textures/ring.png" id="2_fk1xt"]
+[ext_resource type="Texture2D" uid="uid://n88dgbrkgss2" path="res://lib/ui/avatar_plate/textures/splash.png" id="4_eg00k"]
 [ext_resource type="Texture2D" uid="uid://73dtpnsrn01b" path="res://lib/ui/avatar_plate/textures/foxxo.png" id="4_urcp2"]
+[ext_resource type="Texture2D" uid="uid://d3s6xvyx3h3jw" path="res://lib/ui/avatar_plate/textures/nebula.jpg" id="5_yxxjm"]
 
 [sub_resource type="Animation" id="Animation_fk1xt"]
 length = 0.001
@@ -43,6 +45,25 @@ _data = {
 &"rotate": SubResource("Animation_o5nup")
 }
 
+[sub_resource type="Curve" id="Curve_afylm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16415659, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.4764614, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bp8gh"]
+curve = SubResource("Curve_afylm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_afylm"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.1999999
+alpha_curve = SubResource("CurveTexture_bp8gh")
+
 [node name="AvatarPlate" type="TextureRect" unique_id=1901079431]
 custom_minimum_size = Vector2(205, 205)
 texture = ExtResource("1_j6pvl")
@@ -71,3 +92,14 @@ autoplay = &"rotate"
 position = Vector2(103, 101)
 scale = Vector2(0.3310547, 0.3310547)
 texture = ExtResource("4_urcp2")
+
+[node name="FXParticles" type="GPUParticles2D" parent="." unique_id=848129949]
+clip_children = 1
+z_index = -1
+position = Vector2(101, 97)
+texture = ExtResource("4_eg00k")
+process_material = SubResource("ParticleProcessMaterial_afylm")
+
+[node name="Nebula" type="Sprite2D" parent="FXParticles" unique_id=1332426616]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_yxxjm")

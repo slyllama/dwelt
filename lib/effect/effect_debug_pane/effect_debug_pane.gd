@@ -46,3 +46,4 @@ func _on_clear_pressed() -> void:
 
 func _on_set_to_player_pressed() -> void:
 	effect_manager = Dwelt.player_effect_manager
+	Dwelt.update_selected_gadget(null)
