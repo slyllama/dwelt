@@ -49,6 +49,13 @@ func _ready() -> void:
 			register_pane(child)
 	update_draw_order()
 
+func _input(_event: InputEvent) -> void:
+	# Close the top-most pane
+	if Input.is_action_just_pressed("ui_cancel") and panes.size() > 0:
+		var top_pane: UIPane = panes[panes.size() - 1]
+		if top_pane.closeable:
+			close_pane(top_pane)
+
 func _on_child_entered_tree(node: Node) -> void:
 	if node is UIPane:
 		register_pane(node)

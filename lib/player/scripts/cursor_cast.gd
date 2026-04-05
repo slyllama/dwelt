@@ -32,7 +32,8 @@ func _input(event: InputEvent) -> void:
 		if get_window().gui_get_hovered_control():
 			last_click_in_ui = true
 	if Input.is_action_just_released("left_click"):
-		if !last_click_in_ui:
+		# Didn't start *or* end in UI
+		if !last_click_in_ui and !get_window().gui_get_hovered_control():
 			if current_collider is Gadget:
 				Dwelt.update_selected_gadget(current_collider)
 			else:

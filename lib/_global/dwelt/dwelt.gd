@@ -12,6 +12,8 @@ var selected_gadget: Gadget
 # Global signal bus
 signal clicked_collision_object(object: CollisionObject3D)
 signal click_sound_requested
+signal camera_pan_started
+signal camera_pan_ended
 signal selected_gadget_changed
 
 func update_selected_gadget(gadget: Gadget) -> void:

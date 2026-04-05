@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dphe4e6etfimm" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="10_panat"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
+[ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bly2c"]
@@ -149,6 +150,20 @@ offset_bottom = 180.0
 mouse_filter = 0
 frame_duration = 0.035
 
+[node name="PreventClicks" type="ColorRect" parent="Override" unique_id=1207694925]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("15_asrt8")
+
+[node name="CDTimer" type="Timer" parent="Override/PreventClicks" unique_id=1196351261]
+unique_name_in_owner = true
+wait_time = 0.06
+one_shot = true
+
 [node name="ScreenshotManager" type="Node" parent="." unique_id=449517999]
 unique_name_in_owner = true
 script = ExtResource("13_2eonm")
@@ -160,3 +175,4 @@ stream = ExtResource("14_6rdt5")
 [connection signal="gui_input" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftMenu/Screenshot" to="." method="_on_screenshot_pressed"]
 [connection signal="pressed" from="TopLeftMenu/DevMenu" to="." method="_on_dev_menu_pressed"]
+[connection signal="timeout" from="Override/PreventClicks/CDTimer" to="Override/PreventClicks" method="_on_cd_timer_timeout"]
