@@ -47,3 +47,7 @@ func _ready() -> void:
 	# Apply all settings now that each node has had a chance to load
 	await get_tree().process_frame
 	Settings.apply_all_settings()
+	
+	# Update visual displays of currencies
+	for _currency_id: String in Save.save.currencies:
+		Dwelt.currency_updated.emit(_currency_id)

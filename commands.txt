@@ -2,10 +2,14 @@ Gadgets
 	/savegadgets	[GadgetManager]		Save gadgets to file
 	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload save
 
+Currencies
+	/
+
 General commands
 	/hello			[DebugInput]		Print a test into debug input
 	/pause			[Dwelt]				Pause the game
 	/playvoice		[Player/Sound]		Play a random voice effect
-	/resetpos		[Shard]			Reset player position
+	/resetpos		[Shard]				Reset player position
+	/save			[Save]				Save the game to file
 	/testpane		[UIPaneManager]		Spawn a test UIPane
 	/unpause		[Dwelt]				Resume the game

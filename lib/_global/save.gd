@@ -7,6 +7,12 @@ const DEFAULT_SAVE := {
 		"test_gadget": [
 			{ "position": "3.00, 3.00, 3.00" }
 		]
+	},
+	"currencies": {
+		"kinetic": "0",
+		"elemental": "0",
+		"verdant": "0",
+		"arcane": "0"
 	}
 }
 
@@ -30,6 +36,9 @@ func save_file() -> void:
 	_f.close()
 
 func _ready() -> void:
+	Utils.debug_sent.connect(func(string: String) -> void:
+		if string == "/save": save_file())
+	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_file()
 	save_file()
