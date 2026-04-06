@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://8bjwvxeepfno"]
+
+[ext_resource type="Texture2D" uid="uid://b4r6oqg0n0xma" path="res://lib/ui/hud/flash/textures/flash.png" id="1_5y1sr"]
+[ext_resource type="Script" uid="uid://d00158l4nfp08" path="res://lib/ui/hud/flash/flash.gd" id="1_264f4"]
+
+[sub_resource type="Animation" id="Animation_5y1sr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Big:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Small:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_264f4"]
+resource_name = "flash"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Big:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Small:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.7453293]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua3t6"]
+_data = {
+&"RESET": SubResource("Animation_5y1sr"),
+&"flash": SubResource("Animation_264f4")
+}
+
+[node name="Flash" type="Node2D" unique_id=1826635646]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_264f4")
+
+[node name="Big" type="Sprite2D" parent="." unique_id=141823903]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_5y1sr")
+
+[node name="Small" type="Sprite2D" parent="." unique_id=1051315335]
+modulate = Color(1, 1, 1, 0.5882353)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_5y1sr")
+flip_h = true
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=432693656]
+libraries/ = SubResource("AnimationLibrary_ua3t6")
+autoplay = &"flash"
+
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]

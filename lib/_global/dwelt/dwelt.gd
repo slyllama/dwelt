@@ -15,6 +15,7 @@ signal click_sound_requested
 signal currency_updated(currency: String)
 signal camera_pan_started
 signal camera_pan_ended
+signal play_flash(position: Vector2)
 signal selected_gadget_changed
 
 func update_currency(currency_id: String, amount: int) -> bool:

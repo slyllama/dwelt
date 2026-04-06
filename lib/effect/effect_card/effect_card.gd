@@ -7,6 +7,10 @@ class_name EffectCard extends VBoxContainer
 			effect_instance.finished.connect(queue_free)
 			if effect_instance.icon: $Icon.texture = effect_instance.icon
 
+func _ready() -> void:
+	await get_tree().process_frame
+	Dwelt.play_flash.emit($Icon.global_position)
+
 func _process(_delta: float) -> void:
 	if effect_instance:
 		$Text.text = ""

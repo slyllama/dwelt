@@ -8,8 +8,10 @@
 custom_minimum_size = Vector2(0, 48)
 theme_override_constants/separation = 8
 script = ExtResource("1_0isoc")
+metadata/_edit_horizontal_guides_ = [24.0]
 
 [node name="KineticIcon" type="TextureRect" parent="." unique_id=1101486636]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 texture = ExtResource("1_y3e0t")
@@ -22,6 +24,7 @@ layout_mode = 2
 text = "123"
 
 [node name="ElementalIcon" type="TextureRect" parent="." unique_id=92210138]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 texture = ExtResource("1_y3e0t")
@@ -34,6 +37,7 @@ layout_mode = 2
 text = "123"
 
 [node name="VerdantIcon" type="TextureRect" parent="." unique_id=820650541]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 texture = ExtResource("1_y3e0t")
@@ -46,6 +50,7 @@ layout_mode = 2
 text = "123"
 
 [node name="ArcaneIcon" type="TextureRect" parent="." unique_id=1698287199]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 texture = ExtResource("3_a77b5")

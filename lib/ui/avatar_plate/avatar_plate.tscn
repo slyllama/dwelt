@@ -89,6 +89,7 @@ libraries/ = SubResource("AnimationLibrary_urcp2")
 autoplay = &"rotate"
 
 [node name="Test" type="Sprite2D" parent="." unique_id=1237870207]
+visible = false
 position = Vector2(103, 101)
 scale = Vector2(0.3310547, 0.3310547)
 texture = ExtResource("4_urcp2")
