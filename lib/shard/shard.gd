@@ -14,7 +14,13 @@ func _ready() -> void:
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
-			$Player.position = original_player_position)
+			$Player.position = original_player_position
+		elif string == "/debugeffects":
+			if !Dwelt.ui_pane_manager.close_pane_by_id("effect_debug_pane"):
+				var _edp := load("res://lib/effect/effect_debug_pane/effect_debug_pane.tscn")
+				var _effect_debug_pane: UIPane = _edp.instantiate()
+				Dwelt.ui_pane_manager.add_child(_effect_debug_pane)
+				_effect_debug_pane.position = Vector2(32, 42))
 	
 	# Connect settings
 	Settings.setting_applied.connect(func(setting: String, value: String) -> void:

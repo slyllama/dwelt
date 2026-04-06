@@ -43,7 +43,6 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_hu00g")
 theme_override_font_sizes/font_size = 17
-text = "((Tooltip))"
 vertical_alignment = 1
 
 [node name="Affinity" type="TextureRect" parent="Box/Header" unique_id=196555322]

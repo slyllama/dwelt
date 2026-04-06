@@ -15,23 +15,28 @@ text = "Dev Menu"
 layout_mode = 2
 text = "Toggle Debug Overlay"
 
-[node name="ResetPos" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=415190585]
+[node name="DebugEffects" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1940754098]
+layout_mode = 2
+text = "Debug Effects"
+
+[node name="ResetPos" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=415190585]
 layout_mode = 2
 text = "Reset Player Position"
 
-[node name="Gadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1934914775]
+[node name="Gadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1934914775]
 layout_mode = 2
 text = "Gadgets"
 
-[node name="SaveGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=590520629]
+[node name="SaveGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=590520629]
 layout_mode = 2
 text = "Save Gadgets"
 
-[node name="ReloadGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=788527435]
+[node name="ReloadGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=788527435]
 layout_mode = 2
 text = "Reload Gadgets"
 
 [connection signal="pressed" from="Box/DebugOverlay" to="." method="_on_debug_overlay_pressed"]
+[connection signal="pressed" from="Box/DebugEffects" to="." method="_on_debug_effects_pressed"]
 [connection signal="pressed" from="Box/ResetPos" to="." method="_on_reset_pos_pressed"]
 [connection signal="pressed" from="Box/SaveGadgets" to="." method="_on_save_gadgets_pressed"]
 [connection signal="pressed" from="Box/ReloadGadgets" to="." method="_on_reload_gadgets_pressed"]

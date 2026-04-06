@@ -4,6 +4,7 @@ render_mode depth_prepass_alpha, cull_disabled;
 uniform vec4 albedo_colour: source_color = vec4(1.0);
 uniform sampler2D albedo_texture: source_color, filter_linear_mipmap, repeat_enable;
 uniform float uv_scale = 1.0;
+uniform float backlight: hint_range(0.0, 1.0) = 0.0;
 uniform bool uses_wind = true;
 
 instance uniform bool highlight = false;
@@ -32,6 +33,7 @@ void fragment() {
 	ALBEDO = albedo.rgb * albedo_colour.rgb;
 	ROUGHNESS = 1.0;
 	SPECULAR = 0.0;
+	BACKLIGHT = vec3(backlight);
 	ALPHA *= albedo.a;
 	
 	if (highlight == true) { ALBEDO *= 1.5; }

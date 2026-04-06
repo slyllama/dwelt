@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://c3rafrkdjfvbw" path="res://shards/playground/materials/sky.tres" id="5_r4xcf"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
+[ext_resource type="PackedScene" uid="uid://bj6mdkhx2wkbi" path="res://shards/playground/props/bamboo/bamboo.glb" id="10_rfd7c"]
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/playground/props/platform/platform.glb" id="11_r4xcf"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/playground/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
 [ext_resource type="AudioStream" uid="uid://c1n8wgrr1281g" path="res://shards/playground/sounds/ambience.ogg" id="14_5x773"]
@@ -241,3 +242,12 @@ mesh = SubResource("QuadMesh_aut2g")
 
 [node name="Sun" parent="Sky" index="1" unique_id=777693513]
 transform = Transform3D(-0.5348539, 0.42247236, -0.73174345, 2.0890301e-08, 0.8660254, 0.50000006, 0.8449446, 0.26742694, -0.46319702, 0, 2, 0)
+
+[node name="Bamboo" parent="." index="14" unique_id=1545624950 instance=ExtResource("10_rfd7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.39211, 0.27718258, -0.88398093)
+
+[node name="Bamboo3" parent="." index="15" unique_id=546731395 instance=ExtResource("10_rfd7c")]
+transform = Transform3D(-0.95836127, -0.1092762, -0.26382247, -0.113289915, 0.993562, 0, 0.26212397, 0.029888427, -0.96457124, 8.706845, 0.39129108, -2.3201282)
+
+[node name="Bamboo2" parent="." index="16" unique_id=964557519 instance=ExtResource("10_rfd7c")]
+transform = Transform3D(0.05707612, -0.00096238765, 1.0885042, 0.018376399, 1.0898452, 0, -1.0883496, 0.01835118, 0.057084233, 9.725297, 1.8902376, -3.019969)

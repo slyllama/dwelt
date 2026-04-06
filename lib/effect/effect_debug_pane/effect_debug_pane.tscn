@@ -10,13 +10,9 @@ custom_minimum_size = Vector2(380, 380)
 script = ExtResource("2_3wf8i")
 title = "Effect Viewer"
 ui_id = "effect_debug_pane"
-closeable = false
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Effect Viewer"
-
-[node name="Close" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="2" unique_id=1273695005]
-visible = false
 
 [node name="SetToPlayer" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=1594094468]
 layout_mode = 2

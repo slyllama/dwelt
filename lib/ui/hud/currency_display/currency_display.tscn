@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8f73oed1tpub" path="res://lib/ui/hud/currency_display/currency_display.gd" id="1_0isoc"]
 [ext_resource type="Texture2D" uid="uid://ddxqh5vh3x0u7" path="res://lib/ui/ui_pane/textures/unchecked.png" id="1_y3e0t"]
+[ext_resource type="Texture2D" uid="uid://dmqp1fc2h1mff" path="res://lib/ui/hud/currency_display/textures/currency_arcane.png" id="3_a77b5"]
 
 [node name="CurrencyDisplay" type="HBoxContainer" unique_id=1328333989]
 custom_minimum_size = Vector2(0, 48)
@@ -47,7 +48,7 @@ text = "123"
 [node name="ArcaneIcon" type="TextureRect" parent="." unique_id=1698287199]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
-texture = ExtResource("1_y3e0t")
+texture = ExtResource("3_a77b5")
 expand_mode = 1
 stretch_mode = 5
 

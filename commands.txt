@@ -3,9 +3,13 @@ Gadgets
 	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload save
 
 Currencies
-	/
+	/addkinetic=#	[CurrencyDisplay]	Add amount to Kinetic currency
+	/addelemental=#	[CurrencyDisplay]	Add amount to Elemental currency
+	/addverdant=#	[CurrencyDisplay]	Add amount to Verdant currency
+	/addarcane=#	[CurrencyDisplay]	Add amount to Arcane currency
 
 General commands
+	/debugeffects	[Shard]				Debug effects by opening pane
 	/hello			[DebugInput]		Print a test into debug input
 	/pause			[Dwelt]				Pause the game
 	/playvoice		[Player/Sound]		Play a random voice effect

@@ -6,21 +6,24 @@ extends UIPane
 		effect_manager = _effect_manager
 		%EffectCardManager.effect_manager = effect_manager
 
+func update(gadget: Gadget) -> void:
+	%DebugText.text = ""
+	%AddDurationEffect.disabled = true
+	%AddQtyEffect.disabled = true
+	if gadget:
+		effect_manager = gadget.effect_manager
+		if effect_manager:
+			%AddDurationEffect.disabled = false
+			%AddQtyEffect.disabled = false
+		else: %DebugText.text = "No registered effect manager."
+	else: effect_manager = null
+
 func _ready() -> void:
 	super()
 	
 	if Engine.is_editor_hint(): return
-	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
-		%DebugText.text = ""
-		%AddDurationEffect.disabled = true
-		%AddQtyEffect.disabled = true
-		if gadget:
-			effect_manager = gadget.effect_manager
-			if effect_manager:
-				%AddDurationEffect.disabled = false
-				%AddQtyEffect.disabled = false
-			else: %DebugText.text = "No registered effect manager."
-		else: effect_manager = null)
+	Dwelt.selected_gadget_changed.connect(update)
+	update(Dwelt.selected_gadget)
 
 func _process(_delta: float) -> void:
 	super(_delta)
@@ -51,6 +54,5 @@ func _on_add_qty_effect_pressed() -> void:
 
 func _on_set_to_player_pressed() -> void:
 	effect_manager = Dwelt.player_effect_manager
-	#Dwelt.update_selected_gadget(null)
 	%AddDurationEffect.disabled = false
 	%AddQtyEffect.disabled = false

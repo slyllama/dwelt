@@ -37,14 +37,8 @@ func _on_screenshot_gui_input(_event: InputEvent) -> void:
 		%ScreenshotManager.open_folder()
 
 func _on_dev_menu_pressed() -> void:
-	var _pane_open := false
-	for _n: UIPane in %UIPaneManager.get_children():
-		if _n.ui_id == "debug_pane":
-			_pane_open = true
-			%UIPaneManager.close_pane(_n)
-	if !_pane_open:
+	if !%UIPaneManager.close_pane_by_id("debug_pane"):
 		var debug_pane: UIPane = DebugPane.instantiate()
 		%UIPaneManager.add_child(debug_pane)
 		debug_pane.set_anchors_preset(Control.PRESET_CENTER)
-		#debug_pane.move_to_center()
 		debug_pane.position += Vector2(100, 100)

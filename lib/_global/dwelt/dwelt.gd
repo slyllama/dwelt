@@ -1,7 +1,6 @@
 extends Node
 
 const GRAVITY := -9.8
-const CURRENCY_IDS := [ "kinetic", "elemental", "verdant", "noxious" ]
 
 # References
 var camera: Camera3D

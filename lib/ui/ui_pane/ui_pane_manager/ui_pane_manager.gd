@@ -3,14 +3,6 @@ class_name UIPaneManager extends CanvasLayer
 
 var panes: Array[UIPane] = []
 
-# TODO: debug function only to test adding windows
-func test_add_pane() -> void:
-	var _uip: UIPane = load(
-		"res://lib/ui/ui_pane/ui_pane.tscn").instantiate()
-	_uip.title = "Test Pane"
-	_uip.position = Vector2(24, 24)
-	add_child(_uip)
-
 # Registering a UI pane puts it in the drawing queue, ensuring that it gets
 # moved to the front when clicked etc
 func register_pane(pane: UIPane) -> void:
@@ -22,6 +14,14 @@ func register_pane(pane: UIPane) -> void:
 func close_pane(pane: UIPane) -> void:
 	panes.erase(pane)
 	pane.close()
+
+func close_pane_by_id(pane_id: String) -> bool:
+	var _pane_open := false
+	for _n: UIPane in %UIPaneManager.get_children():
+		if _n.ui_id == pane_id:
+			close_pane(_n)
+			_pane_open = true
+	return(_pane_open)
 
 # Visually orders the node hierarchy of UIPanes according to their sorting
 # in the array
@@ -40,10 +40,6 @@ func put_on_top(pane: UIPane) -> void:
 func _ready() -> void:
 	Dwelt.ui_pane_manager = self
 	
-	Utils.debug_sent.connect(func(string: String) -> void:
-		if string == "/testpane":
-			Utils.pdebug("[color=yellow]Spawning test UIPane.[/color]", "UIPaneManager")
-			test_add_pane())
 	for child in get_children():
 		if child is UIPane:
 			register_pane(child)
@@ -59,4 +55,4 @@ func _input(_event: InputEvent) -> void:
 func _on_child_entered_tree(node: Node) -> void:
 	if node is UIPane:
 		register_pane(node)
-		update_draw_order()
+		put_on_top(node)
