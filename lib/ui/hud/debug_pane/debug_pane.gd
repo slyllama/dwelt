@@ -1,6 +1,13 @@
 @tool
 extends UIPane
 
+func _ready() -> void:
+	super()
+	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
+		if Dwelt.gadgets_close_to_player.size() > 0:
+			%CloseGadgets.text = "Current nearby gadget: " + str(Dwelt.gadgets_close_to_player[-1]) + "."
+		else: %CloseGadgets.text = "Current nearby gadget: none.")
+
 func _on_reset_pos_pressed() -> void: Utils.debug_sent.emit("/resetpos")
 func _on_save_gadgets_pressed() -> void: Utils.debug_sent.emit("/savegadgets")
 func _on_reload_gadgets_pressed() -> void: Utils.debug_sent.emit("/reloadgadgets")

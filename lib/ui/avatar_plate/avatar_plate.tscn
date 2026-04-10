@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cbnsyaydo0yjw" path="res://lib/ui/avatar_plate/textures/base.png" id="1_j6pvl"]
 [ext_resource type="Texture2D" uid="uid://dv3btwwdi83l5" path="res://lib/ui/avatar_plate/textures/ring.png" id="2_fk1xt"]
 [ext_resource type="Texture2D" uid="uid://n88dgbrkgss2" path="res://lib/ui/avatar_plate/textures/splash.png" id="4_eg00k"]
-[ext_resource type="Texture2D" uid="uid://73dtpnsrn01b" path="res://lib/ui/avatar_plate/textures/foxxo.png" id="4_urcp2"]
 [ext_resource type="Texture2D" uid="uid://d3s6xvyx3h3jw" path="res://lib/ui/avatar_plate/textures/nebula.jpg" id="5_yxxjm"]
 
 [sub_resource type="Animation" id="Animation_fk1xt"]
@@ -91,8 +90,7 @@ autoplay = &"rotate"
 [node name="Test" type="Sprite2D" parent="." unique_id=1237870207]
 visible = false
 position = Vector2(103, 101)
-scale = Vector2(0.3310547, 0.3310547)
-texture = ExtResource("4_urcp2")
+scale = Vector2(0.32, 0.32)
 
 [node name="FXParticles" type="GPUParticles2D" parent="." unique_id=848129949]
 clip_children = 1

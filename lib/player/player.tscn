@@ -176,6 +176,7 @@ size = Vector2(0.04, 0.04)
 radius = 0.25
 
 [node name="Player" type="CharacterBody3D" unique_id=568758090]
+collision_layer = 3
 script = ExtResource("1_al4t3")
 gravity_damping = 7.0
 

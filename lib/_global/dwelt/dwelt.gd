@@ -7,6 +7,7 @@ var camera: Camera3D
 var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
+var gadgets_close_to_player: Array[Gadget] = []
 var selected_gadget: Gadget
 
 # Global signal bus
@@ -15,6 +16,7 @@ signal click_sound_requested
 signal currency_updated(currency: String)
 signal camera_pan_started
 signal camera_pan_ended
+signal gadgets_close_to_player_changed
 signal play_flash(position: Vector2)
 signal selected_gadget_changed
 
@@ -30,6 +32,8 @@ func update_currency(currency_id: String, amount: int) -> bool:
 
 func update_selected_gadget(gadget: Gadget) -> void:
 	selected_gadget = gadget
+	if selected_gadget:
+		$Click.play()
 	selected_gadget_changed.emit(selected_gadget)
 
 func _init() -> void:
