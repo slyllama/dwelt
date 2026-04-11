@@ -3,7 +3,9 @@ class_name GadgetManager extends Node3D
 func load_gadgets_from_save() -> void:
 	for id: String in Save.save.gadgets:
 		if !id in GadgetData.DATA:
-			Utils.pdebug("Couldn't load gadget '" + id + "' because it could not be found in GadgetData.DATA.", "GadgetManager")
+			Utils.pdebug("Couldn't load gadget '" + id
+				+ "' because it could not be found in GadgetData.DATA."
+				, "GadgetManager")
 			continue
 		
 		# Get the list of all gadgets in the shard with the same ID
@@ -32,11 +34,13 @@ func load_gadgets_from_save() -> void:
 			
 			var _scene: Gadget = _async_loader.add_scene(
 				_scene_position, _scene_rotation, _scene_scale)
-			print(_scene)
+			
+			# TODO: apply saved effects here
+			
 		# Gracefully free the AsyncLoader as it is no longer needed
 		_async_loader.close()
 
-func save_gadgets() -> void:
+func write_gadgets_to_save() -> void:
 	var _gadgets := {} # will be populated before being applied to the save
 	for _n: Node in get_children():
 		if _n is Gadget:
@@ -46,18 +50,24 @@ func save_gadgets() -> void:
 				"scale": Utils.vec3_to_str(_n.scale)
 			}
 			
+			if _n.effect_manager:
+				_data["effect_data"] = _n.effect_manager.get_effects_as_dict()
+			
 			if !_n.gadget_id in _gadgets: _gadgets[_n.gadget_id] = []
 			_gadgets[_n.gadget_id].append(_data)
 	Save.save.gadgets = _gadgets.duplicate()
-	Save.save_file()
 
 func _ready() -> void:
+	Dwelt.gadget_manager = self
+	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/reloadgadgets":
 			for _n: Node in get_children(): _n.queue_free()
+			Dwelt.gadgets_reloaded.emit()
 			load_gadgets_from_save()
 		elif string == "/savegadgets":
-			save_gadgets())
+			write_gadgets_to_save()
+			Save.save_file())
 	
 	if "gadgets" in Save.save:
 		load_gadgets_from_save()

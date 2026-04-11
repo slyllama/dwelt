@@ -4,7 +4,6 @@ class_name Gadget extends StaticBody3D
 @export var gadget_id := "gadget"
 @export var model: Node3D
 @export var effect_manager: EffectManager
-@export var interactable := false
 
 @export_category("Culling")
 @export var cull_distance := 5.0:
@@ -16,6 +15,8 @@ class_name Gadget extends StaticBody3D
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
 
+# Gets an effect by ID if the gadget has an effect manager which includes that
+# effect = or returns `null` otherwise
 func get_effect(effect_id: String) -> Variant:
 	if effect_manager:
 		if effect_id in effect_manager.active_effects:
@@ -35,10 +36,10 @@ func _ready() -> void:
 		hover_handler.hover_model = model
 		add_child(hover_handler)
 	
-	if interactable:
-		var _proximity_area := ProximityArea.new()
-		add_child(_proximity_area)
-	
+	# Uses the inclusion of an effect manager to determine if the gadget
+	# is interactive (i.e., needs to check the player's proximity to it)
 	# TODO: right now, no gadget is player-owned
 	if effect_manager:
+		var _proximity_area := ProximityArea.new()
+		add_child(_proximity_area)
 		effect_manager.add_effect(load("res://effects/enemy_owns.tres").duplicate())

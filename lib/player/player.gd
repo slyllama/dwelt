@@ -24,6 +24,8 @@ func _ready() -> void:
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)
 	
+	global_position = Utils.str_to_vec3(Save.save.player_position)
+	
 	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 
 func _physics_process(_delta: float) -> void:
@@ -74,3 +76,5 @@ func _physics_process(_delta: float) -> void:
 	# Send animation parameters to the mesh for animation blending
 	$RobotMesh.forward_blend = %InputHandler.direction.z
 	$RobotMesh.strafe_blend = %InputHandler.direction.x
+	
+	Save.save.player_position = Utils.vec3_to_str(global_position)

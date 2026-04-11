@@ -22,7 +22,11 @@ func _ready() -> void:
 	super()
 	
 	if Engine.is_editor_hint(): return
+	
 	Dwelt.selected_gadget_changed.connect(update)
+	# Clear selection if gadgets are reloaded
+	Dwelt.gadgets_reloaded.connect(update.bind(null))
+	
 	update(Dwelt.selected_gadget)
 
 func _process(_delta: float) -> void:

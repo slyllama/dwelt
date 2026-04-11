@@ -13,7 +13,8 @@ const DEFAULT_SAVE := {
 		"elemental": "0",
 		"verdant": "0",
 		"arcane": "0"
-	}
+	},
+	"player_position": "0.00, 1.00, 0.00"
 }
 
 @onready var save := DEFAULT_SAVE.duplicate()

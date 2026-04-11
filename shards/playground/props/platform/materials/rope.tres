@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmtgrdiqsbiqa"]
-
-[ext_resource type="Texture2D" uid="uid://bqobo3itkpk6b" path="res://shards/playground/props/platform/materials/textures/rope_diff.jpg" id="1_rpfii"]
-
-[resource]
-specular_mode = 2
-albedo_texture = ExtResource("1_rpfii")
-uv1_scale = Vector3(128, 128, 128)

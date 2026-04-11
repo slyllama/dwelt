@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const TARGET_SCENE = "res://shards/playground/playground.tscn"
+const TARGET_SCENE = "res://shards/acidfields/acidfields.tscn"
 var target_scene := TARGET_SCENE
 
 var status: int

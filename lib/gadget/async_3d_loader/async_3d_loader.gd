@@ -49,3 +49,4 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_FAILED:
 			Utils.pdebug("Failed thread loading of '" + path + "': THREAD_LOAD_FAILED.",
 				"Async3DLoader")
+			queue_free()

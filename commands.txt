@@ -1,6 +1,6 @@
 Gadgets
-	/savegadgets	[GadgetManager]		Save gadgets to file
-	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload save
+	/savegadgets	[GadgetManager]		Save only gadgets to file
+	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload them from save
 
 Currencies
 	/addkinetic=#	[CurrencyDisplay]	Add amount to Kinetic currency

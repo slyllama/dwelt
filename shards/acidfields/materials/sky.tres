@@ -1,0 +1,52 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3rafrkdjfvbw"]
+
+[ext_resource type="Shader" uid="uid://v0s6nhv18rer" path="res://shards/acidfields/materials/shaders/sky.gdshader" id="1_j1dlv"]
+[ext_resource type="Texture2D" uid="uid://ent8wjbs6kn3" path="res://shards/acidfields/materials/textures/stars.jpg" id="2_78v5e"]
+
+[sub_resource type="Gradient" id="Gradient_j1dlv"]
+offsets = PackedFloat32Array(0, 0.4, 0.47)
+colors = PackedColorArray(0.05, 0.05, 0, 1, 0.18727139, 0.18727133, 7.219613e-08, 1, 0.29140002, 0.31, 0.17050001, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_78v5e"]
+gradient = SubResource("Gradient_j1dlv")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wlwgv"]
+offsets = PackedFloat32Array(0.4, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4yx2y"]
+noise_type = 2
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oqmv2"]
+width = 64
+height = 128
+noise = SubResource("FastNoiseLite_4yx2y")
+color_ramp = SubResource("Gradient_wlwgv")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_78v5e"]
+offsets = PackedFloat32Array(0, 0.4, 0.62795275)
+colors = PackedColorArray(0, 0, 0, 1, 0.10037879, 0.10037879, 0.10037879, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wlwgv"]
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4yx2y"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_wlwgv")
+color_ramp = SubResource("Gradient_78v5e")
+seamless = true
+
+[resource]
+shader = ExtResource("1_j1dlv")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_78v5e")
+shader_parameter/sky_patina_texture = SubResource("NoiseTexture2D_oqmv2")
+shader_parameter/sky_patina_strength = 0.025
+shader_parameter/sky_patina_time_scale = 0.02
+shader_parameter/stars_texture = ExtResource("2_78v5e")
+shader_parameter/stars_patina_texture = SubResource("NoiseTexture2D_4yx2y")
+shader_parameter/stars_uv_scale = 24.0
+shader_parameter/stars_patina_uv_scale = 2.0

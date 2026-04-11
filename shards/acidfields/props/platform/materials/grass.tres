@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://mx5gu3jygscr"]
+
+[ext_resource type="Shader" uid="uid://dfecohq2prkr0" path="res://generic/materials/shaders/foliage.gdshader" id="1_gm55n"]
+[ext_resource type="Texture2D" uid="uid://ddwvng7xqwc7o" path="res://shards/acidfields/props/platform/materials/textures/grass_diff.png" id="2_1qqgu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gm55n")
+shader_parameter/modulate = Color(0.6864, 0.8, 0.23200002, 1)
+shader_parameter/foliage_texture = ExtResource("2_1qqgu")
+shader_parameter/alpha_scissor_threshold = 0.90000004275
+shader_parameter/normal_map_depth = 1.0
+shader_parameter/fade_length = 18.0
+shader_parameter/uses_wind = true

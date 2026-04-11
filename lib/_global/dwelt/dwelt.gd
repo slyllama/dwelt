@@ -4,6 +4,7 @@ const GRAVITY := -9.8
 
 # References
 var camera: Camera3D
+var gadget_manager: GadgetManager
 var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
@@ -18,6 +19,7 @@ signal camera_pan_started
 signal camera_pan_ended
 signal claim_requested # emitted by the HUD when the player requests to claim a gadget
 signal gadgets_close_to_player_changed
+signal gadgets_reloaded # used to clear effects panes, etc
 signal play_flash(position: Vector2)
 signal selected_gadget_changed
 
@@ -51,8 +53,14 @@ func _ready() -> void:
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/pause": get_tree().paused = true
-		elif string == "/unpause": get_tree().paused = false)
+		elif string == "/unpause": get_tree().paused = false
+		
+		elif string == "/geteffectsdict":
+			if selected_gadget:
+				if selected_gadget.effect_manager:
+					Utils.pdebug(str(selected_gadget.effect_manager.get_effects_as_dict())))
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Dwelt.gadget_manager.write_gadgets_to_save()
 		Save.save_file()

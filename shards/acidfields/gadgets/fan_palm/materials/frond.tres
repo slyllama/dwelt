@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://clqio4eoo82as"]
+
+[ext_resource type="Shader" uid="uid://him1uppv5for" path="res://lib/gadget/materials/shaders/gadget_foliage.gdshader" id="1_7t183"]
+[ext_resource type="Texture2D" uid="uid://b7tn6gjcaqb1s" path="res://shards/acidfields/gadgets/fan_palm/materials/textures/frond_diff.png" id="1_mhxxb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7t183")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("1_mhxxb")
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv_scale = 1.0

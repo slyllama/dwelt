@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://7py5luj3swnk"]
+
+[ext_resource type="Texture2D" uid="uid://cx52uy2jw8dlv" path="res://shards/acidfields/props/platform/materials/textures/pulley_diff.jpg" id="1_li6ry"]
+[ext_resource type="Texture2D" uid="uid://btsi3vu07sb4u" path="res://shards/acidfields/props/platform/materials/textures/pulley_norm.jpg" id="2_xtoyj"]
+[ext_resource type="Texture2D" uid="uid://dy46fmfn0w33s" path="res://shards/acidfields/props/platform/materials/textures/pulley_rough.jpg" id="3_qkqtw"]
+
+[resource]
+albedo_texture = ExtResource("1_li6ry")
+roughness_texture = ExtResource("3_qkqtw")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("2_xtoyj")
