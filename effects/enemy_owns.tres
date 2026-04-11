@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://tbr2roudciyf"]
+
+[ext_resource type="Script" uid="uid://dcpt2q4l5o0ue" path="res://lib/effect/effect_instance/effect_instance.gd" id="1_nm4dn"]
+
+[resource]
+script = ExtResource("1_nm4dn")
+id = "enemy_owned"
+title = "Owned By Enemy"
+type = 1
+visible_to_player = false
+hide_single_quantity = true
+total_quantity = 1
+metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

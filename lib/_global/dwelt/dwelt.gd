@@ -16,9 +16,16 @@ signal click_sound_requested
 signal currency_updated(currency: String)
 signal camera_pan_started
 signal camera_pan_ended
+signal claim_requested # emitted by the HUD when the player requests to claim a gadget
 signal gadgets_close_to_player_changed
 signal play_flash(position: Vector2)
 signal selected_gadget_changed
+
+# Return the gadget closest to the player
+func get_closest_gadget() -> Variant:
+	if gadgets_close_to_player.size() > 0:
+		return(gadgets_close_to_player[-1])
+	else: return(null)
 
 func update_currency(currency_id: String, amount: int) -> bool:
 	var successful := false

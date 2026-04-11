@@ -16,6 +16,13 @@ class_name Gadget extends StaticBody3D
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
 
+func get_effect(effect_id: String) -> Variant:
+	if effect_manager:
+		if effect_id in effect_manager.active_effects:
+			return(effect_manager.active_effects[effect_id])
+		else: return(null)
+	else: return(null)
+
 func _ready() -> void:
 	set_collision_layer_value(2, true)
 	
@@ -31,3 +38,7 @@ func _ready() -> void:
 	if interactable:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
+	
+	# TODO: right now, no gadget is player-owned
+	if effect_manager:
+		effect_manager.add_effect(load("res://effects/enemy_owns.tres").duplicate())

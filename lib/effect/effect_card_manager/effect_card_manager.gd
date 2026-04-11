@@ -27,11 +27,12 @@ func on_effect_manager_change() -> void:
 	
 	if !effect_manager: return
 	
-	for _e in effect_manager.active_effects:
+	for _e: String in effect_manager.active_effects:
 		var effect := effect_manager.active_effects[_e]
-		var card: VBoxContainer = EffectCardScene.instantiate()
-		card.effect_instance = effect
-		add_child(card)
+		if effect.visible_to_player:
+			var card: VBoxContainer = EffectCardScene.instantiate()
+			card.effect_instance = effect
+			add_child(card)
 	
 	# Otherwise there is a new effect manager, and its signals need to be connected
 	effect_manager.effect_added.connect(on_effect_added)

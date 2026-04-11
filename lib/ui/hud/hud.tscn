@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
+[ext_resource type="Script" uid="uid://755a2k1vwbqq" path="res://lib/ui/hud/scripts/primary_buttons.gd" id="6_nfgqh"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
@@ -74,6 +75,32 @@ offset_top = -212.0
 offset_right = 212.0
 offset_bottom = -7.0
 grow_vertical = 0
+
+[node name="PrimaryButtons" type="VBoxContainer" parent="." unique_id=1148908027]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -310.0
+offset_right = 76.0
+offset_bottom = -224.0
+grow_vertical = 0
+script = ExtResource("6_nfgqh")
+
+[node name="Build" type="Button" parent="PrimaryButtons" unique_id=2059217541]
+layout_mode = 2
+disabled = true
+text = "Build"
+
+[node name="Claim" type="Button" parent="PrimaryButtons" unique_id=587869138]
+layout_mode = 2
+disabled = true
+text = "Claim"
+
+[node name="Interact" type="Button" parent="PrimaryButtons" unique_id=1169748558]
+layout_mode = 2
+disabled = true
+text = "Interact"
 
 [node name="PlayerEffects" parent="." unique_id=1169365333 instance=ExtResource("15_bly2c")]
 unique_name_in_owner = true
@@ -202,6 +229,7 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
+[connection signal="pressed" from="PrimaryButtons/Claim" to="PrimaryButtons" method="_on_claim_pressed"]
 [connection signal="pressed" from="TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]

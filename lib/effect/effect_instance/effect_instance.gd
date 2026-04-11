@@ -9,6 +9,7 @@ enum Type {DURATION, QUANTITY}
 @export_multiline() var description := "((Description))"
 @export var icon := load("res://effects/icons/no_icon.jpg")
 @export var type: Type
+@export var visible_to_player := true
 
 @export_category("Effect State")
 @export var duration_stacks := false
