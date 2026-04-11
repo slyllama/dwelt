@@ -30,7 +30,9 @@ func load_gadgets_from_save() -> void:
 			if "scale" in gadget_data:
 				_scene_scale = Utils.str_to_vec3(gadget_data.scale)
 			
-			_async_loader.add_scene(_scene_position, _scene_rotation, _scene_scale)
+			var _scene: Gadget = _async_loader.add_scene(
+				_scene_position, _scene_rotation, _scene_scale)
+			print(_scene)
 		# Gracefully free the AsyncLoader as it is no longer needed
 		_async_loader.close()
 

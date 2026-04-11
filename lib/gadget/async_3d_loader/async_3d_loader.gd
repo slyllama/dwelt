@@ -10,12 +10,16 @@ var scene: Node3D
 
 signal loaded()
 
-func add_scene(scene_position: Vector3, scene_rotation: Vector3, scene_scale: Vector3) -> void:
+func add_scene(scene_position: Vector3, scene_rotation: Vector3, scene_scale: Vector3) -> Node3D:
 	if !has_loaded: return
 	scene.position = scene_position
 	scene.rotation = scene_rotation
 	scene.scale = scene_scale
-	get_parent().call_deferred("add_child", scene.duplicate())
+	
+	# Adding a scene asynchronously returns itself
+	var _new_scene := scene.duplicate()
+	get_parent().call_deferred("add_child", _new_scene)
+	return(_new_scene)
 
 func load_scene() -> void:
 	var _pscene: PackedScene = ResourceLoader.load_threaded_get(path)
