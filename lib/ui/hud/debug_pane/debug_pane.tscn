@@ -44,6 +44,7 @@ theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_fonts/font = ExtResource("3_skpqc")
 theme_override_font_sizes/font_size = 12
 text = "Current nearby gadget: none."
+text_overrun_behavior = 5
 
 [connection signal="pressed" from="Box/DebugOverlay" to="." method="_on_debug_overlay_pressed"]
 [connection signal="pressed" from="Box/DebugEffects" to="." method="_on_debug_effects_pressed"]

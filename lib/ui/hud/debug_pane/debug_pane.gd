@@ -3,6 +3,8 @@ extends UIPane
 
 func _ready() -> void:
 	super()
+	if Engine.is_editor_hint(): return
+	
 	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
 		if Dwelt.gadgets_close_to_player.size() > 0:
 			%CloseGadgets.text = "Current nearby gadget: " + str(Dwelt.gadgets_close_to_player[-1]) + "."

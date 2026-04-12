@@ -19,7 +19,3 @@ func _physics_process(_delta: float) -> void:
 		
 		var _length: float = $Orb.global_position.distance_to(target_orb.global_position)
 		$Beam.scale.y = _length
-		
-		#$Beam.global_position = target_orb.global_position
-		#$Beam.look_at($Orb.global_position)
-		#$Beam.rotation_degrees.x += 90.0
