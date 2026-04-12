@@ -14,7 +14,7 @@ script = ExtResource("1_dfkn4")
 gadget_id = "fan_palm"
 model = NodePath("FanPalm")
 player_collision = false
-cull_distance = 10.0
+cull_distance = 15.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="FanPalm" parent="." unique_id=401209323 instance=ExtResource("5_2kac4")]

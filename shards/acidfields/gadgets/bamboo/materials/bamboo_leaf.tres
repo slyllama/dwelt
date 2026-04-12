@@ -9,5 +9,5 @@ shader = ExtResource("1_wijuy")
 shader_parameter/albedo_colour = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("2_8qyrk")
 shader_parameter/uv_scale = 1.0
-shader_parameter/backlight = 0.0
+shader_parameter/backlight = 0.150000007125
 shader_parameter/uses_wind = true

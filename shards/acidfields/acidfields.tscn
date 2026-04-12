@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/acidfields/props/platform/platform.glb" id="11_r4xcf"]
+[ext_resource type="PackedScene" uid="uid://liwnieoeocre" path="res://shards/acidfields/anguished_claw.glb" id="12_41lxu"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/acidfields/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
 [ext_resource type="AudioStream" uid="uid://c1n8wgrr1281g" path="res://shards/acidfields/sounds/ambience.ogg" id="14_5x773"]
 
@@ -220,7 +221,7 @@ scale_offset = Vector3(1, 1.5, 1)
 colour_1 = Color(0.028982915, 0.20619318, 2.4065375e-08, 1)
 colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
-[node name="Platform" parent="." index="11" unique_id=1079043106 instance=ExtResource("11_r4xcf")]
+[node name="Platform" parent="." index="11" unique_id=1369289784 instance=ExtResource("11_r4xcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Dirt" type="Decal" parent="Platform" index="15" unique_id=1053253109]
@@ -243,4 +244,10 @@ cast_shadow = 0
 mesh = SubResource("QuadMesh_aut2g")
 
 [node name="Sun" parent="Sky" index="1" unique_id=777693513]
-transform = Transform3D(-0.5348539, 0.42247236, -0.73174345, 2.0890301e-08, 0.8660254, 0.50000006, 0.8449446, 0.26742694, -0.46319702, 0, 2, 0)
+transform = Transform3D(-0.67355454, 0.36956874, -0.64011186, -7.64024e-09, 0.8660255, 0.5000001, 0.73913753, 0.33677727, -0.5833153, 0, 2, 0)
+
+[node name="AnguishedClaw" parent="." index="14" unique_id=1929017779 instance=ExtResource("12_41lxu")]
+transform = Transform3D(0.43175226, -0.14461313, 0.8903241, 0.31760257, 0.94822395, 0, -0.8442267, 0.28276923, 0.45532736, 5.482811, -0.07383871, 5.812267)
+
+[node name="AnguishedClaw2" parent="." index="15" unique_id=2022575355 instance=ExtResource("12_41lxu")]
+transform = Transform3D(0.025864005, -0.008662999, -0.99962795, 0.31760255, 0.94822395, -1.0683208e-08, 0.9478712, -0.31748438, 0.027276158, 4.2005906, -0.07383919, 8.50834)

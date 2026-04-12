@@ -9,10 +9,10 @@
 load_path = "res://.godot/imported/bg.jpg-f8721b980f81710c91879ea1e62b0f6f.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5h4qd"]
-content_margin_left = 11.0
-content_margin_top = 4.0
-content_margin_right = 11.0
-content_margin_bottom = 14.0
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
 texture = SubResource("CompressedTexture2D_x22yt")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -24,13 +24,14 @@ axis_stretch_vertical = 1
 [node name="EffectTooltip" type="PanelContainer" unique_id=1279715620]
 custom_minimum_size = Vector2(256, 0)
 offset_right = 256.0
-offset_bottom = 76.0
+offset_bottom = 63.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5h4qd")
 script = ExtResource("2_x22yt")
 
 [node name="Box" type="VBoxContainer" parent="." unique_id=1114843925]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Header" type="HBoxContainer" parent="Box" unique_id=1468899910]
 layout_mode = 2
@@ -43,12 +44,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_hu00g")
 theme_override_font_sizes/font_size = 17
 vertical_alignment = 1
-
-[node name="Affinity" type="TextureRect" parent="Box/Header" unique_id=196555322]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Separator" type="TextureRect" parent="Box" unique_id=1635748951]
 modulate = Color(0.8, 0.8, 0.8, 1)
@@ -63,8 +58,9 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 0.78431374)
 theme_override_constants/line_separation = -3
+theme_override_constants/paragraph_separation = 3
 theme_override_fonts/normal_font = ExtResource("5_x22yt")
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 13
 bbcode_enabled = true
 text = "((Description))"
 fit_content = true

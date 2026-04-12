@@ -3,7 +3,9 @@
 [ext_resource type="Shader" uid="uid://clwf2cyvtfkub" path="res://shards/acidfields/materials/shaders/grass_cobble_test.gdshader" id="1_hueml"]
 [ext_resource type="Texture2D" uid="uid://oo7hmk7j7uyw" path="res://shards/acidfields/materials/textures/cobble_diff.jpg" id="2_vmmb5"]
 [ext_resource type="Texture2D" uid="uid://m2ivfxhy7dxf" path="res://shards/acidfields/materials/textures/grass_base_diff.jpg" id="2_x2u64"]
+[ext_resource type="Texture2D" uid="uid://dv0d3t6d1eatt" path="res://shards/acidfields/props/platform/materials/masks/landscape_mask.jpg" id="3_llr42"]
 [ext_resource type="Texture2D" uid="uid://b5co8g64aly" path="res://shards/acidfields/materials/textures/grass_blend_diff.jpg" id="3_vmmb5"]
+[ext_resource type="Texture2D" uid="uid://civxhk5wlmhjw" path="res://shards/acidfields/props/platform/materials/textures/roots_diff.jpg" id="4_1p281"]
 
 [sub_resource type="Gradient" id="Gradient_0nsan"]
 offsets = PackedFloat32Array(0.15, 0.65)
@@ -25,3 +27,8 @@ shader_parameter/cobble_texture = ExtResource("2_vmmb5")
 shader_parameter/blend_mask_texture = SubResource("NoiseTexture2D_gf45x")
 shader_parameter/tint = Color(0.82, 0.82, 0.82, 1)
 shader_parameter/uv_scale = 56.0
+shader_parameter/dirt_mask_texture = ExtResource("3_llr42")
+shader_parameter/dirt_texture = ExtResource("4_1p281")
+shader_parameter/dirt_tint = Color(0.7799021, 0.74731266, 0.6953275, 1)
+shader_parameter/dirt_intensity = 0.750000035625
+shader_parameter/dirt_uv_scale = 72.0
