@@ -34,6 +34,7 @@ func get_effect(effect_id: String) -> Variant:
 	else: return(null)
 
 func update_collision_layers() -> void:
+	set_collision_layer_value(3, true)
 	if player_collision: set_collision_layer_value(1, true)
 	else: set_collision_layer_value(1, false)
 	if pushes_camera: set_collision_layer_value(2, true)

@@ -3,16 +3,15 @@
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_hu00g"]
 [ext_resource type="Script" uid="uid://dpbgc10v1wy38" path="res://lib/effect/effect_tooltip/effect_tooltip.gd" id="2_x22yt"]
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="3_x22yt"]
-[ext_resource type="Texture2D" uid="uid://cwfcbc7lla7ba" path="res://generic/textures/icon_verdant.jpg" id="4_5h4qd"]
 [ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="5_x22yt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x22yt"]
 load_path = "res://.godot/imported/bg.jpg-f8721b980f81710c91879ea1e62b0f6f.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5h4qd"]
-content_margin_left = 7.0
-content_margin_top = 7.0
-content_margin_right = 7.0
+content_margin_left = 11.0
+content_margin_top = 4.0
+content_margin_right = 11.0
 content_margin_bottom = 14.0
 texture = SubResource("CompressedTexture2D_x22yt")
 texture_margin_left = 4.0
@@ -48,7 +47,6 @@ vertical_alignment = 1
 [node name="Affinity" type="TextureRect" parent="Box/Header" unique_id=196555322]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("4_5h4qd")
 expand_mode = 1
 stretch_mode = 5
 
@@ -67,5 +65,6 @@ theme_override_colors/default_color = Color(1, 1, 1, 0.78431374)
 theme_override_constants/line_separation = -3
 theme_override_fonts/normal_font = ExtResource("5_x22yt")
 theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
 text = "((Description))"
 fit_content = true

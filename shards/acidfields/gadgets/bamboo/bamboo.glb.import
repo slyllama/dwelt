@@ -4,17 +4,17 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bj6mdkhx2wkbi"
-path="res://.godot/imported/bamboo.glb-60449568774fcecc787bbfc9eb7e7490.scn"
+path="res://.godot/imported/bamboo.glb-03d71c1c9ac92d3d2202096aba91b783.scn"
 
 [deps]
 
-source_file="res://shards/acidfields/props/bamboo/bamboo.glb"
-dest_files=["res://.godot/imported/bamboo.glb-60449568774fcecc787bbfc9eb7e7490.scn"]
+source_file="res://shards/acidfields/gadgets/bamboo/bamboo.glb"
+dest_files=["res://.godot/imported/bamboo.glb-03d71c1c9ac92d3d2202096aba91b783.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="Bamboo"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "leaf": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://shards/acidfields/props/bamboo/materials/bamboo_leaf.tres",
+"use_external/fallback_path": "res://shards/acidfields/gadgets/bamboo/materials/bamboo_leaf.tres",
 "use_external/path": "uid://flyrglchekgd"
 }
 },

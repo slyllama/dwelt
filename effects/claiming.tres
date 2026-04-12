@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://dcldyoa0jd423"]
+
+[ext_resource type="Script" uid="uid://dcpt2q4l5o0ue" path="res://lib/effect/effect_instance/effect_instance.gd" id="2_12qin"]
+
+[resource]
+script = ExtResource("2_12qin")
+id = "claiming"
+title = "Claiming"
+metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

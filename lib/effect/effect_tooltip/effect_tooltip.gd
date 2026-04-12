@@ -22,6 +22,9 @@ func update_position_offsets() -> void:
 		position_offset.x = -size.x
 	global_position = get_window().get_mouse_position() + position_offset + Vector2(15.0, 15.0)
 
+func _ready() -> void:
+	visible = true
+
 func _process(_delta: float) -> void:
 	# Only show the tooltip if the cursor is in use and a control with an
 	# EffectCard parent is hovered

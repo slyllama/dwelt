@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 		_event_relative = event.relative * view_sensitivity
 	
 	# Handle zoom (if a GUI element isn't being hovered)
-	if !get_window().gui_get_hovered_control():
+	if !get_window().gui_get_hovered_control() or Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
 		if Input.is_action_just_pressed("zoom_in"):
 			view_length -= zoom_increment
 		if Input.is_action_just_pressed("zoom_out"):

@@ -17,7 +17,9 @@ signal move_stopped
 @onready var _initial_y_rotation: float = %Orbit.rotation.y
 
 func _ready() -> void:
-	#Dwelt.player = self
+	Dwelt.claim_requested.connect(func() -> void:
+		%EffectManager.add_effect(load("res://effects/claiming.tres")))
+	
 	Dwelt.player_effect_manager = %EffectManager
 	
 	%Motes.visible = true
@@ -25,7 +27,6 @@ func _ready() -> void:
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)
 	
 	global_position = Utils.str_to_vec3(Save.save.player_position)
-	
 	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 
 func _physics_process(_delta: float) -> void:

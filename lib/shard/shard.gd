@@ -1,8 +1,6 @@
 @icon("res://generic/icons/Shard.svg")
 extends Node3D
 
-@onready var original_player_position: Vector3 = $Player.position
-
 func _set_bus_vol(vol: float) -> void:
 	AudioServer.set_bus_volume_linear(0, vol)
 
@@ -15,7 +13,7 @@ func _ready() -> void:
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
-			$Player.position = original_player_position
+			$Player.position = Vector3(0.0, 2.0, 3.0)
 		elif string == "/debugeffects":
 			if !Dwelt.ui_pane_manager.close_pane_by_id("effect_debug_pane"):
 				var _edp := load("res://lib/effect/effect_debug_pane/effect_debug_pane.tscn")

@@ -6,7 +6,9 @@
 [resource]
 script = ExtResource("1_ns8kn")
 id = "resilience"
-title = "Resilience"
+title = "Core Resilience"
+description = "Enables the claiming, building, and modification of gadgets.
+[color=red]You are resolute and well-equipped, and there is a calm assurance in the unflinching precision of your robotic equations and functions.[/color]"
 icon = ExtResource("1_3k7og")
 type = 1
 hide_single_quantity = true

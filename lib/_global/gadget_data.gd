@@ -1,13 +1,8 @@
 extends Node
 
-const DATA = {
-	"fan_palm": {
-		"path": "res://shards/acidfields/gadgets/fan_palm/fan_palm.tscn"
-	},
-	"test_gadget": {
-		"path": "res://lib/gadget/test_gadget.tscn"
-	},
-	"variegated_shrub": {
-		"path": "res://shards/acidfields/gadgets/variegated_shrub/variegated_shrub.tscn"
-	}
-}
+func get_gadget_path(shard_id: String, gadget_id: String) -> String:
+	var _path := ("res://shards/" + shard_id + "/gadgets/"
+		+ gadget_id + "/" + gadget_id + ".tscn")
+	if FileAccess.file_exists(_path):
+		return(_path)
+	else: return("")

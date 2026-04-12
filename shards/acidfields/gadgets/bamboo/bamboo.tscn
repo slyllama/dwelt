@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://by4h5ijstdgno"]
+
+[ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_tqj1w"]
+[ext_resource type="PackedScene" uid="uid://bj6mdkhx2wkbi" path="res://shards/acidfields/gadgets/bamboo/bamboo.glb" id="2_2h5xp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3hli4"]
+height = 3.8498535
+radius = 0.65283203
+
+[node name="Bamboo" type="StaticBody3D" unique_id=414735243 node_paths=PackedStringArray("model")]
+script = ExtResource("1_tqj1w")
+gadget_id = "bamboo"
+model = NodePath("Bamboo")
+player_collision = false
+cull_distance = 15.0
+metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
+
+[node name="Bamboo" parent="." unique_id=2054255178 instance=ExtResource("2_2h5xp")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=471339380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9249268, 0)
+shape = SubResource("CylinderShape3D_3hli4")
