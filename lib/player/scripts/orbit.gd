@@ -15,6 +15,8 @@ var _last_click_position := Vector2.ZERO
 var _eligible_to_capture := false
 
 func _release(warp_mouse := true) -> void:
+	Dwelt.pan_cooldown = true
+	$PanCD.start()
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_eligible_to_capture = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -91,3 +93,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if _event_relative == _last_event_relative:
 		_event_relative = Vector2.ZERO # prevent runaway orbiting
+
+func _on_pan_cd_timeout() -> void:
+	Dwelt.pan_cooldown = false

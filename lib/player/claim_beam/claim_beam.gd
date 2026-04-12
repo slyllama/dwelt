@@ -30,12 +30,13 @@ func _ready() -> void:
 	await get_tree().process_frame
 	Dwelt.player_effect_manager.effect_added.connect(func(id: String) -> void:
 		if id == "claiming":
+			$Beam.visible = false
+			
 			target = Dwelt.get_closest_gadget()
-			await get_tree().process_frame
-			$Orb.emitting = true
 			target_orb.emitting = true
+			$Orb.emitting = true
+			
 			update()
-			await get_tree().create_timer(0.1).timeout
 			$Beam.visible = true)
 	
 	Dwelt.player_effect_manager.effect_finished.connect(func(id: String) -> void:
@@ -45,4 +46,7 @@ func _ready() -> void:
 		if id == "claiming": clear_beam())
 
 func _physics_process(_delta: float) -> void:
-	if $Beam.visible: update()
+	if $Orb.emitting: update()
+
+func _on_visible_delay_timeout() -> void:
+	$Beam.visible = true

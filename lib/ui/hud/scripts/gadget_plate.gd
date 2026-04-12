@@ -18,5 +18,6 @@ func _ready() -> void:
 	# Mainly to update gadget ownership if claimed by the player
 	Dwelt.player_effect_manager.effect_finished.connect(update.unbind(1))
 	Dwelt.selected_gadget_changed.connect(update)
+	Dwelt.gadgets_reloaded.connect(update.bind(null))
 	
 	visible = false

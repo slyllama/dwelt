@@ -254,6 +254,10 @@ unique_name_in_owner = true
 transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
 script = ExtResource("5_4ok3w")
 
+[node name="PanCD" type="Timer" parent="Orbit" unique_id=534597308]
+wait_time = 0.05
+one_shot = true
+
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
 current = true
@@ -300,3 +304,5 @@ metadata/_custom_type_script = "uid://dwm4elmsp1th0"
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
+
+[connection signal="timeout" from="Orbit/PanCD" to="Orbit" method="_on_pan_cd_timeout"]

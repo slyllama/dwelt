@@ -7,8 +7,9 @@ class_name HoverHandler extends Node
 @export var hover_shape: StaticBody3D
 
 func hover() -> void:
-	for _n: MeshInstance3D in get_mesh_instances():
-		_n.set_instance_shader_parameter("highlight", true)
+	if !Dwelt.pan_cooldown:
+		for _n: MeshInstance3D in get_mesh_instances():
+			_n.set_instance_shader_parameter("highlight", true)
 
 func unhover() -> void:
 	for _n: MeshInstance3D in get_mesh_instances():

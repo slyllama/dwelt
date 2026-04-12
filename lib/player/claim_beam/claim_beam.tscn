@@ -67,8 +67,8 @@ albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6lqb8"]
 material = SubResource("StandardMaterial3D_fobxj")
-top_radius = 0.01
-bottom_radius = 0.01
+top_radius = 0.03
+bottom_radius = 0.03
 height = 1.0
 radial_segments = 7
 cap_top = false
@@ -91,3 +91,9 @@ top_level = true
 visible = false
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_6lqb8")
+
+[node name="VisibleDelay" type="Timer" parent="." unique_id=1219186146]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="VisibleDelay" to="." method="_on_visible_delay_timeout"]

@@ -13,3 +13,6 @@ normal_scale = 1.75
 normal_texture = ExtResource("2_s850a")
 backlight_enabled = true
 backlight_texture = ExtResource("2_yjrv5")
+distance_fade_mode = 2
+distance_fade_min_distance = 0.3
+distance_fade_max_distance = 0.5

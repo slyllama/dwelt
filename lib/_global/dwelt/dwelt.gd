@@ -9,6 +9,7 @@ var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
 var gadgets_close_to_player: Array[Gadget] = []
+var pan_cooldown := false
 var selected_gadget: Gadget
 
 # Global signal bus

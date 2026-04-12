@@ -15,7 +15,7 @@ func handle_mouse_raycast() -> void:
 	var query := PhysicsRayQueryParameters3D.create(_from, _to)
 	
 	query.collide_with_areas = true
-	query.collision_mask = 10
+	query.collision_mask = 100
 	
 	var intersection := space_state.intersect_ray(query)
 	if intersection:

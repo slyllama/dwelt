@@ -12,7 +12,6 @@ gadget_id = "test_gadget"
 model = NodePath("Mesh")
 effect_manager = NodePath("EffectManager")
 cull_distance = 10.0
-pushes_camera = true
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mesh" parent="." unique_id=1097501787 instance=ExtResource("2_chn4g")]
