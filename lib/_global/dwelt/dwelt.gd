@@ -48,7 +48,6 @@ func update_selected_gadget(gadget: Gadget) -> void:
 	# If the player is in interacting range of the gadget, recorded it as the
 	# closest gadget to the player
 	if selected_gadget in gadgets_close_to_player:
-		Utils.pdebug("Overriding closest gadget.", "Dwelt")
 		gadgets_close_to_player.erase(selected_gadget)
 		gadgets_close_to_player.push_back(selected_gadget)
 		gadgets_close_to_player_changed.emit()

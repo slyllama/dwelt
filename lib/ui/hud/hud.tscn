@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
+[ext_resource type="Script" uid="uid://bfp6f2bhsxah6" path="res://lib/ui/hud/scripts/gadget_plate.gd" id="6_hdq5k"]
 [ext_resource type="Script" uid="uid://755a2k1vwbqq" path="res://lib/ui/hud/scripts/primary_buttons.gd" id="6_nfgqh"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
@@ -21,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfgqh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bly2c"]
 content_margin_left = 9.0
@@ -75,6 +78,53 @@ offset_top = -212.0
 offset_right = 212.0
 offset_bottom = -7.0
 grow_vertical = 0
+effect_particles_playing = true
+
+[node name="GadgetPlate" type="Panel" parent="." unique_id=639916968]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = 212.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nfgqh")
+script = ExtResource("6_hdq5k")
+
+[node name="GadgetAvatarPlate" parent="GadgetPlate" unique_id=2030982702 instance=ExtResource("10_l7ms4")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -205.0
+offset_bottom = 205.0
+grow_horizontal = 0
+flip_h = true
+flip_frame = true
+
+[node name="GadgetEffects" parent="GadgetPlate" unique_id=1169365333 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -412.0
+offset_right = -207.0
+offset_bottom = 205.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="PlayerEffects" parent="." unique_id=1897670958 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 214.0
+offset_top = -108.0
+offset_right = 294.0
+offset_bottom = -2.0
+grow_vertical = 0
 
 [node name="PrimaryButtons" type="VBoxContainer" parent="." unique_id=1148908027]
 anchors_preset = 2
@@ -101,17 +151,6 @@ text = "Claim"
 layout_mode = 2
 disabled = true
 text = "Interact"
-
-[node name="PlayerEffects" parent="." unique_id=1169365333 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 214.0
-offset_top = -108.0
-offset_right = 294.0
-offset_bottom = -2.0
-grow_vertical = 0
 
 [node name="TopLeftMenu" type="HBoxContainer" parent="." unique_id=1545174863]
 offset_right = 149.0
