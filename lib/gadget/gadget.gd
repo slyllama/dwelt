@@ -58,4 +58,4 @@ func _ready() -> void:
 	if effect_manager:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
-		effect_manager.add_effect(load("res://effects/enemy_owns.tres").duplicate())
+		effect_manager.add_effect(load("res://effects/enemy_owned.tres").duplicate())

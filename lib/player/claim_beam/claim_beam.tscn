@@ -79,6 +79,7 @@ script = ExtResource("1_6lqb8")
 
 [node name="Orb" type="GPUParticles3D" parent="." unique_id=577087745]
 top_level = true
+emitting = false
 amount = 4
 randomness = 0.4
 local_coords = true
@@ -87,5 +88,6 @@ draw_pass_1 = SubResource("QuadMesh_fobxj")
 
 [node name="Beam" type="MeshInstance3D" parent="." unique_id=2091017382]
 top_level = true
+visible = false
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_6lqb8")

@@ -6,6 +6,7 @@ var active_effects: Dictionary[String, EffectInstance]
 signal effect_added(id: String)
 signal effect_finished(id: String)
 signal effect_updated(id: String)
+signal effect_cancelled(id: String)
 
 # Return the gadget's current effects and durations/quantities in a way that
 # can be stored in the save file
@@ -44,6 +45,13 @@ func add_effect(effect: EffectInstance) -> void:
 				existing_effect.current_quantity += effect.total_quantity
 			else: existing_effect.current_quantity = effect.total_quantity
 		effect_updated.emit()
+
+func cancel_effect(id: String) -> void:
+	if id in active_effects:
+		var effect := active_effects[id]
+		effect.finished.emit()
+		effect_cancelled.emit(id)
+		active_effects.erase(id)
 
 func _process(delta: float) -> void:
 	for id in active_effects:

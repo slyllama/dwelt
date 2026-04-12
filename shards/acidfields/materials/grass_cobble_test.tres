@@ -30,5 +30,5 @@ shader_parameter/uv_scale = 56.0
 shader_parameter/dirt_mask_texture = ExtResource("3_llr42")
 shader_parameter/dirt_texture = ExtResource("4_1p281")
 shader_parameter/dirt_tint = Color(0.7799021, 0.74731266, 0.6953275, 1)
-shader_parameter/dirt_intensity = 0.750000035625
-shader_parameter/dirt_uv_scale = 72.0
+shader_parameter/dirt_intensity = 0.70000003325
+shader_parameter/dirt_uv_scale = 56.0
