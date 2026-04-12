@@ -1,3 +1,4 @@
+@icon("res://generic/icons/EffectInstance.svg")
 class_name EffectInstance extends Resource
 
 signal finished

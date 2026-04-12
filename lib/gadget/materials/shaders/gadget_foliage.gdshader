@@ -40,7 +40,7 @@ void fragment() {
 	
 	float fade_distance = length(VERTEX);
 	const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
-	float fade = clamp(smoothstep(0.0, 0.75, fade_distance), 0.0, 1.0);
+	float fade = clamp(smoothstep(0.5, 1.0, fade_distance), 0.0, 1.0);
 	if (fade < 0.001 || fade < fract(magic.z * fract(dot(FRAGCOORD.xy, magic.xy)))) {
 		discard;
 	}

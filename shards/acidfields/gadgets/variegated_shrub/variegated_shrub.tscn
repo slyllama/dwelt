@@ -12,6 +12,7 @@ collision_mask = 4
 script = ExtResource("1_e01bh")
 gadget_id = "variegated_shrub"
 model = NodePath("VariegatedShrub")
+player_collision = false
 cull_distance = 15.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 

@@ -146,18 +146,18 @@ _data = {
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_5lbbh"]
+[sub_resource type="CurveTexture" id="CurveTexture_1x433"]
 curve = SubResource("Curve_2ocui")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
-emission_shape_scale = Vector3(1, 0.4, 1)
+emission_shape_scale = Vector3(1, 0.32, 1)
 emission_shape = 2
 emission_sphere_radius = 4.0
 gravity = Vector3(0, 0.03, 0)
 scale_min = 0.59999996
-alpha_curve = SubResource("CurveTexture_5lbbh")
+alpha_curve = SubResource("CurveTexture_1x433")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lbbh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5dhk"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -169,7 +169,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_0y160"]
-material = SubResource("StandardMaterial3D_5lbbh")
+material = SubResource("StandardMaterial3D_v5dhk")
 size = Vector2(0.04, 0.04)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61qk"]
@@ -263,8 +263,7 @@ script = ExtResource("14_ego0t")
 
 [node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 cast_shadow = 0
 amount = 196
 lifetime = 2.5

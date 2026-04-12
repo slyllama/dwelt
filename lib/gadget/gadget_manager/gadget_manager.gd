@@ -1,3 +1,4 @@
+@icon("res://generic/icons/GadgetManager.svg")
 class_name GadgetManager extends Node3D
 
 func load_gadgets_from_save() -> void:
@@ -36,6 +37,8 @@ func load_gadgets_from_save() -> void:
 				_scene_position, _scene_rotation, _scene_scale)
 			
 			# TODO: apply saved effects here
+			if _scene.effect_manager and "effect_data" in gadget_data:
+				_scene.effect_manager.apply_effects_from_dict(gadget_data.effect_data)
 			
 		# Gracefully free the AsyncLoader as it is no longer needed
 		_async_loader.close()
@@ -47,8 +50,7 @@ func write_gadgets_to_save() -> void:
 			var _data := {
 				"position": Utils.vec3_to_str(_n.position),
 				"rotation": Utils.vec3_to_str(_n.rotation),
-				"scale": Utils.vec3_to_str(_n.scale)
-			}
+				"scale": Utils.vec3_to_str(_n.scale) }
 			
 			if _n.effect_manager:
 				_data["effect_data"] = _n.effect_manager.get_effects_as_dict()

@@ -1,3 +1,4 @@
+@icon("res://generic/icons/UIPane.svg")
 @tool
 class_name UIPane extends PanelContainer
 # UI pane - generic window class

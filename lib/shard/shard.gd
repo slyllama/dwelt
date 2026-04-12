@@ -1,3 +1,4 @@
+@icon("res://generic/icons/Shard.svg")
 extends Node3D
 
 @onready var original_player_position: Vector3 = $Player.position

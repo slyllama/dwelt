@@ -1,3 +1,4 @@
+@icon("res://generic/icons/ShardLoader.svg")
 extends CanvasLayer
 
 const TARGET_SCENE = "res://shards/acidfields/acidfields.tscn"

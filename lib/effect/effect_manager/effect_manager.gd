@@ -1,3 +1,4 @@
+@icon("res://generic/icons/EffectManager.svg")
 class_name EffectManager extends Node
 
 var active_effects: Dictionary[String, EffectInstance]
@@ -20,8 +21,8 @@ func get_effects_as_dict() -> Dictionary:
 			_dict[effect.id]["current_quantity"] = str(effect.current_quantity)
 	return(_dict)
 
-func apply_effects_from_dict() -> void:
-	pass
+func apply_effects_from_dict(effect_dict: Dictionary) -> void:
+	print("Applying effects " + str(effect_dict))
 
 func add_effect(effect: EffectInstance) -> void:
 	var id := effect.id
