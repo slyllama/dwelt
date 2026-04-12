@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="17_1x433"]
+[ext_resource type="PackedScene" uid="uid://bcpfq3amjlbm7" path="res://lib/player/claim_beam/claim_beam.tscn" id="18_v5dhk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
@@ -194,6 +195,9 @@ script = ExtResource("4_0y160")
 look_target = NodePath("../LookTarget")
 animation_smoothing = 5.0
 turn_rotation_multiplier = 7.0
+
+[node name="ClaimBeam" parent="RobotMesh" unique_id=1276351552 instance=ExtResource("18_v5dhk")]
+transform = Transform3D(1.3888888, 0, 0, 0, 1.3888888, 0, 0, 0, 1.3888888, 0, 0.2507262, 0.32103956)
 
 [node name="Sound" type="Node3D" parent="RobotMesh" unique_id=2142391288]
 script = ExtResource("4_jlw2j")

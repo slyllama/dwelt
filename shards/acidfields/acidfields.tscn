@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://c3rafrkdjfvbw" path="res://shards/acidfields/materials/sky.tres" id="5_r4xcf"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_t5hkx"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_u67vg"]
+[ext_resource type="Texture2D" uid="uid://ndrn4twwy7qf" path="res://shards/acidfields/props/platform/materials/textures/algae_decal.png" id="8_buenr"]
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/acidfields/props/platform/platform.glb" id="11_r4xcf"]
 [ext_resource type="PackedScene" uid="uid://liwnieoeocre" path="res://shards/acidfields/anguished_claw.glb" id="12_41lxu"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/acidfields/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
@@ -231,6 +232,20 @@ size = Vector3(2.5, 0.5, 2.5)
 texture_albedo = ExtResource("12_fq4iu")
 normal_fade = 0.75
 
+[node name="Dirt2" type="Decal" parent="Platform" index="16" unique_id=1517827177]
+transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -1.9420671, 0, -0.67794585)
+layers = 512
+size = Vector3(2.5, 0.5, 2.5)
+texture_albedo = ExtResource("12_fq4iu")
+normal_fade = 0.75
+
+[node name="Dirt3" type="Decal" parent="Platform" index="17" unique_id=567042820]
+transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 4.2575927, 2.3841858e-07, 2.5294783)
+layers = 512
+size = Vector3(2.5, 0.5, 2.5)
+texture_albedo = ExtResource("8_buenr")
+normal_fade = 0.75
+
 [node name="Ambience" type="AudioStreamPlayer" parent="." index="12" unique_id=2032629365]
 stream = ExtResource("14_5x773")
 autoplay = true
@@ -251,3 +266,6 @@ transform = Transform3D(0.43175226, -0.14461313, 0.8903241, 0.31760257, 0.948223
 
 [node name="AnguishedClaw2" parent="." index="15" unique_id=2022575355 instance=ExtResource("12_41lxu")]
 transform = Transform3D(0.025864005, -0.008662999, -0.99962795, 0.31760255, 0.94822395, -1.0683208e-08, 0.9478712, -0.31748438, 0.027276158, 4.2005906, -0.07383919, 8.50834)
+
+[node name="BeamTestTarget" type="Marker3D" parent="." index="16" unique_id=367518626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

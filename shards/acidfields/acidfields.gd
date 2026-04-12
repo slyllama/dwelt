@@ -12,6 +12,9 @@ func _ready() -> void:
 	$AnguishedClaw2/AnimationPlayer.advance(0.35)
 	$AnguishedClaw2/AnimationPlayer.speed_scale = 0.75
 	
+	# TODO: test claim target
+	$Player/RobotMesh/ClaimBeam.target = $BeamTestTarget
+	
 	# NOTE: temporarily enabling debug by default
 	Utils.debug_mode = true
 	Utils.debug_mode_changed.emit()
