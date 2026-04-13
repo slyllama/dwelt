@@ -1,5 +1,7 @@
 # Dwelt: Iron Solstice
 
+![thumb](https://github.com/user-attachments/assets/446c924d-eeab-4cc0-bcb1-44a7f205d1e6)
+
 Cleanse and rebuild a vibrant but fractured world in *Dwelt: Iron Solstice*, a steampunk puzzle-solving and decorating game. Take your place amongst a band of armatures - robots who have determined to rejuvenate and heal their overgrown planet in preparation for the eventual return of evacuated activists and scientists - and to defend it against those who would seek to reignite war.
 
  - **Explore a broken yet healing world.** Establish connections with the space-bound itinerants who yearn to re-settle there. Aid in their efforts to rehabilitate the land by clearing key zones, and designing and building to their specifications.
