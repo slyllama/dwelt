@@ -6,22 +6,28 @@
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/ui/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
+[ext_resource type="Texture2D" uid="uid://d25fn1yf2xupf" path="res://lib/ui/hud/textures/primary_buttons_base.png" id="5_mwuwv"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
 [ext_resource type="Script" uid="uid://bfp6f2bhsxah6" path="res://lib/ui/hud/scripts/gadget_plate.gd" id="6_hdq5k"]
 [ext_resource type="Script" uid="uid://755a2k1vwbqq" path="res://lib/ui/hud/scripts/primary_buttons.gd" id="6_nfgqh"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
+[ext_resource type="Texture2D" uid="uid://e5b7n2prxecq" path="res://lib/ui/hud/textures/button_build.png" id="8_6fyc5"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
+[ext_resource type="Texture2D" uid="uid://resfglt58npf" path="res://lib/ui/hud/textures/button_claim.png" id="9_w0xv6"]
 [ext_resource type="Texture2D" uid="uid://dxatplebv5fq6" path="res://lib/ui/hud/currency_display/textures/bg.png" id="10_7q6qr"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
 [ext_resource type="PackedScene" uid="uid://dphe4e6etfimm" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="10_panat"]
+[ext_resource type="Texture2D" uid="uid://bf3s0cdy3g2km" path="res://lib/ui/hud/textures/button_interact.png" id="10_tqcay"]
 [ext_resource type="PackedScene" uid="uid://h6dd0janipe6" path="res://lib/ui/hud/currency_display/currency_display.tscn" id="11_2nwb8"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/ui/hud/scripts/override.gd" id="13_6u16q"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdq5k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfgqh"]
 
@@ -69,7 +75,31 @@ stretch_mode = 1
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_top = -294.0
 
-[node name="AvatarPlate" parent="." unique_id=1901079431 instance=ExtResource("10_l7ms4")]
+[node name="PlayerPlate" type="Panel" parent="." unique_id=121027689]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hdq5k")
+
+[node name="PrimaryButtonsBase" type="TextureRect" parent="PlayerPlate" unique_id=476208715]
+custom_minimum_size = Vector2(197, 193)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 109.0
+offset_top = -296.0
+offset_right = 306.0
+offset_bottom = -103.0
+grow_vertical = 0
+texture = ExtResource("5_mwuwv")
+expand_mode = 1
+
+[node name="PlayerAvatarPlate" parent="PlayerPlate" unique_id=1901079431 instance=ExtResource("10_l7ms4")]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -79,6 +109,61 @@ offset_right = 212.0
 offset_bottom = -7.0
 grow_vertical = 0
 effect_particles_playing = true
+
+[node name="PrimaryButtons" type="Control" parent="PlayerPlate" unique_id=2074465595]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("6_nfgqh")
+
+[node name="Build" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=332735969]
+custom_minimum_size = Vector2(91, 95)
+layout_mode = 0
+offset_left = 114.0
+offset_top = -295.0
+offset_right = 205.0
+offset_bottom = -200.0
+disabled = true
+texture_normal = ExtResource("8_6fyc5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Claim" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=1127217244]
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 0
+offset_left = 165.0
+offset_top = -270.0
+offset_right = 273.0
+offset_bottom = -162.0
+disabled = true
+texture_normal = ExtResource("9_w0xv6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Interact" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=1636081198]
+custom_minimum_size = Vector2(97, 92)
+layout_mode = 0
+offset_left = 202.0
+offset_top = -202.0
+offset_right = 299.0
+offset_bottom = -110.0
+disabled = true
+texture_normal = ExtResource("10_tqcay")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PlayerEffects" parent="PlayerPlate" unique_id=1897670958 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 233.0
+offset_top = -106.0
+offset_right = 313.0
+grow_vertical = 0
 
 [node name="GadgetPlate" type="Panel" parent="." unique_id=639916968]
 anchors_preset = 1
@@ -114,43 +199,6 @@ offset_right = -207.0
 offset_bottom = 205.0
 grow_horizontal = 0
 alignment = 2
-
-[node name="PlayerEffects" parent="." unique_id=1897670958 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 214.0
-offset_top = -108.0
-offset_right = 294.0
-offset_bottom = -2.0
-grow_vertical = 0
-
-[node name="PrimaryButtons" type="VBoxContainer" parent="." unique_id=1148908027]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -310.0
-offset_right = 76.0
-offset_bottom = -224.0
-grow_vertical = 0
-script = ExtResource("6_nfgqh")
-
-[node name="Build" type="Button" parent="PrimaryButtons" unique_id=2059217541]
-layout_mode = 2
-disabled = true
-text = "Build"
-
-[node name="Claim" type="Button" parent="PrimaryButtons" unique_id=587869138]
-layout_mode = 2
-disabled = true
-text = "Claim"
-
-[node name="Interact" type="Button" parent="PrimaryButtons" unique_id=1169748558]
-layout_mode = 2
-disabled = true
-text = "Interact"
 
 [node name="TopLeftMenu" type="HBoxContainer" parent="." unique_id=1545174863]
 offset_right = 149.0
@@ -269,7 +317,7 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
-[connection signal="pressed" from="PrimaryButtons/Claim" to="PrimaryButtons" method="_on_claim_pressed"]
+[connection signal="pressed" from="PlayerPlate/PrimaryButtons/Claim" to="PlayerPlate/PrimaryButtons" method="_on_claim_pressed"]
 [connection signal="pressed" from="TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]

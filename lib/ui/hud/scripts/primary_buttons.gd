@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 # Handle logic for primary buttons - mainly whether they are enabled or not
 # (e.g., only claim if the gadget you are closest to is in a position to be claimed)
 

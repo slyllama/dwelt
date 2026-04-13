@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d28umr7h5vaps" path="res://lib/ui/avatar_plate/avatar_plate.gd" id="2_eg00k"]
 [ext_resource type="Texture2D" uid="uid://dv3btwwdi83l5" path="res://lib/ui/avatar_plate/textures/ring.png" id="2_fk1xt"]
 [ext_resource type="Texture2D" uid="uid://n88dgbrkgss2" path="res://lib/ui/avatar_plate/textures/splash.png" id="4_eg00k"]
+[ext_resource type="Texture2D" uid="uid://sqidxkkirrsj" path="res://lib/ui/avatar_plate/textures/client_placeholder.png" id="4_yxxjm"]
 [ext_resource type="Texture2D" uid="uid://d3s6xvyx3h3jw" path="res://lib/ui/avatar_plate/textures/nebula.jpg" id="5_yxxjm"]
 
 [sub_resource type="Animation" id="Animation_fk1xt"]
@@ -58,8 +59,8 @@ angle_min = 1.0728835e-05
 angle_max = 360.00003
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 30.0
-initial_velocity_max = 40.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
 gravity = Vector3(0, 0, 0)
 scale_max = 1.1999999
 alpha_curve = SubResource("CurveTexture_bp8gh")
@@ -90,14 +91,16 @@ libraries/ = SubResource("AnimationLibrary_urcp2")
 autoplay = &"rotate"
 
 [node name="Test" type="Sprite2D" parent="." unique_id=1237870207]
-visible = false
+z_index = -1
 position = Vector2(103, 101)
-scale = Vector2(0.32, 0.32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_yxxjm")
 
 [node name="FXParticles" type="GPUParticles2D" parent="." unique_id=848129949]
 clip_children = 1
-z_index = -1
+z_index = -2
 position = Vector2(101, 97)
+emitting = false
 texture = ExtResource("4_eg00k")
 process_material = SubResource("ParticleProcessMaterial_afylm")
 
