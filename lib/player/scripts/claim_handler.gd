@@ -27,7 +27,7 @@ func _ready() -> void:
 			Dwelt.gadgets_close_to_player_changed.emit())
 	
 	Dwelt.claim_requested.connect(initiate_claim)
-	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
-		if "claiming" in effect_manager.active_effects:
-			if !claim_target in Dwelt.gadgets_close_to_player:
-				cancel_claim())
+	#Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
+		#if "claiming" in effect_manager.active_effects:
+			#if !claim_target in Dwelt.gadgets_close_to_player:
+				#cancel_claim())

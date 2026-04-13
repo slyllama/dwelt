@@ -3,13 +3,24 @@ extends Control
 # (e.g., only claim if the gadget you are closest to is in a position to be claimed)
 
 func _ready() -> void:
+	for _n: TextureButton in get_children():
+		_n.mouse_entered.connect(func() -> void:
+			if !_n.disabled:
+				_n.modulate = Color(1.5, 1.5, 1.5))
+		_n.mouse_exited.connect(func() -> void:
+			_n.modulate = Color(1.0, 1.0, 1.0))
+	
 	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
 		if Dwelt.get_closest_gadget():
 			var _closest_gadget: Gadget = Dwelt.get_closest_gadget()
 			if _closest_gadget.get_effect("enemy_owned"):
 				$Claim.disabled = false
-			else: $Claim.disabled = true
-		else: $Claim.disabled = true)
+			else:
+				$Claim.modulate = Color.WHITE
+				$Claim.disabled = true
+		else:
+			$Claim.modulate = Color.WHITE
+			$Claim.disabled = true)
 
 # Cannot be pressed unless it is actually valid
 func _on_claim_pressed() -> void:

@@ -15,14 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://e5b7n2prxecq" path="res://lib/ui/hud/textures/button_build.png" id="8_6fyc5"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
+[ext_resource type="Texture2D" uid="uid://d33qp3ax7nojs" path="res://lib/ui/hud/textures/button_build_disabled.png" id="9_ju80c"]
 [ext_resource type="Texture2D" uid="uid://resfglt58npf" path="res://lib/ui/hud/textures/button_claim.png" id="9_w0xv6"]
 [ext_resource type="Texture2D" uid="uid://dxatplebv5fq6" path="res://lib/ui/hud/currency_display/textures/bg.png" id="10_7q6qr"]
 [ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
 [ext_resource type="PackedScene" uid="uid://dphe4e6etfimm" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="10_panat"]
 [ext_resource type="Texture2D" uid="uid://bf3s0cdy3g2km" path="res://lib/ui/hud/textures/button_interact.png" id="10_tqcay"]
 [ext_resource type="PackedScene" uid="uid://h6dd0janipe6" path="res://lib/ui/hud/currency_display/currency_display.tscn" id="11_2nwb8"]
+[ext_resource type="Texture2D" uid="uid://bdy3jsjdnnjgg" path="res://lib/ui/hud/textures/button_claim_disabled.png" id="11_no338"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/ui/hud/scripts/override.gd" id="13_6u16q"]
+[ext_resource type="Texture2D" uid="uid://cxkik3q43eu4l" path="res://lib/ui/hud/textures/button_interact_disabled.png" id="13_jrbc5"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
@@ -127,6 +130,7 @@ offset_right = 205.0
 offset_bottom = -200.0
 disabled = true
 texture_normal = ExtResource("8_6fyc5")
+texture_disabled = ExtResource("9_ju80c")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -139,6 +143,7 @@ offset_right = 273.0
 offset_bottom = -162.0
 disabled = true
 texture_normal = ExtResource("9_w0xv6")
+texture_disabled = ExtResource("11_no338")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -151,6 +156,7 @@ offset_right = 299.0
 offset_bottom = -110.0
 disabled = true
 texture_normal = ExtResource("10_tqcay")
+texture_disabled = ExtResource("13_jrbc5")
 ignore_texture_size = true
 stretch_mode = 0
 

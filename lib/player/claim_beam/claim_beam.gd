@@ -23,6 +23,8 @@ func clear_beam() -> void:
 	$Beam.visible = false
 
 func _ready() -> void:
+	$Orb.emitting = false
+	
 	target_orb = $Orb.duplicate()
 	target_orb.top_level = true
 	add_child(target_orb)
@@ -35,15 +37,22 @@ func _ready() -> void:
 			target = Dwelt.get_closest_gadget()
 			target_orb.emitting = true
 			$Orb.emitting = true
+			$Claim.play()
+			Dwelt.shake_camera.emit()
+			Utils.debug_sent.emit("/playvoice") # TODO: this should be more formalized
 			
 			update()
 			$Beam.visible = true)
 	
 	Dwelt.player_effect_manager.effect_finished.connect(func(id: String) -> void:
-		if id == "claiming": clear_beam())
+		if id == "claiming":
+			Dwelt.shake_camera.emit()
+			clear_beam())
 	
 	Dwelt.player_effect_manager.effect_cancelled.connect(func(id: String) -> void:
-		if id == "claiming": clear_beam())
+		if id == "claiming":
+			$Claim.stop()
+			clear_beam())
 
 func _physics_process(_delta: float) -> void:
 	if $Orb.emitting: update()

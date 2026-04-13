@@ -27,6 +27,9 @@ func _ready() -> void:
 	# Release focus on window focus lost (without moving the mouse)
 	get_window().focus_exited.connect(_release.bind(false))
 	
+	# Connections
+	Dwelt.shake_camera.connect($Camera/CameraAnims.play.bind("shake"))
+	
 	Dwelt.camera = $Camera
 	top_level = true
 	$Camera.top_level = true

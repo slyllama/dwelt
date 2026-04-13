@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bcpfq3amjlbm7"]
 
 [ext_resource type="Script" uid="uid://dtrmvonskvp7x" path="res://lib/player/claim_beam/claim_beam.gd" id="1_6lqb8"]
-[ext_resource type="Texture2D" uid="uid://b4r6oqg0n0xma" path="res://lib/ui/hud/flash/textures/flash.png" id="1_n2ey5"]
+[ext_resource type="Texture2D" uid="uid://8g6ev4s8r5v3" path="res://lib/player/textures/claim_flash.png" id="2_fobxj"]
+[ext_resource type="AudioStream" uid="uid://cacf5uo0riat0" path="res://lib/player/sounds/claim.ogg" id="3_fobxj"]
 
 [sub_resource type="Curve" id="Curve_6lqb8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13102409, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05271084, 1), 0.0, 0.0, 0, 0, Vector2(0.29969874, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_fobxj"]
 curve = SubResource("Curve_6lqb8")
@@ -17,12 +18,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_sxsoh"]
 curve = SubResource("Curve_qs3ae")
 
-[sub_resource type="Gradient" id="Gradient_n2ey5"]
-offsets = PackedFloat32Array(0, 0.11795775, 0.2975352)
-colors = PackedColorArray(1, 1, 1, 1, 0.69200313, 0.5903778, 0.077037476, 1, 0.4351577, 0.64931285, 0.9733376, 1)
+[sub_resource type="Gradient" id="Gradient_fobxj"]
+offsets = PackedFloat32Array(0.25, 0.5, 0.75)
+colors = PackedColorArray(0.18554005, 0.6269202, 0.86950564, 1, 1, 1, 1, 1, 0.25864857, 0.4066223, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6lqb8"]
-gradient = SubResource("Gradient_n2ey5")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qs3ae"]
+gradient = SubResource("Gradient_fobxj")
 
 [sub_resource type="Curve" id="Curve_n2ey5"]
 _data = [Vector2(0, 1), 0.0, -0.6410116, 0, 1, Vector2(1, 0.3589884), -0.6410116, 0.0, 1, 0]
@@ -32,25 +33,30 @@ point_count = 2
 curve = SubResource("Curve_n2ey5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fobxj"]
+emission_shape = 3
+emission_box_extents = Vector3(0.01, 0.01, 0.01)
 angle_min = 1.0728835e-05
 angle_max = 90.000015
 angle_curve = SubResource("CurveTexture_sxsoh")
+spread = 90.0
 gravity = Vector3(0, 0, 0)
-scale_min = 1.4
-scale_max = 1.8
+scale_min = 2.0
+scale_max = 3.0
 scale_curve = SubResource("CurveTexture_6lqb8")
-color_ramp = SubResource("GradientTexture1D_6lqb8")
+color_initial_ramp = SubResource("GradientTexture1D_qs3ae")
 alpha_curve = SubResource("CurveTexture_fobxj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lqb8"]
 transparency = 1
 blend_mode = 1
-shading_mode = 2
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_n2ey5")
-emission_enabled = true
-emission_energy_multiplier = 1.65
-emission_texture = ExtResource("1_n2ey5")
+albedo_texture = ExtResource("2_fobxj")
+texture_repeat = false
+disable_receive_shadows = true
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -79,12 +85,19 @@ script = ExtResource("1_6lqb8")
 
 [node name="Orb" type="GPUParticles3D" parent="." unique_id=577087745]
 top_level = true
-emitting = false
-amount = 4
+amount = 5
+lifetime = 0.8
 randomness = 0.4
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_fobxj")
 draw_pass_1 = SubResource("QuadMesh_fobxj")
+
+[node name="Light" type="OmniLight3D" parent="Orb" unique_id=1812814230]
+visible = false
+light_color = Color(0.8210191, 0.94383556, 0.96510273, 1)
+light_energy = 2.0
+omni_range = 0.6
+omni_attenuation = 0.0
 
 [node name="Beam" type="MeshInstance3D" parent="." unique_id=2091017382]
 top_level = true
@@ -95,5 +108,9 @@ mesh = SubResource("CylinderMesh_6lqb8")
 [node name="VisibleDelay" type="Timer" parent="." unique_id=1219186146]
 wait_time = 0.5
 one_shot = true
+
+[node name="Claim" type="AudioStreamPlayer" parent="." unique_id=1915320500]
+stream = ExtResource("3_fobxj")
+volume_db = -5.0
 
 [connection signal="timeout" from="VisibleDelay" to="." method="_on_visible_delay_timeout"]

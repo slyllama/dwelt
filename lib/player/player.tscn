@@ -174,6 +174,44 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_v5dhk")
 size = Vector2(0.04, 0.04)
 
+[sub_resource type="Animation" id="Animation_hlh1u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7f82q"]
+resource_name = "small_shake"
+length = 0.3
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:v_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.005, 0.3),
+"transitions": PackedFloat32Array(1, 0.24148409, 2.6390157),
+"update": 0,
+"values": [0.0, -0.014, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlh1u"]
+_data = {
+&"RESET": SubResource("Animation_hlh1u"),
+&"shake": SubResource("Animation_7f82q")
+}
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61qk"]
 radius = 0.25
 
@@ -280,6 +318,9 @@ preprocess = 5.0
 randomness = 0.25
 process_material = SubResource("ParticleProcessMaterial_2ocui")
 draw_pass_1 = SubResource("QuadMesh_0y160")
+
+[node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
+libraries/ = SubResource("AnimationLibrary_hlh1u")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2

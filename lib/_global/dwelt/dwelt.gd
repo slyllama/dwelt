@@ -23,6 +23,7 @@ signal gadgets_close_to_player_changed
 signal gadgets_reloaded # used to clear effects panes, etc
 signal play_flash(position: Vector2)
 signal selected_gadget_changed
+signal shake_camera
 
 # Return the gadget closest to the player
 func get_closest_gadget() -> Variant:
