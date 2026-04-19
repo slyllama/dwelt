@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://o8piuolao4nr"]
+
+[ext_resource type="Texture2D" uid="uid://bu0omj8t4wobh" path="res://lib/gadget/selected_gadget_marker/textures/selected_gadget_marker.png" id="1_orayx"]
+[ext_resource type="Script" uid="uid://obn0mlvvg0jr" path="res://lib/gadget/selected_gadget_marker/selected_gadget_marker.gd" id="2_r1owa"]
+
+[sub_resource type="Animation" id="Animation_r1owa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_orayx"]
+resource_name = "bounce"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1owa"]
+_data = {
+&"RESET": SubResource("Animation_r1owa"),
+&"bounce": SubResource("Animation_orayx")
+}
+
+[node name="SelectedGadgetMarker" type="Sprite3D" unique_id=257270989]
+cast_shadow = 0
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+no_depth_test = true
+fixed_size = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("1_orayx")
+script = ExtResource("2_r1owa")
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1176115177]
+libraries/ = SubResource("AnimationLibrary_r1owa")
+autoplay = &"bounce"

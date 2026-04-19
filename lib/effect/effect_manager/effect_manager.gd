@@ -8,6 +8,9 @@ signal effect_finished(id: String)
 signal effect_updated(id: String)
 signal effect_cancelled(id: String)
 
+func has_effect(id: String) -> bool:
+	return(id in active_effects)
+
 # Return the gadget's current effects and durations/quantities in a way that
 # can be stored in the save file
 func get_effects_as_dict() -> Dictionary:

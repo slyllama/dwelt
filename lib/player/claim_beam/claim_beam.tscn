@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dtrmvonskvp7x" path="res://lib/player/claim_beam/claim_beam.gd" id="1_6lqb8"]
 [ext_resource type="Texture2D" uid="uid://8g6ev4s8r5v3" path="res://lib/player/textures/claim_flash.png" id="2_fobxj"]
-[ext_resource type="AudioStream" uid="uid://cacf5uo0riat0" path="res://lib/player/sounds/claim.ogg" id="3_fobxj"]
+[ext_resource type="AudioStream" uid="uid://cacf5uo0riat0" path="res://lib/player/sounds/claim_start.ogg" id="3_fobxj"]
+[ext_resource type="AudioStream" uid="uid://doi7eex4mg1qj" path="res://lib/player/sounds/claim_fail.ogg" id="4_qs3ae"]
 
 [sub_resource type="Curve" id="Curve_6lqb8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05271084, 1), 0.0, 0.0, 0, 0, Vector2(0.29969874, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -111,6 +112,11 @@ one_shot = true
 
 [node name="Claim" type="AudioStreamPlayer" parent="." unique_id=1915320500]
 stream = ExtResource("3_fobxj")
+volume_db = -3.0
+
+[node name="ClaimFail" type="AudioStreamPlayer" parent="." unique_id=1523793224]
+stream = ExtResource("4_qs3ae")
 volume_db = -5.0
+max_polyphony = 2
 
 [connection signal="timeout" from="VisibleDelay" to="." method="_on_visible_delay_timeout"]

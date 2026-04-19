@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crbctqd55n6f6" path="res://lib/player/player.tscn" id="1_22u7k"]
 [ext_resource type="Texture2D" uid="uid://0ivnnt6tjr0i" path="res://generic/materials/textures/tile_norm.jpg" id="2_3xe27"]
 [ext_resource type="Script" uid="uid://d13netbsqbwuu" path="res://lib/gadget/gadget_manager/gadget_manager.gd" id="6_v2fjr"]
+[ext_resource type="PackedScene" uid="uid://o8piuolao4nr" path="res://lib/gadget/selected_gadget_marker/selected_gadget_marker.tscn" id="7_ca0gg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i5j7"]
 albedo_texture = ExtResource("1_3tfg5")
@@ -50,3 +51,6 @@ transform = Transform3D(0.64278764, -0.5416752, 0.5416752, 0, 0.70710677, 0.7071
 shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 20.0
+
+[node name="SelectedGadgetMarker" parent="." unique_id=257270989 instance=ExtResource("7_ca0gg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)

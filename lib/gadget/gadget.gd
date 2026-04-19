@@ -61,3 +61,10 @@ func _ready() -> void:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
 		effect_manager.add_effect(load("res://effects/enemy_owned.tres").duplicate())
+		
+		# If the player moves out of range, cancel claiming this gadget (if it
+		# is in the process of being claimed)
+		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
+			if body is DweltPlayer:
+				if Dwelt.player_effect_manager.has_effect("claiming"):
+					Dwelt.player_effect_manager.cancel_effect("claiming"))

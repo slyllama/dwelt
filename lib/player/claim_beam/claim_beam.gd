@@ -51,7 +51,9 @@ func _ready() -> void:
 	
 	Dwelt.player_effect_manager.effect_cancelled.connect(func(id: String) -> void:
 		if id == "claiming":
+			Dwelt.shake_camera.emit()
 			$Claim.stop()
+			$ClaimFail.play()
 			clear_beam())
 
 func _physics_process(_delta: float) -> void:
