@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://h6dd0janipe6"]
 
 [ext_resource type="Script" uid="uid://8f73oed1tpub" path="res://lib/ui/hud/currency_display/currency_display.gd" id="1_0isoc"]
-[ext_resource type="Texture2D" uid="uid://ddxqh5vh3x0u7" path="res://lib/ui/ui_pane/textures/unchecked.png" id="1_y3e0t"]
+[ext_resource type="Texture2D" uid="uid://58pu05pr5i5e" path="res://lib/ui/hud/currency_display/textures/currency_kinetic.png" id="2_vhply"]
+[ext_resource type="Texture2D" uid="uid://bcjsce6e1155b" path="res://lib/ui/hud/currency_display/textures/currency_elemental.png" id="3_8qjiq"]
 [ext_resource type="Texture2D" uid="uid://dmqp1fc2h1mff" path="res://lib/ui/hud/currency_display/textures/currency_arcane.png" id="3_a77b5"]
+[ext_resource type="Texture2D" uid="uid://cn4hgchxi7m0v" path="res://lib/ui/hud/currency_display/textures/currency_verdant.png" id="4_64rk2"]
 
 [node name="CurrencyDisplay" type="HBoxContainer" unique_id=1328333989]
 custom_minimum_size = Vector2(0, 48)
@@ -14,7 +16,7 @@ metadata/_edit_horizontal_guides_ = [24.0]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
-texture = ExtResource("1_y3e0t")
+texture = ExtResource("2_vhply")
 expand_mode = 1
 stretch_mode = 5
 
@@ -27,24 +29,11 @@ text = "123"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
-texture = ExtResource("1_y3e0t")
+texture = ExtResource("3_8qjiq")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Elemental" type="Label" parent="." unique_id=379008920]
-unique_name_in_owner = true
-layout_mode = 2
-text = "123"
-
-[node name="VerdantIcon" type="TextureRect" parent="." unique_id=820650541]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(18, 0)
-layout_mode = 2
-texture = ExtResource("1_y3e0t")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Verdant" type="Label" parent="." unique_id=348869244]
 unique_name_in_owner = true
 layout_mode = 2
 text = "123"
@@ -58,6 +47,19 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Arcane" type="Label" parent="." unique_id=1421800176]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+
+[node name="VerdantIcon" type="TextureRect" parent="." unique_id=820650541]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+texture = ExtResource("4_64rk2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Verdant" type="Label" parent="." unique_id=348869244]
 unique_name_in_owner = true
 layout_mode = 2
 text = "123"

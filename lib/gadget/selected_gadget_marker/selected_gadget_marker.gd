@@ -3,6 +3,7 @@ extends Sprite3D
 const Y_OFFSET := 1.5
 
 func _ready() -> void:
+	$GenericAoe.position.y = -Y_OFFSET
 	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
 		if !gadget: visible = false
 		else:

@@ -5,8 +5,8 @@ extends Node
 var claim_target: Gadget
 
 func initiate_claim() -> void:
-	if Dwelt.get_closest_gadget():
-		claim_target = Dwelt.get_closest_gadget()
+	if Dwelt.selected_gadget:
+		claim_target = Dwelt.selected_gadget
 		effect_manager.add_effect(load("res://effects/claiming.tres"))
 
 func cancel_claim() -> void:
@@ -27,7 +27,3 @@ func _ready() -> void:
 			Dwelt.gadgets_close_to_player_changed.emit())
 	
 	Dwelt.claim_requested.connect(initiate_claim)
-	#Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
-		#if "claiming" in effect_manager.active_effects:
-			#if !claim_target in Dwelt.gadgets_close_to_player:
-				#cancel_claim())

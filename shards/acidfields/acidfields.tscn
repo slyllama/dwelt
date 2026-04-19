@@ -124,7 +124,6 @@ script = ExtResource("2_58tgt")
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
-collision_layer = 3
 collision_mask = 3
 
 [node name="Mesh" parent="Floor" index="0" unique_id=1446901427]
@@ -261,10 +260,10 @@ mesh = SubResource("QuadMesh_aut2g")
 [node name="Sun" parent="Sky" index="1" unique_id=777693513]
 transform = Transform3D(-0.67355454, 0.36956874, -0.64011186, -7.64024e-09, 0.8660255, 0.5000001, 0.73913753, 0.33677727, -0.5833153, 0, 2, 0)
 
-[node name="AnguishedClaw" parent="." index="14" unique_id=1929017779 instance=ExtResource("12_41lxu")]
+[node name="AnguishedClaw" parent="." index="14" unique_id=39411649 instance=ExtResource("12_41lxu")]
 transform = Transform3D(0.43175226, -0.14461313, 0.8903241, 0.31760257, 0.94822395, 0, -0.8442267, 0.28276923, 0.45532736, 5.482811, -0.07383871, 5.812267)
 
-[node name="AnguishedClaw2" parent="." index="15" unique_id=2022575355 instance=ExtResource("12_41lxu")]
+[node name="AnguishedClaw2" parent="." index="15" unique_id=1563853349 instance=ExtResource("12_41lxu")]
 transform = Transform3D(0.025864005, -0.008662999, -0.99962795, 0.31760255, 0.94822395, -1.0683208e-08, 0.9478712, -0.31748438, 0.027276158, 4.2005906, -0.07383919, 8.50834)
 
 [node name="BeamTestTarget" type="Marker3D" parent="." index="16" unique_id=367518626]

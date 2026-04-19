@@ -34,7 +34,7 @@ func _ready() -> void:
 		if id == "claiming":
 			$Beam.visible = false
 			
-			target = Dwelt.get_closest_gadget()
+			target = Dwelt.selected_gadget
 			target_orb.emitting = true
 			$Orb.emitting = true
 			$Claim.play()

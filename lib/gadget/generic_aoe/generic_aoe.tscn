@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://df275bk4pu5ty"]
+
+[ext_resource type="Shader" uid="uid://b5wvkhss1sunb" path="res://generic/materials/shaders/aoe.gdshader" id="1_wupwe"]
+
+[sub_resource type="Gradient" id="Gradient_e5g31"]
+offsets = PackedFloat32Array(0.125, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tlr2q"]
+noise_type = 4
+frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fs1r"]
+noise = SubResource("FastNoiseLite_tlr2q")
+color_ramp = SubResource("Gradient_e5g31")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujg2f"]
+render_priority = 0
+shader = ExtResource("1_wupwe")
+shader_parameter/proximity_fade_distance = 0.08999999798832
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7fs1r")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jo0q3"]
+material = SubResource("ShaderMaterial_ujg2f")
+radius = 2.4
+height = 4.8
+radial_segments = 32
+rings = 16
+
+[node name="GenericAoe" type="MeshInstance3D" unique_id=1372830595]
+layers = 2
+mesh = SubResource("SphereMesh_jo0q3")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bu0omj8t4wobh" path="res://lib/gadget/selected_gadget_marker/textures/selected_gadget_marker.png" id="1_orayx"]
 [ext_resource type="Script" uid="uid://obn0mlvvg0jr" path="res://lib/gadget/selected_gadget_marker/selected_gadget_marker.gd" id="2_r1owa"]
+[ext_resource type="PackedScene" uid="uid://df275bk4pu5ty" path="res://lib/gadget/generic_aoe/generic_aoe.tscn" id="3_prvbp"]
 
 [sub_resource type="Animation" id="Animation_r1owa"]
 length = 0.001
@@ -44,7 +45,7 @@ _data = {
 
 [node name="SelectedGadgetMarker" type="Sprite3D" unique_id=257270989]
 cast_shadow = 0
-pixel_size = 0.001
+pixel_size = 0.0006
 billboard = 1
 double_sided = false
 no_depth_test = true
@@ -57,3 +58,5 @@ script = ExtResource("2_r1owa")
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1176115177]
 libraries/ = SubResource("AnimationLibrary_r1owa")
 autoplay = &"bounce"
+
+[node name="GenericAoe" parent="." unique_id=1372830595 instance=ExtResource("3_prvbp")]

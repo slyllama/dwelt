@@ -53,7 +53,7 @@ func _ready() -> void:
 		hover_handler.hover_shape = self
 		hover_handler.hover_model = model
 		add_child(hover_handler)
-	
+
 	# Uses the inclusion of an effect manager to determine if the gadget
 	# is interactive (i.e., needs to check the player's proximity to it)
 	# TODO: right now, no gadget is player-owned

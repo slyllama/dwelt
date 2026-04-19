@@ -218,6 +218,7 @@ radius = 0.25
 [node name="Player" type="CharacterBody3D" unique_id=568758090]
 collision_layer = 3
 script = ExtResource("1_al4t3")
+friction = 25.0
 gravity_damping = 7.0
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=920840416]

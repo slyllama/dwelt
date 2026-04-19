@@ -27,3 +27,4 @@ shader_parameter/color_gradient_texture = SubResource("GradientTexture2D_potlo")
 shader_parameter/alpha_mask_texture = ExtResource("2_62t66")
 shader_parameter/wobble_texture = SubResource("NoiseTexture2D_qjs1g")
 shader_parameter/wobble_strength = 0.090000004275
+shader_parameter/wobble_speed = 0.2

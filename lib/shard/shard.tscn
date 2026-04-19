@@ -27,6 +27,7 @@ script = ExtResource("1_5i5j7")
 [node name="HUD" parent="." unique_id=717398159 instance=ExtResource("1_3xe27")]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1367160262]
+collision_layer = 3
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1446901427]
 mesh = SubResource("QuadMesh_22u7k")
@@ -54,3 +55,4 @@ directional_shadow_max_distance = 20.0
 
 [node name="SelectedGadgetMarker" parent="." unique_id=257270989 instance=ExtResource("7_ca0gg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+visible = false

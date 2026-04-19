@@ -2100,7 +2100,7 @@ _subresources={
 "mat_hand": {
 "use_external/enabled": false,
 "use_external/fallback_path": "res://shards/acidfields/props/acid_pool/materials/acid_pool.tres",
-"use_external/path": ""
+"use_external/path": "uid://c5wup88y2e6ia"
 }
 },
 "nodes": {

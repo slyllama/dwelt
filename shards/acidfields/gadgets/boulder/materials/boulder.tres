@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6mmr7qxvt8xr"]
+
+[ext_resource type="Texture2D" uid="uid://dis5b5xmqn6j8" path="res://shards/acidfields/gadgets/boulder/materials/textures/boulder_diff.jpg" id="1_qyygg"]
+[ext_resource type="Texture2D" uid="uid://0trhe0w0epsx" path="res://shards/acidfields/gadgets/boulder/materials/textures/boulder_norm.jpg" id="2_y2ycn"]
+
+[resource]
+specular_mode = 2
+albedo_texture = ExtResource("1_qyygg")
+normal_enabled = true
+normal_texture = ExtResource("2_y2ycn")
