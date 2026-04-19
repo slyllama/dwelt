@@ -10,8 +10,10 @@ func enable_button(button: BaseButton) -> void:
 	button.disabled = false
 
 func _ready() -> void:
-	# Set up button hover states
+	# Set up button hover and click UI states
 	for _n: TextureButton in get_children():
+		_n.pressed.connect(func() -> void:
+			Dwelt.click_sound_requested.emit())
 		_n.mouse_entered.connect(func() -> void:
 			if !_n.disabled:
 				_n.modulate = Color(1.5, 1.5, 1.5))
@@ -27,10 +29,11 @@ func _ready() -> void:
 		else: disable_button($Claim))
 	
 	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
-		if Dwelt.get_closest_gadget():
-			var _closest_gadget: Gadget = Dwelt.get_closest_gadget()
-			if (_closest_gadget == Dwelt.selected_gadget
-				and _closest_gadget.get_effect("enemy_owned")):
+		# Only using this to check that there are close gadgets; not really
+		# concerned about the *closest* one
+		if Dwelt.get_closest_gadget(): 
+			if (Dwelt.selected_gadget in Dwelt.gadgets_close_to_player
+				and Dwelt.selected_gadget.get_effect("enemy_owned")):
 				enable_button($Claim)
 			else: disable_button($Claim)
 		else: disable_button($Claim))

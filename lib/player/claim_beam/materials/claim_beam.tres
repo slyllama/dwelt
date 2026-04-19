@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dgeo45w717oys"]
+
+[ext_resource type="Shader" uid="uid://ngnkof53mdq2" path="res://lib/player/claim_beam/materials/shaders/claim_beam.gdshader" id="1_potlo"]
+[ext_resource type="Texture2D" uid="uid://dk4dtf0l2sll8" path="res://lib/player/claim_beam/materials/textures/beam_alpha_mask.jpg" id="2_62t66"]
+
+[sub_resource type="Gradient" id="Gradient_f0eh2"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.19026619, 0.8054305, 0.9149768, 1, 1, 1, 1, 1, 0.19026619, 0.8054305, 0.9149768, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_potlo"]
+gradient = SubResource("Gradient_f0eh2")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_potlo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62t66"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qjs1g"]
+noise = SubResource("FastNoiseLite_62t66")
+color_ramp = SubResource("Gradient_potlo")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_potlo")
+shader_parameter/color_gradient_texture = SubResource("GradientTexture2D_potlo")
+shader_parameter/alpha_mask_texture = ExtResource("2_62t66")
+shader_parameter/wobble_texture = SubResource("NoiseTexture2D_qjs1g")
+shader_parameter/wobble_strength = 0.090000004275
