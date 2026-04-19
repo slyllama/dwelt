@@ -1,3 +1,4 @@
 .godot/
+addons/
 build/*
 *.tmp
