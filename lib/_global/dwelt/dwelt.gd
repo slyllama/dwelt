@@ -1,6 +1,7 @@
 extends Node
 
 const GRAVITY := -9.8
+const EFFECTS_PATH := "res://effects/"
 
 # References
 var camera: Camera3D
@@ -24,6 +25,7 @@ signal gadgets_close_to_player_changed
 signal gadgets_reloaded # used to clear effects panes, etc
 signal play_flash(position: Vector2)
 signal selected_gadget_changed(gadget: Gadget)
+signal selected_gadget_updated # emitted by the selected gadget when an effect is added/changed/removed
 signal shake_camera
 
 # Return the gadget closest to the player

@@ -41,8 +41,9 @@ func load_gadgets_from_save() -> void:
 				_scene_position, _scene_rotation, _scene_scale)
 			
 			# TODO: apply saved effects here
-			if _scene.effect_manager and "effect_data" in gadget_data:
-				_scene.effect_manager.apply_effects_from_dict(gadget_data.effect_data)
+			_scene.ready.connect(func() -> void:
+				if _scene.effect_manager and "effect_data" in gadget_data:
+					_scene.effect_manager.apply_effects_from_dict(gadget_data.effect_data))
 			
 		# Gracefully free the AsyncLoader as it is no longer needed
 		_async_loader.close()

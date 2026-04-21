@@ -49,12 +49,12 @@ func _process(_delta: float) -> void:
 func _on_add_timed_effect_pressed() -> void:
 	if effect_manager:
 		effect_manager.add_effect(load(
-			"res://effects/test_duration_effect.tres"))
+			"res://effects/duration_bingus.tres"))
 
 func _on_add_qty_effect_pressed() -> void:
 	if effect_manager:
 		effect_manager.add_effect(load(
-			"res://effects/test_quantity_effect.tres"))
+			"res://effects/qty_bingus.tres"))
 
 func _on_set_to_player_pressed() -> void:
 	effect_manager = Dwelt.player_effect_manager

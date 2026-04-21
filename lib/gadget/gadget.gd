@@ -56,11 +56,10 @@ func _ready() -> void:
 
 	# Uses the inclusion of an effect manager to determine if the gadget
 	# is interactive (i.e., needs to check the player's proximity to it)
-	# TODO: right now, no gadget is player-owned
 	if effect_manager:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
-		effect_manager.add_effect(load("res://effects/enemy_owned.tres").duplicate())
+		#effect_manager.add_effect(load("res://effects/enemy_owned.tres").duplicate())
 		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)

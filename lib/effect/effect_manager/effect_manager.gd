@@ -5,8 +5,13 @@ var active_effects: Dictionary[String, EffectInstance]
 
 signal effect_added(id: String)
 signal effect_finished(id: String)
-signal effect_updated(id: String)
+signal effects_updated()
 signal effect_cancelled(id: String)
+
+func notify_update() -> void:
+	effects_updated.emit()
+	if Dwelt.selected_gadget == get_parent():
+		Dwelt.selected_gadget_updated.emit()
 
 func has_effect(id: String) -> bool:
 	return(id in active_effects)
@@ -26,16 +31,35 @@ func get_effects_as_dict() -> Dictionary:
 	return(_dict)
 
 func apply_effects_from_dict(effect_dict: Dictionary) -> void:
-	print("Applying effects " + str(effect_dict))
+	for _eid: String in effect_dict:
+		var _effect_path: String = Dwelt.EFFECTS_PATH + _eid + ".tres"
+		if !FileAccess.file_exists(_effect_path):
+			Utils.pdebug("Couldn't apply effect '" + _eid + "' because it has no resource.",
+				"EffectManager")
+			continue
+		var _effect_data: Dictionary = effect_dict[_eid]
+		var _effect: EffectInstance = load(_effect_path).duplicate()
+		
+		if "current_duration" in _effect_data:
+			_effect.current_duration = _effect_data.current_duration
+		if "current_quantity" in _effect_data:
+			_effect.current_quantity = _effect_data.current_quantity
+		add_effect(_effect)
 
 func add_effect(effect: EffectInstance) -> void:
 	var id := effect.id
 	# If an effect with this ID isn't already active, add it
 	if !id in active_effects:
 		active_effects[id] = effect.duplicate()
-		# Reset effect quantities and durations
-		active_effects[id].current_duration = active_effects[id].total_duration
-		active_effects[id].current_quantity = active_effects[id].total_quantity
+		# Reset effect quantities and durations; if the incoming effect has
+		# an altered current duration or quantity (i.e., not equal to the
+		# total), use that instead
+		if effect.current_duration != active_effects[id].total_duration:
+			active_effects[id].current_duration = effect.current_duration
+		else: active_effects[id].current_duration = active_effects[id].total_duration
+		if effect.current_quantity != active_effects[id].total_quantity:
+			active_effects[id].current_quantity = effect.current_quantity
+		else: active_effects[id].current_quantity = active_effects[id].total_quantity
 		effect_added.emit(id)
 	else: # logic for 'compounding' an existing effect
 		var existing_effect := active_effects[id]
@@ -47,7 +71,7 @@ func add_effect(effect: EffectInstance) -> void:
 			if effect.quantity_stacks:
 				existing_effect.current_quantity += effect.total_quantity
 			else: existing_effect.current_quantity = effect.total_quantity
-		effect_updated.emit()
+		notify_update()
 
 func cancel_effect(id: String) -> void:
 	if id in active_effects:
@@ -55,6 +79,7 @@ func cancel_effect(id: String) -> void:
 		effect.finished.emit()
 		effect_cancelled.emit(id)
 		active_effects.erase(id)
+		notify_update()
 
 func _process(delta: float) -> void:
 	for id in active_effects:
@@ -65,3 +90,4 @@ func _process(delta: float) -> void:
 				effect_finished.emit(id)
 				effect.finished.emit()
 				active_effects.erase(id)
+				notify_update()
