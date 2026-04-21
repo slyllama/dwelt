@@ -62,12 +62,16 @@ func _ready() -> void:
 			Utils.pdebug("Hello, world!"))
 
 func _input(_event: InputEvent) -> void:
-	if !Utils.debug_mode: return
-	
 	# Toggle input focusing
 	if Input.is_action_just_pressed("debug_prefix"):
+		if !Utils.debug_mode: # activate if not active
+			Utils.debug_mode = true
+			Utils.debug_mode_changed.emit()
 		%Input.grab_focus()
-	elif Input.is_action_just_pressed("debug_input"):
+	
+	if !Utils.debug_mode: return
+	
+	if Input.is_action_just_pressed("debug_input"):
 		await get_tree().process_frame
 		%Input.grab_focus()
 	
