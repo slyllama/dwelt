@@ -4,14 +4,18 @@ class_name GadgetManager extends Node3D
 @export var shard_id := "shard"
 
 func load_gadgets_from_save() -> void:
-	for id: String in Save.save.gadgets:
+	var shard_data: Dictionary = Save.save.shard_data[shard_id]
+	# Add a gadget list to this shard's data in the save, if it doesn't exist
+	if !"gadgets" in shard_data:
+		shard_data["gadgets"] = []
+	for id: String in shard_data.gadgets:
 		if GadgetData.get_gadget_path(shard_id, id) == "":
 			Utils.pdebug("Couldn't load gadget '" + id
 				+ "' because its path did not resolve.", "GadgetManager")
 			continue
 		
 		# Get the list of all gadgets in the shard with the same ID
-		var gadget_list: Array = Save.save.gadgets[id]
+		var gadget_list: Array = shard_data.gadgets[id]
 		# Load the first gadget in the array
 		var _async_loader := Async3DLoader.new()
 		var _path: String = GadgetData.get_gadget_path(shard_id, id)
@@ -33,7 +37,6 @@ func load_gadgets_from_save() -> void:
 				_scene_rotation = Utils.str_to_vec3(gadget_data.rotation)
 			if "scale" in gadget_data:
 				_scene_scale = Utils.str_to_vec3(gadget_data.scale)
-			
 			var _scene: Gadget = _async_loader.add_scene(
 				_scene_position, _scene_rotation, _scene_scale)
 			
@@ -58,7 +61,7 @@ func write_gadgets_to_save() -> void:
 			
 			if !_n.gadget_id in _gadgets: _gadgets[_n.gadget_id] = []
 			_gadgets[_n.gadget_id].append(_data)
-	Save.save.gadgets = _gadgets.duplicate()
+	Save.save.shard_data[shard_id].gadgets = _gadgets.duplicate()
 
 func _ready() -> void:
 	Dwelt.gadget_manager = self
@@ -72,5 +75,5 @@ func _ready() -> void:
 			write_gadgets_to_save()
 			Save.save_file())
 	
-	if "gadgets" in Save.save:
-		load_gadgets_from_save()
+	await get_tree().process_frame
+	load_gadgets_from_save()

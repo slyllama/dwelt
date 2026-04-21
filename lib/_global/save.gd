@@ -3,25 +3,23 @@ extends Node
 
 const SAVE_PATH := "user://save.json"
 const DEFAULT_SAVE := {
-	"gadgets": {
-		"test_gadget": [
-			{ "position": "3.00, 3.00, 3.00" }
-		]
-	},
 	"currencies": {
 		"kinetic": "0",
 		"elemental": "0",
 		"verdant": "0",
 		"arcane": "0"
 	},
-	"player_position": "0.00, 1.00, 0.00"
+	"shard_data": {}
 }
 
-@onready var save := DEFAULT_SAVE.duplicate()
+@onready var save := DEFAULT_SAVE.duplicate(true)
 
 func load_file() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		var _f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+		if !_f.get_as_text():
+			_f.close()
+			return
 		var _f_json: Dictionary = JSON.parse_string(_f.get_as_text())
 		# Update values in `save` rather than replacing the whole thing -
 		# ensures that new values are appropriately added to the save

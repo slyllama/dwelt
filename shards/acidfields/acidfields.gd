@@ -14,7 +14,3 @@ func _ready() -> void:
 	
 	# TODO: test claim target
 	$Player/RobotMesh/ClaimBeam.target = $BeamTestTarget
-	
-	# NOTE: temporarily enabling debug by default
-	#Utils.debug_mode = true
-	#Utils.debug_mode_changed.emit()

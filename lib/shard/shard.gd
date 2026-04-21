@@ -5,6 +5,11 @@ func _set_bus_vol(vol: float) -> void:
 	AudioServer.set_bus_volume_linear(0, vol)
 
 func _ready() -> void:
+	# Populate save file with a space for this shard's data
+	if !$GadgetManager.shard_id in Save.save.shard_data:
+		Save.save.shard_data[$GadgetManager.shard_id] = {}
+	Dwelt.current_shard_id = $GadgetManager.shard_id
+	
 	Utils.debug_mode_changed.emit() # update debugging nodes
 	
 	# TODO: move sound fade in

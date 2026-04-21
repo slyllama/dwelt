@@ -1,5 +1,7 @@
 class_name DweltPlayer extends CharacterBody3D
 
+const POS_UPDATE_TICK := 0.5 # determines how often the player's position gets saved
+
 @export_category("Physics")
 @export var speed := 2.0
 @export var speed_multiplier := 1.0 # used for lethargy etc
@@ -23,10 +25,15 @@ func _ready() -> void:
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)
 	
-	global_position = Utils.str_to_vec3(Save.save.player_position)
+	await get_tree().process_frame
+	var shard_data: Dictionary = Save.save.shard_data[Dwelt.current_shard_id]
+	if "player_position" in shard_data:
+		global_position = Utils.str_to_vec3(shard_data.player_position)
 	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 
-func _physics_process(_delta: float) -> void:
+var _time := 0.0
+
+func _physics_process(delta: float) -> void:
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = $Orbit.global_transform.basis
 	
@@ -75,4 +82,7 @@ func _physics_process(_delta: float) -> void:
 	$RobotMesh.forward_blend = %InputHandler.direction.z
 	$RobotMesh.strafe_blend = %InputHandler.direction.x
 	
-	Save.save.player_position = Utils.vec3_to_str(global_position)
+	_time += delta
+	if _time > POS_UPDATE_TICK:
+		Save.save.shard_data[Dwelt.current_shard_id].player_position = Utils.vec3_to_str(global_position)
+		_time = 0.0

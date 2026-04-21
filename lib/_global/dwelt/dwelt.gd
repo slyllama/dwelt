@@ -8,6 +8,7 @@ var gadget_manager: GadgetManager
 var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
+var current_shard_id := ""
 var gadgets_close_to_player: Array[Gadget] = []
 var pan_cooldown := false
 var selected_gadget: Gadget
