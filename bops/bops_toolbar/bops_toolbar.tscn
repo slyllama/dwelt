@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dukennqply88c"]
+
+[ext_resource type="Script" uid="uid://ck435ufud1siu" path="res://bops/bops_toolbar/bops_toolbar.gd" id="1_q2ke3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tao2p"]
+
+[node name="BOpsToolbar" type="PanelContainer" unique_id=989331487]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tao2p")
+script = ExtResource("1_q2ke3")
+
+[node name="Box" type="HBoxContainer" parent="." unique_id=469191344]
+layout_mode = 2
+alignment = 1
+
+[node name="Test" type="Button" parent="Box" unique_id=1538880910]
+layout_mode = 2
+text = "Button"
+
+[node name="Test2" type="Button" parent="Box" unique_id=1919804392]
+layout_mode = 2
+text = "Button"
+
+[node name="Test3" type="Button" parent="Box" unique_id=1923987921]
+layout_mode = 2
+text = "Button"

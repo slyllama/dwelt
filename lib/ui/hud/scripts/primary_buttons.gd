@@ -45,3 +45,6 @@ func _ready() -> void:
 # Cannot be pressed unless it is actually valid
 func _on_claim_pressed() -> void:
 	Dwelt.claim_requested.emit()
+
+func _on_build_pressed() -> void:
+	BOps.activate()

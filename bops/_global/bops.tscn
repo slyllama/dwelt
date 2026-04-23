@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bucwaxhdk6t7h"]
+
+[ext_resource type="Script" uid="uid://bmichpuvtl2t5" path="res://bops/_global/bops.gd" id="1_m683i"]
+
+[node name="BOps" type="Node" unique_id=1227407697]
+script = ExtResource("1_m683i")

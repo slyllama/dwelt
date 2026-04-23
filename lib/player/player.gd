@@ -20,6 +20,7 @@ signal move_stopped
 
 func _ready() -> void:
 	Dwelt.player_effect_manager = %EffectManager
+	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
@@ -29,7 +30,6 @@ func _ready() -> void:
 	var shard_data: Dictionary = Save.save.shard_data[Dwelt.current_shard_id]
 	if "player_position" in shard_data:
 		global_position = Utils.str_to_vec3(shard_data.player_position)
-	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 
 var _time := 0.0
 
