@@ -173,39 +173,27 @@ offset_right = 313.0
 grow_vertical = 0
 
 [node name="GadgetPlate" type="Panel" parent="." unique_id=639916968]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -212.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = 212.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -189.0
+offset_right = 189.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nfgqh")
 script = ExtResource("6_hdq5k")
-
-[node name="GadgetAvatarPlate" parent="GadgetPlate" unique_id=2030982702 instance=ExtResource("10_l7ms4")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -205.0
-offset_bottom = 205.0
-grow_horizontal = 0
-flip_h = true
-flip_frame = true
 
 [node name="GadgetEffects" parent="GadgetPlate" unique_id=1169365333 instance=ExtResource("15_bly2c")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -412.0
-offset_right = -207.0
-offset_bottom = 205.0
-grow_horizontal = 0
-alignment = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 9.0
+offset_right = 40.0
+offset_bottom = 111.0
+grow_horizontal = 2
+alignment = 1
 
 [node name="BOpsToolbar" parent="." unique_id=989331487 instance=ExtResource("16_6a7qn")]
 anchors_preset = 7

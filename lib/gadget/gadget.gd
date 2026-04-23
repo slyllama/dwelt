@@ -65,6 +65,7 @@ func _ready() -> void:
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
-			if body is DweltPlayer:
+			if body is DweltPlayer and Dwelt.claim_target == self:
 				if Dwelt.player_effect_manager.has_effect("claiming"):
+					Utils.pdebug("Claim cancelled (too far from gadget).", "Gadget/ProximityArea")
 					Dwelt.player_effect_manager.cancel_effect("claiming"))

@@ -71,6 +71,12 @@ func _ready() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/reloadgadgets":
 			for _n: Node in get_children(): _n.queue_free()
+			
+			# Reset player/UI elements associated with selecting gadgets
+			Dwelt.selected_gadget = null
+			Dwelt.selected_gadget_changed.emit(null)
+			Dwelt.gadgets_close_to_player = []
+			
 			Dwelt.gadgets_reloaded.emit()
 			load_gadgets_from_save()
 		elif string == "/savegadgets":

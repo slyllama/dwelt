@@ -29,10 +29,11 @@ func apply_setting(parameter: String, value: String, do_save := true) -> void:
 	if do_save:
 		save_file()
 
-func apply_all_settings(do_save := true) -> void:
+func apply_all_settings(do_save := true, exceptions := []) -> void:
 	for _s: String in settings:
-		apply_setting(_s, settings[_s], do_save)
-		setting_applied.emit(_s, settings[_s])
+		if !_s in exceptions:
+			apply_setting(_s, settings[_s], do_save)
+			setting_applied.emit(_s, settings[_s])
 
 func apply_default_settings() -> void:
 	settings = DEFAULT_SETTINGS.duplicate()

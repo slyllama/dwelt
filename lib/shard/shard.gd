@@ -55,9 +55,14 @@ func _ready() -> void:
 			elif value == "false": get_viewport().use_taa = false)
 	
 	# Apply all settings now that each node has had a chance to load
+	# Skip full screen checks if the game has been run once
 	await get_tree().process_frame
-	Settings.apply_all_settings()
+	if Dwelt.first_run:
+		Settings.apply_all_settings()
+	else: Settings.apply_all_settings(false, ["full_screen"])
 	
 	# Update visual displays of currencies
 	for _currency_id: String in Save.save.currencies:
 		Dwelt.currency_updated.emit(_currency_id)
+	
+	Dwelt.first_run = false

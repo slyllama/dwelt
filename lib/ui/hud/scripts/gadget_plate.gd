@@ -6,9 +6,7 @@ func update(gadget: Gadget = Dwelt.selected_gadget) -> void:
 		visible = true
 		$GadgetEffects.effect_manager = gadget.effect_manager
 		if gadget.effect_manager:
-			if "enemy_owned" in gadget.effect_manager.active_effects:
-				$GadgetAvatarPlate.effect_particles_playing = true
-			else: $GadgetAvatarPlate.effect_particles_playing = false
+			pass
 	else: 
 		visible = false
 		$GadgetEffects.effect_manager = null
