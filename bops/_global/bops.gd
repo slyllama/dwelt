@@ -16,7 +16,7 @@ func activate() -> void:
 	change_mode(Mode.ACTIVE)
 
 # Deactivate building
-func exit() -> void:
+func deactivate() -> void:
 	if mode == Mode.INACTIVE: return # don't deactivate twice
 	change_mode(Mode.INACTIVE)
 

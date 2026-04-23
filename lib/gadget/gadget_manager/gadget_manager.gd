@@ -10,7 +10,7 @@ func load_gadgets_from_save() -> void:
 	if !"gadgets" in shard_data:
 		shard_data["gadgets"] = []
 	for id: String in shard_data.gadgets:
-		if GadgetData.get_gadget_path(shard_id, id) == "":
+		if GadgetData.get_gadget_path(id) == "":
 			Utils.pdebug("Couldn't load gadget '" + id
 				+ "' because its path did not resolve.", "GadgetManager")
 			continue
@@ -19,7 +19,7 @@ func load_gadgets_from_save() -> void:
 		var gadget_list: Array = shard_data.gadgets[id]
 		# Load the first gadget in the array
 		var _async_loader := Async3DLoader.new()
-		var _path: String = GadgetData.get_gadget_path(shard_id, id)
+		var _path: String = GadgetData.get_gadget_path(id)
 		
 		_async_loader.path = _path
 		add_child(_async_loader)

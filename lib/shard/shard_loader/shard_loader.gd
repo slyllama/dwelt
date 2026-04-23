@@ -5,6 +5,7 @@ const TARGET_SCENE = "res://shards/acidfields/acidfields.tscn"
 var target_scene := TARGET_SCENE
 
 var status: int
+var started := false
 var progress: Array[float]
 var has_loaded := false
 var transitioning := false
@@ -16,9 +17,15 @@ func _transition() -> void:
 	get_tree().change_scene_to_packed(
 		ResourceLoader.load_threaded_get(target_scene))
 
-func _ready() -> void:
-	Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
-	ResourceLoader.load_threaded_request(target_scene)
+func _input(event: InputEvent) -> void:
+	if started: return
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("toggle_debug_mode"):
+			target_scene = "res://shards/debug/debug.tscn"
+		Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
+		ResourceLoader.load_threaded_request(target_scene)
+		$CogAnchor.visible = true
+		started = true
 
 func _physics_process(delta: float) -> void:
 	%CogL.rotation += delta * 2.0

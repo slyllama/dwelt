@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://brd8rtkouaa8h"]
+
+[ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_wy1d8"]
+
+[node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
+
+[node name="GadgetManager" parent="." index="2" unique_id=319105425]
+shard_id = "debug"
+shard_title = "Debug Map"

@@ -68,6 +68,7 @@ libraries/ = SubResource("AnimationLibrary_ulvkr")
 autoplay = &"pulse"
 
 [node name="CogAnchor" type="Control" parent="." unique_id=770158952]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5

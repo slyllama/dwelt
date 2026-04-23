@@ -79,5 +79,6 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		Dwelt.gadget_manager.write_gadgets_to_save()
-		Save.save_file()
+		if Dwelt.gadget_manager:
+			Dwelt.gadget_manager.write_gadgets_to_save()
+			Save.save_file()

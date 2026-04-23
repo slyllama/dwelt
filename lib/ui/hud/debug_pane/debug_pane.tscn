@@ -12,31 +12,35 @@ ui_id = "debug_pane"
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Dev Menu"
 
-[node name="DebugOverlay" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=1309617227]
+[node name="Return" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=1912052090]
+layout_mode = 2
+text = "Return To Shard Loader"
+
+[node name="DebugOverlay" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1309617227]
 layout_mode = 2
 text = "Toggle Debug Overlay"
 
-[node name="DebugEffects" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1940754098]
+[node name="DebugEffects" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1940754098]
 layout_mode = 2
 text = "Debug Effects"
 
-[node name="ResetPos" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=415190585]
+[node name="ResetPos" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=415190585]
 layout_mode = 2
 text = "Reset Player Position"
 
-[node name="Gadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1934914775]
+[node name="Gadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1934914775]
 layout_mode = 2
 text = "Gadgets"
 
-[node name="SaveGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=590520629]
+[node name="SaveGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=590520629]
 layout_mode = 2
 text = "Save Gadgets"
 
-[node name="ReloadGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=788527435]
+[node name="ReloadGadgets" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="9" unique_id=788527435]
 layout_mode = 2
 text = "Reload Gadgets"
 
-[node name="CloseGadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="9" unique_id=1633205124]
+[node name="CloseGadgets" type="Label" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="10" unique_id=1633205124]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
@@ -46,6 +50,7 @@ theme_override_font_sizes/font_size = 12
 text = "Current nearby gadget: none."
 text_overrun_behavior = 5
 
+[connection signal="pressed" from="Box/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Box/DebugOverlay" to="." method="_on_debug_overlay_pressed"]
 [connection signal="pressed" from="Box/DebugEffects" to="." method="_on_debug_effects_pressed"]
 [connection signal="pressed" from="Box/ResetPos" to="." method="_on_reset_pos_pressed"]

@@ -47,4 +47,5 @@ func _on_claim_pressed() -> void:
 	Dwelt.claim_requested.emit()
 
 func _on_build_pressed() -> void:
-	BOps.activate()
+	if BOps.mode == BOps.Mode.INACTIVE: BOps.activate()
+	else: BOps.deactivate()
