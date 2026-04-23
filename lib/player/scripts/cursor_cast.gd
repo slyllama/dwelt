@@ -36,7 +36,8 @@ func _input(event: InputEvent) -> void:
 		# Didn't start *or* end in UI
 		if !last_click_in_ui and !get_window().gui_get_hovered_control():
 			if current_collider is Gadget:
-				Dwelt.update_selected_gadget(current_collider)
+				if current_collider.effect_manager: # clicking for BOps is handled separately
+					Dwelt.update_selected_gadget(current_collider)
 			else:
 				Dwelt.update_selected_gadget(null)
 			Dwelt.clicked_collision_object.emit(current_collider)

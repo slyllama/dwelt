@@ -35,8 +35,10 @@ func get_effect(effect_id: String) -> Variant:
 
 func update_collision_layers() -> void:
 	# Layer 3 is used for all interaction testing
-	if effect_manager: set_collision_layer_value(3, true)
-	else: set_collision_layer_value(3, false)
+	#if effect_manager: set_collision_layer_value(3, true)
+	#else: set_collision_layer_value(3, false)
+	set_collision_layer_value(3, true)
+	
 	if player_collision: set_collision_layer_value(1, true)
 	else: set_collision_layer_value(1, false)
 	if pushes_camera: set_collision_layer_value(2, true)
@@ -59,11 +61,10 @@ func _ready() -> void:
 	if effect_manager:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
-		#effect_manager.add_effect(load("res://effects/enemy_owned.tres").duplicate())
 		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
-			if body is DweltPlayer and Dwelt.selected_gadget == self:
+			if body is DweltPlayer:
 				if Dwelt.player_effect_manager.has_effect("claiming"):
 					Dwelt.player_effect_manager.cancel_effect("claiming"))

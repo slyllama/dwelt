@@ -57,6 +57,11 @@ func update_selected_gadget(gadget: Gadget) -> void:
 		gadgets_close_to_player.push_back(selected_gadget)
 		gadgets_close_to_player_changed.emit()
 
+func discord_update_details(text: String) -> void:
+	DiscordRPC.details = text
+	if DiscordRPC.get_is_discord_working():
+		DiscordRPC.refresh()
+
 func _init() -> void:
 	AudioServer.set_bus_volume_linear(0, 0.0)
 

@@ -2,6 +2,7 @@
 class_name GadgetManager extends Node3D
 
 @export var shard_id := "shard"
+@export var shard_title := "Shard"
 
 func load_gadgets_from_save() -> void:
 	var shard_data: Dictionary = Save.save.shard_data[shard_id]
@@ -75,6 +76,8 @@ func _ready() -> void:
 		elif string == "/savegadgets":
 			write_gadgets_to_save()
 			Save.save_file())
+	
+	Dwelt.discord_update_details(shard_title)
 	
 	await get_tree().process_frame
 	load_gadgets_from_save()

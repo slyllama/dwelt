@@ -131,6 +131,7 @@ visible = false
 
 [node name="GadgetManager" parent="." index="2" unique_id=319105425]
 shard_id = "acidfields"
+shard_title = "Symath Acidfields"
 
 [node name="Player" parent="." index="3" unique_id=1853110306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
