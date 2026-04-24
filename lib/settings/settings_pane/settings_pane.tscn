@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0250edkj4l4t"]
 
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
+[ext_resource type="Script" uid="uid://co6hbqnvx3xok" path="res://lib/settings/settings_pane/settings_pane.gd" id="2_4xwgy"]
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="2_5tk31"]
 [ext_resource type="Script" uid="uid://b8tc3q0ulna4b" path="res://lib/settings/settings_pane/scripts/presets.gd" id="2_8l32a"]
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
@@ -10,6 +11,7 @@
 
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 offset_right = 360.0
+script = ExtResource("2_4xwgy")
 title = "Settings"
 ui_id = "settings_pane"
 
@@ -160,11 +162,16 @@ color = Color(1, 1, 1, 0)
 
 [node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1037660848]
 layout_mode = 2
-text = "Reset To Default"
+text = "Default Settings"
 
 [node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1169901860]
+visible = false
 layout_mode = 2
 text = "Quit Game"
+
+[node name="Menu" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=159954649]
+layout_mode = 2
+text = "Return To Menu"
 
 [node name="BorderEffect" parent="." index="2" unique_id=599452808]
 position = Vector2(280, 278)
@@ -174,3 +181,4 @@ position = Vector2(280, 278)
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/High" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_high_pressed"]
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Box/Menu" to="." method="_on_menu_pressed"]

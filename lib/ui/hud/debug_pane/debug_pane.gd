@@ -21,12 +21,3 @@ func _on_debug_overlay_pressed() -> void:
 func _on_debug_effects_pressed() -> void:
 	await get_tree().create_timer(0.05).timeout
 	Utils.debug_sent.emit("/debugeffects")
-
-func _on_return_pressed() -> void:
-	# Reset player/UI elements associated with selecting gadgets
-	Dwelt.selected_gadget = null
-	Dwelt.selected_gadget_changed.emit(null)
-	Dwelt.gadgets_close_to_player = []
-	
-	Save.save_file()
-	get_tree().change_scene_to_file("res://lib/shard/shard_loader/shard_loader.tscn")

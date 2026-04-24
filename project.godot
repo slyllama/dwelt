@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dwelt: Iron Solstice"
 config/version="1.0.0.0"
-run/main_scene="uid://bsm57u4128nqw"
+run/main_scene="uid://bme8bjwkaw8v5"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="dwelt"
 config/features=PackedStringArray("4.6", "Forward Plus")

@@ -92,10 +92,3 @@ func _on_gui_input(_event: InputEvent) -> void:
 
 func _on_close_pressed() -> void:
 	Dwelt.ui_pane_manager.close_pane(self)
-
-func _on_default_pressed() -> void:
-	Settings.apply_default_settings()
-
-func _on_quit_pressed() -> void:
-	Save.save_file()
-	get_tree().quit()

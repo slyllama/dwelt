@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bme8bjwkaw8v5"]
+
+[ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_n57j6"]
+[ext_resource type="Texture2D" uid="uid://bel6nv4vttscj" path="res://lib/main_menu/textures/title.png" id="1_vw87d"]
+[ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="3_7usjq"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=377030493]
+script = ExtResource("1_n57j6")
+
+[node name="Box" type="VBoxContainer" parent="." unique_id=1726655141]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="TextureRect" parent="Box" unique_id=503528002]
+custom_minimum_size = Vector2(280, 112)
+layout_mode = 2
+texture = ExtResource("1_vw87d")
+expand_mode = 1
+
+[node name="Padding" type="ColorRect" parent="Box" unique_id=1233142551]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Play" type="Button" parent="Box" unique_id=312914983]
+layout_mode = 2
+text = "Play"
+
+[node name="PlayDebug" type="Button" parent="Box" unique_id=1234799631]
+layout_mode = 2
+text = "Play (Debug Map)"
+
+[node name="Settings" type="Button" parent="Box" unique_id=520164302]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Box" unique_id=1303096898]
+layout_mode = 2
+text = "Quit"
+
+[node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("3_7usjq")]
+unique_name_in_owner = true
+layer = 2
+
+[connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Box/PlayDebug" to="." method="_on_play_debug_pressed"]
+[connection signal="pressed" from="Box/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]

@@ -15,6 +15,7 @@ var gadgets_close_to_player := [] # set true if a shard has been entered once
 var first_run := true
 var pan_cooldown := false
 var selected_gadget: Gadget
+var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus
 signal clicked_collision_object(object: CollisionObject3D)
