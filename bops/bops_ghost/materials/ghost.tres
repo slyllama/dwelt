@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://3ohb6u06dxc"]
+
+[ext_resource type="Shader" uid="uid://b552k8p16g3bi" path="res://bops/bops_ghost/materials/shaders/ghost.gdshader" id="1_cgafk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cgafk")
+shader_parameter/albedo_color = Color(0.54719996, 0.6848, 0.96, 0.4627451)

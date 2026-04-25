@@ -16,6 +16,9 @@ func go_to_shard(path: String) -> void:
 	get_tree().change_scene_to_file(SHARD_LOADER_PATH)
 
 func _ready() -> void:
+	await get_tree().process_frame
+	Settings.apply_all_settings(false)
+	
 	%Curtain.visible = true
 	DiscordRPC.details = "In Menu"
 	DiscordRPC.refresh()

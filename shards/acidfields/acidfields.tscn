@@ -290,3 +290,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="BOpsGhost" parent="." index="18" unique_id=808042295 instance=ExtResource("13_41lxu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+active = true
+follow_mouse = true
