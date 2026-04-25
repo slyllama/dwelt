@@ -5,9 +5,14 @@ const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tsc
 
 var shard_load_started := false
 
+func fade_music() -> void:
+	var _t := create_tween()
+	_t.tween_property($Music, "volume_linear", 0.0, 0.25)
+
 func go_to_shard(path: String) -> void:
 	if shard_load_started: return
 	%Curtain.trans_in()
+	fade_music()
 	%MenuScene.target_z_position = -1.4
 	
 	shard_load_started = true
@@ -17,7 +22,9 @@ func go_to_shard(path: String) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
-	Settings.apply_all_settings(false)
+	
+	if Dwelt.first_run: Settings.apply_all_settings(false)
+	else: Settings.apply_all_settings(false, ["full_screen"])
 	
 	%Curtain.visible = true
 	DiscordRPC.details = "In Menu"
@@ -25,6 +32,8 @@ func _ready() -> void:
 	%Play.grab_focus()
 	await get_tree().create_timer(0.1).timeout
 	%Curtain.trans_out()
+	
+	$Music.play()
 
 func _on_play_pressed() -> void:
 	go_to_shard("res://shards/acidfields/acidfields.tscn")

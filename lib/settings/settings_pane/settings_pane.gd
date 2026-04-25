@@ -16,3 +16,6 @@ func _on_menu_pressed() -> void:
 	
 	Save.save_file()
 	get_tree().change_scene_to_file("res://lib/main_menu/main_menu.tscn")
+
+func _on_volume_slider_dragged(value: float) -> void:
+	AudioServer.set_bus_volume_linear(0, value)

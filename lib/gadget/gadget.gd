@@ -23,6 +23,7 @@ class_name Gadget extends StaticBody3D
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
+@onready var enemy_indicator: Sprite3D
 
 # Gets an effect by ID if the gadget has an effect manager which includes that
 # effect = or returns `null` otherwise
@@ -69,3 +70,14 @@ func _ready() -> void:
 				if Dwelt.player_effect_manager.has_effect("claiming"):
 					Utils.pdebug("Claim cancelled (too far from gadget).", "Gadget/ProximityArea")
 					Dwelt.player_effect_manager.cancel_effect("claiming"))
+		
+		# Logic for showing and removing the "enemy owned" indicator
+		await get_tree().process_frame
+		if effect_manager.has_effect("enemy_owned"):
+			enemy_indicator = load(
+				"res://lib/gadget/enemy_indicator/enemy_indicator.tscn").instantiate()
+			enemy_indicator.position.y = 0.5
+			add_child(enemy_indicator)
+			effect_manager.effect_cancelled.connect(func(id: String) -> void:
+				if id == "enemy_owned" and enemy_indicator:
+					enemy_indicator.free())

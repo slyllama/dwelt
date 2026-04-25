@@ -8,6 +8,8 @@ class_name SettingsSlider extends HBoxContainer
 @onready var slider := HSlider.new()
 @onready var right_padding := ColorRect.new()
 
+signal slider_dragged(value: float)
+
 # Update UI elements based on settings without applying the settings themselves
 func redraw() -> void:
 	var _value: String = Settings.settings[setting_id]
@@ -29,6 +31,7 @@ func _ready() -> void:
 	slider.max_value = 1.0
 	slider.step = 0.02
 	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.value_changed.connect(slider_dragged.emit)
 	
 	# Right-most padding setup
 	right_padding.color = Color(0.0, 0.0, 0.0, 0.0)

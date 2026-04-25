@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgahwyiajh2ho" path="res://lib/main_menu/textures/slyllama.png" id="4_tpkjy"]
 [ext_resource type="PackedScene" uid="uid://da5o2dj88sb3i" path="res://lib/main_menu/menu_scene/menu_scene.tscn" id="4_uliap"]
 [ext_resource type="Script" uid="uid://cqod0udt685yr" path="res://lib/main_menu/scripts/curtain.gd" id="5_capkl"]
+[ext_resource type="AudioStream" uid="uid://bqavqvjr5d6jd" path="res://lib/main_menu/sounds/mus_interlace.ogg" id="8_70ubd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uliap"]
 content_margin_left = 0.0
@@ -139,6 +140,9 @@ script = ExtResource("5_capkl")
 
 [node name="MenuScene" parent="." unique_id=1395275928 instance=ExtResource("4_uliap")]
 unique_name_in_owner = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1907433007]
+stream = ExtResource("8_70ubd")
 
 [connection signal="pressed" from="FG/Box/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="FG/Box/PlayDebug" to="." method="_on_play_debug_pressed"]

@@ -67,11 +67,13 @@ func discord_update_details(text: String) -> void:
 	if DiscordRPC.get_is_discord_working():
 		DiscordRPC.refresh()
 
-func _init() -> void:
-	AudioServer.set_bus_volume_linear(0, 0.0)
-
 func _ready() -> void:
 	click_sound_requested.connect($Click.play)
+	
+	# Connect settings
+	Settings.setting_applied.connect(func(setting: String, value: String) -> void:
+		if setting == "volume":
+			AudioServer.set_bus_volume_linear(0, float(value)))
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/pause": get_tree().paused = true

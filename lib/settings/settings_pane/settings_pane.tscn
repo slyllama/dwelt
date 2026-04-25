@@ -179,6 +179,7 @@ position = Vector2(280, 278)
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Low" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_low_pressed"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Medium" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_medium_pressed"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/High" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_high_pressed"]
+[connection signal="slider_dragged" from="Box/Scroll/ScrollBox/Volume" to="." method="_on_volume_slider_dragged"]
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Box/Menu" to="." method="_on_menu_pressed"]

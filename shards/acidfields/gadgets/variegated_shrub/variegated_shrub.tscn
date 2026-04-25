@@ -2,19 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_e01bh"]
 [ext_resource type="PackedScene" uid="uid://bngsqf6drmv6o" path="res://shards/acidfields/gadgets/variegated_shrub/meshes/variegated_shrub.glb" id="2_v2im6"]
-[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_cjl0t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0ogg1"]
 height = 0.8149414
 radius = 0.34375
 
-[node name="VariegatedShrub" type="StaticBody3D" unique_id=869088074 node_paths=PackedStringArray("model", "effect_manager")]
+[node name="VariegatedShrub" type="StaticBody3D" unique_id=869088074 node_paths=PackedStringArray("model")]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_e01bh")
 gadget_id = "variegated_shrub"
 model = NodePath("VariegatedShrub")
-effect_manager = NodePath("EffectManager")
 player_collision = false
 cull_distance = 15.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
@@ -24,7 +22,3 @@ metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=173969647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4074707, 0)
 shape = SubResource("CylinderShape3D_0ogg1")
-
-[node name="EffectManager" type="Node" parent="." unique_id=856623051]
-script = ExtResource("3_cjl0t")
-metadata/_custom_type_script = "uid://dwm4elmsp1th0"

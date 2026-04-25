@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	# TODO: move sound fade in
 	var _sound_fade_in := create_tween()
-	_sound_fade_in.tween_method(_set_bus_vol, 0.0, 1.0, 1.0)
+	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(Settings.settings.volume), 1.0)
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
