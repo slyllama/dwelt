@@ -29,7 +29,6 @@ Utils="*uid://gjxkiq74de68"
 Save="*uid://ct3godu0v0l37"
 Settings="*uid://b48mkw44c6463"
 GadgetData="*uid://dij7nue5ek225"
-DiscordRPCLoader="uid://clk6f6slxhm8u"
 
 [debug]
 
@@ -47,7 +46,7 @@ mouse_cursor/custom_image="uid://cfqxpfbd8d4ih"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord/plugin.cfg")
 
 [gui]
 
