@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://da5o2dj88sb3i"]
+
+[ext_resource type="Script" uid="uid://ckn1rj0lfj45t" path="res://lib/main_menu/menu_scene/menu_scene.gd" id="1_kgdqs"]
+[ext_resource type="PackedScene" uid="uid://fok2dlvwn6yg" path="res://lib/player/meshes/robot.glb" id="2_xkewq"]
+[ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="3_xkewq"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="4_idwoj"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_idwoj"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vpo0"]
+animation = &"player_anims/eye"
+use_custom_timeline = true
+timeline_length = 1.5999999999999999
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kgdqs"]
+animation = &"player_anims/idle"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xkewq"]
+graph_offset = Vector2(-629.3333, 154.66667)
+nodes/idle/node = SubResource("AnimationNodeAnimation_kgdqs")
+nodes/idle/position = Vector2(-160, 160)
+nodes/blend/node = SubResource("AnimationNodeAdd2_idwoj")
+nodes/blend/position = Vector2(80, 160)
+nodes/eye/node = SubResource("AnimationNodeAnimation_6vpo0")
+nodes/eye/position = Vector2(-160, 306.66666)
+node_connections = [&"output", 0, &"blend", &"blend", 0, &"idle", &"blend", 1, &"eye"]
+
+[sub_resource type="Animation" id="Animation_idwoj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_nx5ln"]
+resource_name = "flicker"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.8]
+}
+
+[sub_resource type="Animation" id="Animation_6vpo0"]
+resource_name = "glow"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.8, 2.0, 0.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nx5ln"]
+_data = {
+&"RESET": SubResource("Animation_idwoj"),
+&"flicker": SubResource("Animation_nx5ln"),
+&"glow": SubResource("Animation_6vpo0")
+}
+
+[sub_resource type="Curve" id="Curve_6vpo0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nx5ln"]
+curve = SubResource("Curve_6vpo0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vsjh8"]
+emission_shape = 2
+emission_sphere_radius = 0.35
+gravity = Vector3(0, 0.03, 0)
+scale_min = 0.099999994
+scale_max = 0.45
+alpha_curve = SubResource("CurveTexture_nx5ln")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5dhk"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_idwoj")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_u0ydc"]
+material = SubResource("StandardMaterial3D_v5dhk")
+size = Vector2(0.04, 0.04)
+
+[node name="MenuScene" type="Node3D" unique_id=1395275928]
+script = ExtResource("1_kgdqs")
+
+[node name="Robot" parent="." unique_id=1488380475 instance=ExtResource("2_xkewq")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Animation" type="AnimationTree" parent="Robot" unique_id=856217680]
+libraries/player_anims = ExtResource("3_xkewq")
+tree_root = SubResource("AnimationNodeBlendTree_xkewq")
+parameters/blend/add_amount = 1.0
+
+[node name="Light" type="OmniLight3D" parent="Robot" unique_id=61292355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37557727, 0.5253199)
+shadow_enabled = true
+omni_range = 0.75
+
+[node name="LightAnim" type="AnimationPlayer" parent="Robot/Light" unique_id=486968662]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_nx5ln")
+
+[node name="Motes" type="GPUParticles3D" parent="Robot" unique_id=657188654]
+unique_name_in_owner = true
+cast_shadow = 0
+amount = 12
+lifetime = 2.5
+preprocess = 5.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_vsjh8")
+draw_pass_1 = SubResource("QuadMesh_u0ydc")
+
+[node name="Sky" type="WorldEnvironment" parent="." unique_id=1643396358]
+
+[node name="Pivot" type="Marker3D" parent="." unique_id=527333941]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera3D" parent="Pivot" unique_id=2108738010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.45, 2.5)
+current = true
+fov = 35.0

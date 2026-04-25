@@ -6,13 +6,10 @@
 [ext_resource type="Script" uid="uid://dk7uyha00yo40" path="res://lib/player/scripts/robot_mesh.gd" id="4_0y160"]
 [ext_resource type="Script" uid="uid://bwno2ytfmc7xi" path="res://lib/player/scripts/sound.gd" id="4_jlw2j"]
 [ext_resource type="Script" uid="uid://bqa58q5n27tp4" path="res://lib/player/scripts/orbit.gd" id="5_4ok3w"]
-[ext_resource type="Animation" uid="uid://cqpsbwgy2uxcd" path="res://lib/player/meshes/anims/idle.res" id="5_dyt5v"]
 [ext_resource type="ArrayMesh" uid="uid://bbnipptkru66r" path="res://lib/player/meshes/star.res" id="5_jyhpi"]
-[ext_resource type="Animation" uid="uid://dft5l21562sq" path="res://lib/player/meshes/anims/move_forward.res" id="6_jyhpi"]
 [ext_resource type="PackedScene" uid="uid://cch37nak71yn0" path="res://lib/player/trail/trail.tscn" id="8_1x433"]
-[ext_resource type="Animation" uid="uid://dn6jbc7cb2gch" path="res://lib/player/meshes/anims/strafe.res" id="8_g61qk"]
-[ext_resource type="Animation" uid="uid://b5rkwbh24208k" path="res://lib/player/meshes/anims/eye.res" id="8_up78s"]
 [ext_resource type="AudioStream" uid="uid://bkxx1ti38653a" path="res://lib/player/sounds/engine_idle.ogg" id="9_5x5nn"]
+[ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="10_ego0t"]
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
@@ -44,14 +41,6 @@ scale_min = 0.39999998
 scale_max = 0.7
 color_initial_ramp = SubResource("GradientTexture1D_up78s")
 alpha_curve = SubResource("CurveTexture_5x5nn")
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_up78s"]
-_data = {
-&"eye": ExtResource("8_up78s"),
-&"idle": ExtResource("5_dyt5v"),
-&"move_forward": ExtResource("6_jyhpi"),
-&"strafe": ExtResource("8_g61qk")
-}
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_r1bse"]
 
@@ -278,7 +267,7 @@ omni_range = 1.0
 [node name="JetTrail_R" parent="RobotMesh" unique_id=934605387 instance=ExtResource("8_1x433")]
 
 [node name="Anim" type="AnimationTree" parent="RobotMesh" unique_id=733744648]
-libraries/player = SubResource("AnimationLibrary_up78s")
+libraries/player = ExtResource("10_ego0t")
 tree_root = SubResource("AnimationNodeBlendTree_ram4p")
 parameters/add_forward/add_amount = 0.0
 parameters/idle_mix_eye/add_amount = 1.0
