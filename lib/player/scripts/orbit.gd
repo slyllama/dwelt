@@ -20,6 +20,7 @@ func _release(warp_mouse := true) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_eligible_to_capture = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Dwelt.panning = false
 		Dwelt.camera_pan_ended.emit()
 		if warp_mouse: get_window().warp_mouse(_last_click_position)
 
@@ -67,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 		var _mouse_delta := _mouse_pos - _last_click_position
 		if _mouse_delta.length_squared() > 100.0 and _eligible_to_capture:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Dwelt.panning = true
 			Dwelt.camera_pan_started.emit()
 	
 	# Update panning outcomes (even if no user input is happening)

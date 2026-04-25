@@ -6,6 +6,7 @@ const EFFECTS_PATH := "res://effects/"
 # References
 var camera: Camera3D
 var gadget_manager: GadgetManager
+var player: DweltPlayer
 var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
@@ -13,6 +14,7 @@ var claim_target: Gadget
 var current_shard_id := ""
 var gadgets_close_to_player := [] # set true if a shard has been entered once
 var first_run := true
+var panning := false
 var pan_cooldown := false
 var selected_gadget: Gadget
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered

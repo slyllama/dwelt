@@ -19,6 +19,7 @@ signal move_stopped
 @onready var _initial_y_rotation: float = %Orbit.rotation.y
 
 func _ready() -> void:
+	Dwelt.player = self
 	Dwelt.player_effect_manager = %EffectManager
 	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 	

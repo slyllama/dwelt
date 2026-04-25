@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c48evayoh8l8u"]
+
+[ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="1_dlvlh"]
+[ext_resource type="Script" uid="uid://cq36yodml31sj" path="res://bops/bops_ghost/bops_ghost.gd" id="1_tlid8"]
+
+[node name="BOpsGhost" type="Node3D" unique_id=808042295]
+script = ExtResource("1_tlid8")
+
+[node name="TestMesh" parent="." unique_id=1479890840 instance=ExtResource("1_dlvlh")]

@@ -32,18 +32,22 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Play" type="Button" parent="Box" unique_id=312914983]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
 [node name="PlayDebug" type="Button" parent="Box" unique_id=1234799631]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Play (Debug Map)"
 
 [node name="Settings" type="Button" parent="Box" unique_id=520164302]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Box" unique_id=1303096898]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 

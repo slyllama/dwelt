@@ -5,6 +5,8 @@ const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tsc
 func _ready() -> void:
 	DiscordRPC.details = "In Menu"
 	DiscordRPC.refresh()
+	
+	%Play.grab_focus()
 
 func _on_play_pressed() -> void:
 	Dwelt.shard_path_to_load = "res://shards/acidfields/acidfields.tscn"

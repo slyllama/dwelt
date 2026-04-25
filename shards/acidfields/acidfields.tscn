@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/acidfields/props/platform/platform.glb" id="11_r4xcf"]
 [ext_resource type="PackedScene" uid="uid://liwnieoeocre" path="res://shards/acidfields/anguished_claw.glb" id="12_41lxu"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/acidfields/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
+[ext_resource type="PackedScene" uid="uid://c48evayoh8l8u" path="res://bops/bops_ghost/bops_ghost.tscn" id="13_41lxu"]
 [ext_resource type="AudioStream" uid="uid://c1n8wgrr1281g" path="res://shards/acidfields/sounds/ambience.ogg" id="14_5x773"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_rfpxw"]
@@ -286,3 +287,6 @@ transform = Transform3D(0.025864005, -0.008662999, -0.99962795, 0.31760255, 0.94
 
 [node name="BeamTestTarget" type="Marker3D" parent="." index="16" unique_id=367518626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="BOpsGhost" parent="." index="18" unique_id=808042295 instance=ExtResource("13_41lxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
