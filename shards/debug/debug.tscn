@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c020ng1h0by3o" path="res://shards/debug/debug.gd" id="2_py4bx"]
 [ext_resource type="Environment" uid="uid://omrd8x86dwd7" path="res://shards/acidfields/env.tres" id="3_dvnsq"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="4_dvnsq"]
-[ext_resource type="PackedScene" uid="uid://ca5bsxlcksrqa" path="res://bops/gizmo/gizmo_arrow/gizmo_arrow.tscn" id="5_sts1q"]
+[ext_resource type="PackedScene" uid="uid://bwfv33porju0m" path="res://bops/gizmo/gizmo_mover/gizmo_mover_constructor.tscn" id="5_sts1q"]
 
 [sub_resource type="Gradient" id="Gradient_58tgt"]
 interpolation_mode = 2
@@ -51,17 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_dvnsq")
 
-[node name="1m" parent="." index="6" unique_id=1726896999 instance=ExtResource("4_dvnsq")]
+[node name="GizmoTest" parent="." index="6" unique_id=1726896999 instance=ExtResource("4_dvnsq")]
 transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, 2, 0.5, 2)
 
-[node name="GizmoArrow" parent="1m" index="1" unique_id=610382821 instance=ExtResource("5_sts1q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-influence = 50.0
-
-[node name="GizmoArrow2" parent="1m" index="2" unique_id=1354946558 instance=ExtResource("5_sts1q")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0)
-influence = 50.0
-
-[node name="GizmoArrow3" parent="1m" index="3" unique_id=642837332 instance=ExtResource("5_sts1q")]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
-influence = 50.0
+[node name="GizmoMoverConstructor" parent="GizmoTest" index="1" unique_id=1606634953 instance=ExtResource("5_sts1q")]

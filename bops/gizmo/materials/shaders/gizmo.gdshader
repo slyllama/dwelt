@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, depth_test_disabled, depth_prepass_alpha;
+render_mode cull_disabled, unshaded, depth_test_disabled, depth_prepass_alpha;
 
 uniform vec4 albedo_colour: source_color = vec4(1.0);
 uniform sampler2D albedo_texture: source_color, filter_linear_mipmap, repeat_enable;

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bwfv33porju0m"]
+
+[ext_resource type="PackedScene" uid="uid://c2q6u884rafo1" path="res://bops/gizmo/gizmo_mover/gizmo_pan.tscn" id="1_4l8rg"]
+[ext_resource type="Script" uid="uid://cdj65fnhcdq0l" path="res://bops/gizmo/gizmo_mover/gizmo_mover_constructor.gd" id="1_e8xp2"]
+[ext_resource type="PackedScene" uid="uid://ca5bsxlcksrqa" path="res://bops/gizmo/gizmo_mover/gizmo_arrow.tscn" id="2_e8xp2"]
+
+[node name="GizmoMoverConstructor" type="Node3D" unique_id=1606634953]
+script = ExtResource("1_e8xp2")
+
+[node name="Pan_XZ" parent="." unique_id=610382821 instance=ExtResource("1_4l8rg")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.3, 0, -0.3)
+
+[node name="Pan_XY" parent="." unique_id=1193411322 instance=ExtResource("1_4l8rg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0)
+
+[node name="Pan_YZ" parent="." unique_id=1353227126 instance=ExtResource("1_4l8rg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.3, -0.3)
+
+[node name="Arrow_Y" parent="." unique_id=415224071 instance=ExtResource("2_e8xp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="Arrow_X" parent="." unique_id=1478527630 instance=ExtResource("2_e8xp2")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Arrow_Z" parent="." unique_id=915322759 instance=ExtResource("2_e8xp2")]
+transform = Transform3D(1, -4.3711385e-08, 1.6420282e-15, 3.5527137e-15, 0, 1, -4.3711392e-08, -1, -3.5527137e-15, 0, 0, -0.2)

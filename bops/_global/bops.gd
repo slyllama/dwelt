@@ -25,6 +25,7 @@ func _ready() -> void:
 
 # Handle gizmo state
 
-signal drag_started(gizmo: GizmoMover)
+signal gizmo_mover_drag_started(gizmo: GizmoMover)
+signal gizmo_mover_drag_ended
 
 var mouse_in_gizmo_grabber := false

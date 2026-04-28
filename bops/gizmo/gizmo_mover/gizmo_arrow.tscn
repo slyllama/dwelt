@@ -35,7 +35,6 @@ size = Vector3(0.1, 1.325592, 0.1)
 script = ExtResource("1_bytm7")
 pick_box = NodePath("Grabber/Area")
 grabber = NodePath("Grabber")
-influence = 10.0
 metadata/_custom_type_script = "uid://hal1qma7qst"
 
 [node name="Grabber" type="MeshInstance3D" parent="." unique_id=409188562]

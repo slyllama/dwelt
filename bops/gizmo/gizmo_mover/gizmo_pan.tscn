@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c2q6u884rafo1"]
+
+[ext_resource type="Script" uid="uid://hal1qma7qst" path="res://bops/gizmo/gizmo_mover/gizmo_mover.gd" id="1_rkr0b"]
+[ext_resource type="Shader" uid="uid://dv8no07evaugk" path="res://bops/gizmo/materials/shaders/gizmo.gdshader" id="2_prbjt"]
+[ext_resource type="Texture2D" uid="uid://dv8w8ssfwrjky" path="res://bops/gizmo/materials/textures/pan_mask.png" id="3_rkr0b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prbjt"]
+render_priority = 1
+shader = ExtResource("2_prbjt")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_rkr0b")
+shader_parameter/uv_scale = 1.0
+shader_parameter/backlight = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_o7tky"]
+material = SubResource("ShaderMaterial_prbjt")
+size = Vector2(0.3, 0.3)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncc77"]
+size = Vector3(0.3, 0.1, 0.3)
+
+[node name="GizmoPan" type="Node3D" unique_id=610382821 node_paths=PackedStringArray("pick_box", "grabber")]
+script = ExtResource("1_rkr0b")
+pick_box = NodePath("Grabber/Area")
+grabber = NodePath("Grabber")
+single_axis = false
+metadata/_custom_type_script = "uid://hal1qma7qst"
+
+[node name="Grabber" type="MeshInstance3D" parent="." unique_id=409188562]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_o7tky")
+
+[node name="Area" type="Area3D" parent="Grabber" unique_id=1434121429]
+
+[node name="Collision" type="CollisionShape3D" parent="Grabber/Area" unique_id=297054774]
+shape = SubResource("BoxShape3D_ncc77")
