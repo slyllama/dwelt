@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dnxcjtkg0o6r0"]
+
+[ext_resource type="Script" uid="uid://hal1qma7qst" path="res://bops/gizmo/gizmo_mover/gizmo_mover.gd" id="1_0xfkv"]
+[ext_resource type="Script" uid="uid://byvm7k1igfbte" path="res://bops/gizmo/gizmo_test_world.gd" id="1_x1v45"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1v45"]
+size = Vector3(0.05, 0.05, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xfkv"]
+size = Vector3(0.05, 0.05, 0.25)
+
+[node name="GizmoTestWorld" type="Node3D" unique_id=679311994]
+script = ExtResource("1_x1v45")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1112085660]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 1, 0)
+
+[node name="GizmoMover" type="MeshInstance3D" parent="." unique_id=2132569479 node_paths=PackedStringArray("camera", "pick_box")]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0)
+mesh = SubResource("BoxMesh_x1v45")
+script = ExtResource("1_0xfkv")
+camera = NodePath("../Orbit/Camera")
+pick_box = NodePath("PickBox")
+metadata/_custom_type_script = "uid://hal1qma7qst"
+
+[node name="PickBox" type="Area3D" parent="GizmoMover" unique_id=841906299]
+
+[node name="Collision" type="CollisionShape3D" parent="GizmoMover/PickBox" unique_id=1752584984]
+shape = SubResource("BoxShape3D_0xfkv")
+
+[node name="Orbit" type="Marker3D" parent="." unique_id=166633283]
+transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="Orbit" unique_id=313049139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+current = true
+fov = 55.0
