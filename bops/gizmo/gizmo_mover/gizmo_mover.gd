@@ -8,6 +8,7 @@ class_name GizmoMover extends Node3D
 
 @onready var original_position := global_position
 
+var offset_to_parent := Vector3.ZERO
 var dragging := false
 var drag_area: Area3D
 var raycast: RayCast3D
@@ -22,10 +23,8 @@ func handle_mouse_raycast() -> Variant:
 	query.collide_with_areas = true
 	query.collision_mask = 10000
 	var intersection := space_state.intersect_ray(query)
-	if intersection:
-		return(intersection.position)
-	else:
-		return(null)
+	if intersection: return(intersection.position)
+	else: return(null)
 
 func generate_planes() -> void:
 	# Drag area
@@ -62,10 +61,13 @@ func generate_planes() -> void:
 
 func input_event() -> void:
 	if Input.is_action_just_pressed("left_click"):
+		generate_planes()
+		BOps.drag_started.emit(self)
 		dragging = true
 
 func toggle_mouse_in_gizmo_grabber(state: bool) -> void:
-	Dwelt.mouse_in_gizmo_grabber = state
+	BOps.mouse_in_gizmo_grabber = state
+	grabber.set_instance_shader_parameter("highlight", state)
 
 func _ready() -> void:
 	if !pick_box:
@@ -73,37 +75,48 @@ func _ready() -> void:
 		"GizmoMover")
 		queue_free()
 		return
+	if !grabber:
+		Utils.pdebug("Gizmo missing grabber; freeing.",
+		"GizmoMover")
+		queue_free()
+		return
+	
+	BOps.drag_started.connect(func(gizmo: GizmoMover) -> void:
+		if gizmo != self: queue_free())
+	
+	if "global_position" in get_parent():
+		offset_to_parent = global_position - get_parent().global_position
+	
 	pick_box.input_event.connect(input_event.unbind(5))
 	pick_box.mouse_entered.connect(toggle_mouse_in_gizmo_grabber.bind(true))
 	pick_box.mouse_exited.connect(toggle_mouse_in_gizmo_grabber.bind(false))
 	grabber.top_level = true
-	
-	# TODO: doing now for testing
-	generate_planes()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		if dragging:
 			dragging = false
-			Dwelt.mouse_in_gizmo_grabber = false
+			BOps.mouse_in_gizmo_grabber = false
 			queue_free()
 
-var dragged_for_one_frame := false
+var c := 5
 var collision_delta := Vector3.ZERO
 
 func _physics_process(_delta: float) -> void:
-	drag_area.look_at(Dwelt.camera.global_position)
-	drag_area.rotation *= Vector3(0, 1, 0)
+	if drag_area:
+		drag_area.look_at(Dwelt.camera.global_position)
+		drag_area.rotation *= Vector3(0, 1, 0)
 	
 	var _r: Variant = handle_mouse_raycast()
-	
-	if _r:
+	if _r and raycast:
 		raycast.global_position = (_r)
 		raycast.position.x -= influence / 2.0
 		if dragging:
-			if !dragged_for_one_frame:
+			if c > 0:
 				collision_delta = grabber.global_position - raycast.get_collision_point()
-				dragged_for_one_frame = true
+				c -= 1
+				top_level = true
 			else:
 				if raycast.is_colliding():
 					grabber.global_position = raycast.get_collision_point() + collision_delta
+					get_parent().global_position = grabber.global_position - offset_to_parent

@@ -14,7 +14,6 @@ var claim_target: Gadget
 var current_shard_id := ""
 var gadgets_close_to_player := [] # set true if a shard has been entered once
 var first_run := true
-var mouse_in_gizmo_grabber := false
 var panning := false
 var pan_cooldown := false
 var selected_gadget: Gadget

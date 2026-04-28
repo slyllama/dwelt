@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://wnwn83jvml05"
+path="res://.godot/imported/arrow.obj-880320b1142ddfa4f60b0bddb302a719.mesh"
+
+[deps]
+
+files=["res://.godot/imported/arrow.obj-880320b1142ddfa4f60b0bddb302a719.mesh"]
+
+source_file="res://bops/gizmo/meshes/arrow.obj"
+dest_files=["res://.godot/imported/arrow.obj-880320b1142ddfa4f60b0bddb302a719.mesh", "res://.godot/imported/arrow.obj-880320b1142ddfa4f60b0bddb302a719.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=false
+generate_shadow_mesh=false
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.75, 0.75, 0.75)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

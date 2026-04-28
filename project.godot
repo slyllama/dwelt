@@ -53,6 +53,19 @@ enabled=PackedStringArray("res://addons/discord/plugin.cfg")
 theme/custom="uid://dtm5ac15yopp2"
 theme/custom_font="uid://ccayv68gwg04i"
 
+[importer_defaults]
+
+wavefront_obj={
+"force_disable_mesh_compression": false,
+"generate_lightmap_uv2": false,
+"generate_lightmap_uv2_texel_size": 0.2,
+"generate_lods": false,
+"generate_shadow_mesh": false,
+"generate_tangents": true,
+"offset_mesh": Vector3(0, 0, 0),
+"scale_mesh": Vector3(0.75, 0.75, 0.75)
+}
+
 [input]
 
 ui_accept={

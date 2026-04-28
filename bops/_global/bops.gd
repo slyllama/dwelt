@@ -22,3 +22,9 @@ func deactivate() -> void:
 
 func _ready() -> void:
 	Utils.pdebug("Building server loaded.", "BOps")
+
+# Handle gizmo state
+
+signal drag_started(gizmo: GizmoMover)
+
+var mouse_in_gizmo_grabber := false
