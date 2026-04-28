@@ -1,9 +1,73 @@
 [gd_scene format=3 uid="uid://brd8rtkouaa8h"]
 
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_wy1d8"]
+[ext_resource type="Script" uid="uid://c020ng1h0by3o" path="res://shards/debug/debug.gd" id="2_py4bx"]
+[ext_resource type="Environment" uid="uid://omrd8x86dwd7" path="res://shards/acidfields/env.tres" id="3_dvnsq"]
+[ext_resource type="Script" uid="uid://hal1qma7qst" path="res://bops/gizmo/gizmo_mover/gizmo_mover.gd" id="3_tc7um"]
+
+[sub_resource type="Gradient" id="Gradient_58tgt"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.3, 0.7)
+colors = PackedColorArray(1, 1, 1, 0.02745098, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kte83"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tc7um"]
+noise = SubResource("FastNoiseLite_kte83")
+color_ramp = SubResource("Gradient_58tgt")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58tgt"]
+transparency = 4
+cull_mode = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.9, 1, 0.9916667, 1)
+albedo_texture = SubResource("NoiseTexture2D_tc7um")
+distance_fade_mode = 2
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 100.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_dvnsq"]
+material = SubResource("StandardMaterial3D_58tgt")
+size = Vector2(256, 256)
+orientation = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_tc7um"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sts1q"]
+size = Vector3(0.1, 0.5, 0.1)
 
 [node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
+script = ExtResource("2_py4bx")
 
 [node name="GadgetManager" parent="." index="2" unique_id=319105425]
 shard_id = "debug"
 shard_title = "Debug Map"
+
+[node name="Sky" parent="." index="4" unique_id=756974854]
+environment = ExtResource("3_dvnsq")
+
+[node name="CloudLayer" type="MeshInstance3D" parent="Sky" index="1" unique_id=404100082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_dvnsq")
+
+[node name="GizmoMover" type="Node3D" parent="." index="6" unique_id=1145518482 node_paths=PackedStringArray("pick_box", "grabber")]
+transform = Transform3D(0.7171539, 0.6969148, 0, -0.6969148, 0.7171539, 0, 0, 0, 1, 0.7428864, 0.72184336, 2.5772994)
+script = ExtResource("3_tc7um")
+pick_box = NodePath("Grabber/Area")
+grabber = NodePath("Grabber")
+influence = 10.0
+metadata/_custom_type_script = "uid://hal1qma7qst"
+
+[node name="Grabber" type="MeshInstance3D" parent="GizmoMover" index="0" unique_id=1316197457]
+mesh = SubResource("BoxMesh_tc7um")
+
+[node name="Area" type="Area3D" parent="GizmoMover/Grabber" index="0" unique_id=1452182721]
+
+[node name="Collision" type="CollisionShape3D" parent="GizmoMover/Grabber/Area" index="0" unique_id=1832639243]
+shape = SubResource("BoxShape3D_sts1q")

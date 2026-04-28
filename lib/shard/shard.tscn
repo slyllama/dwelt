@@ -12,11 +12,11 @@
 albedo_texture = ExtResource("1_3tfg5")
 normal_enabled = true
 normal_texture = ExtResource("2_3xe27")
-uv1_scale = Vector3(40, 40, 40)
+uv1_scale = Vector3(160, 160, 160)
 
 [sub_resource type="QuadMesh" id="QuadMesh_22u7k"]
 material = SubResource("StandardMaterial3D_5i5j7")
-size = Vector2(24, 24)
+size = Vector2(96, 96)
 orientation = 1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3xe27"]

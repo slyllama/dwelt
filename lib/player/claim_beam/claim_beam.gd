@@ -24,6 +24,7 @@ func clear_beam() -> void:
 
 func _ready() -> void:
 	$Orb.emitting = false
+	$Orb.visible = true
 	
 	target_orb = $Orb.duplicate()
 	target_orb.top_level = true

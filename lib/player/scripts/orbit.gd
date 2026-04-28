@@ -37,7 +37,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if !get_window().gui_get_hovered_control():
+		# Eligibility checks
+		if (!get_window().gui_get_hovered_control()
+			and !Dwelt.mouse_in_gizmo_grabber):
 			_last_click_position = get_window().get_mouse_position()
 			_eligible_to_capture = true
 		else: _eligible_to_capture = false # this needs to be checked/reset on every click

@@ -75,6 +75,7 @@ script = ExtResource("1_6lqb8")
 
 [node name="Orb" type="GPUParticles3D" parent="." unique_id=577087745]
 top_level = true
+visible = false
 amount = 5
 lifetime = 0.8
 randomness = 0.4

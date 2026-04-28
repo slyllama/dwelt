@@ -1,21 +1,23 @@
-class_name GizmoMover extends MeshInstance3D
+class_name GizmoMover extends Node3D
 # Use collision layer/mask 5 for collision testing
 # Collision layer/mask 6 for transverse testing
 
-@export var camera: Camera3D
 @export var pick_box: Area3D
-@export var influence := 10.0
+@export var grabber: MeshInstance3D
+@export var influence := 1.0
+
+@onready var original_position := global_position
 
 var dragging := false
 var drag_area: Area3D
 var raycast: RayCast3D
 
 func handle_mouse_raycast() -> Variant:
-	if !camera: return
+	if !Dwelt.camera: return
 	var mouse_pos := get_viewport().get_mouse_position()
-	var _from := camera.project_ray_origin(mouse_pos)
-	var _to := _from + camera.project_ray_normal(mouse_pos) * 200.0
-	var space_state := camera.get_world_3d().direct_space_state
+	var _from := Dwelt.camera.project_ray_origin(mouse_pos)
+	var _to := _from + Dwelt.camera.project_ray_normal(mouse_pos) * 200.0
+	var space_state := Dwelt.camera.get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(_from, _to)
 	query.collide_with_areas = true
 	query.collision_mask = 10000
@@ -30,27 +32,25 @@ func generate_planes() -> void:
 	drag_area = Area3D.new()
 	var drag_area_collision := CollisionShape3D.new()
 	var drag_area_shape := BoxShape3D.new()
-	drag_area_shape.size = Vector3(influence, 0.01, influence)
+	drag_area_shape.size = Vector3(influence, influence, 0.01)
 	drag_area_collision.shape = drag_area_shape
 	drag_area.input_ray_pickable = false
 	drag_area.add_child(drag_area_collision)
 	drag_area.set_collision_layer_value(1, false)
 	drag_area.set_collision_layer_value(5, true)
 	add_child(drag_area)
-	drag_area.top_level = true
 	
 	# Transverse drag area
 	var transverse_drag_area := Area3D.new()
 	var transverse_drag_area_collision := CollisionShape3D.new()
 	var transverse_drag_area_shape := BoxShape3D.new()
-	transverse_drag_area_shape.size = Vector3(0.01, 0.1, influence)
+	transverse_drag_area_shape.size = Vector3(0.01, influence, 0.1)
 	transverse_drag_area_collision.shape = transverse_drag_area_shape
 	transverse_drag_area.input_ray_pickable = false
 	transverse_drag_area.add_child(transverse_drag_area_collision)
 	transverse_drag_area.set_collision_layer_value(1, false)
 	transverse_drag_area.set_collision_layer_value(6, true)
-	add_child(transverse_drag_area)
-	transverse_drag_area.top_level = true
+	drag_area.add_child(transverse_drag_area)
 	
 	# Transverse raycast
 	raycast = RayCast3D.new()
@@ -58,15 +58,14 @@ func generate_planes() -> void:
 	raycast.target_position = Vector3(influence, 0.0, 0.0)
 	raycast.set_collision_mask_value(1, false)
 	raycast.set_collision_mask_value(6, true)
-	add_child(raycast)
-	raycast.top_level = true
+	drag_area.add_child(raycast)
 
 func input_event() -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if handle_mouse_raycast():
-			if raycast.is_colliding():
-				print(handle_mouse_raycast() - raycast.get_collision_point())
 		dragging = true
+
+func toggle_mouse_in_gizmo_grabber(state: bool) -> void:
+	Dwelt.mouse_in_gizmo_grabber = state
 
 func _ready() -> void:
 	if !pick_box:
@@ -75,6 +74,10 @@ func _ready() -> void:
 		queue_free()
 		return
 	pick_box.input_event.connect(input_event.unbind(5))
+	pick_box.mouse_entered.connect(toggle_mouse_in_gizmo_grabber.bind(true))
+	pick_box.mouse_exited.connect(toggle_mouse_in_gizmo_grabber.bind(false))
+	grabber.top_level = true
+	
 	# TODO: doing now for testing
 	generate_planes()
 
@@ -82,13 +85,25 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		if dragging:
 			dragging = false
+			Dwelt.mouse_in_gizmo_grabber = false
 			queue_free()
 
+var dragged_for_one_frame := false
+var collision_delta := Vector3.ZERO
+
 func _physics_process(_delta: float) -> void:
-	raycast.position.x = -influence / 2.0
+	drag_area.look_at(Dwelt.camera.global_position)
+	drag_area.rotation *= Vector3(0, 1, 0)
+	
 	var _r: Variant = handle_mouse_raycast()
-	if dragging and _r:
+	
+	if _r:
 		raycast.global_position = (_r)
 		raycast.position.x -= influence / 2.0
-		if raycast.is_colliding():
-			global_position = raycast.get_collision_point()
+		if dragging:
+			if !dragged_for_one_frame:
+				collision_delta = grabber.global_position - raycast.get_collision_point()
+				dragged_for_one_frame = true
+			else:
+				if raycast.is_colliding():
+					grabber.global_position = raycast.get_collision_point() + collision_delta
