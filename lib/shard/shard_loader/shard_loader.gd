@@ -17,6 +17,11 @@ func _transition() -> void:
 		ResourceLoader.load_threaded_get(target_scene))
 
 func _ready() -> void:
+	if !Save.save_exists():
+		Save.new_file_from_default()
+	Save.load_file()
+	Save.save_file()
+	
 	DiscordRPC.details = ""
 	DiscordRPC.refresh()
 	

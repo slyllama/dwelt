@@ -46,7 +46,7 @@ mouse_cursor/custom_image="uid://cfqxpfbd8d4ih"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord/plugin.cfg", "res://addons/dwelt_tools/plugin.cfg")
 
 [gui]
 

@@ -26,13 +26,18 @@ func _ready() -> void:
 	if Dwelt.first_run: Settings.apply_all_settings(false)
 	else: Settings.apply_all_settings(false, ["full_screen"])
 	
+	# Handle visibility and focusing depending on whether a save exists or not
+	if Save.save_exists():
+		%Continue.visible = true
+		%Continue.grab_focus()
+	else: %NewGame.grab_focus()
+	
 	%Curtain.visible = true
 	DiscordRPC.details = "In Menu"
 	DiscordRPC.refresh()
-	%Play.grab_focus()
+	
 	await get_tree().create_timer(0.1).timeout
 	%Curtain.trans_out()
-	
 	$Music.play()
 
 func _on_play_pressed() -> void:
@@ -57,3 +62,7 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_new_game_pressed() -> void:
+	Save.new_file_from_default() # force a new game
+	go_to_shard("res://shards/acidfields/acidfields.tscn")

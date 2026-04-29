@@ -80,7 +80,6 @@ func _ready() -> void:
 			Dwelt.gadgets_reloaded.emit()
 			load_gadgets_from_save()
 		elif string == "/savegadgets":
-			write_gadgets_to_save()
 			Save.save_file())
 	
 	Dwelt.discord_update_details(shard_title)

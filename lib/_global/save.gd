@@ -14,8 +14,15 @@ const DEFAULT_SAVE := {
 
 @onready var save := DEFAULT_SAVE.duplicate(true)
 
+func save_exists() -> bool:
+	return(FileAccess.file_exists(SAVE_PATH))
+
+func new_file_from_default() -> void:
+	Utils.pdebug("Creating new save from default level.", "Save")
+	DirAccess.copy_absolute("res://default.json", Save.SAVE_PATH)
+
 func load_file() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
+	if save_exists():
 		var _f := FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if !_f.get_as_text():
 			_f.close()
@@ -30,6 +37,8 @@ func load_file() -> void:
 		_f.close()
 
 func save_file() -> void:
+	if Dwelt.gadget_manager: # pull latest gadget data, if the manager is in the scene
+		Dwelt.gadget_manager.write_gadgets_to_save()
 	var _f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	_f.store_string(JSON.stringify(save, "\t"))
 	_f.close()
@@ -37,7 +46,4 @@ func save_file() -> void:
 func _ready() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/save": save_file())
-	
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	load_file()
-	save_file()

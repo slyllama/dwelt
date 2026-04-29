@@ -42,7 +42,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Play" type="Button" parent="FG/Box" unique_id=312914983]
+[node name="NewGame" type="Button" parent="FG/Box" unique_id=62847301]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
@@ -56,7 +56,24 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uliap")
-text = "Play"
+text = "New Game"
+
+[node name="Continue" type="Button" parent="FG/Box" unique_id=312914983]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_pjam2")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uliap")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uliap")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uliap")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uliap")
+text = "Continue"
 
 [node name="PlayDebug" type="Button" parent="FG/Box" unique_id=1234799631]
 unique_name_in_owner = true
@@ -72,7 +89,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uliap")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uliap")
-text = "Play (Debug Map)"
+text = "(Debug Map)"
 
 [node name="Settings" type="Button" parent="FG/Box" unique_id=520164302]
 unique_name_in_owner = true
@@ -144,7 +161,8 @@ unique_name_in_owner = true
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1907433007]
 stream = ExtResource("8_70ubd")
 
-[connection signal="pressed" from="FG/Box/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="FG/Box/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="FG/Box/Continue" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="FG/Box/PlayDebug" to="." method="_on_play_debug_pressed"]
 [connection signal="pressed" from="FG/Box/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="FG/Box/Quit" to="." method="_on_quit_pressed"]
