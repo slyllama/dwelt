@@ -20,7 +20,7 @@ orientation = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncc77"]
 size = Vector3(0.3, 0.1, 0.3)
 
-[node name="GizmoPan" type="Node3D" unique_id=610382821 node_paths=PackedStringArray("pick_box", "grabber")]
+[node name="GizmoPanner" type="Node3D" unique_id=610382821 node_paths=PackedStringArray("pick_box", "grabber")]
 script = ExtResource("1_rkr0b")
 pick_box = NodePath("Grabber/Area")
 grabber = NodePath("Grabber")

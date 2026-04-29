@@ -1,8 +1,7 @@
-class_name GizmoMover extends Node3D
+class_name GizmoMover extends Gizmo
 # Use collision layer/mask 5 for collision testing
 # Collision layer/mask 6 for transverse testing
 
-@export var pick_box: Area3D
 @export var grabber: MeshInstance3D
 @export var influence := 100.0
 @export var single_axis := true
@@ -10,14 +9,8 @@ class_name GizmoMover extends Node3D
 @onready var original_position := global_position
 
 var offset_to_parent := Vector3.ZERO
-var dragging := false
 var drag_area: Area3D
 var raycast: RayCast3D
-
-func clear() -> void:
-	dragging = false
-	BOps.mouse_in_gizmo_grabber = false
-	queue_free()
 
 func get_mouse_raycast() -> Variant:
 	if !Dwelt.camera: return
@@ -70,7 +63,7 @@ func input_event() -> void:
 	if Input.is_action_just_pressed("left_click"):
 		generate_planes()
 		top_level = true
-		BOps.gizmo_mover_drag_started.emit(self)
+		BOps.gizmo_drag_started.emit(self)
 		dragging = true
 
 func toggle_mouse_in_gizmo_grabber(state: bool) -> void:
@@ -79,18 +72,10 @@ func toggle_mouse_in_gizmo_grabber(state: bool) -> void:
 
 func _ready() -> void:
 	# Error out on missing pick boxes, grabbers, etc
-	if !pick_box:
-		Utils.pdebug("Gizmo missing pick box; freeing.", "GizmoMover")
-		clear()
-		return
 	if !grabber:
 		Utils.pdebug("Gizmo missing grabber; freeing.", "GizmoMover")
 		clear()
 		return
-	
-	# Clear if a gizmo was selected (and it wasn't this one)
-	BOps.gizmo_mover_drag_started.connect(func(gizmo: GizmoMover) -> void:
-		if gizmo != self: clear())
 	
 	if "global_position" in get_parent():
 		offset_to_parent = global_position - get_parent().global_position
@@ -103,7 +88,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		if dragging:
-			BOps.gizmo_mover_drag_ended.emit()
+			BOps.gizmo_drag_ended.emit()
 			clear()
 
 var c := 3
