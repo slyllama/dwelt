@@ -60,17 +60,17 @@ func generate_planes() -> void:
 		drag_area.add_child(raycast)
 
 func input_event() -> void:
+	super()
 	if Input.is_action_just_pressed("left_click"):
 		generate_planes()
-		top_level = true
-		BOps.gizmo_drag_started.emit(self)
-		dragging = true
 
 func toggle_mouse_in_gizmo_grabber(state: bool) -> void:
-	BOps.mouse_in_gizmo_grabber = state
+	super(state)
 	grabber.set_instance_shader_parameter("highlight", state)
 
 func _ready() -> void:
+	super()
+	
 	# Error out on missing pick boxes, grabbers, etc
 	if !grabber:
 		Utils.pdebug("Gizmo missing grabber; freeing.", "GizmoMover")
@@ -80,9 +80,6 @@ func _ready() -> void:
 	if "global_position" in get_parent():
 		offset_to_parent = global_position - get_parent().global_position
 	
-	pick_box.input_event.connect(input_event.unbind(5))
-	pick_box.mouse_entered.connect(toggle_mouse_in_gizmo_grabber.bind(true))
-	pick_box.mouse_exited.connect(toggle_mouse_in_gizmo_grabber.bind(false))
 	grabber.top_level = true
 
 func _input(_event: InputEvent) -> void:

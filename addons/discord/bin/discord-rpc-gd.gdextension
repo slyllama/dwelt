@@ -3,9 +3,12 @@ entry_symbol = "discordrpcgd_library_init"
 compatibility_minimum = 4.1
 
 [libraries]
-windows.debug.x86_64 = "windows/discord_game_sdk_binding_debug.dll"
-windows.release.x86_64 = "windows/discord_game_sdk_binding.dll"
+macos.debug = "libdiscord_game_sdk_binding_debug.dylib"
+macos.release = "libdiscord_game_sdk_binding.dylib"
+windows.debug.x86_64 = "discord_game_sdk_binding_debug.dll"
+windows.release.x86_64 = "discord_game_sdk_binding.dll"
 
 [dependencies]
-windows.debug.x86_64 = { "windows/discord_game_sdk.dll": "" }
-windows.release.x86_64 = { "windows/discord_game_sdk.dll": "" }
+macos = { "libdiscord_game_sdk.dylib": "" }
+windows.debug.x86_64 = { "discord_game_sdk.dll": "" }
+windows.release.x86_64 = { "discord_game_sdk.dll": "" }

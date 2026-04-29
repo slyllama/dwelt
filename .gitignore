@@ -1,3 +1,5 @@
 .godot/
 build/*
 *.tmp
+.DS_Store
+
