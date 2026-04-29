@@ -10,7 +10,7 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vpo0"]
 animation = &"player_anims/eye"
 use_custom_timeline = true
-timeline_length = 1.5999999999999999
+timeline_length = 1.6
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1

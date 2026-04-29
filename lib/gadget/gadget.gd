@@ -68,7 +68,7 @@ func _ready() -> void:
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
 			if body is DweltPlayer and Dwelt.claim_target == self:
 				if Dwelt.player_effect_manager.has_effect("claiming"):
-					Utils.pdebug("Claim cancelled (too far from gadget).", "Gadget/ProximityArea")
+					Utils.pdebug("Claim cancelled (moved too far from gadget).", "Gadget/ProximityArea")
 					Dwelt.player_effect_manager.cancel_effect("claiming"))
 		
 		# Logic for showing and removing the "enemy owned" indicator
