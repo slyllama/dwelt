@@ -1,6 +1,6 @@
 .godot/
 build/*
+.DS_Store
 *.tmp
 *.swp
-.DS_Store
-
+~*.dll
