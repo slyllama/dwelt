@@ -3,10 +3,51 @@
 [ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_ybe13"]
 [ext_resource type="PackedScene" uid="uid://bld6t3jjsjj01" path="res://shards/acidfields/gadgets/acidic_catalyst/meshes/mineral.glb" id="2_nkx3i"]
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_eohdb"]
+[ext_resource type="Texture2D" uid="uid://prqugkkopl1s" path="res://shards/acidfields/gadgets/acidic_catalyst/materials/textures/eye.png" id="4_731j6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eohdb"]
 height = 0.9777832
 radius = 0.30273438
+
+[sub_resource type="Curve" id="Curve_8va21"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16338581, 1), 0.0, 0.0, 0, 0, Vector2(0.5846457, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_4pm3v"]
+curve = SubResource("Curve_8va21")
+
+[sub_resource type="Curve" id="Curve_1ro84"]
+_data = [Vector2(0, 0.4630987), 0.0, 0.0, 0, 0, Vector2(0.47834647, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4fn4"]
+curve = SubResource("Curve_1ro84")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56acp"]
+emission_shape = 2
+emission_sphere_radius = 0.2
+angle_min = -29.99999
+angle_max = 30.000011
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.79999995
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_f4fn4")
+alpha_curve = SubResource("CurveTexture_4pm3v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7h25"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_731j6")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_46qec"]
+material = SubResource("StandardMaterial3D_a7h25")
+size = Vector2(0.35, 0.35)
 
 [node name="AcidicCatalyst" type="StaticBody3D" unique_id=1912274259 node_paths=PackedStringArray("model", "effect_manager")]
 script = ExtResource("1_ybe13")
@@ -26,3 +67,13 @@ shape = SubResource("CylinderShape3D_eohdb")
 [node name="EffectManager" type="Node" parent="." unique_id=94015664]
 script = ExtResource("3_eohdb")
 metadata/_custom_type_script = "uid://dwm4elmsp1th0"
+
+[node name="Eye" type="GPUParticles3D" parent="." unique_id=387657637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10919796, 0)
+cast_shadow = 0
+visibility_range_end = 7.0
+visibility_range_end_margin = 1.0
+visibility_range_fade_mode = 1
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_56acp")
+draw_pass_1 = SubResource("QuadMesh_46qec")

@@ -162,8 +162,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32156554, 0.45, 2.5)
 current = true
 fov = 35.0
 
-[node name="Mineral" parent="." unique_id=1779636477 instance=ExtResource("5_6vpo0")]
+[node name="Mineral" parent="." unique_id=1906981560 instance=ExtResource("5_6vpo0")]
 transform = Transform3D(0.72, 0, 0, 0, 0.7137613, 0.09457686, 0, -0.09457686, 0.7137613, 0.52375734, 0.2924588, -0.37701175)
 
-[node name="Mineral2" parent="." unique_id=2142092891 instance=ExtResource("5_6vpo0")]
+[node name="Mineral2" parent="." unique_id=1023635297 instance=ExtResource("5_6vpo0")]
 transform = Transform3D(-3.135325e-08, -0.06253932, -0.71727884, -2.7336802e-09, 0.71727884, -0.06253932, 0.72, 0, -3.1472197e-08, -0.2000876, 0.38795933, -0.4632589)
