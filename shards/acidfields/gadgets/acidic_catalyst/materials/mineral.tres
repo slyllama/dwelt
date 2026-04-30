@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b25celqmxybxi"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://lib/gadget/materials/shaders/gadget.gdshader" id="1_q8y3i"]
+[ext_resource type="Texture2D" uid="uid://iucjo5cohfyw" path="res://shards/acidfields/gadgets/acidic_catalyst/materials/textures/mineral_diff.jpg" id="2_06sog"]
+[ext_resource type="Texture2D" uid="uid://ew6eqj3o7itk" path="res://shards/acidfields/gadgets/acidic_catalyst/materials/textures/mineral_norm.jpg" id="3_e2mdc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q8y3i")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_06sog")
+shader_parameter/roughness = 0.250000011875
+shader_parameter/normal_texture = ExtResource("3_e2mdc")
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_strength = 0.999999977648
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false

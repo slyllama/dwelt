@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fok2dlvwn6yg" path="res://lib/player/meshes/robot.glb" id="2_xkewq"]
 [ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="3_xkewq"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="4_idwoj"]
+[ext_resource type="PackedScene" uid="uid://bld6t3jjsjj01" path="res://shards/acidfields/gadgets/acidic_catalyst/meshes/mineral.glb" id="5_6vpo0"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_idwoj"]
 
@@ -134,7 +135,7 @@ parameters/blend/add_amount = 1.0
 [node name="Light" type="OmniLight3D" parent="Robot" unique_id=61292355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37557727, 0.5253199)
 shadow_enabled = true
-omni_range = 0.75
+omni_range = 1.1
 
 [node name="LightAnim" type="AnimationPlayer" parent="Robot/Light" unique_id=486968662]
 unique_name_in_owner = true
@@ -142,6 +143,7 @@ libraries/ = SubResource("AnimationLibrary_nx5ln")
 
 [node name="Motes" type="GPUParticles3D" parent="Robot" unique_id=657188654]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28877342, 0)
 cast_shadow = 0
 amount = 12
 lifetime = 2.5
@@ -156,6 +158,12 @@ draw_pass_1 = SubResource("QuadMesh_u0ydc")
 unique_name_in_owner = true
 
 [node name="Camera" type="Camera3D" parent="Pivot" unique_id=2108738010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.45, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32156554, 0.45, 2.5)
 current = true
 fov = 35.0
+
+[node name="Mineral" parent="." unique_id=1779636477 instance=ExtResource("5_6vpo0")]
+transform = Transform3D(0.72, 0, 0, 0, 0.7137613, 0.09457686, 0, -0.09457686, 0.7137613, 0.52375734, 0.2924588, -0.37701175)
+
+[node name="Mineral2" parent="." unique_id=2142092891 instance=ExtResource("5_6vpo0")]
+transform = Transform3D(-3.135325e-08, -0.06253932, -0.71727884, -2.7336802e-09, 0.71727884, -0.06253932, 0.72, 0, -3.1472197e-08, -0.2000876, 0.38795933, -0.4632589)

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://j4hhp3fg6xr6"]
+
+[ext_resource type="Script" uid="uid://dn7ikncpdvqi1" path="res://lib/gadget/gadget.gd" id="1_ybe13"]
+[ext_resource type="PackedScene" uid="uid://bld6t3jjsjj01" path="res://shards/acidfields/gadgets/acidic_catalyst/meshes/mineral.glb" id="2_nkx3i"]
+[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_eohdb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eohdb"]
+height = 0.9777832
+radius = 0.30273438
+
+[node name="AcidicCatalyst" type="StaticBody3D" unique_id=1912274259 node_paths=PackedStringArray("model", "effect_manager")]
+script = ExtResource("1_ybe13")
+gadget_id = "acidic_catalyst"
+model = NodePath("Mineral")
+effect_manager = NodePath("EffectManager")
+player_collision = false
+cull_distance = 8.0
+metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
+
+[node name="Mineral" parent="." unique_id=1368763330 instance=ExtResource("2_nkx3i")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1332620205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20202637, 0)
+shape = SubResource("CylinderShape3D_eohdb")
+
+[node name="EffectManager" type="Node" parent="." unique_id=94015664]
+script = ExtResource("3_eohdb")
+metadata/_custom_type_script = "uid://dwm4elmsp1th0"

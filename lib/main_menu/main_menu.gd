@@ -13,7 +13,7 @@ func go_to_shard(path: String) -> void:
 	if shard_load_started: return
 	%Curtain.trans_in()
 	fade_music()
-	%MenuScene.target_z_position = -0.75
+	#%MenuScene.target_z_position = -0.75
 	
 	shard_load_started = true
 	Dwelt.shard_path_to_load = path

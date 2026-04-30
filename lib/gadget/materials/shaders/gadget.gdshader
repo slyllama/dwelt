@@ -3,10 +3,12 @@ shader_type spatial;
 uniform vec4 albedo_colour: source_color = vec4(1.0);
 uniform sampler2D albedo_texture: source_color, filter_linear_mipmap, repeat_enable;
 uniform float roughness: hint_range(0.0, 1.0) = 1.0;
-uniform sampler2D roughness_texture : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+uniform sampler2D roughness_texture: hint_roughness_r, filter_linear_mipmap, repeat_enable;
+uniform sampler2D normal_texture: hint_normal;
 
 uniform float specular: hint_range(0.0, 1.0, 0.01) = 0.5;
 uniform float metallic: hint_range(0.0, 1.0, 0.01) = 0.0;
+uniform float normal_strength: hint_range(0.0, 1.0, 0.01) = 0.0;
 uniform float uv_scale = 1.0;
 uniform bool use_alpha = false;
 
@@ -27,6 +29,11 @@ void fragment() {
 	ROUGHNESS = roughness_tex * roughness;
 	
 	if (highlight == true) { ALBEDO *= 1.5; }
+	
+	if (normal_strength > 0.0) {
+		NORMAL_MAP = texture(normal_texture, UV).rgb;
+		NORMAL_MAP_DEPTH = normal_strength;
+	}
 	
 	float fade_distance = length(VERTEX);
 	const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
