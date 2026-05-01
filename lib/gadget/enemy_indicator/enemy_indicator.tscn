@@ -66,6 +66,7 @@ _data = {
 }
 
 [node name="EnemyIndicator" type="Sprite3D" unique_id=2082905477]
+layers = 4
 cast_shadow = 0
 visibility_range_end = 8.0
 visibility_range_end_margin = 0.25

@@ -1,10 +1,19 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6mmr7qxvt8xr"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b6mmr7qxvt8xr"]
 
 [ext_resource type="Texture2D" uid="uid://dis5b5xmqn6j8" path="res://shards/acidfields/gadgets/boulder/materials/textures/boulder_diff.jpg" id="1_qyygg"]
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://lib/gadget/materials/shaders/gadget.gdshader" id="1_y2ycn"]
 [ext_resource type="Texture2D" uid="uid://0trhe0w0epsx" path="res://shards/acidfields/gadgets/boulder/materials/textures/boulder_norm.jpg" id="2_y2ycn"]
 
 [resource]
-specular_mode = 2
-albedo_texture = ExtResource("1_qyygg")
-normal_enabled = true
-normal_texture = ExtResource("2_y2ycn")
+render_priority = 0
+shader = ExtResource("1_y2ycn")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("1_qyygg")
+shader_parameter/roughness = 1.0
+shader_parameter/normal_texture = ExtResource("2_y2ycn")
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = 0.0
+shader_parameter/normal_strength = 0.999999977648
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false

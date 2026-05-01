@@ -3,8 +3,13 @@ class_name ProximityArea extends Area3D
 # WARNING: this must only be the child of a gadget, or it will be freed with
 # an error displayed
 
-@export var radius := 2.4
+@export var radius := 2.4:
+	set(_radius):
+		radius = _radius
+		proximity_shape.radius = _radius
+
 @onready var proximity_collision := CollisionShape3D.new()
+@onready var proximity_shape := SphereShape3D.new()
 
 func _ready() -> void:
 	input_ray_pickable = false
@@ -14,7 +19,6 @@ func _ready() -> void:
 		Utils.pdebug("Error: attached to a parent which isn't a gadget.", "ProximityArea")
 		return
 	
-	var proximity_shape := SphereShape3D.new()
 	proximity_shape.radius = radius
 	proximity_collision.shape = proximity_shape
 	add_child(proximity_collision)

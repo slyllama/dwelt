@@ -14,7 +14,7 @@ cull_distance = 25.0
 pushes_camera = true
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
-[node name="Boulder" parent="." unique_id=919319354 instance=ExtResource("2_toac0")]
+[node name="Boulder" parent="." unique_id=596194089 instance=ExtResource("2_toac0")]
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1278845415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8958511, 0)

@@ -25,7 +25,7 @@ curve = SubResource("Curve_1ro84")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56acp"]
 emission_shape = 2
-emission_sphere_radius = 0.2
+emission_sphere_radius = 0.07
 angle_min = -29.99999
 angle_max = 30.000011
 gravity = Vector3(0, 0.1, 0)
@@ -55,7 +55,9 @@ gadget_id = "acidic_catalyst"
 model = NodePath("Mineral")
 effect_manager = NodePath("EffectManager")
 player_collision = false
+proximity_radius = 1.5
 cull_distance = 8.0
+enemy_indicator_scale = 0.65
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mineral" parent="." unique_id=1368763330 instance=ExtResource("2_nkx3i")]
@@ -69,7 +71,7 @@ script = ExtResource("3_eohdb")
 metadata/_custom_type_script = "uid://dwm4elmsp1th0"
 
 [node name="Eye" type="GPUParticles3D" parent="." unique_id=387657637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10919796, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04094924, 0)
 cast_shadow = 0
 visibility_range_end = 7.0
 visibility_range_end_margin = 1.0

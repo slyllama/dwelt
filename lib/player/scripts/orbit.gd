@@ -1,6 +1,5 @@
 extends Marker3D
 
-@export var vertical_offset := 0.4
 @export var view_length := 2.0
 @export var view_sensitivity := 0.75
 @export var zoom_min := 1.0
@@ -10,6 +9,7 @@ extends Marker3D
 @onready var target_x_rotation := rotation.x
 @onready var target_y_rotation := global_rotation.y
 
+var vertical_offset := 0.4
 var _event_relative := Vector2.ZERO
 var _last_click_position := Vector2.ZERO
 var _eligible_to_capture := false
@@ -89,7 +89,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# Update vertical offset
 	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
-	vertical_offset = 0.2 + _vo_ratio * 0.6
+	vertical_offset = 0.2 + _vo_ratio
 	
 	# Update positions
 	global_position = lerp(global_position,

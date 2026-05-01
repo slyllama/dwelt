@@ -197,6 +197,7 @@ layers = 512
 size = Vector3(2.5, 0.5, 2.5)
 texture_albedo = ExtResource("12_fq4iu")
 normal_fade = 0.75
+cull_mask = 1
 
 [node name="Dirt2" type="Decal" parent="Platform" index="16" unique_id=1517827177]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -1.9420671, 0, -0.67794585)

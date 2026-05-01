@@ -8,4 +8,5 @@ func _ready() -> void:
 		if !gadget: visible = false
 		else:
 			visible = true
-			global_position = gadget.global_position + Vector3(0, Y_OFFSET, 0))
+			global_position = gadget.global_position + Vector3(0, Y_OFFSET, 0)
+			$GenericAoe.mesh.radius = Dwelt.selected_gadget.proximity_radius)

@@ -34,6 +34,9 @@ class_name Gadget extends StaticBody3D
 	set(_player_collision):
 		player_collision = _player_collision
 		update_collision_layers()
+## The player must remain in this area while performing a claim. If they leave it, the claim will
+## end prematurely.
+@export var proximity_radius := 2.4
 
 @export_category("Culling and Visibility")
 @export var cull_distance := 5.0:
@@ -45,6 +48,8 @@ class_name Gadget extends StaticBody3D
 	set(_pushes_camera):
 		pushes_camera = _pushes_camera
 		update_collision_layers()
+## Scaled size of the red ring which appears when this gadget does not belong to the player.
+@export var enemy_indicator_scale := 1.0
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
@@ -85,6 +90,7 @@ func _ready() -> void:
 	if effect_manager:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
+		_proximity_area.radius = proximity_radius
 		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
@@ -99,7 +105,7 @@ func _ready() -> void:
 		if effect_manager.has_effect("enemy_owned"):
 			enemy_indicator = load(
 				"res://lib/gadget/enemy_indicator/enemy_indicator.tscn").instantiate()
-			enemy_indicator.position.y = 0.5
+			enemy_indicator.pixel_size *= enemy_indicator_scale
 			add_child(enemy_indicator)
 			effect_manager.effect_cancelled.connect(func(id: String) -> void:
 				if id == "enemy_owned" and enemy_indicator:

@@ -76,7 +76,6 @@ loop_mode = 1
 animation = &"player/strafe"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ram4p"]
-graph_offset = Vector2(-231, 144)
 nodes/output/position = Vector2(660, 140)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
 nodes/idle/position = Vector2(-180, 140)
@@ -281,6 +280,7 @@ autoplay = &"glow"
 unique_name_in_owner = true
 transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
 script = ExtResource("5_4ok3w")
+zoom_max = 3.0
 
 [node name="PanCD" type="Timer" parent="Orbit" unique_id=534597308]
 wait_time = 0.05
