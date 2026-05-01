@@ -9,4 +9,5 @@ id = "duration_bingus"
 title = "Test Duration Effect"
 icon = ExtResource("1_fi82b")
 duration_stacks = true
+total_duration = 20.0
 metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

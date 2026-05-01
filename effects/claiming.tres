@@ -8,4 +8,5 @@ script = ExtResource("2_12qin")
 id = "claiming"
 title = "Claiming"
 icon = ExtResource("1_vp0wi")
+total_duration = 20.0
 metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

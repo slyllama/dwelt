@@ -41,10 +41,9 @@ func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 		var _effect: EffectInstance = load(_effect_path).duplicate()
 		
 		if "current_duration" in _effect_data:
-			_effect.current_duration = _effect_data.current_duration
+			add_effect(_effect, float(_effect_data.current_duration))
 		if "current_quantity" in _effect_data:
-			_effect.current_quantity = _effect_data.current_quantity
-		add_effect(_effect)
+			add_effect(_effect, int(_effect_data.current_quantity))
 
 func decrement_effect_qty(id: String) -> void:
 	if id in active_effects:
@@ -55,20 +54,17 @@ func decrement_effect_qty(id: String) -> void:
 				cancel_effect(id)
 			else: notify_update()
 
-func add_effect(effect: EffectInstance) -> void:
+func add_effect(effect: EffectInstance,
+	current_duration := effect.total_duration,
+	current_quantity := effect.total_quantity) -> void:
+	
 	var id := effect.id
 	# If an effect with this ID isn't already active, add it
 	if !id in active_effects:
 		active_effects[id] = effect.duplicate()
-		# Reset effect quantities and durations; if the incoming effect has
-		# an altered current duration or quantity (i.e., not equal to the
-		# total), use that instead
-		if effect.current_duration != active_effects[id].total_duration:
-			active_effects[id].current_duration = effect.current_duration
-		else: active_effects[id].current_duration = active_effects[id].total_duration
-		if effect.current_quantity != active_effects[id].total_quantity:
-			active_effects[id].current_quantity = effect.current_quantity
-		else: active_effects[id].current_quantity = active_effects[id].total_quantity
+		active_effects[id].current_duration = current_duration
+		active_effects[id].current_quantity = current_quantity
+		
 		effect_added.emit(id)
 	else: # logic for 'compounding' an existing effect
 		var existing_effect := active_effects[id]
