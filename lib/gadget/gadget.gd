@@ -55,6 +55,9 @@ class_name Gadget extends StaticBody3D
 @onready var hover_handler := HoverHandler.new()
 @onready var enemy_indicator: Sprite3D
 
+signal player_entered_active_area
+signal player_exited_active_area
+
 # Gets an effect by ID if the gadget has an effect manager which includes that
 # effect = or returns `null` otherwise
 func get_effect(effect_id: String) -> Variant:
@@ -92,12 +95,19 @@ func _ready() -> void:
 		add_child(_proximity_area)
 		_proximity_area.radius = proximity_radius
 		
+		_proximity_area.body_entered.connect(func(body: PhysicsBody3D) -> void:
+			if body is DweltPlayer:
+				player_entered_active_area.emit())
+		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
+			if body is DweltPlayer:
+				player_exited_active_area.emit()
 			if body is DweltPlayer and Dwelt.claim_target == self:
 				if Dwelt.player_effect_manager.has_effect("claiming"):
-					Utils.pdebug("Claim cancelled (moved too far from gadget).", "Gadget/ProximityArea")
+					Utils.pdebug("Claim cancelled (moved too far from gadget).",
+						"Gadget/ProximityArea")
 					Dwelt.player_effect_manager.cancel_effect("claiming"))
 		
 		# Logic for showing and removing the "enemy owned" indicator

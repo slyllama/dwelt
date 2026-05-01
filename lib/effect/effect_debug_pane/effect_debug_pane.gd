@@ -60,3 +60,6 @@ func _on_set_to_player_pressed() -> void:
 	effect_manager = Dwelt.player_effect_manager
 	%AddDurationEffect.disabled = false
 	%AddQtyEffect.disabled = false
+
+func _on_qty_deduct_pressed() -> void:
+	effect_manager.decrement_effect_qty("qty_bingus")

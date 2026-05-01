@@ -9,6 +9,5 @@ title = "Test Quantity Effect"
 description = "Combining any three Charms with a Philosopher's Stone will yield a random charm. There is a higher chance to obtain a charm not used in the recipe, and a lower chance to receive a charm used in the forge. "
 type = 1
 quantity_stacks = true
-hide_single_quantity = true
 total_quantity = 1
 metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"

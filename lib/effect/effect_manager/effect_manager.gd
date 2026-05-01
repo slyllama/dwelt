@@ -46,6 +46,15 @@ func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 			_effect.current_quantity = _effect_data.current_quantity
 		add_effect(_effect)
 
+func decrement_effect_qty(id: String) -> void:
+	if id in active_effects:
+		var effect := active_effects[id]
+		if effect.type == effect.Type.QUANTITY:
+			effect.current_quantity -= 1
+			if effect.current_quantity <= 0:
+				cancel_effect(id)
+			else: notify_update()
+
 func add_effect(effect: EffectInstance) -> void:
 	var id := effect.id
 	# If an effect with this ID isn't already active, add it
