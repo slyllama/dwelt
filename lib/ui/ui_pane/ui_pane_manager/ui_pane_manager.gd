@@ -48,6 +48,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	# Close the top-most pane
 	if Input.is_action_just_pressed("ui_cancel") and panes.size() > 0:
+		# Give the HUD a frame to check whether `esc` can open settings
 		await get_tree().process_frame
 		var top_pane: UIPane = panes[panes.size() - 1]
 		if top_pane.closeable:

@@ -65,9 +65,7 @@ func write_gadgets_to_save() -> void:
 			_gadgets[_n.gadget_id].append(_data)
 	Save.save.shard_data[shard_id].gadgets = _gadgets.duplicate()
 
-func _ready() -> void:
-	Dwelt.gadget_manager = self
-	
+func _init() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/reloadgadgets":
 			for _n: Node in get_children(): _n.queue_free()
@@ -81,8 +79,8 @@ func _ready() -> void:
 			load_gadgets_from_save()
 		elif string == "/savegadgets":
 			Save.save_file())
-	
+
+func _ready() -> void:
+	Dwelt.gadget_manager = self
 	Dwelt.discord_update_details(shard_title)
-	
-	await get_tree().process_frame
 	load_gadgets_from_save()

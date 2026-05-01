@@ -7,9 +7,6 @@ var target_z_position := 0.0 # used for zooming on shard load
 @onready var target_position: Vector3 = base_position
 
 func _ready() -> void:
-	$Mineral2/AnimationPlayer.play("idle")
-	
-	await get_tree().process_frame
 	%LightAnim.play("flicker")
 	await %LightAnim.animation_finished
 	%LightAnim.play("glow")

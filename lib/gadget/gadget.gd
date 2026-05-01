@@ -1,8 +1,33 @@
 @icon("res://generic/icons/Gadget.svg")
 class_name Gadget extends StaticBody3D
-# Base class for all gadgets
+## Gadgets are the core building-blocks of [i]Dwelt[/i], capable of inflicting and receiving
+## effects, and being manipulated by the player.
+##
+## Gadgets are always loaded, managed, and saved by the shard's [GadgetManager]. The manager gets
+## its shard data from the save through [code]Save.save.shard_data[shard_id].gadgets[/code]. The
+## gadgets aren't just injected straight into the scene; instead they are asynchronously requested
+## by spawning [Async3DLoader] nodes. The loader's [method Async3DLoader.add_scene] function returns
+## a reference to the resulting node, and so the [GadgetManager] connects to its
+## [method GadgetManager.ready] signal to populate its effects via the effect manager's
+## [method EffectManager.apply_effects_from_dict] function.[br]
+##
+## If the player is in a shard and the current gadget manager is set through
+## [param Dwelt.gadget_manager], then saving Dwelt's save data to the JSON file will call
+## [method GadgetManager.write_gadgets_to_save] first, because this does not happen automatically.
+## [br]
+##
+## Gadget claiming is requested by the HUD's [code]PrimaryButtons[/code], which fires off
+## [method Dwelt.claim_requested]. The player's [code]ClaimHandler[/code] is then actually
+## responsible for adding the claiming effect to the player. If the effect finishes without
+## interruption, the [code]ClaimHandler[/code] removes the [code]enemy_owned[/code] effect from the
+## [code]claim_target[/code]. The player's [code]ClaimBeam[/code] is also listening into all of
+## this, and updating the player's VFX.
 
 @export var gadget_id := "gadget"
+## The mesh collection associated with the gadget. Setting the gadget's [param model] value is
+## important as it uses this reference to cull meshes and more. A gadget doesn’t come with an
+## [EffectManager] by default; if one isn't specified, it will become a non-dynamic, and not take
+## up resources it doesn't need to.
 @export var model: Node3D
 @export var effect_manager: EffectManager
 @export var player_collision := true:
@@ -35,9 +60,7 @@ func get_effect(effect_id: String) -> Variant:
 	else: return(null)
 
 func update_collision_layers() -> void:
-	# Layer 3 is used for all interaction testing
-	#if effect_manager: set_collision_layer_value(3, true)
-	#else: set_collision_layer_value(3, false)
+	# Layer 3 is used for all interaction testing (including mouseover)
 	set_collision_layer_value(3, true)
 	
 	if player_collision: set_collision_layer_value(1, true)
