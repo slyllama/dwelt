@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://be3rvtddipfkb"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://lib/gadget/materials/shaders/gadget.gdshader" id="1_eet8m"]
+[ext_resource type="Texture2D" uid="uid://bejtelwwe82xo" path="res://shards/acidfields/gadgets/hollowed_hull/materials/textures/hollowed_hull_diff.jpg" id="2_56ey4"]
+[ext_resource type="Texture2D" uid="uid://drcimf12dpv1q" path="res://shards/acidfields/gadgets/hollowed_hull/materials/textures/hollowed_hull_norm.jpg" id="3_k1o3o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_eet8m")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_56ey4")
+shader_parameter/roughness = 1.0
+shader_parameter/normal_texture = ExtResource("3_k1o3o")
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.249999994412
+shader_parameter/normal_strength = 1.0
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false
