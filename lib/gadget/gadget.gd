@@ -1,42 +1,13 @@
 @icon("res://generic/icons/Gadget.svg")
 class_name Gadget extends StaticBody3D
-## Gadgets are the core building-blocks of [i]Dwelt[/i], capable of inflicting and receiving
-## effects, and being manipulated by the player.
-##
-## Gadgets are always loaded, managed, and saved by the shard's [GadgetManager]. The manager gets
-## its shard data from the save through [code]Save.save.shard_data[shard_id].gadgets[/code]. The
-## gadgets aren't just injected straight into the scene; instead they are asynchronously requested
-## by spawning [Async3DLoader] nodes. The loader's [method Async3DLoader.add_scene] function returns
-## a reference to the resulting node, and so the [GadgetManager] connects to its
-## [method GadgetManager.ready] signal to populate its effects via the effect manager's
-## [method EffectManager.apply_effects_from_dict] function.[br]
-##
-## If the player is in a shard and the current gadget manager is set through
-## [param Dwelt.gadget_manager], then saving Dwelt's save data to the JSON file will call
-## [method GadgetManager.write_gadgets_to_save] first, because this does not happen automatically.
-## [br]
-##
-## Gadget claiming is requested by the HUD's [code]PrimaryButtons[/code], which fires off
-## [method Dwelt.claim_requested]. The player's [code]ClaimHandler[/code] is then actually
-## responsible for adding the claiming effect to the player. If the effect finishes without
-## interruption, the [code]ClaimHandler[/code] removes the [code]enemy_owned[/code] effect from the
-## [code]claim_target[/code]. The player's [code]ClaimBeam[/code] is also listening into all of
-## this, and updating the player's VFX.
 
 @export var gadget_id := "gadget"
-## The mesh collection associated with the gadget. Setting the gadget's [param model] value is
-## important as it uses this reference to cull meshes and more. A gadget doesn’t come with an
-## [EffectManager] by default; if one isn't specified, it will become a non-dynamic, and not take
-## up resources it doesn't need to.
 @export var model: Node3D
 @export var effect_manager: EffectManager
 @export var player_collision := true:
 	set(_player_collision):
 		player_collision = _player_collision
 		update_collision_layers()
-## The player must remain in this area while performing a claim. If they leave it, the claim will
-## end prematurely.
-@export var proximity_radius := 2.4
 
 @export_category("Culling and Visibility")
 @export var cull_distance := 5.0:
@@ -50,6 +21,10 @@ class_name Gadget extends StaticBody3D
 		update_collision_layers()
 ## Scaled size of the red ring which appears when this gadget does not belong to the player.
 @export var enemy_indicator_scale := 1.0
+
+@export_category("Ownership and Claiming")
+@export var claim_radius := 2.4
+@export var claim_duration := 12.0
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
@@ -93,7 +68,7 @@ func _ready() -> void:
 	if effect_manager:
 		var _proximity_area := ProximityArea.new()
 		add_child(_proximity_area)
-		_proximity_area.radius = proximity_radius
+		_proximity_area.radius = claim_radius
 		
 		_proximity_area.body_entered.connect(func(body: PhysicsBody3D) -> void:
 			if body is DweltPlayer:

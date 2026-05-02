@@ -54,6 +54,8 @@ func decrement_effect_qty(id: String) -> void:
 				cancel_effect(id)
 			else: notify_update()
 
+# Effect quantities and duration can be set by passing it here. If not, it will
+# be added using default total values
 func add_effect(effect: EffectInstance,
 	current_duration := effect.total_duration,
 	current_quantity := effect.total_quantity) -> void:

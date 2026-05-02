@@ -5,7 +5,7 @@ extends Node
 func initiate_claim() -> void:
 	if Dwelt.selected_gadget:
 		Dwelt.claim_target = Dwelt.selected_gadget
-		effect_manager.add_effect(load("res://effects/claiming.tres"))
+		effect_manager.add_effect(load("res://effects/claiming.tres"), Dwelt.selected_gadget.claim_duration)
 
 func cancel_claim() -> void:
 	effect_manager.cancel_effect("claiming")
