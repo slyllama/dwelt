@@ -28,7 +28,7 @@ class_name Gadget extends StaticBody3D
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
-@onready var enemy_indicator: Sprite3D
+@onready var enemy_indicator: Decal
 
 signal player_entered_active_area
 signal player_exited_active_area
@@ -90,7 +90,8 @@ func _ready() -> void:
 		if effect_manager.has_effect("enemy_owned"):
 			enemy_indicator = load(
 				"res://lib/gadget/enemy_indicator/enemy_indicator.tscn").instantiate()
-			enemy_indicator.pixel_size *= enemy_indicator_scale
+			enemy_indicator.size.x = enemy_indicator_scale
+			enemy_indicator.size.z = enemy_indicator_scale
 			add_child(enemy_indicator)
 			effect_manager.effect_cancelled.connect(func(id: String) -> void:
 				if id == "enemy_owned" and enemy_indicator:

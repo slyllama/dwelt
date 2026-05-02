@@ -39,11 +39,6 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"acid": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://shards/playground/props/acid_pool/materials/acid_pool.tres",
-"use_external/path": "uid://c5wup88y2e6ia"
-},
 "floor": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/acidfields/materials/grass_cobble_test.tres",
@@ -99,6 +94,12 @@ _subresources={
 },
 "PATH:HookSystem_006/Grass7": {
 "mesh_instance/cast_shadow": 0
+},
+"PATH:Landscape": {
+"mesh_instance/layers": 3
+},
+"PATH:Platform": {
+"mesh_instance/layers": 3
 },
 "PATH:Platform/StaticBody3D": {
 "node/node_type": "StaticBody3D"

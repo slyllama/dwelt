@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnomltekrfbun"]
 
 [ext_resource type="Texture2D" uid="uid://bd6g8cavpxrx5" path="res://lib/gadget/enemy_indicator/textures/enemy_indicator.png" id="1_homtr"]
+[ext_resource type="Texture2D" uid="uid://cyj23ugfybhvs" path="res://lib/gadget/enemy_indicator/textures/enemy_indicator.jpg" id="2_wgytr"]
 
 [sub_resource type="Animation" id="Animation_homtr"]
 length = 0.001
@@ -65,16 +66,27 @@ _data = {
 &"rotate": SubResource("Animation_wgytr")
 }
 
-[node name="EnemyIndicator" type="Sprite3D" unique_id=2082905477]
+[sub_resource type="QuadMesh" id="QuadMesh_a61g4"]
+size = Vector2(20, 20)
+orientation = 1
+
+[node name="EnemyIndicator" type="Decal" unique_id=846369091]
 layers = 4
-cast_shadow = 0
-visibility_range_end = 8.0
-visibility_range_end_margin = 0.25
-visibility_range_fade_mode = 1
-pixel_size = 0.004
-axis = 1
-texture = ExtResource("1_homtr")
+size = Vector3(1, 4, 1)
+texture_albedo = ExtResource("1_homtr")
+texture_emission = ExtResource("2_wgytr")
+upper_fade = 0.0
+lower_fade = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 7.0
+distance_fade_length = 1.0
+cull_mask = 2
 
 [node name="Anim" type="AnimationPlayer" parent="." unique_id=762093277]
 libraries/ = SubResource("AnimationLibrary_a61g4")
 autoplay = &"rotate"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1301363411]
+visible = false
+layers = 3
+mesh = SubResource("QuadMesh_a61g4")

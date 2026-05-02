@@ -46,13 +46,9 @@ func trim_output() -> void:
 	%Output.text = %Output.text.strip_edges(false, true)
 
 func _ready() -> void:
-	modulate.a = 0.5
-	
 	# Debug mode toggling
 	Utils.debug_mode_changed.connect(func() -> void:
 		visible = Utils.debug_mode)
-	
-	%Input.focus_entered.connect(func() -> void: modulate.a = 0.8)
 	
 	Utils.pdebug_sent.connect(func(string: String) -> void:
 		%Output.text += "\n" + string

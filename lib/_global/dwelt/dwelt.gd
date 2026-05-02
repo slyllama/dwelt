@@ -20,12 +20,12 @@ var selected_gadget: Gadget
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus
-signal clicked_collision_object(object: CollisionObject3D)
 signal click_sound_requested
 signal currency_updated(currency: String)
 signal camera_pan_started
 signal camera_pan_ended
 signal claim_requested # emitted by the HUD when the player requests to claim a gadget
+signal gadget_clicked(gadget: Gadget) # triggers even if the gadget is non-interactive
 signal gadgets_close_to_player_changed
 signal gadgets_reloaded # used to clear effects panes, etc
 signal play_flash(position: Vector2)

@@ -55,8 +55,7 @@ gadget_id = "acidic_catalyst"
 model = NodePath("Mineral")
 effect_manager = NodePath("EffectManager")
 player_collision = false
-proximity_radius = 1.5
-cull_distance = 8.0
+cull_distance = 15.0
 enemy_indicator_scale = 0.65
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 

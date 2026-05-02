@@ -38,5 +38,5 @@ func _ready() -> void:
 		if setting == "draw_distance":
 			if value == "medium": actual_cull_distance = cull_distance
 			elif value == "low" : actual_cull_distance = cull_distance * 0.5
-			elif value == "high" : actual_cull_distance = cull_distance * 1.5
+			elif value == "high" : actual_cull_distance = cull_distance * 2.1
 			apply_cull_amounts())

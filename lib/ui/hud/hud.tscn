@@ -77,6 +77,7 @@ stretch_mode = 1
 [node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("1_o36f6")]
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
+offset_left = -473.0
 offset_top = -294.0
 
 [node name="PlayerPlate" type="Panel" parent="." unique_id=121027689]

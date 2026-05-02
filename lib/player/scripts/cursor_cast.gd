@@ -38,6 +38,8 @@ func _input(event: InputEvent) -> void:
 			if current_collider is Gadget:
 				if current_collider.effect_manager: # clicking for BOps is handled separately
 					Dwelt.update_selected_gadget(current_collider)
+				else: Dwelt.update_selected_gadget(null)
+				Dwelt.gadget_clicked.emit(current_collider)
 			else:
 				Dwelt.update_selected_gadget(null)
-			Dwelt.clicked_collision_object.emit(current_collider)
+				Dwelt.gadget_clicked.emit(null)

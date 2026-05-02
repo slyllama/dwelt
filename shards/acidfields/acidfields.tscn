@@ -91,6 +91,7 @@ script = ExtResource("2_58tgt")
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)
 collision_mask = 3
+input_ray_pickable = false
 
 [node name="Mesh" parent="Floor" index="0" unique_id=1446901427]
 visible = false
@@ -121,6 +122,7 @@ material = SubResource("FogMaterial_t5hkx")
 
 [node name="Grass" type="MultiMeshInstance3D" parent="." index="7" unique_id=125048527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0229335, 0.09067559, -13.1529255)
+visible = false
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_r4xcf")
@@ -138,6 +140,7 @@ colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
 [node name="Grass4" type="MultiMeshInstance3D" parent="." index="8" unique_id=1266720374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37854838, 0.3999999, -0.4947657)
+visible = false
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_kte83")
@@ -154,6 +157,7 @@ colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
 [node name="Grass2" type="MultiMeshInstance3D" parent="." index="9" unique_id=2134664926]
 transform = Transform3D(0.9244596, 0.040959682, 0.37907365, 0, 0.994213, -0.10742675, -0.38128012, 0.09931169, 0.9191097, 0.34438384, 0.43650198, -15.733524)
+visible = false
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_fq4iu")
@@ -172,6 +176,7 @@ colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
 [node name="Grass3" type="MultiMeshInstance3D" parent="." index="10" unique_id=1993475624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8331202, 0.55204284, -19.285503)
+visible = false
 layers = 2
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_58tgt")
@@ -188,7 +193,7 @@ scale_offset = Vector3(1, 1.5, 1)
 colour_1 = Color(0.028982915, 0.20619318, 2.4065375e-08, 1)
 colour_2 = Color(0.58673704, 0.7435092, 0, 1)
 
-[node name="Platform" parent="." index="11" unique_id=1369289784 instance=ExtResource("11_r4xcf")]
+[node name="Platform" parent="." index="11" unique_id=1653828946 instance=ExtResource("11_r4xcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Dirt" type="Decal" parent="Platform" index="15" unique_id=1053253109]
