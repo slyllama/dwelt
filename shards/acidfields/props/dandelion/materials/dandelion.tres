@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bchp88aphurq2"]
+
+[ext_resource type="Shader" uid="uid://dfecohq2prkr0" path="res://generic/materials/shaders/foliage.gdshader" id="1_mcwp7"]
+[ext_resource type="Texture2D" uid="uid://chx4rewun12kf" path="res://shards/acidfields/props/dandelion/materials/textures/dandelion_alpha.png" id="2_n4vt3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mcwp7")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/foliage_texture = ExtResource("2_n4vt3")
+shader_parameter/alpha_scissor_threshold = 0.95
+shader_parameter/normal_map_depth = 1.0
+shader_parameter/fade_length = 18.0
+shader_parameter/uses_wind = true

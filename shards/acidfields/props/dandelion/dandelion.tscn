@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dfp1i2ujqv1r1"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpy64oh1qdcfr" path="res://shards/acidfields/props/dandelion/meshes/dandelion.res" id="1_lwylf"]
+[ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="1_rry2l"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_lwylf"]
+transform_format = 1
+instance_count = 1
+visible_instance_count = 1
+mesh = ExtResource("1_lwylf")
+buffer = PackedFloat32Array(1.3702507, 0, -1.2679782, 0, 0, 1.8669107, 0, 0, 1.2679782, 0, 1.3702507, 0)
+
+[node name="Dandelion" type="MultiMeshInstance3D" unique_id=1035710692]
+layers = 2
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lwylf")
+script = ExtResource("1_rry2l")
+count = 1
+size = 0.0
+scatter = 0.0
+smooth = false
+foliage_mesh = ExtResource("1_lwylf")
+min_scale = 1.5
+max_scale = 2.0
+vary_colours = false
+metadata/_custom_type_script = "uid://bs2ecusdf305c"

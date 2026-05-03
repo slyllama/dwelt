@@ -11,7 +11,6 @@ var foliage_count := 0
 @export var size := 5.0
 @export var scatter := 0.5
 @export var smooth := true
-@export var follow_floor := false
 
 @export_category("Instances")
 @export var foliage_mesh: ArrayMesh
@@ -54,17 +53,6 @@ func render() -> void:
 			
 			var grass_transform := Transform3D(Basis(), base_pos)
 			grass_transform = grass_transform.translated_local(grass_scatter)
-			if follow_floor:
-				var _position: Vector3 = global_position + base_pos + grass_scatter
-				var _from := _position + Vector3(0, 10.0, 0)
-				var _to := _from + Vector3(0, -20.0, 0)
-				var space_state := self.get_world_3d().direct_space_state
-				var query := PhysicsRayQueryParameters3D.create(_from, _to)
-				query.collision_mask = 0b00000000_00000000_00000000_00000010
-				var intersection := space_state.intersect_ray(query)
-				if intersection:
-					var _cpos: Vector3 = intersection.position
-					grass_transform = grass_transform.translated_local(Vector3(0, _cpos.y, 0))
 			grass_transform = grass_transform.rotated_local(Vector3.UP, grass_rotation)
 			grass_transform = grass_transform.scaled_local(grass_scale * Vector3(1.0, dist, 1.0))
 			_transforms.append(grass_transform)
@@ -92,5 +80,4 @@ func _ready() -> void:
 	set_layer_mask_value(1, 0)
 	set_layer_mask_value(2, 1)
 	
-	if Engine.is_editor_hint(): return
 	set_fade_distance(20.0)
