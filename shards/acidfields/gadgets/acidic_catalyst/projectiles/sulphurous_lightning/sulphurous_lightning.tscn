@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ccdrq4nv2ueq0"]
+
+[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="1_irkrb"]
+[ext_resource type="PackedScene" uid="uid://df275bk4pu5ty" path="res://lib/gadget/generic_aoe/generic_aoe.tscn" id="2_5au5a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_15jje"]
+height = 4.0
+radius = 0.6
+
+[node name="SulphurousLightning" type="Area3D" unique_id=878190176]
+script = ExtResource("1_irkrb")
+cast_time = 1.75
+metadata/_custom_type_script = "uid://bfscrvsa8s6er"
+
+[node name="GenericAoe" parent="." unique_id=1372830595 instance=ExtResource("2_5au5a")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=618346902]
+shape = SubResource("CylinderShape3D_15jje")

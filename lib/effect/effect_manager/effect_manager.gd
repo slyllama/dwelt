@@ -4,6 +4,7 @@ class_name EffectManager extends Node
 var active_effects: Dictionary[String, EffectInstance]
 
 signal effect_added(id: String)
+signal effect_decremented(id: String)
 signal effect_finished(id: String)
 signal effects_updated()
 signal effect_cancelled(id: String)
@@ -47,6 +48,7 @@ func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 
 func decrement_effect_qty(id: String) -> void:
 	if id in active_effects:
+		effect_decremented.emit(id)
 		var effect := active_effects[id]
 		if effect.type == effect.Type.QUANTITY:
 			effect.current_quantity -= 1

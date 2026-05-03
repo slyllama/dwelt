@@ -5,8 +5,6 @@
 [ext_resource type="Environment" uid="uid://omrd8x86dwd7" path="res://shards/acidfields/env.tres" id="3_dvnsq"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="4_dvnsq"]
 [ext_resource type="PackedScene" uid="uid://bwfv33porju0m" path="res://bops/gizmo/gizmo_mover_group/gizmo_mover_group.tscn" id="5_sts1q"]
-[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="6_r1u5u"]
-[ext_resource type="PackedScene" uid="uid://df275bk4pu5ty" path="res://lib/gadget/generic_aoe/generic_aoe.tscn" id="7_52lhj"]
 
 [sub_resource type="Gradient" id="Gradient_58tgt"]
 interpolation_mode = 2
@@ -38,10 +36,6 @@ material = SubResource("StandardMaterial3D_58tgt")
 size = Vector2(256, 256)
 orientation = 1
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_52lhj"]
-height = 4.0
-radius = 0.6
-
 [node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
 script = ExtResource("2_py4bx")
 
@@ -61,13 +55,3 @@ mesh = SubResource("QuadMesh_dvnsq")
 transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, 2, 0.5, 2)
 
 [node name="GizmoMoverGroup" parent="GizmoTest" index="1" unique_id=1606634953 instance=ExtResource("5_sts1q")]
-
-[node name="Projectile" type="Area3D" parent="." index="7" unique_id=116625826]
-script = ExtResource("6_r1u5u")
-metadata/_custom_type_script = "uid://bfscrvsa8s6er"
-
-[node name="GenericAoe" parent="Projectile" index="0" unique_id=1372830595 instance=ExtResource("7_52lhj")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile" index="1" unique_id=129821265]
-shape = SubResource("CylinderShape3D_52lhj")

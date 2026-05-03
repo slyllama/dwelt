@@ -23,6 +23,10 @@ func _ready() -> void:
 	Dwelt.player_effect_manager = %EffectManager
 	%EffectManager.add_effect(load("res://effects/resilience.tres"))
 	
+	%EffectManager.effect_decremented.connect(func(id: String) -> void:
+		if id == "resilience":
+			Dwelt.shake_camera.emit())
+	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)

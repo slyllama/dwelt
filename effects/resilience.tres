@@ -11,6 +11,5 @@ description = "Enables the claiming, building, and modification of gadgets.
 [color='666']You are resolute and well-equipped, and there is a calm assurance in the unflinching precision of your robotic equations and functions.[/color]"
 icon = ExtResource("1_3k7og")
 type = 1
-hide_single_quantity = true
-total_quantity = 1
+total_quantity = 10
 metadata/_custom_type_script = "uid://dcpt2q4l5o0ue"
