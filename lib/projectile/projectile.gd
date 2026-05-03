@@ -1,3 +1,4 @@
+@icon("res://generic/icons/Projectile.svg")
 class_name Projectile extends Area3D
 
 @export var cast_time := 3.0
@@ -14,10 +15,14 @@ func is_player_colliding() -> bool:
 			break
 	return(_player_colliding)
 
+func _init() -> void:
+	visible = false
+
 func _ready() -> void:
 	cast_timer.wait_time = cast_time
 	cast_timer.one_shot = true
 	cast_timer.timeout.connect(func() -> void:
+		Dwelt.shake_camera.emit()
 		# Fire
 		if is_player_colliding() and strips_resilience:
 			Dwelt.player_effect_manager.decrement_effect_qty("resilience")
@@ -25,3 +30,6 @@ func _ready() -> void:
 	
 	add_child(cast_timer)
 	cast_timer.start()
+	
+	await get_tree().process_frame
+	visible = true

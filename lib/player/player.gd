@@ -8,6 +8,8 @@ const POS_UPDATE_TICK := 0.5 # determines how often the player's position gets s
 @export var friction := 15.0
 @export var gravity_damping := 10.0
 
+var floor_y_position := 0.0 # the point where YCast touches the ground
+
 var _target_velocity := Vector3.ZERO
 var _target_y_rotation := 0.0
 var _target_y_position := 0.0
@@ -54,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity and hover
 	var _y_diff: float = $YCast.global_position.y - $YCast.get_collision_point().y
 	var _y_target: float = abs($YCast.target_position.y)
+	floor_y_position = $YCast.get_collision_point().y
 	if !$YCast.is_colliding(): # apply gravity even if beyond raycast height
 		_y_diff = _y_target
 	velocity.y += Dwelt.GRAVITY / gravity_damping

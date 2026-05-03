@@ -32,6 +32,7 @@ class_name Gadget extends StaticBody3D
 
 signal player_entered_active_area
 signal player_exited_active_area
+var player_in_active_area := false
 
 # Gets an effect by ID if the gadget has an effect manager which includes that
 # effect = or returns `null` otherwise
@@ -72,12 +73,14 @@ func _ready() -> void:
 		
 		_proximity_area.body_entered.connect(func(body: PhysicsBody3D) -> void:
 			if body is DweltPlayer:
+				player_in_active_area = true
 				player_entered_active_area.emit())
 		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
 			if body is DweltPlayer:
+				player_in_active_area = false
 				player_exited_active_area.emit()
 			if body is DweltPlayer and Dwelt.claim_target == self:
 				if Dwelt.player_effect_manager.has_effect("claiming"):

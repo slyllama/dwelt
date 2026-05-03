@@ -57,6 +57,7 @@ effect_manager = NodePath("EffectManager")
 player_collision = false
 cull_distance = 15.0
 enemy_indicator_scale = 0.65
+claim_radius = 3.2
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mineral" parent="." unique_id=1368763330 instance=ExtResource("2_nkx3i")]
@@ -78,3 +79,8 @@ visibility_range_fade_mode = 1
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_56acp")
 draw_pass_1 = SubResource("QuadMesh_46qec")
+
+[node name="ProjectileTimer" type="Timer" parent="." unique_id=801432575]
+wait_time = 1.75
+
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]

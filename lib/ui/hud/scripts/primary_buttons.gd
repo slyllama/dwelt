@@ -42,6 +42,13 @@ func _ready() -> void:
 	if Dwelt.player_effect_manager.has_effect("resilience"):
 		enable_button($Build)
 
+# TODO: this logic needs to be centralised somewhere
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("claim"):
+		if (Dwelt.selected_gadget in Dwelt.gadgets_close_to_player
+			and Dwelt.selected_gadget.get_effect("enemy_owned")):
+			_on_claim_pressed()
+
 # Cannot be pressed unless it is actually valid
 func _on_claim_pressed() -> void:
 	Dwelt.claim_requested.emit()

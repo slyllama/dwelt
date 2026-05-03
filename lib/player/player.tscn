@@ -310,6 +310,7 @@ process_material = SubResource("ParticleProcessMaterial_2ocui")
 draw_pass_1 = SubResource("QuadMesh_0y160")
 
 [node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
+deterministic = true
 libraries/ = SubResource("AnimationLibrary_hlh1u")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
