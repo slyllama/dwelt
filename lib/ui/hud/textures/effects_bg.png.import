@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b52yrj8rctv4p"
-path.s3tc="res://.godot/imported/rock_decal.png-9b5bcd6cb0e149dd24bfc56aa2a663ae.s3tc.ctex"
+uid="uid://dtx6n0y3hb75y"
+path.s3tc="res://.godot/imported/effects_bg.png-0a807d37eeb5e8f012c6453388f9466f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://shards/acidfields/materials/textures/rock_decal.png"
-dest_files=["res://.godot/imported/rock_decal.png-9b5bcd6cb0e149dd24bfc56aa2a663ae.s3tc.ctex"]
+source_file="res://lib/ui/hud/textures/effects_bg.png"
+dest_files=["res://.godot/imported/effects_bg.png-0a807d37eeb5e8f012c6453388f9466f.s3tc.ctex"]
 
 [params]
 

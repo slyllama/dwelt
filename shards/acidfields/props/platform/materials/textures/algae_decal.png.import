@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ndrn4twwy7qf"
-path="res://.godot/imported/algae_decal.png-a868932c9fb3eaea846a55b72aef5078.ctex"
+path.s3tc="res://.godot/imported/algae_decal.png-a868932c9fb3eaea846a55b72aef5078.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://shards/acidfields/props/platform/materials/textures/algae_decal.png"
-dest_files=["res://.godot/imported/algae_decal.png-a868932c9fb3eaea846a55b72aef5078.ctex"]
+dest_files=["res://.godot/imported/algae_decal.png-a868932c9fb3eaea846a55b72aef5078.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

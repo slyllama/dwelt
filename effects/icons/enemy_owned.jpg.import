@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b52yrj8rctv4p"
-path.s3tc="res://.godot/imported/rock_decal.png-9b5bcd6cb0e149dd24bfc56aa2a663ae.s3tc.ctex"
+uid="uid://b4h58mc27u7ba"
+path="res://.godot/imported/enemy_owned.jpg-5ca81527a02c8c39102c2e4cfb04dfac.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://shards/acidfields/materials/textures/rock_decal.png"
-dest_files=["res://.godot/imported/rock_decal.png-9b5bcd6cb0e149dd24bfc56aa2a663ae.s3tc.ctex"]
+source_file="res://effects/icons/enemy_owned.jpg"
+dest_files=["res://.godot/imported/enemy_owned.jpg-5ca81527a02c8c39102c2e4cfb04dfac.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
