@@ -7,6 +7,10 @@ extends Node
 var current_collider: CollisionObject3D
 var last_click_in_ui := false
 
+# Always wait a short cooldown before processing an input action again
+const COOLDOWN := 0.1
+var _cooldown := 0.0
+
 func handle_mouse_raycast() -> void:
 	var mouse_pos := get_viewport().get_mouse_position()
 	var _from := camera.project_ray_origin(mouse_pos)
@@ -35,6 +39,8 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		# Didn't start *or* end in UI
 		if !last_click_in_ui and !get_window().gui_get_hovered_control():
+			if _cooldown > 0.01: return # reject if too close to the last successful input
+			_cooldown = COOLDOWN
 			if current_collider is Gadget:
 				if current_collider.effect_manager: # clicking for BOps is handled separately
 					Dwelt.update_selected_gadget(current_collider)
@@ -43,3 +49,7 @@ func _input(event: InputEvent) -> void:
 			else:
 				Dwelt.update_selected_gadget(null)
 				Dwelt.gadget_clicked.emit(null)
+
+func _process(delta: float) -> void:
+	if _cooldown > 0.0:
+		_cooldown -= delta

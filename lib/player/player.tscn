@@ -136,7 +136,7 @@ _data = {
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_1x433"]
+[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
 curve = SubResource("Curve_2ocui")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
@@ -145,9 +145,9 @@ emission_shape = 2
 emission_sphere_radius = 4.0
 gravity = Vector3(0, 0.03, 0)
 scale_min = 0.59999996
-alpha_curve = SubResource("CurveTexture_1x433")
+alpha_curve = SubResource("CurveTexture_ego0t")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5dhk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -159,7 +159,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_0y160"]
-material = SubResource("StandardMaterial3D_v5dhk")
+material = SubResource("StandardMaterial3D_1x433")
 size = Vector2(0.04, 0.04)
 
 [sub_resource type="Animation" id="Animation_hlh1u"]
@@ -204,7 +204,6 @@ _data = {
 radius = 0.25
 
 [node name="Player" type="CharacterBody3D" unique_id=568758090]
-collision_layer = 3
 script = ExtResource("1_al4t3")
 friction = 25.0
 gravity_damping = 7.0

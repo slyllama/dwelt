@@ -13,11 +13,13 @@ func _ready() -> void:
 
 func _on_projectile_timer_timeout() -> void:
 	var _sulphurous_lightning: PackedScene = load(
-		"res://shards/acidfields/gadgets/acidic_catalyst/projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
+		"res://shards/projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
 	for _i in 4:
 		var _projectile: Projectile = _sulphurous_lightning.instantiate()
 		var _variance := 0.9
-		if _i == 0: _variance = 0.0
+		if _i == 0:
+			_variance = 0.0
+			_projectile.just_fired.connect($Lightning.play)
 		_projectile.ready.connect(func() -> void:
 			_projectile.global_position = Vector3(
 				randf_range(Dwelt.player.global_position.x - _variance, Dwelt.player.global_position.x + _variance),
