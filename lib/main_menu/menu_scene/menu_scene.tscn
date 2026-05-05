@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://fok2dlvwn6yg" path="res://lib/player/meshes/robot.glb" id="2_xkewq"]
 [ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="3_xkewq"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="4_idwoj"]
-[ext_resource type="PackedScene" uid="uid://bld6t3jjsjj01" path="res://shards/acidfields/gadgets/acidic_catalyst/meshes/mineral.glb" id="5_6vpo0"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_idwoj"]
 
@@ -161,9 +160,3 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32156554, 0.45, 2.5)
 current = true
 fov = 35.0
-
-[node name="Mineral" parent="." unique_id=1906981560 instance=ExtResource("5_6vpo0")]
-transform = Transform3D(0.72, 0, 0, 0, 0.7137613, 0.09457686, 0, -0.09457686, 0.7137613, 0.52375734, 0.2924588, -0.37701175)
-
-[node name="Mineral2" parent="." unique_id=1023635297 instance=ExtResource("5_6vpo0")]
-transform = Transform3D(-3.135325e-08, -0.06253932, -0.71727884, -2.7336802e-09, 0.71727884, -0.06253932, 0.72, 0, -3.1472197e-08, -0.2000876, 0.38795933, -0.4632589)

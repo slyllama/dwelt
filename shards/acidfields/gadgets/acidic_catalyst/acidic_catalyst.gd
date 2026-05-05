@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_projectile_timer_timeout() -> void:
 	var _sulphurous_lightning: PackedScene = load(
-		"res://shards/projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
+		"res://shards/_projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
 	for _i in 4:
 		var _projectile: Projectile = _sulphurous_lightning.instantiate()
 		var _variance := 0.9

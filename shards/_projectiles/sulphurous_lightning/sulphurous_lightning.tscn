@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ccdrq4nv2ueq0"]
 
-[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="1_0fya8"]
-[ext_resource type="Texture2D" uid="uid://b55b567o6evvm" path="res://generic/textures/aoe.jpg" id="2_pr3hs"]
-[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="3_wl5d4"]
+[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="1_ks5kn"]
+[ext_resource type="Texture2D" uid="uid://b55b567o6evvm" path="res://generic/textures/aoe.jpg" id="2_b28m2"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="3_hq5r1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_15jje"]
 height = 4.0
@@ -163,7 +163,7 @@ alpha_curve = SubResource("CurveTexture_4nrbf")
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_wl5d4")
+albedo_texture = ExtResource("3_hq5r1")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -175,7 +175,7 @@ material = SubResource("StandardMaterial3D_v5dhk")
 size = Vector2(0.06, 0.06)
 
 [node name="SulphurousLightning" type="Area3D" unique_id=878190176 node_paths=PackedStringArray("animation_player")]
-script = ExtResource("1_0fya8")
+script = ExtResource("1_ks5kn")
 cast_time = 1.1
 animation_player = NodePath("Anim")
 free_on_animation_end = true
@@ -187,7 +187,7 @@ shape = SubResource("CylinderShape3D_15jje")
 [node name="Decal" type="Decal" parent="." unique_id=316366069]
 sorting_offset = 1.0
 size = Vector3(1.2, 0.5, 1.2)
-texture_emission = ExtResource("2_pr3hs")
+texture_emission = ExtResource("2_b28m2")
 distance_fade_enabled = true
 distance_fade_begin = 10.0
 distance_fade_length = 1.0

@@ -39,6 +39,9 @@ orientation = 1
 [node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
 script = ExtResource("2_py4bx")
 
+[node name="Mesh" parent="Floor" parent_id_path=PackedInt32Array(1367160262) index="0" unique_id=1446901427]
+layers = 3
+
 [node name="GadgetManager" parent="." index="2" unique_id=319105425]
 shard_id = "debug"
 shard_title = "Debug Map"

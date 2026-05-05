@@ -6,7 +6,7 @@ func _ready() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/projectile":
 			var _sulphurous_lightning: PackedScene = load(
-				"res://shards/acidfields/gadgets/acidic_catalyst/projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
+				"res://shards/_projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
 			for _i in 5:
 				var _projectile: Projectile = _sulphurous_lightning.instantiate()
 				add_child(_projectile)

@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bv2sf41x1ndhr"]
 
-[ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="2_hicyh"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="1_4qle8"]
+[ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/ui/spatial_text/spatial_text.gd" id="1_uleuf"]
 
 [node name="SpatialText" type="VisibleOnScreenNotifier3D" unique_id=283445859]
 aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("1_uleuf")
 
 [node name="FG" type="CanvasLayer" parent="." unique_id=2136787715]
 layer = -1
@@ -28,8 +30,8 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_hicyh")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("1_4qle8")
+theme_override_font_sizes/font_size = 17
 text = "((SpatialText))"
 horizontal_alignment = 1
 vertical_alignment = 1

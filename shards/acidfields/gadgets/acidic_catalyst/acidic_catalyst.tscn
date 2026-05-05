@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bld6t3jjsjj01" path="res://shards/acidfields/gadgets/acidic_catalyst/meshes/mineral.glb" id="2_nkx3i"]
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_eohdb"]
 [ext_resource type="Texture2D" uid="uid://prqugkkopl1s" path="res://shards/acidfields/gadgets/acidic_catalyst/materials/textures/eye.png" id="4_731j6"]
-[ext_resource type="AudioStream" uid="uid://c8scrukrbv0ro" path="res://shards/projectiles/sulphurous_lightning/sounds/lightning.ogg" id="5_8va21"]
+[ext_resource type="AudioStream" uid="uid://c8scrukrbv0ro" path="res://shards/_projectiles/sulphurous_lightning/sounds/lightning.ogg" id="5_8va21"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eohdb"]
 height = 0.9777832

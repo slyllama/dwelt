@@ -258,7 +258,9 @@ draw_pass_1 = ExtResource("5_jyhpi")
 
 [node name="Light" type="OmniLight3D" parent="RobotMesh" unique_id=399922897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.75)
+light_color = Color(0.7696562, 0.87421596, 0.9150596, 1)
 omni_range = 1.0
+omni_attenuation = 1.75
 
 [node name="JetTrail_L" parent="RobotMesh" unique_id=125210422 instance=ExtResource("8_1x433")]
 
