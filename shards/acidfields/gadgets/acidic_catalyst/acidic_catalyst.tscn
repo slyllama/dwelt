@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_eohdb"]
 [ext_resource type="Texture2D" uid="uid://prqugkkopl1s" path="res://shards/acidfields/gadgets/acidic_catalyst/materials/textures/eye.png" id="4_731j6"]
 [ext_resource type="AudioStream" uid="uid://c8scrukrbv0ro" path="res://shards/_projectiles/sulphurous_lightning/sounds/lightning.ogg" id="5_8va21"]
+[ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/ui/spatial_text/spatial_text.gd" id="6_4pm3v"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eohdb"]
 height = 0.9777832
@@ -92,5 +93,13 @@ max_db = 0.0
 max_polyphony = 2
 panning_strength = 2.0
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Title" type="VisibleOnScreenNotifier3D" parent="." unique_id=1090757459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("6_4pm3v")
+text = "Acidic Catalyst"
+render_distance = 10.0
+metadata/_custom_type_script = "uid://kh208mvheurt"
 
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]

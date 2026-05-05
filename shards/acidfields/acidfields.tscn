@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://durbwda1l1s0k" path="res://shards/acidfields/props/platform/platform.glb" id="11_r4xcf"]
 [ext_resource type="Texture2D" uid="uid://ba1utb3sdckqy" path="res://shards/acidfields/props/platform/materials/textures/dirt_decal.png" id="12_fq4iu"]
 [ext_resource type="Script" uid="uid://cr6rgobk6orqv" path="res://lib/shard/foliage_blanket/foliage_blanket.gd" id="12_ostfv"]
+[ext_resource type="PackedScene" uid="uid://ba4av7gb54pfb" path="res://shards/acidfields/props/starflower/meshes/starflower.glb" id="13_41lxu"]
 [ext_resource type="AudioStream" uid="uid://c1n8wgrr1281g" path="res://shards/acidfields/sounds/ambience.ogg" id="14_5x773"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_rfpxw"]
@@ -255,6 +256,7 @@ unit_size = 6.0
 max_db = 0.0
 autoplay = true
 panning_strength = 1.5
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Creak2" type="AudioStreamPlayer3D" parent="Ambience" index="1" unique_id=116024837]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.703953, 1.2902093, -1.2129388)
@@ -263,6 +265,7 @@ unit_size = 6.0
 max_db = 0.0
 autoplay = true
 panning_strength = 1.5
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sky" parent="." index="10" unique_id=756974854]
 environment = ExtResource("11_ostfv")
@@ -274,3 +277,15 @@ mesh = SubResource("QuadMesh_aut2g")
 
 [node name="Sun" parent="Sky" index="1" unique_id=777693513]
 transform = Transform3D(-0.67355454, 0.36956874, -0.64011186, -7.64024e-09, 0.8660255, 0.5000001, 0.73913753, 0.33677727, -0.5833153, 0, 2, 0)
+
+[node name="Starflower" parent="." index="12" unique_id=2013799446 instance=ExtResource("13_41lxu")]
+transform = Transform3D(0.01854381, 0, -1.6998988, 0, 1.7, 0, 1.6998988, 0, 0.01854381, -2.6090345, 9.75583, -36.666016)
+
+[node name="Creak3" type="AudioStreamPlayer3D" parent="Starflower" index="13" unique_id=368485135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.869276, -2.358594, 0)
+stream = ExtResource("10_ostfv")
+unit_size = 6.0
+max_db = 0.0
+autoplay = true
+panning_strength = 1.5
+attenuation_filter_cutoff_hz = 20500.0
