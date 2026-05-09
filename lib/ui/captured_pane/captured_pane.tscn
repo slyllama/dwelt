@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://mt44vn47fohp" path="res://lib/ui/captured_pane/captured_pane.gd" id="1_lx5e4"]
 [ext_resource type="Texture2D" uid="uid://dp30o4nm06kc4" path="res://generic/materials/textures/tile_diff.jpg" id="2_sv1ui"]
 [ext_resource type="Shader" uid="uid://cbwb5fux5kix3" path="res://generic/materials/shaders/blur.gdshader" id="3_sv1ui"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="4_afmbj"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="5_dbg7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_afmbj"]
 shader = ExtResource("3_sv1ui")
@@ -14,6 +16,12 @@ colors = PackedColorArray(0, 0, 0, 0.98039216, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_afmbj"]
 gradient = SubResource("Gradient_sv1ui")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afmbj"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
 
 [node name="CapturedPane" type="CanvasLayer" unique_id=4233952]
 process_mode = 3
@@ -41,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="Gradient" type="TextureRect" parent="Backing" unique_id=1028755732]
 layout_mode = 1
@@ -50,3 +59,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_afmbj")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=357884006]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 429.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_afmbj")
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=621107078]
+layout_mode = 2
+
+[node name="TopPadding" type="ColorRect" parent="Panel/VBox" unique_id=1926387807]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=988303638]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_afmbj")
+theme_override_font_sizes/font_size = 27
+text = "((Title))"
+
+[node name="Separator" type="TextureRect" parent="Panel/VBox" unique_id=866871258]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+texture = ExtResource("5_dbg7b")
+expand_mode = 1
+flip_h = true

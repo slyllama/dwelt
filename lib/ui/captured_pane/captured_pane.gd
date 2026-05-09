@@ -8,6 +8,7 @@ func open() -> void:
 	active = true
 	get_tree().paused = true
 	visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func close() -> void:
 	if !active: return # don't repeat

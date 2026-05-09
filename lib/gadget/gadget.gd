@@ -25,6 +25,7 @@ class_name Gadget extends StaticBody3D
 @export_category("Ownership and Claiming")
 @export var claim_radius := 2.4
 @export var claim_duration := 12.0
+@export var interactive := false
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()

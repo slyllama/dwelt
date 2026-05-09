@@ -279,6 +279,7 @@ autoplay = &"glow"
 
 [node name="Orbit" type="Marker3D" parent="." unique_id=13830377]
 unique_name_in_owner = true
+process_mode = 3
 transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
 script = ExtResource("5_4ok3w")
 zoom_max = 3.0

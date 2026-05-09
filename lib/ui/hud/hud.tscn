@@ -345,6 +345,7 @@ stream = ExtResource("14_6rdt5")
 
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Build" to="PlayerPlate/PrimaryButtons" method="_on_build_pressed"]
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Claim" to="PlayerPlate/PrimaryButtons" method="_on_claim_pressed"]
+[connection signal="pressed" from="PlayerPlate/PrimaryButtons/Interact" to="PlayerPlate/PrimaryButtons" method="_on_interact_pressed"]
 [connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]

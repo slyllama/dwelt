@@ -23,10 +23,14 @@ func _ready() -> void:
 	Dwelt.selected_gadget_changed.connect(func(gadget: Gadget) -> void:
 		if !gadget:
 			disable_button($Claim)
+			disable_button($Interact)
 			return
 		elif gadget in Dwelt.gadgets_close_to_player:
 			enable_button($Claim)
-		else: disable_button($Claim))
+			enable_button($Interact)
+		else:
+			disable_button($Claim)
+			disable_button($Interact))
 	
 	Dwelt.gadgets_close_to_player_changed.connect(func() -> void:
 		# Only using this to check that there are close gadgets; not really
@@ -36,7 +40,13 @@ func _ready() -> void:
 				and Dwelt.selected_gadget.get_effect("enemy_owned")):
 				enable_button($Claim)
 			else: disable_button($Claim)
-		else: disable_button($Claim))
+			if (Dwelt.selected_gadget in Dwelt.gadgets_close_to_player
+				and Dwelt.selected_gadget.interactive):
+				enable_button($Interact)
+			else: disable_button($Interact)
+		else:
+			disable_button($Claim)
+			disable_button($Interact))
 	
 	await get_tree().process_frame
 	if Dwelt.player_effect_manager.has_effect("resilience"):
@@ -44,15 +54,20 @@ func _ready() -> void:
 
 # TODO: this logic needs to be centralised somewhere
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("claim"):
-		if (Dwelt.selected_gadget in Dwelt.gadgets_close_to_player
-			and Dwelt.selected_gadget.get_effect("enemy_owned")):
-			_on_claim_pressed()
+	if !Dwelt.selected_gadget in Dwelt.gadgets_close_to_player: return
+	
+	if Input.is_action_just_pressed("claim"): _on_claim_pressed()
+	elif Input.is_action_just_pressed("interact"): _on_interact_pressed()
 
 # Cannot be pressed unless it is actually valid
 func _on_claim_pressed() -> void:
-	Dwelt.claim_requested.emit()
+	if Dwelt.selected_gadget.get_effect("enemy_owned"):
+		Dwelt.claim_requested.emit()
 
 func _on_build_pressed() -> void:
 	if BOps.mode == BOps.Mode.INACTIVE: BOps.activate()
 	else: BOps.deactivate()
+
+func _on_interact_pressed() -> void:
+	if Dwelt.selected_gadget.interactive:
+		Dwelt.captured_pane_open.emit()
