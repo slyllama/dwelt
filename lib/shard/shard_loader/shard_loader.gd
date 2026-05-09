@@ -17,6 +17,8 @@ func _transition() -> void:
 		ResourceLoader.load_threaded_get(target_scene))
 
 func _ready() -> void:
+	AudioServer.set_bus_volume_linear(0, 0.0)
+	
 	if !Save.save_exists():
 		Save.new_file_from_default()
 	Save.load_file()

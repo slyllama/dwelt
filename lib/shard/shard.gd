@@ -1,20 +1,20 @@
 @icon("res://generic/icons/Shard.svg")
-extends Node3D
+class_name Shard extends Node3D
+
+const SHARD := true # just used to identify that this scene is a shard
 
 func _set_bus_vol(vol: float) -> void:
 	AudioServer.set_bus_volume_linear(0, vol)
 
 func _ready() -> void:
+	_set_bus_vol(0.0)
+	
 	# Populate save file with a space for this shard's data
 	if !$GadgetManager.shard_id in Save.save.shard_data:
 		Save.save.shard_data[$GadgetManager.shard_id] = {}
 	Dwelt.current_shard_id = $GadgetManager.shard_id
 	
 	Utils.debug_mode_changed.emit() # update debugging nodes
-	
-	# TODO: move sound fade in
-	var _sound_fade_in := create_tween()
-	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(Settings.settings.volume), 1.0)
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
@@ -56,8 +56,10 @@ func _ready() -> void:
 	
 	# Apply all settings now that each node has had a chance to load
 	# Skip full screen checks if the game has been run once
-	await get_tree().process_frame
+	for _i in 3: await get_tree().process_frame
 	Settings.apply_all_settings(false, ["full_screen"])
+	var _sound_fade_in := create_tween()
+	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(Settings.settings.volume), 1.0)
 	
 	# Update visual displays of currencies
 	for _currency_id: String in Save.save.currencies:

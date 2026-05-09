@@ -1,7 +1,8 @@
-extends "res://lib/shard/shard.gd"
+extends Shard
 
 func _ready() -> void:
 	super()
+	#get_viewport().debug_draw = Viewport.DEBUG_DRAW_OVERDRAW
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/projectile":

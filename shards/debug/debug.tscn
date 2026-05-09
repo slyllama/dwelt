@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brd8rtkouaa8h"]
 
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_wy1d8"]
-[ext_resource type="Script" uid="uid://c020ng1h0by3o" path="res://shards/debug/debug.gd" id="2_py4bx"]
+[ext_resource type="Script" uid="uid://c020ng1h0by3o" path="res://shards/debug/debug.gd" id="2_sts1q"]
 [ext_resource type="Environment" uid="uid://omrd8x86dwd7" path="res://shards/acidfields/env.tres" id="3_dvnsq"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="4_dvnsq"]
 [ext_resource type="PackedScene" uid="uid://bwfv33porju0m" path="res://bops/gizmo/gizmo_mover_group/gizmo_mover_group.tscn" id="5_sts1q"]
@@ -37,7 +37,7 @@ size = Vector2(256, 256)
 orientation = 1
 
 [node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
-script = ExtResource("2_py4bx")
+script = ExtResource("2_sts1q")
 
 [node name="Mesh" parent="Floor" parent_id_path=PackedInt32Array(1367160262) index="0" unique_id=1446901427]
 layers = 3

@@ -21,8 +21,9 @@ orientation = 1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3xe27"]
 
-[node name="Shard" type="Node3D" unique_id=1127074071]
+[node name="Shard" type="Node3D" unique_id=917371765]
 script = ExtResource("1_5i5j7")
+metadata/_custom_type_script = "uid://bp3rck4ew5qnc"
 
 [node name="HUD" parent="." unique_id=717398159 instance=ExtResource("1_3xe27")]
 

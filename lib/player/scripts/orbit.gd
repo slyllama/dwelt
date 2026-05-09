@@ -30,6 +30,7 @@ func _ready() -> void:
 	
 	# Connections
 	Dwelt.shake_camera.connect($Camera/CameraAnims.play.bind("shake"))
+	Dwelt.captured_pane_open.connect(_release)
 	
 	Dwelt.camera = $Camera
 	top_level = true

@@ -1,4 +1,4 @@
-extends "res://lib/shard/shard.gd"
+extends Shard
 
 func _ready() -> void:
 	super()
@@ -6,5 +6,3 @@ func _ready() -> void:
 	# Camera squeezes toward the player if it gets pushed up against these meshes
 	$Platform/Platform/StaticBody3D.set_collision_layer_value(2, true)
 	$Platform/Landscape/StaticBody3D.set_collision_layer_value(2, true)
-	
-	#get_viewport().debug_draw = Viewport.DEBUG_DRAW_OVERDRAW
