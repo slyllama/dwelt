@@ -15,7 +15,7 @@ player_collision = false
 cull_distance = 15.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
-[node name="Bamboo" parent="." unique_id=2054255178 instance=ExtResource("2_2h5xp")]
+[node name="Bamboo" parent="." unique_id=340220312 instance=ExtResource("2_2h5xp")]
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=471339380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9249268, 0)

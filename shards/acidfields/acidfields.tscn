@@ -125,7 +125,16 @@ spread = 0.75
 scatter = 1.0
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket" type="Marker3D" parent="Foliage" index="4" unique_id=219715696]
+[node name="DandelionBlanket5" type="Marker3D" parent="Foliage" index="4" unique_id=1924754236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.825183, 5.0787153, -2.988882)
+script = ExtResource("12_ostfv")
+foliage_cluster = "res://shards/acidfields/props/dandelion/dandelion.tscn"
+size = Vector2i(4, 4)
+spread = 0.75
+scatter = 1.0
+metadata/_custom_type_script = "uid://cr6rgobk6orqv"
+
+[node name="GrassClumpBlanket" type="Marker3D" parent="Foliage" index="5" unique_id=219715696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2547755, 5.0787153, -14.0853815)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -135,7 +144,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket2" type="Marker3D" parent="Foliage" index="5" unique_id=219211656]
+[node name="GrassClumpBlanket2" type="Marker3D" parent="Foliage" index="6" unique_id=219211656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8620439, 5.0787153, -16.51336)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -145,7 +154,16 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket3" type="Marker3D" parent="Foliage" index="6" unique_id=1048990766]
+[node name="GrassClumpBlanket6" type="Marker3D" parent="Foliage" index="7" unique_id=1933442393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31686306, 5.0787153, -19.99305)
+script = ExtResource("12_ostfv")
+foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
+y_offset = -0.05
+spread = 1.45
+scatter = 0.25
+metadata/_custom_type_script = "uid://cr6rgobk6orqv"
+
+[node name="GrassClumpBlanket3" type="Marker3D" parent="Foliage" index="8" unique_id=1048990766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.603978, 5.0787153, -24.558294)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -155,7 +173,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket4" type="Marker3D" parent="Foliage" index="7" unique_id=1279809314]
+[node name="GrassClumpBlanket4" type="Marker3D" parent="Foliage" index="9" unique_id=1279809314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145086, 5.0787153, -23.328253)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -165,7 +183,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket5" type="Marker3D" parent="Foliage" index="8" unique_id=71228331]
+[node name="GrassClumpBlanket5" type="Marker3D" parent="Foliage" index="10" unique_id=71228331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.238238, 6.360283, -9.965004)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
