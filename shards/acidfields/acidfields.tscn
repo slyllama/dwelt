@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Script" uid="uid://tul3ccffkp8j" path="res://shards/acidfields/acidfields.gd" id="2_58tgt"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/acidfields/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
-[ext_resource type="PackedScene" uid="uid://by4h5ijstdgno" path="res://shards/acidfields/gadgets/bamboo/bamboo.tscn" id="4_41lxu"]
 [ext_resource type="Texture2D" uid="uid://b52yrj8rctv4p" path="res://shards/acidfields/materials/textures/rock_decal.png" id="7_buenr"]
 [ext_resource type="Texture2D" uid="uid://ndrn4twwy7qf" path="res://shards/acidfields/props/platform/materials/textures/algae_decal.png" id="8_buenr"]
 [ext_resource type="AudioStream" uid="uid://6ny1ebwal0qe" path="res://shards/acidfields/sounds/creak.ogg" id="10_ostfv"]
@@ -68,9 +67,6 @@ visible = false
 [node name="GadgetManager" parent="." index="2" unique_id=319105425]
 shard_id = "acidfields"
 shard_title = "Symath Acidfields"
-
-[node name="Bamboo" parent="GadgetManager" index="0" unique_id=414735243 instance=ExtResource("4_41lxu")]
-transform = Transform3D(0.9972901, -0.073511735, 0.002899849, 0.07356892, 0.9965151, -0.039309952, 2.9590758e-08, 0.039416768, 0.9992228, -0.6838085, 1.8920029, -28.83923)
 
 [node name="Player" parent="." index="3" unique_id=1853110306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)

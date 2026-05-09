@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	for _n: Control in get_children():
 		if _n is Button:
-			_n.pressed.connect(Dwelt.click_sound_requested.emit)
+			_n.pressed.connect(Dwelt.emit_click_sound.emit)
 		if _n is TextureButton:
 			_n.modulate.a = DEFAULT_ALPHA
 			_n.mouse_entered.connect(func() -> void: _n.modulate.a = 1.0)

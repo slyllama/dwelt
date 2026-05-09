@@ -3,7 +3,7 @@ extends PanelContainer
 const SLOT_COUNT = 8
 
 func handle_button_event(id: String) -> void:
-	Dwelt.click_sound_requested.emit()
+	Dwelt.emit_click_sound.emit()
 	match id:
 		"exit_build": BOps.change_mode(BOps.Mode.INACTIVE)
 

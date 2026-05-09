@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d0iipew64n7tv"]
+
+[ext_resource type="Script" uid="uid://mt44vn47fohp" path="res://lib/ui/captured_pane/captured_pane.gd" id="1_lx5e4"]
+[ext_resource type="Texture2D" uid="uid://dp30o4nm06kc4" path="res://generic/materials/textures/tile_diff.jpg" id="2_sv1ui"]
+[ext_resource type="Shader" uid="uid://cbwb5fux5kix3" path="res://generic/materials/shaders/blur.gdshader" id="3_sv1ui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afmbj"]
+shader = ExtResource("3_sv1ui")
+shader_parameter/blur_level = 1.0000000475
+
+[sub_resource type="Gradient" id="Gradient_sv1ui"]
+offsets = PackedFloat32Array(0.25, 0.75)
+colors = PackedColorArray(0, 0, 0, 0.98039216, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_afmbj"]
+gradient = SubResource("Gradient_sv1ui")
+
+[node name="CapturedPane" type="CanvasLayer" unique_id=4233952]
+process_mode = 3
+script = ExtResource("1_lx5e4")
+
+[node name="DebugBG" type="CanvasLayer" parent="." unique_id=154098045]
+layer = -1
+
+[node name="Texture" type="TextureRect" parent="DebugBG" unique_id=532915551]
+modulate = Color(0.5, 0.5, 0.5, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_sv1ui")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Backing" type="ColorRect" parent="." unique_id=289377911]
+material = SubResource("ShaderMaterial_afmbj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gradient" type="TextureRect" parent="Backing" unique_id=1028755732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_afmbj")

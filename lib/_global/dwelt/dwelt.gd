@@ -20,7 +20,6 @@ var selected_gadget: Gadget
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus
-signal click_sound_requested
 signal currency_updated(currency: String)
 signal camera_pan_started
 signal camera_pan_ended
@@ -28,9 +27,15 @@ signal claim_requested # emitted by the HUD when the player requests to claim a 
 signal gadget_clicked(gadget: Gadget) # triggers even if the gadget is non-interactive
 signal gadgets_close_to_player_changed
 signal gadgets_reloaded # used to clear effects panes, etc
-signal play_flash(position: Vector2)
+
 signal selected_gadget_changed(gadget: Gadget)
 signal selected_gadget_updated # emitted by the selected gadget when an effect is added/changed/removed
+
+# Signals which fire events rather than intercept them
+signal captured_pane_open # TODO: pass data i.e., scene
+signal captured_pane_close
+signal emit_click_sound
+signal play_flash(position: Vector2)
 signal shake_camera
 
 # Return the gadget closest to the player
@@ -68,7 +73,7 @@ func discord_update_details(text: String) -> void:
 		DiscordRPC.refresh()
 
 func _ready() -> void:
-	click_sound_requested.connect($Click.play)
+	emit_click_sound.connect($Click.play)
 	
 	# Connect settings
 	Settings.setting_applied.connect(func(setting: String, value: String) -> void:

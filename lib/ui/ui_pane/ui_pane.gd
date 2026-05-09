@@ -53,7 +53,7 @@ func _ready() -> void:
 			_n.pressed.connect(func() -> void:
 				if !_n == %Close:
 					clicked.emit()
-				Dwelt.click_sound_requested.emit())
+				Dwelt.emit_click_sound.emit())
 	
 	# Fade in and play open sound
 	var _fade_tween := create_tween()

@@ -13,7 +13,7 @@ func _ready() -> void:
 	# Set up button hover and click UI states
 	for _n: TextureButton in get_children():
 		_n.pressed.connect(func() -> void:
-			Dwelt.click_sound_requested.emit())
+			Dwelt.emit_click_sound.emit())
 		_n.mouse_entered.connect(func() -> void:
 			if !_n.disabled:
 				_n.modulate = Color(1.5, 1.5, 1.5))
