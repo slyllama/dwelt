@@ -23,6 +23,8 @@ content_margin_top = 32.0
 content_margin_right = 32.0
 content_margin_bottom = 32.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbg7b"]
+
 [node name="CapturedPane" type="CanvasLayer" unique_id=4233952]
 process_mode = 3
 script = ExtResource("1_lx5e4")
@@ -88,3 +90,9 @@ layout_mode = 2
 texture = ExtResource("5_dbg7b")
 expand_mode = 1
 flip_h = true
+
+[node name="Content" type="Panel" parent="Panel/VBox" unique_id=1489468732]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dbg7b")

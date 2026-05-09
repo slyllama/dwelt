@@ -70,4 +70,5 @@ func _on_build_pressed() -> void:
 
 func _on_interact_pressed() -> void:
 	if Dwelt.selected_gadget.interactive:
-		Dwelt.captured_pane_open.emit()
+		Dwelt.captured_pane_open.emit(
+			Dwelt.selected_gadget.interactive_captured_scene)

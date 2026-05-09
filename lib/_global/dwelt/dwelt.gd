@@ -32,7 +32,7 @@ signal selected_gadget_changed(gadget: Gadget)
 signal selected_gadget_updated # emitted by the selected gadget when an effect is added/changed/removed
 
 # Signals which fire events rather than intercept them
-signal captured_pane_open # TODO: pass data i.e., scene
+signal captured_pane_open(scene_path: String) # TODO: pass data i.e., scene
 signal captured_pane_close
 signal emit_click_sound
 signal play_flash(position: Vector2)
@@ -91,5 +91,4 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("save")
 		Save.save_file()

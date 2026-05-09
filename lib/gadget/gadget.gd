@@ -26,6 +26,7 @@ class_name Gadget extends StaticBody3D
 @export var claim_radius := 2.4
 @export var claim_duration := 12.0
 @export var interactive := false
+@export_file_path("*.tscn") var interactive_captured_scene: String
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()

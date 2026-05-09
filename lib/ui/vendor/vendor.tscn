@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dskhmbnsx0sms"]
+
+[node name="Vendor" type="VBoxContainer" unique_id=1623311658]
+
+[node name="Title" type="Label" parent="." unique_id=878393702]
+layout_mode = 2
+text = "((Vendor))"

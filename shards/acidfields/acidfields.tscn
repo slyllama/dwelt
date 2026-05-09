@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Script" uid="uid://tul3ccffkp8j" path="res://shards/acidfields/acidfields.gd" id="2_58tgt"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/acidfields/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
+[ext_resource type="PackedScene" uid="uid://cwehfgx34tob" path="res://shards/acidfields/gadgets/petrified_branch/petrified_branch.tscn" id="3_41lxu"]
 [ext_resource type="Texture2D" uid="uid://b52yrj8rctv4p" path="res://shards/acidfields/materials/textures/rock_decal.png" id="7_buenr"]
 [ext_resource type="Texture2D" uid="uid://ndrn4twwy7qf" path="res://shards/acidfields/props/platform/materials/textures/algae_decal.png" id="8_buenr"]
 [ext_resource type="AudioStream" uid="uid://6ny1ebwal0qe" path="res://shards/acidfields/sounds/creak.ogg" id="10_ostfv"]
@@ -67,6 +68,12 @@ visible = false
 [node name="GadgetManager" parent="." index="2" unique_id=319105425]
 shard_id = "acidfields"
 shard_title = "Symath Acidfields"
+
+[node name="PetrifiedBranch" parent="GadgetManager" index="0" unique_id=809222959 instance=ExtResource("3_41lxu")]
+transform = Transform3D(0.49249524, -1.1319588, 1.5735683, 1.8339392, 0.7979144, 7.4398386e-08, -0.62778634, 1.4429145, 1.2344565, -2.916308, 2.4395907, -8.543813)
+
+[node name="PetrifiedBranch2" parent="GadgetManager" index="1" unique_id=1611697235 instance=ExtResource("3_41lxu")]
+transform = Transform3D(3.7328475, -1.4609442e-07, -1.4373181, 2.3166038e-07, 4.0000057, 6.396871e-07, 1.4373195, 7.704868e-08, 3.7328491, 8.394821, 4.200688, -15.978493)
 
 [node name="Player" parent="." index="3" unique_id=1853110306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)

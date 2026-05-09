@@ -15,6 +15,7 @@ effect_manager = NodePath("EffectManager")
 cull_distance = 15.0
 claim_radius = 3.0
 interactive = true
+interactive_captured_scene = "res://lib/ui/vendor/vendor.tscn"
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mesh" parent="." unique_id=1726896999 instance=ExtResource("2_dahl6")]

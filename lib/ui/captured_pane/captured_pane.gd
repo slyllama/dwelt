@@ -2,8 +2,14 @@ extends CanvasLayer
 
 var active := false
 
-func open() -> void:
+func open(scene_path: String) -> void:
 	if active: return # don't repeat
+	
+	for _n in %Content.get_children():
+		_n.queue_free()
+	if scene_path != "":
+		var scene: Control = load(scene_path).instantiate()
+		%Content.add_child(scene)
 	
 	active = true
 	get_tree().paused = true
@@ -16,16 +22,13 @@ func close() -> void:
 	active = false
 	visible = false
 	get_tree().paused = false
+	
+	for _n in %Content.get_children():
+		_n.queue_free()
 
 func _ready() -> void:
-	$DebugBG.visible = false
-	
 	Dwelt.captured_pane_open.connect(open)
-	
-	# TODO: debug
-	Utils.debug_sent.connect(func(cmd: String) -> void:
-		if cmd == "/testcapturedpane":
-			Dwelt.captured_pane_open.emit())
+	$DebugBG.visible = false
 
 func _input(_event: InputEvent) -> void:
 	if !visible: return
