@@ -161,6 +161,18 @@
 						"scale": "4.0, 4.0, 4.0"
 					}
 				],
+				"scaper_lantern": [
+					{
+						"position": "-5.72, 2.91, -24.33",
+						"rotation": "0.0, 0.0, 0.0",
+						"scale": "1.0, 1.0, 1.0"
+					},
+					{
+						"position": "3.81, 2.91, -27.72",
+						"rotation": "0.0, 0.0, 0.0",
+						"scale": "1.0, 1.0, 1.0"
+					}
+				],
 				"variegated_shrub": [
 					{
 						"position": "8.71, 0.76, 2.34",
@@ -184,7 +196,7 @@
 					}
 				]
 			},
-			"player_position": "-0.23, 0.72, -2.32"
+			"player_position": "-3.75, 1.56, -25.14"
 		},
 		"debug": {
 			"gadgets": {

@@ -92,14 +92,17 @@ distance_fade_enabled = true
 distance_fade_begin = 7.0
 distance_fade_shadow = 0.0
 distance_fade_length = 3.0
+omni_range = 0.1
 
 [node name="Orb" type="GPUParticles3D" parent="." unique_id=2030087475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4536025e-08, -0.031894207, 4.5297074e-07)
 visibility_range_end = 7.0
 visibility_range_end_margin = 1.0
 visibility_range_fade_mode = 1
 amount = 5
 lifetime = 2.0
 randomness = 0.4
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_vquh2")
 draw_pass_1 = SubResource("QuadMesh_fawvy")
