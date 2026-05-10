@@ -21,6 +21,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://co62h4me8g13"
 config/icon="uid://bxi8u5vulcvbt"
 
+[audio]
+
+buses/default_bus_layout="uid://cmqjm6qakuc11"
+
 [autoload]
 
 Dwelt="*uid://rqrqjxwxxqnp"

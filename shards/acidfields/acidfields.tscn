@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Script" uid="uid://tul3ccffkp8j" path="res://shards/acidfields/acidfields.gd" id="2_58tgt"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/acidfields/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
-[ext_resource type="PackedScene" uid="uid://cwehfgx34tob" path="res://shards/acidfields/gadgets/petrified_branch/petrified_branch.tscn" id="3_41lxu"]
 [ext_resource type="Texture2D" uid="uid://b52yrj8rctv4p" path="res://shards/acidfields/materials/textures/rock_decal.png" id="7_buenr"]
 [ext_resource type="Texture2D" uid="uid://ndrn4twwy7qf" path="res://shards/acidfields/props/platform/materials/textures/algae_decal.png" id="8_buenr"]
 [ext_resource type="AudioStream" uid="uid://6ny1ebwal0qe" path="res://shards/acidfields/sounds/creak.ogg" id="10_ostfv"]
@@ -69,12 +68,6 @@ visible = false
 shard_id = "acidfields"
 shard_title = "Symath Acidfields"
 
-[node name="PetrifiedBranch" parent="GadgetManager" index="0" unique_id=809222959 instance=ExtResource("3_41lxu")]
-transform = Transform3D(0.49249524, -1.1319588, 1.5735683, 1.8339392, 0.7979144, 7.4398386e-08, -0.62778634, 1.4429145, 1.2344565, -2.916308, 2.4395907, -8.543813)
-
-[node name="PetrifiedBranch2" parent="GadgetManager" index="1" unique_id=1611697235 instance=ExtResource("3_41lxu")]
-transform = Transform3D(3.7328475, -1.4609442e-07, -1.4373181, 2.3166038e-07, 4.0000057, 6.396871e-07, 1.4373195, 7.704868e-08, 3.7328491, 8.394821, 4.200688, -15.978493)
-
 [node name="Player" parent="." index="3" unique_id=1853110306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
 
@@ -95,7 +88,13 @@ size = Vector3(9.921875, 2.8651123, 5.3476563)
 shape = 0
 material = SubResource("FogMaterial_t5hkx")
 
-[node name="Foliage" type="Node3D" parent="." index="7" unique_id=1180039652]
+[node name="FogTest3" type="FogVolume" parent="." index="7" unique_id=721968605]
+transform = Transform3D(-0.9600255, 0, 0.27991292, 0, 1, 0, -0.27991292, 0, -0.9600255, 2.5071232, 0.83985555, -8.209538)
+size = Vector3(7.5234375, 1.6330566, 3.9033203)
+shape = 0
+material = SubResource("FogMaterial_t5hkx")
+
+[node name="Foliage" type="Node3D" parent="." index="8" unique_id=1180039652]
 
 [node name="DandelionBlanket" type="Marker3D" parent="Foliage" index="0" unique_id=186789145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43660307, 5.0787153, -15.042595)
@@ -141,7 +140,16 @@ spread = 0.75
 scatter = 1.0
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket" type="Marker3D" parent="Foliage" index="5" unique_id=219715696]
+[node name="DandelionBlanket6" type="Marker3D" parent="Foliage" index="5" unique_id=363919347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6803577, 5.0787153, 12.2116)
+script = ExtResource("12_ostfv")
+foliage_cluster = "res://shards/acidfields/props/dandelion/dandelion.tscn"
+size = Vector2i(4, 3)
+spread = 1.1
+scatter = 1.0
+metadata/_custom_type_script = "uid://cr6rgobk6orqv"
+
+[node name="GrassClumpBlanket" type="Marker3D" parent="Foliage" index="6" unique_id=219715696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2547755, 5.0787153, -14.0853815)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -151,7 +159,16 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket2" type="Marker3D" parent="Foliage" index="6" unique_id=219211656]
+[node name="GrassClumpBlanket7" type="Marker3D" parent="Foliage" index="7" unique_id=1981870759]
+transform = Transform3D(0.91653734, 0, -0.39994916, 0, 1, 0, 0.39994916, 0, 0.91653734, -0.790184, 5.0787153, 11.963405)
+script = ExtResource("12_ostfv")
+foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
+y_offset = -0.02
+spread = 1.45
+scatter = 0.25
+metadata/_custom_type_script = "uid://cr6rgobk6orqv"
+
+[node name="GrassClumpBlanket2" type="Marker3D" parent="Foliage" index="8" unique_id=219211656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8620439, 5.0787153, -16.51336)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -161,7 +178,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket6" type="Marker3D" parent="Foliage" index="7" unique_id=1933442393]
+[node name="GrassClumpBlanket6" type="Marker3D" parent="Foliage" index="9" unique_id=1933442393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31686306, 5.0787153, -19.99305)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -170,7 +187,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket3" type="Marker3D" parent="Foliage" index="8" unique_id=1048990766]
+[node name="GrassClumpBlanket3" type="Marker3D" parent="Foliage" index="10" unique_id=1048990766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.603978, 5.0787153, -24.558294)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -180,7 +197,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket4" type="Marker3D" parent="Foliage" index="9" unique_id=1279809314]
+[node name="GrassClumpBlanket4" type="Marker3D" parent="Foliage" index="11" unique_id=1279809314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145086, 5.0787153, -23.328253)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -190,7 +207,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="GrassClumpBlanket5" type="Marker3D" parent="Foliage" index="10" unique_id=71228331]
+[node name="GrassClumpBlanket5" type="Marker3D" parent="Foliage" index="12" unique_id=71228331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.238238, 6.360283, -9.965004)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
@@ -200,7 +217,7 @@ spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 
-[node name="Platform" parent="." index="8" unique_id=1653828946 instance=ExtResource("11_r4xcf")]
+[node name="Platform" parent="." index="9" unique_id=1484445041 instance=ExtResource("11_r4xcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Dirt" type="Decal" parent="Platform" index="15" unique_id=1053253109]
@@ -215,27 +232,29 @@ distance_fade_length = 5.0
 cull_mask = 1
 
 [node name="Dirt2" type="Decal" parent="Platform" index="16" unique_id=1517827177]
-transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -1.9420671, 0, -0.67794585)
+transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -1.588842, 0, -0.13018966)
 layers = 512
-size = Vector3(2.5, 0.5, 2.5)
+size = Vector3(3, 0.5, 3)
 texture_albedo = ExtResource("12_fq4iu")
+albedo_mix = 0.75
 normal_fade = 0.75
 distance_fade_enabled = true
 distance_fade_begin = 16.0
 distance_fade_length = 5.0
+cull_mask = 1
 
-[node name="Acid" type="Decal" parent="Platform" index="17" unique_id=567042820]
-transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 4.2575927, 2.3841858e-07, 2.5294783)
+[node name="Acid2" type="Decal" parent="Platform" index="17" unique_id=37954027]
+transform = Transform3D(0.7335191, 0, -0.9243103, 0, 1.18, 0, 0.9243103, 0, 0.7335191, 2.6744082, 2.3841858e-07, 6.970861)
 layers = 512
-size = Vector3(2.5, 0.5, 2.5)
+size = Vector3(4, 0.5, 4)
 texture_albedo = ExtResource("8_buenr")
 normal_fade = 0.75
 distance_fade_enabled = true
 distance_fade_begin = 16.0
 distance_fade_length = 5.0
 
-[node name="Acid2" type="Decal" parent="Platform" index="18" unique_id=37954027]
-transform = Transform3D(0.7335191, 0, -0.9243103, 0, 1.18, 0, 0.9243103, 0, 0.7335191, 2.6744082, 2.3841858e-07, 6.970861)
+[node name="Acid3" type="Decal" parent="Platform" index="18" unique_id=1769292641]
+transform = Transform3D(0.7335191, 0, -0.9243103, 0, 1.18, 0, 0.9243103, 0, 0.7335191, -6.2216034, 2.3841858e-07, -1.9237771)
 layers = 512
 size = Vector3(4, 0.5, 4)
 texture_albedo = ExtResource("8_buenr")
@@ -249,6 +268,7 @@ transform = Transform3D(0.5984515, -1.0169836, 0, 1.0169836, 0.5984515, 0, 0, 0,
 size = Vector3(2.855, 0.656, 2.945)
 texture_albedo = ExtResource("7_buenr")
 modulate = Color(0.9399069, 0.9399069, 0.9399069, 1)
+albedo_mix = 0.6
 normal_fade = 0.75
 distance_fade_enabled = true
 distance_fade_begin = 16.0
@@ -259,14 +279,14 @@ cull_mask = 2
 transform = Transform3D(-0.44348288, 0.75363636, 0.7923099, 1.0169836, 0.5984515, -2.29717e-08, -0.4018297, 0.68285275, -0.8744398, -2.5586107, 0.7785232, -8.052067)
 size = Vector3(3.5495703, 1.6305528, 3.637661)
 texture_albedo = ExtResource("7_buenr")
-modulate = Color(0.9399069, 0.9399069, 0.9399069, 1)
+albedo_mix = 0.5
 normal_fade = 0.75
 distance_fade_enabled = true
 distance_fade_begin = 16.0
 distance_fade_length = 5.0
 cull_mask = 2
 
-[node name="Ambience" type="AudioStreamPlayer" parent="." index="9" unique_id=2032629365]
+[node name="Ambience" type="AudioStreamPlayer" parent="." index="10" unique_id=2032629365]
 stream = ExtResource("14_5x773")
 autoplay = true
 
@@ -288,18 +308,18 @@ autoplay = true
 panning_strength = 1.5
 attenuation_filter_cutoff_hz = 20500.0
 
-[node name="Sky" parent="." index="10" unique_id=756974854]
+[node name="Sky" parent="." index="11" unique_id=756974854]
 environment = ExtResource("11_ostfv")
 
 [node name="CloudLayer" type="MeshInstance3D" parent="Sky" index="0" unique_id=1219824147]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0196543, 18.03569, -0.36893845)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_aut2g")
 
 [node name="Sun" parent="Sky" index="1" unique_id=777693513]
-transform = Transform3D(-0.67355454, 0.36956874, -0.64011186, -7.64024e-09, 0.8660255, 0.5000001, 0.73913753, 0.33677727, -0.5833153, 0, 2, 0)
+transform = Transform3D(-0.67355454, 0.36956874, -0.6401119, -7.64024e-09, 0.8660255, 0.49999997, 0.73913753, 0.33677727, -0.5833154, 0, 4, 0)
 
-[node name="Starflower" parent="." index="12" unique_id=2013799446 instance=ExtResource("13_41lxu")]
+[node name="Starflower" parent="." index="13" unique_id=2013799446 instance=ExtResource("13_41lxu")]
 transform = Transform3D(0.01854381, 0, -1.6998988, 0, 1.7, 0, 1.6998988, 0, 0.01854381, -2.6090345, 9.75583, -36.666016)
 
 [node name="Creak3" type="AudioStreamPlayer3D" parent="Starflower" index="13" unique_id=368485135]

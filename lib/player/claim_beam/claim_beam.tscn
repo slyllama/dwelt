@@ -98,11 +98,10 @@ one_shot = true
 
 [node name="Claim" type="AudioStreamPlayer" parent="." unique_id=1915320500]
 stream = ExtResource("3_fobxj")
-volume_db = -3.0
 
 [node name="ClaimFail" type="AudioStreamPlayer" parent="." unique_id=1523793224]
 stream = ExtResource("4_qs3ae")
-volume_db = -5.0
+volume_db = -2.0
 max_polyphony = 2
 
 [connection signal="timeout" from="VisibleDelay" to="." method="_on_visible_delay_timeout"]

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ccdrq4nv2ueq0"]
 
-[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="1_ks5kn"]
-[ext_resource type="Texture2D" uid="uid://b55b567o6evvm" path="res://generic/textures/aoe.jpg" id="2_b28m2"]
-[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="3_hq5r1"]
+[ext_resource type="Script" uid="uid://bs6w7ny5nvvxt" path="res://shards/_projectiles/sulphurous_lightning/sulphurous_lightning.gd" id="1_ks5kn"]
+[ext_resource type="Texture2D" uid="uid://b55b567o6evvm" path="res://shards/_projectiles/sulphurous_lightning/textures/aoe.jpg" id="2_b28m2"]
+[ext_resource type="Texture2D" uid="uid://lpx4nnwm8ohd" path="res://shards/_projectiles/sulphurous_lightning/textures/lightning.png" id="3_ks5kn"]
+[ext_resource type="Texture2D" uid="uid://bpl4wcnlp0kxw" path="res://shards/_projectiles/sulphurous_lightning/textures/lightning_fork.png" id="4_b28m2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_15jje"]
 height = 4.0
@@ -49,26 +50,55 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Decal:albedo_mix")
+tracks/3/path = NodePath("Explode:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Explode:emitting")
+tracks/4/path = NodePath("Decal:emission_energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LightningFork:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ks5kn"]
+resource_name = "cast"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_15jje"]
@@ -114,7 +144,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Decal:albedo_mix")
+tracks/3/path = NodePath("Decal:emission_energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -135,35 +165,62 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LightningFork:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0p2ci"]
 _data = {
 &"RESET": SubResource("Animation_5au5a"),
+&"cast": SubResource("Animation_ks5kn"),
 &"fire": SubResource("Animation_15jje")
 }
 
 [sub_resource type="Curve" id="Curve_x56q3"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.021653533, 1), 0.0, 0.0, 0, 0, Vector2(0.22244093, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_4nrbf"]
 curve = SubResource("Curve_x56q3")
 
+[sub_resource type="Gradient" id="Gradient_ks5kn"]
+offsets = PackedFloat32Array(0, 0.50728154, 1)
+colors = PackedColorArray(0.45843917, 0.69997174, 0.9999916, 1, 0.6573381, 0.3944006, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b28m2"]
+gradient = SubResource("Gradient_ks5kn")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_422ec"]
+emission_shape_scale = Vector3(1, 0.5, 1)
 emission_shape = 2
-emission_sphere_radius = 0.4
+emission_sphere_radius = 0.55
+angle_min = -179.99998
+angle_max = 180.00002
 direction = Vector3(0, 1, 0)
-initial_velocity_min = 0.5
-initial_velocity_max = 0.9
+spread = 5.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.29999998
 gravity = Vector3(0, -0.5, 0)
-scale_min = 0.59999996
+scale_min = 0.39999998
+scale_max = 1.5
+color_initial_ramp = SubResource("GradientTexture1D_b28m2")
 alpha_curve = SubResource("CurveTexture_4nrbf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5dhk"]
 transparency = 1
-shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_hq5r1")
+albedo_texture = ExtResource("3_ks5kn")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -172,7 +229,7 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_a4wk4"]
 material = SubResource("StandardMaterial3D_v5dhk")
-size = Vector2(0.06, 0.06)
+size = Vector2(0.55, 0.55)
 
 [node name="SulphurousLightning" type="Area3D" unique_id=878190176 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_ks5kn")
@@ -206,10 +263,23 @@ omni_range = 2.0
 unique_name_in_owner = true
 cast_shadow = 0
 emitting = false
-amount = 10
+amount = 9
 lifetime = 0.75
 one_shot = true
 preprocess = 0.2
+speed_scale = 1.5
 explosiveness = 0.75
+randomness = 0.45
 process_material = SubResource("ParticleProcessMaterial_422ec")
 draw_pass_1 = SubResource("QuadMesh_a4wk4")
+
+[node name="LightningFork" type="Sprite3D" parent="." unique_id=260406670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.009
+billboard = 2
+texture = ExtResource("4_b28m2")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 512)
+
+[connection signal="ready" from="." to="." method="_on_ready"]

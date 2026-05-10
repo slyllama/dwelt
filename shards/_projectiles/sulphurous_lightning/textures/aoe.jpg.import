@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgyqnfg1sudx2"
-path="res://.godot/imported/aoe.png-da22e435bbb2202e15a9d479f1aa7221.ctex"
+uid="uid://b55b567o6evvm"
+path="res://.godot/imported/aoe.jpg-32a7a645834d96d991250e4f9020a59e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://generic/textures/aoe.png"
-dest_files=["res://.godot/imported/aoe.png-da22e435bbb2202e15a9d479f1aa7221.ctex"]
+source_file="res://shards/_projectiles/sulphurous_lightning/textures/aoe.jpg"
+dest_files=["res://.godot/imported/aoe.jpg-32a7a645834d96d991250e4f9020a59e.ctex"]
 
 [params]
 

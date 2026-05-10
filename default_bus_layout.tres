@@ -1,0 +1,4 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cmqjm6qakuc11"]
+
+[resource]
+bus/0/volume_db = inf_neg

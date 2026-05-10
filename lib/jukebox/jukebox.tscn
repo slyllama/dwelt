@@ -12,13 +12,13 @@ script = ExtResource("1_o08hh")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=654839253]
 unique_name_in_owner = true
 stream = ExtResource("2_gq31g")
+volume_db = -5.0
 
 [node name="CombatMusic" type="AudioStreamPlayer" parent="." unique_id=780719681]
 unique_name_in_owner = true
 stream = ExtResource("3_gq31g")
-volume_db = 4.0
+volume_db = 5.0
 
 [node name="Tambourine" type="AudioStreamPlayer" parent="." unique_id=353998664]
 unique_name_in_owner = true
 stream = ExtResource("4_8mnkd")
-volume_db = -5.0

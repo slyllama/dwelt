@@ -1,8 +1,8 @@
 extends Node
 
 @export var fade_in_time := 0.6
-@export var fade_out_time := 1.0
-@export var combat_fade_in_time := 0.2
+@export var fade_out_time := 2.0
+@export var combat_fade_in_time := 2.0
 @export var combat_fade_out_time := 1.0
 
 var in_shard := false
@@ -16,7 +16,7 @@ func start_jukebox() -> void:
 	Dwelt.claim_requested.connect(func() -> void:
 		fade_music_out()
 		fade_combat_music_in()
-		%CombatMusic.play())
+		%CombatMusic.seek(4.0))
 	
 	# Connect signals that would influence the jukebox i.e., playing or stopping combat music
 	Dwelt.player_effect_manager.effect_cancelled.connect(func(id: String) -> void:
@@ -35,6 +35,7 @@ func start_jukebox() -> void:
 	%Music.play()
 
 func fade_music_in() -> void:
+	%Music.volume_linear = 0.0
 	var _t := create_tween()
 	_t.tween_property(%Music, "volume_linear", mus_volume, fade_in_time)
 	%Music.stream_paused = false
@@ -47,6 +48,7 @@ func fade_music_out() -> void:
 			%Music.stream_paused = true)
 
 func fade_combat_music_in() -> void:
+	%CombatMusic.volume_linear = 0.0
 	var _t := create_tween()
 	_t.tween_property(%CombatMusic, "volume_linear",
 		combat_mus_volume, combat_fade_in_time)

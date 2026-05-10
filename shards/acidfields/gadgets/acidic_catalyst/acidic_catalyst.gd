@@ -19,11 +19,18 @@ func _on_projectile_timer_timeout() -> void:
 		var _variance := 0.9
 		if _i == 0:
 			_variance = 0.0
-			_projectile.just_fired.connect($Lightning.play)
+			_projectile.just_fired.connect(func() -> void:
+				$Cast.stop()
+				$Lightning.play())
+			$Cast.play()
 		_projectile.ready.connect(func() -> void:
 			_projectile.global_position = Vector3(
-				randf_range(Dwelt.player.global_position.x - _variance, Dwelt.player.global_position.x + _variance),
+				randf_range(
+					Dwelt.player.global_position.x - _variance,
+					Dwelt.player.global_position.x + _variance),
 				Dwelt.player.floor_y_position,
-				randf_range(Dwelt.player.global_position.z - _variance, Dwelt.player.global_position.z + _variance)))
+				randf_range(
+					Dwelt.player.global_position.z - _variance,
+					Dwelt.player.global_position.z + _variance)))
 		call_deferred("add_child", _projectile)
 		await get_tree().create_timer(0.1).timeout

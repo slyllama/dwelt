@@ -55,6 +55,7 @@ func update_collision_layers() -> void:
 	else: set_collision_layer_value(2, false)
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	update_collision_layers()
 	
 	if model:

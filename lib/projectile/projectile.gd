@@ -1,6 +1,7 @@
 @icon("res://generic/icons/Projectile.svg")
 class_name Projectile extends Area3D
 
+const CAST_ANIM_ID := "cast"
 const FIRE_ANIM_ID := "fire"
 
 @export var cast_time := 3.0
@@ -31,6 +32,9 @@ func _ready() -> void:
 				if id == FIRE_ANIM_ID:
 					queue_free())
 	
+	if CAST_ANIM_ID in animation_player.get_animation_list():
+		animation_player.play(CAST_ANIM_ID)
+	
 	cast_timer.wait_time = cast_time
 	cast_timer.one_shot = true
 	cast_timer.timeout.connect(func() -> void:
@@ -51,6 +55,5 @@ func _ready() -> void:
 	
 	add_child(cast_timer)
 	cast_timer.start()
-	
 	await get_tree().process_frame
 	visible = true
