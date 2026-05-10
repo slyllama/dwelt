@@ -12,6 +12,7 @@ func _ready() -> void:
 	player_exited_active_area.connect($ProjectileTimer.stop)
 
 func _on_projectile_timer_timeout() -> void:
+	if !$EffectManager.has_effect("enemy_owned"): return
 	var _sulphurous_lightning: PackedScene = load(
 		"res://shards/_projectiles/sulphurous_lightning/sulphurous_lightning.tscn")
 	for _i in 4:

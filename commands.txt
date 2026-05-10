@@ -1,6 +1,8 @@
 Gadgets
 	/savegadgets	[GadgetManager]		Save only gadgets to file
 	/reloadgadgets	[GadgetManager]		Free all current gadgets and reload them from save
+	/makeenemy		[Gadget]			Cancel the player's ownership of the gadget and make it hostile
+	/makeowned		[Gadget]			Claim the gadget and make it belong to the player
 
 Currencies
 	/addkinetic=#	[CurrencyDisplay]	Add amount to Kinetic currency

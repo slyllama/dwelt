@@ -9,11 +9,14 @@ func is_input_down() -> bool:
 		return(true)
 	else: return(false)
 
+func clear_input() -> void:
+	_last_x_input = []
+	_last_z_input = []
+
 func _ready() -> void:
-	get_window().focus_exited.connect(func() -> void:
-		# Clear input if window focus is lost
-		_last_x_input = []
-		_last_z_input = [])
+	 # Clear input if window focus is lost
+	get_window().focus_exited.connect(clear_input)
+	Dwelt.captured_pane_open.connect(clear_input.unbind(1))
 
 func _input(event: InputEvent) -> void:
 	# Push input actions onto a stack so that if key A is held, then key B is

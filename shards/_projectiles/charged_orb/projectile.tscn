@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://sskr80wxe3pd"]
+
+[ext_resource type="Script" uid="uid://bfscrvsa8s6er" path="res://lib/projectile/projectile.gd" id="1_1imaq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1imaq"]
+
+[node name="Projectile" type="Area3D" unique_id=1214098022]
+script = ExtResource("1_1imaq")
+metadata/_custom_type_script = "uid://bfscrvsa8s6er"
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1779431658]
+shape = SubResource("SphereShape3D_1imaq")

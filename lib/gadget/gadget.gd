@@ -79,6 +79,14 @@ func _ready() -> void:
 				player_in_active_area = true
 				player_entered_active_area.emit())
 		
+		Utils.debug_sent.connect(func(cmd: String) -> void:
+			if Dwelt.selected_gadget != self: return
+			if cmd == "/makeenemy":
+				effect_manager.add_effect(load("res://effects/enemy_owned.tres"))
+			elif cmd == "/makeowned":
+				Dwelt.player_effect_manager.cancel_effect("claiming")
+				effect_manager.cancel_effect("enemy_owned"))
+		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:

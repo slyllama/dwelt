@@ -14,11 +14,14 @@ func open(scene_path: String) -> void:
 	active = true
 	get_tree().paused = true
 	visible = true
+	$Anim.play("fade_in")
 
 func close() -> void:
 	if !active: return # don't repeat
 	
 	await get_tree().process_frame
+	$Anim.play_backwards("fade_in")
+	await $Anim.animation_finished
 	active = false
 	visible = false
 	get_tree().paused = false

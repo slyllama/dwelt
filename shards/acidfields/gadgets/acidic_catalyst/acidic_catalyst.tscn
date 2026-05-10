@@ -61,6 +61,7 @@ player_collision = false
 cull_distance = 15.0
 enemy_indicator_scale = 0.65
 claim_radius = 3.2
+claim_duration = 60.0
 metadata/_custom_type_script = "uid://dn7ikncpdvqi1"
 
 [node name="Mineral" parent="." unique_id=1368763330 instance=ExtResource("2_nkx3i")]

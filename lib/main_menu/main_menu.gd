@@ -38,6 +38,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout
 	%Curtain.trans_out()
+	await get_tree().create_timer(0.65).timeout
 	$Music.play()
 
 func _on_play_pressed() -> void:
