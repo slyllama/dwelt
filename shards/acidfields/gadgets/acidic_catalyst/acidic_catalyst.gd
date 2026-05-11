@@ -2,6 +2,8 @@ extends Gadget
 
 func _ready() -> void:
 	super()
+	$Mineral/AnimationPlayer.set_blend_time("idle", "cast", 0.35)
+	$Mineral/AnimationPlayer.set_blend_time("cast", "idle", 0.2)
 	$Mineral/AnimationPlayer.play("idle")
 	
 	player_entered_active_area.connect(func() -> void:
@@ -19,8 +21,14 @@ func _on_projectile_timer_timeout() -> void:
 		var _projectile: Projectile = _sulphurous_lightning.instantiate()
 		var _variance := 0.9
 		if _i == 0:
+			# On cast
+			$Mineral/AnimationPlayer.play("cast")
+			
 			_variance = 0.0
 			_projectile.just_fired.connect(func() -> void:
+				# On fire
+				$Mineral/AnimationPlayer.play("idle")
+				
 				$Cast.stop()
 				$Lightning.play())
 			$Cast.play()

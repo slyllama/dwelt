@@ -30,11 +30,11 @@ class_name Gadget extends StaticBody3D
 
 @onready var cull_handler := CullHandler.new()
 @onready var hover_handler := HoverHandler.new()
-@onready var enemy_indicator: Decal
 
 signal player_entered_active_area
 signal player_exited_active_area
 var player_in_active_area := false
+var enemy_indicator: Decal
 
 # Gets an effect by ID if the gadget has an effect manager which includes that
 # effect = or returns `null` otherwise
@@ -44,6 +44,13 @@ func get_effect(effect_id: String) -> Variant:
 			return(effect_manager.active_effects[effect_id])
 		else: return(null)
 	else: return(null)
+
+func load_enemy_indicator() -> void:
+	enemy_indicator = load(
+		"res://lib/gadget/enemy_indicator/enemy_indicator.tscn").instantiate()
+	enemy_indicator.size.x = enemy_indicator_scale
+	enemy_indicator.size.z = enemy_indicator_scale
+	add_child(enemy_indicator)
 
 func update_collision_layers() -> void:
 	# Layer 3 is used for all interaction testing (including mouseover)
@@ -79,14 +86,6 @@ func _ready() -> void:
 				player_in_active_area = true
 				player_entered_active_area.emit())
 		
-		Utils.debug_sent.connect(func(cmd: String) -> void:
-			if Dwelt.selected_gadget != self: return
-			if cmd == "/makeenemy":
-				effect_manager.add_effect(load("res://effects/enemy_owned.tres"))
-			elif cmd == "/makeowned":
-				Dwelt.player_effect_manager.cancel_effect("claiming")
-				effect_manager.cancel_effect("enemy_owned"))
-		
 		# If the player moves out of range, cancel claiming this gadget (if it
 		# is in the process of being claimed)
 		_proximity_area.body_exited.connect(func(body: PhysicsBody3D) -> void:
@@ -99,14 +98,20 @@ func _ready() -> void:
 						"Gadget/ProximityArea")
 					Dwelt.player_effect_manager.cancel_effect("claiming"))
 		
-		# Logic for showing and removing the "enemy owned" indicator
-		await get_tree().process_frame
-		if effect_manager.has_effect("enemy_owned"):
-			enemy_indicator = load(
-				"res://lib/gadget/enemy_indicator/enemy_indicator.tscn").instantiate()
-			enemy_indicator.size.x = enemy_indicator_scale
-			enemy_indicator.size.z = enemy_indicator_scale
-			add_child(enemy_indicator)
-			effect_manager.effect_cancelled.connect(func(id: String) -> void:
-				if id == "enemy_owned" and enemy_indicator:
-					enemy_indicator.free())
+		# Get and handle debugging commands i.e., to change the gadget's ownership
+		Utils.debug_sent.connect(func(cmd: String) -> void:
+			if Dwelt.selected_gadget != self: return
+			if cmd == "/makeenemy":
+				effect_manager.add_effect(load("res://effects/enemy_owned.tres"))
+			elif cmd == "/makeowned":
+				Dwelt.player_effect_manager.cancel_effect("claiming")
+				effect_manager.cancel_effect("enemy_owned"))
+		
+		effect_manager.effect_added.connect(func(id: String) -> void:
+			if id == "enemy_owned":
+				load_enemy_indicator())
+		
+		effect_manager.effect_cancelled.connect(func(id: String) -> void:
+			if id == "enemy_owned":
+				enemy_indicator.queue_free()
+				enemy_indicator.visible = false)
