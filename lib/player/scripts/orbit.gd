@@ -81,8 +81,8 @@ func _physics_process(_delta: float) -> void:
 	# (Update controller panning outcomes)
 	target_y_rotation += Input.get_action_strength("controller_orbit_left") * 0.04
 	target_y_rotation -= Input.get_action_strength("controller_orbit_right") * 0.04
-	target_x_rotation -= Input.get_action_strength("controller_orbit_up") * 0.02
-	target_x_rotation += Input.get_action_strength("controller_orbit_down") * 0.02
+	target_x_rotation += Input.get_action_strength("controller_orbit_up") * 0.02
+	target_x_rotation -= Input.get_action_strength("controller_orbit_down") * 0.02
 	
 	target_x_rotation = clamp(
 		target_x_rotation, deg_to_rad(-80), deg_to_rad(30))

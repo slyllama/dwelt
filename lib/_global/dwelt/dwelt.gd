@@ -60,7 +60,7 @@ func update_selected_gadget(gadget: Gadget) -> void:
 		$Click.play()
 	selected_gadget_changed.emit(selected_gadget)
 	
-	# If the player is in interacting range of the gadget, recorded it as the
+	# If the player is in interacting range of the gadget, record it as the
 	# closest gadget to the player
 	if selected_gadget in gadgets_close_to_player:
 		gadgets_close_to_player.erase(selected_gadget)
@@ -88,6 +88,12 @@ func _ready() -> void:
 			if selected_gadget:
 				if selected_gadget.effect_manager:
 					Utils.pdebug(str(selected_gadget.effect_manager.get_effects_as_dict())))
+
+# TODO: temporary targeting of nearest gadget
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("target"):
+		if get_closest_gadget():
+			update_selected_gadget(get_closest_gadget())
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

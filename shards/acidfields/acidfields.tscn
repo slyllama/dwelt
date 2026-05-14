@@ -182,7 +182,8 @@ metadata/_custom_type_script = "uid://cr6rgobk6orqv"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31686306, 5.0787153, -19.99305)
 script = ExtResource("12_ostfv")
 foliage_cluster = "res://shards/acidfields/props/grass_clump/grass_clump.tscn"
-y_offset = -0.05
+size = Vector2i(2, 3)
+y_offset = -0.01
 spread = 1.45
 scatter = 0.25
 metadata/_custom_type_script = "uid://cr6rgobk6orqv"
@@ -275,7 +276,19 @@ distance_fade_begin = 16.0
 distance_fade_length = 5.0
 cull_mask = 2
 
-[node name="Rock2" type="Decal" parent="Platform" index="20" unique_id=252875720]
+[node name="Rock3" type="Decal" parent="Platform" index="20" unique_id=501932143]
+transform = Transform3D(0.9891746, -0.5735206, 0.29156083, 0.62301874, 0.987325, -0.17157112, -0.16056415, 0.29776418, 1.1304669, 6.6273503, 3.6178956, -14.847562)
+size = Vector3(2.7985938, 1.3435357, 3.7814941)
+texture_albedo = ExtResource("7_buenr")
+modulate = Color(0.9399069, 0.9399069, 0.9399069, 1)
+albedo_mix = 0.8
+normal_fade = 0.75
+distance_fade_enabled = true
+distance_fade_begin = 16.0
+distance_fade_length = 5.0
+cull_mask = 2
+
+[node name="Rock2" type="Decal" parent="Platform" index="21" unique_id=252875720]
 transform = Transform3D(-0.44348288, 0.75363636, 0.7923099, 1.0169836, 0.5984515, -2.29717e-08, -0.4018297, 0.68285275, -0.8744398, -2.5586107, 0.7785232, -8.052067)
 size = Vector3(3.5495703, 1.6305528, 3.637661)
 texture_albedo = ExtResource("7_buenr")

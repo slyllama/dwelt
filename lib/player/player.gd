@@ -27,7 +27,8 @@ func _ready() -> void:
 	
 	%EffectManager.effect_decremented.connect(func(id: String) -> void:
 		if id == "resilience":
-			Dwelt.shake_camera.emit())
+			Dwelt.shake_camera.emit()
+			Input.start_joy_vibration(0, 0.1, 0.0, 0.1))
 	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)

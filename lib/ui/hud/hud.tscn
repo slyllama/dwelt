@@ -164,16 +164,37 @@ texture_disabled = ExtResource("13_jrbc5")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PlayerEffects" parent="PlayerPlate" unique_id=1897670958 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
+[node name="PlayerEffectsBG" type="TextureRect" parent="." unique_id=1074620633]
+z_index = -1
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 233.0
-offset_top = -106.0
-offset_right = 313.0
+offset_left = -227.0
+offset_top = -62.0
+offset_right = 227.0
+grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("16_u3ywn")
+expand_mode = 1
+flip_v = true
+
+[node name="PlayerEffects" parent="." unique_id=1897670958 instance=ExtResource("15_bly2c")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -114.0
+offset_right = 40.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
 
 [node name="GadgetPlate" type="Panel" parent="." unique_id=639916968]
 anchors_preset = 10

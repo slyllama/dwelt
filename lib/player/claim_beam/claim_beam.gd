@@ -40,6 +40,7 @@ func _ready() -> void:
 			$Orb.emitting = true
 			$Claim.play()
 			Dwelt.shake_camera.emit()
+			Input.start_joy_vibration(0, 0.75, 0.0, 0.1)
 			Utils.debug_sent.emit("/playvoice") # TODO: this should be more formalized
 			
 			update()
