@@ -51,7 +51,7 @@ func _ready() -> void:
 	for _n: Node in Utils.get_all_children(self):
 		if _n is BaseButton:
 			_n.pressed.connect(func() -> void:
-				if !_n == %Close:
+				if !_n.has_meta("is_close_button"):
 					clicked.emit()
 				Dwelt.emit_click_sound.emit())
 	

@@ -15,6 +15,10 @@ func redraw() -> void:
 	var _value: String = Settings.settings[setting_id]
 	slider.value = float(_value)
 
+func apply() -> void:
+	Settings.apply_setting(
+		setting_id, str(snapped(slider.value, 0.1)))
+
 func _ready() -> void:
 	if !setting_id:
 		queue_free()
@@ -45,12 +49,18 @@ func _ready() -> void:
 	
 	if Engine.is_editor_hint(): return
 	
-	slider.drag_ended.connect(func(_value_changed: bool) -> void:
-		Settings.apply_setting(setting_id, str(snapped(slider.value, 0.1))))
-	
 	# Redraw settings if they are reset or a redraw is requested
 	Settings.settings_redraw.connect(redraw)
+	slider.drag_ended.connect(apply.unbind(1))
 	
 	if setting_id in Settings.settings:
 		redraw()
 	else: queue_free()
+
+# Because sliders are only updated on release when using the mouse, they also
+# need to be applyed to settings when the controller or keyboard is used to
+# make adjustments
+func _input(_event: InputEvent) -> void:
+	if (Input.is_action_just_released("ui_left")
+		or Input.is_action_just_released("ui_right")):
+		apply()

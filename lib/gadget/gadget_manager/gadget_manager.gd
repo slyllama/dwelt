@@ -5,6 +5,10 @@ class_name GadgetManager extends Node3D
 @export var shard_title := "Shard"
 
 func load_gadgets_from_save() -> void:
+	if !shard_id in Save.save.shard_data:
+		Utils.pdebug("Caution: a save exists, but has no shard data.", "GadgetManager")
+		return
+	
 	var shard_data: Dictionary = Save.save.shard_data[shard_id]
 	# Add a gadget list to this shard's data in the save, if it doesn't exist
 	if !"gadgets" in shard_data:

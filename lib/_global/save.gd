@@ -35,13 +35,17 @@ func load_file() -> void:
 			if parameter in DEFAULT_SAVE:
 				save[parameter] = _f_json[parameter]
 		_f.close()
+	else:
+		print("*** load requested but no save file ***")
 
 func save_file() -> void:
 	if Dwelt.gadget_manager: # pull latest gadget data, if the manager is in the scene
 		Dwelt.gadget_manager.write_gadgets_to_save()
-	var _f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	_f.store_string(JSON.stringify(save, "\t"))
-	_f.close()
+		
+		# No saving is allowed unless a gadget manager is present
+		var _f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+		_f.store_string(JSON.stringify(save, "\t"))
+		_f.close()
 
 func _ready() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:

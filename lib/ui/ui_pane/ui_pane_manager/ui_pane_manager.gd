@@ -3,17 +3,22 @@ class_name UIPaneManager extends CanvasLayer
 
 var panes: Array[UIPane] = []
 
+# Signal the amount of panes in the UIPaneManager whenever one is addded OR removed
+signal panes_updated(pane_count: int)
+
 # Registering a UI pane puts it in the drawing queue, ensuring that it gets
 # moved to the front when clicked etc
 func register_pane(pane: UIPane) -> void:
 	panes.push_back(pane)
 	pane.clicked.connect(func() -> void:
 		put_on_top(pane))
+	panes_updated.emit(panes.size())
 
 # Panes must be closed through this method so they can be deregistered
 func close_pane(pane: UIPane) -> void:
 	panes.erase(pane)
 	pane.close()
+	panes_updated.emit(panes.size())
 
 func close_pane_by_id(pane_id: String) -> bool:
 	var _pane_open := false

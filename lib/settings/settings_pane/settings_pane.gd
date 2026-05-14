@@ -1,6 +1,9 @@
 @tool
 extends UIPane
 
+func _on_ready() -> void:
+	%Done.grab_focus()
+
 func _on_default_pressed() -> void:
 	Settings.apply_default_settings()
 
@@ -19,3 +22,6 @@ func _on_menu_pressed() -> void:
 
 func _on_volume_slider_dragged(value: float) -> void:
 	AudioServer.set_bus_volume_linear(0, value)
+
+func _on_done_pressed() -> void:
+	Dwelt.ui_pane_manager.close_pane(self)

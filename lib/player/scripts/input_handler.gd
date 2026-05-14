@@ -49,6 +49,13 @@ func _physics_process(_delta: float) -> void:
 	if _last_z_input.size() > 0:
 		_dir.z = _last_z_input[0]
 	else: _dir.z = 0
+	
+	# Controller inputs override keyboard inputs
+	_dir.x += (Input.get_action_strength("controller_move_left") * -1.0
+		+ Input.get_action_strength("controller_move_right"))
+	_dir.z += (Input.get_action_strength("controller_move_back") * -1.0
+		+ Input.get_action_strength("controller_move_forward"))
+	
 	if !get_window().gui_get_focus_owner() is LineEdit:
 		direction = _dir.normalized()
 	else: direction = Vector3.ZERO
