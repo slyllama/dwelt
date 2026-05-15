@@ -89,12 +89,6 @@ func _ready() -> void:
 				if selected_gadget.effect_manager:
 					Utils.pdebug(str(selected_gadget.effect_manager.get_effects_as_dict())))
 
-# TODO: temporary targeting of nearest gadget
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("target"):
-		if get_closest_gadget():
-			update_selected_gadget(get_closest_gadget())
-
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		Save.save_file()

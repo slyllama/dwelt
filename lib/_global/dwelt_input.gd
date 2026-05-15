@@ -4,6 +4,7 @@ enum DeviceModes { CONTROLLER, KEYBOARD }
 
 var current_device_mode := DeviceModes.KEYBOARD
 
+signal controller_hovered_effect_changed(effect_card: EffectCard)
 signal current_device_changed
 
 # Update how the cursor etc is displayed depending on whether a controller or keyboard is being used

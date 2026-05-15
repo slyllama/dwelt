@@ -14,6 +14,21 @@ func _input(_event: InputEvent) -> void:
 		and %UIPaneManager.panes.size() == 0
 		and !%CapturedPane.visible):
 		_on_settings_pressed()
+	
+	if Input.is_action_just_pressed("inspect_effects"):
+		if %GadgetEffects.get_child_count() > 0:
+			%GadgetEffects.give_controller_focus()
+		else: %PlayerEffects.give_controller_focus()
+	
+	if Input.is_action_pressed("inspect_effects"):
+		if Input.is_action_just_pressed("ui_up"):
+			if %PlayerEffects.controller_focus_effect and %GadgetEffects.effect_manager is EffectManager:
+				%PlayerEffects.release_controller_focus()
+				%GadgetEffects.give_controller_focus()
+		elif Input.is_action_just_pressed("ui_down"):
+			if %GadgetEffects.controller_focus_effect:
+				%GadgetEffects.release_controller_focus()
+				%PlayerEffects.give_controller_focus()
 
 # Toggle the settings menu
 func _on_settings_pressed() -> void:

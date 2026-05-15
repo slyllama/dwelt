@@ -6,6 +6,7 @@ extends Node
 @export var combat_fade_out_time := 1.0
 
 var in_shard := false
+var music_playing := true
 
 # TODO: respond to user-given music volume in settings
 @onready var mus_volume: float = %Music.volume_linear
@@ -35,17 +36,21 @@ func start_jukebox() -> void:
 	%Music.play()
 
 func fade_music_in() -> void:
+	music_playing = true
+	
 	%Music.volume_linear = 0.0
 	var _t := create_tween()
 	_t.tween_property(%Music, "volume_linear", mus_volume, fade_in_time)
 	%Music.stream_paused = false
 
 func fade_music_out() -> void:
+	music_playing = false
 	var _t := create_tween()
 	_t.tween_property(%Music, "volume_linear", 0.0, fade_out_time)
 	_t.tween_callback(func() -> void:
-		if !in_shard:
-			%Music.stream_paused = true)
+		# Restart music if it has been requested in the middle of fasing out
+		if music_playing: fade_music_in()
+		if !in_shard: %Music.stream_paused = true)
 
 func fade_combat_music_in() -> void:
 	%CombatMusic.volume_linear = 0.0
