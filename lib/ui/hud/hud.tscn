@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/ui/hud/screen_fx/screen_fx.tscn" id="1_o36f6"]
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/ui/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
+[ext_resource type="Texture2D" uid="uid://c0n1i17ij3djw" path="res://lib/ui/hud/textures/reticule.png" id="4_18i8b"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Texture2D" uid="uid://d25fn1yf2xupf" path="res://lib/ui/hud/textures/primary_buttons_base.png" id="5_mwuwv"]
+[ext_resource type="Script" uid="uid://dsq4gfqe4drwp" path="res://lib/ui/hud/scripts/reticule.gd" id="5_qtuit"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
 [ext_resource type="Script" uid="uid://bfp6f2bhsxah6" path="res://lib/ui/hud/scripts/gadget_plate.gd" id="6_hdq5k"]
 [ext_resource type="Script" uid="uid://755a2k1vwbqq" path="res://lib/ui/hud/scripts/primary_buttons.gd" id="6_nfgqh"]
@@ -77,6 +79,24 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("1_o36f6")]
+
+[node name="Reticule" type="TextureRect" parent="ScreenFX" unique_id=924027356]
+custom_minimum_size = Vector2(55, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -10.0
+offset_right = 27.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_18i8b")
+expand_mode = 1
+script = ExtResource("5_qtuit")
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_left = -473.0

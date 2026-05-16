@@ -6,8 +6,10 @@ class_name HoverHandler extends Node
 @export var hover_model: Node3D
 @export var hover_shape: StaticBody3D
 
-func hover() -> void:
-	if !Dwelt.pan_cooldown and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+func hover(override_mouse_visiblity := false) -> void:
+	if (Input.mouse_mode != Input.MOUSE_MODE_VISIBLE
+		and !override_mouse_visiblity): return
+	if !Dwelt.pan_cooldown:
 		for _n: MeshInstance3D in get_mesh_instances():
 			_n.set_instance_shader_parameter("highlight", true)
 

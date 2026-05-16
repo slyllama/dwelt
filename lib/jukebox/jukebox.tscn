@@ -8,6 +8,7 @@
 [node name="Jukebox" type="Node" unique_id=1763479327]
 process_mode = 3
 script = ExtResource("1_o08hh")
+enabled = false
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=654839253]
 unique_name_in_owner = true

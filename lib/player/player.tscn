@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
+[ext_resource type="Script" uid="uid://d3ra7n5jjaaeo" path="res://lib/player/scripts/controller_cursor_cast.gd" id="14_v5dhk"]
 [ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="17_1x433"]
 [ext_resource type="Script" uid="uid://bp7yeaqbpa6nu" path="res://lib/player/scripts/claim_handler.gd" id="18_7f82q"]
 [ext_resource type="PackedScene" uid="uid://bcpfq3amjlbm7" path="res://lib/player/claim_beam/claim_beam.tscn" id="18_v5dhk"]
@@ -314,6 +315,11 @@ draw_pass_1 = SubResource("QuadMesh_0y160")
 [node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
 deterministic = true
 libraries/ = SubResource("AnimationLibrary_hlh1u")
+
+[node name="ControllerCursorCast" type="RayCast3D" parent="Orbit/Camera" unique_id=511719040]
+target_position = Vector3(0, 0, -10)
+collision_mask = 4
+script = ExtResource("14_v5dhk")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2

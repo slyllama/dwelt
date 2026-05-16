@@ -1,5 +1,7 @@
 extends Node
 
+@export var enabled := true
+
 @export var fade_in_time := 0.6
 @export var fade_out_time := 2.0
 @export var combat_fade_in_time := 2.0
@@ -66,6 +68,8 @@ func fade_combat_music_out() -> void:
 	_t.tween_callback(%CombatMusic.stop)
 
 func _ready() -> void:
+	if !enabled: return
+	
 	# Detect scene changes and start/stop regular music as needed
 	get_tree().scene_changed.connect(func() -> void:
 		if get_tree().current_scene is Shard:

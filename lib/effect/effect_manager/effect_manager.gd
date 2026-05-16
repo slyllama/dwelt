@@ -34,10 +34,10 @@ func get_effects_as_dict() -> Dictionary:
 func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 	for _eid: String in effect_dict:
 		var _effect_path: String = Dwelt.EFFECTS_PATH + _eid + ".tres"
-		if !FileAccess.file_exists(_effect_path):
-			Utils.pdebug("Couldn't apply effect '" + _eid + "' because it has no resource.",
-				"EffectManager")
-			continue
+		#if !FileAccess.file_exists(_effect_path):
+			#Utils.pdebug("Couldn't apply effect '" + _eid + "' because it has no resource.",
+				#"EffectManager")
+			#continue
 		var _effect_data: Dictionary = effect_dict[_eid]
 		var _effect: EffectInstance = load(_effect_path).duplicate()
 		
