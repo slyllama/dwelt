@@ -34,7 +34,7 @@ func update_tooltip(effect: EffectInstance) -> void:
 	update_position_offsets()
 
 func _ready() -> void:
-	DweltInput.controller_hovered_effect_changed.connect(func(effect: EffectCard) -> void:
+	DweltInput.focused_effect_changed.connect(func(effect: EffectCard) -> void:
 		if effect:
 			update_tooltip(effect.effect_instance)
 			move_to_center())

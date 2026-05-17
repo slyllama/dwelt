@@ -64,10 +64,6 @@ func _on_claim_pressed() -> void:
 	if Dwelt.selected_gadget.get_effect("enemy_owned"):
 		Dwelt.claim_requested.emit()
 
-func _on_build_pressed() -> void:
-	if BOps.mode == BOps.Mode.INACTIVE: BOps.activate()
-	else: BOps.deactivate()
-
 func _on_interact_pressed() -> void:
 	if Dwelt.selected_gadget.interactive:
 		Dwelt.captured_pane_open.emit(

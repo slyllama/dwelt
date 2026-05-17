@@ -78,7 +78,8 @@ func _ready() -> void:
 	# Connect settings
 	Settings.setting_applied.connect(func(setting: String, value: String) -> void:
 		if setting == "volume":
-			AudioServer.set_bus_volume_linear(0, float(value)))
+			var _clamped_vol: float = clamp(value, 0.0, 1.0)
+			AudioServer.set_bus_volume_linear(0, float(_clamped_vol)))
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/pause": get_tree().paused = true

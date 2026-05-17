@@ -5,6 +5,8 @@ class_name UIPane extends PanelContainer
 
 const FADE_SPEED = 0.08 # time to fade in and out during opening and closing
 
+var close_requested := false # if `true`, the pane can't be close twice
+
 @export var title := "((UIPane))":
 	get: return(title)
 	set(_title):
@@ -33,6 +35,13 @@ func close() -> void:
 	var _fade_tween := create_tween()
 	_fade_tween.tween_property(self, "modulate:a", 0.0, FADE_SPEED)
 	_fade_tween.tween_callback(queue_free)
+
+func close_pane() -> void:
+	if close_requested: return # pane has already been closed
+	close_requested = true
+	if Dwelt.ui_pane_manager:
+		Dwelt.ui_pane_manager.close_pane(self)
+	else: close() # fall back to regular 'close'
 
 func move_to_center() -> void:
 	if Engine.is_editor_hint(): return
@@ -91,4 +100,4 @@ func _on_gui_input(_event: InputEvent) -> void:
 		dragging = false
 
 func _on_close_pressed() -> void:
-	Dwelt.ui_pane_manager.close_pane(self)
+	close_pane()

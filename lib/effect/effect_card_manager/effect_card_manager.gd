@@ -45,26 +45,26 @@ func give_controller_focus() -> void:
 	for _n: Node in get_children():
 		if _n is EffectCard:
 			controller_focus_effect = _n
-			DweltInput.controller_hovered_effect_changed.emit(controller_focus_effect)
+			DweltInput.focused_effect_changed.emit(controller_focus_effect)
 			break
 
 func release_controller_focus() -> void:
 	controller_focus_effect = null
-	DweltInput.controller_hovered_effect_changed.emit(controller_focus_effect)
+	DweltInput.focused_effect_changed.emit(controller_focus_effect)
 
 func controller_focus_next() -> void:
 	if controller_focus_effect in get_children():
 		var _ind := controller_focus_effect.get_index()
 		if _ind < get_child_count() - 1:
 			controller_focus_effect = get_child(_ind + 1)
-			DweltInput.controller_hovered_effect_changed.emit(controller_focus_effect)
+			DweltInput.focused_effect_changed.emit(controller_focus_effect)
 
 func controller_focus_previous() -> void:
 	if controller_focus_effect in get_children():
 		var _ind := controller_focus_effect.get_index()
 		if _ind > 0:
 			controller_focus_effect = get_child(_ind - 1)
-			DweltInput.controller_hovered_effect_changed.emit(controller_focus_effect)
+			DweltInput.focused_effect_changed.emit(controller_focus_effect)
 #endregion
 
 func _ready() -> void:

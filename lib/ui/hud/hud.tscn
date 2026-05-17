@@ -31,7 +31,6 @@
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
-[ext_resource type="PackedScene" uid="uid://dukennqply88c" path="res://bops/bops_toolbar/bops_toolbar.tscn" id="16_6a7qn"]
 [ext_resource type="Texture2D" uid="uid://dtx6n0y3hb75y" path="res://lib/ui/hud/textures/effects_bg.png" id="16_u3ywn"]
 [ext_resource type="PackedScene" uid="uid://d0iipew64n7tv" path="res://lib/ui/captured_pane/captured_pane.tscn" id="30_omovi"]
 
@@ -247,19 +246,6 @@ grow_horizontal = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="BOpsToolbar" parent="." unique_id=989331487 instance=ExtResource("16_6a7qn")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -153.0
-offset_right = 97.0
-offset_bottom = -127.0
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="CapturedPane" parent="." unique_id=4233952 instance=ExtResource("30_omovi")]
 unique_name_in_owner = true
 visible = false
@@ -384,7 +370,6 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
-[connection signal="pressed" from="PlayerPlate/PrimaryButtons/Build" to="PlayerPlate/PrimaryButtons" method="_on_build_pressed"]
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Claim" to="PlayerPlate/PrimaryButtons" method="_on_claim_pressed"]
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Interact" to="PlayerPlate/PrimaryButtons" method="_on_interact_pressed"]
 [connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]

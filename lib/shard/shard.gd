@@ -4,7 +4,8 @@ class_name Shard extends Node3D
 const SHARD := true # just used to identify that this scene is a shard
 
 func _set_bus_vol(vol: float) -> void:
-	AudioServer.set_bus_volume_linear(0, vol)
+	var _clamped_vol: float = clamp(vol, 0.0, 1.0)
+	AudioServer.set_bus_volume_linear(0, _clamped_vol)
 
 func _ready() -> void:
 	_set_bus_vol(0.0)

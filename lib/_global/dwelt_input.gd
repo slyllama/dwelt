@@ -1,13 +1,17 @@
 extends Node
+# Handle Dwelt's custom input signals and methods i.e., updating display and
+# input if the player switches from keyboard to controller or vice versa
 
 enum DeviceModes { CONTROLLER, KEYBOARD }
 
 var current_device_mode := DeviceModes.KEYBOARD
 
-signal controller_hovered_effect_changed(effect_card: EffectCard)
+# Current effect being inspected via the controller's `inspect_effects` button
+signal focused_effect_changed(effect_card: EffectCard)
 signal current_device_changed
 
-# Update how the cursor etc is displayed depending on whether a controller or keyboard is being used
+# Update the input mode depending on whether a controller or keyboard is
+# being used
 func update_device_display() -> void:
 	if DweltInput.current_device_mode == DweltInput.DeviceModes.CONTROLLER:
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:

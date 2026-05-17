@@ -15,6 +15,7 @@ func _input(_event: InputEvent) -> void:
 		and !%CapturedPane.visible):
 		_on_settings_pressed()
 	
+	# Handle effect inspection
 	if Input.is_action_just_pressed("inspect_effects"):
 		if %GadgetEffects.get_child_count() > 0:
 			%GadgetEffects.give_controller_focus()
@@ -22,7 +23,8 @@ func _input(_event: InputEvent) -> void:
 	
 	if Input.is_action_pressed("inspect_effects"):
 		if Input.is_action_just_pressed("ui_up"):
-			if %PlayerEffects.controller_focus_effect and %GadgetEffects.effect_manager is EffectManager:
+			if (%PlayerEffects.controller_focus_effect
+				and %GadgetEffects.effect_manager is EffectManager):
 				%PlayerEffects.release_controller_focus()
 				%GadgetEffects.give_controller_focus()
 		elif Input.is_action_just_pressed("ui_down"):

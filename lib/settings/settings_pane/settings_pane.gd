@@ -24,4 +24,4 @@ func _on_volume_slider_dragged(value: float) -> void:
 	AudioServer.set_bus_volume_linear(0, value)
 
 func _on_done_pressed() -> void:
-	Dwelt.ui_pane_manager.close_pane(self)
+	close_pane()
