@@ -58,4 +58,5 @@ func _on_screenshot_gui_input(_event: InputEvent) -> void:
 		%ScreenshotManager.open_folder()
 
 func _on_dev_menu_pressed() -> void:
-	%DevMenu.visible = true
+	#TODO: fix
+	%DevMenu.visible = !%DevMenu.visible

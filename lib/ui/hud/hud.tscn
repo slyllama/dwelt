@@ -88,6 +88,26 @@ texture = ExtResource("4_18i8b")
 expand_mode = 1
 script = ExtResource("5_18i8b")
 
+[node name="RenderMonitor" type="RichTextLabel" parent="ScreenFX" unique_id=838523613]
+offset_left = 13.0
+offset_top = 39.0
+offset_right = 146.0
+offset_bottom = 57.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -2
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_u1rn0")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "((RenderMonitor))"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("2_dcyf8")
+
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_left = -473.0
 offset_top = -294.0
@@ -304,35 +324,6 @@ script = ExtResource("13_6u16q")
 
 [node name="EffectTooltip" parent="Override" unique_id=1279715620 instance=ExtResource("10_panat")]
 visible = false
-
-[node name="RenderMonitor" type="RichTextLabel" parent="Override" unique_id=838523613]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -86.0
-offset_right = -12.0
-offset_bottom = -68.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = -2
-theme_override_constants/paragraph_separation = -2
-theme_override_constants/shadow_outline_size = 2
-theme_override_constants/outline_size = 2
-theme_override_fonts/normal_font = ExtResource("2_u1rn0")
-theme_override_font_sizes/normal_font_size = 13
-bbcode_enabled = true
-text = "((RenderMonitor))"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("2_dcyf8")
 
 [node name="EyesAnim" parent="Override" unique_id=1456570687 instance=ExtResource("7_tpybq")]
 unique_name_in_owner = true

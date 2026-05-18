@@ -28,10 +28,10 @@ func update() -> void:
 	# Primitive count
 	var _prim := Performance.get_monitor(
 		Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME)
-	text += "\n Prims: " + str(snapped(_prim, 1))
+	text += "\nPrims: " + str(snapped(_prim, 1))
 	var _mem := Performance.get_monitor(
 		Performance.RENDER_VIDEO_MEM_USED)
-	text += "\n VRAM: " + str(snapped(_mem * 0.000001, 1)) + "MB"
+	text += "\nVRAM: " + str(snapped(_mem * 0.000001, 1)) + "MB"
 
 func _process(_delta: float) -> void:
 	if !Utils.debug_mode: return

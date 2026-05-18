@@ -56,6 +56,7 @@ orientation = 1
 
 [node name="Acidfields" unique_id=1127074071 instance=ExtResource("1_nwqnf")]
 script = ExtResource("2_58tgt")
+quest_sequence = Array[String](["first_briefing"])
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)

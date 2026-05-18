@@ -1,6 +1,9 @@
 @icon("res://generic/icons/Shard.svg")
 class_name Shard extends Node3D
 
+@export var quest_sequence: Array[String]
+@export var quest_data: Dictionary[String, Quest]
+
 const SHARD := true # just used to identify that this scene is a shard
 
 func _set_bus_vol(vol: float) -> void:
@@ -65,6 +68,11 @@ func _ready() -> void:
 	# Update visual displays of currencies
 	for _currency_id: String in Save.save.currencies:
 		Dwelt.currency_updated.emit(_currency_id)
+	
+	# Look for the latest quest ID in the save; if not there add the first quest and load it
+	# TODO: currently just loads the first quest every time
+	var _shard_data: Dictionary = Save.save.shard_data[$GadgetManager.shard_id]
+	_shard_data["current_quest"] = quest_sequence[0]
 	
 	DweltInput.current_device_changed.emit()
 	Dwelt.first_run = false
