@@ -4,8 +4,15 @@ class_name UIPane extends PanelContainer
 # UI pane - generic window class
 
 const FADE_SPEED = 0.08 # time to fade in and out during opening and closing
+const PADDING := 100.0 # used to calculate pane position limits
 
 var close_requested := false # if `true`, the pane can't be close twice
+var focus_sound_played_once := false
+var cursor_last_in_window := true
+var dragging := false
+var offset := Vector2.ZERO # difference between where the drag was initiated and the pane's actual position
+
+signal clicked
 
 @export var title := "((UIPane))":
 	get: return(title)
@@ -18,16 +25,6 @@ var close_requested := false # if `true`, the pane can't be close twice
 	set(_closeable):
 		closeable = _closeable
 		%Close.visible = closeable
-
-const PADDING := 100.0 # used to calculate pane position limits
-var cursor_last_in_window := true
-var dragging := false
-
-# Difference between where the drag was initiated and the pane's
-# actual position
-var offset := Vector2.ZERO
-
-signal clicked
 
 # WARNING: never call this directly - always use `close_pane()` on the
 # UIPaneManager to properly deregister a pane
@@ -59,6 +56,8 @@ func _ready() -> void:
 	get_window().gui_focus_changed.connect(func(node: Control) -> void:
 		if !get_node_or_null("%FocusCursor"): return
 		if has_node(get_path_to(node)):
+			if focus_sound_played_once: $ChangeFocus.play()
+			else: focus_sound_played_once = true
 			%FocusCursor.pane_focus_target = node
 		else: %FocusCursor.pane_focus_target = null)
 	

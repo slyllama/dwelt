@@ -4,6 +4,7 @@ const SHARD_LOADER_PATH := "res://lib/shard/shard_loader/shard_loader.tscn"
 const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tscn")
 
 var shard_load_started := false
+var focus_sound_played_once := false
 
 func fade_music() -> void:
 	var _t := create_tween()
@@ -35,6 +36,8 @@ func _ready() -> void:
 	
 	get_window().gui_focus_changed.connect(func(node: Control) -> void:
 		if node in $FG/Box.get_children():
+			if focus_sound_played_once: $ChangeFocus.play()
+			else: focus_sound_played_once = true
 			update_cursor_position(node.global_position + node.size / 2.0))
 	await get_tree().process_frame
 	

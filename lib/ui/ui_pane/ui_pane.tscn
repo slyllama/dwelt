@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bqceimkk671ul" path="res://lib/ui/ui_pane/textures/focus_cursor.png" id="9_0jcnd"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="10_7d47q"]
 [ext_resource type="Script" uid="uid://r0kjrphryyp7" path="res://lib/ui/ui_pane/scripts/focus_cursor.gd" id="10_wxhbv"]
+[ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="12_361nl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
 content_margin_left = 13.0
@@ -186,6 +187,10 @@ visible = false
 amount = 6
 texture = ExtResource("10_7d47q")
 process_material = SubResource("ParticleProcessMaterial_1txg2")
+
+[node name="ChangeFocus" type="AudioStreamPlayer" parent="." unique_id=382876866]
+stream = ExtResource("12_361nl")
+volume_db = -3.0
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]
