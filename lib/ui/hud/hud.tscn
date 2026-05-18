@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dtx6n0y3hb75y" path="res://lib/ui/hud/textures/effects_bg.png" id="16_u3ywn"]
 [ext_resource type="PackedScene" uid="uid://cgxu1sriq5kxr" path="res://lib/ui/hud/dev_menu/dev_menu.tscn" id="23_omovi"]
 [ext_resource type="PackedScene" uid="uid://d0iipew64n7tv" path="res://lib/ui/captured_pane/captured_pane.tscn" id="30_omovi"]
+[ext_resource type="PackedScene" uid="uid://c73wv3l1h7be2" path="res://lib/quest/quest_pane/quest_pane.tscn" id="33_18i8b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdq5k"]
 
@@ -263,26 +264,26 @@ alignment = 1
 unique_name_in_owner = true
 visible = false
 
-[node name="TopLeftMenuBase" type="CanvasLayer" parent="." unique_id=217289711]
+[node name="TopLeftBase" type="CanvasLayer" parent="." unique_id=217289711]
 layer = 2
 
-[node name="TopLeftMenu" type="HBoxContainer" parent="TopLeftMenuBase" unique_id=1545174863]
+[node name="TopLeftMenu" type="HBoxContainer" parent="TopLeftBase" unique_id=1545174863]
 offset_right = 429.0
 offset_bottom = 48.0
 theme_override_constants/separation = 0
 script = ExtResource("6_2eonm")
 
-[node name="SettingsBox" type="HBoxContainer" parent="TopLeftMenuBase/TopLeftMenu" unique_id=1562440140]
+[node name="SettingsBox" type="HBoxContainer" parent="TopLeftBase/TopLeftMenu" unique_id=1562440140]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Padding" type="ColorRect" parent="TopLeftMenuBase/TopLeftMenu/SettingsBox" unique_id=1627418048]
+[node name="Padding" type="ColorRect" parent="TopLeftBase/TopLeftMenu/SettingsBox" unique_id=1627418048]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Settings" type="TextureButton" parent="TopLeftMenuBase/TopLeftMenu/SettingsBox" unique_id=1001341405]
+[node name="Settings" type="TextureButton" parent="TopLeftBase/TopLeftMenu/SettingsBox" unique_id=1001341405]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 4
@@ -290,7 +291,7 @@ texture_normal = ExtResource("6_pxgdb")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Screenshot" type="TextureButton" parent="TopLeftMenuBase/TopLeftMenu/SettingsBox" unique_id=376360912]
+[node name="Screenshot" type="TextureButton" parent="TopLeftBase/TopLeftMenu/SettingsBox" unique_id=376360912]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 4
@@ -298,7 +299,7 @@ texture_normal = ExtResource("8_l8w22")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="DevMenuButton" type="Button" parent="TopLeftMenuBase/TopLeftMenu/SettingsBox" unique_id=1416860689]
+[node name="DevMenuButton" type="Button" parent="TopLeftBase/TopLeftMenu/SettingsBox" unique_id=1416860689]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -306,13 +307,15 @@ focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_bly2c")
 text = "Dev Menu"
 
-[node name="DevMenu" parent="TopLeftMenuBase" unique_id=2094549526 instance=ExtResource("23_omovi")]
+[node name="DevMenu" parent="TopLeftBase" unique_id=2094549526 instance=ExtResource("23_omovi")]
 unique_name_in_owner = true
 visible = false
 offset_left = 77.0
 offset_top = 38.0
 offset_right = 277.0
 offset_bottom = 124.0
+
+[node name="TopRightBase" type="CanvasLayer" parent="." unique_id=488896414]
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("4_r2k48")]
 unique_name_in_owner = true
@@ -356,10 +359,18 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
+[node name="QuestPane" parent="." unique_id=704220495 instance=ExtResource("33_18i8b")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_right = 0.0
+grow_horizontal = 0
+
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Claim" to="PlayerPlate/PrimaryButtons" method="_on_claim_pressed"]
 [connection signal="pressed" from="PlayerPlate/PrimaryButtons/Interact" to="PlayerPlate/PrimaryButtons" method="_on_interact_pressed"]
-[connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
-[connection signal="gui_input" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
-[connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]
-[connection signal="pressed" from="TopLeftMenuBase/TopLeftMenu/SettingsBox/DevMenuButton" to="." method="_on_dev_menu_pressed"]
+[connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
+[connection signal="gui_input" from="TopLeftBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
+[connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]
+[connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/DevMenuButton" to="." method="_on_dev_menu_pressed"]
 [connection signal="timeout" from="Override/PreventClicks/CDTimer" to="Override/PreventClicks" method="_on_cd_timer_timeout"]

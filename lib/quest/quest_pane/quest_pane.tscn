@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c73wv3l1h7be2"]
+
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="1_iv73n"]
+[ext_resource type="Script" uid="uid://ttae25duf30l" path="res://lib/quest/quest_pane/quest_pane.gd" id="1_wvcnd"]
+
+[sub_resource type="Gradient" id="Gradient_iv73n"]
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvcnd"]
+gradient = SubResource("Gradient_iv73n")
+fill_from = Vector2(0, 0.0203125)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gth44"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = SubResource("GradientTexture2D_wvcnd")
+
+[node name="QuestPane" type="PanelContainer" unique_id=2006905704]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_gth44")
+script = ExtResource("1_wvcnd")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=111381567]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBox" unique_id=1387402920]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iv73n")
+theme_override_font_sizes/font_size = 18
+text = "((Title))"
+
+[node name="Description" type="Label" parent="VBox" unique_id=562060586]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_constants/line_spacing = -6
+text = "((Description))"
+autowrap_mode = 3

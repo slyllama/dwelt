@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_nwqnf"]
 [ext_resource type="Script" uid="uid://tul3ccffkp8j" path="res://shards/acidfields/acidfields.gd" id="2_58tgt"]
 [ext_resource type="Material" uid="uid://c5wup88y2e6ia" path="res://shards/acidfields/props/acid_pool/materials/acid_pool.tres" id="2_rfpxw"]
+[ext_resource type="Script" uid="uid://bkhrv5tqrp043" path="res://lib/quest/quest.gd" id="3_8288q"]
+[ext_resource type="Resource" uid="uid://bym3x028j5ne7" path="res://shards/acidfields/quest/first_briefing.tres" id="4_8288q"]
 [ext_resource type="Texture2D" uid="uid://b52yrj8rctv4p" path="res://shards/acidfields/materials/textures/rock_decal.png" id="7_buenr"]
 [ext_resource type="Texture2D" uid="uid://ndrn4twwy7qf" path="res://shards/acidfields/props/platform/materials/textures/algae_decal.png" id="8_buenr"]
 [ext_resource type="AudioStream" uid="uid://6ny1ebwal0qe" path="res://shards/acidfields/sounds/creak.ogg" id="10_ostfv"]
@@ -57,6 +59,9 @@ orientation = 1
 [node name="Acidfields" unique_id=1127074071 instance=ExtResource("1_nwqnf")]
 script = ExtResource("2_58tgt")
 quest_sequence = Array[String](["first_briefing"])
+quest_data = Dictionary[String, ExtResource("3_8288q")]({
+"first_briefing": ExtResource("4_8288q")
+})
 
 [node name="Floor" parent="." index="1" unique_id=1367160262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002546072, 0.004485965, -0.0030719042)

@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bym3x028j5ne7"]
 
-[ext_resource type="Script" uid="uid://bkhrv5tqrp043" path="res://lib/quest/quest.gd" id="1_73fsl"]
+[ext_resource type="Script" uid="uid://bkhrv5tqrp043" path="res://lib/quest/quest.gd" id="1_wjugi"]
 
 [resource]
-script = ExtResource("1_73fsl")
-quest_id = "test_quest"
-quest_name = "Test Quest"
-description = "((This is a test quest.))"
+script = ExtResource("1_wjugi")
+quest_name = "((First Briefing))"
+description = "((Description for 'First Briefing'.))"
 metadata/_custom_type_script = "uid://bkhrv5tqrp043"

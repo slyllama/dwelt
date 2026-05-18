@@ -14,6 +14,8 @@ const DEFAULT_SAVE := {
 
 @onready var save := DEFAULT_SAVE.duplicate(true)
 
+signal quest_changed(quest_data: Quest)
+
 func save_exists() -> bool:
 	return(FileAccess.file_exists(SAVE_PATH))
 
