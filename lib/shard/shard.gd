@@ -70,10 +70,11 @@ func _ready() -> void:
 		Dwelt.currency_updated.emit(_currency_id)
 	
 	# Look for the latest quest ID in the save; if not there add the first quest and load it
-	# TODO: currently just loads the first quest every time
+	# TODO: needs more safety
+	var _shard_data: Dictionary = Save.save.shard_data[$GadgetManager.shard_id]
 	if quest_sequence and quest_data:
-		var _shard_data: Dictionary = Save.save.shard_data[$GadgetManager.shard_id]
-		_shard_data["current_quest"] = quest_sequence[0]
+		if !"current_quest" in _shard_data:
+			_shard_data["current_quest"] = quest_sequence[0]
 		Save.quest_changed.emit(quest_data[_shard_data["current_quest"]])
 	else:
 		Utils.pdebug("No quest data.", "Shard")
