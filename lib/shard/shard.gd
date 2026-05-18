@@ -66,4 +66,5 @@ func _ready() -> void:
 	for _currency_id: String in Save.save.currencies:
 		Dwelt.currency_updated.emit(_currency_id)
 	
+	DweltInput.current_device_changed.emit()
 	Dwelt.first_run = false

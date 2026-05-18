@@ -23,6 +23,12 @@ func update_device_display() -> void:
 func _ready() -> void:
 	current_device_changed.connect(update_device_display)
 	
+	get_window().size_changed.connect(func() -> void:
+		var _last_device_mode := current_device_mode
+		await get_tree().process_frame
+		current_device_mode = _last_device_mode
+		current_device_changed.emit())
+	
 	for _i in 3: await get_tree().process_frame
 	if Input.get_connected_joypads().size() > 0:
 		current_device_mode = DeviceModes.CONTROLLER

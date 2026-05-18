@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://c7w7lc0yxxhqp"]
+
+[ext_resource type="FontFile" uid="uid://bi4a4vc7qpom8" path="res://generic/fonts/trebuchet.ttf" id="1_fqtp4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnb4l"]
+content_margin_left = 6.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqtp4"]
+content_margin_left = 6.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2o80"]
+content_margin_left = 6.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.05, 0.05, 0.05, 1)
+
+[resource]
+Button/font_sizes/font_size = 12
+Button/fonts/font = ExtResource("1_fqtp4")
+Button/styles/hover = SubResource("StyleBoxFlat_cnb4l")
+Button/styles/normal = SubResource("StyleBoxFlat_fqtp4")
+Button/styles/pressed = SubResource("StyleBoxFlat_t2o80")

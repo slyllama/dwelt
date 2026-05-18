@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tscn")
-const DebugPane = preload("res://lib/ui/hud/debug_pane/debug_pane.tscn")
 
 func _ready() -> void:
 	$DebugBG.queue_free()
@@ -59,8 +58,4 @@ func _on_screenshot_gui_input(_event: InputEvent) -> void:
 		%ScreenshotManager.open_folder()
 
 func _on_dev_menu_pressed() -> void:
-	if !%UIPaneManager.close_pane_by_id("debug_pane"):
-		var debug_pane: UIPane = DebugPane.instantiate()
-		%UIPaneManager.add_child(debug_pane)
-		debug_pane.set_anchors_preset(Control.PRESET_CENTER)
-		debug_pane.position += Vector2(100, 100)
+	%DevMenu.visible = true

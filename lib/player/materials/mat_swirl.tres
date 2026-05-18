@@ -12,9 +12,21 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_pqis1")
 fill_to = Vector2(0, 1)
 
+[sub_resource type="Gradient" id="Gradient_2rhpf"]
+offsets = PackedFloat32Array(0.4352518, 0.5767386)
+colors = PackedColorArray(0, 0, 0, 1, 0.9507831, 0.9507831, 0.9507831, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o1j6d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pqis1"]
+noise = SubResource("FastNoiseLite_o1j6d")
+color_ramp = SubResource("Gradient_2rhpf")
+seamless = true
+
 [resource]
 render_priority = 0
 shader = ExtResource("1_de1sb")
+shader_parameter/swirl_texture = SubResource("NoiseTexture2D_pqis1")
 shader_parameter/wobble_texture = ExtResource("3_pqis1")
 shader_parameter/wobble_strength = 0.350000016625
 shader_parameter/wobble_speed = 0.1

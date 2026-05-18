@@ -22,6 +22,7 @@ var close_requested := false # if `true`, the pane can't be close twice
 const PADDING := 100.0 # used to calculate pane position limits
 var cursor_last_in_window := true
 var dragging := false
+
 # Difference between where the drag was initiated and the pane's
 # actual position
 var offset := Vector2.ZERO
@@ -41,7 +42,6 @@ func close_pane() -> void:
 	close_requested = true
 	if Dwelt.ui_pane_manager:
 		Dwelt.ui_pane_manager.close_pane(self)
-	else: close() # fall back to regular 'close'
 
 func move_to_center() -> void:
 	if Engine.is_editor_hint(): return
@@ -55,6 +55,12 @@ func _init() -> void:
 func _ready() -> void:
 	%Close.visible = closeable
 	if Engine.is_editor_hint(): return
+	
+	get_window().gui_focus_changed.connect(func(node: Control) -> void:
+		if !get_node_or_null("%FocusCursor"): return
+		if has_node(get_path_to(node)):
+			%FocusCursor.pane_focus_target = node
+		else: %FocusCursor.pane_focus_target = null)
 	
 	# Play "click" effects on every button
 	for _n: Node in Utils.get_all_children(self):

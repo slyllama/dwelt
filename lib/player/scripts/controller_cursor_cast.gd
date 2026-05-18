@@ -9,6 +9,7 @@ func unhover_current_gadget() -> void:
 		_controller_hovered_gadget = null
 
 func _input(_event: InputEvent) -> void:
+	if !DweltInput.current_device_mode == DweltInput.DeviceModes.CONTROLLER: return
 	if Input.is_action_just_pressed("ui_accept"):
 		if _controller_hovered_gadget:
 			if _controller_hovered_gadget.effect_manager:

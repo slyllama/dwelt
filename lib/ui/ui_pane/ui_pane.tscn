@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="5_4f35j"]
 [ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="7_lu8lm"]
 [ext_resource type="Texture2D" uid="uid://6geao0ocadpn" path="res://lib/ui/ui_pane/textures/border_effect.png" id="8_hipgv"]
+[ext_resource type="Texture2D" uid="uid://bqceimkk671ul" path="res://lib/ui/ui_pane/textures/focus_cursor.png" id="9_0jcnd"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="10_7d47q"]
+[ext_resource type="Script" uid="uid://r0kjrphryyp7" path="res://lib/ui/ui_pane/scripts/focus_cursor.gd" id="10_wxhbv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
 content_margin_left = 13.0
@@ -21,6 +24,88 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="Animation" id="Animation_7d47q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wxhbv"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1.5),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_361nl"]
+_data = {
+&"RESET": SubResource("Animation_7d47q"),
+&"pulse": SubResource("Animation_wxhbv")
+}
+
+[sub_resource type="Curve" id="Curve_wxhbv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.105442174, 1), 0.0, 0.0, 0, 0, Vector2(0.55895686, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_361nl"]
+curve = SubResource("Curve_wxhbv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1txg2"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+alpha_curve = SubResource("CurveTexture_361nl")
 
 [node name="UIPane" type="PanelContainer" unique_id=1181014453]
 custom_minimum_size = Vector2(300, 400)
@@ -84,6 +169,23 @@ volume_db = 3.0
 position = Vector2(220, 278)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_hipgv")
+
+[node name="FocusCursor" type="Sprite2D" parent="." unique_id=1455049067]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_0jcnd")
+script = ExtResource("10_wxhbv")
+
+[node name="Anim" type="AnimationPlayer" parent="FocusCursor" unique_id=386953461]
+libraries/ = SubResource("AnimationLibrary_361nl")
+autoplay = &"pulse"
+
+[node name="Motes" type="GPUParticles2D" parent="FocusCursor" unique_id=1883143906]
+visible = false
+amount = 6
+texture = ExtResource("10_7d47q")
+process_material = SubResource("ParticleProcessMaterial_1txg2")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]

@@ -15,23 +15,27 @@ ui_id = "effect_debug_pane"
 text = "Effect Viewer"
 
 [node name="SetToPlayer" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=1594094468]
+visible = false
 layout_mode = 2
 text = "Set To Player Effect Manager"
 
 [node name="AddDurationEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=887119477]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 disabled = true
 text = "Add Timed Effect"
 
 [node name="AddQtyEffect" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1119133114]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 disabled = true
 text = "Add Quantity Effect"
 
 [node name="QtyDeduct" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1682337927]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Test Quantity Deduction"
 
@@ -40,21 +44,21 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="EffectCardManager" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=1169365333 instance=ExtResource("3_3p2l0")]
+[node name="DebugText" type="RichTextLabel" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="8" unique_id=1945448346]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_3wf8i")
+theme_override_font_sizes/normal_font_size = 12
+fit_content = true
 
 [node name="Padding2" type="ColorRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="9" unique_id=791016531]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="DebugText" type="RichTextLabel" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="10" unique_id=1945448346]
+[node name="EffectCardManager" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="10" unique_id=1169365333 instance=ExtResource("3_3p2l0")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_3wf8i")
-theme_override_font_sizes/normal_font_size = 12
-fit_content = true
 
 [node name="BorderEffect" parent="." index="2" unique_id=599452808]
 position = Vector2(300, 278)

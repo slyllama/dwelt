@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bia1yy4stm5gf"]
+
+[ext_resource type="Texture2D" uid="uid://b1iuvc16n1pwd" path="res://shards/_props/engine_piece/materials/textures/engine_piece_diff.jpg" id="1_h7b0a"]
+[ext_resource type="Texture2D" uid="uid://drcept6aq1wqo" path="res://shards/_props/engine_piece/materials/textures/engine_piece_emit.jpg" id="2_ruovr"]
+[ext_resource type="Texture2D" uid="uid://c1fp10vwo3da0" path="res://shards/_props/engine_piece/materials/textures/engine_piece_norm.jpg" id="3_rh4ig"]
+[ext_resource type="Texture2D" uid="uid://dt5pgty81j4os" path="res://shards/_props/engine_piece/materials/textures/engine_piece_rough.jpg" id="4_m2ofa"]
+
+[resource]
+albedo_texture = ExtResource("1_h7b0a")
+roughness = 0.25
+roughness_texture = ExtResource("4_m2ofa")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("2_ruovr")
+normal_enabled = true
+normal_texture = ExtResource("3_rh4ig")

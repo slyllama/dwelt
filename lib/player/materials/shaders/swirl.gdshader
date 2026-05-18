@@ -14,6 +14,6 @@ void fragment() {
 	swirl = 1.0 - swirl;
 	
 	ALBEDO = vec3(1.0);
-	ALPHA = pow(swirl, 1.0);
+	ALPHA *= pow(swirl, 1.0);
 	ALPHA *= texture(swirl_mask, UV - vec2(1.01)).r;
 }
