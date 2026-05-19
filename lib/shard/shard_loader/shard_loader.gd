@@ -13,6 +13,11 @@ func _transition() -> void:
 	if transitioning: return
 	transitioning = true
 	Utils.pdebug("Done.", "ShardLoader")
+	
+	%Black.visible = true
+	var _t := create_tween()
+	_t.tween_property(%Black, "self_modulate:a", 1.0, 0.3)
+	await _t.finished
 	get_tree().change_scene_to_packed(
 		ResourceLoader.load_threaded_get(target_scene))
 
@@ -39,6 +44,6 @@ func _process(_delta: float) -> void:
 	status = ResourceLoader.load_threaded_get_status(target_scene, progress)
 	match status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			$ProgressBar.value = progress[0] * 200.0
+			%ProgressBar.value = progress[0] * 200.0
 		ResourceLoader.THREAD_LOAD_LOADED: _transition()
 		ResourceLoader.THREAD_LOAD_FAILED: pass

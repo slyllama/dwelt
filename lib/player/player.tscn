@@ -292,7 +292,7 @@ one_shot = true
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
 current = true
-fov = 87.0
+fov = 100.0
 far = 200.0
 
 [node name="Listener" type="AudioListener3D" parent="Orbit/Camera" unique_id=1102468141]

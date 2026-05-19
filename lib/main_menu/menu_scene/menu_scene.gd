@@ -5,6 +5,7 @@ var target_z_position := 0.0 # used for zooming on shard load
 
 @onready var base_position: Vector3 = %Pivot.global_position
 @onready var target_position: Vector3 = base_position
+@export var position_offset := Vector3.ZERO
 
 func _ready() -> void:
 	%LightAnim.play("flicker")
@@ -19,4 +20,7 @@ func _physics_process(_delta: float) -> void:
 	_dm.x = clamp(_dm.x, -CLAMP, CLAMP)
 	_dm.y = clamp(_dm.y, -CLAMP, CLAMP)
 	target_position = base_position + Vector3(_dm.x, _dm.y, target_z_position)
-	%Pivot.global_position = lerp(%Pivot.global_position, target_position, Utils.crit_plerp(2.0))
+	%Pivot.global_position = lerp(
+		%Pivot.global_position,
+		target_position + position_offset,
+		Utils.crit_plerp(2.0))

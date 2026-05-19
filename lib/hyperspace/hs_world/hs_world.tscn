@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://b7t62a033f233"]
+
+[ext_resource type="Script" uid="uid://b4vb0te4sysk" path="res://lib/hyperspace/hs_world/hs_world.gd" id="1_1cv5c"]
+[ext_resource type="Shader" uid="uid://b66a4ggmtt7lm" path="res://lib/hyperspace/hs_world/materials/shaders/hyperspace.gdshader" id="1_3tw87"]
+[ext_resource type="Texture2D" uid="uid://d3s6xvyx3h3jw" path="res://lib/ui/avatar_plate/textures/nebula.jpg" id="3_geuhm"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="4_geuhm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sv7qm"]
+viewport_path = NodePath("HSProjection")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayelj"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_sv7qm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qu4vl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ayelj")
+size = Vector2(15, 15)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f7m3"]
+shader = ExtResource("1_3tw87")
+shader_parameter/enabled = true
+shader_parameter/time_scale = 16.0
+shader_parameter/fractal_count = 10
+
+[sub_resource type="Curve" id="Curve_6yyvo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.8248031, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wljre"]
+curve = SubResource("Curve_6yyvo")
+
+[sub_resource type="Gradient" id="Gradient_6wkpn"]
+colors = PackedColorArray(0.84936136, 0.9507448, 0.9999998, 1, 0.6567778, 0.7326276, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5dbeg"]
+gradient = SubResource("Gradient_6wkpn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tah0s"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.38
+emission_ring_cone_angle = 0.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.5
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 0.99999774
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 4.759998
+scale_min = 0.5
+scale_max = 0.75
+color_initial_ramp = SubResource("GradientTexture1D_5dbeg")
+alpha_curve = SubResource("CurveTexture_wljre")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duaa3"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_geuhm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_lc14f"]
+material = SubResource("StandardMaterial3D_duaa3")
+size = Vector2(0.05, 0.05)
+
+[node name="HSWorld" type="Node3D" unique_id=1134575640]
+script = ExtResource("1_1cv5c")
+intensity = 5.0
+smoothing = 0.1
+tick_speed = 0.1
+
+[node name="Camera" type="Camera3D" parent="." unique_id=941551980]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.155)
+v_offset = -0.12972195
+current = true
+fov = 37.849285
+
+[node name="HSProjector" type="MeshInstance3D" parent="." unique_id=971510198]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qu4vl")
+
+[node name="HSProjection" type="SubViewport" parent="." unique_id=1644292380]
+disable_3d = true
+fsr_sharpness = 1.0
+size = Vector2i(1920, 1080)
+
+[node name="HSTexture" type="TextureRect" parent="HSProjection" unique_id=1002709804]
+material = SubResource("ShaderMaterial_1f7m3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_geuhm")
+
+[node name="Stars" type="GPUParticles3D" parent="." unique_id=1769190011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+amount = 128
+lifetime = 1.2
+preprocess = 3.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_tah0s")
+draw_pass_1 = SubResource("QuadMesh_lc14f")

@@ -8,6 +8,7 @@ extends Marker3D
 
 @onready var target_x_rotation := rotation.x
 @onready var target_y_rotation := global_rotation.y
+@onready var target_fov: float = $Camera.fov
 
 var vertical_offset := 0.4
 var _event_relative := Vector2.ZERO
@@ -35,6 +36,9 @@ func _ready() -> void:
 	Dwelt.camera = $Camera
 	top_level = true
 	$Camera.top_level = true
+	
+	await get_tree().create_timer(0.1).timeout
+	target_fov = 87.0
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
@@ -98,6 +102,9 @@ func _physics_process(_delta: float) -> void:
 	# Update vertical offset
 	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
 	vertical_offset = 0.2 + _vo_ratio
+	
+	# Handle field-of-view
+	$Camera.fov = lerp($Camera.fov, target_fov, Utils.crit_plerp(2.0))
 	
 	# Update positions
 	global_position = lerp(global_position,

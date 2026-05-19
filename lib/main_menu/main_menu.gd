@@ -5,6 +5,7 @@ const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tsc
 
 var shard_load_started := false
 var focus_sound_played_once := false
+var menu_scene: Node3D # will be populated as soon as the node enters the tree
 
 func fade_music() -> void:
 	var _t := create_tween()
@@ -23,9 +24,10 @@ func snap_cursor_to_focus() -> void:
 
 func go_to_shard(path: String) -> void:
 	if shard_load_started: return
+	if menu_scene: menu_scene.position_offset.z = -1.6
+	%CursorAnim.play("flash_shadow")
 	%Curtain.trans_in()
 	fade_music()
-	
 	shard_load_started = true
 	Dwelt.shard_path_to_load = path
 	await %Curtain.trans_finished
@@ -65,7 +67,7 @@ func _ready() -> void:
 	snap_cursor_to_focus()
 	
 	%Curtain.trans_out()
-	await get_tree().create_timer(0.65).timeout
+	await get_tree().create_timer(0.1).timeout
 	if get_window().gui_get_focus_owner():
 		%CursorAnim.play("fade")
 	$Music.play()
@@ -106,3 +108,7 @@ func _on_new_game_pressed() -> void:
 func _on_ui_pane_manager_panes_updated(pane_count: int) -> void:
 	if pane_count > 0: %CursorAnim.play_backwards("fade")
 	else: %CursorAnim.play("fade")
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node.name == "MenuScene":
+		menu_scene = node
