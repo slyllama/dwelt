@@ -27,6 +27,7 @@ func go_to_shard(path: String) -> void:
 	if menu_scene: menu_scene.position_offset.z = -1.6
 	%CursorAnim.play("flash_shadow")
 	%Curtain.trans_in()
+	$Select.play()
 	fade_music()
 	shard_load_started = true
 	Dwelt.shard_path_to_load = path

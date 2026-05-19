@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dmok0wq1bs0qf" path="res://lib/main_menu/scripts/menu_scene_loader.gd" id="9_d88ro"]
 [ext_resource type="Texture2D" uid="uid://8an1tw3naoje" path="res://lib/main_menu/textures/focus_cursor.png" id="10_fn3ey"]
 [ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="11_wcsih"]
+[ext_resource type="AudioStream" uid="uid://bibeqbmosreqv" path="res://lib/main_menu/sounds/select.ogg" id="12_fb8nk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uliap"]
 content_margin_left = 0.0
@@ -301,6 +302,10 @@ stream = ExtResource("8_70ubd")
 [node name="ChangeFocus" type="AudioStreamPlayer" parent="." unique_id=1289666857]
 stream = ExtResource("11_wcsih")
 volume_db = -3.0
+
+[node name="Select" type="AudioStreamPlayer" parent="." unique_id=503410121]
+stream = ExtResource("12_fb8nk")
+volume_db = -1.0
 
 [node name="MenuSceneLoader" type="Node" parent="." unique_id=1091386554]
 script = ExtResource("9_d88ro")

@@ -17,7 +17,6 @@ void fragment() {
 		for (int r = 0; r < 100; r++)  {
 			vec3 p = init + s * vec3(uv, 0.05);
 			p.z = fract(p.z);
-			// Thanks to Kali's little chaotic loop...
 			for (int i = 0; i < fractal_count; i++) {
 				p = abs(p * 2.04) / dot(p, p) - 0.9;
 			}
