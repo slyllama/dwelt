@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dt21g5h65vk80"]
+
+[ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_f12jx"]
+[ext_resource type="Script" uid="uid://bu0w4wd4rm8o5" path="res://lib/settings/mapping_pane/mapping_pane.gd" id="2_qc2yh"]
+
+[node name="MappingPane" unique_id=1181014453 node_paths=PackedStringArray("initial_focus_node") instance=ExtResource("1_f12jx")]
+custom_minimum_size = Vector2(500, 500)
+script = ExtResource("2_qc2yh")
+title = "Input Mapping"
+ui_id = "mapping_pane"
+initial_focus_node = NodePath("Box/Done")
+
+[node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
+text = "Input Mapping"
+
+[node name="Button" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=354912623]
+unique_name_in_owner = true
+layout_mode = 2
+text = "((Button))"
+
+[node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1727522469]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Done"
+
+[node name="BorderEffect" parent="." index="2" unique_id=599452808]
+position = Vector2(420, 378)
+
+[connection signal="pressed" from="Box/Done" to="." method="_on_done_pressed"]

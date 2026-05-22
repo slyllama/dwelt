@@ -26,6 +26,12 @@ signal clicked
 		closeable = _closeable
 		%Close.visible = closeable
 
+@export var initial_focus_node: Control
+
+func pass_focus() -> void:
+	if initial_focus_node:
+		initial_focus_node.grab_focus()
+
 # WARNING: never call this directly - always use `close_pane()` on the
 # UIPaneManager to properly deregister a pane
 func close() -> void:
@@ -55,7 +61,8 @@ func _ready() -> void:
 	
 	get_window().gui_focus_changed.connect(func(node: Control) -> void:
 		if !get_node_or_null("%FocusCursor"): return
-		if has_node(get_path_to(node)):
+		# Also only play sound if this is the top pane (avoid double-ups)
+		if has_node(get_path_to(node)) and self == Dwelt.ui_pane_manager.panes[-1]:
 			if focus_sound_played_once: $ChangeFocus.play()
 			else: focus_sound_played_once = true
 			%FocusCursor.pane_focus_target = node
@@ -73,6 +80,8 @@ func _ready() -> void:
 	var _fade_tween := create_tween()
 	_fade_tween.tween_property(self, "modulate:a", 1.0, FADE_SPEED)
 	$Open.play()
+	
+	pass_focus()
 
 func _process(_delta: float) -> void:
 	$BorderEffect.global_position = global_position + size - Vector2(80.0, 122.0)

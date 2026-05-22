@@ -9,11 +9,13 @@
 [ext_resource type="Script" uid="uid://c7haqafm4mwf0" path="res://lib/settings/settings_ui_element/settings_selector.gd" id="4_85e62"]
 [ext_resource type="Script" uid="uid://hpst6xoekyfs" path="res://lib/settings/settings_ui_element/settings_slider.gd" id="7_k5u3j"]
 
-[node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
+[node name="SettingsPane" unique_id=1181014453 node_paths=PackedStringArray("initial_focus_node") instance=ExtResource("1_1mlct")]
+custom_minimum_size = Vector2(300, 550)
 offset_right = 360.0
 script = ExtResource("2_4xwgy")
 title = "Settings"
 ui_id = "settings_pane"
+initial_focus_node = NodePath("Box/Done")
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Settings"
@@ -156,7 +158,11 @@ setting_id = "volume"
 title = "Overall volume"
 metadata/_custom_type_script = "uid://hpst6xoekyfs"
 
-[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="13" unique_id=1871284538]
+[node name="MappingPane" type="Button" parent="Box/Scroll/ScrollBox" index="13" unique_id=421058011]
+layout_mode = 2
+text = "Input Mapping"
+
+[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="14" unique_id=1871284538]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -186,7 +192,7 @@ layout_mode = 2
 text = "Return To Menu"
 
 [node name="BorderEffect" parent="." index="2" unique_id=599452808]
-position = Vector2(280, 278)
+position = Vector2(280, 428)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/Low" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_low_pressed"]
@@ -194,6 +200,7 @@ position = Vector2(280, 278)
 [connection signal="pressed" from="Box/Scroll/ScrollBox/PresetsBox/High" to="Box/Scroll/ScrollBox/PresetsBox" method="_on_high_pressed"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/FullScreen" to="." method="_on_full_screen_pressed"]
 [connection signal="slider_dragged" from="Box/Scroll/ScrollBox/Volume" to="." method="_on_volume_slider_dragged"]
+[connection signal="pressed" from="Box/Scroll/ScrollBox/MappingPane" to="." method="_on_mapping_pane_pressed"]
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Box/Done" to="." method="_on_done_pressed"]

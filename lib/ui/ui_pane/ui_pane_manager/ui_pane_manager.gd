@@ -11,9 +11,10 @@ signal panes_updated(pane_count: int)
 func register_pane(pane: UIPane) -> void:
 	panes.push_back(pane)
 	pane.clicked.connect(func() -> void:
-		await get_tree().process_frame
-		if !pane.close_requested:
-			put_on_top(pane))
+		if Input.is_action_just_pressed("left_click"):
+			await get_tree().process_frame
+			if !pane.close_requested:
+				put_on_top(pane))
 	panes_updated.emit(panes.size())
 
 # Panes must be closed through this method so they can be deregistered
@@ -21,6 +22,10 @@ func close_pane(pane: UIPane) -> void:
 	panes.erase(pane)
 	pane.close()
 	panes_updated.emit(panes.size())
+	
+	# When a pane closes, pass the focus to whichever pane is now on top
+	if panes.size() > 0:
+		panes[-1].pass_focus()
 
 func close_pane_by_id(pane_id: String) -> bool:
 	var _pane_open := false
@@ -41,6 +46,7 @@ func update_draw_order() -> void:
 func put_on_top(pane: UIPane) -> void:
 	if pane in panes:
 		panes.erase(pane)
+		print("making " + pane.name + " top")
 	panes.push_back(pane)
 	update_draw_order()
 
@@ -57,7 +63,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and panes.size() > 0:
 		# Give the HUD a frame to check whether `esc` can open settings
 		await get_tree().process_frame
-		var top_pane: UIPane = panes[panes.size() - 1]
+		var top_pane: UIPane = panes[-1]
 		if top_pane.closeable:
 			close_pane(top_pane)
 

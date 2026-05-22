@@ -5,11 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="3_3p2l0"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="3_3wf8i"]
 
-[node name="EffectDebugPane" unique_id=1181014453 instance=ExtResource("1_ynaiw")]
+[node name="EffectDebugPane" unique_id=1181014453 node_paths=PackedStringArray("initial_focus_node") instance=ExtResource("1_ynaiw")]
 custom_minimum_size = Vector2(380, 380)
 script = ExtResource("2_3wf8i")
 title = "Effect Viewer"
 ui_id = "effect_debug_pane"
+initial_focus_node = NodePath("Box/SetToPlayer")
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Effect Viewer"

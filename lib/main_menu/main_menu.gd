@@ -106,9 +106,16 @@ func _on_new_game_pressed() -> void:
 	Save.new_file_from_default() # force a new game
 	go_to_shard("res://shards/acidfields/acidfields.tscn")
 
+var _last_pane_count := 0
+
 func _on_ui_pane_manager_panes_updated(pane_count: int) -> void:
-	if pane_count > 0: %CursorAnim.play_backwards("fade")
-	else: %CursorAnim.play("fade")
+	if _last_pane_count == 0 and pane_count > 0:
+		print("fading out")
+		%CursorAnim.play_backwards("fade")
+	elif _last_pane_count > 0 and pane_count == 0:
+		print("fasing in")
+		%CursorAnim.play("fade")
+	_last_pane_count = pane_count
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.name == "MenuScene":

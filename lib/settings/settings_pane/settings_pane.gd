@@ -1,10 +1,6 @@
 @tool
 extends UIPane
 
-func _on_ready() -> void:
-	await get_tree().process_frame
-	%Done.grab_focus()
-
 func _on_default_pressed() -> void:
 	Settings.apply_default_settings()
 
@@ -35,3 +31,9 @@ func _on_full_screen_pressed() -> void:
 	if Input.get_connected_joypads().size() > 0:
 		DweltInput.current_device_mode = DweltInput.DeviceModes.CONTROLLER
 		DweltInput.current_device_changed.emit()
+
+func _on_mapping_pane_pressed() -> void:
+	var MappingPane: PackedScene = load("res://lib/settings/mapping_pane/mapping_pane.tscn")
+	var _mapping_pane: UIPane = MappingPane.instantiate()
+	Dwelt.ui_pane_manager.add_child(_mapping_pane)
+	_mapping_pane.move_to_center()
