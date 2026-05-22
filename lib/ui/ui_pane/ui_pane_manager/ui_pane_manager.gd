@@ -11,7 +11,9 @@ signal panes_updated(pane_count: int)
 func register_pane(pane: UIPane) -> void:
 	panes.push_back(pane)
 	pane.clicked.connect(func() -> void:
-		put_on_top(pane))
+		await get_tree().process_frame
+		if !pane.close_requested:
+			put_on_top(pane))
 	panes_updated.emit(panes.size())
 
 # Panes must be closed through this method so they can be deregistered

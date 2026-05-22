@@ -34,6 +34,24 @@
 [ext_resource type="PackedScene" uid="uid://d0iipew64n7tv" path="res://lib/ui/captured_pane/captured_pane.tscn" id="30_omovi"]
 [ext_resource type="PackedScene" uid="uid://c73wv3l1h7be2" path="res://lib/quest/quest_pane/quest_pane.tscn" id="33_18i8b"]
 
+[sub_resource type="GDScript" id="GDScript_18i8b"]
+resource_name = "pane_monitor"
+script/source = "extends RichTextLabel
+
+func _ready() -> void:
+	Utils.debug_mode_changed.connect(func() -> void:
+		visible = Utils.debug_mode)
+
+func _process(_delta: float) -> void:
+	text = \"\"
+	if Dwelt.ui_pane_manager:
+		for _p: UIPane in Dwelt.ui_pane_manager.panes:
+			var _title := str(_p)
+			if _p:
+				_title += \" (\" + _p.name + \")\"
+			text += _title + \"\\n\"
+"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdq5k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfgqh"]
@@ -108,6 +126,26 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("2_dcyf8")
+
+[node name="PaneMonitor" type="RichTextLabel" parent="ScreenFX" unique_id=1223164767]
+offset_left = 13.0
+offset_top = 90.0
+offset_right = 146.0
+offset_bottom = 108.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -2
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_u1rn0")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "((PaneMonitor))"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = SubResource("GDScript_18i8b")
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_left = -473.0

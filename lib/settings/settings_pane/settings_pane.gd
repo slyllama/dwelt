@@ -19,6 +19,9 @@ func _on_menu_pressed() -> void:
 	Dwelt.gadgets_close_to_player = []
 	
 	Save.save_file()
+	
+	# prevent a race condition with UIPane 'click' checks in UIPaneManager
+	for _i in 3: await get_tree().process_frame
 	get_tree().change_scene_to_file("res://lib/main_menu/main_menu.tscn")
 
 func _on_volume_slider_dragged(value: float) -> void:
