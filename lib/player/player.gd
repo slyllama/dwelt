@@ -22,26 +22,12 @@ signal move_stopped
 
 func _ready() -> void:
 	Dwelt.player = self
-	Dwelt.player_effect_manager = %EffectManager
-	%EffectManager.add_effect(load("res://effects/resilience.tres"))
-	
-	%EffectManager.effect_decremented.connect(func(id: String) -> void:
-		if id == "resilience":
-			Dwelt.shake_camera.emit()
-			Input.start_joy_vibration(0, 0.1, 0.0, 0.1))
 	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
 	move_stopped.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.0)
-	
-	await get_tree().process_frame
-	var shard_data: Dictionary = Save.save.shard_data[Dwelt.current_shard_id]
-	if "player_position" in shard_data:
-		global_position = Utils.str_to_vec3(shard_data.player_position)
 
-var _time := 0.0
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = $Orbit.global_transform.basis
 	
@@ -90,8 +76,3 @@ func _physics_process(delta: float) -> void:
 	# Send animation parameters to the mesh for animation blending
 	$RobotMesh.forward_blend = %InputHandler.direction.z
 	$RobotMesh.strafe_blend = %InputHandler.direction.x
-	
-	_time += delta
-	if _time > POS_UPDATE_TICK:
-		Save.save.shard_data[Dwelt.current_shard_id].player_position = Utils.vec3_to_str(global_position)
-		_time = 0.0

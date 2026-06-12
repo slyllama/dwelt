@@ -47,7 +47,7 @@ _data = {
 shader = ExtResource("1_h2nih")
 shader_parameter/position = 0.400000019
 shader_parameter/feather = 0.30000001425
-shader_parameter/alpha = 1.0
+shader_parameter/alpha = 0.750000035625
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdeap"]
 shader = ExtResource("2_ovsh1")

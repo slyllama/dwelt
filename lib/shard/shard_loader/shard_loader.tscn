@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bj0nhuufirc15" path="res://lib/shard/shard_loader/shard_loader.gd" id="1_dqd06"]
 [ext_resource type="Texture2D" uid="uid://hqrwehuc40ol" path="res://lib/shard/shard_loader/textures/cog.png" id="2_pxbv5"]
-[ext_resource type="Script" uid="uid://dj6ly3u3b1ye7" path="res://lib/shard/shard_loader/scripts/hyperspace_loader.gd" id="2_ulvkr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqd06"]
 
@@ -51,9 +50,6 @@ _data = {
 script = ExtResource("1_dqd06")
 metadata/_edit_vertical_guides_ = [640.0]
 
-[node name="HyperspaceLoader" type="Node" parent="." unique_id=861473000]
-script = ExtResource("2_ulvkr")
-
 [node name="FG" type="CanvasLayer" parent="." unique_id=1236725158]
 layer = 2
 
@@ -76,7 +72,6 @@ libraries/ = SubResource("AnimationLibrary_ulvkr")
 autoplay = &"pulse"
 
 [node name="CogAnchor" type="Control" parent="FG" unique_id=770158952]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

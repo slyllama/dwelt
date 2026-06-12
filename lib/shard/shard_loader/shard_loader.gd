@@ -1,7 +1,7 @@
 @icon("res://generic/icons/ShardLoader.svg")
 extends CanvasLayer
 
-const TARGET_SCENE = "res://shards/acidfields/acidfields.tscn"
+const TARGET_SCENE = "res://shards/debug/debug.tscn"
 var target_scene := TARGET_SCENE
 
 var status: int
@@ -23,11 +23,6 @@ func _transition() -> void:
 
 func _ready() -> void:
 	AudioServer.set_bus_volume_linear(0, 0.0)
-	
-	if !Save.save_exists():
-		Save.new_file_from_default()
-	Save.load_file()
-	Save.save_file()
 	
 	DiscordRPC.details = ""
 	DiscordRPC.refresh()

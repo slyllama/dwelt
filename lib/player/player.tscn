@@ -13,13 +13,39 @@
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
-[ext_resource type="Script" uid="uid://d3ra7n5jjaaeo" path="res://lib/player/scripts/controller_cursor_cast.gd" id="14_v5dhk"]
-[ext_resource type="Script" uid="uid://dwm4elmsp1th0" path="res://lib/effect/effect_manager/effect_manager.gd" id="17_1x433"]
-[ext_resource type="Script" uid="uid://bp7yeaqbpa6nu" path="res://lib/player/scripts/claim_handler.gd" id="18_7f82q"]
-[ext_resource type="PackedScene" uid="uid://bcpfq3amjlbm7" path="res://lib/player/claim_beam/claim_beam.tscn" id="18_v5dhk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
+
+[sub_resource type="Curve" id="Curve_2ocui"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
+curve = SubResource("Curve_2ocui")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
+emission_shape_scale = Vector3(1, 0.32, 1)
+emission_shape = 2
+emission_sphere_radius = 4.5
+gravity = Vector3(0, 0.03, 0)
+scale_min = 0.59999996
+alpha_curve = SubResource("CurveTexture_ego0t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("14_1x433")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
+material = SubResource("StandardMaterial3D_1x433")
+size = Vector2(0.04, 0.04)
 
 [sub_resource type="Curve" id="Curve_up78s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15357141, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -133,36 +159,6 @@ _data = {
 &"glow": SubResource("Animation_ego0t")
 }
 
-[sub_resource type="Curve" id="Curve_2ocui"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
-curve = SubResource("Curve_2ocui")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
-emission_shape_scale = Vector3(1, 0.32, 1)
-emission_shape = 2
-emission_sphere_radius = 4.5
-gravity = Vector3(0, 0.03, 0)
-scale_min = 0.59999996
-alpha_curve = SubResource("CurveTexture_ego0t")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("14_1x433")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
-material = SubResource("StandardMaterial3D_1x433")
-size = Vector2(0.04, 0.04)
-
 [sub_resource type="Animation" id="Animation_hlh1u"]
 length = 0.001
 tracks/0/type = "value"
@@ -224,8 +220,16 @@ look_target = NodePath("../LookTarget")
 animation_smoothing = 5.0
 turn_rotation_multiplier = 7.0
 
-[node name="ClaimBeam" parent="RobotMesh" unique_id=1276351552 instance=ExtResource("18_v5dhk")]
-transform = Transform3D(1.3888888, 0, 0, 0, 1.3888888, 0, 0, 0, 1.3888888, 0, 0.2507262, 0.32103956)
+[node name="Motes" type="GPUParticles3D" parent="RobotMesh" unique_id=848711266]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+cast_shadow = 0
+amount = 128
+lifetime = 2.5
+preprocess = 5.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2ocui")
+draw_pass_1 = SubResource("QuadMesh_0y160")
 
 [node name="Sound" type="Node3D" parent="RobotMesh" unique_id=2142391288]
 script = ExtResource("4_jlw2j")
@@ -281,13 +285,9 @@ autoplay = &"glow"
 [node name="Orbit" type="Marker3D" parent="." unique_id=13830377]
 unique_name_in_owner = true
 process_mode = 3
-transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
+transform = Transform3D(-0.99999994, -2.262668e-08, 8.4443904e-08, 7.571033e-08, 0.25881898, 0.96592546, -4.371138e-08, 0.96592546, -0.25881898, 0, 0, 0)
 script = ExtResource("5_4ok3w")
 zoom_max = 3.0
-
-[node name="PanCD" type="Timer" parent="Orbit" unique_id=534597308]
-wait_time = 0.05
-one_shot = true
 
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
@@ -301,25 +301,9 @@ current = true
 [node name="CursorCast" type="Node" parent="Orbit/Camera" unique_id=1663147991]
 script = ExtResource("14_ego0t")
 
-[node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-cast_shadow = 0
-amount = 256
-lifetime = 2.5
-preprocess = 5.0
-randomness = 0.25
-process_material = SubResource("ParticleProcessMaterial_2ocui")
-draw_pass_1 = SubResource("QuadMesh_0y160")
-
 [node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
 deterministic = true
 libraries/ = SubResource("AnimationLibrary_hlh1u")
-
-[node name="ControllerCursorCast" type="RayCast3D" parent="Orbit/Camera" unique_id=511719040]
-target_position = Vector3(0, 0, -10)
-collision_mask = 4
-script = ExtResource("14_v5dhk")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2
@@ -332,17 +316,5 @@ spring_length = 2.0
 unique_name_in_owner = true
 script = ExtResource("1_odf55")
 
-[node name="ClaimHandler" type="Node" parent="." unique_id=240051031 node_paths=PackedStringArray("effect_manager")]
-unique_name_in_owner = true
-script = ExtResource("18_7f82q")
-effect_manager = NodePath("../EffectManager")
-
-[node name="EffectManager" type="Node" parent="." unique_id=802570379]
-unique_name_in_owner = true
-script = ExtResource("17_1x433")
-metadata/_custom_type_script = "uid://dwm4elmsp1th0"
-
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
-
-[connection signal="timeout" from="Orbit/PanCD" to="Orbit" method="_on_pan_cd_timeout"]

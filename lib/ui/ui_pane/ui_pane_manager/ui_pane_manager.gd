@@ -22,10 +22,6 @@ func close_pane(pane: UIPane) -> void:
 	panes.erase(pane)
 	pane.close()
 	panes_updated.emit(panes.size())
-	
-	# When a pane closes, pass the focus to whichever pane is now on top
-	if panes.size() > 0:
-		panes[-1].pass_focus()
 
 func close_pane_by_id(pane_id: String) -> bool:
 	var _pane_open := false
@@ -44,9 +40,7 @@ func update_draw_order() -> void:
 # Moves a UIPane to the end of the `panes` array, and then visually orders
 # them using `update_draw_order()`
 func put_on_top(pane: UIPane) -> void:
-	if pane in panes:
-		panes.erase(pane)
-		print("making " + pane.name + " top")
+	if pane in panes: panes.erase(pane)
 	panes.push_back(pane)
 	update_draw_order()
 

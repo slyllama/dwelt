@@ -5,56 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/ui/hud/screen_fx/screen_fx.tscn" id="1_o36f6"]
 [ext_resource type="Script" uid="uid://bqh21nkcj3qiq" path="res://lib/ui/hud/scripts/render_monitor.gd" id="2_dcyf8"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
-[ext_resource type="Texture2D" uid="uid://c0n1i17ij3djw" path="res://lib/ui/hud/textures/reticle.png" id="4_18i8b"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
-[ext_resource type="Script" uid="uid://dsq4gfqe4drwp" path="res://lib/ui/hud/scripts/reticle.gd" id="5_18i8b"]
-[ext_resource type="Texture2D" uid="uid://d25fn1yf2xupf" path="res://lib/ui/hud/textures/primary_buttons_base.png" id="5_mwuwv"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/ui/hud/scripts/top_left_menu.gd" id="6_2eonm"]
-[ext_resource type="Script" uid="uid://bfp6f2bhsxah6" path="res://lib/ui/hud/scripts/gadget_plate.gd" id="6_hdq5k"]
-[ext_resource type="Script" uid="uid://755a2k1vwbqq" path="res://lib/ui/hud/scripts/primary_buttons.gd" id="6_nfgqh"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/ui/hud/textures/icon_settings.png" id="6_pxgdb"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/ui/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/ui/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
-[ext_resource type="Texture2D" uid="uid://e5b7n2prxecq" path="res://lib/ui/hud/textures/button_build.png" id="8_6fyc5"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/ui/hud/textures/icon_screenshot.png" id="8_l8w22"]
-[ext_resource type="Texture2D" uid="uid://d33qp3ax7nojs" path="res://lib/ui/hud/textures/button_build_disabled.png" id="9_ju80c"]
-[ext_resource type="Texture2D" uid="uid://resfglt58npf" path="res://lib/ui/hud/textures/button_claim.png" id="9_w0xv6"]
-[ext_resource type="PackedScene" uid="uid://b5fa5b6y5yf6n" path="res://lib/ui/avatar_plate/avatar_plate.tscn" id="10_l7ms4"]
-[ext_resource type="PackedScene" uid="uid://dphe4e6etfimm" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="10_panat"]
-[ext_resource type="Texture2D" uid="uid://bf3s0cdy3g2km" path="res://lib/ui/hud/textures/button_interact.png" id="10_tqcay"]
-[ext_resource type="Texture2D" uid="uid://bdy3jsjdnnjgg" path="res://lib/ui/hud/textures/button_claim_disabled.png" id="11_no338"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/ui/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/ui/hud/scripts/override.gd" id="13_6u16q"]
-[ext_resource type="Texture2D" uid="uid://cxkik3q43eu4l" path="res://lib/ui/hud/textures/button_interact_disabled.png" id="13_jrbc5"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/ui/hud/sounds/shutter.ogg" id="14_6rdt5"]
-[ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/ui/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
-[ext_resource type="PackedScene" uid="uid://mqcopxkdu3an" path="res://lib/effect/effect_card_manager/effect_card_manager.tscn" id="15_bly2c"]
-[ext_resource type="Texture2D" uid="uid://dtx6n0y3hb75y" path="res://lib/ui/hud/textures/effects_bg.png" id="16_u3ywn"]
 [ext_resource type="PackedScene" uid="uid://cgxu1sriq5kxr" path="res://lib/ui/hud/dev_menu/dev_menu.tscn" id="23_omovi"]
-[ext_resource type="PackedScene" uid="uid://d0iipew64n7tv" path="res://lib/ui/captured_pane/captured_pane.tscn" id="30_omovi"]
-[ext_resource type="PackedScene" uid="uid://c73wv3l1h7be2" path="res://lib/quest/quest_pane/quest_pane.tscn" id="33_18i8b"]
-
-[sub_resource type="GDScript" id="GDScript_18i8b"]
-resource_name = "pane_monitor"
-script/source = "extends RichTextLabel
-
-func _ready() -> void:
-	Utils.debug_mode_changed.connect(func() -> void:
-		visible = Utils.debug_mode)
-
-func _process(_delta: float) -> void:
-	text = \"\"
-	if Dwelt.ui_pane_manager:
-		for _p: UIPane in Dwelt.ui_pane_manager.panes:
-			var _title := str(_p)
-			if _p:
-				_title += \" (\" + _p.name + \")\"
-			text += _title + \"\\n\"
-"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdq5k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfgqh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bly2c"]
 content_margin_left = 9.0
@@ -89,24 +49,6 @@ stretch_mode = 1
 
 [node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("1_o36f6")]
 
-[node name="Reticle" type="TextureRect" parent="ScreenFX" unique_id=924027356]
-custom_minimum_size = Vector2(55, 20)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.5
-offset_top = -10.0
-offset_right = 27.5
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_18i8b")
-expand_mode = 1
-script = ExtResource("5_18i8b")
-
 [node name="RenderMonitor" type="RichTextLabel" parent="ScreenFX" unique_id=838523613]
 offset_left = 13.0
 offset_top = 39.0
@@ -127,180 +69,9 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("2_dcyf8")
 
-[node name="PaneMonitor" type="RichTextLabel" parent="ScreenFX" unique_id=1223164767]
-offset_left = 13.0
-offset_top = 90.0
-offset_right = 146.0
-offset_bottom = 108.0
-mouse_filter = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = -2
-theme_override_constants/paragraph_separation = -2
-theme_override_constants/shadow_outline_size = 2
-theme_override_constants/outline_size = 2
-theme_override_fonts/normal_font = ExtResource("2_u1rn0")
-theme_override_font_sizes/normal_font_size = 13
-bbcode_enabled = true
-text = "((PaneMonitor))"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = SubResource("GDScript_18i8b")
-
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_left = -473.0
 offset_top = -294.0
-
-[node name="PlayerPlate" type="Panel" parent="." unique_id=121027689]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hdq5k")
-
-[node name="PrimaryButtonsBase" type="TextureRect" parent="PlayerPlate" unique_id=476208715]
-custom_minimum_size = Vector2(197, 193)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 109.0
-offset_top = -296.0
-offset_right = 306.0
-offset_bottom = -103.0
-grow_vertical = 0
-texture = ExtResource("5_mwuwv")
-expand_mode = 1
-
-[node name="PlayerAvatarPlate" parent="PlayerPlate" unique_id=1901079431 instance=ExtResource("10_l7ms4")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -212.0
-offset_right = 212.0
-offset_bottom = -7.0
-grow_vertical = 0
-effect_particles_playing = true
-
-[node name="PrimaryButtons" type="Control" parent="PlayerPlate" unique_id=2074465595]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-script = ExtResource("6_nfgqh")
-
-[node name="Build" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=332735969]
-custom_minimum_size = Vector2(91, 95)
-layout_mode = 0
-offset_left = 114.0
-offset_top = -295.0
-offset_right = 205.0
-offset_bottom = -200.0
-disabled = true
-texture_normal = ExtResource("8_6fyc5")
-texture_disabled = ExtResource("9_ju80c")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Claim" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=1127217244]
-custom_minimum_size = Vector2(108, 108)
-layout_mode = 0
-offset_left = 165.0
-offset_top = -270.0
-offset_right = 273.0
-offset_bottom = -162.0
-disabled = true
-texture_normal = ExtResource("9_w0xv6")
-texture_disabled = ExtResource("11_no338")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Interact" type="TextureButton" parent="PlayerPlate/PrimaryButtons" unique_id=1636081198]
-custom_minimum_size = Vector2(97, 92)
-layout_mode = 0
-offset_left = 202.0
-offset_top = -202.0
-offset_right = 299.0
-offset_bottom = -110.0
-disabled = true
-texture_normal = ExtResource("10_tqcay")
-texture_disabled = ExtResource("13_jrbc5")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="PlayerEffectsBG" type="TextureRect" parent="." unique_id=1074620633]
-z_index = -1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -227.0
-offset_top = -60.0
-offset_right = 227.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("16_u3ywn")
-expand_mode = 1
-flip_v = true
-
-[node name="PlayerEffects" parent="." unique_id=1897670958 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -114.0
-offset_right = 40.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="GadgetPlate" type="Panel" parent="." unique_id=639916968]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nfgqh")
-script = ExtResource("6_hdq5k")
-
-[node name="GadgetEffectsBG" type="TextureRect" parent="GadgetPlate" unique_id=1077655581]
-z_index = -1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -227.0
-offset_top = -2.0
-offset_right = 227.0
-offset_bottom = 60.0
-grow_horizontal = 2
-mouse_filter = 2
-texture = ExtResource("16_u3ywn")
-expand_mode = 1
-
-[node name="GadgetEffects" parent="GadgetPlate" unique_id=1169365333 instance=ExtResource("15_bly2c")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 102.0
-grow_horizontal = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="CapturedPane" parent="." unique_id=4233952 instance=ExtResource("30_omovi")]
-unique_name_in_owner = true
-visible = false
 
 [node name="TopLeftBase" type="CanvasLayer" parent="." unique_id=217289711]
 layer = 2
@@ -353,8 +124,6 @@ offset_top = 38.0
 offset_right = 277.0
 offset_bottom = 124.0
 
-[node name="TopRightBase" type="CanvasLayer" parent="." unique_id=488896414]
-
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("4_r2k48")]
 unique_name_in_owner = true
 layer = 1
@@ -362,9 +131,6 @@ layer = 1
 [node name="Override" type="CanvasLayer" parent="." unique_id=1195063702]
 layer = 99
 script = ExtResource("13_6u16q")
-
-[node name="EffectTooltip" parent="Override" unique_id=1279715620 instance=ExtResource("10_panat")]
-visible = false
 
 [node name="EyesAnim" parent="Override" unique_id=1456570687 instance=ExtResource("7_tpybq")]
 unique_name_in_owner = true
@@ -376,20 +142,6 @@ offset_bottom = 180.0
 mouse_filter = 0
 frame_duration = 0.035
 
-[node name="PreventClicks" type="ColorRect" parent="Override" unique_id=1207694925]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("15_asrt8")
-
-[node name="CDTimer" type="Timer" parent="Override/PreventClicks" unique_id=1196351261]
-unique_name_in_owner = true
-wait_time = 0.06
-one_shot = true
-
 [node name="ScreenshotManager" type="Node" parent="." unique_id=449517999]
 unique_name_in_owner = true
 script = ExtResource("13_2eonm")
@@ -397,18 +149,7 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
-[node name="QuestPane" parent="." unique_id=704220495 instance=ExtResource("33_18i8b")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -300.0
-offset_right = 0.0
-grow_horizontal = 0
-
-[connection signal="pressed" from="PlayerPlate/PrimaryButtons/Claim" to="PlayerPlate/PrimaryButtons" method="_on_claim_pressed"]
-[connection signal="pressed" from="PlayerPlate/PrimaryButtons/Interact" to="PlayerPlate/PrimaryButtons" method="_on_interact_pressed"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/Screenshot" to="." method="_on_screenshot_pressed"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/SettingsBox/DevMenuButton" to="." method="_on_dev_menu_pressed"]
-[connection signal="timeout" from="Override/PreventClicks/CDTimer" to="Override/PreventClicks" method="_on_cd_timer_timeout"]

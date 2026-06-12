@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c48evayoh8l8u"]
-
-[ext_resource type="Script" uid="uid://cq36yodml31sj" path="res://bops/bops_ghost/bops_ghost.gd" id="1_tlid8"]
-
-[node name="BOpsGhost" type="Node3D" unique_id=808042295]
-script = ExtResource("1_tlid8")

@@ -7,7 +7,6 @@ const DEFAULT_SETTINGS := {
 	"colour_grading": "true",
 	"full_screen": "true",
 	"shadows": "high",
-	"draw_distance": "medium",
 	"volumetric_fog": "true",
 	"taa_anti_aliasing": "true",
 	"volume": "1.0"

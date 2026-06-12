@@ -1,71 +1,22 @@
 extends Node
 
 const GRAVITY := -9.8
-const EFFECTS_PATH := "res://effects/"
 
 # References
 var camera: Camera3D
-var gadget_manager: GadgetManager
 var player: DweltPlayer
-var player_effect_manager: EffectManager
 var ui_pane_manager: UIPaneManager
 
-var claim_target: Gadget
 var current_shard_id := ""
-var gadgets_close_to_player := [] # set true if a shard has been entered once
 var first_run := true
-var panning := false
-var pan_cooldown := false
-var selected_gadget: Gadget
-var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
+var shard_path_to_load := "res://shards/debug/debug.tscn" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus
-signal currency_updated(currency: String)
-signal camera_pan_started
-signal camera_pan_ended
-signal claim_requested # emitted by the HUD when the player requests to claim a gadget
-signal gadget_clicked(gadget: Gadget) # triggers even if the gadget is non-interactive
-signal gadgets_close_to_player_changed
-signal gadgets_reloaded # used to clear effects panes, etc
-
-signal selected_gadget_changed(gadget: Gadget)
-signal selected_gadget_updated # emitted by the selected gadget when an effect is added/changed/removed
 
 # Signals which fire events rather than intercept them
-signal captured_pane_open(scene_path: String) # TODO: pass data i.e., scene
-signal captured_pane_close
 signal emit_click_sound
 signal play_flash(position: Vector2)
 signal shake_camera
-
-# Return the gadget closest to the player
-func get_closest_gadget() -> Variant:
-	if gadgets_close_to_player.size() > 0:
-		return(gadgets_close_to_player[-1])
-	else: return(null)
-
-func update_currency(currency_id: String, amount: int) -> bool:
-	var successful := false
-	if currency_id in Save.save.currencies:
-		var _original_amount: int = Save.save.currencies[currency_id].to_int()
-		if _original_amount + amount >= 0:
-			Save.save.currencies[currency_id] = str(_original_amount + amount)
-			currency_updated.emit(currency_id)
-			successful = true
-	return(successful)
-
-func update_selected_gadget(gadget: Gadget) -> void:
-	selected_gadget = gadget
-	if selected_gadget:
-		$Click.play()
-	selected_gadget_changed.emit(selected_gadget)
-	
-	# If the player is in interacting range of the gadget, record it as the
-	# closest gadget to the player
-	if selected_gadget in gadgets_close_to_player:
-		gadgets_close_to_player.erase(selected_gadget)
-		gadgets_close_to_player.push_back(selected_gadget)
-		gadgets_close_to_player_changed.emit()
 
 func discord_update_details(text: String) -> void:
 	DiscordRPC.details = text
@@ -83,13 +34,4 @@ func _ready() -> void:
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/pause": get_tree().paused = true
-		elif string == "/unpause": get_tree().paused = false
-		
-		elif string == "/geteffectsdict":
-			if selected_gadget:
-				if selected_gadget.effect_manager:
-					Utils.pdebug(str(selected_gadget.effect_manager.get_effects_as_dict())))
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		Save.save_file()
+		elif string == "/unpause": get_tree().paused = false)

@@ -41,14 +41,6 @@ func _input(event: InputEvent) -> void:
 		if !last_click_in_ui and !get_window().gui_get_hovered_control():
 			if _cooldown > 0.01: return # reject if too close to the last successful input
 			_cooldown = COOLDOWN
-			if current_collider is Gadget:
-				if current_collider.effect_manager: # clicking for BOps is handled separately
-					Dwelt.update_selected_gadget(current_collider)
-				else: Dwelt.update_selected_gadget(null)
-				Dwelt.gadget_clicked.emit(current_collider)
-			else:
-				Dwelt.update_selected_gadget(null)
-				Dwelt.gadget_clicked.emit(null)
 
 func _process(delta: float) -> void:
 	if _cooldown > 0.0:
