@@ -30,6 +30,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = $Orbit.global_transform.basis
+	var _original_target_y_rotation := _target_y_rotation
 	
 	# Calculate basis and move player based on player input
 	var _v_forward := Vector2.from_angle(%Orbit.rotation.y)
@@ -51,12 +52,6 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-	# Get rotation from input direction and apply it to player mesh
-	if %InputHandler.direction.length() > 0:
-		_target_y_rotation = %Orbit.rotation.y - _initial_y_rotation
-	$RobotMesh.rotation.y = lerp_angle($RobotMesh.rotation.y,
-		_target_y_rotation, Utils.crit_plerp(5.0))
-	
 	if Vector3(velocity * Vector3(1, 0, 1)).length() > 1.0:
 		$RobotMesh/Stars.amount_ratio = 1.0
 		if !_moving:
@@ -73,6 +68,12 @@ func _physics_process(_delta: float) -> void:
 	$RobotMesh.position.y = lerp($RobotMesh.position.y,
 		_target_y_position, Utils.crit_plerp(4.0))
 	
+	# Rotate the mesh to match the player's facing direction
+	if !is_on_wall() and velocity.length() > 0.1:
+		_target_y_rotation = atan2(velocity.x, velocity.z)
+	%RobotMesh.rotation.y = lerp_angle(%RobotMesh.rotation.y,
+		_target_y_rotation, Utils.crit_plerp(10.0))
+	
 	# Send animation parameters to the mesh for animation blending
 	$RobotMesh.forward_blend = %InputHandler.direction.z
-	$RobotMesh.strafe_blend = %InputHandler.direction.x
+	$RobotMesh.strafe_blend = (_target_y_rotation - _original_target_y_rotation) * 2.0

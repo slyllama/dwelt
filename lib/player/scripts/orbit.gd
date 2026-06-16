@@ -3,7 +3,7 @@ extends Marker3D
 @export var view_length := 2.0
 @export var view_sensitivity := 0.75
 @export var zoom_min := 1.0
-@export var zoom_max := 2.0
+@export var zoom_max := 5.0
 @export var zoom_increment := 0.1
 
 @onready var target_x_rotation := rotation.x
@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout
 	view_length = zoom_max
-	target_fov = 87.0
+	target_fov = 55.0
 
 func _input(event: InputEvent) -> void:
 	# Handle zoom (if a GUI element isn't being hovered)
@@ -47,6 +47,6 @@ func _physics_process(_delta: float) -> void:
 	# Update positions
 	global_position = lerp(global_position,
 		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
-		Utils.crit_plerp(20.0))
+		Utils.crit_plerp(5.0))
 	$Camera.global_position = $SpringArm/CameraAnchor.global_position
 	$Camera.global_rotation = $SpringArm/CameraAnchor.global_rotation

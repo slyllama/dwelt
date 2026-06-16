@@ -36,11 +36,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle strafe animation blending
 	# (also applied as the player is turned by the camera)
-	_target_strafe_blend = lerp(_target_strafe_blend,
-		strafe_blend + rotation.z * turn_rotation_multiplier,
-		Utils.crit_plerp(animation_smoothing))
-	_target_strafe_blend = clamp(_target_strafe_blend, -1.7, 1.7)
-	$Anim.set("parameters/add_strafe/add_amount", _target_strafe_blend)
+	#_target_strafe_blend = lerp(_target_strafe_blend,
+		#strafe_blend + rotation.z * turn_rotation_multiplier,
+		#Utils.crit_plerp(animation_smoothing))
+	#_target_strafe_blend = clamp(_target_strafe_blend, -1.7, 1.7)
+	#$Anim.set("parameters/add_strafe/add_amount", _target_strafe_blend)
 	
 	_last_y_rotation = rotation.y
 	
