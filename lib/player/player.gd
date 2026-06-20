@@ -4,7 +4,6 @@ const POS_UPDATE_TICK := 0.5 # determines how often the player's position gets s
 
 @export_category("Physics")
 @export var speed := 2.0
-@export var speed_multiplier := 1.0 # used for lethargy etc
 @export var friction := 15.0
 @export var gravity_damping := 10.0
 
@@ -30,15 +29,14 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_target_velocity = Vector3.ZERO
 	var _camera_basis: Basis = $Orbit.global_transform.basis
-	var _original_target_y_rotation := _target_y_rotation
 	
 	# Calculate basis and move player based on player input
 	var _v_forward := Vector2.from_angle(%Orbit.rotation.y)
 	var _v_strafe := Vector2.from_angle(%Orbit.rotation.y + PI / 2.0)
 	var _v_forward_normal := Vector3(_v_forward.y, 0, _v_forward.x)
 	var _v_strafe_normal := Vector3(_v_strafe.y, 0, _v_strafe.x)
-	_target_velocity += _v_forward_normal * -%InputHandler.direction.z * speed * speed_multiplier
-	_target_velocity += _v_strafe_normal * %InputHandler.direction.x * speed * speed_multiplier
+	_target_velocity += _v_forward_normal * -%InputHandler.direction.z * speed
+	_target_velocity += _v_strafe_normal * %InputHandler.direction.x * speed
 	velocity = lerp(velocity, _target_velocity, Utils.crit_plerp(friction))
 	
 	# Apply gravity and hover
@@ -51,6 +49,12 @@ func _physics_process(_delta: float) -> void:
 	if _y_diff < _y_target: velocity.y += _y_target - _y_diff
 	
 	move_and_slide()
+	
+	# Get rotation from input direction and apply it to player mesh
+	if %InputHandler.direction.length() > 0:
+		_target_y_rotation = %Orbit.rotation.y - _initial_y_rotation
+	$RobotMesh.rotation.y = lerp_angle($RobotMesh.rotation.y,
+		_target_y_rotation, Utils.crit_plerp(5.0))
 	
 	if Vector3(velocity * Vector3(1, 0, 1)).length() > 1.0:
 		$RobotMesh/Stars.amount_ratio = 1.0
@@ -68,12 +72,6 @@ func _physics_process(_delta: float) -> void:
 	$RobotMesh.position.y = lerp($RobotMesh.position.y,
 		_target_y_position, Utils.crit_plerp(4.0))
 	
-	# Rotate the mesh to match the player's facing direction
-	if !is_on_wall() and velocity.length() > 0.1:
-		_target_y_rotation = atan2(velocity.x, velocity.z)
-	%RobotMesh.rotation.y = lerp_angle(%RobotMesh.rotation.y,
-		_target_y_rotation, Utils.crit_plerp(10.0))
-	
 	# Send animation parameters to the mesh for animation blending
 	$RobotMesh.forward_blend = %InputHandler.direction.z
-	$RobotMesh.strafe_blend = (_target_y_rotation - _original_target_y_rotation) * 2.0
+	$RobotMesh.strafe_blend = %InputHandler.direction.x

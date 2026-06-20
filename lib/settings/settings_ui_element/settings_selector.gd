@@ -52,6 +52,12 @@ func _ready() -> void:
 	add_child(right_padding)
 	title_label.text = title
 	
+	# Establish focusing and focus parameters
+	focus_mode = Control.FOCUS_ALL
+	focus_entered.connect(func() -> void: right_button.grab_focus())
+	left_button.focus_neighbor_right = left_button.get_path_to(right_button)
+	right_button.focus_neighbor_left = right_button.get_path_to(left_button)
+	
 	if Engine.is_editor_hint(): return
 	
 	# Redraw settings if they are reset or a redraw is requested

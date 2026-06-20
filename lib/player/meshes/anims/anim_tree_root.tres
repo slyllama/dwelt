@@ -1,0 +1,52 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://bai0au5p6xb8m"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_r1bse"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jlw2j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ram4p"]
+animation = &"player/eye"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5x5nn"]
+animation = &"player/idle"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5x5nn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jyhpi"]
+animation = &"player/move_forward"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ego0t"]
+animation = &"player/strafe"
+
+[resource]
+nodes/output/position = Vector2(660, 140)
+nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
+nodes/idle/position = Vector2(-180, 140)
+nodes/move_forward/node = SubResource("AnimationNodeAnimation_jyhpi")
+nodes/move_forward/position = Vector2(-180, 300)
+nodes/add_forward/node = SubResource("AnimationNodeAdd2_r1bse")
+nodes/add_forward/position = Vector2(240, 140)
+nodes/eye/node = SubResource("AnimationNodeAnimation_ram4p")
+nodes/eye/position = Vector2(-180, -20)
+nodes/idle_mix_eye/node = SubResource("AnimationNodeAdd2_5x5nn")
+nodes/idle_mix_eye/position = Vector2(0, -20)
+nodes/add_strafe/node = SubResource("AnimationNodeAdd2_jlw2j")
+nodes/add_strafe/position = Vector2(400, 140)
+nodes/strafe/node = SubResource("AnimationNodeAnimation_ego0t")
+nodes/strafe/position = Vector2(240, -40)
+node_connections = [&"output", 0, &"add_strafe", &"add_forward", 0, &"idle_mix_eye", &"add_forward", 1, &"move_forward", &"idle_mix_eye", 0, &"eye", &"idle_mix_eye", 1, &"idle", &"add_strafe", 0, &"add_forward", &"add_strafe", 1, &"strafe"]

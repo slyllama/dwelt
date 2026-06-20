@@ -38,9 +38,6 @@ func _generate_voice_index() -> void:
 		for _s: int in VOICES[_v].size():
 			_voice_index.append(_v)
 
-#func _init() -> void:
-	#Dwelt.play_voice.connect(play_voice)
-
 func _ready() -> void:
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/playvoice":

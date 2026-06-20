@@ -27,7 +27,6 @@ func _ready() -> void:
 	DiscordRPC.details = ""
 	DiscordRPC.refresh()
 	
-	target_scene = Dwelt.shard_path_to_load
 	Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
 	ResourceLoader.load_threaded_request(target_scene)
 

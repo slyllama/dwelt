@@ -40,7 +40,8 @@ func update_draw_order() -> void:
 # Moves a UIPane to the end of the `panes` array, and then visually orders
 # them using `update_draw_order()`
 func put_on_top(pane: UIPane) -> void:
-	if pane in panes: panes.erase(pane)
+	if pane in panes:
+		panes.erase(pane)
 	panes.push_back(pane)
 	update_draw_order()
 

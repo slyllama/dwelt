@@ -5,10 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://uyowt2urphuw" path="res://lib/ui/ui_pane/textures/close_button.jpg" id="3_43t6n"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="3_spqtq"]
 [ext_resource type="Texture2D" uid="uid://3kr2vi8df8g8" path="res://lib/ui/ui_pane/textures/close_button_hover.jpg" id="4_gwgqe"]
-[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="5_4f35j"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="5_4f35j"]
 [ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="7_lu8lm"]
 [ext_resource type="Texture2D" uid="uid://6geao0ocadpn" path="res://lib/ui/ui_pane/textures/border_effect.png" id="8_hipgv"]
-[ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="12_361nl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
 content_margin_left = 13.0
@@ -27,6 +26,7 @@ axis_stretch_vertical = 1
 custom_minimum_size = Vector2(300, 400)
 offset_right = 300.0
 offset_bottom = 400.0
+focus_behavior_recursive = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_43t6n")
 script = ExtResource("1_6rdn8")
 
@@ -85,10 +85,6 @@ volume_db = 3.0
 position = Vector2(220, 278)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_hipgv")
-
-[node name="ChangeFocus" type="AudioStreamPlayer" parent="." unique_id=382876866]
-stream = ExtResource("12_361nl")
-volume_db = -3.0
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Box/Header" to="." method="_on_header_gui_input"]

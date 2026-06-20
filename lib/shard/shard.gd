@@ -1,9 +1,10 @@
 @icon("res://generic/icons/Shard.svg")
 class_name Shard extends Node3D
 
-const SHARD := true # just used to identify that this scene is a shard
-
 @export var shard_id: String
+@export var shard_name: String
+
+const SHARD := true # just used to identify that this scene is a shard
 
 func _set_bus_vol(vol: float) -> void:
 	var _clamped_vol: float = clamp(vol, 0.0, 1.0)
@@ -11,7 +12,9 @@ func _set_bus_vol(vol: float) -> void:
 
 func _ready() -> void:
 	_set_bus_vol(0.0)
+	
 	Dwelt.current_shard_id = shard_id
+	Dwelt.discord_update_details(shard_name)
 	Utils.debug_mode_changed.emit() # update debugging nodes
 	
 	Utils.debug_sent.connect(func(string: String) -> void:
@@ -47,10 +50,8 @@ func _ready() -> void:
 			elif value == "false": get_viewport().use_taa = false)
 	
 	# Apply all settings now that each node has had a chance to load
-	# Skip full screen checks if the game has been run once
 	for _i in 3: await get_tree().process_frame
-	Settings.apply_all_settings(false, [])
+	Settings.apply_all_settings(false)
 	var _sound_fade_in := create_tween()
 	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(Settings.settings.volume), 1.0)
-	
 	Dwelt.first_run = false

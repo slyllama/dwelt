@@ -10,42 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://cch37nak71yn0" path="res://lib/player/trail/trail.tscn" id="8_1x433"]
 [ext_resource type="AudioStream" uid="uid://bkxx1ti38653a" path="res://lib/player/sounds/engine_idle.ogg" id="9_5x5nn"]
 [ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="10_ego0t"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bai0au5p6xb8m" path="res://lib/player/meshes/anims/anim_tree_root.tres" id="10_g61qk"]
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
-
-[sub_resource type="Curve" id="Curve_2ocui"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
-curve = SubResource("Curve_2ocui")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
-emission_shape_scale = Vector3(1, 0.32, 1)
-emission_shape = 2
-emission_sphere_radius = 4.5
-gravity = Vector3(0, 0.03, 0)
-scale_min = 0.59999996
-alpha_curve = SubResource("CurveTexture_ego0t")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("14_1x433")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
-material = SubResource("StandardMaterial3D_1x433")
-size = Vector2(0.04, 0.04)
 
 [sub_resource type="Curve" id="Curve_up78s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15357141, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -68,57 +39,6 @@ scale_min = 0.39999998
 scale_max = 0.7
 color_initial_ramp = SubResource("GradientTexture1D_up78s")
 alpha_curve = SubResource("CurveTexture_5x5nn")
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_r1bse"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jlw2j"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ram4p"]
-animation = &"player/eye"
-use_custom_timeline = true
-timeline_length = 2.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5x5nn"]
-animation = &"player/idle"
-use_custom_timeline = true
-timeline_length = 1.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5x5nn"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jyhpi"]
-animation = &"player/move_forward"
-use_custom_timeline = true
-timeline_length = 1.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ego0t"]
-animation = &"player/strafe"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ram4p"]
-nodes/output/position = Vector2(660, 140)
-nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
-nodes/idle/position = Vector2(-180, 140)
-nodes/move_forward/node = SubResource("AnimationNodeAnimation_jyhpi")
-nodes/move_forward/position = Vector2(-180, 300)
-nodes/add_forward/node = SubResource("AnimationNodeAdd2_r1bse")
-nodes/add_forward/position = Vector2(240, 140)
-nodes/eye/node = SubResource("AnimationNodeAnimation_ram4p")
-nodes/eye/position = Vector2(-180, -20)
-nodes/idle_mix_eye/node = SubResource("AnimationNodeAdd2_5x5nn")
-nodes/idle_mix_eye/position = Vector2(0, -20)
-nodes/add_strafe/node = SubResource("AnimationNodeAdd2_jlw2j")
-nodes/add_strafe/position = Vector2(400, 140)
-nodes/strafe/node = SubResource("AnimationNodeAnimation_ego0t")
-nodes/strafe/position = Vector2(240, -40)
-node_connections = [&"output", 0, &"add_strafe", &"add_forward", 0, &"idle_mix_eye", &"add_forward", 1, &"move_forward", &"idle_mix_eye", 0, &"eye", &"idle_mix_eye", 1, &"idle", &"add_strafe", 0, &"add_forward", &"add_strafe", 1, &"strafe"]
 
 [sub_resource type="Animation" id="Animation_1x433"]
 length = 0.001
@@ -158,6 +78,36 @@ _data = {
 &"RESET": SubResource("Animation_1x433"),
 &"glow": SubResource("Animation_ego0t")
 }
+
+[sub_resource type="Curve" id="Curve_2ocui"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
+curve = SubResource("Curve_2ocui")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
+emission_shape_scale = Vector3(1, 0.32, 1)
+emission_shape = 2
+emission_sphere_radius = 4.5
+gravity = Vector3(0, 0.03, 0)
+scale_min = 0.59999996
+alpha_curve = SubResource("CurveTexture_ego0t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("14_1x433")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_0y160"]
+material = SubResource("StandardMaterial3D_1x433")
+size = Vector2(0.04, 0.04)
 
 [sub_resource type="Animation" id="Animation_hlh1u"]
 length = 0.001
@@ -220,17 +170,6 @@ look_target = NodePath("../LookTarget")
 animation_smoothing = 5.0
 turn_rotation_multiplier = 7.0
 
-[node name="Motes" type="GPUParticles3D" parent="RobotMesh" unique_id=848711266]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-cast_shadow = 0
-amount = 128
-lifetime = 2.5
-preprocess = 5.0
-randomness = 0.25
-process_material = SubResource("ParticleProcessMaterial_2ocui")
-draw_pass_1 = SubResource("QuadMesh_0y160")
-
 [node name="Sound" type="Node3D" parent="RobotMesh" unique_id=2142391288]
 script = ExtResource("4_jlw2j")
 
@@ -273,7 +212,7 @@ omni_attenuation = 1.75
 
 [node name="Anim" type="AnimationTree" parent="RobotMesh" unique_id=733744648]
 libraries/player = ExtResource("10_ego0t")
-tree_root = SubResource("AnimationNodeBlendTree_ram4p")
+tree_root = ExtResource("10_g61qk")
 parameters/add_forward/add_amount = 0.0
 parameters/idle_mix_eye/add_amount = 1.0
 parameters/add_strafe/add_amount = 0.0
@@ -285,10 +224,16 @@ autoplay = &"glow"
 [node name="Orbit" type="Marker3D" parent="." unique_id=13830377]
 unique_name_in_owner = true
 process_mode = 3
-transform = Transform3D(0.39714786, -0.7947986, 0.45887712, 0, 0.4999998, 0.86602515, -0.9177546, -0.34394005, 0.19857386, 0, 0, 0)
+transform = Transform3D(-0.99999994, -2.2626672e-08, 8.444389e-08, 0, 0.9659255, 0.25881895, -8.742277e-08, 0.25881895, -0.9659255, 0, 0, 0)
 script = ExtResource("5_4ok3w")
+zoom_max = 2.4
+
+[node name="PanCD" type="Timer" parent="Orbit" unique_id=534597308]
+wait_time = 0.05
+one_shot = true
 
 [node name="Camera" type="Camera3D" parent="Orbit" unique_id=599081566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.895)
 current = true
 fov = 100.0
 far = 200.0
@@ -298,6 +243,17 @@ current = true
 
 [node name="CursorCast" type="Node" parent="Orbit/Camera" unique_id=1663147991]
 script = ExtResource("14_ego0t")
+
+[node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+cast_shadow = 0
+amount = 256
+lifetime = 2.5
+preprocess = 5.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2ocui")
+draw_pass_1 = SubResource("QuadMesh_0y160")
 
 [node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
 deterministic = true
@@ -316,3 +272,5 @@ script = ExtResource("1_odf55")
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
+
+[connection signal="timeout" from="Orbit/PanCD" to="Orbit" method="_on_pan_cd_timeout"]

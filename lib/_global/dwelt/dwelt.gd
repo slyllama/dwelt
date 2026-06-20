@@ -9,9 +9,13 @@ var ui_pane_manager: UIPaneManager
 
 var current_shard_id := ""
 var first_run := true
-var shard_path_to_load := "res://shards/debug/debug.tscn" # this shard will be loaded next time ShardLoader is entered
+var panning := false
+var pan_cooldown := false
+var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus
+signal camera_pan_started
+signal camera_pan_ended
 
 # Signals which fire events rather than intercept them
 signal emit_click_sound

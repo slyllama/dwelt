@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_f12jx"]
 [ext_resource type="Script" uid="uid://bu0w4wd4rm8o5" path="res://lib/settings/mapping_pane/mapping_pane.gd" id="2_qc2yh"]
 
-[node name="MappingPane" unique_id=1181014453 node_paths=PackedStringArray("initial_focus_node") instance=ExtResource("1_f12jx")]
+[node name="MappingPane" unique_id=1181014453 instance=ExtResource("1_f12jx")]
 custom_minimum_size = Vector2(500, 500)
+focus_behavior_recursive = 1
 script = ExtResource("2_qc2yh")
 title = "Input Mapping"
 ui_id = "mapping_pane"
-initial_focus_node = NodePath("Box/Done")
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Input Mapping"

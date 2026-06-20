@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ddxqh5vh3x0u7" path="res://lib/ui/ui_pane/textures/unchecked.png" id="1_657oj"]
 [ext_resource type="Texture2D" uid="uid://n73qb0xrtbvy" path="res://lib/ui/ui_pane/textures/checked.png" id="1_gfn0m"]
 [ext_resource type="Texture2D" uid="uid://twgcwo5prd3p" path="res://lib/ui/ui_pane/textures/silder.png" id="3_dvgo0"]
-[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="3_j1hk6"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="3_j1hk6"]
 [ext_resource type="Texture2D" uid="uid://cga4mm2l5chfd" path="res://lib/ui/ui_pane/textures/slider_highlight.png" id="4_6qjph"]
 [ext_resource type="Texture2D" uid="uid://1nanurm5oh8o" path="res://lib/ui/ui_pane/textures/slider_tick.png" id="5_p1wc6"]
 

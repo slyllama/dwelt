@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_1mlct"]
 [ext_resource type="Script" uid="uid://co6hbqnvx3xok" path="res://lib/settings/settings_pane/settings_pane.gd" id="2_4xwgy"]
-[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/ui/hud/debug_input/textures/separator.png" id="2_5tk31"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="2_5tk31"]
 [ext_resource type="Script" uid="uid://b8tc3q0ulna4b" path="res://lib/settings/settings_pane/scripts/presets.gd" id="2_8l32a"]
 [ext_resource type="Theme" uid="uid://dtm5ac15yopp2" path="res://generic/dwelt_theme.tres" id="2_l5xdt"]
 [ext_resource type="Script" uid="uid://1fnxqvppawai" path="res://lib/settings/settings_ui_element/settings_check_button.gd" id="3_8t512"]
@@ -12,6 +12,7 @@
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 custom_minimum_size = Vector2(300, 550)
 offset_right = 360.0
+focus_behavior_recursive = 1
 script = ExtResource("2_4xwgy")
 title = "Settings"
 ui_id = "settings_pane"
@@ -139,7 +140,17 @@ options = Array[String](["off", "low", "medium", "high"])
 title = "Shadow quality"
 metadata/_custom_type_script = "uid://c7haqafm4mwf0"
 
-[node name="Volume" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="11" unique_id=22502718]
+[node name="DrawDistance" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="11" unique_id=170264208]
+layout_mode = 2
+focus_mode = 2
+theme_override_constants/separation = 7
+script = ExtResource("4_85e62")
+setting_id = "draw_distance"
+options = Array[String](["low", "medium", "high"])
+title = "Draw distance"
+metadata/_custom_type_script = "uid://c7haqafm4mwf0"
+
+[node name="Volume" type="HBoxContainer" parent="Box/Scroll/ScrollBox" index="12" unique_id=22502718]
 layout_mode = 2
 theme_override_constants/separation = 7
 script = ExtResource("7_k5u3j")
@@ -147,11 +158,11 @@ setting_id = "volume"
 title = "Overall volume"
 metadata/_custom_type_script = "uid://hpst6xoekyfs"
 
-[node name="MappingPane" type="Button" parent="Box/Scroll/ScrollBox" index="12" unique_id=421058011]
+[node name="MappingPane" type="Button" parent="Box/Scroll/ScrollBox" index="13" unique_id=421058011]
 layout_mode = 2
 text = "Input Mapping"
 
-[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="13" unique_id=1871284538]
+[node name="BottomPad" type="ColorRect" parent="Box/Scroll/ScrollBox" index="14" unique_id=1871284538]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -163,19 +174,16 @@ color = Color(1, 1, 1, 0)
 
 [node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1037660848]
 layout_mode = 2
-focus_mode = 0
 text = "Default Settings"
 
 [node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1169901860]
 visible = false
 layout_mode = 2
-focus_mode = 0
 text = "Quit Game"
 
 [node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1109458421]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
 text = "Done"
 metadata/is_close_button = true
 

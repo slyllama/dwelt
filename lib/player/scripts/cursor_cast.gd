@@ -41,6 +41,7 @@ func _input(event: InputEvent) -> void:
 		if !last_click_in_ui and !get_window().gui_get_hovered_control():
 			if _cooldown > 0.01: return # reject if too close to the last successful input
 			_cooldown = COOLDOWN
+			print(current_collider)
 
 func _process(delta: float) -> void:
 	if _cooldown > 0.0:

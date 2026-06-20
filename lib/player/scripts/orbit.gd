@@ -3,7 +3,7 @@ extends Marker3D
 @export var view_length := 2.0
 @export var view_sensitivity := 0.75
 @export var zoom_min := 1.0
-@export var zoom_max := 5.0
+@export var zoom_max := 2.0
 @export var zoom_increment := 0.1
 
 @onready var target_x_rotation := rotation.x
@@ -11,8 +11,24 @@ extends Marker3D
 @onready var target_fov: float = $Camera.fov
 
 var vertical_offset := 0.4
+var _event_relative := Vector2.ZERO
+var _last_click_position := Vector2.ZERO
+var _eligible_to_capture := false
+
+func _release(warp_mouse := true) -> void:
+	Dwelt.pan_cooldown = true
+	$PanCD.start()
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		_eligible_to_capture = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Dwelt.panning = false
+		Dwelt.camera_pan_ended.emit()
+		if warp_mouse: get_window().warp_mouse(_last_click_position)
 
 func _ready() -> void:
+	# Release focus on window focus lost (without moving the mouse)
+	get_window().focus_exited.connect(_release.bind(false))
+	
 	# Connections
 	Dwelt.shake_camera.connect($Camera/CameraAnims.play.bind("shake"))
 	
@@ -21,10 +37,22 @@ func _ready() -> void:
 	$Camera.top_level = true
 	
 	await get_tree().create_timer(0.1).timeout
-	view_length = zoom_max
-	target_fov = 55.0
+	target_fov = 87.0
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("left_click"):
+		# Eligibility checks
+		if !get_window().gui_get_hovered_control():
+			_last_click_position = get_window().get_mouse_position()
+			_eligible_to_capture = true
+		else: _eligible_to_capture = false # this needs to be checked/reset on every click
+	if Input.is_action_just_released("left_click"):
+		_release()
+	
+	if (event is InputEventMouseMotion
+		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
+		_event_relative = event.relative * view_sensitivity
+	
 	# Handle zoom (if a GUI element isn't being hovered)
 	if !get_window().gui_get_hovered_control() or Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
 		if Input.is_action_just_pressed("zoom_in"):
@@ -35,11 +63,37 @@ func _input(event: InputEvent) -> void:
 			view_length -= event.delta.y * 0.15
 
 func _physics_process(_delta: float) -> void:
+	var _last_event_relative := _event_relative
 	view_length = clamp(view_length, zoom_min, zoom_max)
+	
+	# Only enter panning mode once a mouse click-and-drag passes a certain threshold
+	if (Input.is_action_pressed("left_click")
+		and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
+		var _mouse_pos := get_window().get_mouse_position()
+		var _mouse_delta := _mouse_pos - _last_click_position
+		if _mouse_delta.length_squared() > 100.0 and _eligible_to_capture:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Dwelt.panning = true
+			Dwelt.camera_pan_started.emit()
+	
+	# Update panning outcomes (even if no user input is happening)
+	target_x_rotation -= _event_relative.y * 0.01
+	target_y_rotation -= _event_relative.x * 0.01
+	
+	target_x_rotation = clamp(
+		target_x_rotation, deg_to_rad(-80), deg_to_rad(30))
+	rotation.x = lerp_angle(rotation.x,
+		target_x_rotation, Utils.crit_lerp(20.0))
+	rotation.y = lerp_angle(rotation.y,
+		target_y_rotation, Utils.crit_lerp(20.0))
 	
 	# Handle camera view_length
 	$SpringArm.spring_length = lerp($SpringArm.spring_length,
 		view_length, Utils.crit_plerp(10.0))
+	
+	# Update vertical offset
+	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
+	vertical_offset = 0.2 + _vo_ratio
 	
 	# Handle field-of-view
 	$Camera.fov = lerp($Camera.fov, target_fov, Utils.crit_plerp(2.0))
@@ -47,6 +101,12 @@ func _physics_process(_delta: float) -> void:
 	# Update positions
 	global_position = lerp(global_position,
 		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
-		Utils.crit_plerp(5.0))
+		Utils.crit_plerp(20.0))
 	$Camera.global_position = $SpringArm/CameraAnchor.global_position
 	$Camera.global_rotation = $SpringArm/CameraAnchor.global_rotation
+	
+	if _event_relative == _last_event_relative:
+		_event_relative = Vector2.ZERO # prevent runaway orbiting
+
+func _on_pan_cd_timeout() -> void:
+	Dwelt.pan_cooldown = false

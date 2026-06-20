@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://buo63yit41d8w"]
+
+[ext_resource type="Texture2D" uid="uid://ddyj2buxckd0m" path="res://lib/hud/eye_anim/frames/0.png" id="1_26u3f"]
+[ext_resource type="Script" uid="uid://df2nwi3k8con3" path="res://lib/hud/eye_anim/eye_anim.gd" id="1_kuc6y"]
+
+[node name="EyesAnim" type="TextureRect" unique_id=1456570687]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_26u3f")
+script = ExtResource("1_kuc6y")

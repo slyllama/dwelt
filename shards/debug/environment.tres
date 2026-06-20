@@ -1,0 +1,31 @@
+[gd_resource type="Environment" format=3 uid="uid://omrd8x86dwd7"]
+
+[ext_resource type="Material" uid="uid://c3rafrkdjfvbw" path="res://shards/debug/materials/sky.tres" id="1_ioemm"]
+
+[sub_resource type="Sky" id="Sky_rfd7c"]
+sky_material = ExtResource("1_ioemm")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_rfd7c")
+ambient_light_source = 2
+ambient_light_color = Color(0.27225003, 0.3, 0.18900001, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.12
+ssao_radius = 0.25
+ssao_intensity = 4.0
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.5
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.99607843, 0.78431374, 0.5764706, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 9.0
+fog_depth_end = 32.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_gi_inject = 0.0
+volumetric_fog_anisotropy = 0.0
+adjustment_enabled = true

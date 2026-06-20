@@ -15,7 +15,7 @@ config/version="1.0.0.0"
 run/main_scene="uid://bsm57u4128nqw"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="dwelt"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://co62h4me8g13"
@@ -47,7 +47,7 @@ mouse_cursor/custom_image="uid://cfqxpfbd8d4ih"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord/plugin.cfg", "res://addons/dwelt_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord/plugin.cfg")
 
 [gui]
 

@@ -51,13 +51,12 @@ func _init() -> void:
 
 func _ready() -> void:
 	%Close.visible = closeable
+	focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
 	if Engine.is_editor_hint(): return
 	
 	# Play "click" effects on every button
 	for _n: Node in Utils.get_all_children(self):
 		if _n is BaseButton:
-			# Disable button focusing for all buttons
-			_n.focus_mode = Control.FOCUS_NONE
 			_n.pressed.connect(func() -> void:
 				if !_n.has_meta("is_close_button"):
 					clicked.emit()
