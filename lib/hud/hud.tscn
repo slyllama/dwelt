@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/hud/scripts/override.gd" id="13_6u16q"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/hud/sounds/shutter.ogg" id="14_6rdt5"]
+[ext_resource type="PackedScene" uid="uid://2mf4xgjh1is0" path="res://lib/hud/skill_bar/skill_bar.tscn" id="14_xpxnq"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
@@ -132,6 +133,19 @@ script = ExtResource("15_asrt8")
 unique_name_in_owner = true
 wait_time = 0.06
 one_shot = true
+
+[node name="SkillBar" parent="." unique_id=1611884224 instance=ExtResource("14_xpxnq")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -68.0
+offset_right = 104.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="ScreenshotManager" type="Node" parent="." unique_id=449517999]
 unique_name_in_owner = true

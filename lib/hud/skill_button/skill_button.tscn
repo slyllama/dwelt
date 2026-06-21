@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bdr11nbnrqk7k"]
+
+[ext_resource type="Script" uid="uid://b5p3eryqm1r2n" path="res://lib/hud/skill_button/skill_button.gd" id="1_tdmsx"]
+[ext_resource type="Texture2D" uid="uid://n5pb4jjfx1aa" path="res://lib/hud/skill_button/textures/base.png" id="1_uwv12"]
+
+[node name="SkillButton" type="Control" unique_id=435513388]
+custom_minimum_size = Vector2(68, 68)
+custom_maximum_size = Vector2(68, 68)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 74.0
+offset_bottom = 74.0
+script = ExtResource("1_tdmsx")
+
+[node name="Content" type="Control" parent="." unique_id=539316073]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Base" type="TextureRect" parent="Content" unique_id=1187678563]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uwv12")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
