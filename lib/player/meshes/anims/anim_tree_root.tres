@@ -4,6 +4,8 @@
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jlw2j"]
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_sfirq"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ram4p"]
 animation = &"player/eye"
 use_custom_timeline = true
@@ -30,23 +32,31 @@ stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ego0t"]
-animation = &"player/strafe"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfirq"]
+animation = &"player/strafe_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdrym"]
+animation = &"player/strafe_R"
 
 [resource]
-nodes/output/position = Vector2(660, 140)
+graph_offset = Vector2(-678.6667, 73.333336)
+nodes/output/position = Vector2(786.6667, 133.33333)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
 nodes/idle/position = Vector2(-180, 140)
 nodes/move_forward/node = SubResource("AnimationNodeAnimation_jyhpi")
 nodes/move_forward/position = Vector2(-180, 300)
 nodes/add_forward/node = SubResource("AnimationNodeAdd2_r1bse")
-nodes/add_forward/position = Vector2(240, 140)
+nodes/add_forward/position = Vector2(213.33333, 146.66667)
 nodes/eye/node = SubResource("AnimationNodeAnimation_ram4p")
 nodes/eye/position = Vector2(-180, -20)
 nodes/idle_mix_eye/node = SubResource("AnimationNodeAdd2_5x5nn")
 nodes/idle_mix_eye/position = Vector2(0, -20)
-nodes/add_strafe/node = SubResource("AnimationNodeAdd2_jlw2j")
-nodes/add_strafe/position = Vector2(400, 140)
-nodes/strafe/node = SubResource("AnimationNodeAnimation_ego0t")
-nodes/strafe/position = Vector2(240, -40)
-node_connections = [&"output", 0, &"add_strafe", &"add_forward", 0, &"idle_mix_eye", &"add_forward", 1, &"move_forward", &"idle_mix_eye", 0, &"eye", &"idle_mix_eye", 1, &"idle", &"add_strafe", 0, &"add_forward", &"add_strafe", 1, &"strafe"]
+nodes/add_strafe_left/node = SubResource("AnimationNodeAdd2_jlw2j")
+nodes/add_strafe_left/position = Vector2(400, 140)
+nodes/strafe_left/node = SubResource("AnimationNodeAnimation_sfirq")
+nodes/strafe_left/position = Vector2(213.33333, 346.66666)
+nodes/add_strafe_right/node = SubResource("AnimationNodeAdd2_sfirq")
+nodes/add_strafe_right/position = Vector2(586.6667, 146.66667)
+nodes/strafe_right/node = SubResource("AnimationNodeAnimation_jdrym")
+nodes/strafe_right/position = Vector2(400, 346.66666)
+node_connections = [&"output", 0, &"add_strafe_right", &"add_forward", 0, &"idle_mix_eye", &"add_forward", 1, &"move_forward", &"idle_mix_eye", 0, &"eye", &"idle_mix_eye", 1, &"idle", &"add_strafe_left", 0, &"add_forward", &"add_strafe_left", 1, &"strafe_left", &"add_strafe_right", 0, &"add_strafe_left", &"add_strafe_right", 1, &"strafe_right"]

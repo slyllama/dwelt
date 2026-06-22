@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chc7l0nea7d8v"
-path.s3tc="res://.godot/imported/robot_emit.jpg-d9371631ae2745694e4cd92b004b7db8.s3tc.ctex"
+uid="uid://dv41alyq6umr1"
+path.s3tc="res://.godot/imported/body_rough.jpg-1588f2ab325fe73061d7b645be869622.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/player/materials/textures/robot_emit.jpg"
-dest_files=["res://.godot/imported/robot_emit.jpg-d9371631ae2745694e4cd92b004b7db8.s3tc.ctex"]
+source_file="res://lib/player/materials/textures/body_rough.jpg"
+dest_files=["res://.godot/imported/body_rough.jpg-1588f2ab325fe73061d7b645be869622.s3tc.ctex"]
 
 [params]
 

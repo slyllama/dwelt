@@ -1,18 +1,17 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://mnnyua8alamv"]
 
-[ext_resource type="Texture2D" uid="uid://cpaewjp2v6m7j" path="res://lib/player/materials/textures/robot_diff.jpg" id="1_fotp1"]
-[ext_resource type="Texture2D" uid="uid://c72dkvmpadky1" path="res://lib/player/materials/textures/robot_norm.jpg" id="2_s850a"]
-[ext_resource type="Texture2D" uid="uid://chc7l0nea7d8v" path="res://lib/player/materials/textures/robot_emit.jpg" id="2_yjrv5"]
+[ext_resource type="Texture2D" uid="uid://d381or6h6l6ht" path="res://lib/player/materials/textures/body_diff.jpg" id="1_yjrv5"]
+[ext_resource type="Texture2D" uid="uid://dj3twrobmife5" path="res://lib/player/materials/textures/body_norm.jpg" id="3_vs4wl"]
+[ext_resource type="Texture2D" uid="uid://dv41alyq6umr1" path="res://lib/player/materials/textures/body_rough.jpg" id="4_m6hlv"]
 
 [resource]
-albedo_texture = ExtResource("1_fotp1")
+albedo_color = Color(0.75, 0.75, 0.75, 1)
+albedo_texture = ExtResource("1_yjrv5")
 metallic = 0.35
-roughness = 0.37
+roughness = 0.0
+roughness_texture = ExtResource("4_m6hlv")
 normal_enabled = true
-normal_scale = 1.75
-normal_texture = ExtResource("2_s850a")
-backlight_enabled = true
-backlight_texture = ExtResource("2_yjrv5")
+normal_texture = ExtResource("3_vs4wl")
 distance_fade_mode = 2
 distance_fade_min_distance = 0.3
 distance_fade_max_distance = 0.5

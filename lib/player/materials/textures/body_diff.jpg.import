@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpaewjp2v6m7j"
-path="res://.godot/imported/robot_diff.jpg-8761193b61557f7f3b07d5056c281402.ctex"
+uid="uid://d381or6h6l6ht"
+path.s3tc="res://.godot/imported/body_diff.jpg-b32550fa182b8aca8e50e12ca1c7a03e.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://lib/player/materials/textures/robot_diff.jpg"
-dest_files=["res://.godot/imported/robot_diff.jpg-8761193b61557f7f3b07d5056c281402.ctex"]
+source_file="res://lib/player/materials/textures/body_diff.jpg"
+dest_files=["res://.godot/imported/body_diff.jpg-b32550fa182b8aca8e50e12ca1c7a03e.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

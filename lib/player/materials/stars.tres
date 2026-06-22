@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c5llt6yeyebu8"]
+
+[ext_resource type="Shader" uid="uid://3tmxq8wfn7uc" path="res://lib/player/materials/shaders/stars.gdshader" id="1_c2kmh"]
+[ext_resource type="Texture2D" uid="uid://cik4qltrq43uj" path="res://lib/player/materials/textures/nebula.jpg" id="2_5qg1x"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c2kmh")
+shader_parameter/stars_texture = ExtResource("2_5qg1x")

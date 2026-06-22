@@ -13,7 +13,7 @@ gradient = SubResource("Gradient_pqis1")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_2rhpf"]
-offsets = PackedFloat32Array(0.14583333, 0.42613637)
+offsets = PackedFloat32Array(0.36417323, 0.4586614)
 colors = PackedColorArray(0, 0, 0, 1, 0.9507831, 0.9507831, 0.9507831, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o1j6d"]

@@ -167,7 +167,6 @@ unique_name_in_owner = true
 transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
 script = ExtResource("4_0y160")
 look_target = NodePath("../LookTarget")
-animation_smoothing = 5.0
 turn_rotation_multiplier = 7.0
 
 [node name="Sound" type="Node3D" parent="RobotMesh" unique_id=2142391288]
@@ -215,7 +214,8 @@ libraries/player = ExtResource("10_ego0t")
 tree_root = ExtResource("10_g61qk")
 parameters/add_forward/add_amount = 0.0
 parameters/idle_mix_eye/add_amount = 1.0
-parameters/add_strafe/add_amount = 0.0
+parameters/add_strafe_left/add_amount = 0.0
+parameters/add_strafe_right/add_amount = 0.0
 
 [node name="Glow" type="AnimationPlayer" parent="RobotMesh" unique_id=1643044225]
 libraries/ = SubResource("AnimationLibrary_v5dhk")

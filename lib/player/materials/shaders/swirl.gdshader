@@ -14,8 +14,10 @@ void fragment() {
 	swirl = 1.0 - swirl;
 	
 	ALBEDO = vec3(1.0);
-	ALPHA *= pow(swirl, 1.0);
+	ALPHA *= pow(swirl, 2.0);
 	ALPHA *= texture(swirl_mask, UV - vec2(1.01)).r;
+	
+	ALPHA *= pow(1.0 - fresnel(1.0, NORMAL, VIEW), 3.0);
 	
 	float fade_distance = length(VERTEX);
 	const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
