@@ -1,7 +1,7 @@
 extends PanelContainer
 # DebugInput
 # Used for inputting debug command and seeing their results
-# TODO: output size limit
+# TODO: DebugOutput size limit
 
 const INPUT_BUFFER_SIZE := 16
 const OUTPUT_MAX_LINES := 32
@@ -18,7 +18,7 @@ func _eol() -> void: # go to end-of-line shortcut
 	%Input.set_caret_column(999)
 
 func send() -> void:
-	var _o: String = %Input.text # output
+	var _o: String = %Input.text # DebugOutput
 	if _o == "": return # don't send an empty string
 	# Only add the new command to the buffer if it is not the same
 	# as the last-entered command
@@ -35,14 +35,14 @@ func send() -> void:
 	_release()
 
 func trim_output() -> void:
-	var output_array: Array = %Output.text.split("\n")
+	var output_array: Array = %DebugOutput.text.split("\n")
 	if output_array.size() > OUTPUT_MAX_LINES:
 		while output_array.size() > OUTPUT_MAX_LINES:
 			output_array.pop_front()
-	%Output.text = ""
+	%DebugOutput.text = ""
 	for line: String in output_array:
-		%Output.text += line + "\n"
-	%Output.text = %Output.text.strip_edges(false, true)
+		%DebugOutput.text += line + "\n"
+	%DebugOutput.text = %DebugOutput.text.strip_edges(false, true)
 
 func _ready() -> void:
 	# Debug mode toggling
@@ -50,7 +50,7 @@ func _ready() -> void:
 		visible = Utils.debug_mode)
 	
 	Utils.pdebug_sent.connect(func(string: String) -> void:
-		%Output.text += "\n" + string
+		%DebugOutput.text += "\n" + string
 		trim_output())
 	Utils.debug_sent.connect(func(string: String) -> void:
 		if string == "/hello":

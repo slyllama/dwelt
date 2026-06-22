@@ -41,6 +41,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
+		print(get_window().gui_get_hovered_control())
 		# Eligibility checks
 		if !get_window().gui_get_hovered_control():
 			_last_click_position = get_window().get_mouse_position()
