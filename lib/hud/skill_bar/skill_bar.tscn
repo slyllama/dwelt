@@ -8,7 +8,7 @@
 bg_color = Color(0, 0, 0, 1)
 
 [node name="SkillBar" type="PanelContainer" unique_id=1611884224]
-offset_right = 208.0
+offset_right = 724.0
 offset_bottom = 68.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8q8ax")
 script = ExtResource("1_e8s31")
@@ -16,7 +16,7 @@ script = ExtResource("1_e8s31")
 [node name="Box" type="HBoxContainer" parent="." unique_id=293996923]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 3
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="SkillButton" parent="Box" unique_id=435513388 instance=ExtResource("1_xwfy5")]
@@ -28,6 +28,39 @@ layout_mode = 2
 input_binding = "skill_2"
 
 [node name="SkillButton3" parent="Box" unique_id=633662595 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="Padding" type="ColorRect" parent="Box" unique_id=1651430475]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SkillButton4" parent="Box" unique_id=1522754419 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton5" parent="Box" unique_id=1912403124 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton6" parent="Box" unique_id=1101874416 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton7" parent="Box" unique_id=138110579 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton8" parent="Box" unique_id=481325605 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton9" parent="Box" unique_id=1756164922 instance=ExtResource("1_xwfy5")]
+layout_mode = 2
+input_binding = "null"
+
+[node name="SkillButton10" parent="Box" unique_id=1704254344 instance=ExtResource("1_xwfy5")]
 layout_mode = 2
 input_binding = "null"
 

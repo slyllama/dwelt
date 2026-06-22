@@ -1,4 +1,5 @@
-extends Control
+@icon("res://generic/icons/SkillButton.svg")
+class_name SkillButton extends Control
 
 const DIM := 0.75 # dim strength
 
