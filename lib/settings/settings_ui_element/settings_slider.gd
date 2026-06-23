@@ -12,11 +12,11 @@ signal slider_dragged(value: float)
 
 # Update UI elements based on settings without applying the settings themselves
 func redraw() -> void:
-	var _value: String = Settings.settings[setting_id]
+	var _value: String = DwSettings.settings[setting_id]
 	slider.value = float(_value)
 
 func apply() -> void:
-	Settings.apply_setting(
+	DwSettings.apply_setting(
 		setting_id, str(snapped(slider.value, 0.1)))
 
 func _ready() -> void:
@@ -50,10 +50,10 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	# Redraw settings if they are reset or a redraw is requested
-	Settings.settings_redraw.connect(redraw)
+	DwSettings.settings_redraw.connect(redraw)
 	slider.drag_ended.connect(apply.unbind(1))
 	
-	if setting_id in Settings.settings:
+	if setting_id in DwSettings.settings:
 		redraw()
 	else: queue_free()
 

@@ -39,7 +39,7 @@ func _generate_voice_index() -> void:
 			_voice_index.append(_v)
 
 func _ready() -> void:
-	Utils.debug_sent.connect(func(string: String) -> void:
+	DwUtils.debug_sent.connect(func(string: String) -> void:
 		if string == "/playvoice":
 			play_voice())
 	
@@ -49,5 +49,5 @@ func _process(_delta: float) -> void:
 	# Apply movement sound
 	_actual_move_sound_volume = lerp(
 		_actual_move_sound_volume,
-		move_vol, Utils.crit_lerp(12.0))
+		move_vol, DwUtils.crit_lerp(12.0))
 	$EngineMoving.volume_linear = _actual_move_sound_volume

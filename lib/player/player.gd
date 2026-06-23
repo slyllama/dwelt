@@ -20,7 +20,7 @@ signal move_stopped
 @onready var _initial_y_rotation: float = %Orbit.rotation.y
 
 func _ready() -> void:
-	Dwelt.player = self
+	DwGlobal.player = self
 	
 	%Motes.visible = true
 	move_started.connect(func() -> void: $RobotMesh/Sound.move_vol = 0.37)
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	var _v_strafe_normal := Vector3(_v_strafe.y, 0, _v_strafe.x)
 	_target_velocity += _v_forward_normal * -%InputHandler.direction.z * speed
 	_target_velocity += _v_strafe_normal * %InputHandler.direction.x * speed
-	velocity = lerp(velocity, _target_velocity, Utils.crit_plerp(friction))
+	velocity = lerp(velocity, _target_velocity, DwUtils.crit_plerp(friction))
 	
 	# Apply gravity and hover
 	var _y_diff: float = $YCast.global_position.y - $YCast.get_collision_point().y
@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 	floor_y_position = $YCast.get_collision_point().y
 	if !$YCast.is_colliding(): # apply gravity even if beyond raycast height
 		_y_diff = _y_target
-	velocity.y += Dwelt.GRAVITY / gravity_damping
+	velocity.y += DwGlobal.GRAVITY / gravity_damping
 	if _y_diff < _y_target: velocity.y += _y_target - _y_diff
 	
 	move_and_slide()
@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 	if %InputHandler.direction.length() > 0:
 		_target_y_rotation = %Orbit.rotation.y - _initial_y_rotation
 	$RobotMesh.rotation.y = lerp_angle($RobotMesh.rotation.y,
-		_target_y_rotation, Utils.crit_plerp(5.0))
+		_target_y_rotation, DwUtils.crit_plerp(5.0))
 	
 	if Vector3(velocity * Vector3(1, 0, 1)).length() > 1.0:
 		$RobotMesh/Stars.amount_ratio = 1.0
@@ -70,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 			_target_y_position = 0.0
 	
 	$RobotMesh.position.y = lerp($RobotMesh.position.y,
-		_target_y_position, Utils.crit_plerp(4.0))
+		_target_y_position, DwUtils.crit_plerp(4.0))
 	
 	# Send animation parameters to the mesh for animation blending
 	$RobotMesh.forward_blend = %InputHandler.direction.z

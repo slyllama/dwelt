@@ -16,13 +16,13 @@ var _last_click_position := Vector2.ZERO
 var _eligible_to_capture := false
 
 func _release(warp_mouse := true) -> void:
-	Dwelt.pan_cooldown = true
+	DwGlobal.pan_cooldown = true
 	$PanCD.start()
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_eligible_to_capture = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Dwelt.panning = false
-		Dwelt.camera_pan_ended.emit()
+		DwGlobal.panning = false
+		DwGlobal.camera_pan_ended.emit()
 		if warp_mouse: get_window().warp_mouse(_last_click_position)
 
 func _ready() -> void:
@@ -30,9 +30,9 @@ func _ready() -> void:
 	get_window().focus_exited.connect(_release.bind(false))
 	
 	# Connections
-	Dwelt.shake_camera.connect($Camera/CameraAnims.play.bind("shake"))
+	DwGlobal.shake_camera.connect($Camera/CameraAnims.play.bind("shake"))
 	
-	Dwelt.camera = $Camera
+	DwGlobal.camera = $Camera
 	top_level = true
 	$Camera.top_level = true
 	
@@ -74,8 +74,8 @@ func _physics_process(_delta: float) -> void:
 		var _mouse_delta := _mouse_pos - _last_click_position
 		if _mouse_delta.length_squared() > 100.0 and _eligible_to_capture:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			Dwelt.panning = true
-			Dwelt.camera_pan_started.emit()
+			DwGlobal.panning = true
+			DwGlobal.camera_pan_started.emit()
 	
 	# Update panning outcomes (even if no user input is happening)
 	target_x_rotation -= _event_relative.y * 0.01
@@ -84,25 +84,25 @@ func _physics_process(_delta: float) -> void:
 	target_x_rotation = clamp(
 		target_x_rotation, deg_to_rad(-80), deg_to_rad(30))
 	rotation.x = lerp_angle(rotation.x,
-		target_x_rotation, Utils.crit_lerp(20.0))
+		target_x_rotation, DwUtils.crit_lerp(20.0))
 	rotation.y = lerp_angle(rotation.y,
-		target_y_rotation, Utils.crit_lerp(20.0))
+		target_y_rotation, DwUtils.crit_lerp(20.0))
 	
 	# Handle camera view_length
 	$SpringArm.spring_length = lerp($SpringArm.spring_length,
-		view_length, Utils.crit_plerp(10.0))
+		view_length, DwUtils.crit_plerp(10.0))
 	
 	# Update vertical offset
 	var _vo_ratio := (view_length - zoom_min) / (zoom_max - zoom_min)
 	vertical_offset = 0.2 + _vo_ratio
 	
 	# Handle field-of-view
-	$Camera.fov = lerp($Camera.fov, target_fov, Utils.crit_plerp(2.0))
+	$Camera.fov = lerp($Camera.fov, target_fov, DwUtils.crit_plerp(2.0))
 	
 	# Update positions
 	global_position = lerp(global_position,
 		get_parent().global_position + Vector3(0, 1, 0) * vertical_offset,
-		Utils.crit_plerp(20.0))
+		DwUtils.crit_plerp(20.0))
 	$Camera.global_position = $SpringArm/CameraAnchor.global_position
 	$Camera.global_rotation = $SpringArm/CameraAnchor.global_rotation
 	
@@ -110,4 +110,4 @@ func _physics_process(_delta: float) -> void:
 		_event_relative = Vector2.ZERO # prevent runaway orbiting
 
 func _on_pan_cd_timeout() -> void:
-	Dwelt.pan_cooldown = false
+	DwGlobal.pan_cooldown = false

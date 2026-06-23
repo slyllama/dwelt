@@ -31,11 +31,11 @@ func _ready() -> void:
 	emit_click_sound.connect($Click.play)
 	
 	# Connect settings
-	Settings.setting_applied.connect(func(setting: String, value: String) -> void:
+	DwSettings.setting_applied.connect(func(setting: String, value: String) -> void:
 		if setting == "volume":
 			var _clamped_vol: float = clamp(float(value), 0.0, 1.0)
 			AudioServer.set_bus_volume_linear(0, float(_clamped_vol)))
 	
-	Utils.debug_sent.connect(func(string: String) -> void:
+	DwUtils.debug_sent.connect(func(string: String) -> void:
 		if string == "/pause": get_tree().paused = true
 		elif string == "/unpause": get_tree().paused = false)

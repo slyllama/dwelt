@@ -46,7 +46,7 @@ func put_on_top(pane: UIPane) -> void:
 	update_draw_order()
 
 func _ready() -> void:
-	Dwelt.ui_pane_manager = self
+	DwGlobal.ui_pane_manager = self
 	
 	for child in get_children():
 		if child is UIPane:

@@ -24,7 +24,7 @@ func apply_setting(parameter: String, value: String, do_save := true) -> void:
 	if parameter in settings:
 		settings[parameter] = value
 		setting_applied.emit(parameter, value)
-	else: Utils.pdebug("Couldn't save setting '"
+	else: DwUtils.pdebug("Couldn't save setting '"
 		+ parameter + "': no such setting.", "Settings")
 	if do_save:
 		save_file()

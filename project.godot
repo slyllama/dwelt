@@ -27,10 +27,10 @@ buses/default_bus_layout="uid://cmqjm6qakuc11"
 
 [autoload]
 
-Dwelt="*uid://rqrqjxwxxqnp"
-Utils="*uid://gjxkiq74de68"
-Settings="*uid://b48mkw44c6463"
-InputHandler="*uid://dk5m0s81qvej3"
+DwGlobal="*uid://rqrqjxwxxqnp"
+DwUtils="*uid://gjxkiq74de68"
+DwSettings="*uid://b48mkw44c6463"
+DwInput="*uid://dk5m0s81qvej3"
 
 [debug]
 

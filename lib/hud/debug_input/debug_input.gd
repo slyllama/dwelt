@@ -30,7 +30,7 @@ func send() -> void:
 	# Remove the oldest command if the buffer size is passed
 	if buffer.size() > INPUT_BUFFER_SIZE:
 		buffer.pop_back()
-	Utils.debug_sent.emit(_o)
+	DwUtils.debug_sent.emit(_o)
 	%Input.text = ""
 	_release()
 
@@ -46,25 +46,25 @@ func trim_output() -> void:
 
 func _ready() -> void:
 	# Debug mode toggling
-	Utils.debug_mode_changed.connect(func() -> void:
-		visible = Utils.debug_mode)
+	DwUtils.debug_mode_changed.connect(func() -> void:
+		visible = DwUtils.debug_mode)
 	
-	Utils.pdebug_sent.connect(func(string: String) -> void:
+	DwUtils.pdebug_sent.connect(func(string: String) -> void:
 		%DebugOutput.text += "\n" + string
 		trim_output())
-	Utils.debug_sent.connect(func(string: String) -> void:
+	DwUtils.debug_sent.connect(func(string: String) -> void:
 		if string == "/hello":
-			Utils.pdebug("Hello, world!"))
+			DwUtils.pdebug("Hello, world!"))
 
 func _input(_event: InputEvent) -> void:
 	# Toggle input focusing
 	if Input.is_action_just_pressed("debug_prefix"):
-		if !Utils.debug_mode: # activate if not active
-			Utils.debug_mode = true
-			Utils.debug_mode_changed.emit()
+		if !DwUtils.debug_mode: # activate if not active
+			DwUtils.debug_mode = true
+			DwUtils.debug_mode_changed.emit()
 		%Input.grab_focus()
 	
-	if !Utils.debug_mode: return
+	if !DwUtils.debug_mode: return
 	
 	if Input.is_action_just_pressed("debug_input"):
 		await get_tree().process_frame

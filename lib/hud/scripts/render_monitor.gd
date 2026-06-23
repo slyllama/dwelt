@@ -7,8 +7,8 @@ func _init() -> void:
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Debug mode toggling
-	Utils.debug_mode_changed.connect(func() -> void:
-		visible = Utils.debug_mode)
+	DwUtils.debug_mode_changed.connect(func() -> void:
+		visible = DwUtils.debug_mode)
 
 var _c := 0
 func update() -> void:
@@ -34,5 +34,5 @@ func update() -> void:
 	text += "\nVRAM: " + str(snapped(_mem * 0.000001, 1)) + "MB"
 
 func _process(_delta: float) -> void:
-	if !Utils.debug_mode: return
+	if !DwUtils.debug_mode: return
 	update()

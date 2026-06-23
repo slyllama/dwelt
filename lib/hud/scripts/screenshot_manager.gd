@@ -1,7 +1,7 @@
 extends Node
 
 const PATH := "user://screenshots/"
-@onready var global_path :=ProjectSettings.globalize_path(PATH)
+@onready var global_path := ProjectSettings.globalize_path(PATH)
 
 func take_screenshot() -> void:
 	$Shutter.play()

@@ -21,7 +21,7 @@ func _ready() -> void:
 	if Engine.is_embedded_in_editor(): return
 	
 	# Connect settings
-	Settings.setting_applied.connect(func(setting: String, value: String) -> void:
+	DwSettings.setting_applied.connect(func(setting: String, value: String) -> void:
 		if setting == "full_screen":
 			if value == "true": get_window().mode = Window.MODE_FULLSCREEN
 			elif value == "false": get_window().mode = Window.MODE_WINDOWED)

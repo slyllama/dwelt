@@ -12,7 +12,7 @@ var transitioning := false
 func _transition() -> void:
 	if transitioning: return
 	transitioning = true
-	Utils.pdebug("Done.", "ShardLoader")
+	DwUtils.pdebug("Done.", "ShardLoader")
 	
 	%Black.visible = true
 	var _t := create_tween()
@@ -27,7 +27,7 @@ func _ready() -> void:
 	DiscordRPC.details = ""
 	DiscordRPC.refresh()
 	
-	Utils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
+	DwUtils.pdebug("Loading shard '" + target_scene + "'...", "ShardLoader")
 	ResourceLoader.load_threaded_request(target_scene)
 
 func _physics_process(delta: float) -> void:

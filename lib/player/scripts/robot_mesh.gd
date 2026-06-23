@@ -13,11 +13,11 @@ var _ns_count := 0 # no shadows count
 @onready var _last_y_rotation := rotation.y
 
 func _ready() -> void:
-	for _n: Node in Utils.get_all_children($Armature/Skeleton3D):
+	for _n: Node in DwUtils.get_all_children($Armature/Skeleton3D):
 		if _n is MeshInstance3D and "Glow" in _n.name:
 			_n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			_ns_count += 1
-	Utils.pdebug("Removed shadows for " 
+	DwUtils.pdebug("Removed shadows for " 
 		+ str(_ns_count) + " meshes.", "Player/RobotMesh")
 
 var _c := 1.0
@@ -26,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	else: # defer mesh rotation (otherwise it goes nuts on game start)
 		rotation.z = lerp(rotation.z, # rotate the mesh as the camera turns
 			(_last_y_rotation - rotation.y) * 3.0,
-			Utils.crit_plerp(animation_smoothing))
+			DwUtils.crit_plerp(animation_smoothing))
 	
 	# Handle forward animation blending
 	_target_forward_blend = lerp(_target_forward_blend,
-		forward_blend, Utils.crit_plerp(animation_smoothing))
+		forward_blend, DwUtils.crit_plerp(animation_smoothing))
 	_target_forward_blend = clamp(_target_forward_blend, -0.5, 1.0)
 	$Anim.set("parameters/add_forward/add_amount", _target_forward_blend)
 	
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	# (also applied as the player is turned by the camera)
 	_target_strafe_blend = lerp(_target_strafe_blend,
 		strafe_blend + rotation.z * turn_rotation_multiplier,
-		Utils.crit_plerp(animation_smoothing))
+		DwUtils.crit_plerp(animation_smoothing))
 	_target_strafe_blend = clamp(_target_strafe_blend, -1.0, 1.0)
 	if _target_strafe_blend < 0:
 		$Anim.set("parameters/add_strafe_right/add_amount", 0.0)

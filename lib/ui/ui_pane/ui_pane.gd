@@ -37,13 +37,13 @@ func close() -> void:
 func close_pane() -> void:
 	if close_requested: return # pane has already been closed
 	close_requested = true
-	if Dwelt.ui_pane_manager:
-		Dwelt.ui_pane_manager.close_pane(self)
+	if DwGlobal.ui_pane_manager:
+		DwGlobal.ui_pane_manager.close_pane(self)
 
 func move_to_center() -> void:
 	if Engine.is_editor_hint(): return
 	set_anchors_preset(PRESET_CENTER)
-	position = Utils.get_window_center() - size / 2.0
+	position = DwUtils.get_window_center() - size / 2.0
 
 func _init() -> void:
 	if !Engine.is_editor_hint():
@@ -55,12 +55,12 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	# Play "click" effects on every button
-	for _n: Node in Utils.get_all_children(self):
+	for _n: Node in DwUtils.get_all_children(self):
 		if _n is BaseButton:
 			_n.pressed.connect(func() -> void:
 				if !_n.has_meta("is_close_button"):
 					clicked.emit()
-				Dwelt.emit_click_sound.emit())
+				DwGlobal.emit_click_sound.emit())
 	
 	# Fade in and play open sound
 	var _fade_tween := create_tween()

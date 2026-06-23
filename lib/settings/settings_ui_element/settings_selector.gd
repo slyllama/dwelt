@@ -14,7 +14,7 @@ class_name SettingsSelector extends HBoxContainer
 @onready var right_padding := ColorRect.new()
 
 func redraw() -> void:
-	value_label.text = Settings.settings[setting_id].capitalize()
+	value_label.text = DwSettings.settings[setting_id].capitalize()
 
 func _ready() -> void:
 	if !setting_id:
@@ -61,9 +61,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	# Redraw settings if they are reset or a redraw is requested
-	Settings.settings_redraw.connect(redraw)
+	DwSettings.settings_redraw.connect(redraw)
 	
-	if !setting_id in Settings.settings:
+	if !setting_id in DwSettings.settings:
 		queue_free()
 		return
 	
@@ -77,7 +77,7 @@ func _ready() -> void:
 		else:
 			_value = options[options.size() - 1]
 		value_label.text = _value.capitalize()
-		Settings.apply_setting(setting_id, _value))
+		DwSettings.apply_setting(setting_id, _value))
 	
 	right_button.pressed.connect(func() -> void:
 		var _current_value := value_label.text.to_lower()
@@ -88,7 +88,7 @@ func _ready() -> void:
 		else:
 			_value = options[0]
 		value_label.text = _value.capitalize()
-		Settings.apply_setting(setting_id, _value))
+		DwSettings.apply_setting(setting_id, _value))
 	
 	# Get from settings
 	redraw()

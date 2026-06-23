@@ -49,6 +49,6 @@ func _physics_process(_delta: float) -> void:
 		_dir.z = _last_z_input[0]
 	else: _dir.z = 0
 	
-	if !InputHandler.in_text_edit_mode:
+	if !DwInput.in_text_edit_mode:
 		direction = _dir.normalized()
 	else: direction = Vector3.ZERO

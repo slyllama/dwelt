@@ -35,7 +35,7 @@ func _on_screenshot_pressed() -> void:
 # Right-click on the screenshot icon to go to the screenshot folder
 func _on_screenshot_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("right_click"):
-		Dwelt.emit_click_sound.emit()
+		DwGlobal.emit_click_sound.emit()
 		%ScreenshotManager.open_folder()
 
 func _on_dev_menu_pressed() -> void:

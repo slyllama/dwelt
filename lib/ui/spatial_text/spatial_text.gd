@@ -14,16 +14,16 @@ const TICK := 0.6
 var visibility_state := false
 
 func handle_visibility() -> void:
-	var _dist_to_player := global_position.distance_to(Dwelt.player.global_position)
+	var _dist_to_player := global_position.distance_to(DwGlobal.player.global_position)
 	label.modulate.a = 1.0 - clamp(_dist_to_player - render_distance, 0.0, 1.0)
 
 func _ready() -> void:
 	aabb = AABB(Vector3(-0.1, -0.1, -0.1), Vector3(0.2, 0.2, 0.2))
 	
 	if Engine.is_editor_hint(): return
-	Utils.debug_mode_changed.connect(func() -> void:
+	DwUtils.debug_mode_changed.connect(func() -> void:
 		if debug_only:
-			canvas.visible = Utils.debug_mode)
+			canvas.visible = DwUtils.debug_mode)
 	
 	# Screen visibility change connections
 	screen_entered.connect(func() -> void: root_2d.visible = true)
@@ -52,12 +52,12 @@ func _ready() -> void:
 	# Process this again (for late-comers)
 	await get_tree().process_frame
 	label.text = text
-	if debug_only: canvas.visible = Utils.debug_mode
+	if debug_only: canvas.visible = DwUtils.debug_mode
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	if debug_only and !Utils.debug_mode: return
+	if debug_only and !DwUtils.debug_mode: return
 	if is_on_screen() and label.visible:
-		root_2d.global_position = Dwelt.camera.unproject_position(global_position)
+		root_2d.global_position = DwGlobal.camera.unproject_position(global_position)
 		label.position.x = -label.size.x / 2.0
 		handle_visibility()
