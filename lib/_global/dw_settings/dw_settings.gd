@@ -42,21 +42,17 @@ func apply_default_settings() -> void:
 	settings_redraw.emit()
 
 func load_file() -> void:
-	if FileAccess.file_exists(SETTINGS_PATH):
-		var _f := FileAccess.open(SETTINGS_PATH, FileAccess.READ)
-		var _f_json: Dictionary = JSON.parse_string(_f.get_as_text())
+	if DwFile.exists(SETTINGS_PATH):
+		var _f_json := DwFile.get_json(SETTINGS_PATH)
 		# Update values in `settings` rather than replacing the whole thing -
 		# ensures that new values are appropriately added to the save
 		for parameter: String in _f_json:
 			# Only values already in `DEFAULT_SETTINGS` get updated
 			if parameter in DEFAULT_SETTINGS:
 				settings[parameter] = _f_json[parameter]
-		_f.close()
 
 func save_file() -> void:
-	var _f := FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
-	_f.store_string(JSON.stringify(settings, "\t"))
-	_f.close()
+	DwFile.store_json(SETTINGS_PATH, settings)
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

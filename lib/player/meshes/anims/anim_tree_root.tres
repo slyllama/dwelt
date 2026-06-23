@@ -39,6 +39,7 @@ animation = &"player/strafe_L"
 animation = &"player/strafe_R"
 
 [resource]
+graph_offset = Vector2(-309.48184, -51.831226)
 nodes/output/position = Vector2(786.6667, 133.33333)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5x5nn")
 nodes/idle/position = Vector2(-180, 140)
