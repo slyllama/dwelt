@@ -1,0 +1,50 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ce2b0rh2rkon1"]
+
+[ext_resource type="Shader" uid="uid://cquviual0nsnd" path="res://shards/debug/props/ocean/materials/shaders/ocean.gdshader" id="1_6au76"]
+
+[sub_resource type="Gradient" id="Gradient_8gogw"]
+offsets = PackedFloat32Array(0.11220472, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fei8s"]
+noise_type = 2
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gqtul"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_fei8s")
+color_ramp = SubResource("Gradient_8gogw")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_b033v"]
+offsets = PackedFloat32Array(0.25, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_va856"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vufpp"]
+noise = SubResource("FastNoiseLite_va856")
+color_ramp = SubResource("Gradient_b033v")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6au76"]
+noise = SubResource("FastNoiseLite_va856")
+color_ramp = SubResource("Gradient_b033v")
+seamless = true
+as_normal_map = true
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_6au76")
+shader_parameter/roughness = 0.04
+shader_parameter/speed_scale = 1.0
+shader_parameter/normal_strength = 1.10000005225
+shader_parameter/foam_exponent = 2.0
+shader_parameter/metallic = 1.0
+shader_parameter/alpha_mottle_intensity = 0.398000018905
+shader_parameter/uv_scale = Vector2(4, 4)
+shader_parameter/primary_color = Color(0.16335496, 0.29775727, 0.32835948, 1)
+shader_parameter/foam_color = Color(0.29140002, 0.94, 0.77785, 1)
+shader_parameter/normal_a = SubResource("NoiseTexture2D_vufpp")
+shader_parameter/normal_b = SubResource("NoiseTexture2D_6au76")
+shader_parameter/light_foam = SubResource("NoiseTexture2D_gqtul")

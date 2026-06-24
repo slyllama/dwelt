@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="5_r1u5u"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_52lhj"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="7_52lhj"]
+[ext_resource type="Material" uid="uid://ce2b0rh2rkon1" path="res://shards/debug/props/ocean/materials/ocean.tres" id="8_aj623"]
 
 [sub_resource type="Gradient" id="Gradient_58tgt"]
 interpolation_mode = 2
@@ -49,6 +50,11 @@ buffer = PackedFloat32Array(-2.0248356, 0, 0.22916055, 0.20902048, 0, 3.4641955,
 [sub_resource type="FogMaterial" id="FogMaterial_e8s31"]
 albedo = Color(0.9074074, 0.81914425, 0.7753401, 1)
 edge_fade = 0.282843
+
+[sub_resource type="QuadMesh" id="QuadMesh_tjdhw"]
+material = ExtResource("8_aj623")
+size = Vector2(12, 12)
+orientation = 1
 
 [node name="Debug" unique_id=1127074071 instance=ExtResource("1_wy1d8")]
 script = ExtResource("2_sts1q")
@@ -102,3 +108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.836054, 0, 1.1702803)
 size = Vector3(12, 1, 12)
 shape = 0
 material = SubResource("FogMaterial_e8s31")
+
+[node name="OceanTest" type="MeshInstance3D" parent="." index="9" unique_id=69160144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.1, 0)
+mesh = SubResource("QuadMesh_tjdhw")
