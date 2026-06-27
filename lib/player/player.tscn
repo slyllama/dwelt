@@ -12,6 +12,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="10_ego0t"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://bai0au5p6xb8m" path="res://lib/player/meshes/anims/anim_tree_root.tres" id="10_g61qk"]
 [ext_resource type="AudioStream" uid="uid://bieahrad33g0x" path="res://lib/player/sounds/engine_moving.ogg" id="10_ram4p"]
+[ext_resource type="Script" uid="uid://wmcvvqjsseet" path="res://lib/player/scripts/ocean_fx.gd" id="11_jlw2j"]
+[ext_resource type="Texture2D" uid="uid://uisx4e6sx7ts" path="res://lib/player/materials/textures/splash_mask.png" id="12_ego0t"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
 
@@ -79,11 +81,59 @@ _data = {
 &"glow": SubResource("Animation_ego0t")
 }
 
+[sub_resource type="Curve" id="Curve_ego0t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.08858268, 1), 0.0, 0.0, 0, 0, Vector2(0.62795275, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jlw2j"]
+curve = SubResource("Curve_ego0t")
+
+[sub_resource type="Gradient" id="Gradient_1x433"]
+colors = PackedColorArray(0.38231492, 0.55155766, 0.7784933, 1, 0.6635278, 0.798084, 0.783566, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1x433"]
+gradient = SubResource("Gradient_1x433")
+
+[sub_resource type="Curve" id="Curve_1x433"]
+_data = [Vector2(0, 0.85126585), 0.0, 6.208642, 0, 0, Vector2(0.26574802, 1), -0.33388504, -0.33388504, 0, 0, Vector2(1, 0.93354434), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
+curve = SubResource("Curve_1x433")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jlw2j"]
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+gravity = Vector3(0, -5, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_ego0t")
+color_initial_ramp = SubResource("GradientTexture1D_1x433")
+alpha_curve = SubResource("CurveTexture_jlw2j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6au76"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.75, 0.75, 0.75, 1)
+albedo_texture = ExtResource("12_ego0t")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ego0t"]
+material = SubResource("StandardMaterial3D_6au76")
+size = Vector2(0.3, 0.3)
+
 [sub_resource type="Curve" id="Curve_2ocui"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_ego0t"]
+[sub_resource type="CurveTexture" id="CurveTexture_v5dhk"]
 curve = SubResource("Curve_2ocui")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ocui"]
@@ -92,7 +142,7 @@ emission_shape = 2
 emission_sphere_radius = 4.5
 gravity = Vector3(0, 0.03, 0)
 scale_min = 0.59999996
-alpha_curve = SubResource("CurveTexture_ego0t")
+alpha_curve = SubResource("CurveTexture_v5dhk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
 transparency = 1
@@ -221,6 +271,26 @@ parameters/add_strafe_right/add_amount = 0.0
 libraries/ = SubResource("AnimationLibrary_v5dhk")
 autoplay = &"glow"
 
+[node name="OceanFX" type="RayCast3D" parent="RobotMesh" unique_id=310670500]
+collision_mask = 32768
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("11_jlw2j")
+
+[node name="Tick" type="Timer" parent="RobotMesh/OceanFX" unique_id=1398629650]
+wait_time = 0.1
+autostart = true
+
+[node name="Particles" type="GPUParticles3D" parent="RobotMesh/OceanFX" unique_id=214425681]
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+top_level = true
+cast_shadow = 0
+lifetime = 0.4
+speed_scale = 0.75
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_jlw2j")
+draw_pass_1 = SubResource("QuadMesh_ego0t")
+
 [node name="Orbit" type="Marker3D" parent="." unique_id=13830377]
 unique_name_in_owner = true
 process_mode = 3
@@ -273,4 +343,5 @@ script = ExtResource("1_odf55")
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
 
+[connection signal="timeout" from="RobotMesh/OceanFX/Tick" to="RobotMesh/OceanFX" method="_on_tick_timeout"]
 [connection signal="timeout" from="Orbit/PanCD" to="Orbit" method="_on_pan_cd_timeout"]
