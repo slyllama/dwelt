@@ -51,7 +51,7 @@ func _ready() -> void:
 	
 	# Apply all settings now that each node has had a chance to load
 	for _i in 3: await get_tree().process_frame
-	DwSettings.apply_all_settings(false)
+	DwSettings.apply_all_settings(false, ["full_screen", "volume"])
 	var _sound_fade_in := create_tween()
 	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(DwSettings.settings.volume), 1.0)
 	DwGlobal.first_run = false

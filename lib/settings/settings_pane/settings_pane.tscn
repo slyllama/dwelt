@@ -12,7 +12,6 @@
 [node name="SettingsPane" unique_id=1181014453 instance=ExtResource("1_1mlct")]
 custom_minimum_size = Vector2(300, 550)
 offset_right = 360.0
-focus_behavior_recursive = 1
 script = ExtResource("2_4xwgy")
 title = "Settings"
 ui_id = "settings_pane"
@@ -176,12 +175,7 @@ color = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Default Settings"
 
-[node name="Quit" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1169901860]
-visible = false
-layout_mode = 2
-text = "Quit Game"
-
-[node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1109458421]
+[node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1109458421]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Done"
@@ -197,5 +191,4 @@ position = Vector2(280, 428)
 [connection signal="slider_dragged" from="Box/Scroll/ScrollBox/Volume" to="." method="_on_volume_slider_dragged"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/MappingPane" to="." method="_on_mapping_pane_pressed"]
 [connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
-[connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Box/Done" to="." method="_on_done_pressed"]

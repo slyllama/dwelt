@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://bme8bjwkaw8v5"]
+
+[ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_vw87d"]
+[ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
+[ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
+[ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
+
+[sub_resource type="Animation" id="Animation_7usjq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky/Sun:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lamp:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uliap"]
+resource_name = "fade_in"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky/Sun:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lamp:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjam2"]
+_data = {
+&"RESET": SubResource("Animation_7usjq"),
+&"fade_in": SubResource("Animation_uliap")
+}
+
+[sub_resource type="Environment" id="Environment_ex00m"]
+background_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_ex00m"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=981862460]
+script = ExtResource("1_vw87d")
+
+[node name="Box" type="HBoxContainer" parent="." unique_id=1664608640]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Play" type="Button" parent="Box" unique_id=1722029499]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Play"
+
+[node name="Settings" type="Button" parent="Box" unique_id=905284177]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Box" unique_id=705195215]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Quit"
+
+[node name="World" type="Node3D" parent="." unique_id=191836736]
+script = ExtResource("2_n57j6")
+
+[node name="FadePlayerIn" type="AnimationPlayer" parent="World" unique_id=495735395]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_pjam2")
+
+[node name="PlayerAsync" type="Node3D" parent="World" unique_id=882231283]
+script = ExtResource("3_7usjq")
+path = "uid://fok2dlvwn6yg"
+metadata/_custom_type_script = "uid://beegbluc51ecb"
+
+[node name="Sky" type="WorldEnvironment" parent="World" unique_id=1046197421]
+environment = SubResource("Environment_ex00m")
+
+[node name="Sun" type="DirectionalLight3D" parent="World/Sky" unique_id=470708534]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+light_energy = 0.0
+
+[node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 3)
+current = true
+fov = 35.0
+script = ExtResource("4_uliap")
+intensity = Vector2(0.1, 0.1)
+
+[node name="TestMesh" type="MeshInstance3D" parent="World" unique_id=895759213]
+visible = false
+mesh = SubResource("SphereMesh_ex00m")
+
+[node name="Lamp" type="OmniLight3D" parent="World" unique_id=1922246222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0.4)
+light_energy = 0.0
+
+[node name="FG" type="ColorRect" parent="." unique_id=1958744255]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
+[connection signal="loaded" from="World/PlayerAsync" to="World" method="_on_player_async_loaded"]
