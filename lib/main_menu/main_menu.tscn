@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
 [ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
+[ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -138,7 +139,14 @@ mesh = SubResource("SphereMesh_ex00m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0.4)
 light_energy = 0.0
 
-[node name="FG" type="ColorRect" parent="." unique_id=1958744255]
+[node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("5_pjam2")]
+unique_name_in_owner = true
+
+[node name="Override" type="CanvasLayer" parent="." unique_id=1719359649]
+layer = 4
+
+[node name="FG" type="ColorRect" parent="Override" unique_id=1958744255]
+unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -149,5 +157,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Box/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
 [connection signal="loaded" from="World/PlayerAsync" to="World" method="_on_player_async_loaded"]

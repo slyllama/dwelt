@@ -6,6 +6,18 @@ var panes: Array[UIPane] = []
 # Signal the amount of panes in the UIPaneManager whenever one is addded OR removed
 signal panes_updated(pane_count: int)
 
+func toggle_open(path: String, id: String) -> void:
+	var _pane_open := false
+	for _n: UIPane in %UIPaneManager.get_children():
+		if _n.ui_id == id:
+			_pane_open = true
+			%UIPaneManager.close_pane(_n)
+	if !_pane_open:
+		var _pane: UIPane = load(path).instantiate()
+		%UIPaneManager.add_child(_pane)
+		_pane.set_anchors_preset(Control.PRESET_CENTER)
+		_pane.move_to_center()
+
 # Registering a UI pane puts it in the drawing queue, ensuring that it gets
 # moved to the front when clicked etc
 func register_pane(pane: UIPane) -> void:

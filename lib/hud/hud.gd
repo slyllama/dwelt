@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const SettingsPane = preload("res://lib/settings/settings_pane/settings_pane.tscn")
+const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn"
 
 func _ready() -> void:
 	$DebugBG.queue_free()
@@ -11,19 +11,10 @@ func _input(_event: InputEvent) -> void:
 	if (Input.is_action_just_pressed("ui_cancel")
 		and %UIPaneManager.panes.size() == 0):
 		_on_settings_pressed()
-# Toggle the settings menu
 
+# Toggle the settings menu
 func _on_settings_pressed() -> void:
-	var _pane_open := false
-	for _n: UIPane in %UIPaneManager.get_children():
-		if _n.ui_id == "settings_pane":
-			_pane_open = true
-			%UIPaneManager.close_pane(_n)
-	if !_pane_open:
-		var settings_pane: UIPane = SettingsPane.instantiate()
-		%UIPaneManager.add_child(settings_pane)
-		settings_pane.set_anchors_preset(Control.PRESET_CENTER)
-		settings_pane.move_to_center()
+	%UIPaneManager.toggle_open(SETTINGS_PANE_PATH, "settings_pane")
 
 func _on_screenshot_pressed() -> void:
 	if !Input.is_action_pressed("ui_shift"):
@@ -37,7 +28,3 @@ func _on_screenshot_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		DwGlobal.emit_click_sound.emit()
 		%ScreenshotManager.open_folder()
-
-func _on_dev_menu_pressed() -> void:
-	#TODO: fix
-	%DevMenu.visible = !%DevMenu.visible
