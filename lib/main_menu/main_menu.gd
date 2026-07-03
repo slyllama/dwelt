@@ -3,8 +3,16 @@ extends CanvasLayer
 const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn"
 
 func _ready() -> void:
-	DwSettings.apply_all_settings(false)
+	# Click sounds
+	for _b: Button in $Box.get_children():
+		_b.pressed.connect(func() -> void:
+			DwGlobal.emit_click_sound.emit())
+	
 	DwGlobal.discord_update_details("In Main Menu")
+	for _i in 3: await get_tree().process_frame
+	DwSettings.apply_all_settings(false)
+	
+	$Music.play()
 
 func _input(_event: InputEvent) -> void:
 	if %FG.visible: return # transition has started

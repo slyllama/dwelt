@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d01hfu6utglbr"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://generic/materials/shaders/gadget.gdshader" id="1_dcvoe"]
+[ext_resource type="Texture2D" uid="uid://c8er0wmrrj08p" path="res://generic/materials/textures/1m_diff.jpg" id="2_2e4v8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dcvoe")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_2e4v8")
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = 0.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false

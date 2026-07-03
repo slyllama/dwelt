@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c2ida8sy6y6xb"]
+
+[ext_resource type="Script" uid="uid://betsyaiukvefd" path="res://lib/gadget/scripts/gadget.gd" id="1_dw7fg"]
+[ext_resource type="PackedScene" uid="uid://ddlxjsx4mlprv" path="res://gadgets/test_gadget/meshes/test_gadget.glb" id="2_qosmb"]
+[ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/ui/spatial_text/spatial_text.gd" id="3_mksdg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ex00m"]
+
+[node name="TestGadget" type="StaticBody3D" unique_id=1892982592 node_paths=PackedStringArray("model")]
+script = ExtResource("1_dw7fg")
+gadget_id = "test_gadget"
+model = NodePath("Mesh")
+metadata/_custom_type_script = "uid://betsyaiukvefd"
+
+[node name="Mesh" parent="." unique_id=1351842819 instance=ExtResource("2_qosmb")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=2126469850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ex00m")
+
+[node name="SpatialText" type="VisibleOnScreenNotifier3D" parent="." unique_id=1073545103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+script = ExtResource("3_mksdg")
+text = "Test Gadget"
+render_distance = 3.0
+metadata/_custom_type_script = "uid://kh208mvheurt"

@@ -44,7 +44,7 @@ func _input(_event: InputEvent) -> void:
 		if is_pressed:
 			if !is_binding_pressed():
 				released.emit()
-		set_pressed(false)
+				set_pressed(false)
 	
 	# Handle input action pressing
 	if is_binding_just_pressed():
@@ -54,7 +54,7 @@ func _input(_event: InputEvent) -> void:
 		if is_pressed:
 			if !Input.is_action_pressed("left_click"):
 				released.emit()
-		set_pressed(false)
+				set_pressed(false)
 
 func _on_mouse_exited() -> void:
 	set_pressed(false)

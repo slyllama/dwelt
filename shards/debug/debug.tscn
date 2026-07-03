@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_52lhj"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="7_52lhj"]
 [ext_resource type="Material" uid="uid://ce2b0rh2rkon1" path="res://shards/debug/props/ocean/materials/ocean.tres" id="8_aj623"]
+[ext_resource type="PackedScene" uid="uid://c2ida8sy6y6xb" path="res://gadgets/test_gadget/test_gadget.tscn" id="9_vufpp"]
 
 [sub_resource type="Gradient" id="Gradient_58tgt"]
 interpolation_mode = 2
@@ -125,3 +126,6 @@ mesh = SubResource("QuadMesh_tjdhw")
 
 [node name="Collision" type="CollisionShape3D" parent="OceanTest" index="1" unique_id=913126580]
 shape = SubResource("BoxShape3D_ex00m")
+
+[node name="TestGadget" parent="OceanTest" index="2" unique_id=1892982592 instance=ExtResource("9_vufpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6967344, -0.1, 4.7307167)

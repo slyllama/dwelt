@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
 [ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
+[ext_resource type="AudioStream" uid="uid://ddrkogc413ek6" path="res://lib/main_menu/sounds/mus_glass_darkly.ogg" id="6_capkl"]
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -35,7 +36,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_uliap"]
 resource_name = "fade_in"
-length = 0.39999999999999997
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,6 +156,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
+stream = ExtResource("6_capkl")
 
 [connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Box/Settings" to="." method="_on_settings_pressed"]
