@@ -1,5 +1,4 @@
-class_name SkillBar
-extends PanelContainer
+class_name SkillBar extends PanelContainer
 
 func _ready() -> void:
 	# Handle visibility and position of the button hover highlight effect

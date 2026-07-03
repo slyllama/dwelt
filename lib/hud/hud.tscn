@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/hud/scripts/top_left_menu.gd" id="6_2eonm"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/hud/textures/icon_settings.png" id="6_pxgdb"]
+[ext_resource type="Texture2D" uid="uid://du2m2idif7h1r" path="res://lib/hud/skill_bar/textures/trim.png" id="7_qgm11"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/hud/textures/icon_screenshot.png" id="8_l8w22"]
@@ -16,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="PackedScene" uid="uid://2mf4xgjh1is0" path="res://lib/hud/skill_bar/skill_bar.tscn" id="14_xpxnq"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
+[ext_resource type="Texture2D" uid="uid://dwb34oujh0s48" path="res://lib/hud/skill_bar/textures/corner.png" id="15_v7nqf"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 process_mode = 3
@@ -62,6 +64,55 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 2
 script = ExtResource("2_dcyf8")
+
+[node name="SkillCorner_L" type="TextureRect" parent="." unique_id=1573861881]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -64.0
+offset_right = -343.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("15_v7nqf")
+expand_mode = 1
+
+[node name="SkillCorner_R" type="TextureRect" parent="." unique_id=1012040539]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 343.0
+offset_top = -64.0
+offset_right = 465.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("15_v7nqf")
+expand_mode = 1
+flip_h = true
+
+[node name="SkillTrim" type="TextureRect" parent="." unique_id=1707036290]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = -74.0
+offset_right = 343.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("7_qgm11")
+expand_mode = 1
 
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_top = -294.0

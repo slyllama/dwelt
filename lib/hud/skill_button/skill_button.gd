@@ -1,7 +1,7 @@
 @icon("res://generic/icons/SkillButton.svg")
 class_name SkillButton extends Control
 
-const DIM := 0.75 # dim strength
+const DIM := 0.8 # dim strength
 
 @export var input_binding: String
 
@@ -48,11 +48,17 @@ func _input(_event: InputEvent) -> void:
 	
 	# Handle input action pressing
 	if is_binding_just_pressed():
-		if !Input.is_action_pressed("left_click"):
+		if (Input.is_action_pressed("left_click")
+			and is_hovering):
+			pass
+		else:
 			set_pressed()
 	elif is_binding_just_released():
 		if is_pressed:
-			if !Input.is_action_pressed("left_click"):
+			if (Input.is_action_pressed("left_click")
+				and is_hovering):
+				pass
+			else:
 				released.emit()
 				set_pressed(false)
 
