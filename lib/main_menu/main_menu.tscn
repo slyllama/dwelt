@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bme8bjwkaw8v5"]
 
 [ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_vw87d"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_70ubd"]
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
 [ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
-[ext_resource type="AudioStream" uid="uid://ddrkogc413ek6" path="res://lib/main_menu/sounds/mus_glass_darkly.ogg" id="6_capkl"]
+[ext_resource type="Script" uid="uid://c2g8xywbljqct" path="res://lib/main_menu/scripts/music.gd" id="7_tpkjy"]
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -78,6 +79,8 @@ background_mode = 1
 script = ExtResource("1_vw87d")
 
 [node name="Box" type="HBoxContainer" parent="." unique_id=1664608640]
+custom_minimum_size = Vector2(0, 40)
+custom_maximum_size = Vector2(-1, 40)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -89,21 +92,27 @@ grow_vertical = 0
 alignment = 1
 
 [node name="Play" type="Button" parent="Box" unique_id=1722029499]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(156, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_70ubd")
+theme_override_font_sizes/font_size = 18
 text = "Play"
 
 [node name="Settings" type="Button" parent="Box" unique_id=905284177]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(156, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_70ubd")
+theme_override_font_sizes/font_size = 18
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Box" unique_id=705195215]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(156, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_70ubd")
+theme_override_font_sizes/font_size = 18
 text = "Quit"
 
 [node name="World" type="Node3D" parent="." unique_id=191836736]
@@ -126,9 +135,10 @@ transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70
 light_energy = 0.0
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 3)
 current = true
 fov = 35.0
+far = 10.0
 script = ExtResource("4_uliap")
 intensity = Vector2(0.1, 0.1)
 
@@ -158,9 +168,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
-stream = ExtResource("6_capkl")
+script = ExtResource("7_tpkjy")
 
 [connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Box/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Box/Quit" to="." method="_on_quit_pressed"]
 [connection signal="loaded" from="World/PlayerAsync" to="World" method="_on_player_async_loaded"]
+[connection signal="finished" from="Music" to="Music" method="_on_finished"]

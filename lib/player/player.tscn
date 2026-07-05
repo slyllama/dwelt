@@ -285,6 +285,7 @@ autostart = true
 transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
 top_level = true
 cast_shadow = 0
+emitting = false
 lifetime = 0.4
 speed_scale = 0.75
 randomness = 0.5
