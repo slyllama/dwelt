@@ -16,6 +16,7 @@ var shard_path_to_load := "" # this shard will be loaded next time ShardLoader i
 # Global signal bus
 signal camera_pan_started
 signal camera_pan_ended
+signal skill_used(id: String)
 
 # Signals which fire events rather than intercept them
 signal emit_click_sound

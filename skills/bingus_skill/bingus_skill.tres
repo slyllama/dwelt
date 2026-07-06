@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillInfo" format=3 uid="uid://dp0ueq7l45su0"]
+
+[ext_resource type="Script" uid="uid://boci6nj73cp2k" path="res://lib/hud/skill_button/skill_info.gd" id="1_p0e01"]
+
+[resource]
+script = ExtResource("1_p0e01")
+id = "bingus_skill"
+title = "((Bingus Skill))"
+metadata/_custom_type_script = "uid://boci6nj73cp2k"
