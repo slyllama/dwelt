@@ -5,8 +5,8 @@ const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn
 signal disable_finished
 
 func _disable_and_prepare_exit() -> void: # use when changing scene or quitting
-	for _b: Button in $Box.get_children():
-		_b.disabled = true
+	for _b: Node in $Box.get_children():
+		if _b is Button: _b.disabled = true
 	%FG.visible = true
 	
 	var _t := create_tween()
@@ -15,9 +15,10 @@ func _disable_and_prepare_exit() -> void: # use when changing scene or quitting
 
 func _ready() -> void:
 	# Click sounds
-	for _b: Button in $Box.get_children():
-		_b.pressed.connect(func() -> void:
-			DwGlobal.emit_click_sound.emit())
+	for _b: Node in $Box.get_children():
+		if _b is Button:
+			_b.pressed.connect(func() -> void:
+				DwGlobal.emit_click_sound.emit())
 	
 	DwGlobal.discord_update_details("In Main Menu")
 	for _i in 3: await get_tree().process_frame

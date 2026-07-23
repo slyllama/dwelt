@@ -2,11 +2,26 @@
 
 [ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_vw87d"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_70ubd"]
+[ext_resource type="Texture2D" uid="uid://bwihkb51vasqo" path="res://lib/main_menu/textures/title.png" id="2_fn3ey"]
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
+[ext_resource type="StyleBox" uid="uid://cl2qaf7hlkpkw" path="res://lib/main_menu/styles/menu_button_normal.tres" id="3_70ubd"]
+[ext_resource type="StyleBox" uid="uid://5s844cpkokdg" path="res://lib/main_menu/styles/menu_button_hover.tres" id="4_d88ro"]
 [ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
+[ext_resource type="Texture2D" uid="uid://cl4s27h8hvef8" path="res://lib/main_menu/textures/studio.png" id="6_pyre0"]
 [ext_resource type="Script" uid="uid://c2g8xywbljqct" path="res://lib/main_menu/scripts/music.gd" id="7_tpkjy"]
+[ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_wcsih"]
+[ext_resource type="Texture2D" uid="uid://dubwajs2ny484" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
+[ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
+
+[sub_resource type="Gradient" id="Gradient_wcsih"]
+offsets = PackedFloat32Array(0.1, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.73333335, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjdhw"]
+gradient = SubResource("Gradient_wcsih")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -49,7 +64,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 1.45]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,47 +88,149 @@ _data = {
 [sub_resource type="Environment" id="Environment_ex00m"]
 background_mode = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcsih"]
+shading_mode = 0
+albedo_texture = ExtResource("11_ycr6g")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ex00m"]
+material = SubResource("StandardMaterial3D_wcsih")
+size = Vector2(7.68, 4.32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwtaw"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("12_17p4g")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0webr"]
+material = SubResource("StandardMaterial3D_vwtaw")
+size = Vector2(7.68, 4.32)
+
+[sub_resource type="Curve" id="Curve_fb8nk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16071428, 1), 0.0, 0.0, 0, 0, Vector2(0.48214287, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_v5dhk"]
+curve = SubResource("Curve_fb8nk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycr6g"]
+emission_shape_scale = Vector3(1, 0.16, 1)
+emission_shape = 2
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 0.03, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+alpha_curve = SubResource("CurveTexture_v5dhk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x433"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_wcsih")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_17p4g"]
+material = SubResource("StandardMaterial3D_1x433")
+size = Vector2(0.04, 0.04)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ex00m"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=981862460]
 script = ExtResource("1_vw87d")
 
-[node name="Box" type="HBoxContainer" parent="." unique_id=1664608640]
-custom_minimum_size = Vector2(0, 40)
-custom_maximum_size = Vector2(-1, 40)
+[node name="Gradient" type="TextureRect" parent="." unique_id=1341249692]
+z_index = -1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -85.0
-offset_bottom = -59.0
+offset_top = -432.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
-alignment = 1
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_tjdhw")
+
+[node name="Box" type="VBoxContainer" parent="." unique_id=1216625652]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -383.0
+offset_right = 380.0
+offset_bottom = -81.0
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Title" type="TextureRect" parent="Box" unique_id=2077178297]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+texture = ExtResource("2_fn3ey")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PaddingUpper" type="ColorRect" parent="Box" unique_id=923584922]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Play" type="Button" parent="Box" unique_id=1722029499]
-custom_minimum_size = Vector2(156, 0)
+custom_minimum_size = Vector2(300, 54)
+custom_maximum_size = Vector2(300, 54)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("3_70ubd")
+theme_override_styles/pressed = ExtResource("4_d88ro")
+theme_override_styles/hover = ExtResource("4_d88ro")
+theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Play"
 
 [node name="Settings" type="Button" parent="Box" unique_id=905284177]
-custom_minimum_size = Vector2(156, 0)
+custom_minimum_size = Vector2(300, 54)
+custom_maximum_size = Vector2(300, 54)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("3_70ubd")
+theme_override_styles/pressed = ExtResource("4_d88ro")
+theme_override_styles/hover = ExtResource("4_d88ro")
+theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Box" unique_id=705195215]
-custom_minimum_size = Vector2(156, 0)
+custom_minimum_size = Vector2(300, 54)
+custom_maximum_size = Vector2(300, 54)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("3_70ubd")
+theme_override_styles/pressed = ExtResource("4_d88ro")
+theme_override_styles/hover = ExtResource("4_d88ro")
+theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Quit"
+
+[node name="PaddingLower" type="ColorRect" parent="Box" unique_id=1661395582]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Studio" type="TextureRect" parent="Box" unique_id=1175429730]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("6_pyre0")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="World" type="Node3D" parent="." unique_id=191836736]
 script = ExtResource("2_n57j6")
@@ -130,12 +247,33 @@ metadata/_custom_type_script = "uid://beegbluc51ecb"
 [node name="Sky" type="WorldEnvironment" parent="World" unique_id=1046197421]
 environment = SubResource("Environment_ex00m")
 
+[node name="BG_0" type="MeshInstance3D" parent="World/Sky" unique_id=686443124]
+transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, 0.23, -6.4872723)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ex00m")
+
+[node name="BG_1" type="MeshInstance3D" parent="World/Sky" unique_id=247410367]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.38, 1.315)
+mesh = SubResource("QuadMesh_0webr")
+
+[node name="Motes" type="GPUParticles3D" parent="World/Sky" unique_id=796395813]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+cast_shadow = 0
+amount = 64
+lifetime = 2.5
+preprocess = 5.0
+randomness = 0.25
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ycr6g")
+draw_pass_1 = SubResource("QuadMesh_17p4g")
+
 [node name="Sun" type="DirectionalLight3D" parent="World/Sky" unique_id=470708534]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
 light_energy = 0.0
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 3)
+transform = Transform3D(1, 0, 0, 0, 0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0.45, 3)
 current = true
 fov = 35.0
 far = 10.0
