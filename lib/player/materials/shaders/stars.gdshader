@@ -5,7 +5,7 @@ uniform sampler2D stars_texture: source_color, repeat_enable;
 
 void fragment() {
 	ALBEDO = texture(stars_texture, SCREEN_UV * 8.0).rgb;
-	ALBEDO += pow(fresnel(1.0, NORMAL, VIEW), 8.0) * 8.0;
+	//ALBEDO += pow(fresnel(1.0, NORMAL, VIEW), 8.0) * 8.0;
 	ALBEDO = clamp(ALBEDO, vec3(0.0), vec3(1.0));
 	EMISSION = ALBEDO;
 	

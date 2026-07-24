@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bme8bjwkaw8v5"]
 
 [ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_vw87d"]
-[ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/hud/screen_fx/screen_fx.tscn" id="2_17p4g"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_70ubd"]
 [ext_resource type="Texture2D" uid="uid://bwihkb51vasqo" path="res://lib/main_menu/textures/title.png" id="2_fn3ey"]
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
+[ext_resource type="Shader" uid="uid://tghjojkhip6w" path="res://lib/hud/screen_fx/materials/shaders/vignette.gdshader" id="2_vwtaw"]
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
 [ext_resource type="StyleBox" uid="uid://cl2qaf7hlkpkw" path="res://lib/main_menu/styles/menu_button_normal.tres" id="3_70ubd"]
 [ext_resource type="StyleBox" uid="uid://5s844cpkokdg" path="res://lib/main_menu/styles/menu_button_hover.tres" id="4_d88ro"]
@@ -14,8 +14,14 @@
 [ext_resource type="Script" uid="uid://c2g8xywbljqct" path="res://lib/main_menu/scripts/music.gd" id="7_tpkjy"]
 [ext_resource type="Script" uid="uid://cusabfbbjta7n" path="res://lib/main_menu/scripts/build.gd" id="8_vwtaw"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_wcsih"]
-[ext_resource type="Texture2D" uid="uid://dubwajs2ny484" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
+[ext_resource type="Texture2D" uid="uid://cw05o50mnej68" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
 [ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0webr"]
+shader = ExtResource("2_vwtaw")
+shader_parameter/position = 0.350000016625
+shader_parameter/feather = 0.2000000095
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Gradient" id="Gradient_wcsih"]
 offsets = PackedFloat32Array(0.2, 0.5)
@@ -90,6 +96,9 @@ _data = {
 
 [sub_resource type="Environment" id="Environment_ex00m"]
 background_mode = 1
+glow_normalized = true
+glow_intensity = 0.45
+glow_bloom = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcsih"]
 shading_mode = 0
@@ -144,7 +153,15 @@ size = Vector2(0.04, 0.04)
 [node name="MainMenu" type="CanvasLayer" unique_id=981862460]
 script = ExtResource("1_vw87d")
 
-[node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("2_17p4g")]
+[node name="Vignette" type="ColorRect" parent="." unique_id=841130567]
+material = SubResource("ShaderMaterial_0webr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Gradient" type="TextureRect" parent="." unique_id=1341249692]
 z_index = -1
@@ -259,7 +276,7 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_pjam2")
 
 [node name="PlayerAsync" type="Node3D" parent="World" unique_id=882231283]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0.5)
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0.58)
 script = ExtResource("3_7usjq")
 path = "uid://dfmiagw0ts4ro"
 metadata/_custom_type_script = "uid://beegbluc51ecb"
@@ -268,12 +285,12 @@ metadata/_custom_type_script = "uid://beegbluc51ecb"
 environment = SubResource("Environment_ex00m")
 
 [node name="BG_0" type="MeshInstance3D" parent="World/Sky" unique_id=686443124]
-transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, -0.2524219, -7.1614666)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.1, -7.8)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ex00m")
 
 [node name="BG_1" type="MeshInstance3D" parent="World/Sky" unique_id=247410367]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, -0.119018555, 0.3154248, 0.89068365)
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, -0.11, 0.31, 0.87)
 mesh = SubResource("QuadMesh_0webr")
 
 [node name="Motes" type="GPUParticles3D" parent="World/Sky" unique_id=796395813]
@@ -290,14 +307,13 @@ draw_pass_1 = SubResource("QuadMesh_17p4g")
 
 [node name="Sun" type="DirectionalLight3D" parent="World/Sky" unique_id=470708534]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
-light_color = Color(0.9282743, 0.8909237, 0.9664275, 1)
 light_energy = 0.0
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0.3, 2.3)
 current = true
 fov = 35.0
-far = 10.0
 script = ExtResource("4_uliap")
 smoothness = 3.5
 intensity = Vector2(0.06, 0.06)
@@ -307,8 +323,7 @@ visible = false
 mesh = SubResource("SphereMesh_ex00m")
 
 [node name="Lamp" type="OmniLight3D" parent="World" unique_id=1922246222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28520802, 0, 0.66714746)
-light_color = Color(0.9363996, 0.69491553, 0.6900822, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17300901, 0.18939215, 0.6695341)
 light_energy = 0.0
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("5_pjam2")]

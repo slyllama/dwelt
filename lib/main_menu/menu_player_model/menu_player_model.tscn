@@ -22,7 +22,8 @@ start_offset = 0.0
 loop_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ex00m"]
-graph_offset = Vector2(-814.3333, 101.7333)
+graph_offset = Vector2(-704.07715, 93.05778)
+nodes/output/position = Vector2(346.66666, 146.66667)
 nodes/idle/node = SubResource("AnimationNodeAnimation_ucxkf")
 nodes/idle/position = Vector2(-40, 146.66667)
 nodes/eye/node = SubResource("AnimationNodeAnimation_m6we6")

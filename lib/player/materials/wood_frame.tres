@@ -6,6 +6,7 @@
 [resource]
 albedo_texture = ExtResource("1_aep7s")
 normal_enabled = true
+normal_scale = 0.35
 normal_texture = ExtResource("2_n5avq")
 distance_fade_mode = 2
 distance_fade_min_distance = 0.3
