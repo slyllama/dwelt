@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bme8bjwkaw8v5"]
 
 [ext_resource type="Script" uid="uid://cujcg0cf6n3vn" path="res://lib/main_menu/main_menu.gd" id="1_vw87d"]
+[ext_resource type="PackedScene" uid="uid://bwbro6jfnuol2" path="res://lib/hud/screen_fx/screen_fx.tscn" id="2_17p4g"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="2_70ubd"]
 [ext_resource type="Texture2D" uid="uid://bwihkb51vasqo" path="res://lib/main_menu/textures/title.png" id="2_fn3ey"]
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
 [ext_resource type="Texture2D" uid="uid://cl4s27h8hvef8" path="res://lib/main_menu/textures/studio.png" id="6_pyre0"]
 [ext_resource type="Script" uid="uid://c2g8xywbljqct" path="res://lib/main_menu/scripts/music.gd" id="7_tpkjy"]
+[ext_resource type="Script" uid="uid://cusabfbbjta7n" path="res://lib/main_menu/scripts/build.gd" id="8_vwtaw"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_wcsih"]
 [ext_resource type="Texture2D" uid="uid://dubwajs2ny484" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
 [ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
@@ -21,7 +23,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.73333335, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tjdhw"]
 gradient = SubResource("Gradient_wcsih")
-fill_from = Vector2(1, 1)
+fill_from = Vector2(0, 1)
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -141,15 +143,17 @@ size = Vector2(0.04, 0.04)
 [node name="MainMenu" type="CanvasLayer" unique_id=981862460]
 script = ExtResource("1_vw87d")
 
+[node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("2_17p4g")]
+
 [node name="Gradient" type="TextureRect" parent="." unique_id=1341249692]
 z_index = -1
-anchors_preset = 12
+custom_minimum_size = Vector2(630, 660)
+custom_maximum_size = Vector2(630, 660)
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -432.0
-offset_bottom = 2.0
-grow_horizontal = 2
+offset_top = -660.0
+offset_right = 630.0
 grow_vertical = 0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_tjdhw")
@@ -231,6 +235,20 @@ layout_mode = 2
 texture = ExtResource("6_pyre0")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="PaddingLower2" type="ColorRect" parent="Box" unique_id=818946476]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Build" type="Label" parent="Box" unique_id=71825880]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_70ubd")
+text = "Build 0.0.0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_vwtaw")
 
 [node name="World" type="Node3D" parent="." unique_id=191836736]
 script = ExtResource("2_n57j6")
