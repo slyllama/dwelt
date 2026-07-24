@@ -10357,6 +10357,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://lib/player/materials/mat_swirl.tres",
 "use_external/path": "uid://cybs7v8g3k2lt"
+},
+"wood_frame": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://lib/player/materials/wood_frame.tres",
+"use_external/path": "uid://cl35u4bpgiau0"
 }
 },
 "nodes": {

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dfmiagw0ts4ro"]
+
+[ext_resource type="PackedScene" uid="uid://fok2dlvwn6yg" path="res://lib/player/meshes/robot.glb" id="1_m6we6"]
+[ext_resource type="AnimationLibrary" uid="uid://soggybnryiww" path="res://lib/player/meshes/anims/player_anims.res" id="3_gg3gv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m6we6"]
+animation = &"player_anims/eye"
+use_custom_timeline = true
+timeline_length = 3.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 2
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_reqqw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ucxkf"]
+animation = &"player_anims/idle"
+use_custom_timeline = true
+timeline_length = 1.2999999999999998
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ex00m"]
+graph_offset = Vector2(-814.3333, 101.7333)
+nodes/idle/node = SubResource("AnimationNodeAnimation_ucxkf")
+nodes/idle/position = Vector2(-40, 146.66667)
+nodes/eye/node = SubResource("AnimationNodeAnimation_m6we6")
+nodes/eye/position = Vector2(-40, 306.66666)
+nodes/eye_mix/node = SubResource("AnimationNodeAdd2_reqqw")
+nodes/eye_mix/position = Vector2(146.66667, 146.66667)
+node_connections = [&"output", 0, &"eye_mix", &"eye_mix", 0, &"idle", &"eye_mix", 1, &"eye"]
+
+[node name="MenuPlayerModel" type="Node3D" unique_id=304787147]
+
+[node name="RobotMesh" parent="." unique_id=1686519801 instance=ExtResource("1_m6we6")]
+unique_name_in_owner = true
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+
+[node name="AnimTree" type="AnimationTree" parent="RobotMesh" unique_id=17794962]
+tree_root = SubResource("AnimationNodeBlendTree_ex00m")
+anim_player = NodePath("../AnimPlayer")
+parameters/eye_mix/add_amount = 1.0
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="RobotMesh" unique_id=2022703357]
+libraries/player_anims = ExtResource("3_gg3gv")

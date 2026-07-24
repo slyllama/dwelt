@@ -2,10 +2,10 @@ extends Node3D
 
 func _on_player_async_loaded() -> void:
 	%FadePlayerIn.play("fade_in")
-	print("light")
 	var player_model: Node3D = $PlayerAsync.add_scene()
-	var player_animator: AnimationPlayer = player_model.get_node("AnimationPlayer")
+	await player_model.ready
 	
-	player_animator.animation_finished.connect(func(_anim: String) -> void:
-		player_animator.play("idle"))
-	player_animator.play("idle")
+	# Copy this async node's position and rotation to the resulting mesh
+	player_model.global_position = $PlayerAsync.global_position
+	player_model.global_rotation = $PlayerAsync.global_rotation
+	$PlayerAsync.close()

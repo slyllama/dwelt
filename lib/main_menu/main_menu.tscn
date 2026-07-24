@@ -18,12 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
 
 [sub_resource type="Gradient" id="Gradient_wcsih"]
-offsets = PackedFloat32Array(0.1, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.73333335, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.2, 0.5)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tjdhw"]
 gradient = SubResource("Gradient_wcsih")
 fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.2948718)
 
 [sub_resource type="Animation" id="Animation_7usjq"]
 length = 0.001
@@ -177,7 +178,7 @@ texture = ExtResource("2_fn3ey")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PaddingUpper" type="ColorRect" parent="Box" unique_id=923584922]
+[node name="Padding" type="ColorRect" parent="Box" unique_id=923584922]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
@@ -222,7 +223,7 @@ theme_override_styles/hover = ExtResource("4_d88ro")
 theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Quit"
 
-[node name="PaddingLower" type="ColorRect" parent="Box" unique_id=1661395582]
+[node name="Padding2" type="ColorRect" parent="Box" unique_id=1661395582]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 mouse_filter = 2
@@ -236,7 +237,7 @@ texture = ExtResource("6_pyre0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PaddingLower2" type="ColorRect" parent="Box" unique_id=818946476]
+[node name="Padding3" type="ColorRect" parent="Box" unique_id=818946476]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
@@ -258,20 +259,21 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_pjam2")
 
 [node name="PlayerAsync" type="Node3D" parent="World" unique_id=882231283]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0.5)
 script = ExtResource("3_7usjq")
-path = "uid://fok2dlvwn6yg"
+path = "uid://dfmiagw0ts4ro"
 metadata/_custom_type_script = "uid://beegbluc51ecb"
 
 [node name="Sky" type="WorldEnvironment" parent="World" unique_id=1046197421]
 environment = SubResource("Environment_ex00m")
 
 [node name="BG_0" type="MeshInstance3D" parent="World/Sky" unique_id=686443124]
-transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, 0.23, -6.4872723)
+transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, -0.2524219, -7.1614666)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ex00m")
 
 [node name="BG_1" type="MeshInstance3D" parent="World/Sky" unique_id=247410367]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.38, 1.315)
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, -0.119018555, 0.3154248, 0.89068365)
 mesh = SubResource("QuadMesh_0webr")
 
 [node name="Motes" type="GPUParticles3D" parent="World/Sky" unique_id=796395813]
@@ -288,22 +290,25 @@ draw_pass_1 = SubResource("QuadMesh_17p4g")
 
 [node name="Sun" type="DirectionalLight3D" parent="World/Sky" unique_id=470708534]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+light_color = Color(0.9282743, 0.8909237, 0.9664275, 1)
 light_energy = 0.0
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
-transform = Transform3D(1, 0, 0, 0, 0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0.45, 3)
+transform = Transform3D(1, 0, 0, 0, 0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0.3, 2.3)
 current = true
 fov = 35.0
 far = 10.0
 script = ExtResource("4_uliap")
-intensity = Vector2(0.1, 0.1)
+smoothness = 3.5
+intensity = Vector2(0.06, 0.06)
 
 [node name="TestMesh" type="MeshInstance3D" parent="World" unique_id=895759213]
 visible = false
 mesh = SubResource("SphereMesh_ex00m")
 
 [node name="Lamp" type="OmniLight3D" parent="World" unique_id=1922246222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28520802, 0, 0.66714746)
+light_color = Color(0.9363996, 0.69491553, 0.6900822, 1)
 light_energy = 0.0
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("5_pjam2")]
