@@ -73,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.45]
+"values": [0.0, 1.75]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -96,6 +96,8 @@ _data = {
 
 [sub_resource type="Environment" id="Environment_ex00m"]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.322965, 0.32296506, 0.32296497, 1)
 glow_normalized = true
 glow_intensity = 0.45
 glow_bloom = 0.5
@@ -307,6 +309,7 @@ draw_pass_1 = SubResource("QuadMesh_17p4g")
 
 [node name="Sun" type="DirectionalLight3D" parent="World/Sky" unique_id=470708534]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+light_color = Color(0.8461732, 0.8690131, 0.96854347, 1)
 light_energy = 0.0
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=1317783257]
@@ -323,7 +326,8 @@ visible = false
 mesh = SubResource("SphereMesh_ex00m")
 
 [node name="Lamp" type="OmniLight3D" parent="World" unique_id=1922246222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17300901, 0.18939215, 0.6695341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037501067, 0.18939215, 0.7348432)
+light_color = Color(0.8157897, 0.5639426, 0.53677094, 1)
 light_energy = 0.0
 
 [node name="UIPaneManager" parent="." unique_id=888113672 instance=ExtResource("5_pjam2")]

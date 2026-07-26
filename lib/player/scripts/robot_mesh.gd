@@ -14,7 +14,7 @@ var _ns_count := 0 # no shadows count
 
 func _ready() -> void:
 	for _n: Node in DwUtils.get_all_children($Armature/Skeleton3D):
-		if _n is MeshInstance3D and "Glow" in _n.name:
+		if _n is MeshInstance3D and DwGlobal.NO_SHADOW_EXPRESSION in _n.name:
 			_n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			_ns_count += 1
 	DwUtils.pdebug("Removed shadows for " 

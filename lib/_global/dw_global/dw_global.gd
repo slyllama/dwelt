@@ -1,6 +1,7 @@
 extends Node
 
 const GRAVITY := -9.8
+const NO_SHADOW_EXPRESSION := "_ns"
 
 # References
 var camera: Camera3D
