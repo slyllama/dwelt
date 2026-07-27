@@ -57,12 +57,13 @@ expand_mode = 1
 layout_mode = 2
 tab_text = "Gadgets"
 tab_id = "gadgets"
-tab_scene_path = "res://lib/ui/gadgets_subpane/gadgets_subpane.tscn"
+tab_scene_path = "res://lib/ui/ops_pane/gadgets_subpane/gadgets_subpane.tscn"
 
 [node name="ShardTab" parent="Box/UIPaneTabController" index="3" unique_id=977108696 instance=ExtResource("4_gb7t2")]
 layout_mode = 2
 tab_text = "Shard"
 tab_id = "shard"
+tab_scene_path = "res://lib/ui/ops_pane/shard_subpane/shard_subpane.tscn"
 
 [node name="TestTab" parent="Box/UIPaneTabController" index="4" unique_id=1249835030 instance=ExtResource("4_gb7t2")]
 layout_mode = 2

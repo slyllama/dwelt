@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cl25mkkaopep4"]
+[gd_scene format=3 uid="uid://d2xxnc600285l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqeii"]
 
-[node name="GadgetsSubpane" type="PanelContainer" unique_id=1760939956]
+[node name="ShardSubpane" type="PanelContainer" unique_id=1760939956]
 custom_minimum_size = Vector2(400, 300)
 offset_right = 400.0
 offset_bottom = 300.0
@@ -11,6 +11,6 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_kqeii")
 [node name="DebugLabel" type="Label" parent="." unique_id=2089960843]
 layout_mode = 2
 size_flags_vertical = 6
-text = "((This is a subpane!!!))"
+text = "((Shard Subpane))"
 horizontal_alignment = 1
 vertical_alignment = 1
