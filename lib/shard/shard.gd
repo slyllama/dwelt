@@ -20,8 +20,6 @@ func _ready() -> void:
 	DwUtils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
 			$Player.position = Vector3(0.0, 2.0, 3.0)
-		elif string == "/opspane": # test operations pane
-			DwGlobal.ui_pane_manager.toggle_open("res://lib/ui/ops_pane/ops_pane.tscn", "ops_pane")
 		elif string == "/exit" or string == "/quit": # just quit the game
 			for _i in 3: await get_tree().process_frame
 			get_tree().quit())

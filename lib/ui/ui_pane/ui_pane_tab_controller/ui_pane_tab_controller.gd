@@ -32,4 +32,5 @@ func _ready() -> void:
 				if Input.is_action_just_pressed("left_click"):
 					if _n.tab_scene_path == "" or !_n.tab_scene_path: return
 					if _n.tab_id == current_tab: return # don't load the same tab twice
+					DwGlobal.emit_click_sound.emit()
 					switch_tab(_n.tab_id))

@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://d2xxnc600285l"]
 
+[ext_resource type="Script" uid="uid://capricofid5lo" path="res://lib/ui/ops_pane/shard_subpane/shard_subpane.gd" id="1_05ape"]
+[ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="1_wh1kq"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqeii"]
 
 [node name="ShardSubpane" type="PanelContainer" unique_id=1760939956]
@@ -7,6 +10,7 @@ custom_minimum_size = Vector2(400, 300)
 offset_right = 400.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kqeii")
+script = ExtResource("1_05ape")
 
 [node name="DebugLabel" type="Label" parent="." unique_id=2089960843]
 layout_mode = 2
@@ -14,3 +18,7 @@ size_flags_vertical = 6
 text = "((Shard Subpane))"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Open" type="AudioStreamPlayer" parent="." unique_id=987934441]
+stream = ExtResource("1_wh1kq")
+volume_db = 3.0

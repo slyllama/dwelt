@@ -27,6 +27,7 @@ grow_vertical = 2
 script = ExtResource("2_b8thc")
 title = "Operations"
 ui_id = "ops_pane"
+silent = true
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Operations"

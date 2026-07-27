@@ -26,6 +26,11 @@ signal closing
 	set(_closeable):
 		closeable = _closeable
 		%Close.visible = closeable
+@export var silent := false:
+	set(_silent):
+		silent = _silent
+		if silent: $Open.volume_db = -80.0
+		else: $Open.volume_db = 3.0
 
 # WARNING: never call this directly - always use `close_pane()` on the
 # UIPaneManager to properly deregister a pane
