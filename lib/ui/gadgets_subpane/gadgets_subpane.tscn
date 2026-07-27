@@ -2,17 +2,15 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqeii"]
 
-[node name="GadgetsSubpane" type="Panel" unique_id=100959028]
+[node name="GadgetsSubpane" type="PanelContainer" unique_id=1760939956]
 custom_minimum_size = Vector2(400, 300)
+offset_right = 400.0
+offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kqeii")
 
-[node name="Label" type="Label" parent="." unique_id=2089960843]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="DebugLabel" type="Label" parent="." unique_id=2089960843]
+layout_mode = 2
+size_flags_vertical = 6
 text = "((This is a subpane!!!))"
 horizontal_alignment = 1
 vertical_alignment = 1

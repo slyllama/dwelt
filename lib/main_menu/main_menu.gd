@@ -5,6 +5,8 @@ const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn
 signal disable_finished
 
 func _disable_and_prepare_exit() -> void: # use when changing scene or quitting
+	$Bell.play()
+	
 	for _b: Node in $Box.get_children():
 		if _b is Button: _b.disabled = true
 	%FG.visible = true

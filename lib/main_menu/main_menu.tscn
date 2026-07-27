@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_wcsih"]
 [ext_resource type="Texture2D" uid="uid://cw05o50mnej68" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
 [ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
+[ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="16_vwtaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0webr"]
 shader = ExtResource("2_vwtaw")
@@ -326,6 +327,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
 script = ExtResource("7_tpkjy")
+
+[node name="Bell" type="AudioStreamPlayer" parent="." unique_id=1475306669]
+stream = ExtResource("16_vwtaw")
+volume_db = -5.0
 
 [connection signal="pressed" from="Box/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Box/Settings" to="." method="_on_settings_pressed"]

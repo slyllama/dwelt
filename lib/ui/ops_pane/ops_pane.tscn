@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_nf73f"]
 [ext_resource type="Script" uid="uid://bf0ohnlcx73wh" path="res://lib/ui/ops_pane/ops_pane.gd" id="2_b8thc"]
+[ext_resource type="Script" uid="uid://phev6coxpgij" path="res://lib/ui/ui_pane/ui_pane_tab_controller/ui_pane_tab_controller.gd" id="3_f57cd"]
+[ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="3_ybmr4"]
+[ext_resource type="PackedScene" uid="uid://bkhwqpi2tukub" path="res://lib/ui/ui_pane/ui_pane_tab/ui_pane_tab.tscn" id="4_gb7t2"]
+[ext_resource type="Texture2D" uid="uid://bw2c0k8bnnx1o" path="res://lib/ui/ui_pane/ui_pane_tab/textures/tab_edge.png" id="4_nkaek"]
+[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="5_gpa2s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ex00m"]
 
@@ -26,11 +31,78 @@ ui_id = "ops_pane"
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Operations"
 
-[node name="Body" type="PanelContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=732948825]
+[node name="UIPaneTabController" type="HBoxContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="2" unique_id=1399124339]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("3_f57cd")
+initial_active_tab_id = "gadgets"
+metadata/_custom_type_script = "uid://phev6coxpgij"
+
+[node name="PadLeft" type="ColorRect" parent="Box/UIPaneTabController" index="0" unique_id=1663525765]
+custom_minimum_size = Vector2(32, 0)
+custom_maximum_size = Vector2(32, -1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="EdgeLeft" type="TextureRect" parent="Box/UIPaneTabController" index="1" unique_id=252877428]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_nkaek")
+expand_mode = 1
+
+[node name="GadgetsTab" parent="Box/UIPaneTabController" index="2" unique_id=1417526068 instance=ExtResource("4_gb7t2")]
+layout_mode = 2
+tab_text = "Gadgets"
+tab_id = "gadgets"
+tab_scene_path = "res://lib/ui/gadgets_subpane/gadgets_subpane.tscn"
+
+[node name="ShardTab" parent="Box/UIPaneTabController" index="3" unique_id=977108696 instance=ExtResource("4_gb7t2")]
+layout_mode = 2
+tab_text = "Shard"
+tab_id = "shard"
+
+[node name="TestTab" parent="Box/UIPaneTabController" index="4" unique_id=1249835030 instance=ExtResource("4_gb7t2")]
+layout_mode = 2
+tab_text = "Useless Freaking Tab"
+tab_id = "test_tab"
+
+[node name="EdgeRight" type="TextureRect" parent="Box/UIPaneTabController" index="5" unique_id=526319101]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_nkaek")
+expand_mode = 1
+flip_h = true
+
+[node name="PadRight" type="ColorRect" parent="Box/UIPaneTabController" index="6" unique_id=1925840840]
+custom_minimum_size = Vector2(32, 0)
+custom_maximum_size = Vector2(32, -1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="SeparatorLower" type="TextureRect" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=1670243254]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+texture = ExtResource("5_gpa2s")
+expand_mode = 1
+flip_h = true
+
+[node name="Body" type="PanelContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=732948825]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
 
-[node name="BorderEffect" parent="." index="2" unique_id=599452808]
+[node name="Bell" type="AudioStreamPlayer" parent="." index="2" unique_id=443852015]
+stream = ExtResource("3_ybmr4")
+volume_db = -5.0
+
+[node name="BorderEffect" parent="." index="3" unique_id=599452808]
 position = Vector2(920, 478)
+
+[connection signal="closing" from="." to="." method="_on_closing"]
+[connection signal="tab_switched" from="Box/UIPaneTabController" to="." method="_on_tab_switched"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bkhwqpi2tukub"]
+
+[ext_resource type="Texture2D" uid="uid://cbd5w6g5gptnk" path="res://lib/ui/ui_pane/ui_pane_tab/textures/tab_inactive.png" id="1_2hq4y"]
+[ext_resource type="Script" uid="uid://cmbn3oexgaom" path="res://lib/ui/ui_pane/ui_pane_tab/ui_pane_tab.gd" id="2_2hq4y"]
+
+[node name="UIPaneTab" type="TextureRect" unique_id=977108696]
+use_parent_material = true
+custom_minimum_size = Vector2(233, 26)
+custom_maximum_size = Vector2(233, 26)
+offset_right = 142.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+texture = ExtResource("1_2hq4y")
+expand_mode = 1
+script = ExtResource("2_2hq4y")
+
+[node name="Label" type="Label" parent="." unique_id=1878620314]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+text = "((UIPaneTab))"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

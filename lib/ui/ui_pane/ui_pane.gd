@@ -13,6 +13,7 @@ var dragging := false
 var offset := Vector2.ZERO # difference between where the drag was initiated and the pane's actual position
 
 signal clicked
+signal closing
 
 @export var title := "((UIPane))":
 	get: return(title)
@@ -29,6 +30,7 @@ signal clicked
 # WARNING: never call this directly - always use `close_pane()` on the
 # UIPaneManager to properly deregister a pane
 func close() -> void:
+	closing.emit()
 	# Fade out before freeing
 	var _fade_tween := create_tween()
 	_fade_tween.tween_property(self, "modulate:a", 0.0, FADE_SPEED)

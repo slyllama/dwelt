@@ -45,7 +45,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="Title" type="Label" parent="Box/Header" unique_id=411912598]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 34)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(1, 1, 1, 1)
