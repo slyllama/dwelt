@@ -1,3 +1,4 @@
+@icon("res://generic/icons/UIPaneTab.svg")
 @tool
 extends TextureRect
 # UIPaneTab

@@ -94,6 +94,9 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
 
+[node name="Open" parent="." index="1" unique_id=2105154938]
+volume_db = -80.0
+
 [node name="Bell" type="AudioStreamPlayer" parent="." index="2" unique_id=443852015]
 stream = ExtResource("3_ybmr4")
 volume_db = -5.0

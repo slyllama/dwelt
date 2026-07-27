@@ -1,3 +1,4 @@
+@icon("res://generic/icons/UIPaneTabController.svg")
 class_name UIPaneTabController extends HBoxContainer
 
 @export var initial_active_tab_id := ""
