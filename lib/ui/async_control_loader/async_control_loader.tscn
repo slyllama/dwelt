@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ln0qdfusj7l"]
+
+[ext_resource type="Script" uid="uid://ds548uwvicjsk" path="res://lib/ui/async_control_loader/async_control_loader.gd" id="1_66a2y"]
+
+[node name="AsyncControlLoader" type="Node" unique_id=1118105730]
+script = ExtResource("1_66a2y")

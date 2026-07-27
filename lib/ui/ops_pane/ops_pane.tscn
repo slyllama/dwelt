@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_nf73f"]
 [ext_resource type="Script" uid="uid://bf0ohnlcx73wh" path="res://lib/ui/ops_pane/ops_pane.gd" id="2_b8thc"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ex00m"]
+
 [node name="OpsPane" unique_id=1181014453 instance=ExtResource("1_nf73f")]
 custom_minimum_size = Vector2(1000, 600)
 custom_maximum_size = Vector2(1000, 600)
@@ -24,5 +26,11 @@ ui_id = "ops_pane"
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Operations"
 
+[node name="Body" type="PanelContainer" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="3" unique_id=732948825]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
+
 [node name="BorderEffect" parent="." index="2" unique_id=599452808]
-position = Vector2(920, 458)
+position = Vector2(920, 478)
