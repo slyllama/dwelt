@@ -3,6 +3,7 @@ extends UIPane
 
 func _ready() -> void:
 	super()
+	if Engine.is_editor_hint(): return
 	if get_tree().current_scene.name == "MainMenu":
 		%Menu.visible = false
 

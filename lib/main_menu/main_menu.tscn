@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://s73mj7r6rbes" path="res://lib/main_menu/scripts/world.gd" id="2_n57j6"]
 [ext_resource type="Shader" uid="uid://tghjojkhip6w" path="res://lib/hud/screen_fx/materials/shaders/vignette.gdshader" id="2_vwtaw"]
 [ext_resource type="Script" uid="uid://beegbluc51ecb" path="res://lib/async_3d_loader.gd" id="3_7usjq"]
-[ext_resource type="StyleBox" uid="uid://cl2qaf7hlkpkw" path="res://lib/main_menu/styles/menu_button_normal.tres" id="3_70ubd"]
-[ext_resource type="StyleBox" uid="uid://5s844cpkokdg" path="res://lib/main_menu/styles/menu_button_hover.tres" id="4_d88ro"]
+[ext_resource type="PackedScene" uid="uid://d1vc1h5oult82" path="res://lib/main_menu/menu_button/menu_button.tscn" id="4_17p4g"]
 [ext_resource type="Script" uid="uid://0l6jgmjgqrta" path="res://lib/main_menu/scripts/camera.gd" id="4_uliap"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="5_pjam2"]
 [ext_resource type="Texture2D" uid="uid://cl4s27h8hvef8" path="res://lib/main_menu/textures/studio.png" id="6_pyre0"]
@@ -203,43 +202,21 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Play" type="Button" parent="Box" unique_id=1722029499]
-custom_minimum_size = Vector2(300, 54)
-custom_maximum_size = Vector2(300, 54)
+[node name="Play" parent="Box" unique_id=1698014641 instance=ExtResource("4_17p4g")]
 layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("3_70ubd")
-theme_override_styles/pressed = ExtResource("4_d88ro")
-theme_override_styles/hover = ExtResource("4_d88ro")
-theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Play"
 
-[node name="Settings" type="Button" parent="Box" unique_id=905284177]
-custom_minimum_size = Vector2(300, 54)
-custom_maximum_size = Vector2(300, 54)
+[node name="Settings" parent="Box" unique_id=1406901652 instance=ExtResource("4_17p4g")]
 layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("3_70ubd")
-theme_override_styles/pressed = ExtResource("4_d88ro")
-theme_override_styles/hover = ExtResource("4_d88ro")
-theme_override_styles/disabled = ExtResource("3_70ubd")
 text = "Settings"
 
-[node name="Quit" type="Button" parent="Box" unique_id=705195215]
-custom_minimum_size = Vector2(300, 54)
-custom_maximum_size = Vector2(300, 54)
+[node name="Credits" parent="Box" unique_id=144338903 instance=ExtResource("4_17p4g")]
 layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_70ubd")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("3_70ubd")
-theme_override_styles/pressed = ExtResource("4_d88ro")
-theme_override_styles/hover = ExtResource("4_d88ro")
-theme_override_styles/disabled = ExtResource("3_70ubd")
+disabled = true
+text = "Credits"
+
+[node name="Quit" parent="Box" unique_id=531601538 instance=ExtResource("4_17p4g")]
+layout_mode = 2
 text = "Quit"
 
 [node name="Padding2" type="ColorRect" parent="Box" unique_id=1661395582]

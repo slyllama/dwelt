@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d1vc1h5oult82"]
+
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="1_hwvjw"]
+[ext_resource type="StyleBox" uid="uid://cl2qaf7hlkpkw" path="res://lib/main_menu/menu_button/styles/menu_button_normal.tres" id="2_mo5y3"]
+[ext_resource type="StyleBox" uid="uid://5s844cpkokdg" path="res://lib/main_menu/menu_button/styles/menu_button_hover.tres" id="3_clveb"]
+[ext_resource type="StyleBox" uid="uid://c2y72txmrg3i5" path="res://lib/main_menu/menu_button/styles/menu_button_disabled.tres" id="4_mo5y3"]
+
+[node name="MenuButton" type="Button" unique_id=1698014641]
+custom_minimum_size = Vector2(300, 54)
+custom_maximum_size = Vector2(300, 54)
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0.88, 0.88, 0.88, 0.39215687)
+theme_override_fonts/font = ExtResource("1_hwvjw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_mo5y3")
+theme_override_styles/pressed = ExtResource("3_clveb")
+theme_override_styles/hover = ExtResource("3_clveb")
+theme_override_styles/disabled = ExtResource("4_mo5y3")
+text = "((MenuButton))"
