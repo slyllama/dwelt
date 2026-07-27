@@ -19,7 +19,9 @@ func _ready() -> void:
 	
 	DwUtils.debug_sent.connect(func(string: String) -> void:
 		if string == "/resetpos":
-			$Player.position = Vector3(0.0, 2.0, 3.0))
+			$Player.position = Vector3(0.0, 2.0, 3.0)
+		elif string == "/opspane": # test operations pane
+			DwGlobal.ui_pane_manager.toggle_open("res://lib/ui/ops_pane/ops_pane.tscn", "ops_pane"))
 	
 	# Connect settings
 	DwSettings.setting_applied.connect(func(setting: String, value: String) -> void:

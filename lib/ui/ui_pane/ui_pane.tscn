@@ -45,14 +45,14 @@ color = Color(1, 1, 1, 0)
 
 [node name="Title" type="Label" parent="Box/Header" unique_id=411912598]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_spqtq")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 24
 text = "((UIPane))"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Close" type="TextureButton" parent="Box/Header" unique_id=1273695005]
 unique_name_in_owner = true
