@@ -16,7 +16,6 @@ func _on_closing() -> void:
 		DwUtils.debug_sent.emit("/playvoice")
 
 func _on_tab_switched(tab_scene_path: String) -> void:
-	if tab_scene_path == "" or !tab_scene_path: return
 	for _n in %Body.get_children():
 		_n.queue_free()
 	var _subpane_loader := AsyncControlLoader.new()

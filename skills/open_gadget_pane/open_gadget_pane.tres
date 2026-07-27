@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillInfo" format=3 uid="uid://cbpw5xqsy374b"]
+
+[ext_resource type="Script" uid="uid://boci6nj73cp2k" path="res://lib/hud/skill_button/skill_info.gd" id="1_7iobn"]
+
+[resource]
+script = ExtResource("1_7iobn")
+id = "open_gadget_pane"
+title = "Gadget Pane"
+metadata/_custom_type_script = "uid://boci6nj73cp2k"

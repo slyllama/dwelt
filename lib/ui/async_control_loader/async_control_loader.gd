@@ -16,7 +16,7 @@ func load_scene() -> void:
 	scene = _pscene.instantiate()
 	var _new_scene := scene.duplicate()
 	target_scene.call_deferred("add_child", _new_scene)
-	DwUtils.pdebug("Completed thread loading of '" + source_scene + "'.", "ControlAsyncLoader")
+	DwUtils.pdebug("Completed thread loading of '" + scene.name + "'.", "ControlAsyncLoader")
 	
 	close()
 
@@ -38,6 +38,6 @@ func _process(_delta: float) -> void:
 			if !has_loaded: return
 			load_scene()
 		ResourceLoader.THREAD_LOAD_FAILED:
-			DwUtils.pdebug("Failed thread loading of '" + source_scene + "': THREAD_LOAD_FAILED.",
+			DwUtils.pdebug("Failed thread loading of '" + scene.name + "': THREAD_LOAD_FAILED.",
 				"ControlAsyncLoader")
 			queue_free()

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdr11nbnrqk7k" path="res://lib/hud/skill_button/skill_button.tscn" id="1_xwfy5"]
 [ext_resource type="Texture2D" uid="uid://cc7druv6r05vo" path="res://lib/hud/skill_button/textures/highlight.png" id="3_q1ksp"]
 [ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://skills/test_skill/test_skill.tres" id="3_u4na3"]
+[ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://skills/open_gadget_pane/open_gadget_pane.tres" id="4_u4na3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q8ax"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,7 +21,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="SkillButton" parent="Box" unique_id=435513388 instance=ExtResource("1_xwfy5")]
+[node name="SkillButton1" parent="Box" unique_id=435513388 instance=ExtResource("1_xwfy5")]
 layout_mode = 2
 input_binding = "skill_1"
 skill_info = ExtResource("3_u4na3")
@@ -28,6 +29,7 @@ skill_info = ExtResource("3_u4na3")
 [node name="SkillButton2" parent="Box" unique_id=717549468 instance=ExtResource("1_xwfy5")]
 layout_mode = 2
 input_binding = "skill_2"
+skill_info = ExtResource("4_u4na3")
 
 [node name="SkillButton3" parent="Box" unique_id=633662595 instance=ExtResource("1_xwfy5")]
 layout_mode = 2
