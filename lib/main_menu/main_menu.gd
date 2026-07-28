@@ -22,7 +22,8 @@ func _ready() -> void:
 			_b.pressed.connect(func() -> void:
 				DwGlobal.emit_click_sound.emit())
 	
-	DwGlobal.discord_update_details("In Main Menu")
+	DwGlobal.discord_update_state("In Main Menu")
+	DwGlobal.discord_update_details()
 	for _i in 3: await get_tree().process_frame
 	if DwGlobal.first_run:
 		DwSettings.apply_all_settings(false)

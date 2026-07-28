@@ -14,6 +14,7 @@ func _ready() -> void:
 	_set_bus_vol(0.0)
 	
 	DwGlobal.current_shard_id = shard_id
+	DwGlobal.discord_update_state("In Shard")
 	DwGlobal.discord_update_details(shard_name)
 	DwUtils.debug_mode_changed.emit() # update debugging nodes
 	

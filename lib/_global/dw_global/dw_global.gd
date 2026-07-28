@@ -24,7 +24,12 @@ signal emit_click_sound
 signal play_flash(position: Vector2)
 signal shake_camera
 
-func discord_update_details(text: String) -> void:
+func discord_update_state(text := "") -> void:
+	DiscordRPC.state = text
+	if DiscordRPC.get_is_discord_working():
+		DiscordRPC.refresh()
+
+func discord_update_details(text := "") -> void:
 	DiscordRPC.details = text
 	if DiscordRPC.get_is_discord_working():
 		DiscordRPC.refresh()
