@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://c2ida8sy6y6xb"]
 
-[ext_resource type="Script" uid="uid://betsyaiukvefd" path="res://lib/gadget/scripts/gadget.gd" id="1_dw7fg"]
+[ext_resource type="Script" uid="uid://bq4rtnonuvcru" path="res://gadgets/test_gadget/test_gadget.gd" id="1_h84hs"]
 [ext_resource type="PackedScene" uid="uid://ddlxjsx4mlprv" path="res://gadgets/test_gadget/meshes/test_gadget.glb" id="2_qosmb"]
 [ext_resource type="Script" uid="uid://kh208mvheurt" path="res://lib/ui/spatial_text/spatial_text.gd" id="3_mksdg"]
+[ext_resource type="Script" uid="uid://c72burk7b7lrb" path="res://lib/gadget/effect_manager/effect_manager.gd" id="4_h84hs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ex00m"]
 
-[node name="TestGadget" type="StaticBody3D" unique_id=1892982592 node_paths=PackedStringArray("model")]
-script = ExtResource("1_dw7fg")
+[node name="TestGadget" type="StaticBody3D" unique_id=1892982592 node_paths=PackedStringArray("model", "effect_manager")]
+script = ExtResource("1_h84hs")
 gadget_id = "test_gadget"
 model = NodePath("Mesh")
+effect_manager = NodePath("EffectManager")
 metadata/_custom_type_script = "uid://betsyaiukvefd"
 
 [node name="Mesh" parent="." unique_id=1351842819 instance=ExtResource("2_qosmb")]
@@ -25,3 +27,7 @@ script = ExtResource("3_mksdg")
 text = "Test Gadget"
 render_distance = 3.0
 metadata/_custom_type_script = "uid://kh208mvheurt"
+
+[node name="EffectManager" type="Node" parent="." unique_id=970225448]
+script = ExtResource("4_h84hs")
+metadata/_custom_type_script = "uid://c72burk7b7lrb"

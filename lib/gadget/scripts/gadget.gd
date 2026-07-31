@@ -3,7 +3,7 @@ class_name Gadget extends StaticBody3D
 
 @export var gadget_id := "gadget"
 @export var model: Node3D
-#@export var effect_manager: EffectManager
+@export var effect_manager: EffectManager
 @export var player_collision := true:
 	set(_player_collision):
 		player_collision = _player_collision
@@ -45,8 +45,6 @@ func update_collision_layers() -> void:
 	else: set_collision_layer_value(1, false)
 	if pushes_camera: set_collision_layer_value(2, true)
 	else: set_collision_layer_value(2, false)
-
-var effect_manager := true
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return

@@ -3,7 +3,12 @@ class_name SpatialText extends VisibleOnScreenNotifier3D
 
 const TICK := 0.6
 
-@export var text := "((Spatial Text))"
+@export var text := "((Spatial Text))":
+	set(_text):
+		text = _text
+		if label:
+			label.text = text
+
 @export var render_distance := 20.0
 @export var debug_only := false
 

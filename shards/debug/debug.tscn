@@ -154,4 +154,5 @@ mesh = SubResource("QuadMesh_tjdhw")
 shape = SubResource("BoxShape3D_ex00m")
 
 [node name="TestGadget" parent="OceanTest" index="2" unique_id=1892982592 instance=ExtResource("9_vufpp")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6967344, -0.1, 4.7307167)

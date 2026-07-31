@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhksf5grw7ria"
-path="res://.godot/imported/claim.jpg-4e101e33344b217946e669261c518ce7.ctex"
+path="res://.godot/imported/claim.jpg-959eb906c0c0ddb3d7c7a3c1f83da592.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://skills/claim/claim.jpg"
-dest_files=["res://.godot/imported/claim.jpg-4e101e33344b217946e669261c518ce7.ctex"]
+source_file="res://data/skills/claim/claim.jpg"
+dest_files=["res://.godot/imported/claim.jpg-959eb906c0c0ddb3d7c7a3c1f83da592.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SkillInfo" format=3 uid="uid://cbpw5xqsy374b"]
 
-[ext_resource type="Texture2D" uid="uid://c2mch3lx2r77i" path="res://skills/build/build.jpg" id="1_e4lv2"]
+[ext_resource type="Texture2D" uid="uid://c2mch3lx2r77i" path="res://data/skills/build/build.jpg" id="1_e4lv2"]
 [ext_resource type="Script" uid="uid://boci6nj73cp2k" path="res://lib/hud/skill_button/skill_info.gd" id="2_05i4q"]
 
 [resource]
