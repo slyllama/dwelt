@@ -38,7 +38,6 @@ func handle_mouse_release() -> void:
 		else:
 			DwGadget.update_selected_gadget(null)
 			DwGadget.gadget_clicked.emit(null)
-	print(DwGadget.selected_gadget)
 
 # Only perform when a valid input event is happening
 func _input(event: InputEvent) -> void:

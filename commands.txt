@@ -1,4 +1,5 @@
 General commands
+	/gadgetdebug	[HUD]				Open the gadget debug pane
 	/hello			[DebugInput]		Print a test into debug input
 	/pause			[Dwelt]				Pause the game
 	/playvoice		[Player/Sound]		Play a random voice effect

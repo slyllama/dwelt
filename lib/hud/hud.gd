@@ -11,6 +11,12 @@ func apply_skill(skill_id: String) -> void:
 func _ready() -> void:
 	DwGlobal.skill_used.connect(apply_skill)
 	
+	DwUtils.debug_sent.connect(func(_cmd: String) -> void:
+		if _cmd == "/gadgetdebug":
+			DwGlobal.ui_pane_manager.toggle_open(
+				"res://lib/gadget/gadget_debug_pane/gadget_debug_pane.tscn",
+				"gadget_debug_pane"))
+	
 	$DebugBG.queue_free()
 	await get_tree().create_timer(0.1).timeout
 	%EyesAnim.animate()

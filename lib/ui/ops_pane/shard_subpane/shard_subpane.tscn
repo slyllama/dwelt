@@ -9,6 +9,7 @@
 custom_minimum_size = Vector2(400, 300)
 offset_right = 400.0
 offset_bottom = 300.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kqeii")
 script = ExtResource("1_05ape")
 
