@@ -19,28 +19,28 @@ func has_effect(id: String) -> bool:
 
 # Return the gadget's current effects and durations/quantities in a way that
 # can be stored in the save file
-func get_effects_as_dict() -> Dictionary:
-	var _dict := {}
-	for id in active_effects:
-		var effect := active_effects[id]
-		_dict[effect.id] = {}
-		if effect.type == effect.Type.DURATION:
-			_dict[effect.id]["current_duration"] = str(
-				snapped(effect.current_duration, 0.01))
-		elif effect.type == effect.Type.QUANTITY:
-			_dict[effect.id]["current_quantity"] = str(effect.current_quantity)
-	return(_dict)
-
-func apply_effects_from_dict(effect_dict: Dictionary) -> void:
-	for _eid: String in effect_dict:
-		var _effect_path: String = DwGadget.EFFECTS_PATH + _eid + ".tres"
-		var _effect_data: Dictionary = effect_dict[_eid]
-		var _effect: EffectInstance = load(_effect_path).duplicate()
-		
-		if "current_duration" in _effect_data:
-			add_effect(_effect, float(_effect_data.current_duration))
-		if "current_quantity" in _effect_data:
-			add_effect(_effect, int(_effect_data.current_quantity))
+#func get_effects_as_dict() -> Dictionary:
+	#var _dict := {}
+	#for id in active_effects:
+		#var effect := active_effects[id]
+		#_dict[effect.id] = {}
+		#if effect.type == effect.Type.DURATION:
+			#_dict[effect.id]["current_duration"] = str(
+				#snapped(effect.current_duration, 0.01))
+		#elif effect.type == effect.Type.QUANTITY:
+			#_dict[effect.id]["current_quantity"] = str(effect.current_quantity)
+	#return(_dict)
+#
+#func apply_effects_from_dict(effect_dict: Dictionary) -> void:
+	#for _eid: String in effect_dict:
+		#var _effect_path: String = DwGadget.EFFECTS_PATH + _eid + ".tres"
+		#var _effect_data: Dictionary = effect_dict[_eid]
+		#var _effect: EffectInstance = load(_effect_path).duplicate()
+		#
+		#if "current_duration" in _effect_data:
+			#add_effect(_effect, float(_effect_data.current_duration))
+		#if "current_quantity" in _effect_data:
+			#add_effect(_effect, int(_effect_data.current_quantity))
 
 func decrement_effect_qty(id: String) -> void:
 	if id in active_effects:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://cfnskxukhgar6"]
+
+[ext_resource type="Texture2D" uid="uid://c8er0wmrrj08p" path="res://generic/materials/textures/1m_diff.jpg" id="1_1jljx"]
+[ext_resource type="Script" uid="uid://wxhj7gal762x" path="res://lib/effect/effect_instance/effect_instance.gd" id="2_xqmix"]
+
+[resource]
+script = ExtResource("2_xqmix")
+id = "duration_effect"
+title = "((Duration Effect))"
+icon = ExtResource("1_1jljx")
+quantity_stacks = true

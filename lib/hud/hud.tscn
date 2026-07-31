@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://2mf4xgjh1is0" path="res://lib/hud/skill_bar/skill_bar.tscn" id="14_xpxnq"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="Texture2D" uid="uid://dwb34oujh0s48" path="res://lib/hud/skill_bar/textures/corner.png" id="15_v7nqf"]
+[ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="17_lhiar"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 process_mode = 3
@@ -188,6 +189,19 @@ script = ExtResource("15_asrt8")
 unique_name_in_owner = true
 wait_time = 0.06
 one_shot = true
+
+[node name="PlayerEffectBar" parent="." unique_id=1410631099 instance=ExtResource("17_lhiar")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -112.0
+offset_right = 52.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="SkillBar" parent="." unique_id=1611884224 instance=ExtResource("14_xpxnq")]
 anchors_preset = 7

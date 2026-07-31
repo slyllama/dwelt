@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwyl8l4fhu6gj" path="res://lib/ui/ui_pane/ui_pane.tscn" id="1_7shgk"]
 [ext_resource type="Script" uid="uid://beqfswkrm58ce" path="res://lib/gadget/gadget_debug_pane/gadget_debug_pane.gd" id="2_fxeo4"]
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="3_j0ucd"]
+[ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="4_pkx1h"]
 
 [node name="GadgetDebugPane" unique_id=1181014453 instance=ExtResource("1_7shgk")]
 script = ExtResource("2_fxeo4")
@@ -19,3 +20,7 @@ theme_override_fonts/font = ExtResource("3_j0ucd")
 theme_override_font_sizes/font_size = 12
 text = "Selected gadget: none"
 horizontal_alignment = 1
+
+[node name="EffectBar" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="4" unique_id=1410631099 instance=ExtResource("4_pkx1h")]
+unique_name_in_owner = true
+layout_mode = 2

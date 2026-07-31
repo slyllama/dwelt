@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://uisx4e6sx7ts" path="res://lib/player/materials/textures/splash_mask.png" id="12_ego0t"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
 [ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
+[ext_resource type="Script" uid="uid://c72burk7b7lrb" path="res://lib/effect/effect_manager/effect_manager.gd" id="17_1x433"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
@@ -340,6 +341,10 @@ spring_length = 2.0
 [node name="InputHandler" type="Node" parent="." unique_id=710152317]
 unique_name_in_owner = true
 script = ExtResource("1_odf55")
+
+[node name="EffectManager" type="Node" parent="." unique_id=1636293808]
+script = ExtResource("17_1x433")
+metadata/_custom_type_script = "uid://c72burk7b7lrb"
 
 [node name="YCast" type="RayCast3D" parent="." unique_id=2054951805]
 target_position = Vector3(0, -1.6, 0)
