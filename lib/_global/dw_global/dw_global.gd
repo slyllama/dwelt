@@ -10,6 +10,7 @@ var ui_pane_manager: UIPaneManager
 
 var current_shard_id := ""
 var first_run := true
+var music_volume := 0.0
 var panning := false
 var pan_cooldown := false
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered

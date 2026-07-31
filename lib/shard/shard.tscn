@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bp3rck4ew5qnc" path="res://lib/shard/shard.gd" id="1_5i5j7"]
 [ext_resource type="PackedScene" uid="uid://crbctqd55n6f6" path="res://lib/player/player.tscn" id="1_22u7k"]
 [ext_resource type="Texture2D" uid="uid://0ivnnt6tjr0i" path="res://generic/materials/textures/tile_norm.jpg" id="2_3xe27"]
+[ext_resource type="Script" uid="uid://c2g8xywbljqct" path="res://lib/main_menu/scripts/music.gd" id="2_v2fjr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i5j7"]
 albedo_texture = ExtResource("1_3tfg5")
@@ -22,6 +23,9 @@ orientation = 1
 [node name="Shard" type="Node3D" unique_id=917371765]
 script = ExtResource("1_5i5j7")
 metadata/_custom_type_script = "uid://bp3rck4ew5qnc"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1329964514]
+script = ExtResource("2_v2fjr")
 
 [node name="HUD" parent="." unique_id=717398159 instance=ExtResource("1_3xe27")]
 
@@ -47,3 +51,5 @@ transform = Transform3D(0.64278764, -0.5416752, 0.5416752, 0, 0.70710677, 0.7071
 shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 20.0
+
+[connection signal="finished" from="Music" to="Music" method="_on_finished"]

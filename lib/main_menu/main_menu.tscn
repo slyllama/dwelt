@@ -327,6 +327,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
 script = ExtResource("7_tpkjy")
+track_list = Array[String](["res://lib/main_menu/sounds/mus_glass_darkly.ogg", "res://lib/main_menu/sounds/mus_interlace.ogg"])
 
 [node name="Bell" type="AudioStreamPlayer" parent="." unique_id=1475306669]
 stream = ExtResource("16_vwtaw")

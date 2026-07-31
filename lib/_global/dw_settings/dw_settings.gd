@@ -10,7 +10,8 @@ const DEFAULT_SETTINGS := {
 	"draw_distance": "medium",
 	"volumetric_fog": "true",
 	"taa_anti_aliasing": "true",
-	"volume": "1.0"
+	"volume": "1.0",
+	"music_volume": "0.75"
 }
 
 @onready var settings := DEFAULT_SETTINGS.duplicate()

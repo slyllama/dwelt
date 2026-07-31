@@ -27,3 +27,6 @@ func _on_menu_pressed() -> void:
 	DwUtils.pdebug("Returning to main menu now!", "SettingsPane")
 	get_tree().change_scene_to_file(
 		"res://lib/main_menu/main_menu.tscn")
+
+func _on_music_volume_slider_dragged(value: float) -> void:
+	DwGlobal.music_volume = value
