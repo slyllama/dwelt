@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://b81dc6qkibcs2"]
 
-[ext_resource type="Script" uid="uid://wxhj7gal762x" path="res://lib/gadget/effect_instance/effect_instance.gd" id="1_qyoh8"]
+[ext_resource type="Script" uid="uid://wxhj7gal762x" path="res://lib/gadget/effect/effect_instance/effect_instance.gd" id="1_qyoh8"]
 
 [resource]
 script = ExtResource("1_qyoh8")

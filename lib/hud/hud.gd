@@ -1,21 +1,27 @@
 extends CanvasLayer
 
+const GADGET_DEBUG_PANE_PATH := "res://lib/gadget/gadget_debug_pane/gadget_debug_pane.tscn"
+const OPS_PANE_PATH := "res://lib/ui/ops_pane/ops_pane.tscn"
 const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn"
+
+# TODO: debug only
+func open_gadget_debug_pane() -> void:
+	DwGlobal.ui_pane_manager.toggle_open(GADGET_DEBUG_PANE_PATH, "gadget_debug_pane")
+
+func open_ops_pane() -> void:
+	DwGlobal.ui_pane_manager.toggle_open(OPS_PANE_PATH, "ops_pane")
 
 func apply_skill(skill_id: String) -> void:
 	match skill_id:
-		"build":
-			DwGlobal.ui_pane_manager.toggle_open(
-				"res://lib/ui/ops_pane/ops_pane.tscn", "ops_pane")
+		"build": open_ops_pane()
+		"gadget_debug": open_gadget_debug_pane()
 
 func _ready() -> void:
 	DwGlobal.skill_used.connect(apply_skill)
 	
 	DwUtils.debug_sent.connect(func(_cmd: String) -> void:
 		if _cmd == "/gadgetdebug":
-			DwGlobal.ui_pane_manager.toggle_open(
-				"res://lib/gadget/gadget_debug_pane/gadget_debug_pane.tscn",
-				"gadget_debug_pane"))
+			open_gadget_debug_pane())
 	
 	$DebugBG.queue_free()
 	await get_tree().create_timer(0.1).timeout

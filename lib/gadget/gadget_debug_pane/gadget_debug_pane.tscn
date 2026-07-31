@@ -8,7 +8,6 @@
 script = ExtResource("2_fxeo4")
 title = "Gadget"
 ui_id = "gadget_debug_pane"
-silent = true
 
 [node name="Title" parent="Box/Header" parent_id_path=PackedInt32Array(169153113) index="1" unique_id=411912598]
 text = "Gadget"
@@ -20,6 +19,3 @@ theme_override_fonts/font = ExtResource("3_j0ucd")
 theme_override_font_sizes/font_size = 12
 text = "Selected gadget: none"
 horizontal_alignment = 1
-
-[node name="Open" parent="." index="1" unique_id=2105154938]
-volume_db = -80.0

@@ -29,6 +29,14 @@ func register_pane(pane: UIPane) -> void:
 				put_on_top(pane))
 	panes_updated.emit(panes.size())
 
+# Return the UI pane referenced by its ID if it exists in the stack,
+# or `null` if it doesn't
+func get_pane_by_id(pane_id: String) -> UIPane:
+	for _n: UIPane in %UIPaneManager.get_children():
+		if _n.ui_id == pane_id:
+			return(_n)
+	return(null)
+
 # Panes must be closed through this method so they can be deregistered
 func close_pane(pane: UIPane) -> void:
 	panes.erase(pane)
