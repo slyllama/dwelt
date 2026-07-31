@@ -10,3 +10,7 @@ func _ready() -> void:
 			_n.modulate.a = DEFAULT_ALPHA
 			_n.mouse_entered.connect(func() -> void: _n.modulate.a = 1.0)
 			_n.mouse_exited.connect(func() -> void: _n.modulate.a = DEFAULT_ALPHA)
+
+func _on_gadget_pane_pressed() -> void:
+	DwGlobal.ui_pane_manager.toggle_open(
+		"res://lib/ui/ops_pane/ops_pane.tscn", "ops_pane")
