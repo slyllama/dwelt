@@ -11,8 +11,8 @@ signal effect_cancelled(id: String)
 
 func notify_update() -> void:
 	effects_updated.emit()
-	if DwGlobal.selected_gadget == get_parent():
-		DwGlobal.selected_gadget_updated.emit()
+	if DwGadget.selected_gadget == get_parent():
+		DwGadget.selected_gadget_updated.emit()
 
 func has_effect(id: String) -> bool:
 	return(id in active_effects)
@@ -33,7 +33,7 @@ func get_effects_as_dict() -> Dictionary:
 
 func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 	for _eid: String in effect_dict:
-		var _effect_path: String = DwGlobal.EFFECTS_PATH + _eid + ".tres"
+		var _effect_path: String = DwGadget.EFFECTS_PATH + _eid + ".tres"
 		var _effect_data: Dictionary = effect_dict[_eid]
 		var _effect: EffectInstance = load(_effect_path).duplicate()
 		

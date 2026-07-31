@@ -1,6 +1,5 @@
 extends Node
 
-const EFFECTS_PATH := "res://data/effects/"
 const GRAVITY := -9.8
 const NO_SHADOW_EXPRESSION := "_ns"
 
@@ -13,7 +12,6 @@ var current_shard_id := ""
 var first_run := true
 var panning := false
 var pan_cooldown := false
-var selected_gadget: Gadget
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 
 # Global signal bus

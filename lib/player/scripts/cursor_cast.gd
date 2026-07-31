@@ -26,6 +26,20 @@ func handle_mouse_raycast() -> void:
 		current_collider = intersection.collider
 	else: current_collider = null
 
+func handle_mouse_release() -> void:
+	if !last_click_in_ui and !get_window().gui_get_hovered_control():
+		if _cooldown > 0.01: return # reject if too close to the last successful input
+		_cooldown = COOLDOWN
+		if current_collider is Gadget:
+			if current_collider.effect_manager: # clicking for BOps is handled separately
+				DwGadget.update_selected_gadget(current_collider)
+			else: DwGadget.update_selected_gadget(null)
+			DwGadget.gadget_clicked.emit(current_collider)
+		else:
+			DwGadget.update_selected_gadget(null)
+			DwGadget.gadget_clicked.emit(null)
+	print(DwGadget.selected_gadget)
+
 # Only perform when a valid input event is happening
 func _input(event: InputEvent) -> void:
 	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: return # don't check during panning events
@@ -38,10 +52,7 @@ func _input(event: InputEvent) -> void:
 			last_click_in_ui = true
 	if Input.is_action_just_released("left_click"):
 		# Didn't start *or* end in UI
-		if !last_click_in_ui and !get_window().gui_get_hovered_control():
-			if _cooldown > 0.01: return # reject if too close to the last successful input
-			_cooldown = COOLDOWN
-			#print(current_collider)
+		handle_mouse_release()
 
 func _process(delta: float) -> void:
 	if _cooldown > 0.0:
