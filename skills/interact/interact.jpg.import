@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2mch3lx2r77i"
-path="res://.godot/imported/open_gadget_pane.jpg-37d1831a05344d973adaaa7eb79e9357.ctex"
+uid="uid://cal7pmlj2wm3f"
+path="res://.godot/imported/interact.jpg-af51281eb4d7f269e5357d3d1216dccd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://skills/open_gadget_pane/open_gadget_pane.jpg"
-dest_files=["res://.godot/imported/open_gadget_pane.jpg-37d1831a05344d973adaaa7eb79e9357.ctex"]
+source_file="res://skills/interact/interact.jpg"
+dest_files=["res://.godot/imported/interact.jpg-af51281eb4d7f269e5357d3d1216dccd.ctex"]
 
 [params]
 

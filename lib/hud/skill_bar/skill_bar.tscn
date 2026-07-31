@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dqr2k58v2qtfk" path="res://lib/hud/skill_bar/skill_bar.gd" id="1_e8s31"]
 [ext_resource type="PackedScene" uid="uid://bdr11nbnrqk7k" path="res://lib/hud/skill_button/skill_button.tscn" id="1_xwfy5"]
 [ext_resource type="Texture2D" uid="uid://cc7druv6r05vo" path="res://lib/hud/skill_button/textures/highlight.png" id="3_q1ksp"]
-[ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://skills/test_skill/test_skill.tres" id="3_u4na3"]
-[ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://skills/open_gadget_pane/open_gadget_pane.tres" id="4_u4na3"]
-[ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://skills/bingus_skill/bingus_skill.tres" id="5_78e8x"]
+[ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://skills/interact/interact.tres" id="3_u4na3"]
+[ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://skills/build/build.tres" id="4_u4na3"]
+[ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://skills/claim/claim.tres" id="5_78e8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q8ax"]
 bg_color = Color(0, 0, 0, 1)

@@ -4,7 +4,7 @@ const SETTINGS_PANE_PATH := "res://lib/settings/settings_pane/settings_pane.tscn
 
 func apply_skill(skill_id: String) -> void:
 	match skill_id:
-		"open_gadget_pane":
+		"build":
 			DwGlobal.ui_pane_manager.toggle_open(
 				"res://lib/ui/ops_pane/ops_pane.tscn", "ops_pane")
 

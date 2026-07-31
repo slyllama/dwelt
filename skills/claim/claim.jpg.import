@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0kwmug0obof"
-path="res://.godot/imported/bingus_skill.jpg-37fee7f479e87b6d29459f764bf0c0b7.ctex"
+uid="uid://dhksf5grw7ria"
+path="res://.godot/imported/claim.jpg-4e101e33344b217946e669261c518ce7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://skills/bingus_skill/bingus_skill.jpg"
-dest_files=["res://.godot/imported/bingus_skill.jpg-37fee7f479e87b6d29459f764bf0c0b7.ctex"]
+source_file="res://skills/claim/claim.jpg"
+dest_files=["res://.godot/imported/claim.jpg-4e101e33344b217946e669261c518ce7.ctex"]
 
 [params]
 

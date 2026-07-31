@@ -21,9 +21,3 @@ func _ready() -> void:
 				%Highlight.position = _n.position + _n.size / 2.0)
 			_n.mouse_exited.connect(func() -> void:
 				%Highlight.visible = false)
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_page_down"):
-		# TODO: debug
-		set_skill(3, "bingus_skill")
-		set_skill(4, "test_skill")
