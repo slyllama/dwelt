@@ -10,7 +10,6 @@ var controller_focus_effect: EffectCard
 	set(_effect_manager):
 		deregister_effect_manager()
 		effect_manager = _effect_manager
-		size.x = 0.0
 		on_effect_manager_change()
 
 func deregister_effect_manager() -> void:
@@ -40,6 +39,10 @@ func on_effect_manager_change() -> void:
 	
 	# Otherwise there is a new effect manager, and its signals need to be connected
 	effect_manager.effect_added.connect(on_effect_added)
+	
+	await get_tree().process_frame
+	size.x = 0.0
+	position.x = -size.x / 2.0
 
 func _ready() -> void:
 	for _n: Node in get_children(): _n.queue_free()

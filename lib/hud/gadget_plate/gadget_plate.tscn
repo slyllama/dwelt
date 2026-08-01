@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bh03mu7i7qwa7"]
+
+[ext_resource type="Texture2D" uid="uid://bbnafhp2ybjvo" path="res://lib/hud/gadget_plate/texture/blur.png" id="1_2e8rt"]
+[ext_resource type="Script" uid="uid://sc8o13qjn3hd" path="res://lib/hud/gadget_plate/gadget_plate.gd" id="1_2jc3s"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="1_tqnjs"]
+[ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="4_h3qxh"]
+[ext_resource type="Texture2D" uid="uid://dhmu1xmkeywug" path="res://lib/hud/gadget_plate/texture/separator.png" id="5_nhfwf"]
+
+[node name="GadgetPlate" type="Control" unique_id=1984405854]
+custom_maximum_size = Vector2(0, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2jc3s")
+
+[node name="Blur" type="TextureRect" parent="." unique_id=1945935423]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -528.0
+offset_top = -179.0
+offset_right = 528.0
+offset_bottom = 177.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("1_2e8rt")
+expand_mode = 1
+
+[node name="EffectBar" parent="." unique_id=1410631099 instance=ExtResource("4_h3qxh")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 56.0
+offset_right = 52.0
+offset_bottom = 88.0
+grow_horizontal = 2
+
+[node name="Separator" type="TextureRect" parent="." unique_id=2086563753]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.17743
+offset_top = -37.0
+offset_right = 284.17743
+offset_bottom = 29.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("5_nhfwf")
+expand_mode = 1
+flip_v = true
+
+[node name="Title" type="Label" parent="." unique_id=356217929]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_tqnjs")
+theme_override_font_sizes/font_size = 27
+text = "((Gadget))"
+horizontal_alignment = 1

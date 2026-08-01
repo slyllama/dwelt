@@ -30,7 +30,7 @@ func has_effect(id: String) -> bool:
 		#elif effect.type == effect.Type.QUANTITY:
 			#_dict[effect.id]["current_quantity"] = str(effect.current_quantity)
 	#return(_dict)
-#
+
 #func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 	#for _eid: String in effect_dict:
 		#var _effect_path: String = DwGadget.EFFECTS_PATH + _eid + ".tres"
