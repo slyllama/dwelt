@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://data/skills/interact/interact.tres" id="3_u4na3"]
 [ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://data/skills/build/build.tres" id="4_u4na3"]
 [ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://data/skills/claim/claim.tres" id="5_78e8x"]
-[ext_resource type="Resource" uid="uid://k5dvrjt3ivk1" path="res://data/skills/gadget_debug/gadget_debug.tres" id="6_gwk6g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q8ax"]
 bg_color = Color(0, 0, 0, 1)
@@ -70,7 +69,6 @@ input_binding = "null"
 [node name="SkillButton10" parent="Box" unique_id=1704254344 instance=ExtResource("1_xwfy5")]
 layout_mode = 2
 input_binding = "null"
-skill_info = ExtResource("6_gwk6g")
 
 [node name="Highlight" type="Sprite2D" parent="." unique_id=517594167]
 unique_name_in_owner = true

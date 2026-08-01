@@ -2,6 +2,7 @@
 class_name Gadget extends StaticBody3D
 
 @export var gadget_id := "gadget"
+@export var gadget_title := "((Gadget))"
 @export var model: Node3D
 @export var effect_manager: EffectManager
 @export var player_collision := true:

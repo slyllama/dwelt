@@ -41,6 +41,7 @@ func on_effect_manager_change() -> void:
 	effect_manager.effect_added.connect(on_effect_added)
 	
 	await get_tree().process_frame
+	# Re-center
 	size.x = 0.0
 	position.x = -size.x / 2.0
 

@@ -19,10 +19,6 @@ func apply_skill(skill_id: String) -> void:
 func _ready() -> void:
 	DwGlobal.skill_used.connect(apply_skill)
 	
-	DwUtils.debug_sent.connect(func(_cmd: String) -> void:
-		if _cmd == "/gadgetdebug":
-			open_gadget_debug_pane())
-	
 	$DebugBG.queue_free()
 	await get_tree().process_frame
 	$PlayerEffectBar.effect_manager = DwGlobal.player.get_node("EffectManager")
