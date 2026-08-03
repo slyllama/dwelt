@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="17_lhiar"]
 [ext_resource type="PackedScene" uid="uid://bh03mu7i7qwa7" path="res://lib/hud/gadget_plate/gadget_plate.tscn" id="18_iox8o"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ex00m"]
+
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 process_mode = 3
 script = ExtResource("1_3pj68")
@@ -44,14 +46,17 @@ stretch_mode = 1
 [node name="ScreenFX" parent="." unique_id=727361419 instance=ExtResource("1_o36f6")]
 
 [node name="RenderMonitor" type="RichTextLabel" parent="ScreenFX" unique_id=838523613]
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -151.0
-offset_top = 18.0
-offset_right = -18.0
-offset_bottom = 36.0
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -9.0
+offset_right = -115.0
+offset_bottom = 9.0
 grow_horizontal = 0
+grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -2
@@ -120,6 +125,23 @@ expand_mode = 1
 [node name="DebugInput" parent="." unique_id=222609980 instance=ExtResource("7_r2k48")]
 offset_top = -294.0
 offset_right = 473.0
+
+[node name="Sidebar" type="PanelContainer" parent="." unique_id=1103400337]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
+
+[node name="Box" type="VBoxContainer" parent="Sidebar" unique_id=2094275296]
+layout_mode = 2
+
+[node name="GadgetPlate" parent="Sidebar/Box" unique_id=1272730245 instance=ExtResource("18_iox8o")]
+layout_mode = 2
 
 [node name="TopLeftBase" type="CanvasLayer" parent="." unique_id=217289711]
 layer = 2
@@ -203,14 +225,6 @@ offset_right = 52.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="GadgetPlate" parent="." unique_id=1272730245 instance=ExtResource("18_iox8o")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 107.0
-offset_bottom = 107.0
-grow_horizontal = 2
 
 [node name="SkillBar" parent="." unique_id=1611884224 instance=ExtResource("14_xpxnq")]
 anchors_preset = 7

@@ -12,6 +12,8 @@ var controller_focus_effect: EffectCard
 		effect_manager = _effect_manager
 		on_effect_manager_change()
 
+@export var reset_size_on_update := false
+
 func deregister_effect_manager() -> void:
 	if effect_manager:
 		if effect_manager.effect_added.is_connected(on_effect_added):
@@ -40,10 +42,11 @@ func on_effect_manager_change() -> void:
 	# Otherwise there is a new effect manager, and its signals need to be connected
 	effect_manager.effect_added.connect(on_effect_added)
 	
-	await get_tree().process_frame
-	# Re-center
-	size.x = 0.0
-	position.x = -size.x / 2.0
+	# Re-center (if selectedO
+	if reset_size_on_update:
+		await get_tree().process_frame
+		size.x = 0.0
+		position.x = -size.x / 2.0
 
 func _ready() -> void:
 	for _n: Node in get_children(): _n.queue_free()
