@@ -11,6 +11,7 @@
 script = ExtResource("1_h84hs")
 gadget_id = "test_gadget"
 gadget_title = "Test Gadget"
+gadget_description = "Believe it or not, it's a test gadget."
 model = NodePath("Mesh")
 effect_manager = NodePath("EffectManager")
 cull_distance = 25.0

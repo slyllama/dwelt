@@ -127,12 +127,13 @@ offset_top = -294.0
 offset_right = 473.0
 
 [node name="Sidebar" type="PanelContainer" parent="." unique_id=1103400337]
-custom_minimum_size = Vector2(300, 0)
-custom_maximum_size = Vector2(300, -1)
+custom_minimum_size = Vector2(340, 0)
+custom_maximum_size = Vector2(340, -1)
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -340.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
@@ -225,6 +226,7 @@ offset_right = 52.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
+reset_size_on_update = true
 
 [node name="SkillBar" parent="." unique_id=1611884224 instance=ExtResource("14_xpxnq")]
 anchors_preset = 7

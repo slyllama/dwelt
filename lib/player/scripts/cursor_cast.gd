@@ -6,6 +6,7 @@ extends Node
 
 var current_collider: CollisionObject3D
 var last_click_in_ui := false
+var last_hovered_gadget: Gadget
 
 # Always wait a short cooldown before processing an input action again
 const COOLDOWN := 0.1
@@ -30,21 +31,19 @@ func handle_mouse_release() -> void:
 	if !last_click_in_ui and !get_window().gui_get_hovered_control():
 		if _cooldown > 0.01: return # reject if too close to the last successful input
 		_cooldown = COOLDOWN
-		if current_collider is Gadget:
-			if current_collider.effect_manager: # clicking for BOps is handled separately
-				DwGadget.update_selected_gadget(current_collider)
-			else: DwGadget.update_selected_gadget(null)
-			DwGadget.gadget_clicked.emit(current_collider)
-		else:
-			DwGadget.update_selected_gadget(null)
-			DwGadget.gadget_clicked.emit(null)
+		# TODO: MOUSE CLICK STUFF HERE
+
+func handle_gadget_hover() -> void:
+	if current_collider != last_hovered_gadget:
+		DwGadget.gadget_hovered.emit(current_collider)
+	last_hovered_gadget = current_collider
 
 # Only perform when a valid input event is happening
-func _input(event: InputEvent) -> void:
-	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: return # don't check during panning events
-	if event is InputEventMouseMotion:
-		handle_mouse_raycast()
-	
+func _input(_event: InputEvent) -> void:
+	if !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		# Cancel any hovered gadgets when panning events start
+		DwGadget.gadget_hovered.emit(null)
+		return # don't check during panning events
 	if Input.is_action_just_pressed("left_click"):
 		last_click_in_ui = false
 		if get_window().gui_get_hovered_control():
@@ -54,5 +53,8 @@ func _input(event: InputEvent) -> void:
 		handle_mouse_release()
 
 func _process(delta: float) -> void:
+	handle_mouse_raycast()
+	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		handle_gadget_hover()
 	if _cooldown > 0.0:
 		_cooldown -= delta
