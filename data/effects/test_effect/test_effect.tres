@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://b81dc6qkibcs2"]
 
-[ext_resource type="Texture2D" uid="uid://c8er0wmrrj08p" path="res://generic/materials/textures/1m_diff.jpg" id="1_jymps"]
 [ext_resource type="Script" uid="uid://wxhj7gal762x" path="res://lib/effect/effect_instance/effect_instance.gd" id="2_ktuyk"]
 
 [resource]
 script = ExtResource("2_ktuyk")
 id = "test_effect"
 title = "((Test Effect))"
-icon = ExtResource("1_jymps")
 type = 1
 quantity_stacks = true

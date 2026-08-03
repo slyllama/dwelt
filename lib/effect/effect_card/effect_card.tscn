@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cd7xu7yvamnd"]
 
-[ext_resource type="Texture2D" uid="uid://bphwqxf5m2fs1" path="res://lib/hud/skill_button/textures/placeholder.jpg" id="1_k77om"]
+[ext_resource type="Texture2D" uid="uid://bskg5tyrq6qdr" path="res://data/effects/placeholder.jpg" id="1_tj6u5"]
 [ext_resource type="Script" uid="uid://qhp0ra5pfdyt" path="res://lib/effect/effect_card/effect_card.gd" id="2_tj6u5"]
 
 [node name="EffectCard" type="TextureRect" unique_id=282924437]
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
-texture = ExtResource("1_k77om")
+texture = ExtResource("1_tj6u5")
 expand_mode = 1
 script = ExtResource("2_tj6u5")
 

@@ -23,8 +23,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3fwsl"]
 resource_name = "fade_in"
-length = 0.1
-step = 0.1
+length = 0.04
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +32,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.04),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -73,9 +73,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -52.0
-offset_top = 56.0
+offset_top = 41.0
 offset_right = 52.0
-offset_bottom = 88.0
+offset_bottom = 73.0
 grow_horizontal = 2
 
 [node name="Separator" type="TextureRect" parent="." unique_id=2086563753]
@@ -84,9 +84,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -284.17743
-offset_top = -37.0
+offset_top = -34.0
 offset_right = 284.17743
-offset_bottom = 29.0
+offset_bottom = 32.0
 grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("5_nhfwf")
