@@ -1,8 +1,6 @@
-General commands
-	/gadgetdebug	[HUD]				Open the gadget debug pane
+General commandse
 	/hello			[DebugInput]		Print a test into debug input
 	/pause			[Dwelt]				Pause the game
 	/playvoice		[Player/Sound]		Play a random voice effect
 	/resetpos		[Shard]				Reset player position
-	/testpane		[UIPaneManager]		Spawn a test UIPane
 	/unpause		[Dwelt]				Resume the game
