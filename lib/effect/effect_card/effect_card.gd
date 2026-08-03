@@ -1,4 +1,4 @@
-class_name EffectCard extends TextureRect
+class_name EffectCard extends HBoxContainer
 # Display an icon for a single effect
 
 const PLACEHOLDER_TEXTURE := preload("res://data/effects/placeholder.jpg")
@@ -9,17 +9,20 @@ const PLACEHOLDER_TEXTURE := preload("res://data/effects/placeholder.jpg")
 		if effect_instance:
 			effect_instance.finished.connect(queue_free)
 			
-			if effect_instance.icon: texture = effect_instance.icon
-			else: texture = PLACEHOLDER_TEXTURE
+			%Title.text = effect_instance.title
+			if effect_instance.icon: %Icon.texture = effect_instance.icon
+			else: %Icon.texture = PLACEHOLDER_TEXTURE
 
 func _process(_delta: float) -> void:
 	if effect_instance:
 		if effect_instance.type == EffectInstance.Type.QUANTITY:
 			var quantity := effect_instance.current_quantity
-			
 			if quantity == 1:
 				if effect_instance.hide_single_quantity:
-					$Qty.visible = false
-			else: $Qty.visible = true
-			$Qty.text = str(snapped(quantity, 1))
-		else: $Qty.visible = false
+					%Qty.visible = false
+			else: %Qty.visible = true
+			%Qty.text = str(snapped(quantity, 1))
+		elif effect_instance.type == EffectInstance.Type.DURATION:
+			%Qty.visible = false
+			%ProgressBarMask.visible = true
+			%ProgressBar.value = effect_instance.current_duration / effect_instance.total_duration * 100.0

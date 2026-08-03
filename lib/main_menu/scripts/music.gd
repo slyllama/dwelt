@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 
 @export_file_path("*.ogg") var track_list: Array[String] = []
 @export var track_gap := 4.0
+@export var ready_delay := 1.0
 
 @onready var current_song := track_list[0]
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 			volume_linear = _clamped_vol)
 			
 	if track_list.size() == 0: return
-	await get_tree().create_timer(track_gap).timeout
+	await get_tree().create_timer(ready_delay).timeout
 	set_stream(load(track_list[0]))
 	play()
 

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/hud/textures/icon_screenshot.png" id="8_l8w22"]
+[ext_resource type="Texture2D" uid="uid://cuqm4i6x48pvr" path="res://lib/hud/textures/sidebar_separator.png" id="10_eokq2"]
 [ext_resource type="Texture2D" uid="uid://yeo23shymmug" path="res://lib/hud/textures/icon_gadgetpane.png" id="12_nglf3"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
 [ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/hud/scripts/override.gd" id="13_6u16q"]
@@ -19,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://2mf4xgjh1is0" path="res://lib/hud/skill_bar/skill_bar.tscn" id="14_xpxnq"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="Texture2D" uid="uid://dwb34oujh0s48" path="res://lib/hud/skill_bar/textures/corner.png" id="15_v7nqf"]
-[ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="17_lhiar"]
 [ext_resource type="PackedScene" uid="uid://bh03mu7i7qwa7" path="res://lib/hud/gadget_plate/gadget_plate.tscn" id="18_iox8o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ex00m"]
@@ -140,9 +140,16 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
 
 [node name="Box" type="VBoxContainer" parent="Sidebar" unique_id=2094275296]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="GadgetPlate" parent="Sidebar/Box" unique_id=1272730245 instance=ExtResource("18_iox8o")]
 layout_mode = 2
+
+[node name="SidebarSeparator" type="TextureRect" parent="Sidebar/Box" unique_id=1360620072]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+texture = ExtResource("10_eokq2")
+expand_mode = 1
 
 [node name="TopLeftBase" type="CanvasLayer" parent="." unique_id=217289711]
 layer = 2
@@ -213,20 +220,6 @@ script = ExtResource("15_asrt8")
 unique_name_in_owner = true
 wait_time = 0.06
 one_shot = true
-
-[node name="PlayerEffectBar" parent="." unique_id=1410631099 instance=ExtResource("17_lhiar")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -112.0
-offset_right = 52.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 0
-reset_size_on_update = true
 
 [node name="SkillBar" parent="." unique_id=1611884224 instance=ExtResource("14_xpxnq")]
 anchors_preset = 7

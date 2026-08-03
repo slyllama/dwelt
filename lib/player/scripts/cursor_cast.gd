@@ -54,7 +54,12 @@ func _input(_event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	handle_mouse_raycast()
-	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+	if (Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
+		and !get_window().gui_get_hovered_control()):
 		handle_gadget_hover()
+	else:
+		last_hovered_gadget = null
+		DwGadget.gadget_hovered.emit(null)
+	
 	if _cooldown > 0.0:
 		_cooldown -= delta

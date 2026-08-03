@@ -20,8 +20,6 @@ func _ready() -> void:
 	DwGlobal.skill_used.connect(apply_skill)
 	
 	$DebugBG.queue_free()
-	await get_tree().process_frame
-	$PlayerEffectBar.effect_manager = DwGlobal.player.get_node("EffectManager")
 	await get_tree().create_timer(0.1).timeout
 	%EyesAnim.animate()
 

@@ -6,4 +6,5 @@
 script = ExtResource("2_xqmix")
 id = "duration_effect"
 title = "((Duration Effect))"
+total_duration = 60.0
 quantity_stacks = true

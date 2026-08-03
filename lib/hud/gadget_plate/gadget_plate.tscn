@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="4_h3qxh"]
 
 [sub_resource type="Gradient" id="Gradient_2e8rt"]
-offsets = PackedFloat32Array(0.03348214, 0.359375, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.4862745, 0, 0, 0, 0.9019608)
+offsets = PackedFloat32Array(0.10491072, 0.25223213, 0.59151787, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.07598489, 0, 0, 0, 0.5176471, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2jc3s"]
 gradient = SubResource("Gradient_2e8rt")
@@ -16,7 +16,7 @@ gradient = SubResource("Gradient_2e8rt")
 content_margin_left = 48.0
 content_margin_top = 24.0
 content_margin_right = 18.0
-content_margin_bottom = 18.0
+content_margin_bottom = 40.0
 texture = SubResource("GradientTexture2D_2jc3s")
 
 [node name="GadgetPlate" type="PanelContainer" unique_id=1381108477]
@@ -63,7 +63,7 @@ expand_mode = 1
 flip_h = true
 
 [node name="Padding1" type="ColorRect" parent="Box" unique_id=807521848]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
@@ -71,4 +71,3 @@ color = Color(1, 1, 1, 0)
 [node name="EffectBar" parent="Box" unique_id=1410631099 instance=ExtResource("4_h3qxh")]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 0

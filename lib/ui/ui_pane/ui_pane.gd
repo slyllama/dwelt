@@ -69,6 +69,9 @@ func _ready() -> void:
 					clicked.emit()
 				DwGlobal.emit_click_sound.emit())
 	
+	# Force a detection of whether the cursor is in a GUI input
+	get_window().warp_mouse(get_window().get_mouse_position())
+	
 	# Fade in and play open sound
 	var _fade_tween := create_tween()
 	_fade_tween.tween_property(self, "modulate:a", 1.0, FADE_SPEED)

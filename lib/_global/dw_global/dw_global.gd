@@ -3,6 +3,8 @@ extends Node
 const GRAVITY := -9.8
 const NO_SHADOW_EXPRESSION := "_ns"
 
+enum ToolModes { NORMAL }
+
 # References
 var camera: Camera3D
 var player: DweltPlayer
@@ -14,6 +16,7 @@ var music_volume := 0.0
 var panning := false
 var pan_cooldown := false
 var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
+var tool_mode: ToolModes = ToolModes.NORMAL
 
 # Global signal bus
 signal camera_pan_started

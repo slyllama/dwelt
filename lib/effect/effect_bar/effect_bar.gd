@@ -1,9 +1,7 @@
-class_name EffectBar extends HBoxContainer
+class_name EffectBar extends VBoxContainer
 
 var EffectCardScene := load("res://lib/effect/effect_card/effect_card.tscn")
 var controller_focus_effect: EffectCard
-
-@onready var controller_focus_cursor := Sprite2D.new()
 
 @export var effect_manager: EffectManager:
 	get: return(effect_manager)
@@ -11,8 +9,6 @@ var controller_focus_effect: EffectCard
 		deregister_effect_manager()
 		effect_manager = _effect_manager
 		on_effect_manager_change()
-
-@export var reset_size_on_update := false
 
 func deregister_effect_manager() -> void:
 	if effect_manager:
@@ -42,11 +38,9 @@ func on_effect_manager_change() -> void:
 	# Otherwise there is a new effect manager, and its signals need to be connected
 	effect_manager.effect_added.connect(on_effect_added)
 	
-	# Re-center (if selectedO
-	if reset_size_on_update:
-		await get_tree().process_frame
-		size.x = 0.0
-		position.x = -size.x / 2.0
+	# Reset size to get rid of dead space
+	await get_tree().process_frame
+	size.y = 0.0
 
 func _ready() -> void:
 	for _n: Node in get_children(): _n.queue_free()
