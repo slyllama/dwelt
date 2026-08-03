@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("2_ktuyk")
-id = "test_effect"
-title = "((Test Effect))"
+id = "blight"
+title = "Blight"
+description = "This blight is twisting and corrupting the natural order, and must be removed."
 type = 1
-quantity_stacks = true
+hide_single_quantity = true
+total_quantity = 1

@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/hud/debug_input/debug_input.tscn" id="7_r2k48"]
 [ext_resource type="PackedScene" uid="uid://buo63yit41d8w" path="res://lib/hud/eye_anim/eye_anim.tscn" id="7_tpybq"]
 [ext_resource type="Texture2D" uid="uid://ct8a8pvbuqob1" path="res://lib/hud/textures/icon_screenshot.png" id="8_l8w22"]
+[ext_resource type="Script" uid="uid://bs2dvua3so524" path="res://lib/hud/scripts/sidebar.gd" id="9_iox8o"]
 [ext_resource type="Texture2D" uid="uid://cuqm4i6x48pvr" path="res://lib/hud/textures/sidebar_separator.png" id="10_eokq2"]
 [ext_resource type="Texture2D" uid="uid://yeo23shymmug" path="res://lib/hud/textures/icon_gadgetpane.png" id="12_nglf3"]
 [ext_resource type="Script" uid="uid://c24pn4ufcu4ws" path="res://lib/hud/scripts/screenshot_manager.gd" id="13_2eonm"]
-[ext_resource type="Script" uid="uid://bh52adh53ppqb" path="res://lib/hud/scripts/override.gd" id="13_6u16q"]
 [ext_resource type="AudioStream" uid="uid://di2ouw3em32ch" path="res://lib/hud/sounds/shutter.ogg" id="14_6rdt5"]
 [ext_resource type="PackedScene" uid="uid://2mf4xgjh1is0" path="res://lib/hud/skill_bar/skill_bar.tscn" id="14_xpxnq"]
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
@@ -127,6 +127,7 @@ offset_top = -294.0
 offset_right = 473.0
 
 [node name="Sidebar" type="PanelContainer" parent="." unique_id=1103400337]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(340, 0)
 custom_maximum_size = Vector2(340, -1)
 anchors_preset = 11
@@ -137,16 +138,19 @@ offset_left = -340.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
+script = ExtResource("9_iox8o")
 
 [node name="Box" type="VBoxContainer" parent="Sidebar" unique_id=2094275296]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="GadgetPlate" parent="Sidebar/Box" unique_id=1272730245 instance=ExtResource("18_iox8o")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SidebarSeparator" type="TextureRect" parent="Sidebar/Box" unique_id=1360620072]
-custom_minimum_size = Vector2(0, 48)
+[node name="Endpiece" type="TextureRect" parent="Sidebar/Box" unique_id=1360620072]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 texture = ExtResource("10_eokq2")
 expand_mode = 1
@@ -195,7 +199,6 @@ layer = 1
 
 [node name="Override" type="CanvasLayer" parent="." unique_id=1195063702]
 layer = 99
-script = ExtResource("13_6u16q")
 
 [node name="EyesAnim" parent="Override" unique_id=1456570687 instance=ExtResource("7_tpybq")]
 unique_name_in_owner = true
@@ -241,6 +244,7 @@ script = ExtResource("13_2eonm")
 [node name="Shutter" type="AudioStreamPlayer" parent="ScreenshotManager" unique_id=1423446745]
 stream = ExtResource("14_6rdt5")
 
+[connection signal="visibility_changed" from="Sidebar/Box/GadgetPlate" to="Sidebar" method="_on_gadget_plate_visibility_changed"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/Settings" to="." method="_on_settings_pressed"]
 [connection signal="gui_input" from="TopLeftBase/TopLeftMenu/Screenshot" to="." method="_on_screenshot_gui_input"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/Screenshot" to="." method="_on_screenshot_pressed"]

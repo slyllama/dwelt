@@ -56,7 +56,7 @@ mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
 [node name="Separator" type="TextureRect" parent="Box" unique_id=622580502]
-custom_minimum_size = Vector2(0, 3)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 texture = ExtResource("3_2jc3s")
 expand_mode = 1

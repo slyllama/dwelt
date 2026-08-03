@@ -10,12 +10,12 @@ var camera: Camera3D
 var player: DweltPlayer
 var ui_pane_manager: UIPaneManager
 
+var current_shard: Shard
 var current_shard_id := ""
 var first_run := true
 var music_volume := 0.0
 var panning := false
 var pan_cooldown := false
-var shard_path_to_load := "" # this shard will be loaded next time ShardLoader is entered
 var tool_mode: ToolModes = ToolModes.NORMAL
 
 # Global signal bus
@@ -25,7 +25,6 @@ signal skill_used(id: String)
 
 # Signals which fire events rather than intercept them
 signal emit_click_sound
-signal play_flash(position: Vector2)
 signal shake_camera
 
 func discord_update_state(text := "") -> void:

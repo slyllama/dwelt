@@ -3,6 +3,7 @@ class_name Shard extends Node3D
 
 @export var shard_id: String
 @export var shard_name: String
+@export var required_favour := 50
 
 const SHARD := true # just used to identify that this scene is a shard
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	_set_bus_vol(0.0)
 	
 	DwGlobal.current_shard_id = shard_id
+	DwGlobal.current_shard = self
 	DwGlobal.discord_update_state("In Shard")
 	DwGlobal.discord_update_details(shard_name)
 	DwUtils.debug_mode_changed.emit() # update debugging nodes

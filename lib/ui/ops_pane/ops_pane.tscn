@@ -66,14 +66,19 @@ tab_text = "Shard"
 tab_id = "shard"
 tab_scene_path = "res://lib/ui/ops_pane/shard_subpane/shard_subpane.tscn"
 
-[node name="EdgeRight" type="TextureRect" parent="Box/UIPaneTabController" index="4" unique_id=526319101]
+[node name="JournalTab" parent="Box/UIPaneTabController" index="4" unique_id=1216898625 instance=ExtResource("4_gb7t2")]
+layout_mode = 2
+tab_text = "Journal"
+tab_id = "journal"
+
+[node name="EdgeRight" type="TextureRect" parent="Box/UIPaneTabController" index="5" unique_id=526319101]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 texture = ExtResource("4_nkaek")
 expand_mode = 1
 flip_h = true
 
-[node name="PadRight" type="ColorRect" parent="Box/UIPaneTabController" index="5" unique_id=1925840840]
+[node name="PadRight" type="ColorRect" parent="Box/UIPaneTabController" index="6" unique_id=1925840840]
 custom_minimum_size = Vector2(32, 0)
 custom_maximum_size = Vector2(32, -1)
 layout_mode = 2

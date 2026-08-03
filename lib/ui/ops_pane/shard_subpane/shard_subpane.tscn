@@ -4,6 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="1_wh1kq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqeii"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
 
 [node name="ShardSubpane" type="PanelContainer" unique_id=1760939956]
 custom_minimum_size = Vector2(400, 300)
@@ -15,10 +19,8 @@ script = ExtResource("1_05ape")
 
 [node name="DebugLabel" type="Label" parent="." unique_id=2089960843]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
 text = "((Shard Subpane))"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Open" type="AudioStreamPlayer" parent="." unique_id=987934441]
 stream = ExtResource("1_wh1kq")

@@ -10,6 +10,7 @@ const PLACEHOLDER_TEXTURE := preload("res://data/effects/placeholder.jpg")
 			effect_instance.finished.connect(queue_free)
 			
 			%Title.text = effect_instance.title
+			%Description.text = effect_instance.description
 			if effect_instance.icon: %Icon.texture = effect_instance.icon
 			else: %Icon.texture = PLACEHOLDER_TEXTURE
 
@@ -24,5 +25,8 @@ func _process(_delta: float) -> void:
 			%Qty.text = str(snapped(quantity, 1))
 		elif effect_instance.type == EffectInstance.Type.DURATION:
 			%Qty.visible = false
+			
+			# Render progress bar with remaining time
 			%ProgressBarMask.visible = true
-			%ProgressBar.value = effect_instance.current_duration / effect_instance.total_duration * 100.0
+			%ProgressBar.value = (effect_instance.current_duration
+				/ effect_instance.total_duration * 100.0)
