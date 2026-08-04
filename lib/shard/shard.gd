@@ -61,3 +61,7 @@ func _ready() -> void:
 	var _sound_fade_in := create_tween()
 	_sound_fade_in.tween_method(_set_bus_vol, 0.0, float(DwSettings.settings.volume), 1.0)
 	DwGlobal.first_run = false
+
+func _on_tree_exiting() -> void:
+	# Clear global shard-specific variables
+	DwGlobal.reset_shard_session()

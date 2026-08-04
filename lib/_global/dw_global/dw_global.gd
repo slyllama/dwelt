@@ -37,6 +37,14 @@ func discord_update_details(text := "") -> void:
 	if DiscordRPC.get_is_discord_working():
 		DiscordRPC.refresh()
 
+# Reset shard-specific variables on leaving a shard
+# (i.e., returning to the main menu)
+func reset_shard_session() -> void:
+	DwUtils.pdebug("Resetting shard session.", "DwGlobal")
+	current_shard = null
+	current_shard_id = ""
+	tool_mode = ToolModes.NORMAL
+
 func _ready() -> void:
 	emit_click_sound.connect($Click.play)
 	
