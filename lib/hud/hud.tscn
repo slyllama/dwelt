@@ -137,11 +137,13 @@ anchor_bottom = 1.0
 offset_left = -340.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ex00m")
 script = ExtResource("9_iox8o")
 
 [node name="Box" type="VBoxContainer" parent="Sidebar" unique_id=2094275296]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="GadgetPlate" parent="Sidebar/Box" unique_id=1272730245 instance=ExtResource("18_iox8o")]

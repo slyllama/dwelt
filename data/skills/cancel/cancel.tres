@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="SkillInfo" format=3 uid="uid://clc4cgqnilkvi"]
 
+[ext_resource type="Texture2D" uid="uid://brcmsuvjo2hte" path="res://data/skills/cancel/cancel.jpg" id="1_32f2o"]
 [ext_resource type="Script" uid="uid://boci6nj73cp2k" path="res://lib/hud/skill_button/skill_info.gd" id="1_eq42r"]
 
 [resource]
 script = ExtResource("1_eq42r")
 id = "cancel"
 title = "Cancel"
+icon = ExtResource("1_32f2o")
 metadata/_custom_type_script = "uid://boci6nj73cp2k"
