@@ -2,6 +2,7 @@ extends Node
 
 const GRAVITY := -9.8
 const NO_SHADOW_EXPRESSION := "_ns"
+const SAVE_PATH := "user://save/"
 
 enum ToolModes { NORMAL }
 
@@ -44,6 +45,11 @@ func reset_shard_session() -> void:
 	current_shard = null
 	current_shard_id = ""
 	tool_mode = ToolModes.NORMAL
+
+func _init() -> void:
+	# Ensure the save directory exists if it doesn't already
+	if !DirAccess.dir_exists_absolute(SAVE_PATH):
+		DirAccess.make_dir_recursive_absolute(SAVE_PATH)
 
 func _ready() -> void:
 	emit_click_sound.connect($Click.play)

@@ -10,11 +10,13 @@ signal selected_gadget_updated # emitted by the selected gadget when an effect i
 var selected_gadget: Gadget
 
 func get_effect_data(effect_id: String) -> EffectInstance:
-	return(load(EFFECTS_PATH + effect_id + "/" + effect_id + ".tres"))
+	return(load(get_effect_path(effect_id)))
+
+func get_effect_path(effect_id: String) -> String:
+	return(EFFECTS_PATH + effect_id + "/" + effect_id + ".tres")
 
 func update_selected_gadget(gadget: Gadget) -> void:
 	selected_gadget = gadget
 	selected_gadget_changed.emit(selected_gadget)
-
 
 signal gadget_hovered(gadget: Gadget)

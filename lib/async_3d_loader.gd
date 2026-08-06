@@ -10,10 +10,13 @@ var scene: Node3D
 
 signal loaded
 
-func add_scene() -> Node3D:
+func add_scene(scene_position := position, scene_rotation := rotation, scene_scale := scale) -> Node3D:
 	if !has_loaded: return
 	
 	# Adding a scene asynchronously returns itself
+	scene.position = scene_position
+	scene.rotation = scene_rotation
+	scene.scale = scene_scale
 	var _new_scene := scene.duplicate()
 	get_parent().call_deferred("add_child", _new_scene)
 	return(_new_scene)

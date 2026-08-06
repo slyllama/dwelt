@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="6_52lhj"]
 [ext_resource type="PackedScene" uid="uid://bm312rugxcpdy" path="res://generic/meshes/1m.glb" id="7_52lhj"]
 [ext_resource type="Material" uid="uid://ce2b0rh2rkon1" path="res://shards/debug/props/ocean/materials/ocean.tres" id="8_aj623"]
-[ext_resource type="PackedScene" uid="uid://c2ida8sy6y6xb" path="res://gadgets/test_gadget/test_gadget.tscn" id="9_vufpp"]
 [ext_resource type="Texture2D" uid="uid://c2lyxgn1yjgw5" path="res://shards/debug/materials/textures/grass_decal.png" id="10_va856"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_aj623"]
@@ -161,7 +160,3 @@ modulate = Color(0.51281905, 0.57604724, 0.46988964, 1)
 upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 4
-
-[node name="TestGadget" parent="GadgetManager" parent_id_path=PackedInt32Array(600350852) index="0" unique_id=1892982592 instance=ExtResource("9_vufpp")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6967344, 0, 4.7307167)

@@ -63,6 +63,7 @@ func _ready() -> void:
 	
 	# Play "click" effects on every button
 	for _n: Node in DwUtils.get_all_children(self):
+		if _n is Control: _n.use_parent_material = true
 		if _n is BaseButton:
 			_n.pressed.connect(func() -> void:
 				if !_n.has_meta("is_close_button"):

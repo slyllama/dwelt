@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EffectInstance" format=3 uid="uid://dkqqdjhpvckyf"]
+
+[ext_resource type="Script" uid="uid://wxhj7gal762x" path="res://lib/effect/effect_instance/effect_instance.gd" id="1_n0b01"]
+
+[resource]
+script = ExtResource("1_n0b01")
+id = "duration_effect"
+title = "Duration Effect"
+description = "This is a duration effect."
+total_duration = 60.0
+metadata/_custom_type_script = "uid://wxhj7gal762x"
