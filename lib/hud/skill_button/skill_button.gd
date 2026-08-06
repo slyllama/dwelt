@@ -15,6 +15,7 @@ signal released
 var is_pressed := false
 var is_hovering := false
 
+#region Input functions
 func is_binding_pressed() -> bool:
 	if input_binding in InputMap.get_actions():
 		return(Input.is_action_pressed(input_binding))
@@ -41,6 +42,7 @@ func set_pressed(state := true) -> void:
 	is_pressed = state
 	if is_pressed: %Content.modulate = Color(DIM, DIM, DIM)
 	else: %Content.modulate = Color(1.0, 1.0, 1.0)
+#endregion
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_page_down"): # TODO: debug
@@ -86,6 +88,6 @@ func _on_mouse_entered() -> void:
 
 func _on_released() -> void:
 	if skill_info:
+		#DwUtils.pdebug("Used skill '"
+			#+ skill_info.title + "'.", "SkillButton")
 		DwGlobal.skill_used.emit(skill_info.id)
-		DwUtils.pdebug("Used skill '"
-			+ skill_info.title + "'.", "SkillButton")

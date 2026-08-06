@@ -8,11 +8,37 @@ func set_skill(index: int, skill_id: String) -> void:
 		if _n is SkillButton:
 			if _idx == index:
 				_n.skill_info = load(
-					"res://skills/" + skill_id + "/" + skill_id + ".tres")
+					"res://data/skills/" + skill_id + "/" + skill_id + ".tres")
 				break
 			else: _idx += 1
 
+func clear_all_skills() -> void:
+	for _n: Control in $Box.get_children():
+		if _n is SkillButton:
+			_n.skill_info = null
+
+func apply_default_skills() -> void:
+	clear_all_skills()
+	set_skill(0, "interact")
+	set_skill(1, "build")
+	set_skill(2, "claim")
+
+func enter_cancel_state() -> void:
+	clear_all_skills()
+	set_skill(9, "cancel")
+
+func handle_tool_change(tool_mode: DwGlobal.ToolMode) -> void:
+	if tool_mode == DwGlobal.ToolMode.SELECT:
+		enter_cancel_state()
+
+func handle_skill_use(skill_id: String) -> void:
+	if skill_id == "cancel":
+		apply_default_skills()
+
 func _ready() -> void:
+	DwGlobal.tool_mode_changed.connect(handle_tool_change)
+	DwGlobal.skill_used.connect(handle_skill_use)
+	
 	# Handle visibility and position of the button hover highlight effect
 	for _n: Control in %Box.get_children():
 		if _n is SkillButton:
