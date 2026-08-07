@@ -10,11 +10,15 @@ extends Node
 #region Skill functions
 func on_interact() -> void:
 	DwGlobal.change_tool_mode(DwGlobal.ToolMode.SELECT)
+
+func on_cancel() -> void:
+	DwGlobal.change_tool_mode(DwGlobal.ToolMode.NORMAL)
 #endregion
 
 func handle_skill(skill_id: String) -> void: # function always has this name
 	match skill_id:
 		"interact": on_interact()
+		"cancel": on_cancel()
 		_: pass # nothing recognizable happened
 
 func _ready() -> void:

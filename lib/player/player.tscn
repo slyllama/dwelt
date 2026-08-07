@@ -15,7 +15,8 @@
 [ext_resource type="Script" uid="uid://wmcvvqjsseet" path="res://lib/player/scripts/ocean_fx.gd" id="11_jlw2j"]
 [ext_resource type="Texture2D" uid="uid://uisx4e6sx7ts" path="res://lib/player/materials/textures/splash_mask.png" id="12_ego0t"]
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="14_1x433"]
-[ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/scripts/cursor_cast.gd" id="14_ego0t"]
+[ext_resource type="Script" uid="uid://dxhxw1e4niy37" path="res://lib/player/cursor_cast/cursor_cast.gd" id="14_ego0t"]
+[ext_resource type="PackedScene" uid="uid://bqeq0uprnaekv" path="res://lib/player/cursor_cast/visual_cursor/visual_cursor.tscn" id="16_1x433"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iochv"]
 radius = 0.16
@@ -197,9 +198,6 @@ _data = {
 &"shake": SubResource("Animation_7f82q")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_ex00m"]
-size = Vector3(0.1, 0.1, 0.1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61qk"]
 radius = 0.25
 
@@ -343,8 +341,7 @@ collision_mask = 5
 camera = NodePath("..")
 metadata/_custom_type_script = "uid://dxhxw1e4niy37"
 
-[node name="CursorMesh" type="MeshInstance3D" parent="Orbit/Camera/CursorCast" unique_id=1323307584]
-mesh = SubResource("BoxMesh_ex00m")
+[node name="VisualCursor" parent="Orbit/Camera/CursorCast" unique_id=810654229 instance=ExtResource("16_1x433")]
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2

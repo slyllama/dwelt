@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bqeq0uprnaekv"]
+
+[ext_resource type="Script" uid="uid://ipahbt2mqacu" path="res://lib/player/cursor_cast/visual_cursor/visual_cursor.gd" id="1_gmb78"]
+[ext_resource type="Texture2D" uid="uid://p8yd4w64u7x6" path="res://lib/player/cursor_cast/visual_cursor/textures/glow.png" id="1_xlwro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1nqc"]
+transparency = 1
+no_depth_test = true
+albedo_color = Color(1, 1, 1, 0.47058824)
+albedo_texture = ExtResource("1_xlwro")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_tjdhw"]
+material = SubResource("StandardMaterial3D_c1nqc")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_gmb78"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowCard:mesh:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_xlwro"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowCard:mesh:material:emission_energy_multiplier")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmb78"]
+_data = {
+&"RESET": SubResource("Animation_gmb78"),
+&"pulse": SubResource("Animation_xlwro")
+}
+
+[node name="VisualCursor" type="Node3D" unique_id=810654229]
+script = ExtResource("1_gmb78")
+
+[node name="GlowCard" type="MeshInstance3D" parent="." unique_id=1802450598]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tjdhw")
+
+[node name="Light" type="OmniLight3D" parent="GlowCard" unique_id=413106258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+light_energy = 2.0
+omni_range = 0.5
+omni_attenuation = 0.0
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=687278603]
+libraries/ = SubResource("AnimationLibrary_gmb78")
+autoplay = &"pulse"
