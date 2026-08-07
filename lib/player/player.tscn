@@ -197,6 +197,9 @@ _data = {
 &"shake": SubResource("Animation_7f82q")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_ex00m"]
+size = Vector3(0.1, 0.1, 0.1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61qk"]
 radius = 0.25
 
@@ -312,9 +315,6 @@ far = 200.0
 [node name="Listener" type="AudioListener3D" parent="Orbit/Camera" unique_id=1102468141]
 current = true
 
-[node name="CursorCast" type="Node" parent="Orbit/Camera" unique_id=1663147991]
-script = ExtResource("14_ego0t")
-
 [node name="Motes" type="GPUParticles3D" parent="Orbit/Camera" unique_id=848711266]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
@@ -329,6 +329,22 @@ draw_pass_1 = SubResource("QuadMesh_0y160")
 [node name="CameraAnims" type="AnimationPlayer" parent="Orbit/Camera" unique_id=1055357715]
 deterministic = true
 libraries/ = SubResource("AnimationLibrary_hlh1u")
+
+[node name="GadgetCursorCast" type="Marker3D" parent="Orbit/Camera" unique_id=1648735576 node_paths=PackedStringArray("camera")]
+script = ExtResource("14_ego0t")
+collision_mask = 4
+camera = NodePath("..")
+handles_gadget_hovering = true
+metadata/_custom_type_script = "uid://dxhxw1e4niy37"
+
+[node name="CursorCast" type="Marker3D" parent="Orbit/Camera" unique_id=72080233 node_paths=PackedStringArray("camera")]
+script = ExtResource("14_ego0t")
+collision_mask = 5
+camera = NodePath("..")
+metadata/_custom_type_script = "uid://dxhxw1e4niy37"
+
+[node name="CursorMesh" type="MeshInstance3D" parent="Orbit/Camera/CursorCast" unique_id=1323307584]
+mesh = SubResource("BoxMesh_ex00m")
 
 [node name="SpringArm" type="SpringArm3D" parent="Orbit" unique_id=439967519]
 collision_mask = 2
