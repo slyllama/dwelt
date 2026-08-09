@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cxcppcerghy8m"]
+
+[ext_resource type="PackedScene" uid="uid://c3i4ntj8eo4q3" path="res://lib/shard/shard.tscn" id="1_v0m38"]
+
+[node name="Exodus" unique_id=917371765 instance=ExtResource("1_v0m38")]
+shard_id = "exodus"
+shard_name = "Exodus"

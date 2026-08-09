@@ -4,7 +4,7 @@ extends AudioStreamPlayer
 @export var track_gap := 4.0
 @export var ready_delay := 1.0
 
-@onready var current_song := track_list[0]
+@onready var current_song: String
 
 func rotate_songs() -> void:
 	stop()
@@ -23,7 +23,9 @@ func _ready() -> void:
 			DwGlobal.music_volume = _clamped_vol
 			volume_linear = _clamped_vol)
 			
-	if track_list.size() == 0: return
+	if track_list.size() > 0: current_song = track_list[0]
+	else: return
+	
 	await get_tree().create_timer(ready_delay).timeout
 	set_stream(load(track_list[0]))
 	play()
