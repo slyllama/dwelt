@@ -1,73 +1,83 @@
 [gd_scene format=3 uid="uid://bh03mu7i7qwa7"]
 
 [ext_resource type="Script" uid="uid://sc8o13qjn3hd" path="res://lib/hud/gadget_plate/gadget_plate.gd" id="1_2jc3s"]
+[ext_resource type="Texture2D" uid="uid://bqi8v0xxl67gu" path="res://lib/hud/gadget_plate/textures/bg.png" id="1_h3qxh"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="1_tqnjs"]
-[ext_resource type="Texture2D" uid="uid://7p34uqu8va1n" path="res://lib/hud/debug_input/textures/separator.png" id="3_2jc3s"]
+[ext_resource type="Texture2D" uid="uid://bnrg087qaqvom" path="res://generic/textures/blur_256.png" id="3_nhfwf"]
 [ext_resource type="PackedScene" uid="uid://cb7wjr83pbn7d" path="res://lib/effect/effect_bar/effect_bar.tscn" id="4_h3qxh"]
+[ext_resource type="Texture2D" uid="uid://confogo844arl" path="res://lib/hud/gadget_plate/textures/inspect_indicator.png" id="6_3fwsl"]
 
-[sub_resource type="Gradient" id="Gradient_2e8rt"]
-offsets = PackedFloat32Array(0.10491072, 0.25223213, 0.59151787, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.07598489, 0, 0, 0, 0.5176471, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2jc3s"]
-gradient = SubResource("Gradient_2e8rt")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2e8rt"]
-content_margin_left = 48.0
-content_margin_top = 24.0
-content_margin_right = 18.0
-content_margin_bottom = 40.0
-texture = SubResource("GradientTexture2D_2jc3s")
-
-[node name="GadgetPlate" type="PanelContainer" unique_id=1381108477]
-custom_minimum_size = Vector2(340, 0)
-custom_maximum_size = Vector2(340, -1)
-offset_right = 220.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_2e8rt")
+[node name="GadgetPlate" type="TextureRect" unique_id=838407144]
+custom_minimum_size = Vector2(409, 62)
+custom_maximum_size = Vector2(409, 62)
+offset_right = 400.0
+offset_bottom = 119.0
+texture = ExtResource("1_h3qxh")
+expand_mode = 1
 script = ExtResource("1_2jc3s")
 
-[node name="Box" type="VBoxContainer" parent="." unique_id=2082177256]
-layout_mode = 2
+[node name="Blur" type="TextureRect" parent="." unique_id=953095791]
+modulate = Color(1, 1, 1, 0.627451)
+z_index = -1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -421.5
+offset_top = -100.0
+offset_right = 421.5
+offset_bottom = 156.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("3_nhfwf")
+expand_mode = 1
+
+[node name="Box" type="HBoxContainer" parent="." unique_id=1221924662]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -15.5
+offset_right = -38.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="Title" type="Label" parent="Box" unique_id=356217929]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_tqnjs")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 21
 text = "((Gadget))"
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Box" unique_id=1642866293]
+[node name="EffectBar" parent="Box" unique_id=1287665171 instance=ExtResource("4_h3qxh")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/line_spacing = -8
-theme_override_font_sizes/font_size = 18
-text = "((Description))"
-autowrap_mode = 3
+theme_override_constants/separation = 2
+alignment = 2
 
-[node name="Padding2" type="ColorRect" parent="Box" unique_id=1969171318]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-
-[node name="Separator" type="TextureRect" parent="Box" unique_id=622580502]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 2
-texture = ExtResource("3_2jc3s")
+[node name="InspectIndicator" type="TextureRect" parent="." unique_id=1549247588]
+custom_minimum_size = Vector2(73, 45)
+custom_maximum_size = Vector2(73, 90)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.5
+offset_top = -22.0
+offset_right = 36.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_3fwsl")
 expand_mode = 1
-flip_h = true
-
-[node name="Padding1" type="ColorRect" parent="Box" unique_id=807521848]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-
-[node name="EffectBar" parent="Box" unique_id=1410631099 instance=ExtResource("4_h3qxh")]
-unique_name_in_owner = true
-layout_mode = 2

@@ -1,4 +1,4 @@
-class_name EffectBar extends VBoxContainer
+class_name EffectBar extends HBoxContainer
 
 var EffectCardScene := load("res://lib/effect/effect_card/effect_card.tscn")
 var controller_focus_effect: EffectCard
@@ -40,7 +40,7 @@ func on_effect_manager_change() -> void:
 	
 	# Reset size to get rid of dead space
 	await get_tree().process_frame
-	size.y = 0.0
+	size.x = 0.0
 
 func _ready() -> void:
 	for _n: Node in get_children(): _n.queue_free()

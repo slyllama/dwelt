@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuqm4i6x48pvr"
-path="res://.godot/imported/sidebar_separator.png-e53f013ae944594c81ea76b45df0d8a8.ctex"
+uid="uid://bnrg087qaqvom"
+path.s3tc="res://.godot/imported/blur_256.png-d366a2ee01e74fb04e601ad9bc79081e.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://lib/hud/textures/sidebar_separator.png"
-dest_files=["res://.godot/imported/sidebar_separator.png-e53f013ae944594c81ea76b45df0d8a8.ctex"]
+source_file="res://generic/textures/blur_256.png"
+dest_files=["res://.godot/imported/blur_256.png-d366a2ee01e74fb04e601ad9bc79081e.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

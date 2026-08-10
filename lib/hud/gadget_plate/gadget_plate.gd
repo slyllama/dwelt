@@ -3,7 +3,6 @@ extends Control
 func update(gadget: Gadget) -> void:
 	if gadget:
 		%Title.text = gadget.gadget_title
-		%Description.text = gadget.gadget_description
 		if gadget.effect_manager:
 			if !%EffectBar.effect_manager:
 				await get_tree().process_frame

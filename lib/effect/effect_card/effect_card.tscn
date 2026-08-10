@@ -2,35 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://bskg5tyrq6qdr" path="res://data/effects/placeholder.jpg" id="1_tj6u5"]
 [ext_resource type="Script" uid="uid://qhp0ra5pfdyt" path="res://lib/effect/effect_card/effect_card.gd" id="2_tj6u5"]
-[ext_resource type="Texture2D" uid="uid://dbwo13t81ycar" path="res://generic/textures/progress_bar_mask.png" id="3_min1y"]
-[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="3_pxdwl"]
-[ext_resource type="Texture2D" uid="uid://5xv8g66t0xna" path="res://generic/textures/progress_bar_fill.png" id="4_6m503"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxdwl"]
+[sub_resource type="Gradient" id="Gradient_tj6u5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.2, 0.010000003, 0, 0.47058824)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6m503"]
-texture = ExtResource("4_6m503")
-axis_stretch_horizontal = 1
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c1nqc"]
+gradient = SubResource("Gradient_tj6u5")
+width = 32
+height = 32
 
-[node name="EffectCard" type="HBoxContainer" unique_id=1333299003]
-custom_minimum_size = Vector2(200, 0)
-custom_maximum_size = Vector2(300, -1)
-offset_right = 300.0
-offset_bottom = 75.0
-theme_override_constants/separation = 8
-script = ExtResource("2_tj6u5")
-
-[node name="Icon" type="TextureRect" parent="." unique_id=282924437]
-unique_name_in_owner = true
+[node name="EffectCard" type="TextureRect" unique_id=282924437]
+clip_children = 2
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(32, 32)
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
 size_flags_vertical = 0
 texture = ExtResource("1_tj6u5")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("2_tj6u5")
 
-[node name="Qty" type="Label" parent="Icon" unique_id=1499770098]
+[node name="Qty" type="Label" parent="." unique_id=1499770098]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
@@ -49,36 +43,7 @@ theme_override_font_sizes/font_size = 21
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Box" type="VBoxContainer" parent="." unique_id=1256621419]
-propagate_maximum_size = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Title" type="Label" parent="Box" unique_id=1868455874]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/line_spacing = -8
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_pxdwl")
-theme_override_font_sizes/font_size = 18
-text = "((Effect Title))"
-autowrap_mode = 3
-
-[node name="ProgressBarMask" type="TextureRect" parent="Box" unique_id=346856669]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-clip_children = 2
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-texture = ExtResource("3_min1y")
-expand_mode = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Box/ProgressBarMask" unique_id=1303344237]
+[node name="Duration" type="TextureProgressBar" parent="." unique_id=1660567023]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -86,17 +51,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_pxdwl")
-theme_override_styles/fill = SubResource("StyleBoxTexture_6m503")
 step = 0.0
-value = 50.0
-show_percentage = false
-
-[node name="Description" type="Label" parent="Box" unique_id=1006334911]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/line_spacing = -6
-text = "((Effect description. Multi-line test, blah blah blah. Does it work? Somehow, it appears so, although something is a little weird.))"
-autowrap_mode = 3
+fill_mode = 5
+texture_progress = SubResource("GradientTexture2D_c1nqc")
