@@ -19,6 +19,9 @@
 [ext_resource type="Script" uid="uid://6ds41ntub86x" path="res://lib/hud/scripts/prevent_clicks.gd" id="15_asrt8"]
 [ext_resource type="Texture2D" uid="uid://dwb34oujh0s48" path="res://lib/hud/skill_bar/textures/corner.png" id="15_v7nqf"]
 [ext_resource type="PackedScene" uid="uid://bh03mu7i7qwa7" path="res://lib/hud/gadget_plate/gadget_plate.tscn" id="18_iox8o"]
+[ext_resource type="Texture2D" uid="uid://bqi8v0xxl67gu" path="res://lib/hud/gadget_plate/textures/bg.png" id="18_lhiar"]
+[ext_resource type="Script" uid="uid://c6kuthgj6x3uy" path="res://lib/hud/scripts/skill_name_plate.gd" id="19_eokq2"]
+[ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="20_cdlbf"]
 
 [node name="HUD" type="CanvasLayer" unique_id=717398159]
 process_mode = 3
@@ -215,6 +218,47 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="SkillNamePlate" type="TextureRect" parent="." unique_id=838407144]
+custom_maximum_size = Vector2(409, 62)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.7258
+offset_top = -143.0
+offset_right = 151.72583
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("18_lhiar")
+expand_mode = 1
+script = ExtResource("19_eokq2")
+
+[node name="SkillTitle" type="Label" parent="SkillNamePlate" unique_id=217092391]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -13.5
+offset_right = 44.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("20_cdlbf")
+theme_override_font_sizes/font_size = 17
+text = "((Skill))"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScreenshotManager" type="Node" parent="." unique_id=449517999]
 unique_name_in_owner = true
 script = ExtResource("13_2eonm")
@@ -227,3 +271,4 @@ stream = ExtResource("14_6rdt5")
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/Screenshot" to="." method="_on_screenshot_pressed"]
 [connection signal="pressed" from="TopLeftBase/TopLeftMenu/GadgetPane" to="TopLeftBase/TopLeftMenu" method="_on_gadget_pane_pressed"]
 [connection signal="timeout" from="Override/PreventClicks/CDTimer" to="Override/PreventClicks" method="_on_cd_timer_timeout"]
+[connection signal="hovered_skill_changed" from="SkillBar" to="SkillNamePlate" method="_on_hovered_skill_changed"]

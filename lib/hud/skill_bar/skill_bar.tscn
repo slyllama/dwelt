@@ -6,9 +6,39 @@
 [ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://data/skills/interact/interact.tres" id="3_u4na3"]
 [ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://data/skills/build/build.tres" id="4_u4na3"]
 [ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://data/skills/claim/claim.tres" id="5_78e8x"]
+[ext_resource type="Texture2D" uid="uid://dptfd54cf7172" path="res://lib/hud/skill_bar/textures/selection_indicator.png" id="7_gwk6g"]
+[ext_resource type="Texture2D" uid="uid://dibmh34pr4cr4" path="res://lib/hud/skill_bar/textures/star_splash.png" id="8_ndpr2"]
+[ext_resource type="Script" uid="uid://fkm1rdrkj677" path="res://lib/hud/skill_bar/scripts/selection_effect.gd" id="9_itu1j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q8ax"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_c1nqc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.46653545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tjdhw"]
+curve = SubResource("Curve_c1nqc")
+
+[sub_resource type="Gradient" id="Gradient_itu1j"]
+offsets = PackedFloat32Array(0.016990291, 1)
+colors = PackedColorArray(0.5, 0.5, 0.5, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_itu1j"]
+gradient = SubResource("Gradient_itu1j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ex00m"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 50, 0)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_itu1j")
+alpha_curve = SubResource("CurveTexture_tjdhw")
 
 [node name="SkillBar" type="PanelContainer" unique_id=1611884224]
 offset_right = 724.0
@@ -77,3 +107,20 @@ z_index = 1
 position = Vector2(36, 36)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_q1ksp")
+
+[node name="SelectionIndicator" type="Sprite2D" parent="." unique_id=1996423473]
+clip_children = 1
+z_index = -1
+position = Vector2(361, -39)
+scale = Vector2(0.5, 0.74)
+texture = ExtResource("7_gwk6g")
+flip_v = true
+
+[node name="SelectionEffect" type="GPUParticles2D" parent="SelectionIndicator" unique_id=22186335]
+position = Vector2(0, 50)
+emitting = false
+amount = 24
+texture = ExtResource("8_ndpr2")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_ex00m")
+script = ExtResource("9_itu1j")

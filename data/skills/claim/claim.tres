@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_4rn0n")
 id = "claim"
-title = "((Claim))"
+title = "Claim"
 icon = ExtResource("1_ph4kc")
 metadata/_custom_type_script = "uid://boci6nj73cp2k"

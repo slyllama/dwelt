@@ -1,5 +1,7 @@
 class_name SkillBar extends PanelContainer
 
+signal hovered_skill_changed(skill_info: SkillInfo)
+
 func set_skill(index: int, skill_id: String) -> void:
 	var _idx := 0 # current index
 	# Iterate over skill buttons only so that we can include other node types
@@ -43,7 +45,9 @@ func _ready() -> void:
 	for _n: Control in %Box.get_children():
 		if _n is SkillButton:
 			_n.mouse_entered.connect(func() -> void:
+				hovered_skill_changed.emit(_n.skill_info)
 				%Highlight.visible = true
 				%Highlight.position = _n.position + _n.size / 2.0)
 			_n.mouse_exited.connect(func() -> void:
+				hovered_skill_changed.emit(null)
 				%Highlight.visible = false)
