@@ -190,6 +190,7 @@ title = "Music Volume"
 metadata/_custom_type_script = "uid://hpst6xoekyfs"
 
 [node name="MappingPane" type="Button" parent="Box/Scroll/ScrollBox" index="14" unique_id=421058011]
+visible = false
 layout_mode = 2
 text = "Input Mapping"
 
@@ -203,17 +204,7 @@ custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=1109458421]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Done"
-metadata/is_close_button = true
-
-[node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1037660848]
-layout_mode = 2
-text = "Default Settings"
-
-[node name="Menu" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=488821228]
+[node name="Menu" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="5" unique_id=488821228]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -221,6 +212,16 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4xwgy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ettgj")
 text = "Return To Menu"
+
+[node name="Default" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="6" unique_id=1037660848]
+layout_mode = 2
+text = "Default Settings"
+
+[node name="Done" type="Button" parent="Box" parent_id_path=PackedInt32Array(1241117236) index="7" unique_id=1109458421]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Done"
+metadata/is_close_button = true
 
 [node name="BorderEffect" parent="." index="2" unique_id=599452808]
 position = Vector2(280, 428)
@@ -232,6 +233,6 @@ position = Vector2(280, 428)
 [connection signal="slider_dragged" from="Box/Scroll/ScrollBox/Volume" to="." method="_on_volume_slider_dragged"]
 [connection signal="slider_dragged" from="Box/Scroll/ScrollBox/MusicVolume" to="." method="_on_music_volume_slider_dragged"]
 [connection signal="pressed" from="Box/Scroll/ScrollBox/MappingPane" to="." method="_on_mapping_pane_pressed"]
-[connection signal="pressed" from="Box/Done" to="." method="_on_done_pressed"]
-[connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="Box/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Box/Default" to="." method="_on_default_pressed"]
+[connection signal="pressed" from="Box/Done" to="." method="_on_done_pressed"]

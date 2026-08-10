@@ -81,3 +81,15 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("6_3fwsl")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InspectIndicator" unique_id=1814376994]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "T"
+vertical_alignment = 1
+clip_text = true

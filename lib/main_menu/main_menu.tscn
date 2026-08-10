@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://867g4ydn7kmo" path="res://generic/textures/mote.png" id="9_wcsih"]
 [ext_resource type="Texture2D" uid="uid://cw05o50mnej68" path="res://lib/main_menu/textures/bg_0.png" id="11_ycr6g"]
 [ext_resource type="Texture2D" uid="uid://cjhgeywyqngw6" path="res://lib/main_menu/textures/bg_1.png" id="12_17p4g"]
+[ext_resource type="AudioStream" uid="uid://dc80nsg3nqgvm" path="res://lib/main_menu/sounds/lava.ogg" id="16_0webr"]
 [ext_resource type="AudioStream" uid="uid://byos6uk0ostds" path="res://generic/sounds/bell.ogg" id="16_vwtaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0webr"]
@@ -58,6 +59,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Ambience:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
 
 [sub_resource type="Animation" id="Animation_uliap"]
 resource_name = "fade_in"
@@ -86,6 +99,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Ambience:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -15.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjam2"]
@@ -328,6 +353,11 @@ color = Color(0, 0, 0, 1)
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
 script = ExtResource("7_tpkjy")
 track_list = Array[String](["res://lib/main_menu/sounds/mus_glass_darkly.ogg", "res://lib/main_menu/sounds/mus_interlace.ogg"])
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1977311463]
+stream = ExtResource("16_0webr")
+volume_db = -80.0
+autoplay = true
 
 [node name="Bell" type="AudioStreamPlayer" parent="." unique_id=1475306669]
 stream = ExtResource("16_vwtaw")
