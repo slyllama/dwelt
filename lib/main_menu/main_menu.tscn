@@ -281,7 +281,7 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_pjam2")
 
 [node name="PlayerAsync" type="Node3D" parent="World" unique_id=882231283]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0.58)
+transform = Transform3D(0.9961947, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961947, 0, 0, 0.58)
 script = ExtResource("3_7usjq")
 path = "uid://dfmiagw0ts4ro"
 metadata/_custom_type_script = "uid://beegbluc51ecb"
@@ -352,7 +352,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1084318657]
 script = ExtResource("7_tpkjy")
-track_list = Array[String](["res://lib/main_menu/sounds/mus_glass_darkly.ogg", "res://lib/main_menu/sounds/mus_interlace.ogg"])
+track_list = Array[String](["res://lib/main_menu/sounds/mus_glass_darkly.ogg", "res://lib/main_menu/sounds/mus_interlace.ogg", "res://lib/main_menu/sounds/mus_afterlife.ogg"])
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1977311463]
 stream = ExtResource("16_0webr")
