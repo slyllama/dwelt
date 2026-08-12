@@ -12,7 +12,7 @@ func _is_retina() -> bool:
 func _ready() -> void:
 	if _is_retina():
 		if OS.get_name() == "macOS":
-			get_window().content_scale_factor = 2.25
+			get_window().content_scale_factor = 2.0
 		else:
 			get_window().content_scale_factor = 1.75
 			DisplayServer.cursor_set_custom_image(
