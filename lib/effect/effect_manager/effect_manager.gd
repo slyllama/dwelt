@@ -11,8 +11,6 @@ signal effect_cancelled(id: String)
 
 func notify_update() -> void:
 	effects_updated.emit()
-	if DwGadget.selected_gadget == get_parent():
-		DwGadget.selected_gadget_updated.emit()
 
 func has_effect(id: String) -> bool:
 	return(id in active_effects)

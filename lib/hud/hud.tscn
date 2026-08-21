@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://d0llrpm3nb6rl" path="res://generic/fonts/ibm_plex_mono.otf" id="2_u1rn0"]
 [ext_resource type="PackedScene" uid="uid://b0jqajc5v0n2e" path="res://lib/ui/ui_pane/ui_pane_manager/ui_pane_manager.tscn" id="4_r2k48"]
 [ext_resource type="Script" uid="uid://chxq5l7anayvk" path="res://lib/hud/scripts/top_left_menu.gd" id="6_2eonm"]
+[ext_resource type="Script" uid="uid://b52id8cw7vg0g" path="res://lib/hud/scripts/misc_debug.gd" id="6_cdlbf"]
 [ext_resource type="Texture2D" uid="uid://bjyos68ae5wti" path="res://lib/hud/textures/icon_settings.png" id="6_pxgdb"]
 [ext_resource type="Texture2D" uid="uid://du2m2idif7h1r" path="res://lib/hud/skill_bar/textures/trim.png" id="7_qgm11"]
 [ext_resource type="PackedScene" uid="uid://dxs2xqg1tx0jl" path="res://lib/hud/debug_input/debug_input.tscn" id="7_r2k48"]
@@ -51,9 +52,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -169.0
-offset_top = -9.0
+offset_top = -72.0
 offset_right = -36.0
-offset_bottom = 9.0
+offset_bottom = -54.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
@@ -71,6 +72,34 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 2
 script = ExtResource("2_dcyf8")
+
+[node name="MiscDebug" type="RichTextLabel" parent="ScreenFX" unique_id=1504986428]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = 2.0
+offset_right = -36.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -2
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_u1rn0")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "((MiscDebug))"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+script = ExtResource("6_cdlbf")
 
 [node name="SkillCorner_L" type="TextureRect" parent="." unique_id=1573861881]
 anchors_preset = 7

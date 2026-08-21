@@ -14,5 +14,5 @@ func update(gadget: Gadget) -> void:
 		visible = false
 
 func _ready() -> void:
-	DwGadget.gadget_hovered.connect(update)
+	DwGadget.hovered_gadget_changed.connect(update)
 	visible = false

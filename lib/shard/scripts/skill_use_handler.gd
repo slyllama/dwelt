@@ -9,7 +9,7 @@ extends Node
 
 #region Skill functions
 func on_interact() -> void:
-	DwGlobal.change_tool_mode(DwGlobal.ToolMode.SELECT)
+	DwGlobal.change_tool_mode(DwGlobal.ToolMode.SELECT_CLEANSE)
 	DwUtils.debug_sent.emit("/playvoice") # TODO: need better access to playing voice
 
 func on_cancel() -> void:

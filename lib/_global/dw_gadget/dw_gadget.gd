@@ -4,10 +4,9 @@ extends Node
 const EFFECTS_PATH := "res://data/effects/"
 
 signal gadget_clicked(gadget: Gadget) # triggers even if the gadget is non-interactive
-signal selected_gadget_changed(gadget: Gadget)
-signal selected_gadget_updated # emitted by the selected gadget when an effect is added/changed/removed
+signal hovered_gadget_changed(gadget: Gadget)
 
-var selected_gadget: Gadget
+var hovered_gadget: Gadget
 
 func get_effect_data(effect_id: String) -> EffectInstance:
 	return(load(get_effect_path(effect_id)))
@@ -15,8 +14,6 @@ func get_effect_data(effect_id: String) -> EffectInstance:
 func get_effect_path(effect_id: String) -> String:
 	return(EFFECTS_PATH + effect_id + "/" + effect_id + ".tres")
 
-func update_selected_gadget(gadget: Gadget) -> void:
-	selected_gadget = gadget
-	selected_gadget_changed.emit(selected_gadget)
-
-signal gadget_hovered(gadget: Gadget)
+func _ready() -> void:
+	hovered_gadget_changed.connect(func(gadget: Gadget) -> void:
+		hovered_gadget = gadget)

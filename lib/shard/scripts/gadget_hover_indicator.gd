@@ -1,8 +1,23 @@
 extends MeshInstance3D
 
+func move_to_hovered_gadget() -> bool:
+	if DwGadget.hovered_gadget:
+		global_position = (DwGadget.hovered_gadget.global_position
+			+ Vector3(0, 0.25, 0))
+		return(true)
+	else: return(false)
+
 func _ready() -> void:
-	DwGadget.gadget_hovered.connect(func(gadget: Gadget) -> void:
-		if gadget:
-			visible = true
-			global_position = gadget.global_position + Vector3(0, 0.25, 0)
+	mesh.surface_get_material(0).albedo_color = Color(0.94, 0.147, 0.075, 1.0)
+	
+	DwGlobal.tool_mode_changed.connect(func(new_tool_mode: DwGlobal.ToolMode) -> void:
+		if "SELECT" in DwGlobal.ToolMode.find_key(new_tool_mode):
+			if move_to_hovered_gadget(): visible = true
+			else: visible = false
+		else: visible = false)
+	
+	DwGadget.hovered_gadget_changed.connect(func(_gadget: Gadget) -> void:
+		if "SELECT" in DwGlobal.ToolMode.find_key(DwGlobal.tool_mode):
+			if move_to_hovered_gadget(): visible = true
+			else: visible = false
 		else: visible = false)

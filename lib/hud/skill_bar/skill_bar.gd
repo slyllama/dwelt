@@ -29,8 +29,8 @@ func enter_cancel_state() -> void:
 	clear_all_skills()
 	set_skill(9, "cancel")
 
-func handle_tool_change(tool_mode: DwGlobal.ToolMode) -> void:
-	if tool_mode == DwGlobal.ToolMode.SELECT:
+func handle_tool_change(new_tool_mode: DwGlobal.ToolMode) -> void:
+	if "SELECT" in DwGlobal.ToolMode.find_key(new_tool_mode):
 		enter_cancel_state()
 
 func handle_skill_use(skill_id: String) -> void:

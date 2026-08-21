@@ -40,7 +40,7 @@ func handle_mouse_release() -> void:
 
 func handle_gadget_hover() -> void:
 	if current_collider != last_hovered_gadget:
-		DwGadget.gadget_hovered.emit(current_collider)
+		DwGadget.hovered_gadget_changed.emit(current_collider)
 	last_hovered_gadget = current_collider
 
 func _init() -> void:
@@ -50,7 +50,7 @@ func _init() -> void:
 func _input(_event: InputEvent) -> void:
 	if handles_gadget_hovering and !Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		# Cancel any hovered gadgets when panning events start
-		DwGadget.gadget_hovered.emit(null)
+		DwGadget.hovered_gadget_changed.emit(null)
 		return # don't check during panning events
 	if Input.is_action_just_pressed("left_click"):
 		last_click_in_ui = false
@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 	else:
 		if handles_gadget_hovering:
 			last_hovered_gadget = null
-			DwGadget.gadget_hovered.emit(null)
+			DwGadget.hovered_gadget_changed.emit(null)
 	
 	# Handle visibility
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: visible = true

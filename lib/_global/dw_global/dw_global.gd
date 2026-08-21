@@ -4,7 +4,7 @@ const GRAVITY := -9.8
 const NO_SHADOW_EXPRESSION := "_ns"
 const SAVE_PATH := "user://save/"
 
-enum ToolMode { NORMAL, SELECT }
+enum ToolMode { NORMAL, SELECT_CLEANSE }
 
 # References
 var camera: Camera3D
