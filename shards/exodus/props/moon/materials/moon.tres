@@ -7,5 +7,5 @@ transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_color = Color(0.93, 0.5115, 0.5115, 1)
+albedo_color = Color(0.96585935, 0.7104935, 0.7026593, 1)
 albedo_texture = ExtResource("1_qggn6")

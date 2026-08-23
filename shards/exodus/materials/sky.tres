@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ceotej0hk33sa" path="res://generic/textures/sky_patina.tres" id="3_f3wgi"]
 
 [sub_resource type="Gradient" id="Gradient_leiy4"]
+offsets = PackedFloat32Array(0, 0.5123239)
 colors = PackedColorArray(0.049212597, 0.049212597, 0.049212597, 1, 0.9726506, 0.9726506, 0.9726506, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ab0t6"]
@@ -34,11 +35,11 @@ shader_parameter/b_texture = ExtResource("2_jwvsb")
 shader_parameter/a_uv_scale = 18.0
 shader_parameter/b_uv_scale = 36.0
 shader_parameter/a_albedo = Color(1, 1, 1, 1)
-shader_parameter/b_albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/b_albedo = Color(0.50140685, 0.5014064, 0.5014066, 1)
 shader_parameter/gradient_texture = SubResource("GradientTexture2D_io0eh")
 shader_parameter/shimmer_texture = ExtResource("3_f3wgi")
 shader_parameter/shimmer_color = Color(0.6, 0.03529412, 0.03529412, 1)
-shader_parameter/shimmer_intensity = 0.18000000855
+shader_parameter/shimmer_intensity = 0.1200000057
 shader_parameter/overlay_dodge_texture = ExtResource("3_8h8x0")
 shader_parameter/overlay_uv_scale = 12.0
 shader_parameter/overlay_intensity = 5.0
