@@ -4,8 +4,6 @@ const GRAVITY := -9.8
 const NO_SHADOW_EXPRESSION := "_ns"
 const SAVE_PATH := "user://save/"
 
-enum ToolMode { NORMAL, SELECT_CLEANSE }
-
 # References
 var camera: Camera3D
 var player: DweltPlayer
@@ -17,12 +15,11 @@ var first_run := true
 var music_volume := 0.0
 var panning := false
 var pan_cooldown := false
-var tool_mode: ToolMode = ToolMode.NORMAL
+
 
 # Global signal bus
 signal camera_pan_started
 signal camera_pan_ended
-signal tool_mode_changed(new_tool_mode: ToolMode)
 signal skill_used(id: String)
 
 # Signals which fire events rather than intercept them
@@ -49,11 +46,7 @@ func reset_shard_session() -> void:
 	DwUtils.pdebug("Resetting shard session.", "DwGlobal")
 	current_shard = null
 	current_shard_id = ""
-	tool_mode = ToolMode.NORMAL
-
-func change_tool_mode(new_tool_mode: ToolMode) -> void:
-	tool_mode = new_tool_mode
-	tool_mode_changed.emit(new_tool_mode)
+	DwGadget.tool_mode = DwGadget.ToolMode.NORMAL
 
 func _init() -> void:
 	# Ensure the save directory exists if it doesn't already

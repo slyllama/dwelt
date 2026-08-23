@@ -29,8 +29,8 @@ func enter_cancel_state() -> void:
 	clear_all_skills()
 	set_skill(9, "cancel")
 
-func handle_tool_change(new_tool_mode: DwGlobal.ToolMode) -> void:
-	if "SELECT" in DwGlobal.ToolMode.find_key(new_tool_mode):
+func handle_tool_change(new_tool_mode: DwGadget.ToolMode) -> void:
+	if "SELECT" in DwGadget.ToolMode.find_key(new_tool_mode):
 		enter_cancel_state()
 
 func handle_skill_use(skill_id: String) -> void:
@@ -38,7 +38,7 @@ func handle_skill_use(skill_id: String) -> void:
 		apply_default_skills()
 
 func _ready() -> void:
-	DwGlobal.tool_mode_changed.connect(handle_tool_change)
+	DwGadget.tool_mode_changed.connect(handle_tool_change)
 	DwGlobal.skill_used.connect(handle_skill_use)
 	
 	# Handle visibility and position of the button hover highlight effect

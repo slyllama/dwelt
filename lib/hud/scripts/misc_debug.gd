@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if !DwUtils.debug_mode: return # debug mode not enabled
-	text = "ToolMode." + DwGlobal.ToolMode.find_key(DwGlobal.tool_mode)
+	text = "ToolMode." + DwGadget.ToolMode.find_key(DwGadget.tool_mode)
