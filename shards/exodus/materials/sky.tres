@@ -1,10 +1,24 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://c27fkub55li11"]
 
 [ext_resource type="Shader" uid="uid://cd2o0w6mrtfek" path="res://shards/exodus/materials/shaders/sky.gdshader" id="1_0an4l"]
+[ext_resource type="Texture2D" uid="uid://08sedu5reklj" path="res://shards/exodus/materials/textures/stars_diff.jpg" id="2_jwvsb"]
+
+[sub_resource type="Gradient" id="Gradient_leiy4"]
+colors = PackedColorArray(0.049212597, 0.049212597, 0.049212597, 1, 0.9726506, 0.9726506, 0.9726506, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ab0t6"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q0yja"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_ab0t6")
+color_ramp = SubResource("Gradient_leiy4")
+seamless = true
 
 [sub_resource type="Gradient" id="Gradient_0an4l"]
-offsets = PackedFloat32Array(0.42, 0.5)
-colors = PackedColorArray(0, 0, 0, 1, 0.65882355, 0.039215688, 0.039215688, 1)
+offsets = PackedFloat32Array(0.36, 0.5)
+colors = PackedColorArray(0, 0, 0, 0, 0.6, 0.03529412, 0.03529412, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_io0eh"]
 gradient = SubResource("Gradient_0an4l")
@@ -12,4 +26,11 @@ fill_to = Vector2(0, 1)
 
 [resource]
 shader = ExtResource("1_0an4l")
+shader_parameter/blend_mask_texture = SubResource("NoiseTexture2D_q0yja")
+shader_parameter/a_texture = ExtResource("2_jwvsb")
+shader_parameter/b_texture = ExtResource("2_jwvsb")
+shader_parameter/a_uv_scale = 12.0
+shader_parameter/b_uv_scale = 18.0
+shader_parameter/a_albedo = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/b_albedo = Color(1, 1, 1, 1)
 shader_parameter/gradient_texture = SubResource("GradientTexture2D_io0eh")

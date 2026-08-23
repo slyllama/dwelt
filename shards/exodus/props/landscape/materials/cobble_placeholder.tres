@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://duljoufkmqptb"]
+
+[ext_resource type="Texture2D" uid="uid://r460qie7qv6r" path="res://shards/exodus/props/landscape/materials/textures/stones_diff.jpg" id="1_ch1mh"]
+
+[resource]
+specular_mode = 2
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+albedo_texture = ExtResource("1_ch1mh")
+metallic_specular = 0.0
+uv1_scale = Vector3(6, 6, 6)

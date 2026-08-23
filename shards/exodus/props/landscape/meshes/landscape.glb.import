@@ -45,11 +45,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://shards/exodus/props/landscape/materials/land.tres",
 "use_external/path": "uid://caployo3d14w6"
-}
 },
-"nodes": {
-"PATH:Land": {
-"mesh_instance/cast_shadow": 0
+"stone_placeholder": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://shards/exodus/props/landscape/materials/cobble_placeholder.tres",
+"use_external/path": "uid://duljoufkmqptb"
 }
 }
 }
