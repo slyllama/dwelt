@@ -23,7 +23,7 @@ func apply_default_skills() -> void:
 	clear_all_skills()
 	set_skill(0, "interact")
 	set_skill(1, "build")
-	set_skill(2, "claim")
+	set_skill(2, "cleanse")
 
 func enter_cancel_state() -> void:
 	clear_all_skills()

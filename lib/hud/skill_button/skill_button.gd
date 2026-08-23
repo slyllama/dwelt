@@ -88,6 +88,5 @@ func _on_mouse_entered() -> void:
 
 func _on_released() -> void:
 	if skill_info:
-		#DwUtils.pdebug("Used skill '"
-			#+ skill_info.title + "'.", "SkillButton")
+		$Click.play()
 		DwGlobal.skill_used.emit(skill_info.id)

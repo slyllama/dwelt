@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillInfo" format=3 uid="uid://dp0ueq7l45su0"]
+
+[ext_resource type="Texture2D" uid="uid://dhksf5grw7ria" path="res://data/skills/cleanse/cleanse.jpg" id="1_e0v5h"]
+[ext_resource type="Script" uid="uid://boci6nj73cp2k" path="res://lib/hud/skill_button/skill_info.gd" id="2_dq5ru"]
+
+[resource]
+script = ExtResource("2_dq5ru")
+id = "cleanse"
+title = "Cleanse"
+icon = ExtResource("1_e0v5h")
+metadata/_custom_type_script = "uid://boci6nj73cp2k"

@@ -8,7 +8,7 @@ extends Node
 # are happening in.
 
 #region Skill functions
-func on_interact() -> void:
+func on_cleanse() -> void:
 	DwGadget.change_tool_mode(DwGadget.ToolMode.SELECT_CLEANSE)
 	DwUtils.debug_sent.emit("/playvoice") # TODO: need better access to playing voice
 
@@ -18,7 +18,7 @@ func on_cancel() -> void:
 
 func handle_skill(skill_id: String) -> void: # function always has this name
 	match skill_id:
-		"interact": on_interact()
+		"cleanse": on_cleanse()
 		"cancel": on_cancel()
 		_: pass # nothing recognizable happened
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cc7druv6r05vo" path="res://lib/hud/skill_button/textures/highlight.png" id="3_q1ksp"]
 [ext_resource type="Resource" uid="uid://bvynf0vw1axus" path="res://data/skills/interact/interact.tres" id="3_u4na3"]
 [ext_resource type="Resource" uid="uid://cbpw5xqsy374b" path="res://data/skills/build/build.tres" id="4_u4na3"]
-[ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://data/skills/claim/claim.tres" id="5_78e8x"]
+[ext_resource type="Resource" uid="uid://dp0ueq7l45su0" path="res://data/skills/cleanse/cleanse.tres" id="5_78e8x"]
 [ext_resource type="Texture2D" uid="uid://dptfd54cf7172" path="res://lib/hud/skill_bar/textures/selection_indicator.png" id="7_gwk6g"]
 [ext_resource type="Texture2D" uid="uid://dibmh34pr4cr4" path="res://lib/hud/skill_bar/textures/star_splash.png" id="8_ndpr2"]
 [ext_resource type="Script" uid="uid://fkm1rdrkj677" path="res://lib/hud/skill_bar/scripts/selection_effect.gd" id="9_itu1j"]

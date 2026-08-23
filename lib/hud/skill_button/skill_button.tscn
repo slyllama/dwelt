@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtpaeo4c0guuh" path="res://lib/hud/skill_button/textures/icon_mask.png" id="3_o0bnh"]
 [ext_resource type="Script" uid="uid://d4i6e62tp3o1q" path="res://lib/hud/skill_button/scripts/icon.gd" id="3_rhi1s"]
 [ext_resource type="Texture2D" uid="uid://og65cvmipx4e" path="res://lib/hud/skill_button/textures/icon_shadow.png" id="5_pgch8"]
+[ext_resource type="AudioStream" uid="uid://bp38emrisv4jh" path="res://lib/ui/ui_pane/sounds/click.ogg" id="6_f3rxx"]
 
 [node name="SkillButton" type="Control" unique_id=435513388]
 custom_minimum_size = Vector2(68, 68)
@@ -57,6 +58,9 @@ script = ExtResource("3_rhi1s")
 position = Vector2(34, 34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_pgch8")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=825132327]
+stream = ExtResource("6_f3rxx")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
