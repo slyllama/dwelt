@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://caployo3d14w6"]
+
+[ext_resource type="Shader" uid="uid://duubblv8cftlg" path="res://shards/exodus/props/landscape/materials/shaders/land.gdshader" id="1_rkn5q"]
+[ext_resource type="Texture2D" uid="uid://cxafqs7m68p17" path="res://shards/exodus/props/landscape/materials/textures/grass_a_diff.jpg" id="2_lp0ew"]
+[ext_resource type="Texture2D" uid="uid://r460qie7qv6r" path="res://shards/exodus/props/landscape/materials/textures/stones_diff.jpg" id="4_fwdly"]
+[ext_resource type="Texture2D" uid="uid://dbs3xgdhd8aif" path="res://shards/exodus/props/landscape/materials/textures/grass_b_diff.jpg" id="4_peleh"]
+
+[sub_resource type="Gradient" id="Gradient_io0eh"]
+offsets = PackedFloat32Array(0.15, 0.4)
+colors = PackedColorArray(0, 0, 0, 1, 0.7371929, 0.737193, 0.73719275, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x7gcb"]
+seed = 1
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i1kg8"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_x7gcb")
+color_ramp = SubResource("Gradient_io0eh")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_ab0t6"]
+offsets = PackedFloat32Array(0.4, 0.6043307)
+colors = PackedColorArray(0, 0, 0, 1, 0.728822, 0.728822, 0.7288219, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q0yja"]
+noise_type = 2
+frequency = 0.075
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_io0eh"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_q0yja")
+color_ramp = SubResource("Gradient_ab0t6")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rkn5q")
+shader_parameter/blend_mask_texture = SubResource("NoiseTexture2D_i1kg8")
+shader_parameter/a_texture = ExtResource("2_lp0ew")
+shader_parameter/b_texture = ExtResource("4_peleh")
+shader_parameter/a_uv_scale = 40.0
+shader_parameter/b_uv_scale = 20.0
+shader_parameter/a_albedo = Color(1, 0.77383333, 0.77, 1)
+shader_parameter/b_albedo = Color(0.8322752, 0.70508665, 0.7040041, 1)
+shader_parameter/stone_mask_texture = SubResource("NoiseTexture2D_io0eh")
+shader_parameter/stone_texture = ExtResource("4_fwdly")
+shader_parameter/stone_uv_scale = 32.0
+shader_parameter/stone_albedo = Color(0.76031303, 0.68329674, 0.68222225, 1)

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://c3rafrkdjfvbw"]
 
-[ext_resource type="Shader" uid="uid://v0s6nhv18rer" path="res://shards/debug/shaders/sky.gdshader" id="1_j1dlv"]
+[ext_resource type="Shader" uid="uid://v0s6nhv18rer" path="res://shards/debug/materials/shaders/sky.gdshader" id="1_j1dlv"]
 
 [sub_resource type="Gradient" id="Gradient_j1dlv"]
 offsets = PackedFloat32Array(0.3, 0.42, 0.45, 0.5)

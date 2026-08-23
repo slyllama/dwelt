@@ -35,8 +35,6 @@ func apply_effects_from_dict(effect_dict: Dictionary) -> void:
 		var _effect_data: Dictionary = effect_dict[_eid]
 		var _effect: EffectInstance = load(_effect_path).duplicate()
 		
-		print(_effect_data)
-		
 		if "current_duration" in _effect_data:
 			add_effect(_effect, float(_effect_data.current_duration), 0)
 		if "current_quantity" in _effect_data:

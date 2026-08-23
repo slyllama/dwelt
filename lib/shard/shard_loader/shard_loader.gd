@@ -1,7 +1,7 @@
 @icon("res://generic/icons/ShardLoader.svg")
 extends CanvasLayer
 
-const TARGET_SCENE = "res://shards/debug/debug.tscn"
+const TARGET_SCENE = "res://shards/exodus/exodus.tscn"
 var target_scene := TARGET_SCENE
 
 var status: int

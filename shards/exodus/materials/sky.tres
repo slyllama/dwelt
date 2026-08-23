@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c27fkub55li11"]
+
+[ext_resource type="Shader" uid="uid://cd2o0w6mrtfek" path="res://shards/exodus/materials/shaders/sky.gdshader" id="1_0an4l"]
+
+[sub_resource type="Gradient" id="Gradient_0an4l"]
+offsets = PackedFloat32Array(0.42, 0.5)
+colors = PackedColorArray(0, 0, 0, 1, 0.65882355, 0.039215688, 0.039215688, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io0eh"]
+gradient = SubResource("Gradient_0an4l")
+fill_to = Vector2(0, 1)
+
+[resource]
+shader = ExtResource("1_0an4l")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_io0eh")
