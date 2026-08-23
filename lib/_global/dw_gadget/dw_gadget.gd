@@ -12,6 +12,11 @@ signal tool_mode_changed(new_tool_mode: ToolMode)
 var hovered_gadget: Gadget
 var tool_mode: ToolMode = ToolMode.NORMAL
 
+# Quickly check if the game is in a "selection" tool mode
+# (interacting, cleansing, etc)
+func is_in_selection_mode() -> bool:
+	return("SELECT" in DwGadget.ToolMode.find_key(tool_mode))
+
 func change_tool_mode(new_tool_mode: ToolMode) -> void:
 	tool_mode = new_tool_mode
 	tool_mode_changed.emit(new_tool_mode)
