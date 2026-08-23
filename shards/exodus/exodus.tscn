@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxb52sjixx2jh" path="res://shards/exodus/props/landscape/meshes/landscape.glb" id="3_i1kg8"]
 [ext_resource type="ArrayMesh" uid="uid://725y7qn0jcxs" path="res://lib/shard/foliage_spawner/grass.res" id="4_io0eh"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="5_q0yja"]
+[ext_resource type="PackedScene" uid="uid://djaotkexh0trc" path="res://shards/exodus/props/moon/moon.tscn" id="7_ab0t6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_x7gcb"]
 material = ExtResource("2_i1kg8")
@@ -27,18 +28,18 @@ glow_intensity = 0.45
 glow_bloom = 0.5
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.6, 0.036000002, 0.036000002, 1)
+fog_light_color = Color(0.36499307, 0.01223592, 0.012198523, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
-fog_depth_begin = 9.0
-fog_depth_end = 20.0
+fog_depth_begin = 7.0
+fog_depth_end = 13.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.65882355, 0.039215688, 0.039215688, 1)
 volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_i1kg8"]
-albedo = Color(0.94756716, 0.7179481, 0.65171224, 1)
+albedo = Color(0.92035854, 0.6040883, 0.51366293, 1)
 edge_fade = 0.282843
 
 [sub_resource type="MultiMesh" id="MultiMesh_q0yja"]
@@ -61,7 +62,11 @@ buffer = PackedFloat32Array(2.2386837, 0, 0.92530435, 0.9476974, 0, 4.1987805, 0
 shard_id = "exodus"
 shard_name = "Exodus"
 
-[node name="Mesh" parent="Floor" parent_id_path=PackedInt32Array(1367160262) index="0" unique_id=1446901427]
+[node name="Floor" parent="." index="2" unique_id=1367160262]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Mesh" parent="Floor" index="0" unique_id=1446901427]
 visible = false
 mesh = SubResource("QuadMesh_x7gcb")
 
@@ -72,16 +77,16 @@ transform = Transform3D(-0.9, 0, 7.86805e-08, 0, 0.9, 0, -7.86805e-08, 0, -0.9, 
 environment = SubResource("Environment_es7xd")
 
 [node name="Sun" parent="Sky" index="0" unique_id=777693513]
-transform = Transform3D(-0.50000006, -0.49673173, 0.70940644, 0, 0.819152, 0.5735764, -0.8660254, 0.28678823, -0.40957606, 0, 2, 0)
+transform = Transform3D(0.17364822, -0.49240384, 0.85286844, 0, 0.8660253, 0.49999997, -0.9848077, -0.086824104, 0.15038376, 0, 2, 0)
 
 [node name="FogVolume" type="FogVolume" parent="." index="8" unique_id=1375988564]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.491268, -0.100494385, 8.065835)
+transform = Transform3D(0.98345923, -0.18112972, 0, 0.18112972, 0.98345923, 0, 0, 0, 1, 4.9746075, -0.100494385, 8.065835)
 size = Vector3(5.8496094, 0.79901123, 12)
 shape = 0
 material = SubResource("FogMaterial_i1kg8")
 
 [node name="FogVolume2" type="FogVolume" parent="." index="9" unique_id=552562067]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2266755, 0.15545106, 9.439587)
+transform = Transform3D(0.9792848, 0.2024876, 0, -0.2024876, 0.9792848, 0, 0, 0, 1, -5.2266755, -0.02989173, 9.439587)
 size = Vector3(5.8496094, 1.8537292, 6.062744)
 shape = 0
 material = SubResource("FogMaterial_i1kg8")
@@ -122,3 +127,9 @@ colour_2 = Color(1, 1, 1, 1)
 metadata/_custom_type_script = "uid://bs2ecusdf305c"
 
 [node name="Landscape" parent="." index="12" unique_id=500468590 instance=ExtResource("3_i1kg8")]
+
+[node name="MoonPivot" type="Marker3D" parent="." index="13" unique_id=1101137664]
+transform = Transform3D(0.17364822, 0.08583164, 0.98106027, 0, 0.9961947, -0.08715574, -0.9848077, 0.015134439, 0.17298745, 0, 0, 0)
+
+[node name="Moon" parent="MoonPivot" index="0" unique_id=2095644093 instance=ExtResource("7_ab0t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)

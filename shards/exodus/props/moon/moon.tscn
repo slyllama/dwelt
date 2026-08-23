@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djaotkexh0trc"]
+
+[ext_resource type="Material" uid="uid://doqsyl0nllmkr" path="res://shards/exodus/props/moon/materials/moon.tres" id="1_cd7os"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gqfmo"]
+material = ExtResource("1_cd7os")
+size = Vector2(56, 56)
+
+[node name="Moon" type="MeshInstance3D" unique_id=2095644093]
+mesh = SubResource("QuadMesh_gqfmo")

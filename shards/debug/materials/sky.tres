@@ -1,6 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://c3rafrkdjfvbw"]
 
 [ext_resource type="Shader" uid="uid://v0s6nhv18rer" path="res://shards/debug/materials/shaders/sky.gdshader" id="1_j1dlv"]
+[ext_resource type="Texture2D" uid="uid://ceotej0hk33sa" path="res://generic/textures/sky_patina.tres" id="2_v8edn"]
 
 [sub_resource type="Gradient" id="Gradient_j1dlv"]
 offsets = PackedFloat32Array(0.3, 0.42, 0.45, 0.5)
@@ -18,24 +19,10 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_c5ax0")
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_wlwgv"]
-offsets = PackedFloat32Array(0.4, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4yx2y"]
-noise_type = 2
-frequency = 0.02
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oqmv2"]
-width = 256
-noise = SubResource("FastNoiseLite_4yx2y")
-color_ramp = SubResource("Gradient_wlwgv")
-seamless = true
-
 [resource]
 shader = ExtResource("1_j1dlv")
 shader_parameter/gradient_texture = SubResource("GradientTexture2D_78v5e")
 shader_parameter/patina_mask = SubResource("GradientTexture2D_v8edn")
-shader_parameter/sky_patina_texture = SubResource("NoiseTexture2D_oqmv2")
+shader_parameter/sky_patina_texture = ExtResource("2_v8edn")
 shader_parameter/sky_patina_strength = 0.1
 shader_parameter/sky_patina_time_scale = 0.014

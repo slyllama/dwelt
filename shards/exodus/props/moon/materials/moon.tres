@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://doqsyl0nllmkr"]
+
+[ext_resource type="Texture2D" uid="uid://com5splycix0p" path="res://shards/exodus/props/moon/materials/textures/moon_diff.png" id="1_qggn6"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.93, 0.5115, 0.5115, 1)
+albedo_texture = ExtResource("1_qggn6")

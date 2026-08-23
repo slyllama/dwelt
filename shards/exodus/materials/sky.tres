@@ -2,6 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://cd2o0w6mrtfek" path="res://shards/exodus/materials/shaders/sky.gdshader" id="1_0an4l"]
 [ext_resource type="Texture2D" uid="uid://08sedu5reklj" path="res://shards/exodus/materials/textures/stars_diff.jpg" id="2_jwvsb"]
+[ext_resource type="Texture2D" uid="uid://lw6qmcf73lby" path="res://shards/exodus/props/landscape/materials/textures/watercolor_dodge.jpg" id="3_8h8x0"]
+[ext_resource type="Texture2D" uid="uid://ceotej0hk33sa" path="res://generic/textures/sky_patina.tres" id="3_f3wgi"]
 
 [sub_resource type="Gradient" id="Gradient_leiy4"]
 colors = PackedColorArray(0.049212597, 0.049212597, 0.049212597, 1, 0.9726506, 0.9726506, 0.9726506, 1)
@@ -17,8 +19,8 @@ color_ramp = SubResource("Gradient_leiy4")
 seamless = true
 
 [sub_resource type="Gradient" id="Gradient_0an4l"]
-offsets = PackedFloat32Array(0.36, 0.5)
-colors = PackedColorArray(0, 0, 0, 0, 0.6, 0.03529412, 0.03529412, 1)
+offsets = PackedFloat32Array(0.35, 0.5105263)
+colors = PackedColorArray(0, 0, 0, 0, 0.33537078, 0.01028707, 0.010246675, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_io0eh"]
 gradient = SubResource("Gradient_0an4l")
@@ -29,8 +31,14 @@ shader = ExtResource("1_0an4l")
 shader_parameter/blend_mask_texture = SubResource("NoiseTexture2D_q0yja")
 shader_parameter/a_texture = ExtResource("2_jwvsb")
 shader_parameter/b_texture = ExtResource("2_jwvsb")
-shader_parameter/a_uv_scale = 12.0
-shader_parameter/b_uv_scale = 18.0
-shader_parameter/a_albedo = Color(0.4, 0.4, 0.4, 1)
-shader_parameter/b_albedo = Color(1, 1, 1, 1)
+shader_parameter/a_uv_scale = 18.0
+shader_parameter/b_uv_scale = 36.0
+shader_parameter/a_albedo = Color(1, 1, 1, 1)
+shader_parameter/b_albedo = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/gradient_texture = SubResource("GradientTexture2D_io0eh")
+shader_parameter/shimmer_texture = ExtResource("3_f3wgi")
+shader_parameter/shimmer_color = Color(0.6, 0.03529412, 0.03529412, 1)
+shader_parameter/shimmer_intensity = 0.18000000855
+shader_parameter/overlay_dodge_texture = ExtResource("3_8h8x0")
+shader_parameter/overlay_uv_scale = 8.0
+shader_parameter/overlay_intensity = 5.0
