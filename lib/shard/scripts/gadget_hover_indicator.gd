@@ -8,8 +8,6 @@ func move_to_hovered_gadget() -> bool:
 	else: return(false)
 
 func _ready() -> void:
-	mesh.surface_get_material(0).albedo_color = Color(0.94, 0.147, 0.075, 1.0)
-	
 	DwGadget.tool_mode_changed.connect(func(_new_tool_mode: DwGadget.ToolMode) -> void:
 		if DwGadget.is_in_selection_mode():
 			if move_to_hovered_gadget(): visible = true

@@ -40,5 +40,5 @@ shader_parameter/shimmer_texture = ExtResource("3_f3wgi")
 shader_parameter/shimmer_color = Color(0.6, 0.03529412, 0.03529412, 1)
 shader_parameter/shimmer_intensity = 0.18000000855
 shader_parameter/overlay_dodge_texture = ExtResource("3_8h8x0")
-shader_parameter/overlay_uv_scale = 8.0
+shader_parameter/overlay_uv_scale = 12.0
 shader_parameter/overlay_intensity = 5.0
