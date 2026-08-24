@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b0wt6qdeqd5c4"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://generic/materials/shaders/gadget.gdshader" id="1_0os2a"]
+[ext_resource type="Texture2D" uid="uid://burogdnpls0d3" path="res://gadgets/teleporter/materials/textures/ring2_diff.jpg" id="2_2qg5j"]
+[ext_resource type="Texture2D" uid="uid://bx85jqsksowji" path="res://gadgets/teleporter/materials/textures/ring2_emit.jpg" id="3_n0xm2"]
+[ext_resource type="Texture2D" uid="uid://qn7rtjjogo87" path="res://gadgets/teleporter/materials/textures/ring2_norm.jpg" id="4_slwmp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0os2a")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_2qg5j")
+shader_parameter/roughness = 1.0
+shader_parameter/normal_texture = ExtResource("4_slwmp")
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.499999988824
+shader_parameter/backlight = 0.0999999977648
+shader_parameter/normal_strength = 1.0
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false
+shader_parameter/has_emission = true
+shader_parameter/emission_texture = ExtResource("3_n0xm2")
+shader_parameter/emission_strength = 2.0

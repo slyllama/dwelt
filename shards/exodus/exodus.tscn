@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cw72k6vpt1d3o" path="res://lib/shard/foliage_spawner/grass_red.res" id="4_ab0t6"]
 [ext_resource type="Script" uid="uid://bs2ecusdf305c" path="res://lib/shard/foliage_spawner/foliage_spawner.gd" id="5_q0yja"]
 [ext_resource type="PackedScene" uid="uid://djaotkexh0trc" path="res://shards/exodus/props/moon/moon.tscn" id="7_ab0t6"]
+[ext_resource type="PackedScene" uid="uid://cqiouk8vbyc" path="res://gadgets/teleporter/meshes/ring2.glb" id="9_tksat"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_x7gcb"]
 material = ExtResource("2_i1kg8")
@@ -172,3 +173,6 @@ transform = Transform3D(0.17364821, 0.25488698, 0.9512512, 0, 0.9659258, -0.2588
 
 [node name="Moon" parent="MoonPivot" index="0" unique_id=2095644093 instance=ExtResource("7_ab0t6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="ring2" parent="." index="15" unique_id=1528203942 instance=ExtResource("9_tksat")]
+transform = Transform3D(0.55701154, 0.6840937, -0.47090766, -0.77545595, 0.63140166, 0, 0.29733187, 0.36516815, 0.88218254, -2.7351937, 0.5999533, 14.583895)

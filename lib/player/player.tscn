@@ -201,6 +201,8 @@ _data = {
 radius = 0.25
 
 [node name="Player" type="CharacterBody3D" unique_id=568758090]
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("1_al4t3")
 friction = 25.0
 gravity_damping = 7.0

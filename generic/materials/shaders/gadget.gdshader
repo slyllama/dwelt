@@ -13,6 +13,11 @@ uniform float normal_strength: hint_range(0.0, 1.0, 0.01) = 0.0;
 uniform float uv_scale = 1.0;
 uniform bool use_alpha = false;
 
+// Emission
+uniform bool has_emission = false;
+uniform sampler2D emission_texture: source_color, filter_linear_mipmap, repeat_enable;
+uniform float emission_strength = 0.0;
+
 instance uniform bool highlight = false;
 
 void vertex() {
@@ -36,6 +41,10 @@ void fragment() {
 	}
 	
 	if (highlight == true) { ALBEDO *= 1.5; }
+	
+	if (has_emission == true) {
+		EMISSION = texture(emission_texture, UV * uv_scale).rgb * emission_strength;
+	}
 	
 	float fade_distance = length(VERTEX);
 	const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);

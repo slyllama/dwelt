@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0f0frwbe63lw"
-path="res://.godot/imported/teleporter.glb-108e3cc6abe0f8ef4f46f63cbba979dd.scn"
+uid="uid://cqiouk8vbyc"
+path="res://.godot/imported/ring2.glb-eb0532d6b35ccd2ff2360376c69c036a.scn"
 
 [deps]
 
-source_file="res://gadgets/teleporter/meshes/teleporter.glb"
-dest_files=["res://.godot/imported/teleporter.glb-108e3cc6abe0f8ef4f46f63cbba979dd.scn"]
+source_file="res://gadgets/teleporter/meshes/ring2.glb"
+dest_files=["res://.godot/imported/ring2.glb-eb0532d6b35ccd2ff2360376c69c036a.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="Teleporter"
+nodes/root_name=""
 nodes/root_script=null
 mesh_library/use_node_names_as_mesh_names=false
 array_mesh/deduplicate_surfaces=true
@@ -31,7 +31,7 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=60.0
+animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
@@ -43,8 +43,8 @@ _subresources={
 "materials": {
 "ring": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://gadgets/teleporter/materials/ring.tres",
-"use_external/path": "uid://bptl3gwunyvbw"
+"use_external/fallback_path": "res://gadgets/teleporter/materials/ring2.tres",
+"use_external/path": "uid://b0wt6qdeqd5c4"
 }
 }
 }

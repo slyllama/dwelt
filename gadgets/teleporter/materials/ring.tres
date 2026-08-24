@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bptl3gwunyvbw"]
+
+[ext_resource type="Shader" uid="uid://bexnht2go8mvx" path="res://generic/materials/shaders/gadget.gdshader" id="1_e2rn8"]
+[ext_resource type="Texture2D" uid="uid://cc2yj8w1w0v3g" path="res://gadgets/teleporter/materials/textures/ring_diff.jpg" id="2_8b86q"]
+[ext_resource type="Texture2D" uid="uid://cbfou0y82fa70" path="res://gadgets/teleporter/materials/textures/ring_norm.jpg" id="3_8b86q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_e2rn8")
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_8b86q")
+shader_parameter/roughness = 0.350000016625
+shader_parameter/normal_texture = ExtResource("3_8b86q")
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.499999988824
+shader_parameter/backlight = 0.3499999921768
+shader_parameter/normal_strength = 0.999999977648
+shader_parameter/uv_scale = 1.0
+shader_parameter/use_alpha = false

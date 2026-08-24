@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://weowroscm7we"]
 
-[ext_resource type="Script" uid="uid://betsyaiukvefd" path="res://lib/gadget/gadget.gd" id="1_tgdh2"]
+[ext_resource type="Script" uid="uid://bab3t5hb8p68c" path="res://gadgets/teleporter/teleporter.gd" id="1_sw6c3"]
 [ext_resource type="Script" uid="uid://c72burk7b7lrb" path="res://lib/effect/effect_manager/effect_manager.gd" id="3_sw6c3"]
 [ext_resource type="PackedScene" uid="uid://b0f0frwbe63lw" path="res://gadgets/teleporter/meshes/teleporter.glb" id="3_v71xq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ex00m"]
-size = Vector3(3, 0.29986572, 3)
+[sub_resource type="SphereShape3D" id="SphereShape3D_iq5xa"]
+radius = 1.0059048
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ex00m"]
+radius = 2.0
 
 [node name="Teleporter" type="StaticBody3D" unique_id=43051810 node_paths=PackedStringArray("model", "effect_manager")]
-script = ExtResource("1_tgdh2")
+script = ExtResource("1_sw6c3")
 gadget_id = "teleporter"
 gadget_title = "Teleporter"
 model = NodePath("Teleporter")
@@ -23,5 +26,16 @@ metadata/_custom_type_script = "uid://c72burk7b7lrb"
 [node name="Teleporter" parent="." unique_id=1233175500 instance=ExtResource("3_v71xq")]
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1249698148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15084839, 0)
-shape = SubResource("BoxShape3D_ex00m")
+shape = SubResource("SphereShape3D_iq5xa")
+
+[node name="ActivateArea" type="Area3D" parent="." unique_id=874850464]
+unique_name_in_owner = true
+collision_layer = 128
+collision_mask = 128
+
+[node name="Collision" type="CollisionShape3D" parent="ActivateArea" unique_id=909227074]
+shape = SubResource("CylinderShape3D_ex00m")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="ActivateArea" to="." method="_on_activate_area_body_entered"]
+[connection signal="body_exited" from="ActivateArea" to="." method="_on_activate_area_body_exited"]
