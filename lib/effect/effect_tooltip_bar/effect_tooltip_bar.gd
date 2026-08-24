@@ -1,7 +1,7 @@
-class_name EffectBar extends HBoxContainer
+@icon("res://generic/icons/EffectControl.svg")
+extends VBoxContainer
 
-var EffectCardScene := load("res://lib/effect/effect_card/effect_card.tscn")
-var controller_focus_effect: EffectCard
+var EffectTooltipScene := load("res://lib/effect/effect_tooltip/effect_tooltip.tscn")
 
 @export var effect_manager: EffectManager:
 	get: return(effect_manager)
@@ -17,13 +17,12 @@ func deregister_effect_manager() -> void:
 
 func on_effect_added(id: String) -> void:
 	var effect := effect_manager.active_effects[id]
-	var card: EffectCard = EffectCardScene.instantiate()
+	var card: EffectTooltip = EffectTooltipScene.instantiate()
 	card.effect_instance = effect
 	add_child(card)
 
 func on_effect_manager_change() -> void:
 	# The effect manager has been cleared, and so all children need to be removed
-	controller_focus_effect = null
 	for _n: Node in get_children():
 		_n.queue_free()
 	
@@ -31,7 +30,7 @@ func on_effect_manager_change() -> void:
 	for _e: String in effect_manager.active_effects:
 		var effect := effect_manager.active_effects[_e]
 		if effect.visible_to_player:
-			var card: EffectCard = EffectCardScene.instantiate()
+			var card: EffectTooltip = EffectTooltipScene.instantiate()
 			card.effect_instance = effect
 			add_child(card)
 	
@@ -40,7 +39,7 @@ func on_effect_manager_change() -> void:
 	
 	# Reset size to get rid of dead space
 	await get_tree().process_frame
-	size.x = 0.0
+	size.y = 0.0
 
 func _ready() -> void:
 	for _n: Node in get_children(): _n.queue_free()

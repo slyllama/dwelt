@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwyl8l4fhu6gj"]
 
 [ext_resource type="Script" uid="uid://pf2i05f5a4sc" path="res://lib/ui/ui_pane/ui_pane.gd" id="1_6rdn8"]
-[ext_resource type="Texture2D" uid="uid://cdmj0yox0hfkt" path="res://lib/ui/ui_pane/textures/bg.jpg" id="1_b3r4o"]
+[ext_resource type="StyleBox" uid="uid://dnf0hpexxr1g2" path="res://lib/ui/ui_pane/ui_pane_style.tres" id="1_hipgv"]
 [ext_resource type="Texture2D" uid="uid://uyowt2urphuw" path="res://lib/ui/ui_pane/textures/close_button.jpg" id="3_43t6n"]
 [ext_resource type="FontFile" uid="uid://d0xx1sk5l0po2" path="res://generic/fonts/amarante.ttf" id="3_spqtq"]
 [ext_resource type="Texture2D" uid="uid://3kr2vi8df8g8" path="res://lib/ui/ui_pane/textures/close_button_hover.jpg" id="4_gwgqe"]
@@ -9,25 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://dqj1bbxp34ff" path="res://lib/ui/ui_pane/sounds/open.ogg" id="7_lu8lm"]
 [ext_resource type="Texture2D" uid="uid://6geao0ocadpn" path="res://lib/ui/ui_pane/textures/border_effect.png" id="8_hipgv"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43t6n"]
-content_margin_left = 13.0
-content_margin_top = 9.0
-content_margin_right = 13.0
-content_margin_bottom = 17.0
-texture = ExtResource("1_b3r4o")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
 [node name="UIPane" type="PanelContainer" unique_id=1181014453]
 custom_minimum_size = Vector2(300, 400)
 offset_right = 300.0
 offset_bottom = 400.0
 focus_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_43t6n")
+theme_override_styles/panel = ExtResource("1_hipgv")
 script = ExtResource("1_6rdn8")
 
 [node name="Box" type="VBoxContainer" parent="." unique_id=1241117236]

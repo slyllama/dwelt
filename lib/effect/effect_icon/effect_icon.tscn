@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cd7xu7yvamnd"]
 
 [ext_resource type="Texture2D" uid="uid://bskg5tyrq6qdr" path="res://data/effects/placeholder.jpg" id="1_tj6u5"]
-[ext_resource type="Script" uid="uid://qhp0ra5pfdyt" path="res://lib/effect/effect_card/effect_card.gd" id="2_tj6u5"]
+[ext_resource type="Script" uid="uid://qhp0ra5pfdyt" path="res://lib/effect/effect_icon/effect_icon.gd" id="2_tj6u5"]
 
 [sub_resource type="Gradient" id="Gradient_tj6u5"]
 offsets = PackedFloat32Array(0)

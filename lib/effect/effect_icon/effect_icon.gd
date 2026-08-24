@@ -1,4 +1,5 @@
-class_name EffectCard extends TextureRect
+@icon("res://generic/icons/EffectControl.svg")
+class_name EffectIcon extends TextureRect
 # Display an icon for a single effect
 
 const PLACEHOLDER_TEXTURE := preload("res://data/effects/placeholder.jpg")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dtrtwpqjdt8ub"]
+
+[ext_resource type="Script" uid="uid://cwrwlndj84077" path="res://lib/effect/effect_tooltip_bar/effect_tooltip_bar.gd" id="1_icgnf"]
+[ext_resource type="PackedScene" uid="uid://c4afk0v4ywk10" path="res://lib/effect/effect_tooltip/effect_tooltip.tscn" id="2_lss7o"]
+
+[node name="EffectTooltipBar" type="VBoxContainer" unique_id=687606552]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+mouse_filter = 2
+alignment = 1
+script = ExtResource("1_icgnf")
+
+[node name="Placeholder" parent="." unique_id=804080258 instance=ExtResource("2_lss7o")]
+layout_mode = 2
